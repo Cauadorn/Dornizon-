@@ -1,0 +1,87 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Poppins;src:url(../reel-ems/assets/fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:Poppins;src:url(../reel-ems/assets/fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:Poppins;src:url(../reel-ems/assets/fonts/Poppins-SemiBold.ttf);font-weight:600}
+@font-face{font-family:IS;src:url(../reel-ems/assets/fonts/InstrumentSerif-Regular.ttf);font-style:normal}
+@font-face{font-family:IS;src:url(../reel-ems/assets/fonts/InstrumentSerif-Italic.ttf);font-style:italic}
+:root{--ivory:#fffbde;--tinta:#2a1433;--ameixa:#3d1c46;--violeta:#6225d8;--violeta2:#7b4df2;--lavanda:#c0a5c4;--lavanda2:#e4d6e6;--pink:#dd34a8;--manteiga:#f2cf7a;--wine:#9e122c}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{position:relative;background:var(--tinta) radial-gradient(rgba(192,165,196,.22) 3px,transparent 3.5px) 0 0/60px 60px;font-family:Poppins;color:var(--ivory)}
+.a{position:absolute}
+.abl{font:500 36px/1 Poppins;color:var(--lavanda);letter-spacing:.02em;white-space:nowrap}
+.lead{font:500 84px/1 Poppins;color:var(--ivory);white-space:nowrap;letter-spacing:-.01em}
+.serif{font-family:IS;font-size:160px;line-height:.85;letter-spacing:-.02em;white-space:nowrap;color:var(--ivory)}
+.serif em{font-style:italic;color:var(--manteiga)}
+.serif .q{font-style:italic;color:var(--pink)}
+.caret{width:7px;height:92px;background:var(--violeta);border-radius:2px}
+.sel{border:3px solid var(--manteiga)}
+.sel i{position:absolute;width:20px;height:20px;background:var(--ivory);border:3px solid var(--violeta)}
+.sel i:nth-child(1){left:-11px;top:-11px}.sel i:nth-child(2){right:-11px;top:-11px}.sel i:nth-child(3){left:-11px;bottom:-11px}.sel i:nth-child(4){right:-11px;bottom:-11px}
+.pill{background:var(--manteiga);color:var(--tinta);font:500 26px/1 Poppins;padding:8px 14px;border-radius:6px;white-space:nowrap}
+.nao{display:inline-block;background:var(--lavanda);color:var(--tinta);font:600 84px/1 Poppins;padding:.18em .32em .2em;border-radius:14px;box-shadow:10px 10px 0 var(--violeta);white-space:nowrap}
+.cur{position:absolute}
+
+.label{font:400 26px/1.2 Poppins;letter-spacing:.08em;white-space:nowrap}
+.track{position:absolute;left:110px;top:1536px;width:860px;height:170px;border-radius:20px;background:#1d0d24;box-shadow:8px 8px 0 var(--violeta);border:3px solid rgba(255,251,222,.9)}
+.bars{position:absolute;left:30px;top:30px;right:30px;bottom:30px;display:flex;align-items:center;gap:10px}
+.bars b{flex:1;border-radius:999px;background:var(--lavanda)}
+.bars b.clip{background:var(--wine)}
+.ring{position:absolute;border:4px solid var(--lavanda);border-radius:50%;opacity:.55}
+#grain{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:.07;mix-blend-mode:normal;pointer-events:none}
+.name{position:absolute;color:var(--tinta);font:600 36px/1 Poppins;padding:.32em .6em;border-radius:10px;white-space:nowrap;box-shadow:4px 4px 0 var(--tinta)}
+</style></head><body>
+
+<div class="a abl" style="left:80px;top:300px">00 — capa</div>
+<div class="a abl" style="left:1000px;top:300px;transform:translateX(-100%);color:var(--manteiga)">2 editando</div>
+
+<img id="star" class="a" style="left:-340px;top:1120px;width:1000px;height:1000px;opacity:.45;transform:rotate(-12deg)">
+
+<!-- linha 1: eu [caret] tenho -->
+<div class="a lead" style="left:80px;top:790px">eu</div>
+<div class="a caret" style="left:222px;top:782px"></div>
+<div class="a lead" style="left:262px;top:790px">tenho</div>
+
+<!-- "não" sendo inserido pela voz -->
+<div class="a nao" style="left:300px;top:580px;transform:rotate(-7deg)">não</div>
+<div class="ring" style="left:476px;top:548px;width:70px;height:70px"></div>
+<div class="ring" style="left:461px;top:533px;width:100px;height:100px;opacity:.25"></div>
+<div class="cur" style="--c:var(--lavanda);left:504px;top:576px;transform:scale(1.3);transform-origin:0 0">
+ <svg width="56" height="56" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#c0a5c4" stroke="#2a1433" stroke-width="1.4" stroke-linejoin="round"/></svg>
+</div>
+<div class="name" style="background:var(--lavanda);left:584px;top:566px">voz</div>
+
+<!-- linha 2: criatividade? selecionada pelo eu -->
+<div class="a sel" style="left:66px;top:916px;width:940px;height:196px"><i></i><i></i><i></i><i></i></div>
+<div class="a serif" style="left:80px;top:932px">cri<em>a</em>tividade<span class="q">?</span></div>
+<div class="a pill" style="left:536px;top:1134px;transform:translateX(-50%)">912 × 160</div>
+<div class="cur" style="--c:var(--manteiga);left:1000px;top:1106px;transform:scale(1.3);transform-origin:0 0">
+ <svg width="56" height="56" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#f2cf7a" stroke="#2a1433" stroke-width="1.4" stroke-linejoin="round"/></svg>
+</div>
+<div class="name" style="background:var(--manteiga);left:890px;top:1160px">eu</div>
+
+<!-- faixa de áudio da voz -->
+<div class="a label" style="left:110px;top:1480px;color:var(--lavanda)">voz_interna.mp3</div>
+<div class="a label" style="left:970px;top:1480px;transform:translateX(-100%);color:var(--manteiga)">volume: 136%</div>
+<div class="track"><div class="bars" id="bars"></div></div>
+
+<img id="grain" alt="">
+<script>
+// estrela em retícula, igual ao reel
+(function(){const size=900,color='#7b4df2';const c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d');
+const cx=size/2,cy=size/2,R=size*.49,r=R*.45;const pts=[];
+for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5;const rr=i%2?r:R;pts.push([cx+rr*Math.cos(a),cy+rr*Math.sin(a)]);}
+const path=new Path2D();pts.forEach((p,i)=>i?path.lineTo(...p):path.moveTo(...p));path.closePath();
+g.fillStyle=color;const step=size/64;
+for(let y=step/2;y<size;y+=step)for(let x=step/2;x<size;x+=step){if(!g.isPointInPath(path,x,y))continue;const d=Math.hypot(x-cx,y-cy)/R;const rad=step*.48*(1-d*.82);if(rad>.6){g.beginPath();g.arc(x,y,rad,0,7);g.fill();}}
+document.getElementById('star').src=c.toDataURL();})();
+// barras
+const n=26,bars=document.getElementById('bars');let seed=0;
+for(let i=0;i<n;i++){const v=.25+.75*Math.abs(Math.sin(i*.9+3.1)*Math.cos(i*.37-2.2));let h=v*1.7;const clip=h>1;h=Math.min(1,h);const b=document.createElement('b');b.style.height=Math.max(10,h*110)+'px';if(clip)b.className='clip';bars.appendChild(b);}
+// grão
+const gc=document.createElement('canvas');gc.width=540;gc.height=960;const gg=gc.getContext('2d');const im=gg.createImageData(540,960);
+for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255;}
+gg.putImageData(im,0,0);document.getElementById('grain').src=gc.toDataURL('image/jpeg',.8);
+</script>
+</body></html>
