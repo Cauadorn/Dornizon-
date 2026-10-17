@@ -33,9 +33,14 @@ O ElevenLabs usa créditos da agência (300 mil). Regra combinada:
 |---|---|---|
 | Fala/narração (~20s) | ElevenLabs | ~280 créditos |
 | Imagens da Duda com o produto | Freepik Spaces no navegador (ilimitado no plano) | 0 |
-| Vídeo com lip-sync | ElevenLabs só no gancho de 4–5s, resto narração sobre cenas | ~5 mil créditos |
+| Vídeo: 2 clipes de 10s, Kling 2.5 Turbo, 9:16 | ElevenLabs | ~8,5 mil créditos |
+| Montagem (clipes + narração) | ffmpeg local | 0 |
 
-Referência: lip-sync completo de 19s em 720p (OmniHuman 1.5) custou ~18,5 mil créditos.
+**Formato que funciona:** a Duda **não fala** no vídeo. Ela mostra a roupa (frente e lado, boca fechada,
+sorrindo) e a narração entra por cima. Lip-sync (OmniHuman 1.5, ~18,5 mil créditos por 19s) deformou o
+rosto e foi descartado. Seedance 2.5 de 20s custaria ~56 mil — não usar.
+
+Não mostrar as costas de um produto sem ter a foto real das costas: a IA inventa o modelo.
 Sempre pedir orçamento (`estimate_only`) antes de gerar vídeo.
 
 Flow no ElevenLabs com tudo do primeiro vídeo:
