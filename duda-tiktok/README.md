@@ -41,7 +41,22 @@ sorrindo) e a narração entra por cima. Lip-sync (OmniHuman 1.5, ~18,5 mil cré
 rosto e foi descartado. Seedance 2.5 de 20s custaria ~56 mil — não usar.
 
 Não mostrar as costas de um produto sem ter a foto real das costas: a IA inventa o modelo.
-Sempre pedir orçamento (`estimate_only`) antes de gerar vídeo.
+Sempre pedir orçamento (`estimate_only`) antes de gerar vídeo **e imagem** — imagem com 4 referências
+no Nano Banana Pro custa ~3,6 mil créditos cada.
+
+### Receita que funciona (~9 mil créditos por vídeo)
+
+1. **Imagens no Freepik Spaces, gerado por uma pessoa no site/app** (0 créditos, confirmado).
+   Pela integração do Claude o ilimitado não vale (75 créditos/imagem e a conta não tem saldo avulso).
+   Space: https://www.magnific.com/app/spaces/a301317b-f6c4-441f-b00d-435873d30eb8 — um painel por produto,
+   referências da Duda já ligadas.
+2. Narração no ElevenLabs com a voz da Duda (~320 créditos por take).
+3. Clipe 1 (Kling 2.5 Turbo, 10s) a partir da cena de frente, ela vindo até a câmera mostrar detalhe.
+4. Clipe 2 a partir do **último quadro do clipe 1** (continuidade, sem gerar imagem nova): vira de lado e
+   termina com a mão na lente.
+5. Montagem local com ffmpeg, narração por cima, `loudnorm` em -14 LUFS.
+
+Evitar cena de bastidor com tripé: a IA erra a orientação do celular (tela virada para a câmera errada).
 
 Flow no ElevenLabs com tudo do primeiro vídeo:
 https://elevenlabs.io/app/flows/OMaQG5ueD5MnwaeymOkd
