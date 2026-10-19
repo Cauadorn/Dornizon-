@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah · carrossel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Buenard:wght@400;700&family=Fleur+De+Leah&family=Poppins:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../kit/kit.css">
+<style>
+/* Carrossel do Instagram: 10 slides de 1080 × 1350 numa tela só.
+   Fotos de página inteira com o texto por cima, alternando com o céu estrelado em roxo profundo.
+   O fio do horizonte corre pelos dez slides, e a lua cresce de um para o outro;
+   IV e V são uma foto só, a prateleira inteira da coleção. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --guia: #E9D29A; --cr: #FFEBB4; }
+body { background: #111; }
+#tela { position: relative; width: 10800px; height: 1350px; overflow: hidden; background: var(--roxo-profundo); color: var(--cr); font-family: var(--f-texto); font-weight: 300; }
+.abs { position: absolute; }
+.svg > svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.slide { position: absolute; top: 0; width: 1080px; height: 1350px; overflow: hidden; }
+.foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.sombra { text-shadow: 0 2px 26px rgba(10, 6, 16, .5); }
+.grao { position: absolute; inset: 0; z-index: 20; pointer-events: none; opacity: .08; mix-blend-mode: overlay; }
+.brilho { position: absolute; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(255, 235, 180, .17), rgba(255, 235, 180, 0)); }
+
+.olho { font-weight: 400; font-size: 18px; letter-spacing: .34em; text-transform: uppercase; color: var(--guia); }
+.tit { font-family: var(--f-serif); font-weight: 400; line-height: 1; letter-spacing: -.005em; }
+.txt { font-size: 25px; line-height: 1.55; }
+.cap { font-family: var(--f-cap); font-weight: 400; }
+
+/* horizonte e legendas */
+#horizonte { position: absolute; left: 0; top: 1186px; z-index: 6; overflow: visible; }
+.leg { position: absolute; top: 1166px; z-index: 6; height: 48px; display: flex; align-items: center; gap: 18px; padding: 0 20px; color: var(--cr); }
+.leg svg { width: 44px; height: 44px; display: block; overflow: visible; }
+.leg .n { font-family: var(--f-display); font-size: 26px; color: var(--guia); letter-spacing: .08em; }
+.leg .t, .assina { font-size: 15px; letter-spacing: .32em; text-transform: uppercase; }
+.assina { position: absolute; top: 1166px; z-index: 6; height: 48px; display: flex; align-items: center; padding: 0 20px; color: var(--cr); }
+.leg.claro, .assina.claro { color: var(--roxo-profundo); }
+.leg.claro .n { color: var(--roxo-profundo); }
+
+/* leque de rótulos */
+.leque img { position: absolute; left: 270px; top: 300px; width: 540px; transform-origin: 50% 1400px; border-radius: 6px; box-shadow: 0 30px 50px -18px rgba(8, 4, 16, .75); }
+.tintas { position: absolute; left: 60px; right: 60px; top: 930px; display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; }
+.tintas i { display: block; width: 46px; height: 46px; border-radius: 50%; margin: 0 auto 18px; box-shadow: 0 0 0 3px var(--roxo-profundo), 0 0 0 5px rgba(255, 235, 180, .7); }
+.tintas b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 28px; letter-spacing: .08em; }
+.tintas span { display: block; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: var(--guia); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div id="tela">
+
+  <!-- céu: estrelas pela tela toda (aparecem nos slides sem foto) -->
+  <div class="abs" data-estrelas="n:300;semente:19;rMax:10;rMin:2.2;grandes:.13" style="left:0;top:0;width:10800px;height:1160px;color:var(--cr);opacity:.5"></div>
+
+  <!-- ============ I · capa: a lua inteira na página ============ -->
+  <section class="slide" style="left:0">
+    <img class="foto" src="../../assets/img/foto-lua.jpg" alt="" style="object-position:50% 55%">
+    <div class="abs" data-estrelas="n:60;semente:3;rMax:9;grandes:.15" style="inset:0;color:var(--cr);opacity:.55;mix-blend-mode:screen"></div>
+    <div class="abs sombra" style="left:540px;top:190px;width:480px;text-align:center">
+      <span class="olho">Velas aromáticas<br>feitas à mão</span>
+      <span class="svg" data-svg="logo-almah" style="display:block;width:420px;height:286px;margin:44px auto 0"></span>
+    </div>
+    <p class="abs tit sombra" style="right:70px;top:900px;font-size:66px;text-align:right;line-height:1.08">Luz que acalma,<br>aroma que abraça.</p>
+  </section>
+
+  <!-- ============ II · o símbolo, grande, no céu ============ -->
+  <section class="slide" style="left:1080px">
+    <span class="brilho" style="left:120px;top:160px;width:1100px;height:1100px"></span>
+    <h2 class="abs tit" style="left:72px;top:96px;font-size:86px;width:960px">Uma luz que nasce<br>dentro da lua.</h2>
+    <div class="abs" id="c-desenho" style="left:230px;top:300px;width:1000px;height:931px"></div>
+    <p class="abs txt" style="left:72px;top:880px;width:300px;opacity:.92">O nome carrega a palavra <span style="font-family:var(--f-serif);font-size:1.15em;color:var(--guia)">alma</span>. Dois círculos desenham a lua; um eixo guia a chama.</p>
+  </section>
+
+  <!-- ============ III · o traço: o esboço na página inteira ============ -->
+  <section class="slide" style="left:2160px;color:var(--roxo-profundo)">
+    <img class="foto" src="../../assets/img/mock-esboco.jpg" alt="" style="object-position:50% 40%">
+    <div class="abs" style="left:0;right:0;bottom:0;height:560px;background:linear-gradient(to top, rgba(240,228,206,.96) 30%, rgba(240,228,206,0))"></div>
+    <span class="abs olho" style="left:72px;top:900px;color:var(--roxo-profundo)">O traço</span>
+    <h2 class="abs tit" style="left:72px;top:944px;font-size:104px">Desenhado à mão.</h2>
+    <p class="abs txt" style="left:76px;top:1068px;font-size:24px">O logo nasceu a lápis, no traço do Cauã, antes de virar vetor.</p>
+  </section>
+
+  <!-- ============ IV e V · a prateleira da coleção, uma foto só nos dois slides ============ -->
+  <div class="abs" style="left:3240px;top:0;width:2160px;height:1350px;overflow:hidden">
+    <img class="foto" src="../../assets/img/mock-colecao.jpg" alt="" style="object-position:50% 50%">
+    <div class="abs sombra" style="left:72px;top:110px">
+      <span class="olho">Coleção Gênesis</span>
+      <h2 class="tit" style="font-size:118px;margin-top:30px">Cinco velas,</h2>
+    </div>
+    <div class="abs sombra" style="right:72px;top:110px;text-align:right">
+      <span class="olho" style="visibility:hidden">·</span>
+      <h2 class="tit" style="font-size:118px;margin-top:30px">cinco céus.</h2>
+      <p class="txt" style="margin:34px 0 0 auto;width:560px">Cada uma com um aroma e uma cor, impressas numa tinta só sobre papel creme.</p>
+    </div>
+  </div>
+
+  <!-- ============ VI · um céu em cada rótulo ============ -->
+  <section class="slide" style="left:5400px">
+    <span class="brilho" style="left:-60px;top:120px;width:1200px;height:1200px"></span>
+    <h2 class="abs tit" style="left:0;right:0;top:92px;font-size:84px;text-align:center">Um céu em cada rótulo.</h2>
+    <div class="leque">
+      <img src="../../assets/img/rotulo-aura.png" alt="" style="transform:rotate(-26deg);z-index:1">
+      <img src="../../assets/img/rotulo-terra.png" alt="" style="transform:rotate(-13deg);z-index:2">
+      <img src="../../assets/img/rotulo-venus.png" alt="" style="transform:rotate(26deg);z-index:1">
+      <img src="../../assets/img/rotulo-serena.png" alt="" style="transform:rotate(13deg);z-index:2">
+      <img src="../../assets/img/rotulo-selene.png" alt="" style="transform:rotate(0deg);z-index:3">
+    </div>
+    <div class="tintas">
+      <div><i style="background:var(--aura)"></i><b>Aura</b><span>baunilha</span></div>
+      <div><i style="background:var(--terra)"></i><b>Terra</b><span>cascas e folhas</span></div>
+      <div><i style="background:var(--selene)"></i><b>Selene</b><span>lavanda</span></div>
+      <div><i style="background:var(--serena)"></i><b>Serena</b><span>rosas</span></div>
+      <div><i style="background:var(--venus)"></i><b>Vênus</b><span>cereja e avelã</span></div>
+    </div>
+  </section>
+
+  <!-- ============ VII · seu pedido chegou ============ -->
+  <section class="slide" style="left:6480px;color:var(--roxo-profundo)">
+    <img class="foto" src="../../assets/img/mock-entrega.jpg" alt="" style="object-position:50% 50%">
+    <div class="abs" style="left:0;right:0;top:0;height:420px;background:linear-gradient(to bottom, rgba(244,236,222,.7), rgba(244,236,222,0))"></div>
+    <h2 class="abs tit" style="left:0;right:0;top:96px;font-size:104px;text-align:center"><span class="cap" style="font-size:1.2em;line-height:.8">S</span>eu pedido chegou!</h2>
+    <p class="abs txt" style="left:160px;right:160px;top:250px;text-align:center">A caixa chega amarrada com barbante e fechada com o adesivo da marca.</p>
+    <div class="abs" style="left:0;right:0;bottom:0;height:300px;background:linear-gradient(to top, rgba(244,236,222,.92) 35%, rgba(244,236,222,0))"></div>
+  </section>
+
+  <!-- ============ VIII · abrir ============ -->
+  <section class="slide" style="left:7560px">
+    <img class="foto" src="../../assets/img/mock-caixa.jpg" alt="" style="object-position:50% 50%">
+    <div class="abs" style="left:0;right:0;bottom:0;height:640px;background:linear-gradient(to top, rgba(28,23,38,.92) 22%, rgba(28,23,38,0))"></div>
+    <h2 class="abs tit sombra" style="left:72px;top:930px;font-size:104px">Abrir uma Almah.</h2>
+    <p class="abs txt sombra" style="left:76px;top:1056px">Papel de seda, a vela e o card de agradecimento.</p>
+  </section>
+
+  <!-- ============ IX · cuidar ============ -->
+  <section class="slide" style="left:8640px">
+    <img class="foto" src="../../assets/img/mock-cuidados.jpg" alt="" style="object-position:50% 50%">
+    <h2 class="abs tit sombra" style="left:72px;top:110px;font-size:104px">Cuidar<br>da chama.</h2>
+    <p class="abs txt sombra" style="left:76px;top:340px;width:420px">Junto da vela vai um card com cinco cuidados para ela durar.</p>
+  </section>
+
+  <!-- ============ X · obrigada ============ -->
+  <section class="slide" style="left:9720px">
+    <span class="brilho" style="left:180px;top:-140px;width:1160px;height:1160px;opacity:1.3"></span>
+    <svg class="abs" id="lua-cheia" style="left:400px;top:80px;width:720px;height:720px;overflow:visible"></svg>
+    <span class="svg abs" data-svg="simbolo" style="left:580px;top:262px;width:360px;height:360px;color:var(--roxo-profundo)"></span>
+    <h2 class="abs tit" style="left:72px;top:110px;font-size:92px"><span class="cap" style="font-size:1.25em;line-height:.8">O</span>brigada.</h2>
+    <div class="abs" style="left:72px;top:840px;width:940px">
+      <span class="olho">Identidade visual</span>
+      <div style="display:flex;gap:80px;margin-top:26px">
+        <div><p class="tit" style="font-size:62px">Emilly</p><p style="font-size:22px;letter-spacing:.06em;opacity:.85;margin-top:12px">@itsemsdesign</p></div>
+        <div><p class="tit" style="font-size:62px">Cauã Dorn</p><p style="font-size:22px;letter-spacing:.06em;opacity:.85;margin-top:12px">@ohdorn · logo desenhado à mão</p></div>
+      </div>
+    </div>
+    <p class="abs" style="left:72px;top:1100px;font-size:20px;letter-spacing:.24em;text-transform:uppercase;color:var(--guia)">@almahdomus</p>
+  </section>
+
+  <svg id="horizonte"></svg>
+  <div id="legendas"></div>
+
+  <svg class="grao" width="10800" height="1350"><filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2"/></filter><rect width="100%" height="100%" filter="url(#ruido)"/></svg>
+</div>
+
+<script src="../../kit/svgs.js"></script>
+<script src="../../kit/kit.js"></script>
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(nome, at, pai) { var e = document.createElementNS(NS, nome); for (var k in at) e.setAttribute(k, at[k]); if (pai) pai.appendChild(e); return e; }
+
+  /* fase da lua: p de 0 (nova) a 1 (cheia), crescente iluminado à direita */
+  function fase(svg, p, cor, fio, peso) {
+    svg.setAttribute('viewBox', '-50 -50 100 100');
+    var r = 46, k = Math.cos(Math.PI * p), rx = Math.abs(k) * r;
+    el('circle', { cx: 0, cy: 0, r: r, fill: 'none', stroke: fio || cor, 'stroke-width': peso || 2.4, opacity: .75 }, svg);
+    if (p >= .999) el('circle', { cx: 0, cy: 0, r: r, fill: cor }, svg);
+    else if (p > .001) el('path', { d: 'M0 ' + (-r) + ' A' + r + ' ' + r + ' 0 0 1 0 ' + r + ' A' + rx + ' ' + r + ' 0 0 ' + (k > 0 ? 0 : 1) + ' 0 ' + (-r) + 'Z', fill: cor }, svg);
+  }
+
+  /* legendas: a lua cresce de slide em slide; nos slides de fundo claro, o fio fica roxo */
+  var titulos = ['Almah', 'O símbolo', 'O traço', 'Gênesis', 'Cinco velas', 'Cinco céus', 'Seu pedido chegou', 'Abrir', 'Cuidar', 'Obrigada'];
+  var num = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+  var claros = { 2: 1, 6: 1 };
+  var box = document.getElementById('legendas');
+  titulos.forEach(function (t, i) {
+    var c = claros[i] ? ' claro' : '';
+    var d = document.createElement('div'); d.className = 'leg' + c; d.style.left = (i * 1080 + 52) + 'px';
+    var s = el('svg', {}, d); fase(s, .1 + i * .9 / 9, claros[i] ? '#503B69' : '#E9D29A');
+    d.insertAdjacentHTML('beforeend', '<span class="n">' + num[i] + '</span><span class="t">' + t + '</span>');
+    box.appendChild(d);
+    var a = document.createElement('div'); a.className = 'assina' + c; a.style.right = (10800 - (i + 1) * 1080 + 52) + 'px'; a.textContent = 'Almah';
+    box.appendChild(a);
+  });
+
+  /* horizonte: um fio só pelos dez slides, aberto onde passam as legendas */
+  document.fonts.ready.then(function () {
+    var h = document.getElementById('horizonte'), x = 0, buracos = [];
+    h.setAttribute('viewBox', '0 0 10800 10'); h.setAttribute('width', 10800); h.setAttribute('height', 10);
+    document.querySelectorAll('.leg, .assina').forEach(function (e) { buracos.push([e.offsetLeft, e.offsetLeft + e.offsetWidth]); });
+    for (var i = 1; i < 10; i++) buracos.push([i * 1080, i * 1080]);   // corta na divisa para trocar a cor
+    buracos.sort(function (p, q) { return p[0] - q[0]; }).concat([[10800, 10800]]).forEach(function (v) {
+      if (v[0] > x) { var sl = Math.floor(x / 1080); el('line', { x1: x, y1: 5, x2: v[0], y2: 5, stroke: claros[sl] ? '#503B69' : '#E9D29A', 'stroke-width': 1.3, opacity: claros[sl] ? .6 : .65 }, h); }
+      x = Math.max(x, v[1]);
+    });
+  });
+
+  /* lua cheia do último slide */
+  fase(document.getElementById('lua-cheia'), 1, '#FFEBB4', '#FFEBB4');
+
+  /* construção do símbolo: R, r, eixo e o círculo da gota (círculos ajustados ao contorno) */
+  var S = window.ALMAH_SVG;
+  var dLua = S.lua.match(/ d="([^"]+)"/)[1], dChama = S['chama-simbolo'].match(/ d="([^"]+)"/)[1];
+  var cx0 = 360, cy0 = 30, W = 580, H = 540;
+  var svg = el('svg', { viewBox: cx0 + ' ' + cy0 + ' ' + W + ' ' + H, style: 'width:100%;height:100%;display:block;overflow:visible' }, document.getElementById('c-desenho'));
+  var tmp = el('path', { d: dLua, fill: 'none' }, svg), L = tmp.getTotalLength(), pts = [];
+  for (var i = 0; i < 720; i++) { var p = tmp.getPointAtLength(L * i / 720); pts.push([p.x, p.y]); }
+  svg.removeChild(tmp);
+  function ajusta(ps) {
+    var sx = 0, sy = 0, sxx = 0, syy = 0, sxy = 0, sz = 0, sxz = 0, syz = 0, n = ps.length;
+    ps.forEach(function (q) { var x = q[0], y = q[1], z = x * x + y * y; sx += x; sy += y; sxx += x * x; syy += y * y; sxy += x * y; sz += z; sxz += x * z; syz += y * z; });
+    var A = [[sxx, sxy, sx], [sxy, syy, sy], [sx, sy, n]], b = [-sxz, -syz, -sz];
+    function det(m) { return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]); }
+    function troca(m, c, v) { return m.map(function (l, r) { return l.map(function (x, j) { return j === c ? v[r] : x; }); }); }
+    var D = det(A), Dd = det(troca(A, 0, b)) / D, Ee = det(troca(A, 1, b)) / D, Ff = det(troca(A, 2, b)) / D;
+    var cx = -Dd / 2, cy = -Ee / 2; return [cx, cy, Math.sqrt(cx * cx + cy * cy - Ff)];
+  }
+  var g0 = [644.5, 279.5, 224.5];
+  var O = ajusta(pts.filter(function (q) { return Math.abs(Math.hypot(q[0] - g0[0], q[1] - g0[1]) - g0[2]) < 7; }));
+  var I = ajusta(pts.filter(function (q) { return Math.hypot(q[0] - O[0], q[1] - O[1]) < O[2] - 8; }));
+  var tmp2 = el('path', { d: dChama, fill: 'none' }, svg), L2 = tmp2.getTotalLength(), pc = [];
+  for (i = 0; i < 400; i++) { var q = tmp2.getPointAtLength(L2 * i / 400); if (q.y > 300) pc.push([q.x, q.y]); }
+  svg.removeChild(tmp2);
+  var G = ajusta(pc), eixo = 652.5, guia = '#E9D29A', tinta = '#FFEBB4';
+  var grade = el('g', { stroke: tinta, 'stroke-width': .5, 'stroke-opacity': .07 }, svg);
+  for (var x = cx0; x <= cx0 + W; x += 20) el('line', { x1: x, y1: cy0, x2: x, y2: cy0 + H }, grade);
+  for (var y = cy0; y <= cy0 + H; y += 20) el('line', { x1: cx0, y1: y, x2: cx0 + W, y2: y }, grade);
+  el('line', { x1: eixo, y1: cy0, x2: eixo, y2: cy0 + H, stroke: guia, 'stroke-width': .8, 'stroke-dasharray': '4 5', opacity: .6 }, svg);
+  el('line', { x1: cx0, y1: O[1], x2: cx0 + W, y2: O[1], stroke: guia, 'stroke-width': .8, 'stroke-dasharray': '4 5', opacity: .45 }, svg);
+  [O, I].forEach(function (c) { el('circle', { cx: c[0], cy: c[1], r: c[2], fill: 'none', stroke: guia, 'stroke-width': 1 }, svg); });
+  el('circle', { cx: G[0], cy: G[1], r: G[2], fill: 'none', stroke: guia, 'stroke-width': .9, 'stroke-dasharray': '2 3' }, svg);
+  el('path', { d: dLua, fill: tinta }, svg);
+  el('path', { d: dChama, fill: tinta }, svg);
+  var m = el('g', { fill: guia, 'font-family': 'Poppins', 'font-size': 12, 'letter-spacing': '1' }, svg);
+  el('circle', { cx: O[0], cy: O[1], r: 3 }, m); el('circle', { cx: I[0], cy: I[1], r: 3 }, m);
+  var aO = 205 * Math.PI / 180, aI = 25 * Math.PI / 180;
+  el('line', { x1: O[0], y1: O[1], x2: O[0] + O[2] * Math.cos(aO), y2: O[1] + O[2] * Math.sin(aO), stroke: guia, 'stroke-width': .8 }, m);
+  el('line', { x1: I[0], y1: I[1], x2: I[0] + I[2] * Math.cos(aI), y2: I[1] + I[2] * Math.sin(aI), stroke: guia, 'stroke-width': .8 }, m);
+  el('text', { x: O[0] + O[2] * .5 * Math.cos(aO) - 4, y: O[1] + O[2] * .5 * Math.sin(aO) - 8 }, m).textContent = 'R';
+  el('text', { x: I[0] + I[2] * .5 * Math.cos(aI) + 2, y: I[1] + I[2] * .5 * Math.sin(aI) - 8 }, m).textContent = 'r';
+  el('text', { x: eixo + 8, y: cy0 + 22 }, m).textContent = 'eixo';
+})();
+</script>
+</body>
+</html>
