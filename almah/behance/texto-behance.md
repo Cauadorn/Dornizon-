@@ -1,8 +1,8 @@
-# Almah · Behance
+# ALMAH · Behance
 
 ## Título
 
-Almah · Identidade Visual
+ALMAH · Identidade Visual
 
 ## Capa
 
@@ -55,7 +55,7 @@ No Behance, marque a opção de projeto feito com ferramentas de IA.
 
 ## Descrição (português)
 
-Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
+ALMAH é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
 
 Identidade visual por Emilly (@itsemsdesign) e Cauã Dorn (@ohdorn). O logo foi desenhado à mão pelo Cauã e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
 
@@ -65,7 +65,7 @@ Luz que acalma, aroma que abraça.
 
 ## Description (English)
 
-Almah is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
+ALMAH is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
 
 Visual identity by Emilly (@itsemsdesign) and Cauã Dorn (@ohdorn). The logo was hand-drawn by Cauã and then redrawn in vector: two circles draw the moon, one axis guides the flame.
 
@@ -79,5 +79,5 @@ identidade visual, branding, brand identity, logo, hand drawn, packaging, embala
 
 - Áreas criativas: Branding, Packaging, Photography
 - Ferramentas: Adobe Illustrator, Figma, Adobe Premiere Pro
-- Marca: Almah (@almahdomus)
+- Marca: ALMAH (@almahdomus)
 - Créditos: identidade visual por Emilly (@itsemsdesign) e Cauã Dorn (@ohdorn); logo desenhado à mão pelo Cauã. No Behance, vale adicionar os dois perfis como proprietários do projeto.

@@ -14,7 +14,7 @@ Estão no computador, na pasta "Almah no Behance" (vem do arquivo Almah-no-Behan
 3. Deixe o espaçamento entre os módulos em zero (nas configurações de estilo do projeto) e o fundo do projeto em #0d0b10 ou preto.
 4. Clique em Continuar e preencha:
    - Capa: "2 - capa/capa-808x632.jpg" (ajuste o recorte para mostrar a mão com a vela e a lua inteira).
-   - Título: Almah · Identidade Visual
+   - Título: ALMAH · Identidade Visual
    - Tags: identidade visual, branding, brand identity, logo, hand drawn, packaging, embalagem, velas, candles, scented candles, label design, rótulo, unboxing, mockup, celestial, lua, moon, motion design, handmade
    - Áreas criativas: Branding, Packaging, Photography
    - Ferramentas: Adobe Illustrator, Figma, Adobe Premiere Pro
@@ -22,7 +22,7 @@ Estão no computador, na pasta "Almah no Behance" (vem do arquivo Almah-no-Behan
    - Coproprietário: adicione o Cauã Dorn (@ohdorn).
    - Descrição (cole exatamente este texto):
 
-Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
+ALMAH é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
 
 Identidade visual por Emilly (@itsemsdesign) e Cauã Dorn (@ohdorn). O logo foi desenhado à mão pelo Cauã e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
 
@@ -32,7 +32,7 @@ Luz que acalma, aroma que abraça.
 
 —
 
-Almah is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
+ALMAH is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
 
 Visual identity by Emilly (@itsemsdesign) and Cauã Dorn (@ohdorn). The logo was hand-drawn by Cauã and then redrawn in vector: two circles draw the moon, one axis guides the flame.
 
