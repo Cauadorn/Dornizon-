@@ -74,6 +74,9 @@ p { font-size: 19px; line-height: 1.65; text-wrap: pretty; }
 .m5 .a { grid-column: span 2; background: var(--papel); color: var(--verde); }
 .m5 .a .svg { width: 560px; height: 381px; }
 .m5 .a .moldura { inset: 34px; --raio-moldura: 18px; --respiro-moldura: 8px; opacity: .3; }
+.m5 .a .col { display: flex; flex-direction: column; align-items: center; gap: 44px; }
+.m5 .credito { font-weight: 500; font-size: 13px; letter-spacing: .3em; color: var(--verde); opacity: .85; }
+.m5 .credito b { font-weight: 600; }
 .m5 .b { background: var(--verde); color: var(--creme); }
 .m5 .c { background: var(--noite); color: var(--creme); }
 .m5 .b .svg, .m5 .c .svg { width: 200px; height: 213px; }
@@ -162,27 +165,6 @@ p { font-size: 19px; line-height: 1.65; text-wrap: pretty; }
 .m15 .rolo img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 6px; display: block; }
 .m15 .furos { height: 14px; margin: 16px 0; background-image: radial-gradient(circle, #FFEBB433 3px, transparent 3.5px); background-size: 26px 14px; }
 
-/* m16 redes */
-.m16 { height: 880px; padding: 110px 90px; }
-.m16 h2 { text-align: center; color: var(--verde); }
-.m16 .grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 70px; }
-.post { aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 26px 54px #2A223638; }
-.post.p1 img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.post.p1 .faixa { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 28px; background: linear-gradient(transparent, #1C1726d0); color: var(--creme); }
-.post.p1 .faixa b { font-family: var(--f-display); font-weight: 400; font-size: 40px; display: block; letter-spacing: .05em; }
-.post.p1 .faixa span { font-size: 16px; }
-.post.p2 { background: var(--noite); color: var(--creme); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
-.post.p2 .sol { position: absolute; width: 150%; height: 150%; left: -25%; top: -40%; opacity: .35; }
-.post.p2 .svg.s { width: 70px; height: 74px; position: relative; margin-bottom: 30px; }
-.post.p2 q { font-family: var(--f-serif); font-size: 42px; line-height: 1.15; position: relative; quotes: none; }
-.post.p3 { background: var(--verde); color: var(--creme); padding: 50px 42px; display: flex; flex-direction: column; gap: 18px; }
-.post.p3 .moldura { inset: 14px; --raio-moldura: 10px; --respiro-moldura: 5px; opacity: .5; }
-.post.p3 small { font-weight: 500; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; opacity: .8; }
-.post.p3 h4 { font-family: var(--f-serif); font-weight: 400; font-size: 52px; line-height: 1.05; }
-.post.p3 h4 span { font-family: var(--f-cap); font-size: 82px; line-height: 0; }
-.post.p3 p { font-size: 18px; line-height: 1.5; }
-.post.p3 .svg.s { width: 46px; height: 49px; margin-top: auto; }
-
 /* m17 fim */
 .m17 { height: 900px; }
 .m17 .sol { position: absolute; width: 1400px; height: 1400px; left: 50%; top: 104%; transform: translate(-50%, -50%); opacity: .4; color: var(--creme); }
@@ -249,7 +231,7 @@ p { font-size: 19px; line-height: 1.65; text-wrap: pretty; }
 
 <!-- 5 logo -->
 <section class="mod m5">
-  <div class="a"><div class="moldura"></div><div data-svg="logo-almah"></div><small style="color:var(--verde);left:62px;bottom:58px">Logo principal</small></div>
+  <div class="a"><div class="moldura"></div><div class="col"><div data-svg="logo-almah"></div><p class="credito">LOGO DESENHADO À MÃO POR <b>CAUÃ DORN</b> · @ohdorn</p></div><small style="color:var(--verde);left:62px;bottom:58px">Logo principal</small></div>
   <div class="b"><div data-svg="simbolo"></div><small>Símbolo</small></div>
   <div class="c"><div data-svg="simbolo-linear" style="color:var(--creme)"></div><small>Símbolo linear</small></div>
 </section>
@@ -359,16 +341,6 @@ p { font-size: 19px; line-height: 1.65; text-wrap: pretty; }
     <img src="../assets/img/filme-1.jpg" alt=""><img src="../assets/img/filme-2.jpg" alt=""><img src="../assets/img/filme-3.jpg" alt=""><img src="../assets/img/filme-4.jpg" alt=""><img src="../assets/img/filme-5.jpg" alt="">
   </div>
   <div class="furos"></div>
-</section>
-
-<!-- 16 redes -->
-<section class="mod m16 papel">
-  <h2>No Instagram</h2>
-  <div class="grade">
-    <div class="post p1"><img src="../assets/img/foto-selene-2.jpg" alt=""><div class="faixa"><b>Selene</b><span>lavanda · Coleção Gênesis</span></div></div>
-    <div class="post p2"><div class="sol" data-raios="n:70;de:0;ate:360;r0:24;r1:98;peso:.3;semente:9" style="color:var(--creme)"></div><div class="svg s" data-svg="simbolo"></div><q>Luz que acalma, aroma que abraça.</q></div>
-    <div class="post p3"><div class="moldura"></div><small>Cuidados · 1 de 5</small><h4><span>P</span>rimeira queima</h4><p>Deixe a cera derreter até a borda do copo. Isso evita túneis e faz a vela durar mais.</p><div class="svg s" data-svg="simbolo"></div></div>
-  </div>
 </section>
 
 <!-- 17 fim -->

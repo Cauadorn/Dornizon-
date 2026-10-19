@@ -6,7 +6,7 @@ Tudo saiu do drive "coleçao genisi" (logo, fontes, rótulos, papelaria, fotos, 
 |---|---|
 | `brandbook/` | `Almah Brand Book 2026.pdf` (22 páginas, 1920 × 1080) e o `brandbook.html` que gera o PDF |
 | `pinterest/` | `almah-pinterest-1080x1920@2x.jpg` e o HTML de origem |
-| `behance/` | `imagens/` (capa 1616 × 1264 e 17 módulos de 2800 px de largura), `texto-behance.md` (título, descrição PT/EN, tags, ordem) e `previa-projeto-behance.jpg` |
+| `behance/` | `subir-nesta-ordem/` (17 módulos, dois deles em GIF animado), `capa/` (JPG e GIF), `motion/` (os movimentos em MP4 e o HTML que gera a animação do logo) e `texto-behance.md` (título, descrição PT/EN, tags, ordem) |
 | `site/` | Site animado: `index.html` para hospedar (Vercel, Netlify, GitHub Pages), `artifact.html` é a mesma página no formato do Claude |
 | `kit/` | Cores, sol raiado, estrelas, estampa e os vetores oficiais em JS, usados por todas as peças |
 | `assets/` | Fotos, rótulos, papelaria, vetores e vídeos já otimizados |

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah · logo acendendo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../kit/kit.css">
+<style>
+/* animação do logo: a lua se desenha, a brasa aparece, a chama sobe devagar.
+   Tudo é desenhado por render(t) para capturar quadro a quadro (?capa = 808 × 632) */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; }
+.cena { position: relative; width: 1400px; height: 1000px; overflow: hidden; background: radial-gradient(90% 75% at 50% 40%, #2C2340 0%, var(--noite) 58%, #120E18 100%); color: var(--creme); font-family: var(--f-texto); }
+.capa .cena { width: 808px; height: 632px; }
+.ceu { position: absolute; inset: 0; }
+.sol { position: absolute; width: 1400px; height: 1400px; left: 50%; top: 380px; transform: translate(-50%, -50%); color: var(--creme); opacity: 0; }
+.capa .sol { width: 900px; height: 900px; top: 236px; }
+.brilho { position: absolute; width: 1000px; height: 1000px; left: 50%; top: 400px; transform: translate(-50%, -50%); background: radial-gradient(circle, #FFD58A44 0%, #FFC97A16 30%, transparent 62%); opacity: 0; }
+.capa .brilho { width: 600px; height: 600px; top: 242px; }
+.simbolo { position: absolute; left: 50%; top: 214px; width: 272px; height: 289px; transform: translateX(-50%); }
+.capa .simbolo { top: 150px; width: 150px; height: 160px; }
+.simbolo > div { position: absolute; inset: 0; }
+#lua { -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+#chama path { transform-box: fill-box; transform-origin: 50% 100%; }
+.brasa { position: absolute; left: 50.5%; top: 70.8%; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, #FFB866 0%, #FF8A3D66 40%, transparent 70%); opacity: 0; }
+.nome { position: absolute; left: 50%; top: 588px; width: 500px; height: 115px; transform: translateX(-50%); opacity: 0; }
+.capa .nome { top: 372px; width: 400px; height: 92px; }
+.credito { position: absolute; left: 0; right: 0; bottom: 92px; text-align: center; font-weight: 500; font-size: 13px; letter-spacing: .3em; color: var(--ouro, #E9D29A); opacity: 0; }
+.credito b { font-weight: 500; color: var(--creme); }
+.capa .credito { display: none; }
+.nuv { position: absolute; color: var(--creme); opacity: 0; }
+.veu { position: absolute; inset: 0; background: #120E18; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="cena" id="cena">
+  <div class="ceu" id="ceu"></div>
+  <div class="sol" id="sol" data-raios="n:120;de:0;ate:360;r0:20;r1:99;peso:.14;semente:12"></div>
+  <div class="brilho" id="brilho"></div>
+  <div class="nuv" id="n1" data-svg="nuvem-linha-2" style="width:520px;height:171px;left:-90px;bottom:40px"></div>
+  <div class="nuv" id="n2" data-svg="nuvem-linha-3" style="width:440px;height:133px;right:-80px;bottom:120px"></div>
+  <div class="simbolo">
+    <div id="lua" data-svg="lua"></div>
+    <div id="chama" data-svg="chama-simbolo"></div>
+    <span class="brasa" id="brasa"></span>
+  </div>
+  <div class="nome" id="nome" data-svg="nome"></div>
+  <p class="credito" id="credito">LOGO DESENHADO À MÃO POR <b>CAUÃ DORN</b> · @ohdorn</p>
+  <div class="veu" id="veu"></div>
+</div>
+<script src="../../kit/svgs.js"></script>
+<script src="../../kit/kit.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var capa = /capa/.test(location.search);
+  if (capa) document.body.classList.add('capa');
+  var cena = document.getElementById('cena');
+  var W = capa ? 808 : 1400, H = capa ? 632 : 1000;
+  if (capa) { document.getElementById('n1').style.cssText = 'width:330px;height:108px;left:-60px;bottom:0'; document.getElementById('n2').style.cssText = 'width:280px;height:85px;right:-50px;bottom:60px'; }
+  // estrelas fixas; o brilho de cada uma varia com o tempo
+  document.getElementById('ceu').innerHTML = Almah.estrelas(W, H, { n: capa ? 34 : 56, semente: 17, rMax: capa ? 8 : 10, miolo: .2 });
+  Almah.decorar(cena);
+  var est = [].slice.call(document.querySelectorAll('#ceu .est, #ceu .pt'));
+  var fases = est.map(function (e, i) { return [(i * 0.618) % 1, 0.18 + ((i * 0.37) % 1) * 0.3]; });
+  var lua = document.getElementById('lua');
+
+  function clamp(x) { return Math.max(0, Math.min(1, x)); }
+  function prog(t, a, b) { return clamp((t - a) / (b - a)); }
+  function suave(x) { return x * x * (3 - 2 * x); }
+  function sai(x) { return 1 - Math.pow(1 - x, 3); }
+  function mix(a, b, k) { return a + (b - a) * k; }
+  function cor(k) { // laranja da brasa até o creme da marca
+    var r = Math.round(mix(255, 255, k)), g = Math.round(mix(168, 235, k)), b = Math.round(mix(84, 180, k));
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  }
+
+  window.DURACAO = 10.4;
+  window.renderFrame = function (t) {
+    var TAU = Math.PI * 2;
+    var chamaP = document.querySelector('#chama path');
+    // céu
+    est.forEach(function (e, i) { var f = fases[i]; e.style.opacity = (0.55 + 0.4 * Math.sin(TAU * (t * f[1] + f[0]))) * suave(prog(t, 0, 1.2)); });
+    // lua se desenha a partir da ponta de cima, no sentido anti-horário
+    var a = suave(prog(t, .4, 2.9)) * 300;
+    var m = 'conic-gradient(from 312deg at 48.8% 54.4%, transparent 0deg, transparent ' + Math.max(0, 360 - a) + 'deg, #000 ' + Math.min(360, 360 - a + 6) + 'deg, #000 360deg)';
+    lua.style.webkitMaskImage = m; lua.style.maskImage = m;
+    lua.style.opacity = suave(prog(t, .4, 1.2));
+    // brasa
+    var br = prog(t, 2.2, 2.8) * (1 - prog(t, 3.4, 4.0));
+    document.getElementById('brasa').style.opacity = br * (0.75 + 0.25 * Math.sin(TAU * t * 2.2));
+    // chama sobe devagar
+    var g = sai(prog(t, 2.7, 4.6));
+    var fl = suave(prog(t, 3.6, 5.2));
+    var sy = mix(0.04, 1, g) * (1 + fl * (0.022 * Math.sin(TAU * 1.3 * t) + 0.014 * Math.sin(TAU * 2.9 * t + 1)));
+    var sx = mix(0.45, 1, g) * (1 + fl * 0.012 * Math.sin(TAU * 1.7 * t + 2));
+    var sk = (1 - g) * 4 * Math.sin(TAU * 1.1 * t) + fl * 1.1 * Math.sin(TAU * 0.8 * t);
+    chamaP.style.transform = 'scale(' + sx.toFixed(4) + ',' + sy.toFixed(4) + ') skewX(' + sk.toFixed(3) + 'deg)';
+    chamaP.style.opacity = suave(prog(t, 2.7, 3.3));
+    chamaP.style.fill = cor(suave(prog(t, 2.9, 5.0)));
+    // brilho quente e sol raiado bem de leve
+    var bri = suave(prog(t, 2.8, 5.0));
+    var b = document.getElementById('brilho');
+    b.style.opacity = bri;
+    b.style.transform = 'translate(-50%,-50%) scale(' + mix(.3, 1, bri).toFixed(4) + ')';
+    document.getElementById('sol').style.opacity = 0.3 * suave(prog(t, 3.6, 5.8));
+    ['n1', 'n2'].forEach(function (id, i) { var el = document.getElementById(id); el.style.opacity = (i ? .38 : .48) * suave(prog(t, 4.2, 6.0)); el.style.transform = 'translateY(' + mix(16, 0, sai(prog(t, 4.2, 6.4))).toFixed(2) + 'px)'; });
+    // nome aparece desfocando
+    var n = sai(prog(t, 4.7, 6.4));
+    var nome = document.getElementById('nome');
+    nome.style.opacity = n; nome.style.filter = 'blur(' + mix(7, 0, n).toFixed(2) + 'px)';
+    nome.style.transform = 'translateX(-50%) translateY(' + mix(14, 0, n).toFixed(2) + 'px)';
+    // crédito
+    var c = suave(prog(t, 6.4, 7.4));
+    var cr = document.getElementById('credito');
+    cr.style.opacity = c * .85; cr.style.letterSpacing = mix(.42, .3, c).toFixed(3) + 'em';
+    // volta ao escuro para o loop
+    document.getElementById('veu').style.opacity = suave(prog(t, 9.5, 10.4));
+  };
+  window.renderFrame(0);
+});
+</script>
+</body>
+</html>
