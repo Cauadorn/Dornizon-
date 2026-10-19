@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah · pins do Pinterest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Buenard:wght@400;700&family=Fleur+De+Leah&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<link rel="stylesheet" href="../kit/kit.css">
+<style>
+/* pins 1000 × 1500 (2:3): um tema por pin, roxo profundo como cor principal */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #222; font-family: var(--f-texto); font-weight: 300; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+.pin { width: 1000px; height: 1500px; position: relative; overflow: hidden; flex: 0 0 auto; }
+.svg > svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.ceu { position: absolute; inset: 0; color: var(--creme); pointer-events: none; }
+.ameixa { background: radial-gradient(90% 70% at 50% 40%, #5E4880 0%, var(--roxo-profundo) 55%, #3E2E53 100%); color: var(--creme); }
+.noite { background: radial-gradient(90% 70% at 50% 35%, #2C2340 0%, var(--noite) 60%, #120E18 100%); color: var(--creme); }
+.papel { background: var(--papel); color: var(--tinta, #2A2236); }
+.olho { font-weight: 500; font-size: 15px; letter-spacing: .34em; text-transform: uppercase; }
+.tit { font-family: var(--f-serif); font-weight: 400; line-height: 1.04; }
+.cap { font-family: var(--f-cap); font-size: 1.5em; line-height: 0; position: relative; top: .05em; margin-right: .01em; }
+.pe { position: absolute; left: 0; right: 0; bottom: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.pe .logo { width: 150px; height: 102px; }
+.pe .arroba { font-weight: 500; font-size: 14px; letter-spacing: .3em; opacity: .75; }
+.moldura-pin { position: absolute; inset: 26px; border: 1.5px solid currentColor; border-radius: 22px; opacity: .35; pointer-events: none; }
+.moldura-pin::after { content: ""; position: absolute; inset: 9px; border: 1px solid currentColor; border-radius: 14px; opacity: .7; }
+
+/* 1 · cinco velas */
+#p-velas .cab { position: absolute; left: 0; right: 0; top: 104px; text-align: center; }
+#p-velas .cab .olho { color: var(--ouro); }
+#p-velas .cab .tit { font-size: 74px; margin-top: 20px; }
+#p-velas .grade { position: absolute; left: 50px; right: 50px; top: 300px; display: flex; flex-wrap: wrap; justify-content: center; gap: 44px 26px; }
+#p-velas .v { width: 280px; display: flex; flex-direction: column; align-items: center; }
+#p-velas .v img { width: 280px; height: 322px; object-fit: cover; object-position: 50% 62%; border-radius: 999px 999px 10px 10px; box-shadow: 0 26px 50px -20px #120c1acc; }
+#p-velas .v b { margin-top: 18px; font-family: var(--f-display); font-weight: 400; font-size: 25px; letter-spacing: .2em; }
+#p-velas .v span { font-size: 17px; opacity: .8; margin-top: 2px; }
+#p-velas .frase { position: absolute; left: 0; right: 0; top: 1218px; text-align: center; font-family: var(--f-serif); font-style: italic; font-size: 30px; }
+
+/* 2 · seu pedido chegou */
+#p-entrega .foto { position: absolute; left: 0; right: 0; top: 0; height: 1110px; }
+#p-entrega .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; display: block; }
+#p-entrega .foto::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 220px; background: linear-gradient(transparent, var(--roxo-profundo)); }
+#p-entrega .texto { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; }
+#p-entrega .tit { font-size: 76px; }
+#p-entrega .sub { margin: 46px auto 0; max-width: 680px; font-size: 21px; line-height: 1.5; opacity: .88; }
+#p-entrega .pe { bottom: 54px; flex-direction: row; gap: 18px; }
+#p-entrega .pe .s { width: 34px; height: 36px; }
+
+/* 3 · abrir uma almah */
+#p-abrir .cab { position: absolute; left: 72px; right: 72px; top: 96px; }
+#p-abrir .cab .olho { color: var(--roxo-profundo); }
+#p-abrir .cab .tit { font-size: 80px; color: var(--roxo-profundo); margin-top: 16px; }
+#p-abrir .grade { position: absolute; left: 72px; right: 72px; top: 318px; height: 990px; display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; }
+#p-abrir .grade img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 8px; }
+#p-abrir .grade .a { grid-row: span 2; }
+#p-abrir .grade .a img { border-radius: 999px 999px 8px 8px; object-position: 50% 55%; }
+#p-abrir .legenda { position: absolute; left: 72px; right: 72px; top: 1344px; display: flex; justify-content: space-between; align-items: center; font-size: 19px; line-height: 1.5; color: var(--tinta, #2A2236); }
+#p-abrir .legenda p { max-width: 560px; }
+#p-abrir .legenda .logo { width: 130px; height: 88px; color: var(--roxo-profundo); }
+
+/* 4 · a lua guarda a chama */
+#p-simbolo .cab { position: absolute; left: 0; right: 0; top: 112px; text-align: center; }
+#p-simbolo .cab .olho { color: var(--ouro); }
+#p-simbolo .cab .tit { font-size: 80px; margin-top: 18px; font-family: var(--f-display); letter-spacing: .03em; }
+#p-simbolo .soma { position: absolute; left: 0; right: 0; top: 380px; display: flex; justify-content: center; align-items: center; gap: 40px; }
+#p-simbolo .soma .p { width: 170px; height: 181px; color: var(--creme); }
+#p-simbolo .soma .op { font-family: var(--f-display); font-size: 64px; color: var(--ouro); opacity: .85; }
+#p-simbolo .igual { position: absolute; left: 0; right: 0; top: 610px; text-align: center; font-family: var(--f-display); font-size: 64px; color: var(--ouro); opacity: .85; }
+#p-simbolo .final { position: absolute; left: 50%; top: 720px; width: 330px; height: 351px; transform: translateX(-50%); color: var(--creme); }
+#p-simbolo .final .raios { position: absolute; left: 50%; top: 52%; width: 760px; height: 760px; transform: translate(-50%, -50%); opacity: .14; }
+#p-simbolo .final .halo { position: absolute; inset: -60%; background: radial-gradient(circle, #FFD58A55 0%, #FFD58A18 32%, transparent 62%); }
+#p-simbolo .final > .svg { position: absolute; inset: 0; }
+#p-simbolo .frase { position: absolute; left: 0; right: 0; top: 1130px; text-align: center; font-family: var(--f-serif); font-style: italic; font-size: 34px; }
+#p-simbolo .pe .nome { width: 230px; height: 53px; color: var(--creme); }
+
+/* 5 · cuidados */
+#p-cuidados .foto { position: absolute; left: 0; right: 0; top: 0; height: 760px; }
+#p-cuidados .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; display: block; }
+#p-cuidados .foto::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 200px; background: linear-gradient(transparent, var(--noite)); }
+#p-cuidados .texto { position: absolute; left: 90px; right: 90px; top: 720px; }
+#p-cuidados .tit { font-size: 74px; }
+#p-cuidados ol { list-style: none; margin-top: 54px; display: grid; gap: 30px; }
+#p-cuidados li { display: grid; grid-template-columns: 60px 1fr; align-items: baseline; font-size: 25px; line-height: 1.45; }
+#p-cuidados li i { font-style: normal; font-family: var(--f-display); font-size: 24px; letter-spacing: .1em; color: var(--ouro); }
+#p-cuidados li b { font-weight: 500; }
+#p-cuidados .pe { bottom: 50px; flex-direction: row; gap: 18px; }
+#p-cuidados .pe .s { width: 30px; height: 32px; color: var(--ouro); }
+</style>
+</head>
+<body>
+
+<!-- 1 · cinco velas -->
+<section class="pin ameixa" id="p-velas">
+  <div class="ceu" data-estrelas="n:46;semente:12;rMax:10;miolo:.08"></div>
+  <div class="moldura-pin"></div>
+  <div class="cab"><p class="olho">Almah · Coleção Gênesis</p><h1 class="tit"><span class="cap">C</span>inco velas, cinco céus</h1></div>
+  <div class="grade">
+    <div class="v"><img src="../assets/img/mock-vela-aura.jpg" alt=""><b>AURA</b><span>baunilha</span></div>
+    <div class="v"><img src="../assets/img/mock-vela-terra.jpg" alt=""><b>TERRA</b><span>cascas e folhas</span></div>
+    <div class="v"><img src="../assets/img/mock-vela-selene.jpg" alt=""><b>SELENE</b><span>lavanda</span></div>
+    <div class="v"><img src="../assets/img/mock-vela-serena.jpg" alt=""><b>SERENA</b><span>rosas</span></div>
+    <div class="v"><img src="../assets/img/mock-vela-venus.jpg" alt=""><b>VÊNUS</b><span>cereja e avelã</span></div>
+  </div>
+  <p class="frase">Feitas à mão, uma tinta só sobre papel creme.</p>
+  <div class="pe"><span class="arroba">@almahdomus</span></div>
+</section>
+
+<!-- 2 · seu pedido chegou -->
+<section class="pin ameixa" id="p-entrega">
+  <div class="foto"><img src="../assets/img/mock-entrega.jpg" alt=""></div>
+  <div class="texto"><h1 class="tit"><span class="cap">S</span>eu pedido chegou!</h1><p class="sub">Caixa roxo-profundo, laço de barbante e o adesivo da marca. Uma vela feita à mão, do jeito que ela merece chegar.</p></div>
+  <div class="pe"><span class="s svg" data-svg="simbolo"></span><span class="arroba">@almahdomus</span></div>
+</section>
+
+<!-- 3 · abrir uma almah -->
+<section class="pin papel" id="p-abrir">
+  <div class="cab"><p class="olho">Seu pedido chegou</p><h1 class="tit"><span class="cap">A</span>brir uma Almah</h1></div>
+  <div class="grade">
+    <div class="a"><img src="../assets/img/mock-caixa.jpg" alt=""></div>
+    <div><img src="../assets/img/mock-envelope.jpg" alt="" style="object-position:50% 40%"></div>
+    <div><img src="../assets/img/mock-kit.jpg" alt=""></div>
+  </div>
+  <div class="legenda"><p>Papel de seda, a vela, o card de agradecimento e o lacre em cera com o símbolo.</p><span class="logo svg" data-svg="logo-almah"></span></div>
+</section>
+
+<!-- 4 · a lua guarda a chama -->
+<section class="pin ameixa" id="p-simbolo">
+  <div class="ceu" data-estrelas="n:50;semente:31;rMax:10;miolo:.06"></div>
+  <div class="cab"><p class="olho">O símbolo</p><h1 class="tit">A lua guarda<br>a chama</h1></div>
+  <div class="soma"><span class="p svg" data-svg="lua"></span><span class="op">+</span><span class="p svg" data-svg="chama-simbolo"></span></div>
+  <div class="igual">=</div>
+  <div class="final"><span class="raios svg" data-raios="n:80;de:0;ate:360;r0:22;r1:98;peso:.3;semente:4"></span><span class="halo"></span><span class="svg" data-svg="simbolo"></span></div>
+  <p class="frase">Uma luz que nasce dentro da lua.</p>
+  <div class="pe"><span class="nome svg" data-svg="nome"></span></div>
+</section>
+
+<!-- 5 · cuidados -->
+<section class="pin noite" id="p-cuidados">
+  <div class="foto"><img src="../assets/img/mock-cuidados.jpg" alt=""></div>
+  <div class="texto">
+    <h1 class="tit"><span class="cap">C</span>uidados com a sua vela</h1>
+    <ol>
+      <li><i>I</i><span><b>Primeira queima:</b> deixe a cera derreter até a borda do copo.</span></li>
+      <li><i>II</i><span><b>Pavio:</b> apare 5 mm antes de reacender.</span></li>
+      <li><i>III</i><span><b>Tempo:</b> no máximo 3 horas acesa de cada vez.</span></li>
+      <li><i>IV</i><span><b>Lugar:</b> superfície plana, longe de vento e do que queima.</span></li>
+      <li><i>V</i><span><b>Atenção:</b> nunca deixe a vela acesa sem ninguém por perto.</span></li>
+    </ol>
+  </div>
+  <div class="pe"><span class="s svg" data-svg="simbolo"></span><span class="arroba">@almahdomus</span></div>
+</section>
+
+<script src="../kit/svgs.js"></script>
+<script src="../kit/kit.js"></script>
+</body>
+</html>
