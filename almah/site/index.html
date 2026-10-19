@@ -111,8 +111,8 @@ html.js .hero .entra { opacity: 0; }
 .simbolo { position: relative; background: var(--roxo-profundo); color: var(--creme); padding-block: clamp(90px, 11vw, 150px); overflow: hidden; }
 .simbolo .grade { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
 .simbolo .esboco { margin: 0; position: relative; }
-.simbolo .esboco img { width: 100%; aspect-ratio: 1370 / 1604; object-fit: cover; border-radius: 999px 999px 12px 12px; box-shadow: 0 40px 80px -30px #120c1acc; }
-.simbolo .esboco figcaption { margin-top: 14px; font-size: 12px; letter-spacing: .08em; opacity: .7; }
+.simbolo .esboco img { width: 100%; aspect-ratio: 1370 / 1604; object-fit: cover; border-radius: 4px; box-shadow: 0 40px 80px -30px #120c1acc; outline: 1px solid #FFEBB45c; outline-offset: 10px; }
+.simbolo .esboco figcaption { margin-top: 24px; font-size: 12px; letter-spacing: .08em; opacity: .7; }
 .simbolo .olho { color: var(--ouro); opacity: .85; margin-bottom: 16px; }
 .simbolo .intro { margin-top: 18px; font-size: 17px; max-width: 460px; opacity: .88; }
 .simbolo .construcao { width: min(360px, 80%); aspect-ratio: 580 / 600; margin: clamp(26px, 4vw, 44px) 0 clamp(18px, 3vw, 30px); }
@@ -125,7 +125,8 @@ html.js .hero .entra { opacity: 0; }
 .simbolo .notas b { display: block; font-family: var(--f-serif); font-weight: 400; font-size: 18px; color: var(--ouro); margin-bottom: 4px; }
 @media (max-width: 860px) {
   .simbolo .grade { grid-template-columns: 1fr; }
-  .simbolo .esboco { max-width: 480px; }
+  .simbolo .esboco { max-width: 480px; margin-inline: 6px; }
+  .simbolo .esboco img { outline-offset: 6px; }
   .simbolo .notas { grid-template-columns: 1fr; gap: 12px; }
 }
 
