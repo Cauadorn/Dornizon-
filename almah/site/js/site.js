@@ -51,7 +51,7 @@
   var hero = $('.hero'), quadro = $('#quadro');
   var dChama = (window.ALMAH_SVG.chama.match(/ d="([^"]+)"/) || [])[1];
   var mexe = $('#mexe'), fCheia = $('#fCheia'), fTraco = $('#fTracoP'), fBrilho = $('#fBrilhoP');
-  var luzCena = $('#luzCena'), veu = $('#veu'), turb = $('#turb'), lados = $$('.hero .lado');
+  var luzCena = $('#luzCena'), veu = $('#veu'), turb = $('#turb'), lados = $$('.hero .entra');
   [fCheia, fTraco, fBrilho].forEach(function (p) { p.setAttribute('d', dChama); });
   var L = fTraco.getTotalLength();
   fTraco.style.strokeDasharray = L + ' ' + L;
@@ -75,7 +75,7 @@
     veu.style.opacity = (.18 * (1 - luz)).toFixed(3);
   }
   function textoEm(t) { // o nome e as frases entram depois da chama; só durante a abertura
-    lados.forEach(function (e, i) { var d = suave(prog(t, 2.6 + i * .3, 3.8 + i * .3)); e.style.opacity = d; e.style.transform = 'translateY(' + ((1 - d) * 14).toFixed(1) + 'px)'; });
+    lados.forEach(function (e, i) { var d = suave(prog(t, 2.4 + i * .25, 3.5 + i * .25)); e.style.opacity = d; e.style.transform = 'translateY(' + ((1 - d) * 14).toFixed(1) + 'px)'; });
   }
   var inicio = 0, heroNaTela = true, rodando = false;
   function quadroHero(agora) {
@@ -94,7 +94,7 @@
   if (window.matchMedia('(pointer: fine)').matches && !reduz) {
     hero.addEventListener('pointermove', function (e) {
       var r = quadro.getBoundingClientRect();
-      var cx = r.left + r.width * (716 / 1600);
+      var cx = r.left + r.width * ((716 - 60) / 1500);   // pavio dentro do recorte da foto
       inclinaAlvo = Math.max(-1, Math.min(1, (e.clientX - cx) / (innerWidth * .5))) * 7;
     });
     hero.addEventListener('pointerleave', function () { inclinaAlvo = 0; });
@@ -170,17 +170,17 @@
     var tmp2 = el('path', { d: dCh, fill: 'none' }, svg), L2 = tmp2.getTotalLength(), pc = [];
     for (i = 0; i < 400; i++) { var q = tmp2.getPointAtLength(L2 * i / 400); if (q.y > 300) pc.push([q.x, q.y]); }
     svg.removeChild(tmp2);
-    var G = ajusta(pc), eixo = 652.5, guia = '#1D7053', tinta = '#503B69';
-    var grade = el('g', { stroke: tinta, 'stroke-width': .5, 'stroke-opacity': .08 }, svg);
+    var G = ajusta(pc), eixo = 652.5, guia = '#E9D29A', tinta = '#FFEBB4';
+    var grade = el('g', { stroke: tinta, 'stroke-width': .5, 'stroke-opacity': .07 }, svg);
     for (var x = cx0; x <= cx0 + W; x += 20) el('line', { x1: x, y1: cy0, x2: x, y2: cy0 + H }, grade);
     for (var y = cy0; y <= cy0 + H; y += 20) el('line', { x1: cx0, y1: y, x2: cx0 + W, y2: y }, grade);
     var linhas = [
       el('line', { x1: cx0, y1: O[1], x2: cx0 + W, y2: O[1], stroke: guia, 'stroke-width': .8, 'stroke-dasharray': '4 5', opacity: .55 }, svg),
       el('line', { x1: eixo, y1: cy0, x2: eixo, y2: cy0 + H, stroke: guia, 'stroke-width': .8, 'stroke-dasharray': '4 5', opacity: .55 }, svg)
     ];
-    var circ = [O, I].map(function (c) { return el('circle', { cx: c[0], cy: c[1], r: c[2], fill: 'none', stroke: guia, 'stroke-width': 1.1 }, svg); });
-    circ.push(el('circle', { cx: G[0], cy: G[1], r: G[2], fill: 'none', stroke: guia, 'stroke-width': .9 }, svg));
-    var formas = [el('path', { d: dLua, fill: tinta }, svg), el('path', { d: dCh, fill: tinta }, svg)];
+    var circ = [O, I].map(function (c) { return el('circle', { cx: c[0], cy: c[1], r: c[2], fill: 'none', stroke: guia, 'stroke-width': 1.1, 'class': 'guia' }, svg); });
+    circ.push(el('circle', { cx: G[0], cy: G[1], r: G[2], fill: 'none', stroke: guia, 'stroke-width': .9, 'class': 'guia' }, svg));
+    var formas = [el('path', { d: dLua, fill: tinta, 'class': 'forma', opacity: reduz ? .96 : 0 }, svg), el('path', { d: dCh, fill: tinta, 'class': 'forma', opacity: reduz ? .96 : 0 }, svg)];
     var m = el('g', { fill: guia, 'font-family': 'Poppins', 'font-size': 12, 'letter-spacing': '1' }, svg);
     el('circle', { cx: O[0], cy: O[1], r: 3 }, m); el('circle', { cx: I[0], cy: I[1], r: 3 }, m);
     var aO = 205 * Math.PI / 180, aI = 25 * Math.PI / 180;
@@ -189,7 +189,13 @@
     el('text', { x: O[0] + O[2] * .5 * Math.cos(aO) - 4, y: O[1] + O[2] * .5 * Math.sin(aO) - 8 }, m).textContent = 'R';
     el('text', { x: I[0] + I[2] * .5 * Math.cos(aI) + 2, y: I[1] + I[2] * .5 * Math.sin(aI) - 8 }, m).textContent = 'r';
     el('text', { x: eixo + 8, y: cy0 + 24 }, m).textContent = 'eixo';
-    circ.forEach(function (c) { var l = TAU * +c.getAttribute('r'); c.style.strokeDasharray = l + ' ' + l; c.dataset.l = l; });
+    circ.forEach(function (c, i) { var l = TAU * +c.getAttribute('r'); c.style.strokeDasharray = l + ' ' + l; c.style.strokeDashoffset = reduz ? 0 : l; c.style.transitionDelay = (i * .25) + 's'; });
+    // desenha uma vez, quando aparece; nada preso à rolagem
+    var caixaC = $('#tracoDesenho');
+    if ('IntersectionObserver' in window && !reduz) {
+      var ioC = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { caixaC.classList.add('visto'); ioC.disconnect(); } }, { threshold: .4 });
+      ioC.observe(caixaC);
+    } else caixaC.classList.add('visto');
     return { circ: circ, linhas: linhas, formas: formas, marcas: m };
   })();
 
@@ -266,19 +272,6 @@
     });
   });
 
-  /* ---------- 5 · a caixa: cada etapa troca a foto ---------- */
-  var fotosC = $$('#fotosCaixa img'), etapas = $$('.etapa');
-  function irEtapa(i) {
-    etapas.forEach(function (e) { e.classList.toggle('ativa', +e.dataset.i === i); });
-    fotosC.forEach(function (f) { f.classList.toggle('ativa', +f.dataset.i === i); });
-  }
-  if ('IntersectionObserver' in window) {
-    var ioE = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) irEtapa(+e.target.dataset.i); });
-    }, { rootMargin: window.matchMedia('(max-width: 860px)').matches ? '-62% 0px -22% 0px' : '-45% 0px -45% 0px' });   // no celular a foto fixa ocupa o alto da tela
-    etapas.forEach(function (e) { ioE.observe(e); });
-  }
-
   /* ---------- rodapé: acender de novo ---------- */
   $('#deNovo').addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: reduz ? 'auto' : 'smooth' });
@@ -290,27 +283,13 @@
   /* ================= daqui para baixo, só com GSAP ================= */
 
   /* abertura: a foto se aproxima e o texto sai na rolagem */
-  gsap.to('.hero .quadro svg', { scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.fromTo('.hero .lado, .rolar', { y: 0, autoAlpha: 1 }, { y: -60, autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: '30% top', end: '85% top', scrub: true } });
+  gsap.to('.hero .portal svg', { scale: 1.06, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.hero .palco', { y: 0, autoAlpha: 1 }, { y: -60, autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: '30% top', end: '85% top', scrub: true } });
 
   /* manifesto: a luz passa pelas palavras */
   var tx = $('#manifestoTexto');
   tx.innerHTML = tx.textContent.split(' ').map(function (w) { return '<span class="p">' + w + '</span>'; }).join(' ');
   gsap.fromTo('#manifestoTexto .p', { opacity: .2 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: tx, start: 'top 80%', end: 'bottom 45%', scrub: true } });
-
-  /* do traço à luz: esboço, construção desenhada, projeção */
-  var cam = $$('.traco .camada'), fal = $$('.traco .fala');
-  gsap.set(guias.circ, { strokeDashoffset: function (i, c) { return +c.dataset.l; } });
-  gsap.set(guias.formas.concat(guias.linhas, [guias.marcas]), { opacity: 0 });
-  var tt = gsap.timeline({ scrollTrigger: { trigger: '#traco', start: 'top top', end: '+=260%', pin: '.traco .fixo', scrub: 1, anticipatePin: 1 } });
-  tt.to(cam[0].querySelector('img'), { scale: 1.06, duration: 1, ease: 'none' }, 0)
-    .to(cam[1], { opacity: 1, duration: .25 }, .8).to(fal[0], { opacity: 0, y: -14, duration: .2 }, .8).fromTo(fal[1], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .2 }, .95)
-    .to(guias.linhas, { opacity: .55, duration: .2 }, 1.05)
-    .to(guias.circ, { strokeDashoffset: 0, duration: .6, stagger: .12, ease: 'none' }, 1.1)
-    .to(guias.marcas, { opacity: 1, duration: .2 }, 1.5)
-    .to(guias.formas, { opacity: .94, duration: .35, stagger: .15 }, 1.6)
-    .to(cam[2], { opacity: 1, duration: .3 }, 2.3).to(fal[1], { opacity: 0, y: -14, duration: .2 }, 2.3).fromTo(fal[2], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .2 }, 2.45)
-    .fromTo(cam[2].querySelector('img'), { scale: 1.08 }, { scale: 1, duration: .9, ease: 'none' }, 2.3);
 
   /* coleção: as cartas são dadas do baralho */
   cartas.forEach(function (c, i) {
@@ -323,7 +302,7 @@
   gsap.from('.linha img', { scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.linha', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   /* entradas suaves */
-  $$('.colecao .topo, .caixa .cab, .oficina .grade > div, .marca-sec h2, .marca-sec .grade > *, .papelaria img, .filme .grade > *').forEach(function (e) {
+  $$('.simbolo .esboco, .simbolo .grade > div, .colecao .topo, .caixa .cab, .etapa, .oficina .grade > div, .marca-sec h2, .marca-sec .grade > *, .papelaria img, .filme .grade > *').forEach(function (e) {
     gsap.from(e, { y: 40, opacity: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: e, start: 'top 88%' } });
   });
 

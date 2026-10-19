@@ -6,10 +6,10 @@ Tudo saiu do drive "coleçao genisi" (logo, fontes, rótulos, papelaria, fotos, 
 |---|---|
 | `brandbook/` | `Almah Brand Book 2026.pdf` (22 páginas, 1920 × 1080) e o `brandbook.html` que gera o PDF |
 | `pinterest/` | `almah-pinterest-1080x1920@2x.jpg` e o HTML de origem |
-| `behance/` | `subir-nesta-ordem/` (22 módulos guiados pela fotografia; 2 motions em GIF: a chama desenhada sobre a foto da lua e o logo acendendo), `capa/` (JPG e GIF), `motion-mp4/` (os 2 motions em MP4 1280), `texto-behance.md` (título, descrição PT/EN, tags, ordem, nota sobre as imagens de IA), `previa/` (página de prévia), `projeto.html` (gera os módulos desenhados) e `motion/` (as duas animações) |
+| `behance/` | `subir-nesta-ordem/` (23 módulos guiados pela fotografia; 2 motions em GIF: a chama desenhada sobre a foto da lua e o logo acendendo), `capa/` (JPG e GIF), `motion-mp4/` (os 2 motions em MP4 1280), `texto-behance.md` (título, descrição PT/EN, tags, ordem, nota sobre as imagens de IA), `previa/` (página de prévia), `projeto.html` (gera os módulos desenhados) e `motion/` (as duas animações) |
 | `site/` | Site animado. Abre com a foto da lua e a chama desenhada à mão acendendo sobre o pavio (toque para acender de novo); depois o manifesto, o símbolo do traço à luz (esboço, construção, projeção), a coleção na prateleira e nas cartas, a caixa se abrindo em cinco tempos, o gerador de rótulo, a marca e o filme. `index.html` para hospedar (Vercel, Netlify, GitHub Pages), `artifact.html` é a mesma página no formato do Claude |
 | `kit/` | Cores, sol raiado, estrelas, estampa e os vetores oficiais em JS, usados por todas as peças |
-| `assets/` | Fotos, rótulos, papelaria, vetores e vídeos já otimizados; `img/mock-*` são os mockups fotográficos (caixa, envelope, cuidados, coleção, projeção, esboço, entrega e kit) |
+| `assets/` | Fotos, rótulos, papelaria, vetores e vídeos já otimizados; `img/mock-*` são os mockups fotográficos (caixa, envelope, cuidados, coleção, esboço, entrega, kit e `mock-vela-*`, as cinco velas com o rótulo) |
 
 ## O que é novo em relação ao brand book antigo
 

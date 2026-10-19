@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Almah Velas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%231D7053%22/%3E%3Cpath d=%22M16 6c1.2 3.6 4.6 5.2 4.6 8.6 0 2.6-2 4.6-4.6 4.6s-4.6-2-4.6-4.6c0-1.9 1.4-3 2.1-4.4.5 1.3 1.3 1.8 1.8 1.8-.1-2 .1-4 .7-6Z%22 fill=%22%23FFEBB4%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%23503B69%22/%3E%3Cpath d=%22M16 6c1.2 3.6 4.6 5.2 4.6 8.6 0 2.6-2 4.6-4.6 4.6s-4.6-2-4.6-4.6c0-1.9 1.4-3 2.1-4.4.5 1.3 1.3 1.8 1.8 1.8-.1-2 .1-4 .7-6Z%22 fill=%22%23FFEBB4%22/%3E%3C/svg%3E">
 <meta name="description" content="Almah: velas aromáticas feitas à mão. Coleção Gênesis. Luz que acalma, aroma que abraça.">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,32 +77,27 @@ body.nav-claro .nav::before { background: #F5ECD7d9; }
 .progresso-fogo svg { width: 100%; height: 100%; }
 @media (max-width: 760px) { .nav ul li:not(.sempre) { display: none; } .nav ul { gap: 16px; } }
 
-/* 1 · acender: a foto da lua; o foguinho desenhado à mão se traça sobre o pavio e tremula */
-.hero { position: relative; height: max(600px, 100svh); overflow: hidden; background: #050304; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; }
-.hero .quadro { position: relative; height: 100%; aspect-ratio: 2 / 3; max-width: 58vw; border: 0; padding: 0; margin: 0; background: none; cursor: pointer; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%); }
-.hero .quadro svg { width: 100%; height: 100%; display: block; }
-.hero .lado { position: relative; z-index: 2; padding: 0 clamp(20px, 3.4vw, 60px); }
-.hero .lado.e { justify-self: end; text-align: right; }
-.hero .lado .nome { width: clamp(200px, 22vw, 380px); aspect-ratio: 1305 / 300; color: var(--creme); margin: 0 0 0 auto; }
-.hero .lado .frase { font-family: var(--f-serif); font-style: italic; font-size: clamp(19px, 1.9vw, 28px); margin-top: 20px; color: #F5E3B5; }
-.hero .lado .olho { color: var(--ouro); opacity: .8; font-size: 11px; margin-bottom: 26px; }
-.hero .lado.d { font-size: 14px; line-height: 1.7; opacity: .82; max-width: 300px; }
-.hero .lado.d .olho { margin-bottom: 14px; }
-.hero .lado.d .dica { margin-top: 22px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; display: flex; align-items: center; gap: 10px; }
-.hero .lado.d .dica svg { width: 10px; height: 14px; }
-html.js .hero .lado { opacity: 0; }
-.rolar { position: absolute; left: 50%; bottom: 14px; translate: -50% 0; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; font-weight: 500; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; text-decoration: none; opacity: .7; }
-.rolar i { width: 1px; height: 38px; background: linear-gradient(var(--creme), transparent); animation: desce 2.2s ease-in-out infinite; transform-origin: top; }
+/* 1 · acender: a lua numa janela em arco, no centro; o foguinho desenhado à mão acende sobre o pavio.
+   A mesma composição em qualquer tela: tudo é medido pelo lado menor (vw ou svh) */
+.hero { position: relative; min-height: 100svh; overflow: hidden; background: radial-gradient(80% 60% at 50% 42%, #2C2340 0%, var(--noite) 60%, #110D17 100%); display: flex; align-items: center; justify-content: center; padding: calc(env(safe-area-inset-top, 0px) + clamp(28px, 6svh, 70px)) var(--lado-d) clamp(56px, 9svh, 96px) var(--lado); }
+.hero .sol { position: absolute; left: 50%; top: 44%; width: max(150vmax, 1200px); aspect-ratio: 1; translate: -50% -50%; color: var(--creme); opacity: .07; pointer-events: none; }
+.hero .sol > svg { animation: gira 240s linear infinite; }
+@keyframes gira { to { transform: rotate(360deg); } }
+.hero .palco { --h: min(58svh, 94vw, 1100px); position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero .olho { color: var(--ouro); opacity: .85; font-size: clamp(10px, min(1.4vw, 1.4svh), 12px); margin-bottom: clamp(14px, 2.6svh, 26px); }
+.hero .portal { position: relative; height: var(--h); aspect-ratio: 1500 / 1660; border: 0; padding: 0; background: #000; cursor: pointer; display: block; border-radius: 999px 999px 10px 10px; overflow: hidden; clip-path: inset(0 round 999px 999px 10px 10px); box-shadow: 0 40px 90px -30px #000c; }
+.hero .portal svg { width: 100%; height: 100%; display: block; }
+.hero .aro { position: absolute; left: 50%; top: 50%; height: calc(var(--h) + 26px); aspect-ratio: 1500 / 1660; translate: -50% -50%; border: 1px solid #FFEBB466; border-radius: 999px 999px 16px 16px; pointer-events: none; }
+.hero .janela { position: relative; display: grid; place-items: center; }
+.hero .nome { width: clamp(190px, min(30vw, 28svh), 400px); aspect-ratio: 1305 / 300; color: var(--creme); margin: clamp(22px, 4svh, 40px) 0 0; }
+.hero .frase { font-family: var(--f-serif); font-style: italic; font-size: clamp(17px, min(2.6vw, 2.8svh), 28px); margin-top: clamp(8px, 1.6svh, 16px); color: #F5E3B5; }
+.hero .dica { margin-top: clamp(10px, 2svh, 18px); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; opacity: .55; display: inline-flex; align-items: center; gap: 8px; }
+.hero .dica svg { width: 8px; height: 11px; }
+html.js .hero .entra { opacity: 0; }
+.rolar { position: absolute; left: 50%; bottom: 12px; translate: -50% 0; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; font-weight: 500; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; text-decoration: none; opacity: .65; }
+.rolar i { width: 1px; height: 30px; background: linear-gradient(var(--creme), transparent); animation: desce 2.2s ease-in-out infinite; transform-origin: top; }
 @keyframes desce { 0% { scale: 1 0; } 50% { scale: 1 1; } 100% { scale: 1 1; opacity: 0; } }
-@media (max-width: 860px), (max-aspect-ratio: 1/1) {
-  .hero { display: block; }
-  .hero .quadro { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; aspect-ratio: auto; -webkit-mask-image: none; mask-image: none; }
-  .hero .lado.e { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; padding: 120px var(--lado-d) 78px var(--lado); background: linear-gradient(transparent, #050304e6 55%); pointer-events: none; }
-  .hero .lado.e .olho { margin-bottom: 16px; }
-  .hero .lado .nome { margin: 0 auto; width: min(300px, 70vw); }
-  .hero .lado .frase { margin-top: 12px; }
-  .hero .lado.d { display: none; }
-}
+@media (max-height: 720px) { .rolar { display: none; } }
 
 /* 2 · manifesto */
 .manifesto { position: relative; background: var(--noite); padding-block: clamp(110px, 16vw, 220px); overflow: hidden; }
@@ -112,46 +107,35 @@ html.js .hero .lado { opacity: 0; }
 .manifesto .assina { margin-top: 46px; display: flex; align-items: center; gap: 16px; font-size: 15px; opacity: .75; }
 .manifesto .assina .s { width: 22px; height: 24px; }
 
-/* 3 · do traço à luz: esboço, construção e projeção se sucedem na rolagem */
-.traco { position: relative; background: var(--noite); }
-.traco .fixo { position: relative; height: 100svh; min-height: 560px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); overflow: hidden; }
-.traco .painel { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 90px clamp(24px, 4vw, 64px) 60px max(var(--lado), calc((100vw - 1240px) / 2)); }
-.traco .painel .olho { color: var(--ouro); opacity: .8; margin-bottom: 22px; }
-.traco .falas { position: relative; min-height: 250px; }
-.traco .fala { position: absolute; inset: 0; opacity: 0; }
-.traco .fala:first-child { opacity: 1; }
-.traco .fala .n { display: flex; align-items: center; gap: 14px; font-family: var(--f-display); font-size: 15px; letter-spacing: .24em; color: var(--ouro); }
-.traco .fala .n svg { width: 24px; height: 24px; }
-.traco .fala h3 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; margin: 16px 0 16px; }
-.traco .fala p { font-size: 17px; max-width: 420px; opacity: .86; }
-.traco .palco-t { position: relative; overflow: hidden; }
-.traco .camada { position: absolute; inset: 0; opacity: 0; }
-.traco .camada:first-child { opacity: 1; }
-.traco .camada img { width: 100%; height: 100%; object-fit: cover; }
-.traco .camada.plano { background: var(--papel); display: flex; align-items: center; justify-content: center; }
-.traco .camada.plano .desenho { width: min(560px, 82%, 70svh); aspect-ratio: 580 / 600; }
-.traco .camada.plano .desenho svg { width: 100%; height: 100%; display: block; overflow: visible; }
-html:not(.com-gsap) .traco .fixo { height: auto; grid-template-columns: 1fr; }
-html:not(.com-gsap) .traco .falas, html:not(.com-gsap) .traco .palco-t { display: contents; }
-html:not(.com-gsap) .traco .fala, html:not(.com-gsap) .traco .camada { position: relative; opacity: 1; }
-html:not(.com-gsap) .traco .camada { height: 70svh; }
+/* 3 · o símbolo: o esboço a lápis e a construção, lado a lado, no roxo profundo */
+.simbolo { position: relative; background: var(--roxo-profundo); color: var(--creme); padding-block: clamp(90px, 11vw, 150px); overflow: hidden; }
+.simbolo .grade { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
+.simbolo .esboco { margin: 0; position: relative; }
+.simbolo .esboco img { width: 100%; aspect-ratio: 1370 / 1604; object-fit: cover; border-radius: 999px 999px 12px 12px; box-shadow: 0 40px 80px -30px #120c1acc; }
+.simbolo .esboco figcaption { margin-top: 14px; font-size: 12px; letter-spacing: .08em; opacity: .7; }
+.simbolo .olho { color: var(--ouro); opacity: .85; margin-bottom: 16px; }
+.simbolo .intro { margin-top: 18px; font-size: 17px; max-width: 460px; opacity: .88; }
+.simbolo .construcao { width: min(360px, 80%); aspect-ratio: 580 / 600; margin: clamp(26px, 4vw, 44px) 0 clamp(18px, 3vw, 30px); }
+.simbolo .construcao svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.simbolo .construcao .guia { transition: stroke-dashoffset 1.8s cubic-bezier(.4,.1,.2,1), opacity .8s; }
+.simbolo .construcao .forma { transition: opacity 1.2s ease 1.4s; }
+.simbolo .construcao.visto .guia { stroke-dashoffset: 0 !important; }
+.simbolo .construcao.visto .forma { opacity: .96 !important; }
+.simbolo .notas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 520px; font-size: 13px; line-height: 1.5; }
+.simbolo .notas b { display: block; font-family: var(--f-serif); font-weight: 400; font-size: 18px; color: var(--ouro); margin-bottom: 4px; }
 @media (max-width: 860px) {
-  .traco .fixo { grid-template-columns: 1fr; grid-template-rows: 58svh auto; }
-  .traco .palco-t { grid-row: 1; }
-  .traco .painel { grid-row: 2; padding: 26px var(--lado-d) 30px var(--lado); justify-content: flex-start; }
-  .traco .painel .olho { display: none; }
-  .traco .falas { min-height: 210px; }
-  .traco .fala h3 { margin: 10px 0; }
-  .traco .fala p { font-size: 15px; }
+  .simbolo .grade { grid-template-columns: 1fr; }
+  .simbolo .esboco { max-width: 480px; }
+  .simbolo .notas { grid-template-columns: 1fr; gap: 12px; }
 }
 
 /* 4 · coleção */
 .colecao { position: relative; --fundo: var(--papel); background: var(--fundo); color: var(--tinta); transition: background-color .9s ease, color .6s; padding-block: clamp(100px, 12vw, 160px) clamp(90px, 10vw, 140px); overflow: hidden; }
 .colecao.virada { color: var(--creme); }
 .colecao .topo { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; }
-.colecao .topo .olho { color: var(--verde); margin-bottom: 14px; transition: color .6s; }
+.colecao .topo .olho { color: var(--roxo-profundo); margin-bottom: 14px; transition: color .6s; }
 .colecao.virada .topo .olho { color: var(--creme); }
-.colecao .topo h2 { color: var(--verde); transition: color .6s; }
+.colecao .topo h2 { color: var(--roxo-profundo); transition: color .6s; }
 .colecao.virada .topo h2 { color: var(--creme); }
 .colecao .topo p { max-width: 380px; font-size: 16px; opacity: .8; }
 .baralho { display: flex; justify-content: center; align-items: flex-end; margin-top: clamp(50px, 7vw, 90px); min-height: 470px; perspective: 1800px; }
@@ -174,9 +158,7 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 .carta .frente .nuv.d { width: 52%; aspect-ratio: 202 / 61; right: -10%; bottom: 15%; }
 .carta .verso { transform: rotateY(180deg); background: #FBF4E4; color: var(--tinta); display: flex; flex-direction: column; padding: 12px 12px 18px; text-align: left; }
 .carta .verso .foto { flex: 1; min-height: 0; border-radius: 999px 999px 6px 6px; overflow: hidden; clip-path: inset(0 round 999px 999px 6px 6px); background: var(--c); }
-.carta .verso .foto img, .carta .verso .foto video { width: 100%; height: 100%; object-fit: cover; }
-.carta .verso .foto.rot { display: flex; align-items: center; justify-content: center; padding: 14px; background: #EFE4CB; }
-.carta .verso .foto.rot img { height: auto; object-fit: contain; }
+.carta .verso .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
 .carta .verso .b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 24px; letter-spacing: .05em; color: var(--c); margin: 14px 4px 2px; }
 .carta .verso .d { display: block; font-size: 13px; line-height: 1.45; margin: 0 4px; }
 .carta .verso .m { display: block; font-weight: 500; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin: 10px 4px 0; }
@@ -187,6 +169,20 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
   .carta:hover { --y: 0px; }
   .carta.virada { --y: 0px; }
 }
+
+/* nuvens da marca atrás das cartas, andando devagar */
+.mesa { position: relative; }
+.nuvens { position: absolute; left: 50%; top: -60px; bottom: -80px; width: 100vw; translate: -50% 0; pointer-events: none; color: var(--roxo-profundo); transition: color .8s; z-index: 0; }
+.colecao.virada .nuvens { color: var(--creme); }
+.nuvens .nv { position: absolute; opacity: var(--o, .14); animation: vaga var(--t, 70s) ease-in-out infinite alternate; }
+.nuvens .nv.a { left: -4%; top: 4%; width: clamp(260px, 30vw, 520px); aspect-ratio: 226 / 74; --t: 64s; }
+.nuvens .nv.b { right: -6%; top: 0; width: clamp(240px, 26vw, 460px); aspect-ratio: 202 / 61; --t: 80s; --o: .12; }
+.nuvens .nv.c { left: 8%; bottom: 8%; width: clamp(200px, 22vw, 380px); aspect-ratio: 107 / 55; --t: 72s; --o: .1; }
+.nuvens .nv.d { right: 4%; bottom: 2%; width: clamp(280px, 32vw, 560px); aspect-ratio: 226 / 74; --t: 90s; --o: .13; }
+.nuvens .nv.e { left: 38%; top: -2%; width: clamp(160px, 16vw, 280px); aspect-ratio: 202 / 61; --t: 58s; --o: .08; }
+.nuvens .est { position: absolute; width: 14px; aspect-ratio: 1; opacity: .35; }
+@keyframes vaga { from { transform: translateX(-3vw); } to { transform: translateX(3vw); } }
+.baralho, .colecao .instrucao { position: relative; z-index: 1; }
 
 /* a coleção na prateleira: pontos sobre cada vela */
 .linha { position: relative; margin: clamp(40px, 6vw, 70px) 0 0; background: #2a1f2c; }
@@ -200,37 +196,33 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 .ponto:hover span, .ponto:focus-visible span { opacity: 1; translate: -50% 0; }
 @media (max-width: 640px) { .ponto { width: 34px; height: 34px; } .ponto::before { inset: 10px; } .ponto span { font-size: 11px; padding: 5px 10px; } }
 
-/* 5 · a caixa: a foto fica parada e troca a cada etapa do unboxing; a lua cresce */
+/* 5 · a caixa: as cinco etapas lado a lado, numa grade; nada fica preso na rolagem */
 .caixa { position: relative; background: var(--noite); padding-block: clamp(100px, 12vw, 160px); }
 .caixa .cab { max-width: 640px; }
 .caixa .cab .olho { color: var(--ouro); opacity: .8; margin-bottom: 16px; }
 .caixa .cab p { margin-top: 18px; opacity: .8; }
-.caixa .grade { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(30px, 6vw, 100px); margin-top: 60px; }
-.caixa .palco-c { position: sticky; top: 84px; height: calc(100svh - 110px); max-height: 820px; display: flex; align-items: center; justify-content: center; }
-.caixa .fotos { position: relative; height: 100%; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 999px 999px 14px 14px; overflow: hidden; clip-path: inset(0 round 999px 999px 14px 14px); background: #2a1f2c; }
-.caixa .fotos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; scale: 1.06; transition: opacity 1s ease, scale 1.6s cubic-bezier(.2,.7,.2,1); }
-.caixa .fotos img.ativa { opacity: 1; scale: 1; }
-.caixa .fotos .moldura { inset: 12px; --rm: 999px 999px 8px 8px; color: var(--creme); opacity: .4; z-index: 2; border-radius: 999px 999px 8px 8px; }
-.caixa .fotos .moldura::after { border-radius: 999px 999px 5px 5px; }
-.etapas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.etapa { min-height: 66svh; display: flex; flex-direction: column; justify-content: center; padding: 30px 0; border-top: 1px solid #FFEBB422; opacity: .32; transition: opacity .6s; }
-.etapa.ativa { opacity: 1; }
-.etapa .n { display: flex; align-items: center; gap: 14px; font-family: var(--f-display); font-size: 15px; letter-spacing: .24em; color: var(--ouro); }
-.etapa .n svg { width: 24px; height: 24px; }
-.etapa h3 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; margin: 14px 0 14px; }
-.etapa p { font-size: 18px; max-width: 460px; opacity: .88; }
-.etapa ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 15px; max-width: 460px; }
-.etapa ul li { display: grid; grid-template-columns: 16px 1fr; gap: 12px; opacity: .88; }
-.etapa ul li::before { content: ""; width: 9px; height: 9px; margin-top: 8px; background: var(--ouro); clip-path: path('M4.5 0C4.8 3.4 5.6 4.2 9 4.5 5.6 4.8 4.8 5.6 4.5 9 4.2 5.6 3.4 4.8 0 4.5 3.4 4.2 4.2 3.4 4.5 0Z'); }
+.etapas { list-style: none; margin: clamp(44px, 6vw, 70px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(30px, 4vw, 56px) clamp(18px, 2.4vw, 34px); }
+.etapa { grid-column: span 2; display: flex; flex-direction: column; }
+.etapa:nth-child(4), .etapa:nth-child(5) { grid-column: span 3; }
+.etapa figure { margin: 0 0 20px; position: relative; }
+.etapa img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 999px 999px 10px 10px; background: #2a1f2c; }
+.etapa:nth-child(4) img, .etapa:nth-child(5) img { aspect-ratio: 1 / 1; border-radius: 10px; }
+.etapa:nth-child(4) img { object-position: 50% 62%; }
+.etapa .n { display: flex; align-items: center; gap: 12px; font-family: var(--f-display); font-size: 14px; letter-spacing: .24em; color: var(--ouro); }
+.etapa .n svg { width: 22px; height: 22px; }
+.etapa h3 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.05; margin: 10px 0 10px; }
+.etapa p { font-size: 15.5px; max-width: 460px; opacity: .86; }
+.etapa ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; max-width: 460px; }
+.etapa ul li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; opacity: .86; }
+.etapa ul li::before { content: ""; width: 9px; height: 9px; margin-top: 7px; background: var(--ouro); clip-path: path('M4.5 0C4.8 3.4 5.6 4.2 9 4.5 5.6 4.8 4.8 5.6 4.5 9 4.2 5.6 3.4 4.8 0 4.5 3.4 4.2 4.2 3.4 4.5 0Z'); }
 @media (max-width: 860px) {
-  .caixa .grade { grid-template-columns: 1fr; gap: 0; }
-  .caixa .palco-c { top: 60px; height: 42svh; z-index: 2; background: linear-gradient(var(--noite) 86%, transparent); padding-bottom: 14px; }
-  .etapa { min-height: 56svh; }
-  .etapa p { font-size: 16px; }
+  .etapas { grid-template-columns: 1fr; }
+  .etapa, .etapa:nth-child(4), .etapa:nth-child(5) { grid-column: auto; }
+  .etapa:nth-child(4) img, .etapa:nth-child(5) img { aspect-ratio: 4 / 5; border-radius: 999px 999px 10px 10px; }
 }
 
 /* 6 · crie seu rótulo */
-.oficina { background: var(--verde); color: var(--creme); padding-block: clamp(100px, 12vw, 160px); position: relative; overflow: hidden; }
+.oficina { background: var(--roxo-profundo); color: var(--creme); padding-block: clamp(100px, 12vw, 160px); position: relative; overflow: hidden; }
 .oficina .grade { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(30px, 6vw, 90px); align-items: center; }
 .oficina .olho { opacity: .75; margin-bottom: 16px; }
 .oficina .intro { margin: 18px 0 34px; opacity: .85; max-width: 440px; }
@@ -242,18 +234,18 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 .cores { display: flex; gap: 12px; flex-wrap: wrap; }
 .cores label { position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--c); cursor: pointer; box-shadow: 0 0 0 1px #FFEBB455; }
 .cores input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
-.cores label:has(input:checked) { box-shadow: 0 0 0 2px var(--verde), 0 0 0 4px var(--creme); }
+.cores label:has(input:checked) { box-shadow: 0 0 0 2px var(--roxo-profundo), 0 0 0 4px var(--creme); }
 .cores label:has(input:focus-visible) { outline: 2px solid var(--ouro); outline-offset: 5px; }
 .opcoes { display: flex; gap: 10px; flex-wrap: wrap; }
 .opcoes label { position: relative; border: 1px solid #FFEBB466; border-radius: 99px; padding: 8px 18px; font-size: 14px; cursor: pointer; }
 .opcoes input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
-.opcoes label:has(input:checked) { background: var(--creme); color: var(--verde); border-color: var(--creme); }
+.opcoes label:has(input:checked) { background: var(--creme); color: var(--roxo-profundo); border-color: var(--creme); }
 .opcoes label:has(input:focus-visible) { outline: 2px solid var(--ouro); outline-offset: 3px; }
 .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--creme); background: transparent; border-radius: 99px; padding: 11px 22px; font-size: 14px; letter-spacing: .06em; cursor: pointer; }
-.btn:hover { background: var(--creme); color: var(--verde); }
+.btn:hover { background: var(--creme); color: var(--roxo-profundo); }
 .btn svg { width: 12px; height: 12px; }
 .bancada { display: flex; justify-content: center; }
-.rotulo-vivo { --c: var(--selene); --fundo: #F5ECD7; --traco: var(--c); position: relative; width: min(560px, 100%); aspect-ratio: 50 / 40; border-radius: 4.5%; background: var(--fundo); color: var(--traco); overflow: hidden; box-shadow: 0 30px 70px #0b2a1f88; display: flex; flex-direction: column; align-items: center; text-align: center; transition: background-color .5s, color .5s; container-type: inline-size; }
+.rotulo-vivo { --c: var(--selene); --fundo: #F5ECD7; --traco: var(--c); position: relative; width: min(560px, 100%); aspect-ratio: 50 / 40; border-radius: 4.5%; background: var(--fundo); color: var(--traco); overflow: hidden; box-shadow: 0 30px 70px #160e20aa; display: flex; flex-direction: column; align-items: center; text-align: center; transition: background-color .5s, color .5s; container-type: inline-size; }
 .rotulo-vivo .moldura { inset: 3.4%; --rm: 14px; --rr: 1.3cqi; }
 .rotulo-vivo .raios { position: absolute; left: 50%; top: 27%; width: 130%; aspect-ratio: 1; translate: -50% -50%; }
 .rotulo-vivo .s { position: relative; width: 6.4%; aspect-ratio: 470 / 500; margin-top: 21%; }
@@ -271,21 +263,22 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 
 /* 7 · marca */
 .marca-sec { background: var(--papel); color: var(--tinta); padding-block: clamp(100px, 12vw, 150px); }
-.marca-sec .olho { color: var(--verde); margin-bottom: 14px; }
-.marca-sec h2 { color: var(--verde); }
+.marca-sec .olho { color: var(--roxo-profundo); margin-bottom: 14px; }
+.marca-sec h2 { color: var(--roxo-profundo); }
 .marca-sec .grade { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 26px; margin-top: 54px; }
 .marca-sec .tile { border-radius: 16px; position: relative; min-height: 340px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.marca-sec .tile.logo { background: var(--verde); color: var(--creme); grid-row: span 2; }
+.marca-sec .tile.logo { background: var(--roxo-profundo); color: var(--creme); grid-row: span 2; }
 .marca-sec .tile.logo .l { width: min(380px, 70%); aspect-ratio: 1305 / 888; }
 .marca-sec .tile.logo .moldura { inset: 20px; --rm: 12px; --rr: 6px; opacity: .35; }
 .marca-sec .tile small { position: absolute; left: 40px; bottom: 36px; font-weight: 500; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; opacity: .65; }
 .paleta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .chip { border: 0; border-radius: 12px; min-height: 120px; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; text-align: left; cursor: pointer; background: var(--c); color: var(--t); transition: transform .3s; }
 .chip:hover { transform: translateY(-4px); }
+.chip.principal { grid-column: span 2; min-height: 150px; }
 .chip b { font-family: var(--f-display); font-weight: 400; font-size: 17px; letter-spacing: .03em; line-height: 1.1; }
 .chip span { font-size: 12px; letter-spacing: .06em; opacity: .85; font-variant-numeric: tabular-nums; }
 .tipos { border: 1px solid #2A223622; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
-.tipos .a { font-family: var(--f-display); font-size: clamp(40px, 5vw, 64px); line-height: 1; color: var(--verde); }
+.tipos .a { font-family: var(--f-display); font-size: clamp(40px, 5vw, 64px); line-height: 1; color: var(--roxo-profundo); }
 .tipos .b { font-family: var(--f-serif); font-size: 26px; }
 .tipos .b span { font-family: var(--f-cap); font-size: 1.7em; line-height: 0; }
 .tipos small { font-weight: 500; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; opacity: .6; }
@@ -347,35 +340,36 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 
 <!-- 1 · acender -->
 <section class="hero" id="acender" data-tema="escuro">
-  <div class="lado e">
-    <p class="olho">Velas aromáticas feitas à mão</p>
-    <h1 class="nome" data-svg="nome"><span class="sr">Almah</span></h1>
-    <p class="frase">Luz que acalma, aroma que abraça.</p>
+  <div class="ceu" data-estrelas="n:80;semente:5;rMax:10;miolo:.0"></div>
+  <div class="sol" data-raios="n:150;de:0;ate:360;r0:14;r1:99;peso:.13;semente:12"></div>
+  <div class="palco">
+    <p class="olho entra">Coleção Gênesis · Velas feitas à mão</p>
+    <div class="janela">
+      <span class="aro" aria-hidden="true"></span>
+      <button class="portal" id="quadro" type="button" aria-label="Acender a chama de novo">
+        <svg viewBox="60 400 1500 1660" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="gHalo" cx="716" cy="1050" r="560" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFB867" stop-opacity=".55"/><stop offset=".35" stop-color="#E9893F" stop-opacity=".2"/><stop offset="1" stop-color="#C0602A" stop-opacity="0"/></radialGradient>
+            <radialGradient id="gCera" cx=".5" cy=".45" r=".5"><stop offset="0" stop-color="#FFE2B0" stop-opacity=".6"/><stop offset=".3" stop-color="#FFD39A" stop-opacity=".32"/><stop offset=".6" stop-color="#FFC27D" stop-opacity=".1"/><stop offset=".85" stop-color="#FFB060" stop-opacity=".02"/><stop offset="1" stop-color="#FFB060" stop-opacity="0"/></radialGradient>
+            <linearGradient id="gFogo" x1="0" y1="397" x2="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD394"/><stop offset=".45" stop-color="#FFEBB4"/><stop offset="1" stop-color="#FFF6DC"/></linearGradient>
+            <filter id="fTraco" x="-30%" y="-15%" width="160%" height="130%"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="1" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter>
+            <filter id="fBrilho" x="-80%" y="-40%" width="260%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+          </defs>
+          <image href="img/hero-lua.webp" width="1600" height="2400"/>
+          <rect id="veu" width="1600" height="2400" fill="#000" opacity=".18"/>
+          <g id="luzCena" style="mix-blend-mode:screen" opacity="0"><circle cx="716" cy="1050" r="560" fill="url(#gHalo)"/><ellipse cx="716" cy="1196" rx="230" ry="150" fill="url(#gCera)"/></g>
+          <g transform="translate(644 868) scale(.756)"><g id="mexe">
+            <path id="fBrilhoP" fill="#FFB867" opacity="0" filter="url(#fBrilho)"/>
+            <g filter="url(#fTraco)"><path id="fCheia" fill="url(#gFogo)" opacity="0"/><path id="fTracoP" fill="none" stroke="#FFEBB4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
+          </g></g>
+        </svg>
+      </button>
+    </div>
+    <h1 class="nome entra" data-svg="nome"><span class="sr">Almah</span></h1>
+    <p class="frase entra">Luz que acalma, aroma que abraça.</p>
+    <p class="dica entra"><svg viewBox="0 0 8 11" aria-hidden="true"><path d="M4 0C5 3 8 4.5 8 7.2 8 9.3 6.2 11 4 11S0 9.3 0 7.2C0 5.6 1.2 4.6 1.8 3.4 2.3 4.6 3 5 3.4 5 3.4 3.4 3.6 1.6 4 0Z" fill="#FFC56B"/></svg>toque na chama</p>
   </div>
-  <button class="quadro" id="quadro" type="button" aria-label="Acender a chama de novo">
-    <svg viewBox="0 0 1600 2400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <radialGradient id="gHalo" cx="716" cy="1050" r="560" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFB867" stop-opacity=".55"/><stop offset=".35" stop-color="#E9893F" stop-opacity=".2"/><stop offset="1" stop-color="#C0602A" stop-opacity="0"/></radialGradient>
-        <radialGradient id="gCera" cx=".5" cy=".45" r=".5"><stop offset="0" stop-color="#FFE2B0" stop-opacity=".6"/><stop offset=".3" stop-color="#FFD39A" stop-opacity=".32"/><stop offset=".6" stop-color="#FFC27D" stop-opacity=".1"/><stop offset=".85" stop-color="#FFB060" stop-opacity=".02"/><stop offset="1" stop-color="#FFB060" stop-opacity="0"/></radialGradient>
-        <linearGradient id="gFogo" x1="0" y1="397" x2="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD394"/><stop offset=".45" stop-color="#FFEBB4"/><stop offset="1" stop-color="#FFF6DC"/></linearGradient>
-        <filter id="fTraco" x="-30%" y="-15%" width="160%" height="130%"><feTurbulence id="turb" type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="1" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter>
-        <filter id="fBrilho" x="-80%" y="-40%" width="260%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
-      </defs>
-      <image href="img/hero-lua.webp" width="1600" height="2400"/>
-      <rect id="veu" width="1600" height="2400" fill="#000" opacity=".18"/>
-      <g id="luzCena" style="mix-blend-mode:screen" opacity="0"><circle cx="716" cy="1050" r="560" fill="url(#gHalo)"/><ellipse cx="716" cy="1196" rx="230" ry="150" fill="url(#gCera)"/></g>
-      <g transform="translate(644 868) scale(.756)"><g id="mexe">
-        <path id="fBrilhoP" fill="#FFB867" opacity="0" filter="url(#fBrilho)"/>
-        <g filter="url(#fTraco)"><path id="fCheia" fill="url(#gFogo)" opacity="0"/><path id="fTracoP" fill="none" stroke="#FFEBB4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
-      </g></g>
-    </svg>
-  </button>
-  <div class="lado d">
-    <p class="olho">Coleção Gênesis · 2026</p>
-    <p>Uma luz que nasce dentro da lua. O fogo é desenhado à mão, como o logo.</p>
-    <p class="dica"><svg viewBox="0 0 8 11" aria-hidden="true"><path d="M4 0C5 3 8 4.5 8 7.2 8 9.3 6.2 11 4 11S0 9.3 0 7.2C0 5.6 1.2 4.6 1.8 3.4 2.3 4.6 3 5 3.4 5 3.4 3.4 3.6 1.6 4 0Z" fill="#FFC56B"/></svg>Toque na chama para acender de novo</p>
-  </div>
-  <a class="rolar" href="#manifesto">role<i></i></a>
+  <a class="rolar entra" href="#manifesto">role<i></i></a>
 </section>
 
 <!-- 2 · manifesto -->
@@ -387,21 +381,20 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
   </div>
 </section>
 
-<!-- 3 · do traço à luz -->
-<section class="traco" id="traco" data-tema="escuro">
-  <div class="fixo">
-    <div class="painel">
+<!-- 3 · o símbolo -->
+<section class="simbolo" id="simbolo" data-tema="escuro">
+  <div class="miolo grade">
+    <figure class="esboco"><img src="img/mock-esboco.webp" alt="Caderno com os estudos a lápis do símbolo da Almah" loading="lazy"><figcaption>Os primeiros estudos, a lápis.</figcaption></figure>
+    <div>
       <p class="olho">O símbolo</p>
-      <div class="falas">
-        <div class="fala"><span class="n"><svg data-fase=".2"></svg>I</span><h3>O traço</h3><p>O símbolo nasceu à mão, no papel, desenhado por Cauã Dorn: uma lua crescente que abraça uma chama.</p></div>
-        <div class="fala"><span class="n"><svg data-fase=".45"></svg>II</span><h3>A construção</h3><p>Dois círculos fora de centro recortam a lua. Um eixo vertical guia a chama até dentro dela.</p></div>
-        <div class="fala"><span class="n"><svg data-fase=".7"></svg>III</span><h3>A luz</h3><p>Na parede, o desenho vira luz. É a ideia inteira da marca: uma luz que nasce dentro da lua.</p></div>
-      </div>
-    </div>
-    <div class="palco-t">
-      <div class="camada"><img src="img/mock-esboco.webp" alt="Caderno com estudos a lápis do símbolo da Almah" loading="lazy"></div>
-      <div class="camada plano"><div class="desenho" id="tracoDesenho"></div></div>
-      <div class="camada"><img src="img/mock-projecao.webp" alt="O símbolo projetado como luz numa parede, sobre uma vela acesa" loading="lazy"></div>
+      <h2>Desenhado à mão</h2>
+      <p class="intro">O símbolo nasceu no papel, a lápis, desenhado por Cauã Dorn: uma lua crescente que abraça uma chama. Depois foi redesenhado em vetor, com a mesma mão.</p>
+      <div class="construcao" id="tracoDesenho"></div>
+      <ul class="notas">
+        <li><b>R e r</b>Dois círculos fora de centro recortam a lua.</li>
+        <li><b>Eixo</b>Uma vertical guia a chama para dentro da lua.</li>
+        <li><b>Gota</b>A base da chama segue um terceiro círculo.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -422,36 +415,39 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
     <button class="ponto" type="button" style="--x:68%;--y:56%;--d:1.2s" data-carta="3"><span><b>SERENA</b>rosas</span></button>
     <button class="ponto" type="button" style="--x:86.1%;--y:56%;--d:1.6s" data-carta="4"><span><b>VÊNUS</b>cereja e avelã</span></button>
   </figure>
-  <div class="miolo">
+  <div class="miolo mesa">
+    <div class="nuvens" aria-hidden="true">
+      <span class="nv a" data-svg="nuvem-linha-2"></span><span class="nv b" data-svg="nuvem-linha-3"></span><span class="nv c" data-svg="nuvem-linha-1"></span><span class="nv d" data-svg="nuvem-linha-2"></span><span class="nv e" data-svg="nuvem-linha-3"></span>
+    </div>
     <div class="baralho" id="baralho">
       <button class="carta" type="button" style="--c:#6D712F;--rot:-12deg" data-cor="#6D712F" aria-pressed="false" aria-label="Aura, baunilha">
         <span class="lados">
           <span class="frente"><span class="moldura"></span><span class="raios" data-raios="n:48;de:0;ate:360;r0:12;r1:96;peso:.45;semente:3"></span><span class="num">I</span><span class="s" data-svg="simbolo"></span><span class="marca" data-svg="nome"></span><span class="t">Aura</span><span class="ar">baunilha</span><span class="nuv e" data-svg="nuvem-linha-2"></span><span class="nuv d" data-svg="nuvem-linha-3"></span></span>
-          <span class="verso"><span class="foto"><video data-src="video/aura-acendendo.mp4" poster="img/poster-aura-acendendo.webp" muted loop playsinline></video></span><span class="b">Aura</span><span class="d">O brilho que envolve. Baunilha doce e quente, para receber quem chega.</span><span class="m">90 g · 150 g</span></span>
+          <span class="verso"><span class="foto"><img src="img/mock-vela-aura.webp" alt="Vela Aura com o rótulo da Coleção Gênesis" loading="lazy"></span><span class="b">Aura</span><span class="d">O brilho que envolve. Baunilha doce e quente, para receber quem chega.</span><span class="m">90 g · 150 g</span></span>
         </span>
       </button>
       <button class="carta" type="button" style="--c:#167154;--rot:-6deg" data-cor="#167154" aria-pressed="false" aria-label="Terra, cascas e folhas">
         <span class="lados">
           <span class="frente"><span class="moldura"></span><span class="raios" data-raios="n:48;de:0;ate:360;r0:12;r1:96;peso:.45;semente:8"></span><span class="num">II</span><span class="s" data-svg="simbolo"></span><span class="marca" data-svg="nome"></span><span class="t">Terra</span><span class="ar">cascas e folhas</span><span class="nuv e" data-svg="nuvem-linha-2"></span><span class="nuv d" data-svg="nuvem-linha-3"></span></span>
-          <span class="verso"><span class="foto rot"><img src="img/rotulo-terra.webp" alt="Rótulo da vela Terra" loading="lazy"></span><span class="b">Terra</span><span class="d">Mata depois da chuva. Cascas e folhas para voltar ao chão no fim do dia.</span><span class="m">90 g · 150 g</span></span>
+          <span class="verso"><span class="foto"><img src="img/mock-vela-terra.webp" alt="Vela Terra com o rótulo da Coleção Gênesis" loading="lazy"></span><span class="b">Terra</span><span class="d">Mata depois da chuva. Cascas e folhas para voltar ao chão no fim do dia.</span><span class="m">90 g · 150 g</span></span>
         </span>
       </button>
       <button class="carta" type="button" style="--c:#503B6A;--rot:0deg" data-cor="#503B6A" aria-pressed="false" aria-label="Selene, lavanda">
         <span class="lados">
           <span class="frente"><span class="moldura"></span><span class="raios" data-raios="n:48;de:0;ate:360;r0:12;r1:96;peso:.45;semente:13"></span><span class="num">III</span><span class="s" data-svg="simbolo"></span><span class="marca" data-svg="nome"></span><span class="t">Selene</span><span class="ar">lavanda</span><span class="nuv e" data-svg="nuvem-linha-2"></span><span class="nuv d" data-svg="nuvem-linha-3"></span></span>
-          <span class="verso"><span class="foto"><img src="img/foto-selene.webp" alt="Vela Selene" loading="lazy"></span><span class="b">Selene</span><span class="d">O nome da lua. Lavanda para desacelerar antes de dormir.</span><span class="m">90 g · 150 g</span></span>
+          <span class="verso"><span class="foto"><img src="img/mock-vela-selene.webp" alt="Vela Selene com o rótulo da Coleção Gênesis" loading="lazy"></span><span class="b">Selene</span><span class="d">O nome da lua. Lavanda para desacelerar antes de dormir.</span><span class="m">90 g · 150 g</span></span>
         </span>
       </button>
       <button class="carta" type="button" style="--c:#9B2929;--rot:6deg" data-cor="#9B2929" aria-pressed="false" aria-label="Serena, rosas">
         <span class="lados">
           <span class="frente"><span class="moldura"></span><span class="raios" data-raios="n:48;de:0;ate:360;r0:12;r1:96;peso:.45;semente:21"></span><span class="num">IV</span><span class="s" data-svg="simbolo"></span><span class="marca" data-svg="nome"></span><span class="t">Serena</span><span class="ar">rosas</span><span class="nuv e" data-svg="nuvem-linha-2"></span><span class="nuv d" data-svg="nuvem-linha-3"></span></span>
-          <span class="verso"><span class="foto"><img src="img/foto-trio-quente.webp" alt="Vela Serena entre Aura e Selene" loading="lazy" style="object-position:20% 60%"></span><span class="b">Serena</span><span class="d">Calma de jardim. Rosas para respirar fundo e ficar.</span><span class="m">90 g · 150 g</span></span>
+          <span class="verso"><span class="foto"><img src="img/mock-vela-serena.webp" alt="Vela Serena com o rótulo da Coleção Gênesis" loading="lazy"></span><span class="b">Serena</span><span class="d">Calma de jardim. Rosas para respirar fundo e ficar.</span><span class="m">90 g · 150 g</span></span>
         </span>
       </button>
       <button class="carta" type="button" style="--c:#B55263;--rot:12deg" data-cor="#B55263" aria-pressed="false" aria-label="Vênus, cereja e avelã">
         <span class="lados">
           <span class="frente"><span class="moldura"></span><span class="raios" data-raios="n:48;de:0;ate:360;r0:12;r1:96;peso:.45;semente:34"></span><span class="num">V</span><span class="s" data-svg="simbolo"></span><span class="marca" data-svg="nome"></span><span class="t">Vênus</span><span class="ar">cereja e avelã</span><span class="nuv e" data-svg="nuvem-linha-2"></span><span class="nuv d" data-svg="nuvem-linha-3"></span></span>
-          <span class="verso"><span class="foto"><video data-src="video/venus.mp4" poster="img/poster-venus.webp" muted loop playsinline></video></span><span class="b">Vênus</span><span class="d">Doce e intensa. Cereja e avelã para os encontros e as noites a dois.</span><span class="m">90 g · 150 g</span></span>
+          <span class="verso"><span class="foto"><img src="img/mock-vela-venus.webp" alt="Vela Vênus com o rótulo da Coleção Gênesis" loading="lazy"></span><span class="b">Vênus</span><span class="d">Doce e intensa. Cereja e avelã para os encontros e as noites a dois.</span><span class="m">90 g · 150 g</span></span>
         </span>
       </button>
     </div>
@@ -462,27 +458,15 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 <!-- 5 · a caixa -->
 <section class="caixa" id="caixa" data-tema="escuro">
   <div class="miolo">
-    <div class="cab"><p class="olho">Seu pedido chegou</p><h2>Abrir uma Almah</h2><p>Role devagar: a caixa se abre em cinco tempos, e a lua cresce com ela.</p></div>
-    <div class="grade">
-      <div class="palco-c">
-        <div class="fotos" id="fotosCaixa">
-          <img class="ativa" src="img/mock-entrega.webp" alt="Mãos segurando a caixa roxa da Almah, amarrada com barbante e fechada com o adesivo" data-i="1">
-          <img src="img/mock-caixa.webp" alt="Caixa aberta com papel de seda, a vela Selene e o card Obrigada" data-i="2" loading="lazy">
-          <img src="img/mock-envelope.webp" alt="Envelope creme lacrado com cera roxa e o símbolo, com o card Obrigada" data-i="3" loading="lazy">
-          <img src="img/mock-cuidados.webp" alt="Vela Selene acesa ao lado do card Cuidados com a sua vela" data-i="4" loading="lazy">
-          <img src="img/mock-kit.webp" alt="O kit completo visto de cima: caixas, vela, cards, adesivo e envelope" data-i="5" loading="lazy">
-          <span class="moldura"></span>
-        </div>
-      </div>
-      <ol class="etapas" id="etapas">
-        <li class="etapa ativa" data-i="1"><span class="n"><svg data-fase=".2"></svg>I</span><h3>Chegou</h3><p>A caixa roxo-profundo chega amarrada com barbante e fechada com o adesivo "Seu pedido chegou!".</p></li>
-        <li class="etapa" data-i="2"><span class="n"><svg data-fase=".4"></svg>II</span><h3>Abrir</h3><p>Dentro da tampa, o logo de novo. Papel de seda, a vela e o card de agradecimento.</p></li>
-        <li class="etapa" data-i="3"><span class="n"><svg data-fase=".6"></svg>III</span><h3>O bilhete</h3><p>"Obrigada pela compra", num envelope de papel de algodão lacrado em cera com o símbolo.</p></li>
-        <li class="etapa" data-i="4"><span class="n"><svg data-fase=".8"></svg>IV</span><h3>Cuidar</h3><p>O card de cuidados acompanha cada vela:</p>
-          <ul><li>Primeira queima: deixe a cera derreter até a borda.</li><li>Apare o pavio em 5 mm antes de reacender.</li><li>No máximo 3 horas acesa de cada vez.</li><li>Superfície plana, longe de vento e de coisas que queimam.</li><li>Nunca deixe a vela acesa sem ninguém por perto.</li></ul></li>
-        <li class="etapa" data-i="5"><span class="n"><svg data-fase="1"></svg>V</span><h3>Tudo junto</h3><p>A caixa, a vela, os cards, o adesivo e o lacre. A mesma noite em cada peça.</p></li>
-      </ol>
-    </div>
+    <div class="cab"><p class="olho">Seu pedido chegou</p><h2>Abrir uma Almah</h2><p>Da porta de casa ao primeiro acender, em cinco tempos.</p></div>
+    <ol class="etapas" id="etapas">
+      <li class="etapa"><figure><img src="img/mock-entrega.webp" alt="Mãos segurando a caixa roxa da Almah, amarrada com laço e fechada com o adesivo" loading="lazy"></figure><span class="n"><svg data-fase=".2"></svg>I</span><h3>Chegou</h3><p>A caixa roxo-profundo chega amarrada e fechada com o adesivo "Seu pedido chegou!".</p></li>
+      <li class="etapa"><figure><img src="img/mock-caixa.webp" alt="Caixa aberta com papel de seda, a vela Selene e o card Obrigada" loading="lazy"></figure><span class="n"><svg data-fase=".4"></svg>II</span><h3>Abrir</h3><p>Dentro da tampa, o logo de novo. Papel de seda, a vela e o card de agradecimento.</p></li>
+      <li class="etapa"><figure><img src="img/mock-envelope.webp" alt="Envelope creme lacrado com cera roxa e o símbolo, com o card Obrigada" loading="lazy"></figure><span class="n"><svg data-fase=".6"></svg>III</span><h3>O bilhete</h3><p>"Obrigada pela compra", num envelope lacrado em cera com o símbolo.</p></li>
+      <li class="etapa"><figure><img src="img/mock-cuidados.webp" alt="Vela Selene acesa ao lado do card Cuidados com a sua vela" loading="lazy"></figure><span class="n"><svg data-fase=".8"></svg>IV</span><h3>Cuidar</h3><p>O card de cuidados acompanha cada vela:</p>
+        <ul><li>Primeira queima: deixe a cera derreter até a borda.</li><li>Apare o pavio em 5 mm antes de reacender.</li><li>No máximo 3 horas acesa de cada vez.</li><li>Superfície plana, longe de vento e de coisas que queimam.</li><li>Nunca deixe a vela acesa sem ninguém por perto.</li></ul></li>
+      <li class="etapa"><figure><img src="img/mock-kit.webp" alt="O kit completo visto de cima: caixas, vela, cards, adesivo e envelope" loading="lazy"></figure><span class="n"><svg data-fase="1"></svg>V</span><h3>Tudo junto</h3><p>A caixa, a vela, os cards, o adesivo e o lacre. A mesma noite em cada peça.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -537,19 +521,18 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 <section class="marca-sec" id="marca" data-tema="claro">
   <div class="miolo">
     <p class="olho">A marca em uma olhada</p>
-    <h2>Uma cor só, sempre</h2>
+    <h2>Roxo profundo, sempre</h2>
     <div class="grade">
-      <div class="tile logo"><span class="moldura"></span><span class="l" data-svg="logo-almah"></span><small>Logo principal</small></div>
+      <div class="tile logo"><span class="moldura"></span><span class="l" data-svg="logo-almah"></span><small>Logo principal · roxo profundo e creme</small></div>
       <div>
         <div class="paleta" id="paleta">
-          <button class="chip" type="button" style="--c:#1D7053;--t:#FFEBB4" data-hex="#1D7053"><b>Verde Almah</b><span>#1D7053</span></button>
-          <button class="chip" type="button" style="--c:#503B69;--t:#FFEBB4" data-hex="#503B69"><b>Roxo profundo</b><span>#503B69</span></button>
+          <button class="chip principal" type="button" style="--c:#503B69;--t:#FFEBB4" data-hex="#503B69"><b>Roxo profundo</b><span>cor principal · #503B69</span></button>
           <button class="chip" type="button" style="--c:#7138B7;--t:#FFEBB4" data-hex="#7138B7"><b>Roxo</b><span>#7138B7</span></button>
           <button class="chip" type="button" style="--c:#1C1726;--t:#FFEBB4" data-hex="#1C1726"><b>Noite</b><span>#1C1726</span></button>
           <button class="chip" type="button" style="--c:#FFEBB4;--t:#2A2236" data-hex="#FFEBB4"><b>Creme</b><span>#FFEBB4</span></button>
           <button class="chip" type="button" style="--c:#F5ECD7;--t:#2A2236;box-shadow:inset 0 0 0 1px #2A223626" data-hex="#F5ECD7"><b>Papel</b><span>#F5ECD7</span></button>
           <button class="chip" type="button" style="--c:#424242;--t:#F5ECD7" data-hex="#424242"><b>Grafite</b><span>#424242</span></button>
-          <button class="chip" type="button" style="--c:#B55263;--t:#FFEBB4" data-hex="#B55263"><b>Vênus</b><span>#B55263</span></button>
+          <button class="chip" type="button" style="--c:#1D7053;--t:#FFEBB4" data-hex="#1D7053"><b>Verde</b><span>apoio · #1D7053</span></button>
         </div>
         <p style="font-size:13px;opacity:.65;margin-top:10px">Toque numa cor para copiar o código.</p>
       </div>

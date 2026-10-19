@@ -24,23 +24,24 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 | 03 | 03-o-traco.jpg | O caderno com os estudos do símbolo a lápis |
 | 04 | 04-legenda-o-traco.jpg | Legenda I · O traço |
 | 05 | 05-logo-acendendo.gif | **Motion.** Primeiro a lua, depois o fogo; entra o nome e o crédito do logo |
-| 06 | 06-do-traco-a-luz.jpg | Construção do símbolo (R, r, eixo, gota) ao lado do símbolo projetado como luz |
-| 07 | 07-legenda-a-luz.jpg | Legenda II · A luz |
+| 06 | 06-construcao.jpg | A construção do símbolo (R, r, eixo e gota), no roxo profundo |
+| 07 | 07-legenda-a-construcao.jpg | Legenda II · A construção |
 | 08 | 08-colecao-genesis.jpg | As cinco velas na prateleira, sob uma lua de luz |
 | 09 | 09-legenda-genesis.jpg | Legenda III · Gênesis |
 | 10 | 10-cinco-ceus.jpg | Os cinco rótulos, com aroma e tinta de cada um |
-| 11 | 11-fotos-do-produto.jpg | Fotos reais do produto: Selene; Serena, Aura e Selene |
-| 12 | 12-entrega.jpg | A caixa nas mãos, amarrada com laço, com o adesivo em arco |
-| 13 | 13-legenda-seu-pedido-chegou.jpg | Legenda IV · Seu pedido chegou |
-| 14 | 14-caixa-aberta.jpg | A caixa aberta: papel de seda, a vela Selene e o card Obrigada |
-| 15 | 15-legenda-abrir.jpg | Legenda V · Abrir |
-| 16 | 16-faca-da-caixa.jpg | A faca da caixa-correio, com o lugar do logo e do adesivo |
-| 17 | 17-envelope.jpg | Envelope com lacre do símbolo; o card Obrigada em arte plana |
-| 18 | 18-cuidados.jpg | A vela acesa e o card de cuidados |
-| 19 | 19-legenda-cuidar.jpg | Legenda VI · Cuidar |
-| 20 | 20-kit-completo.jpg | O kit inteiro visto de cima |
-| 21 | 21-cores-e-letras.jpg | A paleta em fases da lua, as tintas da coleção e as quatro fontes |
-| 22 | 22-obrigada.jpg | Lua cheia e "Obrigada", com os créditos: Emily @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
+| 11 | 11-cinco-velas.jpg | As cinco velas com o rótulo no copo |
+| 12 | 12-fotos-do-produto.jpg | Fotos reais do produto: Selene; Serena, Aura e Selene |
+| 13 | 13-entrega.jpg | A caixa nas mãos, amarrada com laço, com o adesivo |
+| 14 | 14-legenda-seu-pedido-chegou.jpg | Legenda IV · Seu pedido chegou |
+| 15 | 15-caixa-aberta.jpg | A caixa aberta: papel de seda, a vela Selene e o card Obrigada |
+| 16 | 16-legenda-abrir.jpg | Legenda V · Abrir |
+| 17 | 17-faca-da-caixa.jpg | A faca da caixa-correio, com o lugar do logo e do adesivo |
+| 18 | 18-envelope.jpg | Envelope com lacre do símbolo; o card Obrigada em arte plana |
+| 19 | 19-cuidados.jpg | A vela acesa e o card de cuidados |
+| 20 | 20-legenda-cuidar.jpg | Legenda VI · Cuidar |
+| 21 | 21-kit-completo.jpg | O kit inteiro visto de cima |
+| 22 | 22-cores-e-letras.jpg | Roxo profundo como cor principal, a paleta em fases da lua, as tintas e as quatro fontes |
+| 23 | 23-obrigada.jpg | Lua cheia e "Obrigada", com os créditos: Emily @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
 
 ## Vídeo no lugar do GIF
 
@@ -48,7 +49,7 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 
 ## Sobre as imagens
 
-As fotos de produto dos módulos 01 e 11 são reais. As fotos de embalagem e ambiente (03, 06, 08, 12, 14, 17, 18 e 20) são mockups gerados com IA a partir das artes reais da marca: rótulos, cards, adesivo e logo. No kit (20), os cards de cuidados e de agradecimento foram reaplicados por cima com a arte original, para o texto ficar fiel; na entrega (12), o adesivo foi refeito em arco a partir da arte real. O caderno do módulo 03 é uma encenação do processo, não o esboço original do Cauã (as anotações, o compasso, a vela e a luminária foram tirados); se houver foto do esboço de verdade, ela entra melhor nesse lugar.
+As fotos de produto dos módulos 01 e 12 são reais. As fotos de embalagem e ambiente (03, 08, 13, 15, 18, 19 e 21) são mockups gerados com IA a partir das artes reais da marca: rótulos, cards, adesivo e logo. No kit (21), os cards de cuidados e de agradecimento foram reaplicados por cima com a arte original, para o texto ficar fiel; na entrega (13), o adesivo é a arte real aplicada na frente da caixa. As cinco velas do módulo 11 saíram de uma foto de vela com rótulo em branco, com cada rótulo real curvado sobre o copo. O caderno do módulo 03 é uma encenação do processo, não o esboço original do Cauã; se houver foto do esboço de verdade, ela entra melhor nesse lugar.
 
 No Behance, marque a opção de projeto feito com ferramentas de IA.
 
@@ -58,7 +59,7 @@ Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra
 
 Identidade visual por Emily (@itsemsdesign) e Cauã Dorn (@ohdorn). O logo foi desenhado à mão pelo Cauã e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
 
-A primeira coleção, Gênesis, tem cinco velas (Aura, Terra, Selene, Serena e Vênus), cada uma com um aroma e uma cor, impressas numa tinta só sobre papel creme. A vela chega numa caixa roxo-profundo fechada com o adesivo "Seu pedido chegou!", com um card de agradecimento e um card de cuidados.
+A primeira coleção, Gênesis, tem cinco velas (Aura, Terra, Selene, Serena e Vênus), cada uma com um aroma e uma cor, impressas numa tinta só sobre papel creme. O roxo profundo é a cor principal da marca. A vela chega numa caixa roxo-profundo fechada com o adesivo "Seu pedido chegou!", com um card de agradecimento e um card de cuidados.
 
 Luz que acalma, aroma que abraça.
 
@@ -68,7 +69,7 @@ Almah is a brand of handmade scented candles. The name carries the Portuguese wo
 
 Visual identity by Emily (@itsemsdesign) and Cauã Dorn (@ohdorn). The logo was hand-drawn by Cauã and then redrawn in vector: two circles draw the moon, one axis guides the flame.
 
-The first collection, Gênesis, has five candles (Aura, Terra, Selene, Serena and Vênus), each with its own scent and color, printed in a single ink on cream paper. Each candle arrives in a deep plum box sealed with a "your order has arrived" sticker, with a thank-you card and a care card.
+The first collection, Gênesis, has five candles (Aura, Terra, Selene, Serena and Vênus), each with its own scent and color, printed in a single ink on cream paper. Deep plum is the brand's main color. Each candle arrives in a deep plum box sealed with a "your order has arrived" sticker, with a thank-you card and a care card.
 
 ## Tags
 
