@@ -6,43 +6,59 @@ Almah · Identidade Visual
 
 ## Capa
 
-- `capa/capa-808x632.jpg` (1616 × 1264, o dobro do mínimo).
-- `capa/capa-animada-808x632.gif`: a mesma capa com a lua se desenhando e a chama acendendo. Use se o Behance aceitar GIF na capa; se recusar, fique com a JPG.
+- `capa/capa-808x632.jpg` (1616 × 1264, o dobro do mínimo): a mão segura a vela diante da lua, com a chama desenhada acesa.
+- `capa/capa-animada-808x632.gif`: a mesma capa com a chama tremulando. Use se o Behance aceitar GIF na capa; se recusar, fique com a JPG.
+
+## Como o projeto anda
+
+A fotografia conduz. Depois de cada foto vem uma faixa de legenda com uma fase da lua, um numeral e uma frase. As fases crescem ao longo do projeto: o crescente da abertura vira lua cheia no "Obrigada". São só dois motions: a chama desenhada à mão sobre a foto da lua (abertura) e o logo acendendo.
 
 ## Ordem dos módulos
 
-Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, com espaçamento zero entre módulos. Os três motions (03, 04 e 05, todos do logo) vão em GIF de 1400 px (largura cheia); o resto em JPG de 2800 px.
+Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, com **espaçamento zero** entre módulos (as legendas encostam na foto de cima). As fotos sobem na resolução original; os módulos desenhados saem em 2800 px; os dois GIFs em 1400 px.
 
 | # | Arquivo | O que é |
 |---|---|---|
-| 01 | 01-abertura.jpg | A mão segura a vela diante da lua |
-| 02 | 02-apresentacao.jpg | Nome, conceito em PT e EN, ficha do projeto |
-| 03 | 03-como-nasceu.gif | **Motion.** A lua e a chama aparecem separadas e se juntam no símbolo |
-| 04 | 04-construcao.gif | **Motion.** Grade, dois círculos desenham a lua, o eixo guia a chama, o traço vira forma cheia |
-| 05 | 05-logo-acendendo.gif | **Motion.** Primeiro a lua, depois o fogo; o nome entra e o crédito do logo aparece |
-| 06 | 06-versoes.jpg | Principal, negativa e noite |
-| 07 | 07-fotos-rotulos.jpg | Serena, Aura e Selene; Selene em close |
-| 08 | 08-paleta.jpg | Da noite à chama, com o degradê da marca |
-| 09 | 09-tipografia.jpg | Três vozes: Aboreto, Buenard com capitular e Poppins |
-| 10 | 10-cinco-ceus.jpg | Os cinco rótulos desenham o arco de uma lua |
-| 11 | 11-aroma-em-cena.jpg | Baunilha, lavanda e Vênus, cada uma num arco |
-| 12 | 12-estampa.jpg | A estampa e os elementos: sol raiado, nuvem, estrela e arco |
-| 13 | 13-fotos-aromas.jpg | Vênus acesa; baunilha e orquídea |
-| 14 | 14-cuidados.jpg | O card de cuidados em cinco quadros |
-| 15 | 15-papelaria.jpg | Card de cuidados, card de obrigado e adesivo |
-| 16 | 16-obrigada.jpg | Obrigada, com @itsemsdesign e @ohdorn |
+| 01 | 01-abertura.gif | **Motion.** A foto da lua com a chama desenhada à mão tremulando sobre o pavio |
+| 02 | 02-nome.jpg | Logo, conceito em PT e EN, ficha com os créditos |
+| 03 | 03-o-traco.jpg | O caderno com os estudos do símbolo a lápis |
+| 04 | 04-legenda-o-traco.jpg | Legenda I · O traço |
+| 05 | 05-logo-acendendo.gif | **Motion.** Primeiro a lua, depois o fogo; entra o nome e o crédito do logo |
+| 06 | 06-do-traco-a-luz.jpg | Construção do símbolo (R, r, eixo, gota) ao lado do símbolo projetado como luz |
+| 07 | 07-legenda-a-luz.jpg | Legenda II · A luz |
+| 08 | 08-colecao-genesis.jpg | As cinco velas na prateleira, sob uma lua de luz |
+| 09 | 09-legenda-genesis.jpg | Legenda III · Gênesis |
+| 10 | 10-cinco-ceus.jpg | Os cinco rótulos, com aroma e tinta de cada um |
+| 11 | 11-fotos-do-produto.jpg | Fotos reais do produto: Selene; Serena, Aura e Selene |
+| 12 | 12-entrega.jpg | A caixa nas mãos, amarrada, com o adesivo |
+| 13 | 13-legenda-seu-pedido-chegou.jpg | Legenda IV · Seu pedido chegou |
+| 14 | 14-caixa-aberta.jpg | A caixa aberta: papel de seda, a vela Selene e o card Obrigada |
+| 15 | 15-legenda-abrir.jpg | Legenda V · Abrir |
+| 16 | 16-faca-da-caixa.jpg | A faca da caixa-correio, com o lugar do logo e do adesivo |
+| 17 | 17-envelope.jpg | Envelope com lacre do símbolo; o card Obrigada em arte plana |
+| 18 | 18-cuidados.jpg | A vela acesa e o card de cuidados |
+| 19 | 19-legenda-cuidar.jpg | Legenda VI · Cuidar |
+| 20 | 20-kit-completo.jpg | O kit inteiro visto de cima |
+| 21 | 21-cores-e-letras.jpg | A paleta em fases da lua, as tintas da coleção e as quatro fontes |
+| 22 | 22-obrigada.jpg | Lua cheia e "Obrigada", com @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
 
 ## Vídeo no lugar do GIF
 
-`motion-mp4/` tem os três motions em MP4. O de 1280 px sobe direto no Behance (o Behance limita vídeo enviado a 1280 px de largura). O de 1920 px é para Vimeo ou YouTube, se quiser incorporar e ocupar a largura toda. O MP4 fica mais limpo que o GIF no degradê do fundo.
+`motion-mp4/` tem os dois motions em MP4 de 1280 px, que sobem direto no Behance (o limite de vídeo enviado é 1280 px). O `01-chama-na-lua-1280.mp4` tem a abertura completa: o traço desenha a chama, ela se enche de luz e passa a tremular. O MP4 fica mais limpo que o GIF nos degradês da foto.
+
+## Sobre as imagens
+
+As fotos de produto dos módulos 01 e 11 são reais. As fotos de embalagem e ambiente (03, 06, 08, 12, 14, 17, 18 e 20) são mockups gerados com IA a partir das artes reais da marca: rótulos, cards, adesivo e logo. No kit (20), os cards de cuidados e de agradecimento foram reaplicados por cima com a arte original, para o texto ficar fiel. O caderno do módulo 03 é uma encenação do processo, não o esboço original do Cauã; se houver foto do esboço de verdade, ela entra melhor nesse lugar.
+
+No Behance, marque a opção de projeto feito com ferramentas de IA.
 
 ## Descrição (português)
 
 Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
 
-Identidade visual por @itsemsdesign. O logo foi desenhado à mão por Cauã Dorn (@ohdorn) e depois redesenhado em vetor. Dois círculos desenham a lua; um eixo guia a chama. Em movimento, a marca acende como uma vela: primeiro a lua, depois o fogo.
+Identidade visual por @itsemsdesign. O logo foi desenhado à mão por Cauã Dorn (@ohdorn) e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
 
-O resto do universo vem do mesmo céu: sol raiado, nuvens de traço oriental, estrelas de quatro pontas e molduras de carta de tarô. A primeira coleção, Gênesis, tem cinco velas (Aura, Terra, Selene, Serena e Vênus), cada uma com um nome, um aroma e uma cor, impressa numa tinta só sobre papel creme.
+A primeira coleção, Gênesis, tem cinco velas (Aura, Terra, Selene, Serena e Vênus), cada uma com um aroma e uma cor, impressas numa tinta só sobre papel creme. A vela chega numa caixa roxo-profundo fechada com o adesivo "Seu pedido chegou!", com um card de agradecimento e um card de cuidados.
 
 Luz que acalma, aroma que abraça.
 
@@ -50,17 +66,17 @@ Luz que acalma, aroma que abraça.
 
 Almah is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
 
-Visual identity by @itsemsdesign. The logo was hand-drawn by Cauã Dorn (@ohdorn) and then redrawn in vector. Two circles draw the moon; one axis guides the flame. In motion, the mark lights up like a candle: first the moon, then the fire.
+Visual identity by @itsemsdesign. The logo was hand-drawn by Cauã Dorn (@ohdorn) and then redrawn in vector: two circles draw the moon, one axis guides the flame.
 
-Everything else comes from the same sky: sun rays, oriental line clouds, four-pointed stars and tarot card frames. The first collection, Gênesis, has five candles (Aura, Terra, Selene, Serena and Vênus), each with its own name, scent and color, printed in a single ink on cream paper.
+The first collection, Gênesis, has five candles (Aura, Terra, Selene, Serena and Vênus), each with its own scent and color, printed in a single ink on cream paper. Each candle arrives in a deep plum box sealed with a "your order has arrived" sticker, with a thank-you card and a care card.
 
 ## Tags
 
-identidade visual, branding, brand identity, logo, lettering, hand drawn, motion design, velas, candles, scented candles, packaging, rótulo, label design, tarot, celestial, lua, moon, papelaria, handmade
+identidade visual, branding, brand identity, logo, hand drawn, packaging, embalagem, velas, candles, scented candles, label design, rótulo, unboxing, mockup, celestial, lua, moon, motion design, handmade
 
 ## Campos do projeto
 
-- Áreas criativas: Branding, Packaging, Motion Graphics
+- Áreas criativas: Branding, Packaging, Photography
 - Ferramentas: Adobe Illustrator, Figma, Adobe Premiere Pro
 - Marca: Almah (@almahdomus)
 - Créditos: identidade visual por @itsemsdesign; logo desenhado à mão por Cauã Dorn (@ohdorn). No Behance, vale adicionar os dois perfis como proprietários do projeto.

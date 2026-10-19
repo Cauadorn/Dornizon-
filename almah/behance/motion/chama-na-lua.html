@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah · chama na lua</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* a foto da lua (1600 × 2400) com o foguinho desenhado à mão tremulando sobre o pavio.
+     ?modo=intro  o traço desenha a chama, ela se enche e passa a tremular
+     ?modo=loop   só o tremular, em laço perfeito de 4 s (para GIF)
+     ?corte=45    recorte 4:5 centrado na vela */
+  html, body { margin: 0; background: #000; }
+  #palco { position: relative; width: 1600px; height: 2400px; overflow: hidden; background: #000; }
+  #palco.corte45 { height: 2000px; }
+  #foto { position: absolute; left: 0; top: 0; width: 1600px; height: 2400px; display: block; transform-origin: 716px 1168px; }
+  .corte45 #foto, .corte45 svg { top: -260px; }
+  svg { position: absolute; left: 0; top: 0; width: 1600px; height: 2400px; overflow: visible; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <img id="foto" src="../../assets/img/foto-lua.jpg" alt="">
+  <svg viewBox="0 0 1600 2400" aria-hidden="true">
+    <defs>
+      <radialGradient id="gHalo" cx="716" cy="1050" r="560" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFB867" stop-opacity=".55"/>
+        <stop offset=".35" stop-color="#E9893F" stop-opacity=".2"/>
+        <stop offset="1" stop-color="#C0602A" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="gCera" cx=".5" cy=".45" r=".5">
+        <stop offset="0" stop-color="#FFE2B0" stop-opacity=".6"/>
+        <stop offset=".3" stop-color="#FFD39A" stop-opacity=".32"/>
+        <stop offset=".6" stop-color="#FFC27D" stop-opacity=".1"/>
+        <stop offset=".85" stop-color="#FFB060" stop-opacity=".02"/>
+        <stop offset="1" stop-color="#FFB060" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="gChama" x1="0" y1="397" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFD394"/>
+        <stop offset=".45" stop-color="#FFEBB4"/>
+        <stop offset="1" stop-color="#FFF6DC"/>
+      </linearGradient>
+      <filter id="fTraco" x="-30%" y="-15%" width="160%" height="130%">
+        <feTurbulence id="turb" type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="1" result="r"/>
+        <feDisplacementMap in="SourceGraphic" in2="r" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="fBrilho" x="-80%" y="-40%" width="260%" height="180%">
+        <feGaussianBlur stdDeviation="14"/>
+      </filter>
+    </defs>
+    <!-- luz que a chama joga na cena -->
+    <g id="luz" style="mix-blend-mode: screen">
+      <circle cx="716" cy="1050" r="560" fill="url(#gHalo)"/>
+      <ellipse cx="716" cy="1196" rx="230" ry="150" fill="url(#gCera)"/>
+    </g>
+    <!-- a chama: brilho borrado por trás, forma cheia e traço -->
+    <g id="chama" transform="translate(644 868) scale(.756)">
+      <g id="mexe">
+        <path id="brilho" fill="#FFB867" opacity=".0" filter="url(#fBrilho)"/>
+        <g filter="url(#fTraco)">
+          <path id="cheia" fill="url(#gChama)"/>
+          <path id="traco" fill="none" stroke="#FFEBB4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+<script src="../../kit/svgs.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var modo = q.get('modo') || 'intro';
+  if (q.get('corte') === '45') document.getElementById('palco').classList.add('corte45');
+
+  var d = (window.ALMAH_SVG.chama.match(/ d="([^"]+)"/) || [])[1];
+  ['brilho', 'cheia', 'traco'].forEach(function (id) { document.getElementById(id).setAttribute('d', d); });
+
+  var foto = document.getElementById('foto'), luz = document.getElementById('luz');
+  var mexe = document.getElementById('mexe'), cheia = document.getElementById('cheia');
+  var traco = document.getElementById('traco'), brilho = document.getElementById('brilho');
+  var turb = document.getElementById('turb');
+  var L = traco.getTotalLength();
+  traco.style.strokeDasharray = L + ' ' + L;
+
+  // base da chama no desenho (o fundo da gota) = ponto que fica no pavio
+  var BX = 95, BY = 395;
+  var TAU = Math.PI * 2;
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function prog(t, a, b) { return clamp((t - a) / (b - a)); }
+  function suave(x) { return x * x * (3 - 2 * x); }
+
+  // tremular: todas as frequências são múltiplas de 0,25 Hz, então o laço fecha em 4 s
+  function tremor(t) {
+    var a = 3.2 * Math.sin(TAU * .5 * t) + 1.6 * Math.sin(TAU * 1.25 * t + 1.1) + .7 * Math.sin(TAU * 2.75 * t + .4);
+    var sy = 1 + .035 * Math.sin(TAU * .75 * t + .6) + .018 * Math.sin(TAU * 2.25 * t + 2.0);
+    var luzv = .9 + .06 * Math.sin(TAU * 1.75 * t + .3) + .04 * Math.sin(TAU * 3.25 * t + 1.7);
+    return { a: a, sy: sy, sx: 1 / Math.sqrt(sy), luz: luzv };
+  }
+
+  function renderFrame(t) {
+    var acende, enche, intens;
+    if (modo === 'loop') { acende = 1; enche = 1; intens = 1; }
+    else {
+      acende = suave(prog(t, .7, 2.5));     // o traço desenha a chama
+      enche = suave(prog(t, 2.2, 3.2));     // ela se enche de luz
+      intens = suave(prog(t, 2.0, 3.6));    // e ilumina a cena
+    }
+    var m = tremor(t);
+    // o tremor entra junto com o preenchimento, para o traço desenhar parado
+    var k = modo === 'loop' ? 1 : .25 + .75 * enche;
+    mexe.setAttribute('transform',
+      'translate(' + BX + ' ' + BY + ') skewX(' + (m.a * k).toFixed(3) + ') scale(' +
+      (1 + (m.sx - 1) * k).toFixed(4) + ' ' + (1 + (m.sy - 1) * k).toFixed(4) + ') translate(' + (-BX) + ' ' + (-BY) + ')');
+    // "boil" de animação à mão: o contorno muda de leve 12,5 vezes por segundo
+    turb.setAttribute('seed', 1 + (Math.floor(t * 12.5) % 50));
+    traco.style.strokeDashoffset = (L * (1 - acende)).toFixed(1);
+    traco.style.opacity = (1 - .85 * enche).toFixed(3);
+    cheia.style.opacity = enche.toFixed(3);
+    brilho.style.opacity = (.55 * enche * m.luz).toFixed(3);
+    luz.style.opacity = (intens * m.luz).toFixed(3);
+    foto.style.filter = 'brightness(' + (.82 + .18 * intens).toFixed(3) + ')';
+  }
+
+  window.renderFrame = renderFrame;
+  window.DURACAO = modo === 'loop' ? 4 : 9;
+  window.selecionar = function () {};
+
+  if (!q.has('parado')) {
+    var t0 = performance.now();
+    (function tic(agora) {
+      var t = (agora - t0) / 1000;
+      if (modo === 'intro' && t > 3.6) t = 3.6 + ((t - 3.6) % 4);
+      renderFrame(modo === 'loop' ? t % 4 : t);
+      requestAnimationFrame(tic);
+    })(t0);
+  }
+})();
+</script>
+</body>
+</html>
