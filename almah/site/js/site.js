@@ -146,58 +146,12 @@
   window.addEventListener('scroll', function () { if (!pendente) { pendente = true; requestAnimationFrame(aoRolar); } }, { passive: true });
   aoRolar();
 
-  /* ---------- 3 · construção do símbolo: R, r, eixo e o círculo da gota ---------- */
-  var guias = (function () {
-    var S = window.ALMAH_SVG;
-    var dLua = S.lua.match(/ d="([^"]+)"/)[1], dCh = S['chama-simbolo'].match(/ d="([^"]+)"/)[1];
-    var cx0 = 360, cy0 = -40, W = 580, H = 600;
-    var svg = el('svg', { viewBox: cx0 + ' ' + cy0 + ' ' + W + ' ' + H, 'aria-hidden': 'true' }, $('#tracoDesenho'));
-    var tmp = el('path', { d: dLua, fill: 'none' }, svg), Lt = tmp.getTotalLength(), pts = [];
-    for (var i = 0; i < 720; i++) { var p = tmp.getPointAtLength(Lt * i / 720); pts.push([p.x, p.y]); }
-    svg.removeChild(tmp);
-    function ajusta(ps) { // círculo por mínimos quadrados
-      var sx = 0, sy = 0, sxx = 0, syy = 0, sxy = 0, sz = 0, sxz = 0, syz = 0, n = ps.length;
-      ps.forEach(function (q) { var x = q[0], y = q[1], z = x * x + y * y; sx += x; sy += y; sxx += x * x; syy += y * y; sxy += x * y; sz += z; sxz += x * z; syz += y * z; });
-      var A = [[sxx, sxy, sx], [sxy, syy, sy], [sx, sy, n]], b = [-sxz, -syz, -sz];
-      function det(m) { return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]); }
-      function troca(m, c, v) { return m.map(function (l, r) { return l.map(function (x, j) { return j === c ? v[r] : x; }); }); }
-      var D = det(A), Dd = det(troca(A, 0, b)) / D, Ee = det(troca(A, 1, b)) / D, Ff = det(troca(A, 2, b)) / D;
-      var cx = -Dd / 2, cy = -Ee / 2; return [cx, cy, Math.sqrt(cx * cx + cy * cy - Ff)];
-    }
-    var g0 = [644.5, 279.5, 224.5];
-    var O = ajusta(pts.filter(function (q) { return Math.abs(Math.hypot(q[0] - g0[0], q[1] - g0[1]) - g0[2]) < 7; }));
-    var I = ajusta(pts.filter(function (q) { return Math.hypot(q[0] - O[0], q[1] - O[1]) < O[2] - 8; }));
-    var tmp2 = el('path', { d: dCh, fill: 'none' }, svg), L2 = tmp2.getTotalLength(), pc = [];
-    for (i = 0; i < 400; i++) { var q = tmp2.getPointAtLength(L2 * i / 400); if (q.y > 300) pc.push([q.x, q.y]); }
-    svg.removeChild(tmp2);
-    var G = ajusta(pc), eixo = 652.5, guia = '#E9D29A', tinta = '#FFEBB4';
-    var grade = el('g', { stroke: tinta, 'stroke-width': .5, 'stroke-opacity': .07 }, svg);
-    for (var x = cx0; x <= cx0 + W; x += 20) el('line', { x1: x, y1: cy0, x2: x, y2: cy0 + H }, grade);
-    for (var y = cy0; y <= cy0 + H; y += 20) el('line', { x1: cx0, y1: y, x2: cx0 + W, y2: y }, grade);
-    var linhas = [
-      el('line', { x1: cx0, y1: O[1], x2: cx0 + W, y2: O[1], stroke: guia, 'stroke-width': .8, 'stroke-dasharray': '4 5', opacity: .55 }, svg),
-      el('line', { x1: eixo, y1: cy0, x2: eixo, y2: cy0 + H, stroke: guia, 'stroke-width': .8, 'stroke-dasharray': '4 5', opacity: .55 }, svg)
-    ];
-    var circ = [O, I].map(function (c) { return el('circle', { cx: c[0], cy: c[1], r: c[2], fill: 'none', stroke: guia, 'stroke-width': 1.1, 'class': 'guia' }, svg); });
-    circ.push(el('circle', { cx: G[0], cy: G[1], r: G[2], fill: 'none', stroke: guia, 'stroke-width': .9, 'class': 'guia' }, svg));
-    var formas = [el('path', { d: dLua, fill: tinta, 'class': 'forma', opacity: reduz ? .96 : 0 }, svg), el('path', { d: dCh, fill: tinta, 'class': 'forma', opacity: reduz ? .96 : 0 }, svg)];
-    var m = el('g', { fill: guia, 'font-family': 'Poppins', 'font-size': 12, 'letter-spacing': '1' }, svg);
-    el('circle', { cx: O[0], cy: O[1], r: 3 }, m); el('circle', { cx: I[0], cy: I[1], r: 3 }, m);
-    var aO = 205 * Math.PI / 180, aI = 25 * Math.PI / 180;
-    el('line', { x1: O[0], y1: O[1], x2: O[0] + O[2] * Math.cos(aO), y2: O[1] + O[2] * Math.sin(aO), stroke: guia, 'stroke-width': .8 }, m);
-    el('line', { x1: I[0], y1: I[1], x2: I[0] + I[2] * Math.cos(aI), y2: I[1] + I[2] * Math.sin(aI), stroke: guia, 'stroke-width': .8 }, m);
-    el('text', { x: O[0] + O[2] * .5 * Math.cos(aO) - 4, y: O[1] + O[2] * .5 * Math.sin(aO) - 8 }, m).textContent = 'R';
-    el('text', { x: I[0] + I[2] * .5 * Math.cos(aI) + 2, y: I[1] + I[2] * .5 * Math.sin(aI) - 8 }, m).textContent = 'r';
-    el('text', { x: eixo + 8, y: cy0 + 24 }, m).textContent = 'eixo';
-    circ.forEach(function (c, i) { var l = TAU * +c.getAttribute('r'); c.style.strokeDasharray = l + ' ' + l; c.style.strokeDashoffset = reduz ? 0 : l; c.style.transitionDelay = (i * .25) + 's'; });
-    // desenha uma vez, quando aparece; nada preso à rolagem
-    var caixaC = $('#tracoDesenho');
-    if ('IntersectionObserver' in window && !reduz) {
-      var ioC = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { caixaC.classList.add('visto'); ioC.disconnect(); } }, { threshold: .4 });
-      ioC.observe(caixaC);
-    } else caixaC.classList.add('visto');
-    return { circ: circ, linhas: linhas, formas: formas, marcas: m };
-  })();
+  /* ---------- 3 · o símbolo: lua + chama = Almah, entra uma vez quando aparece ---------- */
+  var equacao = $('#equacao');
+  if ('IntersectionObserver' in window && !reduz) {
+    var ioS = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { equacao.classList.add('visto'); ioS.disconnect(); } }, { threshold: .35 });
+    ioS.observe(equacao);
+  } else equacao.classList.add('visto');
 
   /* ---------- 6 · crie seu rótulo ---------- */
   var rot = $('#rotuloVivo'), rNome = $('#rNome'), rAroma = $('#rAroma'), rPeso = $('#rPeso');
@@ -302,7 +256,7 @@
   gsap.from('.linha img', { scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.linha', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   /* entradas suaves */
-  $$('.simbolo .esboco, .simbolo .grade > div, .colecao .topo, .caixa .cab, .etapa, .oficina .grade > div, .marca-sec h2, .marca-sec .grade > *, .papelaria img, .filme .grade > *').forEach(function (e) {
+  $$('.simbolo .cab, .colecao .topo, .caixa .cab, .etapa, .oficina .grade > div, .marca-sec h2, .marca-sec .grade > *, .papelaria img, .filme .grade > *').forEach(function (e) {
     gsap.from(e, { y: 40, opacity: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: e, start: 'top 88%' } });
   });
 
