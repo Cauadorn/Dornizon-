@@ -124,7 +124,7 @@ html.js .hero .lado { opacity: 0; }
 .traco .fala .n svg { width: 24px; height: 24px; }
 .traco .fala h3 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(34px, 3.6vw, 54px); line-height: 1.05; margin: 16px 0 16px; }
 .traco .fala p { font-size: 17px; max-width: 420px; opacity: .86; }
-.traco .palco-t { position: relative; }
+.traco .palco-t { position: relative; overflow: hidden; }
 .traco .camada { position: absolute; inset: 0; opacity: 0; }
 .traco .camada:first-child { opacity: 1; }
 .traco .camada img { width: 100%; height: 100%; object-fit: cover; }
@@ -192,8 +192,8 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 .linha { position: relative; margin: clamp(40px, 6vw, 70px) 0 0; background: #2a1f2c; }
 .linha img { width: 100%; height: auto; aspect-ratio: 2752 / 1536; object-fit: cover; }
 .ponto { position: absolute; left: var(--x); top: var(--y); width: 44px; height: 44px; translate: -50% -50%; border: 0; padding: 0; background: none; cursor: pointer; color: var(--creme); }
-.ponto::before { content: ""; position: absolute; inset: 13px; border-radius: 50%; background: var(--creme); box-shadow: 0 0 0 4px #FFEBB455; }
-.ponto::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1px solid #FFEBB4aa; animation: pulso 2.6s ease-out infinite; animation-delay: var(--d, 0s); }
+.ponto::before { content: ""; position: absolute; inset: 14px; border-radius: 50%; background: var(--noite); border: 2px solid var(--creme); box-shadow: 0 0 0 4px #1C172655, 0 0 14px #FFD58A88; }
+.ponto::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1.5px solid #FFEBB4; animation: pulso 2.6s ease-out infinite; animation-delay: var(--d, 0s); }
 @keyframes pulso { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
 .ponto span { position: absolute; left: 50%; bottom: calc(100% + 6px); translate: -50% 6px; white-space: nowrap; background: #1C1726e6; border-radius: 99px; padding: 7px 14px; font-size: 13px; letter-spacing: .04em; opacity: 0; pointer-events: none; transition: opacity .3s, translate .3s; }
 .ponto span b { font-family: var(--f-display); font-weight: 400; letter-spacing: .14em; margin-right: 6px; }
@@ -224,7 +224,7 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
 .etapa ul li::before { content: ""; width: 9px; height: 9px; margin-top: 8px; background: var(--ouro); clip-path: path('M4.5 0C4.8 3.4 5.6 4.2 9 4.5 5.6 4.8 4.8 5.6 4.5 9 4.2 5.6 3.4 4.8 0 4.5 3.4 4.2 4.2 3.4 4.5 0Z'); }
 @media (max-width: 860px) {
   .caixa .grade { grid-template-columns: 1fr; gap: 0; }
-  .caixa .palco-c { top: 64px; height: 50svh; z-index: 2; background: linear-gradient(var(--noite) 86%, transparent); padding-bottom: 14px; }
+  .caixa .palco-c { top: 60px; height: 42svh; z-index: 2; background: linear-gradient(var(--noite) 86%, transparent); padding-bottom: 14px; }
   .etapa { min-height: 56svh; }
   .etapa p { font-size: 16px; }
 }
@@ -416,11 +416,11 @@ html:not(.com-gsap) .traco .camada { height: 70svh; }
   </div>
   <figure class="linha" id="linha">
     <img src="img/mock-colecao.webp" alt="As cinco velas da Coleção Gênesis numa prateleira, sob uma lua de luz na parede" loading="lazy">
-    <button class="ponto" type="button" style="--x:13.6%;--y:69%;--d:0s" data-carta="0"><span><b>AURA</b>baunilha</span></button>
-    <button class="ponto" type="button" style="--x:31.6%;--y:69%;--d:.4s" data-carta="1"><span><b>TERRA</b>cascas e folhas</span></button>
-    <button class="ponto" type="button" style="--x:49.8%;--y:69%;--d:.8s" data-carta="2"><span><b>SELENE</b>lavanda</span></button>
-    <button class="ponto" type="button" style="--x:68%;--y:69%;--d:1.2s" data-carta="3"><span><b>SERENA</b>rosas</span></button>
-    <button class="ponto" type="button" style="--x:86.1%;--y:69%;--d:1.6s" data-carta="4"><span><b>VÊNUS</b>cereja e avelã</span></button>
+    <button class="ponto" type="button" style="--x:13.6%;--y:56%;--d:0s" data-carta="0"><span><b>AURA</b>baunilha</span></button>
+    <button class="ponto" type="button" style="--x:31.6%;--y:56%;--d:.4s" data-carta="1"><span><b>TERRA</b>cascas e folhas</span></button>
+    <button class="ponto" type="button" style="--x:49.8%;--y:56%;--d:.8s" data-carta="2"><span><b>SELENE</b>lavanda</span></button>
+    <button class="ponto" type="button" style="--x:68%;--y:56%;--d:1.2s" data-carta="3"><span><b>SERENA</b>rosas</span></button>
+    <button class="ponto" type="button" style="--x:86.1%;--y:56%;--d:1.6s" data-carta="4"><span><b>VÊNUS</b>cereja e avelã</span></button>
   </figure>
   <div class="miolo">
     <div class="baralho" id="baralho">

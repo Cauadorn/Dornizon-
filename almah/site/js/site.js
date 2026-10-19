@@ -275,7 +275,7 @@
   if ('IntersectionObserver' in window) {
     var ioE = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) irEtapa(+e.target.dataset.i); });
-    }, { rootMargin: '-45% 0px -45% 0px' });
+    }, { rootMargin: window.matchMedia('(max-width: 860px)').matches ? '-62% 0px -22% 0px' : '-45% 0px -45% 0px' });   // no celular a foto fixa ocupa o alto da tela
     etapas.forEach(function (e) { ioE.observe(e); });
   }
 
