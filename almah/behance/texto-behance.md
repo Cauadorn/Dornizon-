@@ -41,7 +41,7 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 | 20 | 20-legenda-cuidar.jpg | Legenda VI · Cuidar |
 | 21 | 21-kit-completo.jpg | O kit inteiro visto de cima |
 | 22 | 22-cores-e-letras.jpg | Roxo profundo como cor principal, a paleta em fases da lua, as tintas e as quatro fontes |
-| 23 | 23-obrigada.jpg | Lua cheia e "Obrigada", com os créditos: Emily @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
+| 23 | 23-obrigada.jpg | Lua cheia e "Obrigada", com os créditos: Emilly @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
 
 ## Vídeo no lugar do GIF
 
@@ -57,7 +57,7 @@ No Behance, marque a opção de projeto feito com ferramentas de IA.
 
 Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
 
-Identidade visual por Emily (@itsemsdesign) e Cauã Dorn (@ohdorn). O logo foi desenhado à mão pelo Cauã e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
+Identidade visual por Emilly (@itsemsdesign) e Cauã Dorn (@ohdorn). O logo foi desenhado à mão pelo Cauã e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
 
 A primeira coleção, Gênesis, tem cinco velas (Aura, Terra, Selene, Serena e Vênus), cada uma com um aroma e uma cor, impressas numa tinta só sobre papel creme. O roxo profundo é a cor principal da marca. A vela chega numa caixa roxo-profundo fechada com o adesivo "Seu pedido chegou!", com um card de agradecimento e um card de cuidados.
 
@@ -67,7 +67,7 @@ Luz que acalma, aroma que abraça.
 
 Almah is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
 
-Visual identity by Emily (@itsemsdesign) and Cauã Dorn (@ohdorn). The logo was hand-drawn by Cauã and then redrawn in vector: two circles draw the moon, one axis guides the flame.
+Visual identity by Emilly (@itsemsdesign) and Cauã Dorn (@ohdorn). The logo was hand-drawn by Cauã and then redrawn in vector: two circles draw the moon, one axis guides the flame.
 
 The first collection, Gênesis, has five candles (Aura, Terra, Selene, Serena and Vênus), each with its own scent and color, printed in a single ink on cream paper. Deep plum is the brand's main color. Each candle arrives in a deep plum box sealed with a "your order has arrived" sticker, with a thank-you card and a care card.
 
@@ -80,4 +80,4 @@ identidade visual, branding, brand identity, logo, hand drawn, packaging, embala
 - Áreas criativas: Branding, Packaging, Photography
 - Ferramentas: Adobe Illustrator, Figma, Adobe Premiere Pro
 - Marca: Almah (@almahdomus)
-- Créditos: identidade visual por Emily (@itsemsdesign) e Cauã Dorn (@ohdorn); logo desenhado à mão pelo Cauã. No Behance, vale adicionar os dois perfis como proprietários do projeto.
+- Créditos: identidade visual por Emilly (@itsemsdesign) e Cauã Dorn (@ohdorn); logo desenhado à mão pelo Cauã. No Behance, vale adicionar os dois perfis como proprietários do projeto.
