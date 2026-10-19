@@ -1,0 +1,36 @@
+/* Kit Almah: tokens e peças comuns ao brandbook, Pinterest, Behance e site.
+   Cores lidas no Figma "Candles" e nos PDFs de impressão; --noite é tom de apoio novo. */
+:root {
+  --verde: #1D7053;
+  --roxo: #7138B7;
+  --roxo-profundo: #503B69;
+  --creme: #FFEBB4;
+  --creme-claro: #FFF1CA;
+  --papel: #F5ECD7;
+  --grafite: #424242;
+  --noite: #1C1726;
+  --noite-2: #2A2236;
+
+  --aura: #6D712F;
+  --terra: #167154;
+  --selene: #503B6A;
+  --serena: #9B2929;
+  --venus: #B55263;
+
+  --f-display: 'Aboreto', 'Cinzel', Georgia, serif;
+  --f-serif: 'Buenard', Georgia, 'Times New Roman', serif;
+  --f-cap: 'Fleur De Leah', 'Brush Script MT', cursive;
+  --f-texto: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.svg > svg, svg.cheio { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* moldura dupla dos rótulos: duas linhas finas, cantos arredondados */
+.moldura { position: absolute; border: 1px solid currentColor; border-radius: var(--raio-moldura, 14px); pointer-events: none; }
+.moldura::after { content: ""; position: absolute; inset: var(--respiro-moldura, 7px); border: 1px solid currentColor; border-radius: calc(var(--raio-moldura, 14px) - 4px); opacity: .7; }
+
+/* arco de carta de tarô */
+.arco { border-radius: 999px 999px var(--raio-base, 10px) var(--raio-base, 10px); overflow: hidden; }
+
+.olho { font-family: var(--f-texto); font-weight: 500; font-size: .78em; letter-spacing: .22em; text-transform: uppercase; }
+.capitular { font-family: var(--f-cap); font-weight: 400; }

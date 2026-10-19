@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah Pinterest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Buenard:wght@400;700&family=Fleur+De+Leah&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<link rel="stylesheet" href="../kit/kit.css">
+<style>
+/* board vertical 1080 × 1920: noite em cima, marca no meio, fotos, paleta no pé */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #222; font-family: var(--f-texto); }
+.board { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: var(--papel); display: grid; grid-template-rows: 712px 352px 104px minmax(0, 1fr) 112px; }
+
+.topo { position: relative; background: radial-gradient(90% 70% at 50% 34%, #2E2540 0%, var(--noite) 58%, #120E18 100%); color: var(--creme); overflow: hidden; }
+.topo .ceu { position: absolute; inset: 0; }
+.topo .ceu .pt { opacity: .5; } .topo .ceu .est { opacity: .85; }
+.topo .rotulo-topo { position: absolute; top: 34px; left: 40px; right: 40px; display: flex; justify-content: space-between; font-weight: 500; font-size: 11px; letter-spacing: .32em; opacity: .62; }
+.topo .sol { position: absolute; width: 900px; height: 900px; left: 50%; top: 262px; transform: translate(-50%, -50%); opacity: .5; }
+.topo .brilho { position: absolute; width: 640px; height: 640px; left: 50%; top: 262px; transform: translate(-50%, -50%); background: radial-gradient(circle, #FFEBB430 0%, #FFEBB410 38%, transparent 66%); }
+.topo .janela { position: absolute; left: 50%; top: 88px; width: 300px; height: 380px; transform: translateX(-50%); border: 1px solid #FFEBB4a0; border-radius: 999px 999px 12px 12px; }
+.topo .janela::after { content: ""; position: absolute; inset: 9px; border: 1px solid #FFEBB466; border-radius: 999px 999px 6px 6px; }
+.topo .janela .e1, .topo .janela .e2 { position: absolute; width: 16px; height: 16px; top: 50%; }
+.topo .janela .e1 { left: -8px; } .topo .janela .e2 { right: -8px; }
+.topo .sim { position: absolute; left: 50%; top: 178px; width: 168px; height: 179px; transform: translateX(-50%); color: var(--creme); }
+.topo .nuv { position: absolute; color: var(--creme); }
+.topo .nuv.a { width: 230px; height: 76px; left: 254px; top: 404px; opacity: .9; }
+.topo .nuv.b { width: 190px; height: 99px; right: 268px; top: 392px; opacity: .9; }
+.topo .nuv.c { width: 300px; height: 99px; left: -40px; top: 560px; opacity: .3; }
+.topo .nuv.d { width: 250px; height: 76px; right: -30px; top: 150px; opacity: .25; }
+.topo .nome { position: absolute; left: 50%; top: 512px; width: 470px; height: 108px; transform: translateX(-50%); color: var(--creme); }
+.topo .linha { position: absolute; left: 0; right: 0; top: 650px; display: flex; align-items: center; justify-content: center; gap: 22px; font-weight: 500; font-size: 12.5px; letter-spacing: .34em; color: #E9D29A; }
+.topo .linha i { width: 70px; height: 1px; background: #E9D29A88; }
+
+.tiles { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.tile { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+.t1 { background: #F8F1E1; color: var(--verde); }
+.t1 .logo { width: 210px; height: 143px; }
+.t1 small { font-weight: 500; font-size: 9.5px; letter-spacing: .3em; margin-top: 14px; color: var(--grafite); }
+.t1 .moldura { inset: 18px; --raio-moldura: 12px; --respiro-moldura: 6px; color: var(--verde); opacity: .35; }
+.t2 { background: var(--verde); color: var(--creme); }
+.t2 .selo { width: 290px; height: 290px; position: relative; }
+.t2 .selo svg.anel { position: absolute; inset: 0; width: 100%; height: 100%; }
+.t2 .selo .sim { position: absolute; left: 50%; top: 50%; width: 92px; height: 98px; transform: translate(-50%, -54%); }
+.t3 { background: var(--roxo-profundo); }
+.t3 img { position: absolute; width: 250px; filter: drop-shadow(0 14px 22px #0007); }
+
+.faixa { background-color: var(--papel); background-size: 104px; border-top: 1px solid #1D705322; border-bottom: 1px solid #1D705322; }
+
+.fotos { background: #F8F1E1; padding: 40px; display: grid; grid-template-columns: 1.22fr 1fr; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; min-height: 0; }
+.fotos figure { position: relative; overflow: hidden; border-radius: 6px; min-height: 0; }
+.fotos figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fotos .grande { grid-row: span 2; }
+.fotos figcaption { position: absolute; left: 18px; bottom: 16px; font-weight: 500; font-size: 10px; letter-spacing: .3em; color: var(--creme); text-transform: uppercase; text-shadow: 0 1px 8px #0008; }
+
+.pe { background: var(--noite); color: var(--creme); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+.pe .cores { display: flex; gap: 10px; }
+.pe .cores i { width: 30px; height: 30px; border-radius: 50%; box-shadow: inset 0 0 0 1px #FFEBB433; }
+.pe q { font-family: var(--f-serif); font-size: 25px; quotes: none; color: #F5E3B5; }
+.pe .assina { font-weight: 500; font-size: 12px; letter-spacing: .16em; opacity: .85; }
+</style>
+</head>
+<body>
+<div class="board">
+
+  <section class="topo">
+    <div class="ceu" data-estrelas="n:52;semente:29;rMax:10;miolo:.16"></div>
+    <div class="brilho"></div>
+    <div class="sol" data-raios="n:110;de:-196;ate:16;r0:30;r1:99;peso:.16;semente:23"></div>
+    <div class="rotulo-topo"><span>IDENTIDADE VISUAL</span><span>2026</span></div>
+    <div class="nuv d" data-svg="nuvem-linha-3"></div>
+    <div class="nuv c" data-svg="nuvem-linha-2"></div>
+    <div class="janela">
+      <svg class="e1" viewBox="-1 -1 2 2" fill="#FFEBB4"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z"/></svg>
+      <svg class="e2" viewBox="-1 -1 2 2" fill="#FFEBB4"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z"/></svg>
+    </div>
+    <div class="sim" data-svg="simbolo"></div>
+    <div class="nuv a" data-svg="nuvem-linha-3"></div>
+    <div class="nuv b" data-svg="nuvem-linha-1"></div>
+    <div class="nome" data-svg="nome"></div>
+    <p class="linha"><i></i>VELAS AROMÁTICAS · COLEÇÃO GÊNESIS<i></i></p>
+  </section>
+
+  <section class="tiles">
+    <div class="tile t1"><div class="moldura"></div><div class="logo" data-svg="logo-almah"></div><small>VELAS AROMÁTICAS &amp; UTENSÍLIOS</small></div>
+    <div class="tile t2">
+      <div class="selo">
+        <svg class="anel" viewBox="0 0 290 290" fill="currentColor">
+          <defs><path id="circ" d="M145 145m-112 0a112 112 0 1 1 224 0a112 112 0 1 1-224 0"/></defs>
+          <circle cx="145" cy="145" r="86" fill="none" stroke="currentColor" stroke-width=".8" opacity=".55"/>
+          <circle cx="145" cy="145" r="81" fill="none" stroke="currentColor" stroke-width=".6" opacity=".35"/>
+          <text font-family="Poppins" font-weight="500" font-size="13" letter-spacing="3"><textPath href="#circ" textLength="700" lengthAdjust="spacing">ALMAH ✦ FEITO À MÃO ✦ COLEÇÃO GÊNESIS ✦ 2026 ✦</textPath></text>
+        </svg>
+        <div class="sim" data-svg="simbolo"></div>
+      </div>
+    </div>
+    <div class="tile t3">
+      <img src="../assets/img/rotulo-cor-selene.webp" alt="" style="left:28px;top:44px;transform:rotate(-8deg)">
+      <img src="../assets/img/rotulo-cor-venus.webp" alt="" style="left:92px;top:150px;transform:rotate(5deg)">
+    </div>
+  </section>
+
+  <section class="faixa" data-estampa="#1D7053,,104"></section>
+
+  <section class="fotos">
+    <figure class="grande"><img src="../assets/img/foto-trio-quente.jpg" alt="" style="object-position:50% 40%"><figcaption>Serena · Aura · Selene</figcaption></figure>
+    <figure><img src="../assets/img/foto-lua.jpg" alt="" style="object-position:50% 52%"></figure>
+    <figure><img src="../assets/img/ia-venus-acesa.jpg" alt="" style="object-position:50% 62%"><figcaption>Vênus · cereja e avelã</figcaption></figure>
+  </section>
+
+  <section class="pe">
+    <div class="cores"><i style="background:#1D7053"></i><i style="background:#503B69"></i><i style="background:#7138B7"></i><i style="background:#B55263"></i><i style="background:#FFEBB4"></i><i style="background:#F5ECD7"></i></div>
+    <q>luz que acalma, aroma que abraça</q>
+    <span class="assina">@almahdomus</span>
+  </section>
+</div>
+<script src="../kit/svgs.js"></script>
+<script src="../kit/kit.js"></script>
+</body>
+</html>

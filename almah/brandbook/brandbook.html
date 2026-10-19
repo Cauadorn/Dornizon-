@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Buenard:wght@400;700&family=Fleur+De+Leah&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap">
+<link rel="stylesheet" href="../kit/kit.css">
+<style>
+/* página 1920 × 1080; moldura dupla em toda página, como no rótulo */
+:root { --tinta: #2A2236; --tinta-2: #2A2236b3; --fio: #2A223626; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: 1920px 1080px; margin: 0; }
+html { background: #3a3340; }
+body { font-family: var(--f-texto); font-weight: 300; color: var(--tinta); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@media screen { .pg { margin: 40px auto; box-shadow: 0 20px 60px #0006; } }
+.pg { width: 1920px; height: 1080px; position: relative; overflow: hidden; break-after: page; padding: 120px 150px 110px; display: flex; flex-direction: column; }
+section.pg:last-of-type { break-after: auto; }
+.pg > .moldura { inset: 40px; --raio-moldura: 22px; --respiro-moldura: 9px; opacity: .32; }
+.papel { background: var(--papel); color: var(--tinta); }
+.noite { background: radial-gradient(120% 90% at 50% 40%, var(--noite-2) 0%, var(--noite) 60%, #141019 100%); color: var(--creme); }
+.verde { background: var(--verde); color: var(--creme); }
+.roxo { background: var(--roxo-profundo); color: var(--creme); }
+
+.cab { display: flex; align-items: baseline; gap: 26px; margin-bottom: 64px; }
+.cab .olho { font-size: 15px; color: var(--verde); }
+.noite .cab .olho, .verde .cab .olho, .roxo .cab .olho { color: var(--creme); opacity: .75; }
+h2 { font-family: var(--f-display); font-weight: 400; font-size: 76px; line-height: 1; letter-spacing: .02em; color: var(--verde); }
+.noite h2, .verde h2, .roxo h2 { color: var(--creme); }
+h3 { font-family: var(--f-display); font-weight: 400; font-size: 34px; letter-spacing: .04em; line-height: 1.1; }
+.rodape { position: absolute; left: var(--rod-esq, 150px); right: 150px; bottom: 66px; display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; }
+.rodape b { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.rodape b svg { width: 10px; height: 10px; }
+.miolo { flex: 1; min-height: 0; display: flex; gap: 90px; }
+.lead { font-family: var(--f-serif); font-size: 44px; line-height: 1.22; text-wrap: balance; }
+p { font-size: 21px; line-height: 1.6; text-wrap: pretty; }
+.nota { font-size: 16px; line-height: 1.5; opacity: .7; }
+.leg { font-size: 15px; line-height: 1.45; }
+.leg b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 22px; letter-spacing: .05em; margin-bottom: 4px; }
+.tag-novo { display: inline-block; font-weight: 500; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; border: 1px solid currentColor; border-radius: 99px; padding: 4px 12px 3px; margin-left: 12px; vertical-align: middle; }
+.ceu { position: absolute; inset: 0; color: var(--creme); pointer-events: none; }
+.ceu .est { opacity: .8; } .ceu .pt { opacity: .45; }
+
+/* capa */
+.capa { align-items: center; justify-content: center; padding: 0; }
+.capa .sol { position: absolute; width: 1180px; height: 1180px; left: 50%; top: 42%; transform: translate(-50%, -50%); color: var(--creme); opacity: .55; }
+.capa .brilho { position: absolute; width: 900px; height: 900px; left: 50%; top: 42%; transform: translate(-50%, -50%); background: radial-gradient(circle, #FFEBB42e 0%, #FFEBB40d 35%, transparent 65%); }
+.capa .marca { position: relative; display: flex; flex-direction: column; align-items: center; margin-top: -40px; }
+.capa .sim { width: 250px; height: 266px; color: var(--creme); }
+.capa .nome { width: 600px; height: 138px; color: var(--creme); margin-top: 38px; }
+.capa .sub { font-family: var(--f-display); font-size: 30px; letter-spacing: .5em; margin-top: 70px; padding-left: .5em; }
+.capa .sub2 { font-weight: 400; font-size: 16px; letter-spacing: .28em; text-transform: uppercase; margin-top: 18px; opacity: .7; }
+.nuvem-canto { position: absolute; color: var(--creme); }
+.capa .n1 { width: 560px; height: 184px; left: -60px; bottom: 30px; opacity: .55; }
+.capa .n2 { width: 470px; height: 142px; right: -40px; bottom: 120px; opacity: .45; }
+.capa .n3 { width: 230px; height: 120px; right: 220px; top: 120px; opacity: .3; }
+
+/* sumário */
+.sumario .miolo { gap: 120px; }
+.sumario figure { flex: 0 0 520px; position: relative; }
+.sumario figure .arco { position: absolute; inset: 0; --raio-base: 16px; }
+.sumario figure img { width: 100%; height: 100%; object-fit: cover; }
+.sumario ol { list-style: none; columns: 2; column-gap: 90px; flex: 1; align-self: center; }
+.sumario li { display: flex; align-items: baseline; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--fio); break-inside: avoid; font-size: 22px; }
+.sumario li span:first-child { font-weight: 500; font-size: 14px; letter-spacing: .14em; color: var(--verde); width: 34px; }
+.sumario li span:nth-child(2) { flex: 1; }
+.sumario li span:last-child { font-variant-numeric: tabular-nums; font-size: 16px; opacity: .6; }
+
+/* manifesto */
+.manifesto .miolo { align-items: stretch; gap: 120px; }
+.manifesto .txt { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 46px; }
+.manifesto .frase { font-family: var(--f-serif); font-size: 104px; line-height: 1.02; letter-spacing: -.01em; }
+.manifesto .frase em { font-style: normal; color: var(--creme); }
+.manifesto .frase span { opacity: .55; }
+.manifesto p { max-width: 780px; font-size: 23px; opacity: .85; }
+.manifesto figure { flex: 0 0 470px; margin-top: -40px; margin-bottom: -10px; position: relative; }
+.manifesto figure .arco { position: absolute; inset: 0; border: 1px solid #FFEBB466; padding: 10px; background: transparent; }
+.manifesto figure .arco img { width: 100%; height: 100%; object-fit: cover; border-radius: 999px 999px 6px 6px; display: block; }
+
+/* a marca */
+.marca-pg .miolo { gap: 110px; }
+.marca-pg figure { flex: 0 0 560px; margin: -120px 0 -110px -150px; position: relative; }
+.marca-pg figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.marca-pg .txt { flex: 1; display: flex; flex-direction: column; gap: 34px; justify-content: center; }
+.marca-pg .lead { color: var(--verde); font-size: 50px; }
+.atributos { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 60px; border-top: 1px solid var(--fio); padding-top: 34px; }
+.atributos div b { font-family: var(--f-display); font-weight: 400; font-size: 26px; letter-spacing: .06em; color: var(--verde); display: block; margin-bottom: 6px; }
+.atributos div span { font-size: 18px; line-height: 1.5; }
+.assin { display: flex; gap: 60px; font-size: 18px; }
+.assin dt { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--verde); margin-bottom: 6px; }
+.assin dd { font-family: var(--f-serif); font-size: 26px; }
+
+/* símbolo */
+.simbolo-pg .equacao { flex: 1; display: grid; grid-template-columns: 1fr 70px 1fr 70px 1.25fr; align-items: center; justify-items: center; }
+.simbolo-pg .op { font-family: var(--f-serif); font-size: 80px; opacity: .6; }
+.simbolo-pg .peca { display: flex; flex-direction: column; align-items: center; gap: 46px; text-align: center; }
+.simbolo-pg .peca .svg { height: 330px; width: 330px; color: var(--creme); }
+.simbolo-pg .peca.final .svg { height: 400px; width: 400px; }
+.simbolo-pg .peca .leg { max-width: 330px; font-size: 17px; opacity: .9; }
+.simbolo-pg .peca .leg b { font-size: 28px; }
+.simbolo-pg .grade { position: absolute; inset: 0; background-image: linear-gradient(#FFEBB40f 1px, transparent 1px), linear-gradient(90deg, #FFEBB40f 1px, transparent 1px); background-size: 60px 60px; }
+
+/* logo */
+.logo-pg .miolo { gap: 36px; }
+.tile { border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 40px 40px 70px; }
+.tile .leg { position: absolute; left: 30px; right: 30px; bottom: 24px; font-size: 14px; display: flex; justify-content: space-between; letter-spacing: .04em; }
+.tile.borda { border: 1px solid var(--fio); }
+.logo-pg .principal { flex: 0 0 820px; background: var(--verde); color: var(--creme); }
+.logo-pg .principal .svg { width: 470px; height: 320px; }
+.logo-pg .grade4 { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 36px; }
+.logo-pg .grade4 .svg { color: var(--verde); }
+.descritor { display: flex; flex-direction: column; align-items: center; }
+.descritor small { font-weight: 500; font-size: 11px; letter-spacing: .26em; margin-top: 16px; text-transform: uppercase; white-space: nowrap; color: var(--grafite); }
+
+/* proteção */
+.prot .miolo { gap: 120px; align-items: center; }
+.prot .area { position: relative; flex: 0 0 820px; height: 640px; display: flex; align-items: center; justify-content: center; background-image: linear-gradient(var(--fio) 1px, transparent 1px), linear-gradient(90deg, var(--fio) 1px, transparent 1px); background-size: 40px 40px; border: 1px solid var(--fio); border-radius: 14px; }
+.prot .caixa { position: relative; padding: 80px; border: 2px dashed #1D705399; }
+.prot .caixa .svg { width: 400px; height: 272px; color: var(--verde); }
+.prot .x { position: absolute; font-family: var(--f-serif); font-size: 30px; color: var(--verde); display: flex; align-items: center; justify-content: center; }
+.prot .x::before { content: ""; position: absolute; background: #1D705355; }
+.prot .x.t { top: 0; left: 50%; height: 80px; width: 40px; transform: translateX(-50%); } .prot .x.t::before { top: 0; bottom: 0; width: 1px; left: 50%; }
+.prot .x.l { left: 0; top: 50%; width: 80px; height: 40px; transform: translateY(-50%); } .prot .x.l::before { left: 0; right: 0; height: 1px; top: 50%; }
+.prot .x span { position: relative; background: var(--papel); padding: 0 6px; font-style: italic; }
+.prot .info { flex: 1; display: flex; flex-direction: column; gap: 40px; }
+.minimos { display: flex; gap: 60px; align-items: flex-end; border-top: 1px solid var(--fio); padding-top: 34px; }
+.minimos div { display: flex; flex-direction: column; gap: 14px; }
+.minimos .svg { color: var(--verde); }
+.minimos small { font-size: 15px; line-height: 1.4; }
+.minimos small b { font-weight: 500; display: block; }
+
+/* fundos */
+.fundos .grade { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 28px; }
+.fundos .f { border-radius: 16px; position: relative; display: flex; align-items: center; justify-content: center; gap: 70px; overflow: hidden; }
+.fundos .f .svg.l { width: 240px; height: 164px; } .fundos .f .svg.s { width: 92px; height: 98px; }
+.fundos .f .leg { position: absolute; left: 26px; bottom: 20px; font-size: 14px; }
+.fundos .f.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.fundos .f.foto .svg { position: relative; }
+
+/* usos incorretos */
+.erros .grade { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 40px; }
+.erros .e { display: flex; flex-direction: column; gap: 16px; }
+.erros .quadro { flex: 1; border-radius: 14px; border: 1px solid var(--fio); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.erros .quadro .svg { width: 250px; height: 170px; color: var(--verde); }
+.erros .quadro::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - 1px), #9B2929aa 50%, transparent calc(50% + 1px)); }
+.erros .e p { font-size: 17px; line-height: 1.4; display: flex; gap: 12px; }
+.erros .e p::before { content: "✕"; color: var(--serena); font-weight: 500; }
+
+/* cores */
+.cores .faixa { flex: 1; display: flex; gap: 0; border-radius: 18px; overflow: hidden; }
+.cores .c { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px 26px; font-size: 14.5px; line-height: 1.55; gap: 2px; }
+.cores .c b { font-family: var(--f-display); font-weight: 400; font-size: 25px; letter-spacing: .04em; margin-bottom: 10px; line-height: 1.1; }
+.cores .c span { font-variant-numeric: tabular-nums; }
+.cores .c em { font-style: normal; opacity: .75; margin-top: 12px; font-size: 13.5px; }
+.cores .c.largo { flex: 1.6; }
+.proporcao { display: flex; height: 26px; border-radius: 99px; overflow: hidden; margin-top: 30px; }
+.proporcao + .nota { margin-top: 14px; }
+
+/* cores da coleção */
+.genesis-cores .grade { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px; }
+.genesis-cores .a { display: flex; flex-direction: column; gap: 22px; }
+.genesis-cores .arco { flex: 1; color: var(--creme); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 40px; position: relative; --raio-base: 14px; }
+.genesis-cores .arco h3 { font-size: 40px; }
+.genesis-cores .arco small { font-size: 16px; margin-top: 6px; opacity: .85; }
+.genesis-cores .arco .mini { position: absolute; top: 70px; width: 70px; height: 74px; opacity: .9; }
+.genesis-cores .dados { font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; }
+.genesis-cores .dados b { font-weight: 500; }
+
+/* tipografia */
+.tipos .grade { flex: 1; display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 1fr 1fr; gap: 0 90px; }
+.tipos .t { border-top: 1px solid var(--fio); padding-top: 26px; display: flex; flex-direction: column; gap: 10px; }
+.tipos .t small { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--verde); }
+.tipos .t .grande { font-size: 120px; line-height: 1; }
+.tipos .t .alfa { font-size: 26px; line-height: 1.35; opacity: .85; }
+.tipos .abo { font-family: var(--f-display); }
+.tipos .bue { font-family: var(--f-serif); }
+.tipos .pesos { display: flex; gap: 30px; font-size: 24px; }
+.tipos .hier { grid-row: 1 / span 2; grid-column: 2; background: var(--verde); color: var(--creme); border-radius: 18px; padding: 56px 60px; display: flex; flex-direction: column; gap: 22px; position: relative; }
+.tipos .hier .rot { position: absolute; right: 30px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; font-weight: 500; }
+.tipos .hier .h1 { font-family: var(--f-display); font-size: 70px; line-height: 1; letter-spacing: .03em; }
+.tipos .hier .h2 { font-family: var(--f-serif); font-size: 32px; line-height: 1.2; }
+.tipos .hier .tx { font-size: 19px; line-height: 1.6; max-width: 560px; }
+.tipos .hier .lg { font-weight: 500; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; opacity: .8; }
+.tipos .hier .cap { font-family: var(--f-serif); font-size: 46px; }
+.tipos .hier .cap span { font-family: var(--f-cap); font-size: 80px; line-height: 0; margin-right: 2px; }
+
+/* elementos */
+.elementos .grade { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; align-content: center; }
+.elementos .el { display: flex; flex-direction: column; gap: 22px; }
+.elementos .quadro { height: 560px; border: 1px solid #FFEBB433; border-radius: 16px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; color: var(--creme); }
+.elementos .leg { font-size: 17px; }
+.elementos .leg b { font-size: 25px; }
+.elementos .raios-box { position: absolute; width: 400px; height: 400px; left: 50%; top: 60%; transform: translate(-50%, -50%); }
+.elementos .moldura-ex { position: relative; width: 200px; height: 290px; }
+.elementos .moldura-ex .moldura { inset: 0; }
+.elementos .arco-ex { width: 200px; height: 300px; border: 1px solid var(--creme); position: relative; display: flex; align-items: center; justify-content: center; }
+.elementos .arco-ex::after { content: ""; position: absolute; inset: 8px; border: 1px solid var(--creme); border-radius: 999px 999px 4px 4px; opacity: .7; }
+
+/* estampa */
+.estampa-pg .miolo { gap: 70px; }
+.estampa-pg .grande { flex: 0 0 900px; margin: -120px 0 -110px -150px; background-color: var(--papel); background-size: 260px; border-right: 1px solid var(--fio); }
+.estampa-pg .info { flex: 1; display: flex; flex-direction: column; gap: 36px; justify-content: center; }
+.estampa-pg .variacoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.estampa-pg .variacoes div { height: 230px; border-radius: 14px; background-size: 150px; }
+.estampa-pg .usos { display: flex; gap: 12px; flex-wrap: wrap; }
+.estampa-pg .usos span { border: 1px solid var(--fio); border-radius: 99px; padding: 8px 18px; font-size: 16px; }
+
+/* coleção */
+.colecao .grade { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 40px; align-items: start; align-content: center; padding-bottom: 30px; }
+.colecao .v { display: flex; flex-direction: column; gap: 26px; }
+.colecao .v img { margin-bottom: 18px; }
+.colecao .v img { width: 100%; display: block; filter: drop-shadow(0 18px 30px #0008); transform: rotate(var(--r, 0deg)); }
+.colecao .v h3 { font-size: 44px; display: flex; align-items: center; gap: 12px; }
+.colecao .v h3 i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px #FFEBB455; }
+.colecao .v .aroma { font-family: var(--f-serif); font-size: 28px; opacity: .85; margin-top: -18px; }
+.colecao .v p { font-size: 19px; line-height: 1.55; opacity: .8; }
+.colecao .v small { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; opacity: .55; }
+
+/* rótulo medidas */
+.medidas .miolo { gap: 110px; align-items: center; }
+.medidas figure { flex: 0 0 820px; position: relative; }
+.medidas figure img { width: 100%; display: block; filter: drop-shadow(0 20px 40px #2A223633); }
+.medidas .cota { position: absolute; font-size: 15px; font-weight: 500; letter-spacing: .1em; color: var(--verde); display: flex; align-items: center; gap: 10px; }
+.medidas .cota.h { left: 0; right: 0; top: -44px; justify-content: center; }
+.medidas .cota.h::before, .medidas .cota.h::after { content: ""; flex: 1; height: 1px; background: #1D705377; }
+.medidas .cota.v { top: 0; bottom: 0; right: -60px; flex-direction: column; justify-content: center; writing-mode: vertical-rl; }
+.medidas .cota.v::before, .medidas .cota.v::after { content: ""; flex: 1; width: 1px; background: #1D705377; }
+table { border-collapse: collapse; width: 100%; font-size: 19px; }
+th, td { text-align: left; padding: 15px 0; border-bottom: 1px solid var(--fio); vertical-align: top; }
+th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--verde); width: 190px; padding-top: 19px; }
+
+/* rótulos cor */
+.rot-cor .leque { flex: 1; position: relative; }
+.rot-cor .leque img { position: absolute; width: 560px; filter: drop-shadow(0 22px 34px #2A223640); }
+
+/* papelaria */
+.papelaria .grade { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; align-content: start; }
+.papelaria .leg { font-size: 17px; text-align: center; } .papelaria .leg b { font-size: 25px; }
+.papelaria figure { display: flex; flex-direction: column; gap: 26px; }
+.papelaria figure .img { height: 600px; display: flex; align-items: center; justify-content: center; }
+.papelaria figure img { max-height: 100%; max-width: 100%; border-radius: 6px; box-shadow: 0 24px 50px #2A223640; }
+
+/* fotografia */
+.foto-pg .miolo { gap: 70px; }
+.foto-pg .mosaico { flex: 0 0 1050px; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr 1fr; gap: 16px; }
+.foto-pg .mosaico img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; }
+.foto-pg .mosaico .alta { grid-row: span 2; }
+.foto-pg .regras { flex: 1; display: flex; flex-direction: column; gap: 22px; justify-content: center; }
+.foto-pg .regras li { list-style: none; border-top: 1px solid var(--fio); padding-top: 16px; }
+.foto-pg .regras li b { font-family: var(--f-display); font-weight: 400; font-size: 24px; color: var(--verde); display: block; letter-spacing: .04em; }
+.foto-pg .regras li span { font-size: 17px; }
+.foto-pg .evite { font-size: 16px; opacity: .75; }
+
+/* voz */
+.voz .miolo { gap: 100px; }
+.voz .princ { flex: 0 0 600px; display: flex; flex-direction: column; gap: 40px; justify-content: center; }
+.voz .princ div b { font-family: var(--f-display); font-weight: 400; font-size: 38px; display: block; letter-spacing: .04em; margin-bottom: 6px; }
+.voz .princ div span { font-size: 21px; line-height: 1.5; opacity: .85; }
+.voz .ex { flex: 1; display: flex; flex-direction: column; gap: 0; justify-content: center; }
+.voz .ex .linha { display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px; padding: 34px 0; border-top: 1px solid #FFEBB433; }
+.voz .ex .linha small { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; opacity: .6; display: block; margin-bottom: 8px; }
+.voz .ex .sim { font-family: var(--f-serif); font-size: 36px; line-height: 1.25; }
+.voz .ex .nao { font-size: 21px; line-height: 1.45; opacity: .55; text-decoration: line-through; text-decoration-thickness: 1px; }
+
+/* redes */
+.redes .grade { flex: 1; display: grid; grid-template-columns: repeat(3, 420px) 1fr; gap: 48px; align-items: start; }
+.post { aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 24px 50px #2A223633; }
+.post.p1 img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.post.p1 .faixa { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 28px; background: linear-gradient(transparent, #1C1726cc); color: var(--creme); }
+.post.p1 .faixa b { font-family: var(--f-display); font-weight: 400; font-size: 40px; display: block; letter-spacing: .05em; }
+.post.p1 .faixa span { font-size: 17px; }
+.post.p2 { background: var(--noite); color: var(--creme); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
+.post.p2 .sol { position: absolute; width: 140%; height: 140%; left: -20%; top: -36%; opacity: .35; }
+.post.p2 .svg.s { width: 70px; height: 74px; position: relative; margin-bottom: 30px; }
+.post.p2 q { font-family: var(--f-serif); font-size: 44px; line-height: 1.15; position: relative; quotes: none; }
+.post.p3 { background: var(--verde); color: var(--creme); padding: 46px 40px; display: flex; flex-direction: column; gap: 18px; }
+.post.p3 .moldura { inset: 14px; --raio-moldura: 10px; --respiro-moldura: 5px; opacity: .5; }
+.post.p3 small { font-weight: 500; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; opacity: .8; }
+.post.p3 h4 { font-family: var(--f-serif); font-weight: 400; font-size: 54px; line-height: 1.05; }
+.post.p3 h4 span { font-family: var(--f-cap); font-size: 74px; line-height: 0; }
+.post.p3 p { font-size: 19px; line-height: 1.5; }
+.post.p3 .svg.s { width: 46px; height: 49px; margin-top: auto; }
+.redes .perfil { display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; padding-top: 30px; }
+.redes .avatar { width: 240px; height: 240px; border-radius: 50%; background: var(--verde); color: var(--creme); display: flex; align-items: center; justify-content: center; }
+.redes .avatar .svg { width: 96px; height: 102px; }
+.redes .perfil b { font-weight: 500; font-size: 26px; }
+.redes .perfil span { font-size: 19px; line-height: 1.5; opacity: .75; }
+.redes .legenda-post { font-size: 17px; margin-top: 20px; line-height: 1.45; }
+.redes .legenda-post b { font-weight: 500; display: block; }
+
+/* contracapa */
+.fim { align-items: center; justify-content: center; text-align: center; }
+.fim .sim { width: 150px; height: 160px; color: var(--creme); position: relative; }
+.fim q { font-family: var(--f-serif); font-size: 88px; line-height: 1.05; margin-top: 70px; quotes: none; position: relative; max-width: 1200px; text-wrap: balance; }
+.fim .assina { margin-top: 70px; font-weight: 400; font-size: 17px; letter-spacing: .28em; text-transform: uppercase; opacity: .7; position: relative; }
+.fim .sol { position: absolute; width: 1500px; height: 1500px; left: 50%; top: 106%; transform: translate(-50%, -50%); opacity: .4; color: var(--creme); }
+</style>
+</head>
+<body>
+
+<!-- 1 capa -->
+<section class="pg noite capa">
+  <div class="ceu" data-estrelas="n:46;semente:3;rMax:11;miolo:.2"></div>
+  <div class="brilho"></div>
+  <div class="sol" data-raios="n:120;de:0;ate:360;r0:22;r1:99;peso:.18;semente:21"></div>
+  <div class="nuvem-canto n1" data-svg="nuvem-linha-2"></div>
+  <div class="nuvem-canto n2" data-svg="nuvem-linha-3"></div>
+  <div class="nuvem-canto n3" data-svg="nuvem-linha-1"></div>
+  <div class="moldura" style="inset:40px;--raio-moldura:22px;--respiro-moldura:9px;opacity:.4"></div>
+  <div class="marca">
+    <div class="sim" data-svg="simbolo"></div>
+    <div class="nome" data-svg="nome"></div>
+    <p class="sub">Brand book</p>
+    <p class="sub2">Marca e Coleção Gênesis · 2026</p>
+  </div>
+</section>
+
+<!-- 2 sumário -->
+<section class="pg papel sumario">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">Brand book</span><h2>Sumário</h2></header>
+  <div class="miolo">
+    <figure><div class="arco"><img src="../assets/img/foto-selene.jpg" alt="Vela Selene com rótulo lilás"></div></figure>
+    <ol>
+      <li><span>01</span><span>Manifesto</span><span>03</span></li>
+      <li><span>02</span><span>A marca</span><span>04</span></li>
+      <li><span>03</span><span>O símbolo</span><span>05</span></li>
+      <li><span>04</span><span>Logo</span><span>06</span></li>
+      <li><span>05</span><span>Proteção e tamanho mínimo</span><span>07</span></li>
+      <li><span>06</span><span>Logo sobre fundos</span><span>08</span></li>
+      <li><span>07</span><span>Usos incorretos</span><span>09</span></li>
+      <li><span>08</span><span>Cores da marca</span><span>10</span></li>
+      <li><span>09</span><span>Cores da Coleção Gênesis</span><span>11</span></li>
+      <li><span>10</span><span>Tipografia</span><span>12</span></li>
+      <li><span>11</span><span>Elementos gráficos</span><span>13</span></li>
+      <li><span>12</span><span>Estampa</span><span>14</span></li>
+      <li><span>13</span><span>Coleção Gênesis</span><span>15</span></li>
+      <li><span>14</span><span>Rótulos</span><span>16</span></li>
+      <li><span>15</span><span>Papelaria</span><span>18</span></li>
+      <li><span>16</span><span>Fotografia</span><span>19</span></li>
+      <li><span>17</span><span>Voz e tom</span><span>20</span></li>
+      <li><span>18</span><span>Redes sociais</span><span>21</span></li>
+    </ol>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>02</b></footer>
+</section>
+
+<!-- 3 manifesto -->
+<section class="pg noite manifesto">
+  <div class="ceu" data-estrelas="n:22;semente:8;rMax:8;miolo:.12"></div>
+  <div class="moldura" style="opacity:.3"></div>
+  <header class="cab"><span class="olho">01 · Manifesto</span></header>
+  <div class="miolo">
+    <div class="txt">
+      <p class="frase">Luz que <em>acalma</em>,<br><span>aroma que</span> <em>abraça.</em></p>
+      <p>Acender uma vela é um pequeno ritual. A chama marca o fim do dia, o começo do descanso, a hora de cuidar de si. A Almah faz velas à mão para esse momento: cera, aroma e luz pensados para deixar a casa mais calma e a noite mais bonita.</p>
+    </div>
+    <figure><div class="arco"><img src="../assets/img/foto-chama.jpg" alt="Chama de vela em close, fundo escuro"></div></figure>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>03</b></footer>
+</section>
+
+<!-- 4 a marca -->
+<section class="pg papel marca-pg" style="--rod-esq:710px">
+  <div class="moldura"></div>
+  <div class="miolo">
+    <figure><img src="../assets/img/foto-lua.jpg" alt="Mão segurando a vela diante de uma lua crescente"></figure>
+    <div class="txt">
+      <header class="cab" style="margin-bottom:0"><span class="olho">02 · A marca</span></header>
+      <p class="lead">Almah é uma marca de velas aromáticas feitas à mão, com o céu como imagem.</p>
+      <p>O nome carrega a palavra alma. O símbolo junta uma lua crescente e uma chama, e o universo visual vem daí: sol raiado, nuvens, estrelas de quatro pontas e molduras de carta de tarô. A primeira coleção se chama Gênesis e tem cinco velas.</p>
+      <div class="atributos">
+        <div><b>Acolhedora</b><span>Fala perto, como quem recebe alguém em casa.</span></div>
+        <div><b>Artesanal</b><span>Cada vela é feita à mão, e isso aparece no cuidado com os detalhes.</span></div>
+        <div><b>Celeste</b><span>Lua, sol, nuvens e estrelas guiam a imagem, sem pesar a mão no místico.</span></div>
+        <div><b>Delicada</b><span>Traço fino, cores profundas, nada em excesso.</span></div>
+      </div>
+      <dl class="assin">
+        <div><dt>Assinatura</dt><dd>Feito à mão, <i>com carinho</i>, para você.</dd></div>
+        <div><dt>Instagram</dt><dd>@almahdomus</dd></div>
+      </dl>
+    </div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>04</b></footer>
+</section>
+
+<!-- 5 símbolo -->
+<section class="pg verde simbolo-pg">
+  <div class="grade"></div>
+  <div class="moldura" style="opacity:.3"></div>
+  <header class="cab"><span class="olho">03 · O símbolo</span><h2>A lua guarda a chama</h2></header>
+  <div class="equacao">
+    <div class="peca"><div data-svg="lua"></div><p class="leg"><b>Lua crescente</b>Os ciclos, a noite, o descanso. Abraça o desenho por baixo.</p></div>
+    <span class="op">+</span>
+    <div class="peca"><div data-svg="chama-simbolo"></div><p class="leg"><b>Chama</b>A luz que se acende de propósito. O ritual da vela.</p></div>
+    <span class="op">=</span>
+    <div class="peca final"><div data-svg="simbolo"></div><p class="leg"><b>Símbolo Almah</b>Uma luz que nasce dentro da lua. Funciona sozinho em selos, lacres e perfil.</p></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>05</b></footer>
+</section>
+
+<!-- 6 logo -->
+<section class="pg papel logo-pg">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">04 · Logo</span><h2>Versões</h2></header>
+  <div class="miolo">
+    <div class="tile principal"><div data-svg="logo-almah"></div><div class="leg"><span>Principal · símbolo sobre o nome</span><span>Uso preferencial</span></div></div>
+    <div class="grade4">
+      <div class="tile borda"><div data-svg="simbolo" style="width:150px;height:160px"></div><div class="leg"><span>Símbolo</span><span>Selos, perfil, lacre</span></div></div>
+      <div class="tile borda"><div data-svg="nome" style="width:330px;height:76px"></div><div class="leg"><span>Nome</span><span>Lettering desenhado</span></div></div>
+      <div class="tile borda"><div class="descritor"><div data-svg="logo-almah" style="width:260px;height:177px;color:var(--grafite)"></div><small>Velas aromáticas &amp; utensílios</small></div><div class="leg"><span>Com descritor</span><span>Embalagem, site</span></div></div>
+      <div class="tile" style="background:var(--roxo-profundo);color:var(--creme)"><div data-svg="simbolo-linear" style="width:170px;height:166px;color:var(--creme)"></div><div class="leg"><span>Símbolo linear</span><span>Apoio, carimbos, gravação</span></div></div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>06</b></footer>
+</section>
+
+<!-- 7 proteção -->
+<section class="pg papel prot">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">05 · Proteção e tamanho mínimo</span><h2>Espaço para respirar</h2></header>
+  <div class="miolo">
+    <div class="area">
+      <div class="caixa"><div data-svg="logo-almah"></div><span class="x t"><span>x</span></span><span class="x l"><span>x</span></span></div>
+    </div>
+    <div class="info">
+      <p class="lead" style="font-size:38px">Em volta do logo fica livre uma área igual a <i>x</i>, a altura da letra A do nome.</p>
+      <p>Nenhum texto, borda ou imagem entra nesse espaço. Quando o logo aparece dentro da moldura dupla, como no rótulo, a moldura conta como borda e respeita a mesma distância.</p>
+      <div class="minimos">
+        <div><div data-svg="logo-almah" style="width:110px;height:75px"></div><small><b>Logo principal</b>22 mm impresso · 110 px na tela</small></div>
+        <div><div data-svg="nome" style="width:90px;height:21px"></div><small><b>Nome</b>18 mm · 90 px</small></div>
+        <div><div data-svg="simbolo" style="width:28px;height:30px"></div><small><b>Símbolo</b>7 mm · 28 px</small></div>
+      </div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>07</b></footer>
+</section>
+
+<!-- 8 fundos -->
+<section class="pg papel fundos">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">06 · Logo sobre fundos</span><h2>Sempre uma cor só</h2></header>
+  <div class="grade">
+    <div class="f" style="background:#1D7053;color:#FFEBB4"><div class="svg l" data-svg="logo-almah"></div><div class="svg s" data-svg="simbolo" style="color:#FFF1CA"></div><span class="leg">Verde + creme · #1D7053 / #FFEBB4</span></div>
+    <div class="f" style="background:#7138B7;color:#FFEBB4"><div class="svg l" data-svg="logo-almah"></div><div class="svg s" data-svg="simbolo" style="color:#FFF1CA"></div><span class="leg">Roxo + creme · #7138B7 / #FFEBB4</span></div>
+    <div class="f" style="background:#503B69;color:#FFEBB4"><div class="svg l" data-svg="logo-almah"></div><div class="svg s" data-svg="simbolo" style="color:#FFF1CA"></div><span class="leg">Roxo profundo + creme · #503B69 / #FFEBB4</span></div>
+    <div class="f" style="background:#FFFFFF;color:#424242;border:1px solid var(--fio)"><div class="svg l" data-svg="logo-almah"></div><div class="svg s" data-svg="simbolo" style="color:#000"></div><span class="leg">Branco + grafite · #FFFFFF / #424242</span></div>
+    <div class="f" style="background:#000000;color:#FFEBB4"><div class="svg l" data-svg="logo-almah"></div><div class="svg s" data-svg="simbolo" style="color:#fff"></div><span class="leg">Preto + creme · #000000 / #FFEBB4</span></div>
+    <div class="f foto" style="color:#FFEBB4;justify-content:flex-start;padding-left:46px;background:#0E0B09"><img src="../assets/img/foto-chama.jpg" alt="" style="object-position:50% 30%;transform:scale(1.5) translateX(22%);transform-origin:50% 30%"><div class="svg l" data-svg="logo-almah"></div><span class="leg" style="position:absolute">Sobre foto · creme em área escura e lisa</span></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>08</b></footer>
+</section>
+
+<!-- 9 usos incorretos -->
+<section class="pg papel erros">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">07 · Usos incorretos</span><h2>O que não fazer</h2></header>
+  <div class="grade">
+    <div class="e"><div class="quadro"><div data-svg="logo-almah" style="transform:scaleX(1.45)"></div></div><p>Esticar ou achatar o logo.</p></div>
+    <div class="e"><div class="quadro"><div data-svg="logo-almah" style="transform:rotate(-14deg)"></div></div><p>Girar ou inclinar.</p></div>
+    <div class="e"><div class="quadro"><div class="svg" style="width:250px;height:170px;position:relative"><div data-svg="nome" style="position:absolute;left:0;right:0;bottom:0;height:57px;width:250px;color:var(--roxo)"></div><div data-svg="simbolo" style="position:absolute;left:84px;top:0;width:82px;height:88px;color:var(--serena)"></div></div></div><p>Usar duas cores ou degradê.</p></div>
+    <div class="e"><div class="quadro"><div data-svg="logo-almah" style="filter:drop-shadow(6px 8px 0 #7138B7) drop-shadow(0 0 14px #FFD24A)"></div></div><p>Aplicar sombra, brilho ou contorno.</p></div>
+    <div class="e"><div class="quadro"><div style="display:flex;align-items:center;gap:24px"><div data-svg="nome" style="width:220px;height:51px;color:var(--verde)"></div><div data-svg="simbolo" style="width:60px;height:64px;color:var(--verde)"></div></div></div><p>Mudar a posição do símbolo em relação ao nome.</p></div>
+    <div class="e"><div class="quadro" style="background:var(--creme-claro)"><div data-svg="logo-almah" style="color:var(--creme)"></div></div><p>Usar sobre fundo sem contraste.</p></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>09</b></footer>
+</section>
+
+<!-- 10 cores -->
+<section class="pg papel cores">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">08 · Cores da marca</span><h2>Paleta</h2></header>
+  <div class="faixa">
+    <div class="c largo" style="background:#1D7053;color:#FFEBB4"><b>Verde Almah</b><span>#1D7053</span><span>RGB <i data-rgb="#1D7053"></i></span><span>CMYK <i data-cmyk="#1D7053"></i></span><em>Fundo principal, logo, títulos</em></div>
+    <div class="c" style="background:#7138B7;color:#FFEBB4"><b>Roxo</b><span>#7138B7</span><span>RGB <i data-rgb="#7138B7"></i></span><span>CMYK <i data-cmyk="#7138B7"></i></span><em>Destaque, fundo de logo</em></div>
+    <div class="c largo" style="background:#503B69;color:#FFEBB4"><b>Roxo profundo</b><span>#503B69</span><span>RGB <i data-rgb="#503B69"></i></span><span>CMYK <i data-cmyk="#503B69"></i></span><em>Card de obrigado, adesivo</em></div>
+    <div class="c" style="background:#FFEBB4;color:#2A2236"><b>Creme</b><span>#FFEBB4</span><span>RGB <i data-rgb="#FFEBB4"></i></span><span>CMYK <i data-cmyk="#FFEBB4"></i></span><em>Logo sobre cor</em></div>
+    <div class="c" style="background:#FFF1CA;color:#2A2236"><b>Creme claro</b><span>#FFF1CA</span><span>RGB <i data-rgb="#FFF1CA"></i></span><span>CMYK <i data-cmyk="#FFF1CA"></i></span><em>Símbolo sobre cor</em></div>
+    <div class="c largo" style="background:#F5ECD7;color:#2A2236;box-shadow:inset 0 0 0 1px #2A223620"><b>Papel</b><span>#F5ECD7</span><span>RGB <i data-rgb="#F5ECD7"></i></span><span>CMYK <i data-cmyk="#F5ECD7"></i></span><em>Fundo de rótulo e de página</em></div>
+    <div class="c" style="background:#424242;color:#F5ECD7"><b>Grafite</b><span>#424242</span><span>RGB <i data-rgb="#424242"></i></span><span>CMYK <i data-cmyk="#424242"></i></span><em>Logo sobre branco</em></div>
+    <div class="c" style="background:#1C1726;color:#FFEBB4"><b>Noite <span class="tag-novo">novo</span></b><span>#1C1726</span><span>RGB <i data-rgb="#1C1726"></i></span><span>CMYK <i data-cmyk="#1C1726"></i></span><em>Fundo escuro de apoio, para a chama brilhar</em></div>
+  </div>
+  <div class="proporcao"><i style="flex:40;background:#F5ECD7;box-shadow:inset 0 0 0 1px #2A223620"></i><i style="flex:22;background:#1D7053"></i><i style="flex:14;background:#1C1726"></i><i style="flex:10;background:#503B69"></i><i style="flex:8;background:#FFEBB4"></i><i style="flex:4;background:#7138B7"></i><i style="flex:2;background:#424242"></i></div>
+  <p class="nota">Proporção sugerida de uso. CMYK calculado a partir do RGB; para gráfica, confirmar com prova de impressão e com os PDFs CMYK de 02 ROTULOS.</p>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>10</b></footer>
+</section>
+
+<!-- 11 cores da coleção -->
+<section class="pg papel genesis-cores">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">09 · Cores da Coleção Gênesis</span><h2>Uma cor por vela</h2></header>
+  <div class="grade">
+    <div class="a"><div class="arco" style="background:#6D712F"><div class="mini" data-svg="simbolo"></div><h3>Aura</h3><small>baunilha</small></div><p class="dados"><b>#6D712F</b><br>RGB <span data-rgb="#6D712F"></span><br>CMYK <span data-cmyk="#6D712F"></span></p></div>
+    <div class="a"><div class="arco" style="background:#167154"><div class="mini" data-svg="simbolo"></div><h3>Terra</h3><small>cascas e folhas</small></div><p class="dados"><b>#167154</b><br>RGB <span data-rgb="#167154"></span><br>CMYK <span data-cmyk="#167154"></span></p></div>
+    <div class="a"><div class="arco" style="background:#503B6A"><div class="mini" data-svg="simbolo"></div><h3>Selene</h3><small>lavanda</small></div><p class="dados"><b>#503B6A</b><br>RGB <span data-rgb="#503B6A"></span><br>CMYK <span data-cmyk="#503B6A"></span></p></div>
+    <div class="a"><div class="arco" style="background:#9B2929"><div class="mini" data-svg="simbolo"></div><h3>Serena</h3><small>rosas</small></div><p class="dados"><b>#9B2929</b><br>RGB <span data-rgb="#9B2929"></span><br>CMYK <span data-cmyk="#9B2929"></span></p></div>
+    <div class="a"><div class="arco" style="background:#B55263"><div class="mini" data-svg="simbolo"></div><h3>Vênus</h3><small>cereja e avelã</small></div><p class="dados"><b>#B55263</b><br>RGB <span data-rgb="#B55263"></span><br>CMYK <span data-cmyk="#B55263"></span></p></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>11</b></footer>
+</section>
+
+<!-- 12 tipografia -->
+<section class="pg papel tipos">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">10 · Tipografia</span><h2>Letras</h2></header>
+  <div class="grade">
+    <div class="t"><small>Títulos e nome das velas · Aboreto</small><p class="grande abo">Aboreto</p><p class="alfa abo">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789 · Aura Terra Selene Serena Vênus</p></div>
+    <div class="hier">
+      <span class="rot">Hierarquia</span>
+      <p class="lg">Coleção Gênesis</p>
+      <p class="h1">Selene</p>
+      <p class="h2">Lavanda para desacelerar à noite.</p>
+      <p class="tx">Poppins Light no texto corrido, entre 16 e 21 pt, com entrelinha folgada. Buenard aparece em frases de efeito e subtítulos.</p>
+      <p class="cap"><span>C</span>uidados com a sua vela</p>
+      <p class="lg" style="opacity:.6">Capitular Fleur De Leah só na primeira letra</p>
+    </div>
+    <div class="t" style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:10px"><small>Texto · Poppins</small><p class="grande" style="font-size:90px">Aa</p><div class="pesos"><span style="font-weight:300">Light</span><span style="font-style:italic;font-weight:300">Italic</span><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span></div></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><small>Editorial · Buenard + Fleur De Leah</small><p class="grande bue" style="font-size:90px"><span class="capitular">A</span>a</p><p class="alfa bue" style="font-size:22px">Frases, citações e títulos de papelaria.</p></div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>12</b></footer>
+</section>
+
+<!-- 13 elementos -->
+<section class="pg roxo elementos">
+  <div class="moldura" style="opacity:.3"></div>
+  <header class="cab"><span class="olho">11 · Elementos gráficos</span><h2>O céu da Almah</h2></header>
+  <div class="grade">
+    <div class="el"><div class="quadro"><div class="raios-box" data-raios="n:56;de:-180;ate:0;r0:20;r1:96;peso:.35;semente:4"></div><div data-svg="simbolo" style="position:absolute;width:62px;height:66px;left:50%;top:60%;transform:translate(-50%,-62%)"></div></div><p class="leg"><b>Sol raiado</b>Raios finos saindo de trás do logo, longos e curtos, alguns tracejados.</p></div>
+    <div class="el"><div class="quadro"><div style="display:flex;flex-direction:column;gap:30px;align-items:center"><div data-svg="nuvem-linha-1" style="width:200px;height:104px"></div><div data-svg="nuvem-linha-3" style="width:250px;height:76px"></div></div></div><p class="leg"><b>Nuvens</b>Traço oriental, saindo dos cantos de baixo da moldura.</p></div>
+    <div class="el"><div class="quadro"><svg viewBox="0 0 200 200" style="width:220px;height:220px" fill="currentColor"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" transform="translate(100 96) scale(52)"/><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" transform="translate(162 40) scale(14)"/><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" transform="translate(38 160) scale(9)"/><circle cx="40" cy="44" r="2.2"/><circle cx="168" cy="160" r="1.8"/></svg></div><p class="leg"><b>Estrela de quatro pontas</b>Solta no céu e no meio das laterais da moldura.</p></div>
+    <div class="el"><div class="quadro"><div class="moldura-ex"><div class="moldura" style="--raio-moldura:16px;--respiro-moldura:8px"></div></div></div><p class="leg"><b>Moldura dupla</b>Duas linhas finas com cantos arredondados. Contorna rótulos e cards.</p></div>
+    <div class="el"><div class="quadro"><div class="arco-ex arco" style="border-radius:999px 999px 6px 6px"></div></div><p class="leg"><b>Arco</b>Janela de carta de tarô. Enquadra fotos e textos curtos.</p></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>13</b></footer>
+</section>
+
+<!-- 14 estampa -->
+<section class="pg papel estampa-pg">
+  <div class="moldura"></div>
+  <div class="miolo">
+    <div class="grande" data-estampa="#1D7053,,260"></div>
+    <div class="info">
+      <header class="cab" style="margin-bottom:0"><span class="olho">12 · Estampa <span class="tag-novo">nova</span></span></header>
+      <h2>Um céu para repetir</h2>
+      <p>O símbolo, a nuvem e as estrelas se repetem em meia-queda, sempre numa cor só. A estampa veste o que não é rótulo: papel de seda, fita, fundo de post, forro de caixa.</p>
+      <div class="variacoes">
+        <div data-estampa="#FFEBB4,#503B69,150"></div>
+        <div data-estampa="#FFEBB4,#1D7053,150"></div>
+        <div data-estampa="#B55263,#F5ECD7,150" style="box-shadow:inset 0 0 0 1px var(--fio)"></div>
+      </div>
+      <div class="usos"><span>Papel de seda</span><span>Fita de cetim</span><span>Forro da caixa</span><span>Fundo de story</span><span>Tag de presente</span></div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>14</b></footer>
+</section>
+
+<!-- 15 coleção -->
+<section class="pg noite colecao">
+  <div class="ceu" data-estrelas="n:30;semente:12;rMax:8;miolo:.1"></div>
+  <div class="moldura" style="opacity:.3"></div>
+  <header class="cab"><span class="olho">13 · Coleção Gênesis</span><h2>Cinco velas, cinco céus</h2></header>
+  <div class="grade">
+    <div class="v" style="--c:#6D712F;--r:-2deg"><img src="../assets/img/rotulo-aura.png" alt="Rótulo Aura"><h3><i></i>Aura</h3><p class="aroma">baunilha</p><p>O brilho que envolve. Doce e quente, para receber quem chega.</p><small>90 g · 150 g</small></div>
+    <div class="v" style="--c:#167154;--r:1.5deg"><img src="../assets/img/rotulo-terra.png" alt="Rótulo Terra"><h3><i></i>Terra</h3><p class="aroma">cascas e folhas</p><p>Mata depois da chuva. Para voltar ao chão no fim do dia.</p><small>90 g · 150 g</small></div>
+    <div class="v" style="--c:#503B6A;--r:-1deg"><img src="../assets/img/rotulo-selene.png" alt="Rótulo Selene"><h3><i></i>Selene</h3><p class="aroma">lavanda</p><p>O nome da lua. Lavanda para desacelerar antes de dormir.</p><small>90 g · 150 g</small></div>
+    <div class="v" style="--c:#9B2929;--r:2deg"><img src="../assets/img/rotulo-serena.png" alt="Rótulo Serena"><h3><i></i>Serena</h3><p class="aroma">rosas</p><p>Calma de jardim. Para respirar fundo e ficar.</p><small>90 g · 150 g</small></div>
+    <div class="v" style="--c:#B55263;--r:-1.5deg"><img src="../assets/img/rotulo-venus.png" alt="Rótulo Vênus"><h3><i></i>Vênus</h3><p class="aroma">cereja e avelã</p><p>Doce e intensa. Para os encontros e as noites a dois.</p><small>90 g · 150 g</small></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>15</b></footer>
+</section>
+
+<!-- 16 rótulo medidas -->
+<section class="pg papel medidas">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">14 · Rótulos</span><h2>Medidas</h2></header>
+  <div class="miolo">
+    <figure><img src="../assets/img/rotulo-venus.png" alt="Rótulo Vênus"><span class="cota h">50 mm</span><span class="cota v">40 mm</span></figure>
+    <table>
+      <tr><th>Formato</th><td>50 × 40 mm, cantos arredondados</td></tr>
+      <tr><th>Folha</th><td>A4 com 28 etiquetas (4 × 7)</td></tr>
+      <tr><th>Fundo</th><td>Papel #F5ECD7, ou a cor da vela</td></tr>
+      <tr><th>Tinta</th><td>Uma cor, a da vela (creme sobre fundo de cor)</td></tr>
+      <tr><th>Nome</th><td>Aboreto Regular, 27,5 pt, caixa alta</td></tr>
+      <tr><th>Aroma</th><td>Poppins Light, 11,7 pt (8,6 e 7,1 pt nos aromas longos)</td></tr>
+      <tr><th>Coleção</th><td>Poppins Italic, 3,9 pt</td></tr>
+      <tr><th>Peso</th><td>Poppins Regular, 6,2 pt · 90 g ou 150 g</td></tr>
+    </table>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>16</b></footer>
+</section>
+
+<!-- 17 rótulos fundo de cor -->
+<section class="pg papel rot-cor">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">14 · Rótulos</span><h2>Fundo de cor</h2></header>
+  <div class="leque">
+    <img src="../assets/img/rotulo-cor-aura.webp" alt="Rótulo Aura creme" style="left:0;top:40px;transform:rotate(-7deg)">
+    <img src="../assets/img/rotulo-cor-terra.webp" alt="Rótulo Terra verde" style="left:300px;top:150px;transform:rotate(4deg)">
+    <img src="../assets/img/rotulo-cor-selene.webp" alt="Rótulo Selene roxo" style="left:620px;top:20px;transform:rotate(-3deg)">
+    <img src="../assets/img/rotulo-cor-serena.webp" alt="Rótulo Serena vermelho" style="left:930px;top:160px;transform:rotate(6deg)">
+    <img src="../assets/img/rotulo-cor-venus.webp" alt="Rótulo Vênus rosa" style="left:1060px;top:-30px;transform:rotate(-5deg);width:560px">
+  </div>
+  <p class="nota" style="position:absolute;left:150px;bottom:110px;max-width:640px">Versão com o fundo na cor da vela e traço creme. A Aura fica no creme com traço oliva. Artes em 02 ROTULOS / Arte unitaria.</p>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>17</b></footer>
+</section>
+
+<!-- 18 papelaria -->
+<section class="pg papel papelaria">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">15 · Papelaria</span><h2>O que vai na caixa</h2></header>
+  <div class="grade">
+    <figure><div class="img"><img src="../assets/img/card-cuidados-hd.jpg" alt="Card Cuidados com a sua vela"></div><p class="leg"><b>Card de cuidados</b>Verde, com arco e céu estrelado. Cinco regras de queima.</p></figure>
+    <figure><div class="img"><img src="../assets/img/card-obrigado-hd.jpg" alt="Card Obrigada pela compra"></div><p class="leg"><b>Card de obrigado</b>Roxo profundo, em formato de carta de tarô: The Candle.</p></figure>
+    <figure><div class="img"><img src="../assets/img/adesivo-caixa-hd.jpg" alt="Adesivo Seu pedido chegou"></div><p class="leg"><b>Adesivo de caixa</b>“Seu pedido chegou!”, logo e @almahdomus.</p></figure>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>18</b></footer>
+</section>
+
+<!-- 19 fotografia -->
+<section class="pg papel foto-pg">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">16 · Fotografia</span><h2>Luz quente, pouca coisa</h2></header>
+  <div class="miolo">
+    <div class="mosaico">
+      <img class="alta" src="../assets/img/foto-lua.jpg" alt="Vela diante de lua crescente">
+      <img src="../assets/img/foto-trio.jpg" alt="Velas Serena, Aura e Selene">
+      <img src="../assets/img/ia-lavanda.jpg" alt="Lavanda sobre pedra">
+      <img class="alta" src="../assets/img/ia-venus-acesa.jpg" alt="Vela Vênus acesa entre cerejas e avelãs">
+      <img src="../assets/img/ia-baunilha.jpg" alt="Baunilha e flor sobre pedra">
+      <img src="../assets/img/foto-chama.jpg" alt="Chama em close">
+    </div>
+    <ul class="regras">
+      <li><b>Luz quente e lateral</b><span>Fim de tarde ou a própria chama. Sombras macias.</span></li>
+      <li><b>Fundo neutro</b><span>Bege, creme, pedra e tecido claro. Ou o escuro total da noite.</span></li>
+      <li><b>O aroma em cena</b><span>Baunilha, lavanda, cereja, avelã, rosas: o ingrediente mostra o cheiro.</span></li>
+      <li><b>A chama protagonista</b><span>Pelo menos uma foto por vela acesa.</span></li>
+      <li class="evite"><b style="color:var(--serena)">Evite</b><span>Flash, luz branca fria, fundo estampado e mesa cheia de objetos.</span></li>
+    </ul>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>19</b></footer>
+</section>
+
+<!-- 20 voz -->
+<section class="pg verde voz">
+  <div class="moldura" style="opacity:.3"></div>
+  <header class="cab"><span class="olho">17 · Voz e tom</span><h2>Como a Almah fala</h2></header>
+  <div class="miolo">
+    <div class="princ">
+      <div><b>Perto</b><span>Fala com você, nunca com “o cliente”.</span></div>
+      <div><b>Curta</b><span>Uma ideia por frase. Pouco ponto de exclamação.</span></div>
+      <div><b>Poética na medida</b><span>Uma imagem bonita por vez: a lua, a chama, o abraço.</span></div>
+      <div><b>Cuidadosa</b><span>Instrução de segurança é clara e direta, sem susto.</span></div>
+    </div>
+    <div class="ex">
+      <div class="linha"><div><small>Diga</small><p class="sim">Acenda, respire e deixe a casa mais calma.</p></div><div><small>Evite</small><p class="nao">Aproveite já nossa promoção imperdível!!!</p></div></div>
+      <div class="linha"><div><small>Diga</small><p class="sim">Feito à mão, com carinho, para você.</p></div><div><small>Evite</small><p class="nao">Produto artesanal de altíssima qualidade premium.</p></div></div>
+      <div class="linha"><div><small>Diga</small><p class="sim">Na primeira queima, deixe a cera derreter até a borda.</p></div><div><small>Evite</small><p class="nao">ATENÇÃO: siga rigorosamente as instruções de uso.</p></div></div>
+      <div class="linha"><div><small>Diga</small><p class="sim">Seu pedido chegou!</p></div><div><small>Evite</small><p class="nao">Prezado cliente, informamos a entrega do seu pedido.</p></div></div>
+    </div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>20</b></footer>
+</section>
+
+<!-- 21 redes -->
+<section class="pg papel redes">
+  <div class="moldura"></div>
+  <header class="cab"><span class="olho">18 · Redes sociais</span><h2>Três tipos de post</h2></header>
+  <div class="grade">
+    <div><div class="post p1"><img src="../assets/img/foto-selene-2.jpg" alt=""><div class="faixa"><b>Selene</b><span>lavanda · Coleção Gênesis</span></div></div><p class="legenda-post"><b>Produto</b>Foto quente, nome da vela em Aboreto, aroma embaixo.</p></div>
+    <div><div class="post p2"><div class="sol" data-raios="n:70;de:0;ate:360;r0:24;r1:98;peso:.3;semente:9" style="color:var(--creme)"></div><div class="svg s" data-svg="simbolo"></div><q>Luz que acalma, aroma que abraça.</q></div><p class="legenda-post"><b>Frase</b>Fundo noite, sol raiado, uma frase em Buenard.</p></div>
+    <div><div class="post p3"><div class="moldura"></div><small>Cuidados · 1 de 5</small><h4><span>P</span>rimeira queima</h4><p>Deixe a cera derreter até a borda do copo. Isso evita túneis e faz a vela durar mais.</p><div class="svg s" data-svg="simbolo"></div></div><p class="legenda-post"><b>Dica</b>Fundo verde, moldura dupla, capitular na primeira letra.</p></div>
+    <div class="perfil"><div class="avatar"><div data-svg="simbolo"></div></div><b>@almahdomus</b><span>Velas aromáticas feitas à mão.<br>Luz que acalma, aroma que abraça.</span></div>
+  </div>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>21</b></footer>
+</section>
+
+<!-- 22 contracapa -->
+<section class="pg noite fim">
+  <div class="ceu" data-estrelas="n:40;semente:31;rMax:10;miolo:.2"></div>
+  <div class="sol" data-raios="n:110;de:-180;ate:0;r0:30;r1:99;peso:.16;semente:2"></div>
+  <div class="moldura" style="inset:40px;--raio-moldura:22px;--respiro-moldura:9px;opacity:.4"></div>
+  <div class="sim" data-svg="simbolo"></div>
+  <q>Luz que acalma, aroma que abraça.</q>
+  <p class="assina">Almah · @almahdomus · Coleção Gênesis 2026</p>
+</section>
+
+<script src="../kit/svgs.js"></script>
+<script src="../kit/kit.js"></script>
+</body>
+</html>
