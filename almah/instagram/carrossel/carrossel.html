@@ -20,6 +20,11 @@ body { background: #111; }
 .foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .sombra { text-shadow: 0 2px 26px rgba(10, 6, 16, .5); }
 .grao { position: absolute; inset: 0; z-index: 20; pointer-events: none; opacity: .08; mix-blend-mode: overlay; }
+.ameixa { background: radial-gradient(110% 90% at 60% 45%, #5B4577 0%, var(--roxo-profundo) 55%, #3E2E53 100%); }
+.noite { background: radial-gradient(120% 90% at 50% 40%, #2A2238 0%, var(--noite) 60%, #130F1A 100%); }
+.ceu { position: absolute; inset: 0; color: var(--cr); pointer-events: none; }
+.arco { position: absolute; border-radius: 50%; border: 1.4px solid var(--guia); opacity: .22; pointer-events: none; }
+.arco.tracejado { border-style: dashed; opacity: .16; }
 .brilho { position: absolute; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(255, 235, 180, .17), rgba(255, 235, 180, 0)); }
 
 .olho { font-weight: 400; font-size: 18px; letter-spacing: .34em; text-transform: uppercase; color: var(--guia); }
@@ -34,12 +39,12 @@ body { background: #111; }
 .letras .bloco { left: 72px; right: 72px; }
 .letras .fio { left: 72px; right: 72px; height: 1px; background: var(--roxo-profundo); opacity: .3; }
 .letras .alfabeto { opacity: .75; }
-.letras .rotulo { font-size: 16px; letter-spacing: .2em; text-transform: uppercase; margin-top: 18px; opacity: .8; }
+.letras .rotulo { font-size: 22px; margin-top: 20px; opacity: .85; }
 .letras .rotulo b { font-weight: 500; margin-right: 14px; }
 
 /* leque de rótulos */
-.leque img { position: absolute; left: 260px; top: 380px; width: 560px; transform-origin: 50% 1400px; border-radius: 6px; box-shadow: 0 30px 50px -18px rgba(8, 4, 16, .75); }
-.tintas { position: absolute; left: 40px; right: 40px; top: 1040px; display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; }
+.leque img { position: absolute; left: 225px; top: 250px; width: 630px; transform-origin: 50% 1500px; border-radius: 6px; box-shadow: 0 30px 50px -18px rgba(8, 4, 16, .75); }
+.tintas { position: absolute; left: 40px; right: 40px; top: 1000px; display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; }
 .tintas i { display: block; width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 20px; box-shadow: 0 0 0 3px var(--roxo-profundo), 0 0 0 5px rgba(255, 235, 180, .7); }
 .tintas b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 30px; letter-spacing: .08em; }
 .tintas span { display: block; font-size: 19px; line-height: 1.4; color: var(--guia); margin: 10px auto 0; max-width: 170px; }
@@ -53,55 +58,49 @@ body { background: #111; }
 <body>
 <div id="tela">
 
-  <!-- céu: estrelas pela tela toda (aparecem nos slides sem foto) -->
-  <div class="abs" data-estrelas="n:300;semente:19;rMax:10;rMin:2.2;grandes:.13" style="left:0;top:0;width:10800px;height:1350px;color:var(--cr);opacity:.5"></div>
 
   <!-- ============ I · capa ============ -->
   <section class="slide" style="left:0">
     <img class="foto" src="../../assets/img/foto-lua.jpg" alt="" style="object-position:50% 55%">
-    <div class="abs" data-estrelas="n:60;semente:3;rMax:9;grandes:.15" style="inset:0;color:var(--cr);opacity:.55;mix-blend-mode:screen"></div>
+    <div class="ceu" data-estrelas="n:70;semente:3;rMax:11;grandes:.16" style="mix-blend-mode:screen;opacity:.95"></div>
     <div class="abs sombra" style="left:540px;top:200px;width:480px;text-align:center">
-      <span class="olho">Identidade visual</span>
-      <span class="svg" data-svg="logo-almah" style="display:block;width:420px;height:286px;margin:44px auto 0"></span>
+      <span class="svg" data-svg="logo-almah" style="display:block;width:440px;height:300px;margin:0 auto"></span>
     </div>
     <p class="abs tit sombra" style="right:70px;top:960px;font-size:66px;text-align:right;line-height:1.08">Luz que acalma,<br>aroma que abraça.</p>
   </section>
 
   <!-- ============ II · o símbolo ============ -->
-  <section class="slide" style="left:1080px">
-    <span class="brilho" style="left:120px;top:200px;width:1100px;height:1100px"></span>
-    <span class="abs olho" style="left:72px;top:84px">O símbolo</span>
-    <h2 class="abs tit" style="left:72px;top:130px;font-size:86px;width:960px">Uma luz que nasce<br>dentro da lua.</h2>
-    <div class="abs" id="c-desenho" style="left:230px;top:340px;width:1000px;height:931px"></div>
-    <p class="abs txt" style="left:72px;top:900px;width:300px;opacity:.92">Uma lua crescente e uma chama, desenhadas à mão e redesenhadas em vetor: dois círculos e um eixo.</p>
+  <section class="slide ameixa" style="left:1080px">
+    <div class="ceu" data-estrelas="n:64;semente:41;rMax:11;grandes:.16"></div>
+    <h2 class="abs tit" style="left:72px;top:100px;font-size:90px;width:960px">Uma luz que nasce<br>dentro da lua.</h2>
+    <div class="abs" id="c-desenho" style="left:200px;top:330px;width:1040px;height:968px"></div>
   </section>
 
   <!-- ============ III · as letras ============ -->
   <section class="slide letras" style="left:2160px">
-    <div class="abs topo"><span class="olho">As letras</span><span class="olho">Quatro famílias, uma tinta só</span></div>
-    <div class="abs bloco" style="top:160px">
+        <div class="abs bloco" style="top:110px">
       <p style="font-family:var(--f-display);font-size:236px;letter-spacing:.05em;line-height:.9;margin-left:-8px">SELENE</p>
       <p class="alfabeto" style="font-family:var(--f-display);font-size:31px;letter-spacing:.12em;margin-top:30px">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-      <p class="rotulo"><b>Aboreto</b> nomes das velas e títulos</p>
+      <p class="rotulo">Aboreto</p>
     </div>
-    <div class="abs fio" style="top:572px"></div>
-    <div class="abs bloco" style="top:604px;display:grid;grid-template-columns:330px 1fr;gap:40px">
+    <div class="abs fio" style="top:520px"></div>
+    <div class="abs bloco" style="top:556px;display:grid;grid-template-columns:330px 1fr;gap:40px">
       <div>
-        <p style="font-family:var(--f-cap);font-size:236px;line-height:.9;margin-left:14px">A</p>
-        <p class="rotulo"><b>Fleur De Leah</b> capitulares</p>
+        <p style="font-family:var(--f-cap);font-size:262px;line-height:.9;margin-left:8px">A</p>
+        <p class="rotulo">Fleur De Leah</p>
       </div>
       <div style="padding-top:10px">
-        <p style="font-family:var(--f-serif);font-size:66px;line-height:1.04">Luz que acalma, aroma que abraça.</p>
+        <p style="font-family:var(--f-serif);font-size:74px;line-height:1.02">Luz que acalma, aroma que abraça.</p>
         <p class="alfabeto" style="font-family:var(--f-serif);font-size:30px;margin-top:24px">Aa Bb Cc Dd Ee Ff Gg 0123456789</p>
-        <p class="rotulo"><b>Buenard</b> frases e destaques</p>
+        <p class="rotulo">Buenard</p>
       </div>
     </div>
-    <div class="abs fio" style="top:950px"></div>
-    <div class="abs bloco" style="top:984px;display:grid;grid-template-columns:330px 1fr;gap:40px">
-      <p style="font-size:200px;font-weight:300;line-height:.9;letter-spacing:-.02em">Aa</p>
+    <div class="abs fio" style="top:940px"></div>
+    <div class="abs bloco" style="top:976px;display:grid;grid-template-columns:330px 1fr;gap:40px">
+      <p style="font-size:236px;font-weight:300;line-height:.9;letter-spacing:-.02em">Aa</p>
       <div style="padding-top:10px">
         <p style="font-size:25px;line-height:1.55">Velas aromáticas feitas à mão. Uma tinta só, sobre papel creme.</p>
-        <p class="rotulo"><b>Poppins</b> textos e informações</p>
+        <p class="rotulo">Poppins</p>
       </div>
     </div>
   </section>
@@ -110,25 +109,24 @@ body { background: #111; }
   <div class="abs" style="left:3240px;top:0;width:2160px;height:1350px;overflow:hidden">
     <img class="foto" src="../../assets/img/mock-colecao.jpg" alt="" style="object-position:50% 50%">
     <div class="abs sombra" style="left:72px;top:110px">
-      <span class="olho">A primeira coleção da ALMAH</span>
-      <h2 class="tit" style="font-size:118px;margin-top:30px">Gênesis,</h2>
+      <h2 class="tit" style="font-size:124px">Gênesis,</h2>
     </div>
     <div class="abs sombra" style="right:72px;top:110px;text-align:right">
-      <span class="olho" style="visibility:hidden">·</span>
-      <h2 class="tit" style="font-size:118px;margin-top:30px">a origem de tudo.</h2>
-      <p class="txt" style="margin:34px 0 0 auto;width:600px">Um nome forte para a coleção fundadora: o poder da criação e de manifestar sonhos.</p>
+      <h2 class="tit" style="font-size:124px">a origem de tudo.</h2>
+      <p class="txt" style="margin-top:30px">A primeira coleção da ALMAH.</p>
     </div>
   </div>
 
   <!-- ============ VI · um céu em cada rótulo ============ -->
-  <section class="slide" style="left:5400px">
-    <span class="brilho" style="left:-60px;top:150px;width:1200px;height:1200px"></span>
-    <h2 class="abs tit" style="left:0;right:0;top:130px;font-size:88px;text-align:center">Cada nome, um ritual.</h2>
+  <section class="slide ameixa" style="left:5400px">
+    <div class="ceu" data-estrelas="n:70;semente:52;rMax:11;grandes:.16"></div>
+    <span class="arco" style="left:-420px;top:-1180px;width:1920px;height:1920px"></span>
+    <span class="arco tracejado" style="left:-300px;top:-1080px;width:1680px;height:1680px"></span>
     <div class="leque">
-      <img src="../../assets/img/rotulo-aura.png" alt="" style="transform:rotate(-26deg);z-index:1">
-      <img src="../../assets/img/rotulo-terra.png" alt="" style="transform:rotate(-13deg);z-index:2">
-      <img src="../../assets/img/rotulo-venus.png" alt="" style="transform:rotate(26deg);z-index:1">
-      <img src="../../assets/img/rotulo-serena.png" alt="" style="transform:rotate(13deg);z-index:2">
+      <img src="../../assets/img/rotulo-aura.png" alt="" style="transform:rotate(-24deg);z-index:1">
+      <img src="../../assets/img/rotulo-terra.png" alt="" style="transform:rotate(-12deg);z-index:2">
+      <img src="../../assets/img/rotulo-venus.png" alt="" style="transform:rotate(24deg);z-index:1">
+      <img src="../../assets/img/rotulo-serena.png" alt="" style="transform:rotate(12deg);z-index:2">
       <img src="../../assets/img/rotulo-selene.png" alt="" style="transform:rotate(0deg);z-index:3">
     </div>
     <div class="tintas">
@@ -140,18 +138,22 @@ body { background: #111; }
     </div>
   </section>
 
-  <!-- ============ VII · as cores: o roxo profundo segue por baixo da caixa no slide VIII ============ -->
-  <section class="slide cores" style="left:6480px;overflow:visible">
+  <!-- ============ VII e VIII · um céu só passa por baixo das cores e da caixa ============ -->
+  <div class="abs" style="left:6480px;top:0;width:2160px;height:1350px;overflow:hidden;background:radial-gradient(70% 80% at 50% 80%, #5B4577 0%, var(--roxo-profundo) 55%, #3E2E53 100%)">
+    <div class="ceu" data-estrelas="n:120;semente:63;rMax:11;grandes:.16"></div>
+  </div>
+
+  <!-- ============ VII · as cores ============ -->
+  <section class="slide cores" style="left:6480px">
     <div class="cor" style="left:0;top:0;width:270px;height:430px;background:var(--noite)"><b>Noite</b><span>#1C1726</span></div>
     <div class="cor" style="left:270px;top:0;width:270px;height:430px;background:var(--roxo)"><b>Roxo</b><span>#7138B7</span></div>
     <div class="cor" style="left:540px;top:0;width:270px;height:430px;background:var(--creme);color:var(--roxo-profundo)"><b>Creme</b><span>#FFEBB4</span></div>
     <div class="cor" style="left:810px;top:0;width:270px;height:430px;background:var(--papel);color:var(--roxo-profundo)"><b>Papel</b><span>#F5ECD7</span></div>
-    <div class="cor" style="left:0;top:430px;width:1080px;height:120px;background:var(--verde);flex-direction:row;align-items:center;justify-content:space-between;padding:0 34px"><b style="font-size:30px">Verde <span style="font-family:var(--f-texto);font-size:16px;letter-spacing:.2em;text-transform:uppercase;margin-left:14px">apoio</span></b><span>#1D7053</span></div>
-    <div class="abs" style="left:72px;top:690px;width:940px">
-      <span class="olho">As cores</span>
-      <h2 class="tit" style="font-size:132px;margin-top:30px;line-height:.95">Roxo profundo,<br>sempre.</h2>
-      <p class="txt" style="margin-top:40px;width:760px">A cor principal da ALMAH. As outras acompanham; o verde só apoia.</p>
-      <p style="font-size:18px;letter-spacing:.16em;margin-top:30px;color:var(--guia)">#503B69 · CMYK <span data-cmyk="#503B69"></span></p>
+    <div class="cor" style="left:0;top:430px;width:1080px;height:120px;background:var(--verde);flex-direction:row;align-items:center;justify-content:space-between;padding:0 34px"><b style="font-size:30px">Verde <span style="font-family:var(--f-texto);font-size:20px;margin-left:12px;opacity:.85">de apoio</span></b><span>#1D7053</span></div>
+    <div class="abs" style="left:72px;top:660px;width:940px">
+      <h2 class="tit" style="font-size:136px;line-height:.95">Roxo profundo,<br>sempre.</h2>
+      <p class="txt" style="margin-top:40px">A cor principal da ALMAH.</p>
+      <p style="font-size:20px;letter-spacing:.06em;margin-top:18px;color:var(--guia)">#503B69 · CMYK <span data-cmyk="#503B69"></span></p>
     </div>
   </section>
 
@@ -159,27 +161,28 @@ body { background: #111; }
   <section class="slide" style="left:7560px">
     <div class="abs" style="left:0;top:0;width:1080px;height:860px;overflow:hidden"><img class="foto" src="../../assets/img/mock-caixa.jpg" alt="" style="object-position:50% 34%"></div>
     <h2 class="abs tit" style="left:72px;top:972px;font-size:88px">Abrir uma vela ALMAH.</h2>
-    <p class="abs txt" style="left:76px;top:1100px;width:900px">Selene é a Lua na mitologia, e a lavanda é a planta da lua: descanso, sonho e intuição.</p>
+    <p class="abs txt" style="left:76px;top:1100px;width:900px">Selene é a Lua na mitologia. A lavanda, a planta da lua.</p>
   </section>
 
   <!-- ============ IX · cuidar da chama ============ -->
   <section class="slide" style="left:8640px">
     <img class="foto" src="../../assets/img/mock-cuidados.jpg" alt="" style="object-position:50% 50%">
     <h2 class="abs tit sombra" style="left:72px;top:110px;font-size:104px">Cuidar<br>da chama.</h2>
-    <p class="abs txt sombra" style="left:76px;top:340px;width:440px">O verde é a cor de apoio da marca: entra nos cuidados, sem disputar com o roxo.</p>
+    <p class="abs txt sombra" style="left:76px;top:340px;width:440px">O verde é a cor de apoio da ALMAH.</p>
   </section>
 
   <!-- ============ X · obrigada, com o selo da EMS (arte original, sem alteração) ============ -->
-  <section class="slide" style="left:9720px;text-align:center">
-    <span class="brilho" style="left:90px;top:-40px;width:900px;height:900px;opacity:1.2"></span>
+  <section class="slide noite" style="left:9720px;text-align:center">
+    <div class="ceu" data-estrelas="n:80;semente:21;rMax:11;grandes:.16"></div>
+    <span class="arco" style="left:-1040px;top:-300px;width:1950px;height:1950px"></span>
+    <span class="arco tracejado" style="left:-860px;top:-180px;width:1700px;height:1700px"></span>
     <img class="abs" src="selo-ems.png" alt="Selo EMS" style="left:375px;top:150px;width:330px">
     <h2 class="abs tit" style="left:0;right:0;top:690px;font-size:128px"><span class="cap" style="font-size:1.25em;line-height:.8">O</span>brigada.</h2>
     <div class="abs" style="left:0;right:0;top:880px">
-      <span class="olho">Identidade visual</span>
-      <p class="tit" style="font-size:52px;margin-top:22px">Emilly · @itsemsdesign</p>
-      <p style="font-size:21px;letter-spacing:.04em;opacity:.8;margin-top:22px">em coparticipação com Cauã Dorn · @ohdorn, que desenhou o logo à mão</p>
+      <p class="tit" style="font-size:54px">Emilly · @itsemsdesign</p>
+      <p style="font-size:21px;opacity:.8;margin-top:22px">em coparticipação com Cauã Dorn · @ohdorn</p>
     </div>
-    <p class="abs" style="left:0;right:0;top:1214px;font-size:19px;letter-spacing:.24em;color:var(--guia)">ALMAH · @ALMAHDOMUS</p>
+    <p class="abs" style="left:0;right:0;top:1200px;font-size:21px;color:var(--guia)">ALMAH · @almahdomus</p>
   </section>
 
   <svg class="grao" width="10800" height="1350"><filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2"/></filter><rect width="100%" height="100%" filter="url(#ruido)"/></svg>
@@ -233,6 +236,19 @@ body { background: #111; }
   el('text', { x: O[0] + O[2] * .5 * Math.cos(aO) - 4, y: O[1] + O[2] * .5 * Math.sin(aO) - 8 }, m).textContent = 'R';
   el('text', { x: I[0] + I[2] * .5 * Math.cos(aI) + 2, y: I[1] + I[2] * .5 * Math.sin(aI) - 8 }, m).textContent = 'r';
   el('text', { x: eixo + 8, y: cy0 + 22 }, m).textContent = 'eixo';
+
+  /* estrela não cai em cima de texto: some a que encostar num título, num parágrafo ou no selo */
+  document.addEventListener('DOMContentLoaded', function () {
+    document.fonts.ready.then(function () {
+      var livres = Array.prototype.map.call(document.querySelectorAll('h2, p, .tintas > div, img[src="selo-ems.png"], [data-svg="logo-almah"]'), function (e) {
+        var r = e.getBoundingClientRect(); return [r.left - 18, r.top - 18, r.right + 18, r.bottom + 18];
+      });
+      document.querySelectorAll('.ceu path, .ceu circle').forEach(function (e) {
+        var r = e.getBoundingClientRect();
+        if (livres.some(function (q) { return r.right > q[0] && r.left < q[2] && r.bottom > q[1] && r.top < q[3]; })) e.remove();
+      });
+    });
+  });
 })();
 </script>
 </body>
