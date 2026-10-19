@@ -177,7 +177,10 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
 #m-fim .carta .sim { width: 74px; height: 79px; }
 #m-fim .carta .tit { font-size: 64px; margin-top: 46px; }
 #m-fim .carta .olho { margin-top: 30px; color: var(--verde); }
-#m-fim .carta .cred { margin-top: auto; font-size: 11.5px; line-height: 1.8; color: var(--tinta); opacity: .8; }
+#m-fim .creditos { margin-top: auto; display: flex; flex-direction: column; gap: 26px; }
+#m-fim .creditos small { display: block; font-weight: 500; font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--verde); opacity: .75; margin-bottom: 6px; }
+#m-fim .creditos b { font-family: var(--f-serif); font-weight: 400; font-size: 26px; color: var(--verde); }
+#m-fim .carta .cred { margin-top: 34px; font-size: 11.5px; line-height: 1.8; color: var(--tinta); opacity: .8; }
 #m-fim .carta .cred b { font-weight: 500; }
 #m-fim .sol { position: absolute; left: 50%; top: 226px; width: 760px; height: 760px; transform: translate(-50%, -50%); color: var(--verde); opacity: .22; }
 </style>
@@ -211,9 +214,9 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
   <div class="linha"></div>
   <div class="sim" data-svg="simbolo"></div>
   <div class="ficha">
-    <div><b>Marca</b>Almah · @almahdomus<br>Coleção Gênesis</div>
+    <div><b>Identidade visual</b>@itsemsdesign</div>
     <div><b>Logo</b>Desenhado à mão por<br>Cauã Dorn · @ohdorn</div>
-    <div><b>Entregas</b>Símbolo, lettering, rótulos,<br>papelaria, foto e motion</div>
+    <div><b>Marca</b>Almah · @almahdomus<br>Coleção Gênesis</div>
   </div>
 </section>
 
@@ -264,9 +267,6 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
   <div class="nome" id="a-nome" data-svg="nome"></div>
   <p class="credito" id="a-credito">LOGO DESENHADO À MÃO POR <b>CAUÃ DORN</b> · @ohdorn</p>
 </section>
-
-<!-- 06 · foto -->
-<section class="mod foto-cheia" id="m-foto2" style="height:1000px"><img src="../assets/img/ia-lua-baunilha.jpg" alt="Vela diante de uma lua de luz, com baunilha" style="object-position:50% 44%"></section>
 
 <!-- 07 · versões -->
 <section class="mod escuro" id="m-versoes">
@@ -418,9 +418,6 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
   <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
 </section>
 
-<!-- 17 · frase -->
-<section class="mod" id="m-frase"><img src="../assets/img/foto-chama.jpg" alt="Chama de vela em close"><q>Luz que acalma,<br>aroma que abraça.</q><small>ALMAH · COLEÇÃO GÊNESIS</small></section>
-
 <!-- 18 · obrigada -->
 <section class="mod claro" id="m-fim">
   <div class="sol" data-raios="n:70;de:-180;ate:0;r0:22;r1:98;peso:.3;semente:6"></div>
@@ -429,7 +426,11 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
     <div class="sim" data-svg="simbolo"></div>
     <h2 class="tit"><span class="cap">O</span>brigada</h2>
     <p class="olho">Almah · Coleção Gênesis · 2026</p>
-    <p class="cred">Identidade visual para a Almah · @almahdomus<br>Logo desenhado à mão por <b>Cauã Dorn</b> · @ohdorn</p>
+    <div class="creditos">
+      <div><small>Identidade visual</small><b>@itsemsdesign</b></div>
+      <div><small>Logo desenhado à mão</small><b>Cauã Dorn · @ohdorn</b></div>
+    </div>
+    <p class="cred">Para a Almah · @almahdomus</p>
   </div>
 </section>
 
