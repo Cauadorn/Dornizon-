@@ -261,7 +261,6 @@ html.com-gsap.largo .trilho-caixa { overflow: visible; }
 .btn svg { width: 12px; height: 12px; }
 .bancada { display: flex; justify-content: center; }
 .rotulo-vivo { --c: var(--selene); --fundo: #F5ECD7; --traco: var(--c); position: relative; width: min(560px, 100%); aspect-ratio: 50 / 40; border-radius: 4.5%; background: var(--fundo); color: var(--traco); overflow: hidden; box-shadow: 0 30px 70px #0b2a1f88; display: flex; flex-direction: column; align-items: center; text-align: center; transition: background-color .5s, color .5s; container-type: inline-size; }
-.rotulo-vivo.de-cor { --fundo: var(--c); --traco: #FFEBB4; }
 .rotulo-vivo .moldura { inset: 3.4%; --rm: 14px; --rr: 1.3cqi; }
 .rotulo-vivo .raios { position: absolute; left: 50%; top: 27%; width: 130%; aspect-ratio: 1; translate: -50% -50%; }
 .rotulo-vivo .s { position: relative; width: 6.4%; aspect-ratio: 470 / 500; margin-top: 21%; }
@@ -530,10 +529,8 @@ html.com-gsap.largo .trilho-caixa { overflow: visible; }
             <label style="--c:#B55263" title="Vênus"><input type="radio" name="cor" id="corVenus" value="#B55263"><span class="sr">Vênus, rosa</span></label>
           </div>
         </div>
-        <div class="campo"><span class="rotulo-campo" id="rotFundo">Fundo e peso</span>
+        <div class="campo"><span class="rotulo-campo" id="rotFundo">Peso</span>
           <div class="opcoes" role="group" aria-labelledby="rotFundo">
-            <label><input type="radio" name="fundo" id="fundoCreme" value="creme" checked>Papel creme</label>
-            <label><input type="radio" name="fundo" id="fundoCor" value="cor">Fundo de cor</label>
             <label><input type="radio" name="peso" id="peso90" value="90g">90 g</label>
             <label><input type="radio" name="peso" id="peso150" value="150g" checked>150 g</label>
           </div>

@@ -134,8 +134,13 @@ p { font-size: 19px; line-height: 1.65; text-wrap: pretty; }
 .m10 .mesa figcaption b { font-family: var(--f-display); font-weight: 400; font-size: 24px; letter-spacing: .06em; display: block; opacity: 1; }
 
 /* m11 rótulos de cor */
-.m11 { height: 1000px; }
-.m11 img { position: absolute; width: 640px; filter: drop-shadow(0 26px 40px #2A223650); }
+.m11 { height: 1060px; padding: 110px 110px; display: flex; gap: 90px; align-items: center; }
+.m11 .folha { flex: 0 0 auto; height: 840px; aspect-ratio: 210 / 297; background: #FBF6EA; padding: 2.86% 2.38%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(7, 1fr); box-shadow: 0 30px 70px #2A223640, 0 0 0 1px #2A22361a; transform: rotate(-2.5deg); }
+.m11 .folha img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.m11 .info { flex: 1; display: flex; flex-direction: column; gap: 22px; }
+.m11 .olho { color: var(--verde); }
+.m11 h2 { color: var(--verde); }
+.m11 .info img { width: 100%; height: 420px; object-fit: cover; border-radius: 999px 999px 10px 10px; margin-top: 16px; }
 
 /* m12 dupla de fotos */
 .m12 { height: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
@@ -301,13 +306,15 @@ p { font-size: 19px; line-height: 1.65; text-wrap: pretty; }
   </div>
 </section>
 
-<!-- 11 rótulos de cor -->
+<!-- 11 rótulos na folha -->
 <section class="mod m11 papel">
-  <img src="../assets/img/rotulo-cor-terra.webp" alt="" style="left:-80px;top:80px;transform:rotate(-9deg)">
-  <img src="../assets/img/rotulo-cor-selene.webp" alt="" style="left:420px;top:40px;transform:rotate(4deg)">
-  <img src="../assets/img/rotulo-cor-serena.webp" alt="" style="left:860px;top:110px;transform:rotate(-6deg)">
-  <img src="../assets/img/rotulo-cor-venus.webp" alt="" style="left:180px;top:490px;transform:rotate(6deg)">
-  <img src="../assets/img/rotulo-cor-aura.webp" alt="" style="left:700px;top:520px;transform:rotate(-3deg)">
+  <div class="folha"><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""></div>
+  <div class="info">
+    <span class="olho">Impressão</span>
+    <h2>Uma folha por vela</h2>
+    <p>A4 com 28 etiquetas de 50 × 40 mm, papel creme e uma tinta só, na cor da vela.</p>
+    <img src="../assets/img/foto-selene.jpg" alt="Vela Selene com o rótulo aplicado">
+  </div>
 </section>
 
 <!-- 12 dupla de fotos -->

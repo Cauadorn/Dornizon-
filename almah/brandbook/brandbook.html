@@ -230,9 +230,14 @@ table { border-collapse: collapse; width: 100%; font-size: 19px; }
 th, td { text-align: left; padding: 15px 0; border-bottom: 1px solid var(--fio); vertical-align: top; }
 th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--verde); width: 190px; padding-top: 19px; }
 
-/* rótulos cor */
-.rot-cor .leque { flex: 1; position: relative; }
-.rot-cor .leque img { position: absolute; width: 560px; filter: drop-shadow(0 22px 34px #2A223640); }
+/* rótulos impressão */
+.impressao .miolo { gap: 110px; align-items: center; }
+.impressao .folha { flex: 0 0 auto; height: 650px; margin-top: -30px; aspect-ratio: 210 / 297; background: #FBF6EA; padding: 2.86% 2.38%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(7, 1fr); box-shadow: 0 26px 60px #2A223638, 0 0 0 1px #2A22361a; transform: rotate(-2deg); }
+.impressao .folha img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.impressao .info { flex: 1; display: flex; flex-direction: column; gap: 26px; }
+.impressao figure { display: flex; gap: 24px; align-items: flex-end; margin-top: 10px; }
+.impressao figure img { width: 300px; height: 300px; object-fit: cover; border-radius: 999px 999px 10px 10px; display: block; }
+.impressao figcaption { max-width: 300px; }
 
 /* papelaria */
 .papelaria .grade { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; align-content: start; }
@@ -581,8 +586,8 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
     <table>
       <tr><th>Formato</th><td>50 × 40 mm, cantos arredondados</td></tr>
       <tr><th>Folha</th><td>A4 com 28 etiquetas (4 × 7)</td></tr>
-      <tr><th>Fundo</th><td>Papel #F5ECD7, ou a cor da vela</td></tr>
-      <tr><th>Tinta</th><td>Uma cor, a da vela (creme sobre fundo de cor)</td></tr>
+      <tr><th>Fundo</th><td>Papel creme #F5ECD7</td></tr>
+      <tr><th>Tinta</th><td>Uma cor só, a da vela</td></tr>
       <tr><th>Nome</th><td>Aboreto Regular, 27,5 pt, caixa alta</td></tr>
       <tr><th>Aroma</th><td>Poppins Light, 11,7 pt (8,6 e 7,1 pt nos aromas longos)</td></tr>
       <tr><th>Coleção</th><td>Poppins Italic, 3,9 pt</td></tr>
@@ -592,18 +597,18 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
   <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>16</b></footer>
 </section>
 
-<!-- 17 rótulos fundo de cor -->
-<section class="pg papel rot-cor">
+<!-- 17 rótulos impressão -->
+<section class="pg papel impressao">
   <div class="moldura"></div>
-  <header class="cab"><span class="olho">14 · Rótulos</span><h2>Fundo de cor</h2></header>
-  <div class="leque">
-    <img src="../assets/img/rotulo-cor-aura.webp" alt="Rótulo Aura creme" style="left:0;top:40px;transform:rotate(-7deg)">
-    <img src="../assets/img/rotulo-cor-terra.webp" alt="Rótulo Terra verde" style="left:300px;top:150px;transform:rotate(4deg)">
-    <img src="../assets/img/rotulo-cor-selene.webp" alt="Rótulo Selene roxo" style="left:620px;top:20px;transform:rotate(-3deg)">
-    <img src="../assets/img/rotulo-cor-serena.webp" alt="Rótulo Serena vermelho" style="left:930px;top:160px;transform:rotate(6deg)">
-    <img src="../assets/img/rotulo-cor-venus.webp" alt="Rótulo Vênus rosa" style="left:1060px;top:-30px;transform:rotate(-5deg);width:560px">
+  <header class="cab"><span class="olho">14 · Rótulos</span><h2>Na folha e no copo</h2></header>
+  <div class="miolo">
+    <div class="folha" aria-label="Folha A4 com 28 rótulos Selene"><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""></div>
+    <div class="info">
+      <p class="lead" style="font-size:40px">Uma folha A4 por vela, com 28 etiquetas de 50 × 40 mm.</p>
+      <p>Papel creme e uma tinta só, na cor da vela. A folha sai em 4 colunas e 7 linhas, sem sangria entre as etiquetas, e vai direto para o corte.</p>
+      <figure><img src="../assets/img/foto-selene.jpg" alt="Vela Selene com o rótulo aplicado"><figcaption class="nota">Selene com o rótulo aplicado. Artes de impressão em 02 ROTULOS / Impressao A4.</figcaption></figure>
+    </div>
   </div>
-  <p class="nota" style="position:absolute;left:150px;bottom:110px;max-width:640px">Versão com o fundo na cor da vela e traço creme. A Aura fica no creme com traço oliva. Artes em 02 ROTULOS / Arte unitaria.</p>
   <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>17</b></footer>
 </section>
 

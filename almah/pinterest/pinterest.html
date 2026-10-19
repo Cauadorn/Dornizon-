@@ -44,7 +44,10 @@ body { background: #222; font-family: var(--f-texto); }
 .t2 .selo svg.anel { position: absolute; inset: 0; width: 100%; height: 100%; }
 .t2 .selo .sim { position: absolute; left: 50%; top: 50%; width: 92px; height: 98px; transform: translate(-50%, -54%); }
 .t3 { background: var(--roxo-profundo); }
-.t3 img { position: absolute; width: 250px; filter: drop-shadow(0 14px 22px #0007); }
+.t3 { color: var(--creme); gap: 22px; }
+.t3 .ceu-t { position: absolute; inset: 0; color: var(--creme); opacity: .8; }
+.t3 img { position: relative; width: 258px; filter: drop-shadow(0 16px 26px #0008); }
+.t3 small { position: relative; font-weight: 500; font-size: 10px; letter-spacing: .32em; opacity: .75; }
 
 .faixa { background-color: var(--papel); background-size: 104px; border-top: 1px solid #1D705322; border-bottom: 1px solid #1D705322; }
 
@@ -96,8 +99,9 @@ body { background: #222; font-family: var(--f-texto); }
       </div>
     </div>
     <div class="tile t3">
-      <img src="../assets/img/rotulo-cor-selene.webp" alt="" style="left:28px;top:44px;transform:rotate(-8deg)">
-      <img src="../assets/img/rotulo-cor-venus.webp" alt="" style="left:92px;top:150px;transform:rotate(5deg)">
+      <div class="ceu-t" data-estrelas="n:12;semente:9;rMax:7;miolo:.22"></div>
+      <img src="../assets/img/rotulo-selene.png" alt="Rótulo Selene, papel creme">
+      <small>SELENE · LAVANDA</small>
     </div>
   </section>
 

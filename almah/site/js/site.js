@@ -88,7 +88,6 @@
     rAroma.textContent = cAroma.value.trim() || 'aroma';
     var cor = ($('input[name=cor]:checked') || {}).value || '#503B6A';
     rot.style.setProperty('--c', cor);
-    rot.classList.toggle('de-cor', ($('input[name=fundo]:checked') || {}).value === 'cor');
     rPeso.textContent = ($('input[name=peso]:checked') || {}).value || '150g';
   }
   $('#formRotulo').addEventListener('input', atualizarRotulo);

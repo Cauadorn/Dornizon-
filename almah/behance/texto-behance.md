@@ -26,7 +26,7 @@ Suba os arquivos de `subir-nesta-ordem/` na ordem do número, um por módulo, se
 9. 09-tipografia.jpg
 10. 10-estampa.jpg
 11. 11-colecao.jpg
-12. 12-rotulos-cor.jpg
+12. 12-rotulos-impressao.jpg · a folha A4 de etiquetas e o rótulo aplicado
 13. 13-fotos.jpg
 14. 14-aromas.jpg
 15. 15-papelaria.jpg
