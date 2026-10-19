@@ -30,7 +30,7 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 | 09 | 09-legenda-genesis.jpg | Legenda III · Gênesis |
 | 10 | 10-cinco-ceus.jpg | Os cinco rótulos, com aroma e tinta de cada um |
 | 11 | 11-fotos-do-produto.jpg | Fotos reais do produto: Selene; Serena, Aura e Selene |
-| 12 | 12-entrega.jpg | A caixa nas mãos, amarrada, com o adesivo |
+| 12 | 12-entrega.jpg | A caixa nas mãos, amarrada com laço, com o adesivo em arco |
 | 13 | 13-legenda-seu-pedido-chegou.jpg | Legenda IV · Seu pedido chegou |
 | 14 | 14-caixa-aberta.jpg | A caixa aberta: papel de seda, a vela Selene e o card Obrigada |
 | 15 | 15-legenda-abrir.jpg | Legenda V · Abrir |
@@ -40,7 +40,7 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 | 19 | 19-legenda-cuidar.jpg | Legenda VI · Cuidar |
 | 20 | 20-kit-completo.jpg | O kit inteiro visto de cima |
 | 21 | 21-cores-e-letras.jpg | A paleta em fases da lua, as tintas da coleção e as quatro fontes |
-| 22 | 22-obrigada.jpg | Lua cheia e "Obrigada", com @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
+| 22 | 22-obrigada.jpg | Lua cheia e "Obrigada", com os créditos: Emily @itsemsdesign, Cauã Dorn @ohdorn e @almahdomus |
 
 ## Vídeo no lugar do GIF
 
@@ -48,7 +48,7 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 
 ## Sobre as imagens
 
-As fotos de produto dos módulos 01 e 11 são reais. As fotos de embalagem e ambiente (03, 06, 08, 12, 14, 17, 18 e 20) são mockups gerados com IA a partir das artes reais da marca: rótulos, cards, adesivo e logo. No kit (20), os cards de cuidados e de agradecimento foram reaplicados por cima com a arte original, para o texto ficar fiel. O caderno do módulo 03 é uma encenação do processo, não o esboço original do Cauã; se houver foto do esboço de verdade, ela entra melhor nesse lugar.
+As fotos de produto dos módulos 01 e 11 são reais. As fotos de embalagem e ambiente (03, 06, 08, 12, 14, 17, 18 e 20) são mockups gerados com IA a partir das artes reais da marca: rótulos, cards, adesivo e logo. No kit (20), os cards de cuidados e de agradecimento foram reaplicados por cima com a arte original, para o texto ficar fiel; na entrega (12), o adesivo foi refeito em arco a partir da arte real. O caderno do módulo 03 é uma encenação do processo, não o esboço original do Cauã (as anotações, o compasso, a vela e a luminária foram tirados); se houver foto do esboço de verdade, ela entra melhor nesse lugar.
 
 No Behance, marque a opção de projeto feito com ferramentas de IA.
 
@@ -56,7 +56,7 @@ No Behance, marque a opção de projeto feito com ferramentas de IA.
 
 Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua.
 
-Identidade visual por @itsemsdesign. O logo foi desenhado à mão por Cauã Dorn (@ohdorn) e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
+Identidade visual por Emily (@itsemsdesign) e Cauã Dorn (@ohdorn). O logo foi desenhado à mão pelo Cauã e depois redesenhado em vetor: dois círculos desenham a lua, um eixo guia a chama.
 
 A primeira coleção, Gênesis, tem cinco velas (Aura, Terra, Selene, Serena e Vênus), cada uma com um aroma e uma cor, impressas numa tinta só sobre papel creme. A vela chega numa caixa roxo-profundo fechada com o adesivo "Seu pedido chegou!", com um card de agradecimento e um card de cuidados.
 
@@ -66,7 +66,7 @@ Luz que acalma, aroma que abraça.
 
 Almah is a brand of handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon.
 
-Visual identity by @itsemsdesign. The logo was hand-drawn by Cauã Dorn (@ohdorn) and then redrawn in vector: two circles draw the moon, one axis guides the flame.
+Visual identity by Emily (@itsemsdesign) and Cauã Dorn (@ohdorn). The logo was hand-drawn by Cauã and then redrawn in vector: two circles draw the moon, one axis guides the flame.
 
 The first collection, Gênesis, has five candles (Aura, Terra, Selene, Serena and Vênus), each with its own scent and color, printed in a single ink on cream paper. Each candle arrives in a deep plum box sealed with a "your order has arrived" sticker, with a thank-you card and a care card.
 
@@ -79,4 +79,4 @@ identidade visual, branding, brand identity, logo, hand drawn, packaging, embala
 - Áreas criativas: Branding, Packaging, Photography
 - Ferramentas: Adobe Illustrator, Figma, Adobe Premiere Pro
 - Marca: Almah (@almahdomus)
-- Créditos: identidade visual por @itsemsdesign; logo desenhado à mão por Cauã Dorn (@ohdorn). No Behance, vale adicionar os dois perfis como proprietários do projeto.
+- Créditos: identidade visual por Emily (@itsemsdesign) e Cauã Dorn (@ohdorn); logo desenhado à mão pelo Cauã. No Behance, vale adicionar os dois perfis como proprietários do projeto.
