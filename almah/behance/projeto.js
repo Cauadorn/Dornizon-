@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var piscar = ceu($('#ceus-ceu'), 1400, 876, 23, 10, '.cab, .r');
     var rs = $$('#m-ceus .r');
     var arco = $('#ceus-arco');
-    MOTION['#m-ceus'] = { dur: 10, render: function (t) {
+    var CEUS = { dur: 10, render: function (t) {
       piscar(t);
       arco.style.opacity = suave(prog(t, .2, 1.4)) * (1 - suave(prog(t, 9.0, 10)));
       var La = arco.__L || (arco.__L = arco.getTotalLength()); arco.style.strokeDashoffset = 0; arco.setAttribute('stroke-dasharray', '3 6');
@@ -182,22 +182,11 @@ document.addEventListener('DOMContentLoaded', function () {
         r.style.setProperty('--g', (suave(prog(t, a + .2, a + .8)) * (1 - suave(prog(t, a + 1.0, a + 2.4)))).toFixed(3));
       });
     } };
-  })();
-
-  /* ---------- 08 · o aroma em cena (vídeos) ---------- */
-  (function () {
-    var vs = $$('#m-aroma video');
-    vs.forEach(function (v) { v.src = v.dataset.webm; });
-    function buscar(v, s) { return new Promise(function (ok) { if (Math.abs(v.currentTime - s) < .001) return ok(); v.addEventListener('seeked', function () { ok(); }, { once: true }); v.currentTime = s; }); }
-    MOTION['#m-aroma'] = { dur: 5,
-      preparar: function () { return Promise.all(vs.map(function (v) { v.pause(); return v.readyState >= 2 ? 0 : new Promise(function (ok) { v.addEventListener('loadeddata', ok, { once: true }); }); })); },
-      ao_vivo: function () { vs.forEach(function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }); },
-      render: function (t) { var s = .3 + (t < 2.5 ? t : 5 - t); return Promise.all(vs.map(function (v) { return buscar(v, s); })).then(function () { return new Promise(function (ok) { requestAnimationFrame(function () { ok(); }); }); }); }
-    };
+    CEUS.render(7.5);
   })();
 
   /* ---------- 09 · o céu que se repete ---------- */
-  MOTION['#m-estampa'] = { dur: 6, render: function (t) {
+  var ESTAMPA = { dur: 6, render: function (t) {
     $('#e-faixa').style.backgroundPosition = px(-(t / 6) * 150) + ' 0';
     $('#e-sol').style.transform = 'rotate(' + (3 * Math.sin(TAU * t / 6)).toFixed(3) + 'deg)';
     $('#e-nuv').style.transform = 'translateX(' + px(9 * Math.sin(TAU * t / 6)) + ')';
@@ -205,43 +194,36 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#e-est2').style.opacity = (.55 + .45 * Math.sin(TAU * (t / 3 + .3))).toFixed(3);
     $('#e-est3').style.opacity = (.55 + .45 * Math.sin(TAU * (t / 2 + .7))).toFixed(3);
   } };
+  ESTAMPA.render(0);
 
-  /* ---------- 10 · o ritual da queima ---------- */
+  /* ---------- 10 · o ritual da queima, em cinco quadros ---------- */
   (function () {
-    var passos = $$('#m-ritual .passo'), pontos = $$('#m-ritual .pontos i');
-    var A = function (id, k, v) { $(id).setAttribute(k, v); };
-    MOTION['#m-ritual'] = { dur: 12.5, render: function (t) {
-      passos.forEach(function (p, j) {
-        var a = j * 2.5, b = j === 4 ? 12.0 : a + 2.0;
-        p.style.opacity = suave(prog(t, a, a + .5)) * (1 - suave(prog(t, b, b + .5)));
-        p.style.transform = 'translateY(' + px(mix(12, 0, sai(prog(t, a, a + .8)))) + ')';
-        pontos[j].style.opacity = (t >= a && t < a + 2.5) ? 1 : .25;
-      });
+    function velaEm(t, r) {
+      var q = function (c) { return r.querySelector('.r-' + c); };
+      var A = function (c, k, v) { q(c).setAttribute(k, v); };
       var piscina = suave(prog(t, .4, 2.2));
       var nivel = mix(196, 242, suave(prog(t, 5.2, 7.2)));
       var topoPavio = mix(170, 182, suave(prog(t, 2.8, 3.6))) + (nivel - 196);
-      A('#r-cera', 'y', nivel.toFixed(2)); A('#r-topo', 'cy', nivel.toFixed(2));
-      A('#r-piscina', 'cy', nivel.toFixed(2)); A('#r-piscina', 'rx', mix(34, 104, piscina).toFixed(2)); A('#r-piscina', 'ry', mix(6, 13, piscina).toFixed(2));
-      A('#r-pavio', 'y1', nivel.toFixed(2)); A('#r-pavio', 'y2', topoPavio.toFixed(2));
+      A('cera', 'y', nivel.toFixed(2)); A('topo', 'cy', nivel.toFixed(2));
+      A('piscina', 'cy', nivel.toFixed(2)); A('piscina', 'rx', mix(34, 104, piscina).toFixed(2)); A('piscina', 'ry', mix(6, 13, piscina).toFixed(2));
+      A('pavio', 'y1', nivel.toFixed(2)); A('pavio', 'y2', topoPavio.toFixed(2));
       var apaga = 1 - suave(prog(t, 10.0, 10.5));
-      var calma = 1 - .6 * suave(prog(t, 7.6, 8.4));
-      var sy = 1 + calma * (.04 * Math.sin(TAU * 1.4 * t) + .02 * Math.sin(TAU * 3.1 * t + 1));
-      var sk = calma * 2.2 * Math.sin(TAU * .9 * t);
-      var ch = $('#r-chama');
-      ch.style.transform = 'translateY(' + px(topoPavio - 170) + ') scale(1,' + sy.toFixed(4) + ') skewX(' + sk.toFixed(3) + 'deg)';
-      ch.style.opacity = apaga;
-      A('#r-brilho', 'cy', (topoPavio - 52).toFixed(2)); $('#r-brilho').style.opacity = apaga;
-      var tes = suave(prog(t, 2.6, 3.0)) * (1 - suave(prog(t, 4.2, 4.8)));
-      $('#r-tesoura').style.opacity = tes; $('#r-tesoura').style.transform = 'translate(' + px(mix(20, 0, suave(prog(t, 2.6, 3.2)))) + ',' + px(topoPavio - 170) + ')';
-      $('#r-mesa').style.opacity = suave(prog(t, 7.6, 8.2));
-      var fu = $('#r-fumaca'); fu.style.opacity = suave(prog(t, 10.3, 10.8)) * (1 - suave(prog(t, 11.8, 12.4)));
+      q('chama').style.transform = 'translateY(' + px(topoPavio - 170) + ')';
+      q('chama').style.opacity = apaga;
+      A('brilho', 'cy', (topoPavio - 52).toFixed(2)); q('brilho').style.opacity = apaga;
+      q('tesoura').style.opacity = suave(prog(t, 2.6, 3.0)) * (1 - suave(prog(t, 4.2, 4.8)));
+      q('tesoura').style.transform = 'translate(0,' + px(topoPavio - 170) + ')';
+      q('mesa').style.opacity = suave(prog(t, 7.6, 8.2));
+      var fu = q('fumaca'); fu.style.opacity = suave(prog(t, 10.3, 10.8));
       fu.style.transform = 'translateY(' + px(topoPavio - 170 - 26 * prog(t, 10.3, 12.4)) + ')';
-      $$('#r-fumaca path').forEach(function (p, i) { p.style.strokeDasharray = '160'; p.style.strokeDashoffset = (160 * (1 - prog(t, 10.3 + i * .3, 11.9))).toFixed(1); });
-      var rel = $('#r-relogio'), m = Math.round(180 * suave(prog(t, 5.2, 7.2)));
-      rel.firstChild.nodeValue = Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0');
-      rel.style.opacity = suave(prog(t, 5.0, 5.4)) * (1 - suave(prog(t, 7.4, 7.9)));
-      $('#r-tudo').style.opacity = suave(prog(t, 0, .5)) * (1 - suave(prog(t, 12.0, 12.5)));
-    } };
+      [].slice.call(fu.querySelectorAll('path')).forEach(function (p, i) { p.style.strokeDasharray = '160'; p.style.strokeDashoffset = (160 * (1 - prog(t, 10.3 + i * .3, 11.9))).toFixed(1); });
+      q('tudo').style.opacity = 1;
+    }
+    var tpl = $('#tpl-vela');
+    $$('#m-ritual .vela-mini').forEach(function (box) {
+      box.insertBefore(tpl.content.cloneNode(true), box.firstChild);
+      velaEm(+box.dataset.t, box);
+    });
   })();
 
   /* ---------- gravação ---------- */

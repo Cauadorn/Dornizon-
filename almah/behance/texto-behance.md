@@ -11,7 +11,7 @@ Almah · Identidade Visual
 
 ## Ordem dos módulos
 
-Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, com espaçamento zero entre módulos. Os GIFs têm 1400 px (largura cheia); as JPGs, 2800 px.
+Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, com espaçamento zero entre módulos. Os três motions (03, 04 e 05, todos do logo) vão em GIF de 1400 px (largura cheia); o resto em JPG de 2800 px.
 
 | # | Arquivo | O que é |
 |---|---|---|
@@ -25,18 +25,18 @@ Suba os arquivos de `subir-nesta-ordem/` pela ordem do número, um por módulo, 
 | 08 | 08-fotos-rotulos.jpg | Serena, Aura e Selene; Selene em close |
 | 09 | 09-paleta.jpg | Da noite à chama, com o degradê da marca |
 | 10 | 10-tipografia.jpg | Três vozes: Aboreto, Buenard com capitular e Poppins |
-| 11 | 11-cinco-ceus.gif | **Motion.** Os cinco rótulos chegam um a um e desenham o arco de uma lua |
-| 12 | 12-aroma-em-cena.gif | **Motion.** Aura acendendo, lavanda e Vênus, cada um num arco |
-| 13 | 13-estampa.gif | **Motion.** A estampa corre e os elementos respiram |
+| 11 | 11-cinco-ceus.jpg | Os cinco rótulos desenham o arco de uma lua |
+| 12 | 12-aroma-em-cena.jpg | Baunilha, lavanda e Vênus, cada uma num arco |
+| 13 | 13-estampa.jpg | A estampa e os elementos: sol raiado, nuvem, estrela e arco |
 | 14 | 14-fotos-aromas.jpg | Vênus acesa; baunilha e orquídea |
-| 15 | 15-ritual.gif | **Motion.** O card de cuidados vira filme: a cera derrete, o pavio é aparado, a chama apaga |
+| 15 | 15-cuidados.jpg | O card de cuidados em cinco quadros: a cera derrete, o pavio é aparado, a chama apaga |
 | 16 | 16-papelaria.jpg | Card de cuidados, card de obrigado e adesivo |
 | 17 | 17-frase.jpg | Luz que acalma, aroma que abraça, sobre a chama |
 | 18 | 18-obrigada.jpg | Fechamento com os créditos |
 
 ## Vídeo no lugar do GIF
 
-`motion-mp4/` tem os sete motions em MP4. O de 1280 px sobe direto no Behance (o Behance limita vídeo enviado a 1280 px de largura). O de 1920 px é para Vimeo ou YouTube, se quiser incorporar e ocupar a largura toda. O MP4 fica mais limpo que o GIF no degradê do fundo.
+`motion-mp4/` tem os três motions em MP4. O de 1280 px sobe direto no Behance (o Behance limita vídeo enviado a 1280 px de largura). O de 1920 px é para Vimeo ou YouTube, se quiser incorporar e ocupar a largura toda. O MP4 fica mais limpo que o GIF no degradê do fundo.
 
 ## Descrição (português)
 
@@ -62,7 +62,7 @@ identidade visual, branding, brand identity, logo, lettering, hand drawn, motion
 
 ## Campos do projeto
 
-- Áreas criativas: Branding, Motion Graphics, Packaging
+- Áreas criativas: Branding, Packaging, Motion Graphics
 - Ferramentas: Adobe Illustrator, Figma, Adobe Premiere Pro
 - Marca: Almah (@almahdomus)
 - Créditos: logo desenhado à mão por Cauã Dorn (@ohdorn)

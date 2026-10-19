@@ -147,18 +147,16 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
 #m-estampa .el .leg b { font-size: 15px; color: var(--verde); }
 
 /* 15 · ritual */
-#m-ritual .passos { position: absolute; left: 64px; top: 300px; width: 470px; height: 300px; }
-#m-ritual .passo { position: absolute; inset: 0; opacity: 0; }
-#m-ritual .passo .n { font-family: var(--f-serif); font-size: 13px; letter-spacing: .24em; color: var(--ouro); }
-#m-ritual .passo h3 { font-family: var(--f-serif); font-weight: 400; font-size: 40px; line-height: 1.05; margin: 12px 0 16px; }
-#m-ritual .passo p { font-size: 13.5px; line-height: 1.7; opacity: .88; max-width: 380px; }
-#m-ritual .passo p i { display: block; opacity: .55; margin-top: 8px; font-size: 12px; }
-#m-ritual .pontos { position: absolute; left: 64px; top: 620px; display: flex; gap: 10px; }
-#m-ritual .pontos i { width: 26px; height: 2px; background: var(--creme); opacity: .25; }
-#m-ritual .vela { position: absolute; left: 760px; top: 170px; width: 420px; height: 600px; }
-#m-ritual .vela svg { width: 100%; height: 100%; overflow: visible; }
-#m-ritual .relogio { position: absolute; left: 1170px; top: 260px; font-family: var(--f-display); font-size: 30px; color: var(--ouro); opacity: 0; font-variant-numeric: tabular-nums; }
-#m-ritual .relogio small { display: block; font-family: var(--f-texto); font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; opacity: .7; }
+#m-ritual .quadros { position: absolute; left: 64px; right: 64px; top: 210px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+#m-ritual .q { display: flex; flex-direction: column; align-items: center; text-align: center; }
+#m-ritual .vela-mini { position: relative; width: 210px; height: 300px; }
+#m-ritual .vela-mini svg { width: 100%; height: 100%; overflow: visible; }
+#m-ritual .hora { position: absolute; right: -8px; top: 18px; font-family: var(--f-display); font-size: 20px; color: var(--ouro); }
+#m-ritual .q .n { margin-top: 30px; font-family: var(--f-serif); font-size: 12px; letter-spacing: .24em; color: var(--ouro); }
+#m-ritual .q h3 { font-family: var(--f-serif); font-weight: 400; font-size: 25px; line-height: 1.1; margin: 8px 0 10px; }
+#m-ritual .q p { font-size: 12px; line-height: 1.6; opacity: .85; max-width: 200px; }
+#m-ritual .q p i { display: block; opacity: .55; margin-top: 4px; font-size: 11px; }
+#m-ritual .linha-tempo { position: absolute; left: 160px; right: 160px; top: 524px; height: 1px; background: #FFEBB422; }
 
 /* 16 · o que vai na caixa */
 #m-caixa .mesa { position: absolute; left: 64px; right: 64px; top: 196px; bottom: 90px; }
@@ -322,7 +320,7 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
   <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
 </section>
 
-<!-- 11 · cinco céus (motion) -->
+<!-- 11 · cinco céus -->
 <section class="mod escuro" id="m-ceus">
   <div class="ceu" id="ceus-ceu"></div>
   <div class="cab">
@@ -339,24 +337,24 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
   <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
 </section>
 
-<!-- 12 · o aroma em cena (motion) -->
+<!-- 12 · o aroma em cena -->
 <section class="mod claro" id="m-aroma">
   <div class="cab">
-    <div><p class="olho">08 · Fotografia · Photography</p><h2 class="tit"><span class="cap so">O</span> aroma em cena</h2></div>
+    <div><p class="olho">08 · Fotografia · Photography</p><h2 class="tit"><span class="cap">A</span>roma em cena</h2></div>
     <p class="desc">Luz quente, fundo neutro e o ingrediente ao lado da vela, para o cheiro aparecer antes de ela acender.<i>Warm light, neutral ground and the ingredient beside the candle, so the scent shows before it is lit.</i></p>
   </div>
   <div class="tri">
-    <figure><div class="arco"><video data-webm="../site/video/aura-acendendo.webm" muted playsinline loop></video></div><figcaption class="leg"><small>Aura</small><b>Baunilha</b></figcaption></figure>
-    <figure><div class="arco"><video data-webm="../site/video/lavanda.webm" muted playsinline loop></video></div><figcaption class="leg"><small>Selene</small><b>Lavanda</b></figcaption></figure>
-    <figure><div class="arco"><video data-webm="../site/video/venus.webm" muted playsinline loop></video></div><figcaption class="leg"><small>Vênus</small><b>Cereja e avelã</b></figcaption></figure>
+    <figure><div class="arco"><img src="../assets/img/ia-baunilha.jpg" alt="Baunilha e flor sobre pedra"></div><figcaption class="leg"><small>Aura</small><b>Baunilha</b></figcaption></figure>
+    <figure><div class="arco"><img src="../assets/img/ia-lavanda.jpg" alt="Lavanda sobre pedra"></div><figcaption class="leg"><small>Selene</small><b>Lavanda</b></figcaption></figure>
+    <figure><div class="arco"><img src="../assets/img/ia-venus-acesa.jpg" alt="Vela Vênus acesa entre cerejas e avelãs" style="object-position:50% 60%"></div><figcaption class="leg"><small>Vênus</small><b>Cereja e avelã</b></figcaption></figure>
   </div>
   <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
 </section>
 
-<!-- 13 · o céu que se repete (motion) -->
+<!-- 13 · o céu que se repete -->
 <section class="mod claro" id="m-estampa">
   <div class="cab">
-    <div><p class="olho">09 · Estampa e elementos · Pattern</p><h2 class="tit"><span class="cap so">O</span> céu que se repete</h2></div>
+    <div><p class="olho">09 · Estampa e elementos · Pattern</p><h2 class="tit"><span class="cap">C</span>éu que se repete</h2></div>
     <p class="desc">Símbolo, nuvem e estrelas em meia-queda, numa cor só. Veste o papel de seda, a fita e o fundo dos posts.<i>Symbol, cloud and stars in a half-drop repeat, in a single color.</i></p>
   </div>
   <div class="faixa" id="e-faixa" data-estampa="#1D7053,,150"></div>
@@ -372,54 +370,44 @@ body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; displ
 <!-- 14 · fotos -->
 <section class="mod par" id="m-par2"><img src="../assets/img/ia-venus-acesa.jpg" alt="Vela Vênus acesa entre cerejas e avelãs" style="object-position:50% 55%"><img src="../assets/img/ia-orquidea.jpg" alt="Baunilha e orquídea sobre pedra"></section>
 
-<!-- 15 · ritual (motion) -->
+<!-- 15 · ritual (cinco quadros) -->
 <section class="mod escuro" id="m-ritual">
   <div class="cab">
-    <div><p class="olho">10 · Cuidados · Candle care</p><h2 class="tit"><span class="cap so">O</span> ritual da queima</h2></div>
-    <p class="desc">O card de cuidados vira um pequeno filme: a vela derrete, o pavio é aparado, a chama se apaga.<i>The care card becomes a short film: the wax melts, the wick is trimmed, the flame goes out.</i></p>
+    <div><p class="olho">10 · Cuidados · Candle care</p><h2 class="tit"><span class="cap">C</span>uidados com a sua vela</h2></div>
+    <p class="desc">O card de cuidados, quadro a quadro: a vela derrete, o pavio é aparado, a chama se apaga.<i>The care card, frame by frame: the wax melts, the wick is trimmed, the flame goes out.</i></p>
   </div>
-  <div class="passos">
-    <div class="passo"><p class="n">I</p><h3><span class="cap">P</span>rimeira queima</h3><p>Deixe a cera derreter até a borda do copo. Isso evita túneis e faz a vela render até o fim.<i>Let the wax melt to the edge on the first burn.</i></p></div>
-    <div class="passo"><p class="n">II</p><h3><span class="cap">A</span>pare o pavio</h3><p>Corte 5 mm do pavio antes de reacender, para a chama não fazer fumaça preta.<i>Trim the wick to 5 mm before relighting.</i></p></div>
-    <div class="passo"><p class="n">III</p><h3><span class="cap">T</span>empo limite</h3><p>Não deixe a vela acesa por mais de 3 horas seguidas.<i>Never burn for more than 3 hours at a time.</i></p></div>
-    <div class="passo"><p class="n">IV</p><h3><span class="cap">S</span>egurança</h3><p>Queime em superfície plana, longe de correntes de ar e de objetos inflamáveis.<i>Burn on a flat surface, away from drafts.</i></p></div>
-    <div class="passo"><p class="n">V</p><h3><span class="cap">A</span>tenção</h3><p>Nunca deixe sua vela acesa sem supervisão. Apague, e a fumaça sobe como o fim do ritual.<i>Never leave a burning candle unattended.</i></p></div>
-  </div>
-  <div class="pontos"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="vela">
-    <svg viewBox="0 0 330 470" aria-hidden="true">
+  <div class="quadros"><figure class="q"><div class="vela-mini" data-t="1.9"></div><p class="n">I</p><h3><span class="cap">P</span>rimeira queima</h3><p>A cera derrete até a borda do copo.<i>First burn: melt to the edge.</i></p></figure><figure class="q"><div class="vela-mini" data-t="3.4"></div><p class="n">II</p><h3><span class="cap">A</span>pare o pavio</h3><p>Corte 5 mm antes de reacender.<i>Trim the wick to 5 mm.</i></p></figure><figure class="q"><div class="vela-mini" data-t="7.4"><span class="hora">3:00</span></div><p class="n">III</p><h3><span class="cap">T</span>empo limite</h3><p>No máximo 3 horas seguidas.<i>Three hours at most.</i></p></figure><figure class="q"><div class="vela-mini" data-t="8.9"></div><p class="n">IV</p><h3><span class="cap">S</span>egurança</h3><p>Superfície plana, longe do vento.<i>Flat surface, away from drafts.</i></p></figure><figure class="q"><div class="vela-mini" data-t="11.6"></div><p class="n">V</p><h3><span class="cap">A</span>tenção</h3><p>Nunca acesa sem ninguém por perto.<i>Never leave it unattended.</i></p></figure></div>
+  <template id="tpl-vela"><svg viewBox="0 0 330 470" aria-hidden="true">
       <defs>
         <radialGradient id="r-gBrilho"><stop offset="0" stop-color="#FFD58A" stop-opacity=".5"/><stop offset=".45" stop-color="#FFB45A" stop-opacity=".14"/><stop offset="1" stop-color="#FFB45A" stop-opacity="0"/></radialGradient>
         <linearGradient id="r-gChama" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF9A3C"/><stop offset=".35" stop-color="#FFD27A"/><stop offset="1" stop-color="#FFF4D6"/></linearGradient>
         <linearGradient id="r-gCera" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EADBB8"/><stop offset=".5" stop-color="#F8EED5"/><stop offset="1" stop-color="#E3D2AC"/></linearGradient>
         <clipPath id="r-cCopo"><rect x="58" y="150" width="214" height="270" rx="26"/></clipPath>
       </defs>
-      <g id="r-tudo">
-        <ellipse id="r-brilho" cx="165" cy="118" rx="150" ry="150" fill="url(#r-gBrilho)"/>
-        <line id="r-mesa" x1="-20" y1="433" x2="350" y2="433" stroke="#FFEBB4" stroke-opacity=".4" stroke-width="1" opacity="0"/>
+      <g class="r-tudo">
+        <ellipse class="r-brilho" cx="165" cy="118" rx="150" ry="150" fill="url(#r-gBrilho)"/>
+        <line class="r-mesa" x1="-20" y1="433" x2="350" y2="433" stroke="#FFEBB4" stroke-opacity=".4" stroke-width="1" opacity="0"/>
         <g clip-path="url(#r-cCopo)">
-          <rect id="r-cera" x="58" y="196" width="214" height="240" fill="url(#r-gCera)"/>
-          <ellipse id="r-topo" cx="165" cy="196" rx="107" ry="15" fill="#F6E9C9"/>
-          <ellipse id="r-piscina" cx="165" cy="196" rx="34" ry="6" fill="#E7C98C" opacity=".85"/>
+          <rect class="r-cera" x="58" y="196" width="214" height="240" fill="url(#r-gCera)"/>
+          <ellipse class="r-topo" cx="165" cy="196" rx="107" ry="15" fill="#F6E9C9"/>
+          <ellipse class="r-piscina" cx="165" cy="196" rx="34" ry="6" fill="#E7C98C" opacity=".85"/>
         </g>
         <rect x="58" y="150" width="214" height="270" rx="26" fill="none" stroke="#FFEBB4" stroke-opacity=".55" stroke-width="1.6"/>
         <rect x="66" y="160" width="10" height="230" rx="5" fill="#FFFFFF" opacity=".08"/>
         <image href="../assets/img/rotulo-selene.png" x="96" y="276" width="138" height="111" preserveAspectRatio="xMidYMid meet"/>
-        <line id="r-pavio" x1="165" y1="196" x2="165" y2="170" stroke="#2a1d17" stroke-width="3" stroke-linecap="round"/>
-        <path id="r-chama" d="M165 98C171 116 184 128 184 146 184 160 175 170 165 170 155 170 146 160 146 146 146 136 152 130 155 122 157 130 161 132 163 132 162 122 163 110 165 98Z" fill="url(#r-gChama)" style="transform-box:fill-box;transform-origin:50% 100%"/>
-        <g id="r-fumaca" fill="none" stroke="#FFEBB4" stroke-width="1.4" stroke-linecap="round" opacity="0"><path d="M165 168C158 150 174 138 166 120S172 92 164 76"/><path d="M167 168C176 152 160 140 170 124S160 98 170 80"/></g>
-        <g id="r-tesoura" fill="none" stroke="#FFEBB4" stroke-width="1.6" stroke-linecap="round" opacity="0"><circle cx="232" cy="176" r="8"/><circle cx="232" cy="200" r="8"/><path d="M238 181L196 190M238 195L196 184"/></g>
+        <line class="r-pavio" x1="165" y1="196" x2="165" y2="170" stroke="#2a1d17" stroke-width="3" stroke-linecap="round"/>
+        <path class="r-chama" d="M165 98C171 116 184 128 184 146 184 160 175 170 165 170 155 170 146 160 146 146 146 136 152 130 155 122 157 130 161 132 163 132 162 122 163 110 165 98Z" fill="url(#r-gChama)" style="transform-box:fill-box;transform-origin:50% 100%"/>
+        <g class="r-fumaca" fill="none" stroke="#FFEBB4" stroke-width="1.4" stroke-linecap="round" opacity="0"><path d="M165 168C158 150 174 138 166 120S172 92 164 76"/><path d="M167 168C176 152 160 140 170 124S160 98 170 80"/></g>
+        <g class="r-tesoura" fill="none" stroke="#FFEBB4" stroke-width="1.6" stroke-linecap="round" opacity="0"><circle cx="232" cy="176" r="8"/><circle cx="232" cy="200" r="8"/><path d="M238 181L196 190M238 195L196 184"/></g>
       </g>
-    </svg>
-  </div>
-  <div class="relogio" id="r-relogio">0:00<small>horas acesa</small></div>
+    </svg></template>
   <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
 </section>
 
 <!-- 16 · o que vai na caixa -->
 <section class="mod claro" id="m-caixa" style="background:#EFE4CB">
   <div class="cab">
-    <div><p class="olho">11 · Papelaria · Stationery</p><h2 class="tit"><span class="cap so">O</span> que vai na caixa</h2></div>
+    <div><p class="olho">11 · Papelaria · Stationery</p><h2 class="tit"><span class="cap">D</span>entro da caixa</h2></div>
     <p class="desc">O card de cuidados, o card de obrigado em formato de carta de tarô e o adesivo que fecha a caixa.<i>The care card, the tarot-style thank-you card and the sticker that seals the box.</i></p>
   </div>
   <div class="mesa">
