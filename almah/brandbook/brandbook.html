@@ -230,15 +230,6 @@ table { border-collapse: collapse; width: 100%; font-size: 19px; }
 th, td { text-align: left; padding: 15px 0; border-bottom: 1px solid var(--fio); vertical-align: top; }
 th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--verde); width: 190px; padding-top: 19px; }
 
-/* rótulos impressão */
-.impressao .miolo { gap: 110px; align-items: center; }
-.impressao .folha { flex: 0 0 auto; height: 650px; margin-top: -30px; aspect-ratio: 210 / 297; background: #FBF6EA; padding: 2.86% 2.38%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(7, 1fr); box-shadow: 0 26px 60px #2A223638, 0 0 0 1px #2A22361a; transform: rotate(-2deg); }
-.impressao .folha img { width: 100%; height: 100%; object-fit: fill; display: block; }
-.impressao .info { flex: 1; display: flex; flex-direction: column; gap: 26px; }
-.impressao figure { display: flex; gap: 24px; align-items: flex-end; margin-top: 10px; }
-.impressao figure img { width: 300px; height: 300px; object-fit: cover; border-radius: 999px 999px 10px 10px; display: block; }
-.impressao figcaption { max-width: 300px; }
-
 /* papelaria */
 .papelaria .grade { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; align-content: start; }
 .papelaria .leg { font-size: 17px; text-align: center; } .papelaria .leg b { font-size: 25px; }
@@ -342,10 +333,10 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
       <li><span>12</span><span>Estampa</span><span>14</span></li>
       <li><span>13</span><span>Coleção Gênesis</span><span>15</span></li>
       <li><span>14</span><span>Rótulos</span><span>16</span></li>
-      <li><span>15</span><span>Papelaria</span><span>18</span></li>
-      <li><span>16</span><span>Fotografia</span><span>19</span></li>
-      <li><span>17</span><span>Voz e tom</span><span>20</span></li>
-      <li><span>18</span><span>Redes sociais</span><span>21</span></li>
+      <li><span>15</span><span>Papelaria</span><span>17</span></li>
+      <li><span>16</span><span>Fotografia</span><span>18</span></li>
+      <li><span>17</span><span>Voz e tom</span><span>19</span></li>
+      <li><span>18</span><span>Redes sociais</span><span>20</span></li>
     </ol>
   </div>
   <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>02</b></footer>
@@ -597,22 +588,7 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
   <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>16</b></footer>
 </section>
 
-<!-- 17 rótulos impressão -->
-<section class="pg papel impressao">
-  <div class="moldura"></div>
-  <header class="cab"><span class="olho">14 · Rótulos</span><h2>Na folha e no copo</h2></header>
-  <div class="miolo">
-    <div class="folha" aria-label="Folha A4 com 28 rótulos Selene"><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""><img src="../assets/img/rotulo-selene.png" alt=""></div>
-    <div class="info">
-      <p class="lead" style="font-size:40px">Uma folha A4 por vela, com 28 etiquetas de 50 × 40 mm.</p>
-      <p>Papel creme e uma tinta só, na cor da vela. A folha sai em 4 colunas e 7 linhas, sem sangria entre as etiquetas, e vai direto para o corte.</p>
-      <figure><img src="../assets/img/foto-selene.jpg" alt="Vela Selene com o rótulo aplicado"><figcaption class="nota">Selene com o rótulo aplicado. Artes de impressão em 02 ROTULOS / Impressao A4.</figcaption></figure>
-    </div>
-  </div>
-  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>17</b></footer>
-</section>
-
-<!-- 18 papelaria -->
+<!-- 17 papelaria -->
 <section class="pg papel papelaria">
   <div class="moldura"></div>
   <header class="cab"><span class="olho">15 · Papelaria</span><h2>O que vai na caixa</h2></header>
@@ -621,10 +597,10 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
     <figure><div class="img"><img src="../assets/img/card-obrigado-hd.jpg" alt="Card Obrigada pela compra"></div><p class="leg"><b>Card de obrigado</b>Roxo profundo, em formato de carta de tarô: The Candle.</p></figure>
     <figure><div class="img"><img src="../assets/img/adesivo-caixa-hd.jpg" alt="Adesivo Seu pedido chegou"></div><p class="leg"><b>Adesivo de caixa</b>“Seu pedido chegou!”, logo e @almahdomus.</p></figure>
   </div>
-  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>18</b></footer>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>17</b></footer>
 </section>
 
-<!-- 19 fotografia -->
+<!-- 18 fotografia -->
 <section class="pg papel foto-pg">
   <div class="moldura"></div>
   <header class="cab"><span class="olho">16 · Fotografia</span><h2>Luz quente, pouca coisa</h2></header>
@@ -645,10 +621,10 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
       <li class="evite"><b style="color:var(--serena)">Evite</b><span>Flash, luz branca fria, fundo estampado e mesa cheia de objetos.</span></li>
     </ul>
   </div>
-  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>19</b></footer>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>18</b></footer>
 </section>
 
-<!-- 20 voz -->
+<!-- 19 voz -->
 <section class="pg verde voz">
   <div class="moldura" style="opacity:.3"></div>
   <header class="cab"><span class="olho">17 · Voz e tom</span><h2>Como a Almah fala</h2></header>
@@ -666,10 +642,10 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
       <div class="linha"><div><small>Diga</small><p class="sim">Seu pedido chegou!</p></div><div><small>Evite</small><p class="nao">Prezado cliente, informamos a entrega do seu pedido.</p></div></div>
     </div>
   </div>
-  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>20</b></footer>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>19</b></footer>
 </section>
 
-<!-- 21 redes -->
+<!-- 20 redes -->
 <section class="pg papel redes">
   <div class="moldura"></div>
   <header class="cab"><span class="olho">18 · Redes sociais</span><h2>Três tipos de post</h2></header>
@@ -679,10 +655,10 @@ th { font-weight: 500; font-size: 13px; letter-spacing: .2em; text-transform: up
     <div><div class="post p3"><div class="moldura"></div><small>Cuidados · 1 de 5</small><h4><span>P</span>rimeira queima</h4><p>Deixe a cera derreter até a borda do copo. Isso evita túneis e faz a vela durar mais.</p><div class="svg s" data-svg="simbolo"></div></div><p class="legenda-post"><b>Dica</b>Fundo verde, moldura dupla, capitular na primeira letra.</p></div>
     <div class="perfil"><div class="avatar"><div data-svg="simbolo"></div></div><b>@almahdomus</b><span>Velas aromáticas feitas à mão.<br>Luz que acalma, aroma que abraça.</span></div>
   </div>
-  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>21</b></footer>
+  <footer class="rodape"><span>Almah · Brand book</span><b><svg viewBox="-1 -1 2 2"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" fill="currentColor"/></svg>20</b></footer>
 </section>
 
-<!-- 22 contracapa -->
+<!-- 21 contracapa -->
 <section class="pg noite fim">
   <div class="ceu" data-estrelas="n:40;semente:31;rMax:10;miolo:.2"></div>
   <div class="sol" data-raios="n:110;de:-180;ate:0;r0:30;r1:99;peso:.16;semente:2"></div>
