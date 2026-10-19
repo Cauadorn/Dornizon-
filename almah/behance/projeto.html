@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Almah · Behance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aboreto&family=Buenard:wght@400;700&family=Fleur+De+Leah&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<link rel="stylesheet" href="../kit/kit.css">
+<style>
+/* projeto do Behance: cada módulo é uma página de 1400 px com o mesmo esqueleto
+   (sobretítulo, título com capitular, texto PT/EN à direita, rodapé). Noite e papel se alternam. */
+:root { --tinta: #2A2236; --ouro: #E9D29A; --fio-claro: #2A22361f; --fio-escuro: #FFEBB422; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0d0b10; font-family: var(--f-texto); font-weight: 300; display: flex; flex-direction: column; align-items: center; }
+.mod { width: 1400px; height: 876px; position: relative; overflow: hidden; flex: 0 0 auto; }
+.escuro { background: radial-gradient(110% 85% at 50% 44%, #2A2238 0%, var(--noite) 58%, #130F1A 100%); color: var(--creme); }
+.claro { background: var(--papel); color: var(--tinta); }
+.svg > svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* esqueleto */
+.cab { position: absolute; left: 64px; right: 64px; top: 56px; display: flex; justify-content: space-between; gap: 60px; z-index: 3; }
+.olho { font-weight: 500; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; opacity: .62; margin-bottom: 14px; }
+.escuro .olho { color: var(--ouro); opacity: .75; }
+.claro .olho { color: var(--verde); opacity: .85; }
+.tit { font-family: var(--f-serif); font-weight: 400; font-size: 46px; line-height: 1.05; letter-spacing: -.005em; }
+.claro .tit { color: var(--verde); }
+.cap.so { margin-right: .16em; }
+.cap { font-family: var(--f-cap); font-size: 1.62em; line-height: 0; margin-right: .01em; position: relative; top: .04em; }
+.desc { max-width: 318px; text-align: right; font-size: 12.5px; line-height: 1.65; padding-top: 26px; }
+.desc i { display: block; margin-top: 6px; opacity: .6; }
+.pe { position: absolute; left: 64px; right: 64px; bottom: 34px; display: flex; justify-content: space-between; font-weight: 500; font-size: 9px; letter-spacing: .32em; opacity: .42; z-index: 3; }
+.ceu { position: absolute; inset: 0; color: var(--creme); pointer-events: none; }
+.ceu .pt { opacity: .4; }
+
+/* capa 808 × 632 */
+#capa { width: 808px; height: 632px; }
+
+/* 01 · foto de abertura */
+.foto-cheia img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 02 · apresentação */
+#m-intro { height: 640px; }
+#m-intro .esq { position: absolute; left: 64px; top: 70px; width: 470px; }
+#m-intro .nome { width: 400px; height: 92px; color: var(--creme); margin-top: 22px; }
+#m-intro .tags { display: flex; gap: 8px; margin-top: 36px; flex-wrap: wrap; }
+#m-intro .tags span { border: 1px solid #FFEBB444; border-radius: 99px; padding: 6px 14px; font-size: 10.5px; letter-spacing: .12em; }
+#m-intro .dir { position: absolute; left: 640px; right: 64px; top: 92px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+#m-intro .dir .n { font-family: var(--f-serif); font-size: 13px; letter-spacing: .2em; color: var(--ouro); }
+#m-intro .dir h3 { font-family: var(--f-serif); font-weight: 400; font-size: 22px; margin: 10px 0 14px; }
+#m-intro .dir p { font-size: 12.5px; line-height: 1.75; opacity: .85; }
+#m-intro .dir .en { opacity: .62; }
+#m-intro .dir .en p, #m-intro .dir .en h3 { font-style: italic; }
+#m-intro .linha { position: absolute; left: 64px; right: 64px; top: 420px; height: 1px; background: #FFEBB422; }
+#m-intro .sim { position: absolute; left: 64px; bottom: 74px; width: 40px; height: 43px; color: var(--ouro); opacity: .9; }
+#m-intro .ficha { position: absolute; left: 640px; right: 64px; bottom: 74px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; font-size: 11.5px; line-height: 1.6; }
+#m-intro .ficha b { display: block; font-weight: 500; font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--ouro); opacity: .8; margin-bottom: 6px; }
+
+/* 03 · como nasceu o símbolo */
+#m-nasceu .peca { position: absolute; top: 300px; width: 300px; height: 319px; margin-left: -150px; color: var(--verde); }
+#m-nasceu .peca .svg { position: absolute; inset: 0; }
+#m-nasceu .mais { position: absolute; left: 700px; top: 430px; transform: translate(-50%, -50%); font-family: var(--f-serif); font-size: 40px; color: var(--verde); opacity: 0; }
+#m-nasceu .halo { position: absolute; left: 700px; top: 460px; width: 640px; height: 640px; transform: translate(-50%, -50%); background: radial-gradient(circle, #FFE7A866 0%, #FFE7A822 35%, transparent 65%); opacity: 0; }
+#m-nasceu .leg { position: absolute; top: 660px; width: 300px; margin-left: -150px; text-align: center; opacity: 0; }
+.leg small { display: block; font-family: var(--f-serif); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; opacity: .65; }
+.leg b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 20px; letter-spacing: .06em; margin: 6px 0 4px; }
+.leg span { font-size: 12px; opacity: .75; }
+
+/* 04 · construção */
+#m-constr .lista { position: absolute; left: 64px; top: 330px; width: 380px; display: flex; flex-direction: column; gap: 26px; }
+#m-constr .item { display: grid; grid-template-columns: 30px 1fr; gap: 14px; opacity: .35; }
+#m-constr .item .num { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--ouro); display: flex; align-items: center; justify-content: center; font-family: var(--f-serif); font-size: 12px; color: var(--ouro); }
+#m-constr .item b { display: block; font-family: var(--f-serif); font-weight: 400; font-size: 18px; margin-bottom: 4px; }
+#m-constr .item span { font-size: 11.5px; line-height: 1.5; opacity: .75; }
+#m-constr .item i { display: block; font-size: 11px; opacity: .5; margin-top: 2px; }
+#m-constr .desenho { position: absolute; left: 560px; top: 130px; width: 700px; height: 700px; }
+#m-constr .desenho svg { width: 100%; height: 100%; overflow: visible; }
+#m-constr .credito { position: absolute; left: 64px; bottom: 74px; font-size: 11px; letter-spacing: .08em; opacity: .7; }
+#m-constr .credito b { font-weight: 500; color: var(--ouro); }
+
+/* 05 · a chama acende */
+#m-acende .sol { position: absolute; width: 1400px; height: 1400px; left: 50%; top: 404px; transform: translate(-50%, -50%); color: var(--creme); opacity: 0; }
+#m-acende .brilho { position: absolute; width: 1000px; height: 1000px; left: 50%; top: 420px; background: radial-gradient(circle, #FFD58A44 0%, #FFC97A16 30%, transparent 62%); opacity: 0; }
+#m-acende .simbolo { position: absolute; left: 50%; top: 250px; width: 256px; height: 272px; transform: translateX(-50%); }
+#m-acende .simbolo > div { position: absolute; inset: 0; }
+#a-lua { -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+#a-chama path { transform-box: fill-box; transform-origin: 50% 100%; }
+#m-acende .brasa { position: absolute; left: 50.5%; top: 70.8%; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, #FFB866 0%, #FF8A3D66 40%, transparent 70%); opacity: 0; }
+#m-acende .nome { position: absolute; left: 50%; top: 600px; width: 440px; height: 101px; transform: translateX(-50%); color: var(--creme); opacity: 0; }
+#m-acende .credito { position: absolute; left: 0; right: 0; bottom: 78px; text-align: center; font-weight: 500; font-size: 11px; letter-spacing: .3em; color: var(--ouro); opacity: 0; }
+#m-acende .credito b { font-weight: 500; color: var(--creme); }
+#m-acende .nuv { position: absolute; color: var(--creme); opacity: 0; }
+
+/* 07 · versões */
+#m-versoes .trio { position: absolute; left: 64px; right: 64px; top: 210px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+#m-versoes .v { display: flex; flex-direction: column; gap: 16px; }
+#m-versoes .q { height: 470px; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+#m-versoes .q .l { width: 230px; height: 157px; }
+#m-versoes .q .moldura { inset: 14px; --raio-moldura: 8px; --respiro-moldura: 5px; opacity: .35; }
+#m-versoes .v p { font-weight: 500; font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; opacity: .6; display: flex; justify-content: space-between; }
+
+/* fotos em par */
+.par { display: grid; grid-template-columns: 1fr 1fr; height: 900px; }
+.par img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 09 · paleta */
+#m-paleta .cores { position: absolute; left: 64px; right: 64px; top: 220px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; height: 380px; }
+#m-paleta .c { border-radius: 10px; padding: 18px 16px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10.5px; line-height: 1.5; }
+#m-paleta .c b { font-family: var(--f-serif); font-weight: 400; font-size: 17px; line-height: 1.15; }
+#m-paleta .c span { font-variant-numeric: tabular-nums; letter-spacing: .06em; }
+#m-paleta .grad { position: absolute; left: 64px; right: 64px; top: 624px; height: 64px; border-radius: 10px; background: linear-gradient(90deg, #130F1A 0%, #1C1726 14%, #503B69 46%, #B9886A 74%, #FFEBB4 92%, #FFF1CA 100%); }
+#m-paleta .grad-leg { position: absolute; left: 64px; right: 64px; top: 700px; display: flex; justify-content: space-between; font-weight: 500; font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; opacity: .6; }
+#m-paleta .velas { position: absolute; right: 64px; top: 736px; display: flex; gap: 8px; align-items: center; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+#m-paleta .velas i { width: 22px; height: 22px; border-radius: 50%; display: inline-block; }
+#m-paleta .velas em { font-style: normal; margin-right: 10px; opacity: .7; }
+
+/* 10 · vozes */
+#m-vozes .trio { position: absolute; left: 64px; right: 64px; top: 220px; display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 20px; height: 500px; }
+#m-vozes .t { border-radius: 12px; padding: 34px 32px; display: flex; flex-direction: column; justify-content: space-between; }
+#m-vozes .t small { font-weight: 500; font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; opacity: .7; }
+#m-vozes .t .aa { font-size: 150px; line-height: .9; }
+#m-vozes .t .alfa { font-size: 14px; line-height: 1.5; opacity: .85; }
+#m-vozes .t .uso { font-size: 12px; line-height: 1.5; opacity: .8; border-top: 1px solid currentColor; padding-top: 14px; }
+
+/* 11 · cinco céus */
+#m-ceus .fila { position: absolute; inset: 0; }
+#m-ceus .arco-lua { position: absolute; left: 0; top: 0; width: 1400px; height: 876px; }
+#m-ceus .r { position: absolute; width: 204px; margin-left: -102px; display: flex; flex-direction: column; align-items: center; text-align: center; opacity: 0; }
+#m-ceus .r .img { position: relative; width: 204px; }
+#m-ceus .r .img::before { content: ""; position: absolute; inset: -60%; background: radial-gradient(circle, #FFE7A833 0%, transparent 55%); opacity: var(--g, 0); }
+#m-ceus .r img { position: relative; width: 100%; display: block; filter: drop-shadow(0 18px 26px #0009); }
+#m-ceus .r .leg { margin-top: 26px; }
+
+/* 12 · aroma em cena */
+#m-aroma .tri { position: absolute; left: 140px; right: 140px; top: 220px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; }
+#m-aroma figure { display: flex; flex-direction: column; align-items: center; }
+#m-aroma .arco { width: 300px; height: 440px; border-radius: 999px 999px 10px 10px; overflow: hidden; background: #E8DCC0; border: 1px solid #1D705333; padding: 8px; }
+#m-aroma .arco > * { width: 100%; height: 100%; object-fit: cover; border-radius: 999px 999px 6px 6px; display: block; }
+#m-aroma figcaption { margin-top: 22px; text-align: center; }
+#m-aroma .leg b { color: var(--verde); }
+
+/* 13 · o céu que se repete */
+#m-estampa .faixa { position: absolute; left: 0; right: 0; top: 196px; height: 300px; background-color: #F8F1E1; background-size: 150px; border-top: 1px solid var(--fio-claro); border-bottom: 1px solid var(--fio-claro); }
+#m-estampa .elementos { position: absolute; left: 64px; right: 64px; top: 548px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+#m-estampa .el { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+#m-estampa .el .q { width: 170px; height: 170px; position: relative; display: flex; align-items: center; justify-content: center; color: var(--verde); }
+#m-estampa .el .leg b { font-size: 15px; color: var(--verde); }
+
+/* 15 · ritual */
+#m-ritual .passos { position: absolute; left: 64px; top: 300px; width: 470px; height: 300px; }
+#m-ritual .passo { position: absolute; inset: 0; opacity: 0; }
+#m-ritual .passo .n { font-family: var(--f-serif); font-size: 13px; letter-spacing: .24em; color: var(--ouro); }
+#m-ritual .passo h3 { font-family: var(--f-serif); font-weight: 400; font-size: 40px; line-height: 1.05; margin: 12px 0 16px; }
+#m-ritual .passo p { font-size: 13.5px; line-height: 1.7; opacity: .88; max-width: 380px; }
+#m-ritual .passo p i { display: block; opacity: .55; margin-top: 8px; font-size: 12px; }
+#m-ritual .pontos { position: absolute; left: 64px; top: 620px; display: flex; gap: 10px; }
+#m-ritual .pontos i { width: 26px; height: 2px; background: var(--creme); opacity: .25; }
+#m-ritual .vela { position: absolute; left: 760px; top: 170px; width: 420px; height: 600px; }
+#m-ritual .vela svg { width: 100%; height: 100%; overflow: visible; }
+#m-ritual .relogio { position: absolute; left: 1170px; top: 260px; font-family: var(--f-display); font-size: 30px; color: var(--ouro); opacity: 0; font-variant-numeric: tabular-nums; }
+#m-ritual .relogio small { display: block; font-family: var(--f-texto); font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; opacity: .7; }
+
+/* 16 · o que vai na caixa */
+#m-caixa .mesa { position: absolute; left: 64px; right: 64px; top: 196px; bottom: 90px; }
+#m-caixa .mesa img { position: absolute; border-radius: 4px; box-shadow: 0 30px 60px #2A223644, 0 2px 6px #2A223622; }
+#m-caixa .notas { position: absolute; left: 64px; bottom: 82px; display: flex; gap: 40px; font-size: 11px; line-height: 1.5; }
+#m-caixa .notas b { display: block; font-family: var(--f-serif); font-weight: 400; font-size: 15px; color: var(--verde); }
+
+/* 17 · frase sobre a chama */
+#m-frase { height: 900px; }
+#m-frase img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; transform: translateX(16%) scale(1.02); }
+#m-frase { background: #0E0B09; }
+#m-frase q { position: absolute; left: 110px; top: 360px; text-align: left; quotes: none; font-family: var(--f-serif); font-size: 54px; line-height: 1.12; color: #F5E3B5; }
+#m-frase small { position: absolute; left: 112px; top: 510px; font-weight: 500; font-size: 10px; letter-spacing: .32em; color: var(--ouro); opacity: .75; }
+
+/* 18 · obrigada */
+#m-fim .carta { position: absolute; left: 50%; top: 64px; bottom: 64px; width: 500px; transform: translateX(-50%); color: var(--verde); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 96px 50px 60px; }
+#m-fim .carta .moldura { inset: 0; --raio-moldura: 12px; --respiro-moldura: 8px; opacity: .5; }
+#m-fim .carta .sim { width: 74px; height: 79px; }
+#m-fim .carta .tit { font-size: 64px; margin-top: 46px; }
+#m-fim .carta .olho { margin-top: 30px; color: var(--verde); }
+#m-fim .carta .cred { margin-top: auto; font-size: 11.5px; line-height: 1.8; color: var(--tinta); opacity: .8; }
+#m-fim .carta .cred b { font-weight: 500; }
+#m-fim .sol { position: absolute; left: 50%; top: 226px; width: 760px; height: 760px; transform: translate(-50%, -50%); color: var(--verde); opacity: .22; }
+</style>
+</head>
+<body>
+
+<!-- capa -->
+<section class="mod escuro" id="capa">
+  <div class="ceu" data-estrelas="n:34;semente:41;rMax:8;miolo:.2"></div>
+  <div class="sol" data-raios="n:110;de:0;ate:360;r0:22;r1:99;peso:.15;semente:12" style="position:absolute;width:900px;height:900px;left:50%;top:250px;transform:translate(-50%,-50%);color:var(--creme);opacity:.32"></div>
+  <div style="position:absolute;width:600px;height:600px;left:50%;top:262px;transform:translate(-50%,-50%);background:radial-gradient(circle,#FFD58A40 0%,#FFC97A14 32%,transparent 64%)"></div>
+  <div data-svg="simbolo" style="position:absolute;left:50%;top:160px;width:150px;height:160px;transform:translateX(-50%);color:var(--creme)"></div>
+  <div data-svg="nome" style="position:absolute;left:50%;top:378px;width:380px;height:87px;transform:translateX(-50%);color:var(--creme)"></div>
+  <p style="position:absolute;left:0;right:0;top:500px;text-align:center;font-weight:500;font-size:10px;letter-spacing:.38em;color:var(--ouro)">IDENTIDADE VISUAL · 2026</p>
+</section>
+
+<!-- 01 · foto -->
+<section class="mod foto-cheia" id="m-foto1" style="height:920px"><img src="../assets/img/foto-lua.jpg" alt="Mão segurando a vela diante de uma lua crescente" style="object-position:50% 47%"></section>
+
+<!-- 02 · apresentação -->
+<section class="mod escuro" id="m-intro">
+  <div class="esq">
+    <p class="olho">Identidade visual · 2026</p>
+    <div class="nome" data-svg="nome"></div>
+    <div class="tags"><span>Branding</span><span>Lettering</span><span>Embalagem</span><span>Motion</span></div>
+  </div>
+  <div class="dir">
+    <div><p class="n">I</p><h3>Luz que acalma, aroma que abraça</h3><p>Almah é uma marca de velas aromáticas feitas à mão. O nome carrega a palavra alma, e o símbolo junta uma lua crescente e uma chama: uma luz que nasce dentro da lua. O resto do universo vem do mesmo céu, com sol raiado, nuvens de traço oriental, estrelas de quatro pontas e molduras de carta de tarô.</p></div>
+    <div class="en"><p class="n">II</p><h3>Light that soothes, scent that embraces</h3><p>Almah makes handmade scented candles. The name carries the Portuguese word for soul, and the symbol joins a crescent moon and a flame: a light born inside the moon. Everything else comes from the same sky, with sun rays, oriental line clouds, four-pointed stars and tarot card frames.</p></div>
+  </div>
+  <div class="linha"></div>
+  <div class="sim" data-svg="simbolo"></div>
+  <div class="ficha">
+    <div><b>Marca</b>Almah · @almahdomus<br>Coleção Gênesis</div>
+    <div><b>Logo</b>Desenhado à mão por<br>Cauã Dorn · @ohdorn</div>
+    <div><b>Entregas</b>Símbolo, lettering, rótulos,<br>papelaria, foto e motion</div>
+  </div>
+</section>
+
+<!-- 03 · como nasceu o símbolo (motion) -->
+<section class="mod claro" id="m-nasceu">
+  <div class="cab">
+    <div><p class="olho">01 · O símbolo · The symbol</p><h2 class="tit"><span class="cap">C</span>omo nasceu o símbolo</h2></div>
+    <p class="desc">Duas peças, uma marca. A lua guarda, a chama acende. Juntas viram a luz que nasce dentro da lua.<i>Two pieces, one mark. The moon holds, the flame lights. Together they become a light born inside the moon.</i></p>
+  </div>
+  <div class="halo" id="n-halo"></div>
+  <div class="peca" id="n-lua" style="left:400px"><div class="svg" id="n-lua-svg" data-svg="lua"></div></div>
+  <div class="peca" id="n-chama" style="left:1000px"><div class="svg" data-svg="chama-simbolo"></div></div>
+  <span class="mais" id="n-mais">+</span>
+  <p class="leg" id="n-l1" style="left:400px"><small>Parte I</small><b>A lua crescente</b><span>os ciclos e o descanso da noite</span></p>
+  <p class="leg" id="n-l2" style="left:1000px"><small>Parte II</small><b>A chama</b><span>a luz acesa de propósito</span></p>
+  <p class="leg" id="n-l3" style="left:700px"><small>O símbolo</small><b>Almah</b><span>a luz que nasce dentro da lua</span></p>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 04 · construção (motion) -->
+<section class="mod escuro" id="m-constr">
+  <div class="cab">
+    <div><p class="olho">02 · Construção · Construction</p><h2 class="tit"><span class="cap">C</span>onstrução do símbolo</h2></div>
+  </div>
+  <div class="lista">
+    <div class="item" id="c-i1"><span class="num">1</span><div><b>Dois círculos desenham a lua</b><span>O de fora dá o contorno; o de dentro, deslocado para cima, abre a lua crescente.</span><i>Two circles draw the moon.</i></div></div>
+    <div class="item" id="c-i2"><span class="num">2</span><div><b>Um eixo guia a chama</b><span>A chama sobe na vertical e pousa no fundo da lua, onde as duas curvas se encontram.</span><i>One axis guides the flame.</i></div></div>
+    <div class="item" id="c-i3"><span class="num">3</span><div><b>Feito à mão</b><span>O traço foi desenhado à mão e depois redesenhado em vetor, mantendo as pontas finas.</span><i>Hand drawn, then redrawn in vector.</i></div></div>
+  </div>
+  <div class="desenho" id="c-desenho"></div>
+  <p class="credito">Logo desenhado à mão por <b>Cauã Dorn</b> · @ohdorn</p>
+  <footer class="pe" style="justify-content:flex-end"><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 05 · a chama acende (motion) -->
+<section class="mod escuro" id="m-acende">
+  <div class="ceu" id="a-ceu"></div>
+  <div class="sol" id="a-sol" data-raios="n:120;de:0;ate:360;r0:20;r1:99;peso:.14;semente:12"></div>
+  <div class="brilho" id="a-brilho"></div>
+  <div class="nuv" id="a-n1" data-svg="nuvem-linha-2" style="width:520px;height:171px;left:-90px;bottom:40px"></div>
+  <div class="nuv" id="a-n2" data-svg="nuvem-linha-3" style="width:440px;height:133px;right:-80px;bottom:120px"></div>
+  <div class="cab"><div><p class="olho">03 · O logo em movimento · The logo in motion</p><h2 class="tit"><span class="cap">P</span>rimeiro a lua, depois o fogo</h2></div></div>
+  <div class="simbolo">
+    <div id="a-lua" data-svg="lua"></div>
+    <div id="a-chama" data-svg="chama-simbolo"></div>
+    <span class="brasa" id="a-brasa"></span>
+  </div>
+  <div class="nome" id="a-nome" data-svg="nome"></div>
+  <p class="credito" id="a-credito">LOGO DESENHADO À MÃO POR <b>CAUÃ DORN</b> · @ohdorn</p>
+</section>
+
+<!-- 06 · foto -->
+<section class="mod foto-cheia" id="m-foto2" style="height:1000px"><img src="../assets/img/ia-lua-baunilha.jpg" alt="Vela diante de uma lua de luz, com baunilha" style="object-position:50% 44%"></section>
+
+<!-- 07 · versões -->
+<section class="mod escuro" id="m-versoes">
+  <div class="cab">
+    <div><p class="olho">04 · Versões · Versions</p><h2 class="tit"><span class="cap">S</span>empre uma cor só</h2></div>
+    <p class="desc">O logo nunca ganha degradê, sombra ou duas cores. Muda o fundo, o desenho fica.<i>The logo never gets gradients, shadows or two colors. The background changes, the drawing stays.</i></p>
+  </div>
+  <div class="trio">
+    <div class="v"><div class="q" style="background:var(--papel);color:var(--verde)"><span class="moldura"></span><div class="l" data-svg="logo-almah"></div></div><p><span>Principal</span><span>Verde sobre papel</span></p></div>
+    <div class="v"><div class="q" style="background:var(--verde);color:var(--creme)"><span class="moldura"></span><div class="l" data-svg="logo-almah"></div></div><p><span>Negativa</span><span>Creme sobre verde</span></p></div>
+    <div class="v"><div class="q" style="background:var(--roxo-profundo);color:var(--creme)"><span class="moldura"></span><div class="l" data-svg="logo-almah"></div></div><p><span>Noite</span><span>Creme sobre roxo</span></p></div>
+  </div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 08 · fotos -->
+<section class="mod par" id="m-par1"><img src="../assets/img/foto-trio.jpg" alt="Velas Serena, Aura e Selene" style="object-position:40% 50%"><img src="../assets/img/foto-selene.jpg" alt="Vela Selene em close"></section>
+
+<!-- 09 · paleta -->
+<section class="mod claro" id="m-paleta">
+  <div class="cab">
+    <div><p class="olho">05 · Cores · Colors</p><h2 class="tit"><span class="cap">D</span>a noite à chama</h2></div>
+    <p class="desc">A paleta vai do escuro do céu ao creme da chama acesa. O verde e o roxo vêm da papelaria.<i>The palette runs from the dark sky to the cream of a lit flame. Green and purple come from the stationery.</i></p>
+  </div>
+  <div class="cores">
+    <div class="c" style="background:#1C1726;color:#FFEBB4"><b>Noite</b><span>#1C1726</span></div>
+    <div class="c" style="background:#503B69;color:#FFEBB4"><b>Roxo<br>profundo</b><span>#503B69</span></div>
+    <div class="c" style="background:#7138B7;color:#FFEBB4"><b>Roxo</b><span>#7138B7</span></div>
+    <div class="c" style="background:#1D7053;color:#FFEBB4"><b>Verde<br>Almah</b><span>#1D7053</span></div>
+    <div class="c" style="background:#424242;color:#F5ECD7"><b>Grafite</b><span>#424242</span></div>
+    <div class="c" style="background:#FFEBB4;color:#2A2236"><b>Creme</b><span>#FFEBB4</span></div>
+    <div class="c" style="background:#FBF6EA;color:#2A2236;box-shadow:inset 0 0 0 1px #2A22361f"><b>Papel</b><span>#F5ECD7</span></div>
+  </div>
+  <div class="grad"></div>
+  <div class="grad-leg"><span>Noite</span><span>Degradê da marca</span><span>Chama</span></div>
+  <div class="velas"><em>Coleção Gênesis</em><i style="background:#6D712F"></i><i style="background:#167154"></i><i style="background:#503B6A"></i><i style="background:#9B2929"></i><i style="background:#B55263"></i></div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 10 · vozes -->
+<section class="mod claro" id="m-vozes">
+  <div class="cab">
+    <div><p class="olho">06 · Tipografia · Typography</p><h2 class="tit"><span class="cap">T</span>rês vozes</h2></div>
+    <p class="desc">Aboreto dá nome às velas. Buenard, com a primeira letra em Fleur De Leah, escreve os cards. Poppins conta o resto.<i>Aboreto names the candles. Buenard, with a Fleur De Leah initial, writes the cards. Poppins tells the rest.</i></p>
+  </div>
+  <div class="trio">
+    <div class="t" style="background:var(--verde);color:var(--creme)"><small>Aboreto · nomes e títulos</small><p class="aa" style="font-family:var(--f-display);font-size:112px">Aura</p><p class="alfa" style="font-family:var(--f-display)">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>AURA · TERRA · SELENE · SERENA · VÊNUS</p><p class="uso">Nome das velas, sempre em caixa alta</p></div>
+    <div class="t" style="background:#FBF6EA;color:var(--tinta);box-shadow:inset 0 0 0 1px #2A22361f"><small>Buenard + Fleur De Leah · papelaria</small><p class="aa" style="font-family:var(--f-serif);font-size:96px"><span class="cap" style="font-size:1.5em;top:.06em">C</span>arta</p><p class="alfa" style="font-family:var(--f-serif);font-size:20px">Cuidados com a sua vela</p><p class="uso">A capitular aparece só na primeira letra</p></div>
+    <div class="t" style="background:var(--noite);color:var(--creme)"><small>Poppins · texto e rótulo</small><p class="aa" style="font-family:var(--f-texto);font-weight:300">Aa</p><p class="alfa">Light · <i>Italic</i> · Regular · <b style="font-weight:500">Medium</b></p><p class="uso">Aroma, peso e texto corrido</p></div>
+  </div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 11 · cinco céus (motion) -->
+<section class="mod escuro" id="m-ceus">
+  <div class="ceu" id="ceus-ceu"></div>
+  <div class="cab">
+    <div><p class="olho">07 · Coleção Gênesis · The collection</p><h2 class="tit"><span class="cap">C</span>inco céus</h2></div>
+    <p class="desc">Cada vela tem um nome, um aroma e uma cor. O rótulo é impresso numa tinta só, sobre papel creme.<i>Each candle has a name, a scent and a color, printed in a single ink on cream paper.</i></p>
+  </div>
+  <div class="fila"><svg class="arco-lua" viewBox="0 0 1400 876" fill="none"><path id="ceus-arco" d="M120 250 Q700 680 1280 250" stroke="#E9D29A" stroke-opacity=".35" stroke-width="1" stroke-dasharray="3 6"/></svg>
+    <div class="r" style="left:214px;top:236px;--rot:11deg"><div class="img"><img src="../assets/img/rotulo-aura.png" alt="Rótulo Aura"></div><p class="leg"><small>I</small><b>Aura</b><span>baunilha</span></p></div>
+    <div class="r" style="left:457px;top:322px;--rot:5deg"><div class="img"><img src="../assets/img/rotulo-terra.png" alt="Rótulo Terra"></div><p class="leg"><small>II</small><b>Terra</b><span>cascas e folhas</span></p></div>
+    <div class="r" style="left:700px;top:352px;--rot:0deg"><div class="img"><img src="../assets/img/rotulo-selene.png" alt="Rótulo Selene"></div><p class="leg"><small>III</small><b>Selene</b><span>lavanda</span></p></div>
+    <div class="r" style="left:943px;top:322px;--rot:-5deg"><div class="img"><img src="../assets/img/rotulo-serena.png" alt="Rótulo Serena"></div><p class="leg"><small>IV</small><b>Serena</b><span>rosas</span></p></div>
+    <div class="r" style="left:1186px;top:236px;--rot:-11deg"><div class="img"><img src="../assets/img/rotulo-venus.png" alt="Rótulo Vênus"></div><p class="leg"><small>V</small><b>Vênus</b><span>cereja e avelã</span></p></div>
+  </div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 12 · o aroma em cena (motion) -->
+<section class="mod claro" id="m-aroma">
+  <div class="cab">
+    <div><p class="olho">08 · Fotografia · Photography</p><h2 class="tit"><span class="cap so">O</span> aroma em cena</h2></div>
+    <p class="desc">Luz quente, fundo neutro e o ingrediente ao lado da vela, para o cheiro aparecer antes de ela acender.<i>Warm light, neutral ground and the ingredient beside the candle, so the scent shows before it is lit.</i></p>
+  </div>
+  <div class="tri">
+    <figure><div class="arco"><video data-webm="../site/video/aura-acendendo.webm" muted playsinline loop></video></div><figcaption class="leg"><small>Aura</small><b>Baunilha</b></figcaption></figure>
+    <figure><div class="arco"><video data-webm="../site/video/lavanda.webm" muted playsinline loop></video></div><figcaption class="leg"><small>Selene</small><b>Lavanda</b></figcaption></figure>
+    <figure><div class="arco"><video data-webm="../site/video/venus.webm" muted playsinline loop></video></div><figcaption class="leg"><small>Vênus</small><b>Cereja e avelã</b></figcaption></figure>
+  </div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 13 · o céu que se repete (motion) -->
+<section class="mod claro" id="m-estampa">
+  <div class="cab">
+    <div><p class="olho">09 · Estampa e elementos · Pattern</p><h2 class="tit"><span class="cap so">O</span> céu que se repete</h2></div>
+    <p class="desc">Símbolo, nuvem e estrelas em meia-queda, numa cor só. Veste o papel de seda, a fita e o fundo dos posts.<i>Symbol, cloud and stars in a half-drop repeat, in a single color.</i></p>
+  </div>
+  <div class="faixa" id="e-faixa" data-estampa="#1D7053,,150"></div>
+  <div class="elementos">
+    <div class="el"><div class="q"><div id="e-sol" data-raios="n:44;de:-180;ate:0;r0:18;r1:96;peso:.6;semente:4" style="position:absolute;width:190px;height:190px;left:-10px;top:10px"></div><div data-svg="simbolo" style="position:absolute;width:40px;height:43px;left:65px;top:84px"></div></div><p class="leg"><b>Sol raiado</b><span>atrás do logo</span></p></div>
+    <div class="el"><div class="q"><div id="e-nuv" data-svg="nuvem-linha-1" style="width:150px;height:78px"></div></div><p class="leg"><b>Nuvem</b><span>traço oriental</span></p></div>
+    <div class="el"><div class="q"><svg id="e-est" viewBox="-60 -60 120 120" style="width:120px;height:120px" fill="currentColor"><path d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" transform="scale(34)"/><path id="e-est2" d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" transform="translate(38 -36) scale(9)"/><path id="e-est3" d="M0-1C.07-.24.24-.07 1 0 .24.07.07.24 0 1-.07.24-.24.07-1 0-.24-.07-.07-.24 0-1Z" transform="translate(-40 34) scale(6)"/></svg></div><p class="leg"><b>Estrela</b><span>quatro pontas</span></p></div>
+    <div class="el"><div class="q"><div style="position:relative;width:110px;height:150px;border:1px solid currentColor;border-radius:999px 999px 6px 6px"><div style="position:absolute;inset:6px;border:1px solid currentColor;border-radius:999px 999px 3px 3px;opacity:.6"></div></div></div><p class="leg"><b>Arco</b><span>carta de tarô</span></p></div>
+  </div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 14 · fotos -->
+<section class="mod par" id="m-par2"><img src="../assets/img/ia-venus-acesa.jpg" alt="Vela Vênus acesa entre cerejas e avelãs" style="object-position:50% 55%"><img src="../assets/img/ia-orquidea.jpg" alt="Baunilha e orquídea sobre pedra"></section>
+
+<!-- 15 · ritual (motion) -->
+<section class="mod escuro" id="m-ritual">
+  <div class="cab">
+    <div><p class="olho">10 · Cuidados · Candle care</p><h2 class="tit"><span class="cap so">O</span> ritual da queima</h2></div>
+    <p class="desc">O card de cuidados vira um pequeno filme: a vela derrete, o pavio é aparado, a chama se apaga.<i>The care card becomes a short film: the wax melts, the wick is trimmed, the flame goes out.</i></p>
+  </div>
+  <div class="passos">
+    <div class="passo"><p class="n">I</p><h3><span class="cap">P</span>rimeira queima</h3><p>Deixe a cera derreter até a borda do copo. Isso evita túneis e faz a vela render até o fim.<i>Let the wax melt to the edge on the first burn.</i></p></div>
+    <div class="passo"><p class="n">II</p><h3><span class="cap">A</span>pare o pavio</h3><p>Corte 5 mm do pavio antes de reacender, para a chama não fazer fumaça preta.<i>Trim the wick to 5 mm before relighting.</i></p></div>
+    <div class="passo"><p class="n">III</p><h3><span class="cap">T</span>empo limite</h3><p>Não deixe a vela acesa por mais de 3 horas seguidas.<i>Never burn for more than 3 hours at a time.</i></p></div>
+    <div class="passo"><p class="n">IV</p><h3><span class="cap">S</span>egurança</h3><p>Queime em superfície plana, longe de correntes de ar e de objetos inflamáveis.<i>Burn on a flat surface, away from drafts.</i></p></div>
+    <div class="passo"><p class="n">V</p><h3><span class="cap">A</span>tenção</h3><p>Nunca deixe sua vela acesa sem supervisão. Apague, e a fumaça sobe como o fim do ritual.<i>Never leave a burning candle unattended.</i></p></div>
+  </div>
+  <div class="pontos"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="vela">
+    <svg viewBox="0 0 330 470" aria-hidden="true">
+      <defs>
+        <radialGradient id="r-gBrilho"><stop offset="0" stop-color="#FFD58A" stop-opacity=".5"/><stop offset=".45" stop-color="#FFB45A" stop-opacity=".14"/><stop offset="1" stop-color="#FFB45A" stop-opacity="0"/></radialGradient>
+        <linearGradient id="r-gChama" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF9A3C"/><stop offset=".35" stop-color="#FFD27A"/><stop offset="1" stop-color="#FFF4D6"/></linearGradient>
+        <linearGradient id="r-gCera" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EADBB8"/><stop offset=".5" stop-color="#F8EED5"/><stop offset="1" stop-color="#E3D2AC"/></linearGradient>
+        <clipPath id="r-cCopo"><rect x="58" y="150" width="214" height="270" rx="26"/></clipPath>
+      </defs>
+      <g id="r-tudo">
+        <ellipse id="r-brilho" cx="165" cy="118" rx="150" ry="150" fill="url(#r-gBrilho)"/>
+        <line id="r-mesa" x1="-20" y1="433" x2="350" y2="433" stroke="#FFEBB4" stroke-opacity=".4" stroke-width="1" opacity="0"/>
+        <g clip-path="url(#r-cCopo)">
+          <rect id="r-cera" x="58" y="196" width="214" height="240" fill="url(#r-gCera)"/>
+          <ellipse id="r-topo" cx="165" cy="196" rx="107" ry="15" fill="#F6E9C9"/>
+          <ellipse id="r-piscina" cx="165" cy="196" rx="34" ry="6" fill="#E7C98C" opacity=".85"/>
+        </g>
+        <rect x="58" y="150" width="214" height="270" rx="26" fill="none" stroke="#FFEBB4" stroke-opacity=".55" stroke-width="1.6"/>
+        <rect x="66" y="160" width="10" height="230" rx="5" fill="#FFFFFF" opacity=".08"/>
+        <image href="../assets/img/rotulo-selene.png" x="96" y="276" width="138" height="111" preserveAspectRatio="xMidYMid meet"/>
+        <line id="r-pavio" x1="165" y1="196" x2="165" y2="170" stroke="#2a1d17" stroke-width="3" stroke-linecap="round"/>
+        <path id="r-chama" d="M165 98C171 116 184 128 184 146 184 160 175 170 165 170 155 170 146 160 146 146 146 136 152 130 155 122 157 130 161 132 163 132 162 122 163 110 165 98Z" fill="url(#r-gChama)" style="transform-box:fill-box;transform-origin:50% 100%"/>
+        <g id="r-fumaca" fill="none" stroke="#FFEBB4" stroke-width="1.4" stroke-linecap="round" opacity="0"><path d="M165 168C158 150 174 138 166 120S172 92 164 76"/><path d="M167 168C176 152 160 140 170 124S160 98 170 80"/></g>
+        <g id="r-tesoura" fill="none" stroke="#FFEBB4" stroke-width="1.6" stroke-linecap="round" opacity="0"><circle cx="232" cy="176" r="8"/><circle cx="232" cy="200" r="8"/><path d="M238 181L196 190M238 195L196 184"/></g>
+      </g>
+    </svg>
+  </div>
+  <div class="relogio" id="r-relogio">0:00<small>horas acesa</small></div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 16 · o que vai na caixa -->
+<section class="mod claro" id="m-caixa" style="background:#EFE4CB">
+  <div class="cab">
+    <div><p class="olho">11 · Papelaria · Stationery</p><h2 class="tit"><span class="cap so">O</span> que vai na caixa</h2></div>
+    <p class="desc">O card de cuidados, o card de obrigado em formato de carta de tarô e o adesivo que fecha a caixa.<i>The care card, the tarot-style thank-you card and the sticker that seals the box.</i></p>
+  </div>
+  <div class="mesa">
+    <img src="../assets/img/card-cuidados-hd.jpg" alt="Card de cuidados" style="width:300px;left:250px;top:40px;transform:rotate(-6deg)">
+    <img src="../assets/img/card-obrigado-hd.jpg" alt="Card de obrigado" style="width:310px;left:520px;top:6px;transform:rotate(2deg);z-index:2">
+    <img src="../assets/img/adesivo-caixa-hd.jpg" alt="Adesivo de caixa" style="width:290px;left:800px;top:52px;transform:rotate(7deg)">
+  </div>
+  <footer class="pe"><span>Almah</span><span>Coleção Gênesis · 2026</span></footer>
+</section>
+
+<!-- 17 · frase -->
+<section class="mod" id="m-frase"><img src="../assets/img/foto-chama.jpg" alt="Chama de vela em close"><q>Luz que acalma,<br>aroma que abraça.</q><small>ALMAH · COLEÇÃO GÊNESIS</small></section>
+
+<!-- 18 · obrigada -->
+<section class="mod claro" id="m-fim">
+  <div class="sol" data-raios="n:70;de:-180;ate:0;r0:22;r1:98;peso:.3;semente:6"></div>
+  <div class="carta">
+    <span class="moldura"></span>
+    <div class="sim" data-svg="simbolo"></div>
+    <h2 class="tit"><span class="cap">O</span>brigada</h2>
+    <p class="olho">Almah · Coleção Gênesis · 2026</p>
+    <p class="cred">Identidade visual para a Almah · @almahdomus<br>Logo desenhado à mão por <b>Cauã Dorn</b> · @ohdorn</p>
+  </div>
+</section>
+
+<script src="../kit/svgs.js"></script>
+<script src="../kit/kit.js"></script>
+<script src="projeto.js"></script>
+</body>
+</html>

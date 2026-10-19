@@ -20,8 +20,7 @@
       es.forEach(function (e) {
         var v = e.target;
         if (e.isIntersecting) {
-          if (v.id === 'chamaVideo') { if (aceso) tocar(v); }
-          else if (v.hasAttribute('autoplay') || v.id === 'filmeVideo') { if (!(v.id === 'filmeVideo' && filmePausado)) tocar(v); }
+          if (v.hasAttribute('autoplay') || v.id === 'filmeVideo') { if (!(v.id === 'filmeVideo' && filmePausado)) tocar(v); }
           else carregar(v);
         }
         else if (!v.paused) v.pause();
@@ -30,23 +29,69 @@
     $$('video[data-src]').forEach(function (v) { if (!v.closest('.carta')) io.observe(v); });
   } else { $$('video[data-src]').forEach(carregar); }
 
-  /* ---------- 1 · acender ---------- */
-  var chama = $('#chamaVideo');
-  carregar(chama);
-  var aceso = false, timerAcender;
+  /* ---------- 1 · acender: a lua crescente se desenha, depois o fogo ---------- */
+  var hero = $('.hero'), selo = $('#selo'), hLua = $('#hLua'), hBrasa = $('#hBrasa'), hNome = $('#hNome'), hFrase = $('#hFrase');
+  var hSol = $('#sol'), hBrilho = $('#brilho'), hCantos = $$('.hero .canto, .rolar, .hero .nuv');
+  function clamp(x) { return Math.max(0, Math.min(1, x)); }
+  function prog(t, a, b) { return clamp((t - a) / (b - a)); }
+  function suave(x) { return x * x * (3 - 2 * x); }
+  function sai(x) { return 1 - Math.pow(1 - x, 3); }
+  function mix(a, b, k) { return a + (b - a) * k; }
+  var TAU = Math.PI * 2;
+  function centrarLuz() { // sol e brilho saem de trás do símbolo
+    var h = hero.getBoundingClientRect(), r = selo.getBoundingClientRect();
+    var x = r.left + r.width * .505 - h.left, y = r.top + r.height * .62 - h.top;
+    [hSol, hBrilho].forEach(function (e) { e.style.left = x + 'px'; e.style.top = y + 'px'; });
+  }
+  function acesoEm(t) {
+    var a = suave(prog(t, .3, 2.0)) * 300;
+    var m = 'conic-gradient(from 312deg at 48.8% 54.4%, transparent 0deg, transparent ' + Math.max(0, 360 - a) + 'deg, #000 ' + Math.min(360, 360 - a + 6) + 'deg, #000 360deg)';
+    hLua.style.webkitMaskImage = m; hLua.style.maskImage = m;
+    hLua.style.opacity = suave(prog(t, .25, .9));
+    hBrasa.style.opacity = prog(t, 1.7, 2.2) * (1 - prog(t, 2.7, 3.2)) * (.75 + .25 * Math.sin(TAU * t * 2.2));
+    var p = $('#hChama path');
+    if (p) {
+      var g = sai(prog(t, 2.1, 3.6)), fl = suave(prog(t, 3.0, 4.4));
+      var sy = mix(.04, 1, g) * (1 + fl * (.022 * Math.sin(TAU * 1.3 * t) + .014 * Math.sin(TAU * 2.9 * t + 1)));
+      var sx = mix(.45, 1, g) * (1 + fl * .012 * Math.sin(TAU * 1.7 * t + 2));
+      var sk = (1 - g) * 4 * Math.sin(TAU * 1.1 * t) + fl * 1.1 * Math.sin(TAU * .8 * t);
+      p.style.transform = 'scale(' + sx.toFixed(4) + ',' + sy.toFixed(4) + ') skewX(' + sk.toFixed(3) + 'deg)';
+      p.style.opacity = suave(prog(t, 2.1, 2.6));
+      var k = suave(prog(t, 2.3, 4.0));
+      p.style.fill = 'rgb(255,' + Math.round(mix(168, 235, k)) + ',' + Math.round(mix(84, 180, k)) + ')';
+    }
+    var bri = suave(prog(t, 2.2, 4.0));
+    hBrilho.style.opacity = bri; hBrilho.style.scale = mix(.3, 1, bri).toFixed(4);
+    hSol.style.opacity = (.07 + .26 * suave(prog(t, 2.8, 4.6))).toFixed(3);
+    var n = sai(prog(t, 3.4, 4.8));
+    hNome.style.opacity = n; hNome.style.filter = 'blur(' + mix(7, 0, n).toFixed(2) + 'px)'; hNome.style.transform = 'translateY(' + mix(14, 0, n).toFixed(2) + 'px)';
+    var f = sai(prog(t, 4.2, 5.2));
+    hFrase.style.opacity = f; hFrase.style.transform = 'translateY(' + mix(10, 0, f).toFixed(2) + 'px)';
+    var c = suave(prog(t, 4.6, 5.6));
+    hCantos.forEach(function (e) { e.style.opacity = ''; e.style.visibility = c > 0 ? 'visible' : 'hidden'; e.style.filter = 'opacity(' + c.toFixed(3) + ')'; });
+  }
+  var inicio = 0, heroNaTela = true, rodando = false;
+  function quadroHero(agora) {
+    if (!inicio) inicio = agora;
+    acesoEm((agora - inicio) / 1000);
+    if (heroNaTela) requestAnimationFrame(quadroHero); else rodando = false;
+  }
   function acender() {
-    if (aceso) return;
-    aceso = true; clearTimeout(timerAcender);
-    body.classList.add('aceso');
-    var p = chama.play(); if (p && p.catch) p.catch(function () {});
-    $('#pavio').setAttribute('aria-label', 'Vela acesa');
+    centrarLuz();
+    if (reduz) { acesoEm(60); return; }
+    inicio = 0;
+    if (!rodando) { rodando = true; requestAnimationFrame(quadroHero); }
   }
-  function apagar() {
-    aceso = false; body.classList.remove('aceso'); chama.pause();
-    $('#pavio').setAttribute('aria-label', 'Acender a vela');
+  selo.addEventListener('click', acender);
+  window.addEventListener('resize', centrarLuz);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      heroNaTela = es[0].isIntersecting;
+      if (heroNaTela && !rodando && !reduz) { rodando = true; requestAnimationFrame(quadroHero); }
+    }).observe(hero);
   }
-  $('#pavio').addEventListener('click', function () { aceso ? apagar() : acender(); });
-  timerAcender = setTimeout(acender, reduz ? 0 : 2600);
+  document.addEventListener('DOMContentLoaded', acender);
+  if (document.readyState !== 'loading') acender();
 
   /* luz que acompanha o cursor */
   var luz = $('#luz');
@@ -145,9 +190,8 @@
 
   /* ---------- rodapé: acender de novo ---------- */
   $('#deNovo').addEventListener('click', function () {
-    apagar();
     window.scrollTo({ top: 0, behavior: reduz ? 'auto' : 'smooth' });
-    setTimeout(acender, reduz ? 0 : 1600);
+    setTimeout(acender, reduz ? 0 : 900);
   });
 
   /* ---------- 5 · ritual: estados da vela ---------- */
@@ -194,7 +238,6 @@
     gsap.to(el, { y: +el.dataset.par * 2.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   });
   gsap.to('.palco', { y: -80, opacity: .25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.from('.palco > *', { y: 30, opacity: 0, duration: 1.3, stagger: .12, ease: 'power3.out', delay: .2 });
   if (window.matchMedia('(pointer: fine)').matches) {
     var solX = gsap.quickTo('#sol', 'x', { duration: 1.6, ease: 'power3' }), solY = gsap.quickTo('#sol', 'y', { duration: 1.6, ease: 'power3' });
     $('.hero').addEventListener('pointermove', function (e) {
