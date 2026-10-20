@@ -39,7 +39,9 @@ Uma folha por vez (mais seguro):
 4. Confira: com a capa virada para você, ao virar a folha como página de livro, o verso tem que estar de pé. Se saiu de ponta-cabeça, recoloque o papel girado na folha seguinte e confira de novo. Depois que acertar, repita sempre do mesmo jeito.
 5. Repita com as páginas 3 e 4, 5 e 6, até 15 e 16.
 
-Mais rápido, só depois de acertar a primeira folha: imprima todas as frentes (1, 3, 5, 7, 9, 11, 13, 15), recoloque a pilha como no teste e imprima todos os versos (2, 4, 6, 8, 10, 12, 14, 16). Confira se a ordem da pilha não se inverteu na saída da impressora.
+Mais rápido, só depois de testar com 2 folhas: imprima as páginas 1 e 3 (frentes das folhas 1 e 2), marque a lápis o verso de cada folha, vire e imprima as páginas 2 e 4. Confira (a) se o verso saiu de pé e (b) se a folha 1 recebeu a página 2 e a folha 2 recebeu a 4.
+Se deu certo, imprima todas as frentes (1, 3, 5, 7, 9, 11, 13, 15), vire a pilha do mesmo jeito do teste e imprima todos os versos (2, 4, 6, 8, 10, 12, 14, 16).
+Se a impressora entrega a pilha de trás para frente (a folha 8 recebe a página 2), use a opção "ordem inversa" ao imprimir os versos, para sair 16, 14, 12... e bater com a pilha.
 
 ## Espaço para furar
 Toda página tem uma faixa livre padronizada de 27 mm junto à dobra, marcada por uma linha pontilhada a lápis. Nada de texto, ornamento ou ilustração entra nela. Fure o maço dentro dessa faixa. Não há marcas de furo impressas, só o espaço.
