@@ -27,5 +27,8 @@ Páginas escritas a partir de pesquisa, para complementar a consulta: "O banho, 
 Fontes principais: axeumbanda.com.br (ervas, Cobra Coral, Maria Caveira), bonsfluidos.com.br (ervas frias), axedanfeero.com.br e joiamisticalaroye.com.br (reinos e povos da Quimbanda), quimbandanago.com (Reino da Lira), Terra/UFF e Nei Lopes (etimologia de Quimbanda), Revista de Antropologia da USP e dissertações da UFRGS e da UnB (Quimbanda gaúcha, Mãe Ieda do Ogum), Câmara de Porto Alegre (Lei 13.088/2022), Wikipédia (Pombagira, Quimbanda), Carlos Museum e MBAM (ngombo), significados.com.br (calunga), artigos da UFPB e USP (Jurema), InfoEscola e Fiocruz (cobra coral), digitei.com e artigos acadêmicos (padê).
 Onde as fontes divergem, a página diz que divergem. Cada casa tem seu fundamento; o da sacerdotisa vem primeiro.
 
+## Se o PDF não abrir no celular
+Os dois PDFs são "leves" (cerca de 15 MB): cada página é uma imagem comprimida, o que abre bem no celular, no WhatsApp e em qualquer leitor. A impressão fica com cerca de 240 dpi, suficiente para o traço a lápis.
+
 ## Para editar
-O texto está em `fonte/grimorio.html`. Depois de mexer: `node fonte/render.mjs` gera o A5 e os PNGs; `python3 fonte/impor-caderninho.py grimorio-exu-ngombo.pdf grimorio-caderninho-A4.pdf` refaz a imposição.
+O texto está em `fonte/grimorio.html`. Depois de mexer: `node fonte/render.mjs` gera o A5 e os PNGs; `python3 -I fonte/fazer_pdf_leve.py paginas grimorio-exu-ngombo.pdf grimorio-caderninho-A4.pdf` refaz os dois PDFs a partir das imagens em `paginas/`.
