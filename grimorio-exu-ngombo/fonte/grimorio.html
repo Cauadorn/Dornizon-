@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Meu Grimório · Consulta ao Oráculo de Exu Ngombo</title>
+<style>
+@font-face{font-family:'Caveat';font-weight:400;src:url(fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf) format('truetype')}
+@font-face{font-family:'Caveat';font-weight:600;src:url(fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjSx6SII.ttf) format('truetype')}
+@font-face{font-family:'Homemade Apple';src:url(fonts/Qw3EZQFXECDrI2q789EKQZJob3x9.ttf) format('truetype')}
+@font-face{font-family:'La Belle Aurore';src:url(fonts/RrQIbot8-mNYKnGNDkWlocovHeIIGw.ttf) format('truetype')}
+@font-face{font-family:'Reenie Beanie';src:url(fonts/z7NSdR76eDkaJKZJFkkjuvWxbP0.ttf) format('truetype')}
+
+:root{
+  --paper:#eadfc4;
+  --paper-2:#e2d4b2;
+  --ink:#3b3733;
+  --ink-soft:#5a544d;
+  --ink-light:#8a8278;
+  --rule:rgba(70,62,54,.28);
+  --yellow:#d9b43a;
+  --green:#4f8a4a;
+  --black:#2b2926;
+  --red:#b8463f;
+}
+@page{size:148mm 210mm;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#6b6258}
+body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+.page{
+  position:relative;width:148mm;height:210mm;overflow:hidden;
+  margin:0 auto;page-break-after:always;break-after:page;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(ellipse at 50% 45%, rgba(255,250,235,.55) 0%, rgba(255,250,235,0) 60%),
+    radial-gradient(ellipse at 0% 0%, rgba(120,95,55,.22) 0%, rgba(120,95,55,0) 38%),
+    radial-gradient(ellipse at 100% 100%, rgba(120,95,55,.26) 0%, rgba(120,95,55,0) 40%),
+    radial-gradient(ellipse at 100% 0%, rgba(120,95,55,.14) 0%, rgba(120,95,55,0) 30%),
+    radial-gradient(ellipse at 10% 95%, rgba(120,95,55,.16) 0%, rgba(120,95,55,0) 32%),
+    radial-gradient(circle at 78% 18%, rgba(150,120,70,.10) 0%, rgba(150,120,70,0) 14%);
+}
+.page::before{ /* fibra do papel */
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .18 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
+  mix-blend-mode:multiply;
+}
+.page::after{ /* manchas nas bordas */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 18mm rgba(95,75,45,.22), inset 0 0 3mm rgba(95,75,45,.12);
+}
+.inner{position:absolute;inset:0;padding:16mm 15mm 14mm 16mm}
+
+/* ornamentos */
+.corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
+.corner.tl{top:3mm;left:3mm}
+.corner.tr{top:3mm;right:3mm;transform:scaleX(-1)}
+.corner.bl{bottom:3mm;left:3mm;transform:scaleY(-1)}
+.corner.br{bottom:3mm;right:3mm;transform:scale(-1,-1)}
+.divider{display:block;width:52mm;height:16mm;object-fit:contain;margin:2mm auto 1mm;opacity:.9}
+.pnum{position:absolute;bottom:6.5mm;left:0;right:0;text-align:center;font-family:'Reenie Beanie',cursive;font-size:13pt;color:var(--ink-light)}
+.folio{display:none}
+
+/* ilustrações */
+.ill{display:block;object-fit:contain;opacity:.96}
+
+/* tipografia */
+h1{font-family:'Homemade Apple',cursive;font-weight:400;font-size:19pt;line-height:1.5;margin:0 0 2mm;color:var(--black);letter-spacing:.01em}
+h1 small{display:block;font-family:'Reenie Beanie',cursive;font-size:12.5pt;color:var(--ink-light);letter-spacing:.08em;line-height:1;margin-bottom:1mm}
+h2{font-family:'Caveat',cursive;font-weight:600;font-size:15pt;margin:3mm 0 .6mm;color:var(--black)}
+p{font-size:13.2pt;line-height:1.32;margin:0 0 1.8mm}
+ul,ol{margin:0 0 1.8mm;padding-left:5mm;font-size:13.2pt;line-height:1.32}
+.dense p,.dense ul,.dense ol{font-size:12.4pt;line-height:1.3}
+.dense h2{font-size:14.5pt;margin:2.5mm 0 .5mm}
+li{margin:0 0 .9mm;padding-left:.5mm}
+ul{list-style:none;padding-left:4.5mm}
+ul li{position:relative}
+ul li::before{content:"";position:absolute;left:-4mm;top:.42em;width:1.5mm;height:1.5mm;border-radius:50% 45% 55% 50%;background:var(--ink-soft);opacity:.8;transform:rotate(-12deg)}
+ol{list-style:none;counter-reset:n;padding-left:5.5mm}
+ol li{counter-increment:n;position:relative}
+ol li::before{content:counter(n) ".";position:absolute;left:-5.5mm;font-weight:600;color:var(--ink-soft)}
+b,strong{font-weight:600;color:var(--black)}
+em{font-style:italic}
+.note{font-family:'Reenie Beanie',cursive;font-size:12.5pt;color:var(--ink-soft);line-height:1.15}
+.tag{font-family:'Reenie Beanie',cursive;font-size:13pt;color:var(--ink-light);letter-spacing:.04em}
+.quote{font-size:12.6pt;line-height:1.32;padding-left:4mm;border-left:.5mm solid rgba(70,62,54,.35);margin:1.5mm 0 2mm;color:var(--ink)}
+.ul-y,.ul-g,.ul-k{background-repeat:no-repeat;background-size:100% 100%}
+.ul-y{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M1 16.5 C 20 15.5, 45 17.5, 70 16 S 95 16.5, 99 15.8' fill='none' stroke='rgb(217,180,58)' stroke-width='2.4' stroke-linecap='round' opacity='.85'/><path d='M3 18.2 C 25 17.4, 50 19, 80 17.8' fill='none' stroke='rgb(217,180,58)' stroke-width='1.2' stroke-linecap='round' opacity='.6'/></svg>")}
+.ul-g{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M1 16.5 C 20 15.5, 45 17.5, 70 16 S 95 16.5, 99 15.8' fill='none' stroke='rgb(79,138,74)' stroke-width='2.4' stroke-linecap='round' opacity='.8'/><path d='M3 18.2 C 25 17.4, 50 19, 80 17.8' fill='none' stroke='rgb(79,138,74)' stroke-width='1.2' stroke-linecap='round' opacity='.55'/></svg>")}
+.ul-k{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M1 16.5 C 20 15.5, 45 17.5, 70 16 S 95 16.5, 99 15.8' fill='none' stroke='rgb(43,41,38)' stroke-width='2.2' stroke-linecap='round' opacity='.7'/></svg>")}
+.cross{position:relative}
+.cross::after{content:"";position:absolute;left:-1%;right:-1%;top:52%;height:.5mm;background:var(--ink-soft);transform:rotate(-1.5deg);opacity:.8}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.row{display:flex;gap:4mm;align-items:flex-start}
+.row > *{min-width:0}
+.ruled{background-image:repeating-linear-gradient(to bottom, transparent 0, transparent calc(8.5mm - .35mm), var(--rule) calc(8.5mm - .35mm), var(--rule) 8.5mm);background-size:100% 8.5mm}
+.ruled h2{line-height:8.5mm;margin:0}
+.chk{display:inline-block;width:3.6mm;height:3.6mm;border:.45mm solid var(--ink-soft);border-radius:28% 36% 30% 34% / 32% 30% 38% 30%;vertical-align:-.6mm;margin-right:2mm;transform:rotate(-3deg);opacity:.85}
+.meta{font-size:12.4pt;line-height:1.4}
+.meta b{display:inline-block;min-width:16mm}
+.float-r{float:right;margin:0 0 2mm 4mm;shape-outside:margin-box}
+.float-l{float:left;margin:0 4mm 2mm 0}
+.clear{clear:both}
+table.hand{width:100%;border-collapse:collapse;font-size:12.2pt;margin-top:2mm}
+table.hand th{font-family:'Caveat',cursive;font-weight:600;text-align:left;padding:1.2mm 2mm;color:var(--black);border-bottom:.45mm solid rgba(70,62,54,.55)}
+table.hand td{padding:3.2mm 2mm;border-bottom:.35mm solid var(--rule);height:11.5mm;vertical-align:bottom}
+table.hand td.line{color:var(--ink-light)}
+.bilhete{background:rgba(255,250,236,.5);padding:3.5mm 4mm 2.5mm;transform:rotate(-.6deg);box-shadow:0 .6mm 2mm rgba(60,45,25,.18);border:.25mm solid rgba(90,75,50,.15);margin-top:2mm}
+.chklist{padding-left:0;font-size:12.4pt}
+.chklist li{padding-left:0;margin-bottom:1.3mm}
+.chklist li::before{display:none}
+.ancestor{background:linear-gradient(transparent 60%, rgba(255,255,255,.55) 60%, rgba(255,255,255,.55) 94%, transparent 94%)}
+</style>
+</head>
+<body>
+
+<!-- ===== 1 · CAPA ===== -->
+<section class="page" id="p1">
+  <img class="ill" src="img/p01.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+  <div class="inner" style="padding-top:26mm;text-align:center">
+    <div class="tag" style="font-size:14pt">· meu grimório ·</div>
+    <h1 style="font-size:27pt;line-height:1.45;margin:2mm 0 1mm">Consulta ao Oráculo<br>de Exu Ngombo</h1>
+    <div class="note" style="font-size:14pt;margin-top:4mm;color:var(--ink-soft)">19 de outubro de 2026</div>
+    <div class="note" style="font-size:13pt;color:var(--ink-soft)">Sacerdotisa: Thali (Thalita Queres)</div>
+  </div>
+</section>
+
+<!-- ===== 2 · O REINO QUE ME RESPONDE ===== -->
+<section class="page" id="p2">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 2</div>
+  <div class="inner">
+    <h1><small>· o reino que me responde ·</small>Reino da Lira</h1>
+    <img class="ill" src="img/p02.png" alt="" style="width:92mm;height:104mm;margin:0 auto 1mm">
+    <p>O Reino da Lira não é o reino do meu Exu nem da minha Pombagira. É o reino que responde ao <b>momento atual</b> da minha vida.</p>
+    <p><b>Caiu:</b> negativo, com porém.</p>
+    <p><b>Sinal:</b> sonhei de sábado para domingo com algo ligado ao povo da Lira, antes da consulta. Acordei com isso na cabeça.</p>
+  </div>
+  <div class="pnum">— 2 —</div>
+</section>
+
+<!-- ===== 3 · MEUS DONS ===== -->
+<section class="page" id="p3">
+  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
+  <div class="folio">página 3</div>
+  <div class="inner">
+    <h1><small>· o que o jogo mostrou de bom ·</small>Meus dons</h1>
+    <img class="ill" src="img/p03.png" alt="" style="width:80mm;height:80mm;margin:0 auto 1mm">
+    <ul>
+      <li><b>Comunicação:</b> boa sorte comunicativa, saio e entro de situações com facilidade. A palavra e o diálogo são a minha base.</li>
+      <li><b>Intuição:</b> leio lugares, situações e pessoas. Bato o olho e sei quando algo não vai dar certo, e no final eu tinha razão.</li>
+      <li><b>Criatividade:</b> quando trabalho com arte e criação, me sinto livre, completa e entusiasmada.</li>
+      <li><b>Escuta:</b> sou atenciosa, boa ouvinte, conselheira de muita gente.</li>
+      <li><b>Prosperidade:</b> meu potencial é muito grande, em qualquer área em que eu for trabalhar.</li>
+    </ul>
+  </div>
+  <div class="pnum">— 3 —</div>
+</section>
+
+<!-- ===== 4 · OS PORÉNS ===== -->
+<section class="page" id="p4">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 4</div>
+  <div class="inner">
+    <h1><small>· o que pede cuidado ·</small>Os poréns</h1>
+    <img class="ill float-r" src="img/p04.png" alt="" style="width:62mm;height:62mm">
+    <ul>
+      <li><b>Instabilidade emocional:</b> momentos de querer o mundo e todo mundo por perto, e depois querer ficar sozinha, largar projetos e pessoas. Cuidado para não virar alguém sempre mudando de ciclo, de lugar e de pessoas.</li>
+      <li><b>Repetição de padrões familiares:</b> comportamentos ligados a dinheiro e a vícios. Vício não é só droga ou álcool, pode ser comprar para compensar um dia estressante. As mulheres da família podem repetir padrões fortes com homens e relacionamentos.</li>
+      <li><b>Aprisionamento em rotina desgastante:</b> quando não sei lidar com a rotina, fico infeliz, irritada, brava com tudo.</li>
+      <li><b>Sono:</b> atenção à privação de sono.</li>
+      <li><b>Conflito:</b> tento evitar ao máximo desavenças e conflitos.</li>
+    </ul>
+    <img class="divider" src="img/divider.png" alt="">
+    <p class="note" style="text-align:center">pegadas que dão voltas sem sair do lugar… e no centro, uma porta entreaberta.</p>
+  </div>
+  <div class="pnum">— 4 —</div>
+</section>
+
+<!-- ===== 5 · CAMINHOS DA VIDA ===== -->
+<section class="page dense" id="p5">
+  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
+  <div class="folio">página 5</div>
+  <div class="inner" style="padding-top:13mm">
+    <h1 style="font-size:17pt"><small>· a encruzilhada ·</small>Caminhos da vida</h1>
+    <img class="ill float-r" src="img/p05.png" alt="" style="width:54mm;height:54mm;margin-top:-6mm">
+    <h2 style="margin-top:0">Trabalho</h2>
+    <p>Estudar mais, ter conhecimento e autoridade para falar. Usar a comunicação de forma estratégica e assertiva. Não absorver energia nociva: se alguém incomoda, fingir que não existe. Agora não é hora de buscar conflito nem de provar quem eu sou. É hora de me resguardar e cuidar da minha cabeça.</p>
+    <h2>Saúde</h2>
+    <p>Aparecem padrões de geração ligados ao sono e à parte hormonal e reprodutiva. Cuidar do corpo: atividade física, ambientes e alimentação. Um corpo mal alimentado padece e não aguenta o trampo da vida.</p>
+    <h2>Financeiro</h2>
+    <p>Padrões de geração: pensamento de escassez e a sensação de que prosperar (comprar um apartamento, casar, construir família) seria ofender quem da família não conseguiu. Fase de grandes oscilações. Cuidado com golpe, vício, manipulação de outras pessoas e ganhos de fonte que não é segura.</p>
+    <h2>Relacionamentos</h2>
+    <p>Cuidado com relações sustentadas só pela rotina. Às vezes a pessoa já não tem atitudes de quem deveria estar na minha vida, e mantê-la desequilibra a minha energia. Rever amizades, família e trabalho.</p>
+  </div>
+  <div class="pnum">— 5 —</div>
+</section>
+
+<!-- ===== 6 · ESPIRITUALIDADE ===== -->
+<section class="page dense" id="p6">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 6</div>
+  <div class="inner" style="padding-top:13mm">
+    <h1 style="font-size:17pt"><small>· o que Exu mostrou ·</small>Espiritualidade</h1>
+    <img class="ill float-r" src="img/p06.png" alt="" style="width:52mm;height:65mm;margin-top:-4mm">
+    <ul>
+      <li>Não idealizar nem depender da espiritualidade para resolver tudo. Exu mostra o caminho, mas não decide e não caminha por mim.</li>
+      <li>Cuidado com a dependência da entidade dos outros. Minha entidade trabalha a minha paciência. Fortalecer a minha própria fé, caminhar de forma independente.</li>
+      <li>Minhas entidades são territorialistas: não gostam de gracinha nem de bagunça.</li>
+      <li><b>Pedido de apaziguamento da cabeça:</b> só vai apaziguar quando eu cultuar a minha ancestralidade. O caos na minha vida era para eu começar a cultuar e conhecer os meus espíritos. Estou no caminho certo.</li>
+      <li><b>Mutuê na quimbanda:</b> caiu sim, equilibrado com cinco porém. O porém é banho de ervas frias.</li>
+    </ul>
+    <h2>A casa que frequento</h2>
+    <p>É uma casa de passagem, não é para ficar muito tempo. Maria Caveira discorda de comportamentos do sacerdote e lá não vão permitir que eu a cultue como ela quer ser cultuada. Ela já me intuiu e mostrou. É para eu ir me desvinculando. Ela vai me mostrar outra casa: é só ter paciência.</p>
+  </div>
+  <div class="pnum">— 6 —</div>
+</section>
+
+<!-- ===== 7 · BANHO PARA O MUTUÊ ===== -->
+<section class="page" id="p7">
+  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
+  <div class="folio">página 7</div>
+  <div class="inner">
+    <h1><small>· ervas frias ·</small>Banho para o mutuê</h1>
+    <div class="row">
+      <div style="flex:1">
+        <h2 style="margin-top:0">Ervas frias</h2>
+        <ul>
+          <li><span class="ul-g">Alecrim</span></li>
+          <li>Água de coco seco</li>
+          <li><span class="ul-g">Boldo</span></li>
+          <li><span class="ul-g">Hortelã</span></li>
+          <li>Água de canjica branca</li>
+        </ul>
+      </div>
+      <img class="ill" src="img/p07.png" alt="" style="width:74mm;height:74mm;flex:none">
+    </div>
+    <p><b>Como fazer:</b> macerar o banho intencionando ao meu Exu e à minha Pombagira, pedindo clareza, discernimento, apaziguamento do mutuê, ajuda com a ansiedade e que me direcionem melhor. Depois do banho de higiene, tomar da cabeça aos pés.</p>
+    <p><b>Frequência:</b> durante um mês, escolher um dia da semana e fazer o banho.</p>
+    <img class="divider" src="img/divider.png" alt="">
+    <p class="note" style="text-align:center">verde das ervas, branco da canjica.</p>
+  </div>
+  <div class="pnum">— 7 —</div>
+</section>
+
+<!-- ===== 8 · OS MEUS ANCESTRAIS ===== -->
+<section class="page dense" id="p8">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 8</div>
+  <div class="inner" style="padding-top:13mm">
+    <h1 style="font-size:17pt"><small>· bacuros ·</small>Os meus ancestrais</h1>
+    <img class="ill float-r" src="img/p08.png" alt="" style="width:60mm;height:45mm;margin-top:-3mm">
+    <p><b>Bacuros:</b> meus antepassados, os mortos da minha família. Quando olhados, estão no negativo. Para positivar, eles querem ser lembrados.</p>
+    <h2>A lista</h2>
+    <ul>
+      <li>Anotar o nome de todos os mortos da família, por parte de mãe e de pai, até onde a família lembrar.</li>
+      <li>Avô, avó, tios, irmãos, primos, crianças que faleceram cedo.</li>
+      <li>Bebês que não chegaram a nascer também entram, mesmo sem nome.</li>
+      <li>Até o parente de quem eu não gosto ou que me fez mal entra na lista. Pode ser justamente ele que está atrapalhando.</li>
+    </ul>
+    <h2>O agrado</h2>
+    <ol>
+      <li>Separar um pratinho da comida que eu fizer no dia (ex.: arroz, feijão, batata frita e bife). Bacuro come o que eu como.</li>
+      <li>Vela branca, copo com água e flores brancas.</li>
+      <li>Tudo branco, montado sobre um lugar branquinho e bonito.</li>
+      <li>Dizer que me lembro deles, que reconheço que existiram, que sou grata por cada um que passou na minha vida.</li>
+      <li>Pedir: <em>"Apazigua meus velhos. Peço que vocês apaziguem para que eu possa caminhar melhor, com pés mais firmes e mais livre."</em></li>
+      <li>Sentar ali e conversar com eles.</li>
+    </ol>
+  </div>
+  <div class="pnum">— 8 —</div>
+</section>
+
+<!-- ===== 9 · MINHA LISTA DE ANCESTRAIS ===== -->
+<section class="page" id="p9">
+  <img class="corner tr" src="img/corner.png" alt="">
+  <div class="folio">página 9</div>
+  <img class="ill" src="img/p09.png" alt="" style="position:absolute;left:0;right:0;bottom:4mm;width:130mm;height:44mm;margin:0 auto">
+  <div class="inner">
+    <h1><small>· para preencher à mão ·</small>Minha lista de ancestrais</h1>
+    <div class="ruled" style="height:119mm;margin-top:2mm">
+      <h2 class="ancestor" style="display:inline-block">Por parte de mãe:</h2>
+      <div style="height:34mm"></div>
+      <h2 class="ancestor" style="display:inline-block">Por parte de pai:</h2>
+      <div style="height:34mm"></div>
+      <h2 class="ancestor" style="display:inline-block">Os que não chegaram a nascer:</h2>
+    </div>
+  </div>
+  <div class="pnum">— 9 —</div>
+</section>
+
+<!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
+<section class="page" id="p10">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 10</div>
+  <div class="inner">
+    <h1><small>· pombagira tutelar ·</small><span class="ul-y">Maria Caveira</span></h1>
+    <p class="note" style="margin-top:-1mm">do Reino do Cruzeiro, do povo do Cruzeiro de Mata</p>
+    <div class="row" style="margin-top:2mm">
+      <img class="ill" src="img/p10.png" alt="" style="width:74mm;height:93mm;flex:none">
+      <div class="meta" style="padding-top:4mm">
+        <p><b>Vela:</b> preta</p>
+        <p><b>Fumo:</b> cigarrilha</p>
+        <p><b>Bebida:</b> vinho seco</p>
+        <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-y">amarelo</span></p>
+        <p class="note" style="margin-top:3mm">amarelo é a cor do Cruzeiro</p>
+      </div>
+    </div>
+    <img class="divider" src="img/divider.png" alt="">
+    <p>Eu desconfiava que fosse uma Caveira, mas não imaginava qual.</p>
+    <p>Ela é a mais presente e é quem bate o martelo. É bem ranzinza, um pouquinho.</p>
+  </div>
+  <div class="pnum">— 10 —</div>
+</section>
+
+<!-- ===== 11 · OFERENDA E GUIA DE MARIA CAVEIRA ===== -->
+<section class="page" id="p11">
+  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
+  <div class="folio">página 11</div>
+  <div class="inner">
+    <h1 style="font-size:17pt"><small>· Maria Caveira ·</small>Oferenda e guia</h1>
+    <h2 style="margin-top:0">Padê de dendê quente</h2>
+    <ol>
+      <li>Aquecer o dendê na panela.</li>
+      <li>Refogar a cebola picadinha e a pimenta dedo-de-moça.</li>
+      <li>Colocar a farinha de mandioca e ir fazendo os pedidos.</li>
+      <li>Por cima: bife de boi selado no dendê e rodelas de cebola branca crua.</li>
+    </ol>
+    <img class="ill" src="img/p11.png" alt="" style="width:98mm;height:68mm;margin:0 auto">
+    <h2>Guia de proteção</h2>
+    <ul>
+      <li>Miçangas <span class="ul-k">pretas</span> e <span class="ul-y">amarelas</span>.</li>
+      <li><b>Para cruzar:</b> no dia da oferenda, macerar rosas vermelhas, folha de pitanga e um pouco do vinho dela. Pedir que ela consagre e fortaleça a guia. Deixar até a vela terminar de queimar. Depois pode usar.</li>
+    </ul>
+  </div>
+  <div class="pnum">— 11 —</div>
+</section>
+
+<!-- ===== 12 · EXU TUTELAR ===== -->
+<section class="page" id="p12">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 12</div>
+  <div class="inner">
+    <h1><small>· exu tutelar ·</small><span class="ul-g">Exu Cobra Coral</span></h1>
+    <p class="note" style="margin-top:-1mm">do Reino das Matas, do povo do Rio das Matas</p>
+    <div class="row" style="margin-top:2mm">
+      <div class="meta" style="padding-top:4mm;flex:1">
+        <p><b>Vela:</b> preta e verde (bicolor)</p>
+        <p><b>Fumo:</b> cachimbo ou cigarro</p>
+        <p><b>Bebida:</b> cachaça</p>
+        <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-g">verde</span></p>
+      </div>
+      <img class="ill" src="img/p12.png" alt="" style="width:76mm;height:95mm;flex:none">
+    </div>
+    <img class="divider" src="img/divider.png" alt="">
+    <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
+  </div>
+  <div class="pnum">— 12 —</div>
+</section>
+
+<!-- ===== 13 · OFERENDA E GUIA DO COBRA CORAL ===== -->
+<section class="page" id="p13">
+  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
+  <div class="folio">página 13</div>
+  <div class="inner">
+    <h1 style="font-size:17pt"><small>· Exu Cobra Coral ·</small>Oferenda e guia</h1>
+    <h2 style="margin-top:0">Padê de dendê com farofa de mandioca</h2>
+    <p class="note" style="margin-top:-1mm">(não vai ao fogo)</p>
+    <ol>
+      <li>Pegar a farinha de mandioca e ir misturando com o dendê, fazendo os pedidos.</li>
+      <li>Por cima: bisteca selada no dendê e bastante pimenta dedo-de-moça e malagueta.</li>
+    </ol>
+    <img class="ill" src="img/p13.png" alt="" style="width:98mm;height:68mm;margin:0 auto">
+    <h2>Guia</h2>
+    <ul>
+      <li>Miçangas <span class="ul-k">pretas</span> e <span class="ul-g">verdes</span>.</li>
+      <li><b>Para cruzar:</b> consagrar com folha de mamona e um pouco da cachaça dele maceradas. Deixar quando for fazer a oferenda. Depois pode usar.</li>
+    </ul>
+    <p class="note" style="margin-top:2mm;padding-left:3mm;border-left:.4mm solid rgba(70,62,54,.3)">Nota na margem: folha de mamona é tóxica se ingerida. Macerar de luva, longe de crianças e bichos.</p>
+  </div>
+  <div class="pnum">— 13 —</div>
+</section>
+
+<!-- ===== 14 · O CAVEIRA ===== -->
+<section class="page" id="p14">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 14</div>
+  <div class="inner">
+    <h1><small>· mais pra frente ·</small>O Caveira</h1>
+    <img class="ill" src="img/p14.png" alt="" style="width:78mm;height:98mm;margin:0 auto 2mm">
+    <p>Sonhei com Exu Caveira quando ainda nem conhecia, com pouco mais de um mês na umbanda. Depois tive intuição de comprar uma bebida específica.</p>
+    <p><b>A resposta:</b> o Caveira é um eixo que eu vou desenvolver mais para frente. Agora não é o momento. Por enquanto, cultuar só o Cobra Coral e a Dona Maria Caveira, e ir me afinizando.</p>
+    <p class="note" style="text-align:center;margin-top:2mm">ainda não, mas vai abrir.</p>
+  </div>
+  <div class="pnum">— 14 —</div>
+</section>
+
+<!-- ===== 15 · LISTA DE COMPRAS ===== -->
+<section class="page" id="p15">
+  <img class="corner bl" src="img/corner.png" alt="">
+  <img class="ill" src="img/p15.png" alt="" style="position:absolute;right:2mm;top:12mm;width:26mm;height:78mm">
+  <div class="inner" style="padding-right:30mm">
+    <h1><small>· bilhete ·</small>Lista de compras</h1>
+    <div class="bilhete">
+      <div class="two" style="gap:5mm">
+        <div>
+          <h2 style="margin-top:0">Artigos religiosos</h2>
+          <ul class="chklist"><li><span class="chk"></span>Vela branca</li><li><span class="chk"></span>Vela preta</li><li><span class="chk"></span>Vela bicolor preta e verde</li><li><span class="chk"></span>Cigarrilha</li><li><span class="chk"></span>Cachimbo com fumo ou cigarro</li><li><span class="chk"></span>Miçangas pretas e amarelas</li><li><span class="chk"></span>Miçangas pretas e verdes</li><li><span class="chk"></span>Pano branco</li></ul>
+        </div>
+        <div>
+          <h2 style="margin-top:0">Mercado e feira</h2>
+          <ul class="chklist"><li><span class="chk"></span>Vinho seco</li><li><span class="chk"></span>Cachaça</li><li><span class="chk"></span>Azeite de dendê</li><li><span class="chk"></span>Farinha de mandioca</li><li><span class="chk"></span>Bife de boi</li><li><span class="chk"></span>Bisteca</li><li><span class="chk"></span>Cebola e cebola branca</li><li><span class="chk"></span>Pimenta dedo-de-moça</li><li><span class="chk"></span>Pimenta malagueta</li><li><span class="chk"></span>Flores brancas</li><li><span class="chk"></span>Rosas vermelhas</li><li><span class="chk"></span>Folha de pitanga</li><li><span class="chk"></span>Folha de mamona</li><li><span class="chk"></span>Alecrim, boldo, hortelã <span class="note">(para 4 banhos)</span></li><li><span class="chk"></span>Coco seco</li><li><span class="chk"></span>Canjica branca</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pnum">— 15 —</div>
+</section>
+
+<!-- ===== 16 · REGISTRO DOS BANHOS ===== -->
+<section class="page" id="p16">
+  <img class="corner bl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="folio">página 16</div>
+  <div class="inner">
+    <img class="ill" src="img/p16.png" alt="" style="width:110mm;height:36mm;margin:-6mm auto 0">
+    <h1><small>· um mês de banhos ·</small>Registro dos banhos</h1>
+    <p style="margin-top:3mm"><b>Dia escolhido da semana:</b> <span style="display:inline-block;width:48mm;border-bottom:.4mm solid var(--rule);vertical-align:-1mm"></span></p>
+    <table class="hand">
+      <thead><tr><th style="width:22mm">Semana</th><th style="width:30mm">Data</th><th>Como me senti</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="line">___ / ___</td><td></td></tr>
+        <tr><td>2</td><td class="line">___ / ___</td><td></td></tr>
+        <tr><td>3</td><td class="line">___ / ___</td><td></td></tr>
+        <tr><td>4</td><td class="line">___ / ___</td><td></td></tr>
+      </tbody>
+    </table>
+    <img class="divider" src="img/divider.png" alt="" style="margin-top:6mm">
+    <p class="note" style="text-align:center">uma lua para cada semana.</p>
+  </div>
+  <div class="pnum">— 16 —</div>
+</section>
+
+<!-- ===== 17 · RECADO FINAL ===== -->
+<section class="page" id="p17">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner tr" src="img/corner.png" alt="">
+  <div class="folio">página 17</div>
+  <div class="inner">
+    <h1><small>· palavras da Thali ·</small>Recado final</h1>
+    <p class="quote">Cuidado com o seu mental, com a sua cabeça, e principalmente com a dependência da validação dos outros. Ela vai te ajudar a se desfazer disso.</p>
+    <p class="quote">Muita prosperidade, caminhos abertos. Foi um jogo muito bonito. Seu povo é muito presente, principalmente a Dona Maria Caveira. Cuida desse povo bonito que você tem, que sua vida vai deslanchar.</p>
+    <img class="ill" src="img/p17.png" alt="" style="width:117mm;height:78mm;margin:1mm auto 2mm">
+    <p>Qualquer dúvida (como fazer o banho, o agrado aos ancestrais, conferir se a oferenda ficou boa), posso chamar a Thali.</p>
+  </div>
+  <div class="pnum">— 17 —</div>
+</section>
+
+<!-- ===== 18 · ANOTAÇÕES ===== -->
+<section class="page" id="p18">
+  <img class="corner tl" src="img/corner.png" alt="">
+  <div class="folio">página 18</div>
+  <img class="ill" src="img/p18.png" alt="" style="position:absolute;right:4mm;bottom:4mm;width:44mm;height:44mm">
+  <div class="inner">
+    <h1><small>· perguntas, sonhos e sinais ·</small>Anotações</h1>
+    <div class="ruled" style="height:153mm;margin-top:2mm"></div>
+  </div>
+  <div class="pnum">— 18 —</div>
+</section>
+
+</body>
+</html>
