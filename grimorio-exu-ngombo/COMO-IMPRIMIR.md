@@ -29,6 +29,18 @@ Cada folha dobrada ao meio vira um caderninho de 4 páginas: por fora, a página
 4. Dobre cada folha ao meio pela marquinha no centro (topo e base).
 5. Empilhe as folhas dobradas em ordem (folha 1 por cima) e fure na dobra.
 
+## Impressora sem frente e verso (virar o papel à mão)
+O PDF tem 16 páginas: a primeira de cada par é a frente da folha e a segunda é o verso (páginas 1 e 2 do PDF = folha 1, 3 e 4 = folha 2, e assim por diante). Os números 4, 1, 2, 3 da tabela acima são só da montagem; mande imprimir as páginas do PDF na ordem 1, 2, 3, 4...
+
+Uma folha por vez (mais seguro):
+1. Imprima só a página 1 do PDF.
+2. Faça um risquinho de lápis no canto do verso (lado em branco).
+3. Vire a folha como página de livro (de um lado para o outro, sem girar de cabeça para baixo), recoloque na bandeja e imprima só a página 2.
+4. Confira: com a capa virada para você, ao virar a folha como página de livro, o verso tem que estar de pé. Se saiu de ponta-cabeça, recoloque o papel girado na folha seguinte e confira de novo. Depois que acertar, repita sempre do mesmo jeito.
+5. Repita com as páginas 3 e 4, 5 e 6, até 15 e 16.
+
+Mais rápido, só depois de acertar a primeira folha: imprima todas as frentes (1, 3, 5, 7, 9, 11, 13, 15), recoloque a pilha como no teste e imprima todos os versos (2, 4, 6, 8, 10, 12, 14, 16). Confira se a ordem da pilha não se inverteu na saída da impressora.
+
 ## Espaço para furar
 Toda página tem uma faixa livre padronizada de 27 mm junto à dobra, marcada por uma linha pontilhada a lápis. Nada de texto, ornamento ou ilustração entra nela. Fure o maço dentro dessa faixa. Não há marcas de furo impressas, só o espaço.
 
