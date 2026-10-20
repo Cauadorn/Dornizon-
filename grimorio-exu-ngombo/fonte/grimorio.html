@@ -37,8 +37,7 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
     radial-gradient(ellipse at 100% 100%, rgba(120,95,55,.26) 0%, rgba(120,95,55,0) 40%),
     radial-gradient(ellipse at 100% 0%, rgba(120,95,55,.14) 0%, rgba(120,95,55,0) 30%),
     radial-gradient(ellipse at 10% 95%, rgba(120,95,55,.16) 0%, rgba(120,95,55,0) 32%),
-    radial-gradient(circle at 78% 18%, rgba(150,120,70,.10) 0%, rgba(150,120,70,0) 14%);
-}
+    radial-gradient(circle at 78% 18%, rgba(150,120,70,.10) 0%, rgba(150,120,70,0) 14%)}
 .page::before{ /* fibra do papel */
   content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .18 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
@@ -48,11 +47,19 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
   content:"";position:absolute;inset:0;pointer-events:none;
   box-shadow:inset 0 0 18mm rgba(95,75,45,.22), inset 0 0 3mm rgba(95,75,45,.12);
 }
-.inner{position:absolute;inset:0;padding:16mm 15mm 14mm 16mm}
-.page:nth-of-type(odd) .inner{padding-left:19mm;padding-right:13mm}
-.page:nth-of-type(even) .inner{padding-left:13mm;padding-right:19mm}
-.page:nth-of-type(odd) .pnum{left:4mm}
-.page:nth-of-type(even) .pnum{right:4mm}
+/* margens de impressão: 24mm na dobra (zona dos furos), 14mm na borda externa */
+.inner{position:absolute;inset:0;padding:17mm 14mm 16mm 24mm}
+.page:nth-of-type(odd) .inner{padding-left:24mm;padding-right:14mm}
+.page:nth-of-type(even) .inner{padding-left:14mm;padding-right:24mm}
+.page:nth-of-type(odd) .pnum{left:24mm;right:14mm}
+.page:nth-of-type(even) .pnum{left:14mm;right:24mm}
+/* cantoneiras só nos cantos externos, a 8mm da borda (lado oposto à dobra) */
+.inner::before,.inner::after{content:"";position:absolute;width:30mm;height:30mm;background-repeat:no-repeat;background-size:contain;opacity:.8;pointer-events:none}
+.page:nth-of-type(odd) .inner::before{top:8mm;right:8mm;background-image:url(img/corner_tr.png)}
+.page:nth-of-type(odd) .inner::after{bottom:8mm;right:8mm;background-image:url(img/corner_br.png)}
+.page:nth-of-type(even) .inner::before{top:8mm;left:8mm;background-image:url(img/corner_tl.png)}
+.page:nth-of-type(even) .inner::after{bottom:8mm;left:8mm;background-image:url(img/corner_bl.png)}
+.nocorner .inner::before,.nocorner .inner::after{display:none}
 
 /* ornamentos */
 .corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
@@ -61,7 +68,7 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
 .corner.bl{bottom:3mm;left:3mm;transform:scaleY(-1)}
 .corner.br{bottom:3mm;right:3mm;transform:scale(-1,-1)}
 .divider{display:block;width:52mm;height:16mm;object-fit:contain;margin:2mm auto 1mm;opacity:.9}
-.pnum{position:absolute;bottom:6.5mm;left:0;right:0;text-align:center;font-family:'Reenie Beanie',cursive;font-size:13pt;color:var(--ink-light)}
+.pnum{position:absolute;bottom:8.5mm;left:0;right:0;text-align:center;font-family:'Reenie Beanie',cursive;font-size:13pt;color:var(--ink-light)}
 .folio{display:none}
 
 /* ilustrações */
@@ -100,7 +107,8 @@ em{font-style:italic}
 .ruled h2{line-height:8.5mm;margin:0}
 .chk{display:inline-block;width:3.6mm;height:3.6mm;border:.45mm solid var(--ink-soft);border-radius:28% 36% 30% 34% / 32% 30% 38% 30%;vertical-align:-.6mm;margin-right:2mm;transform:rotate(-3deg);opacity:.85}
 .meta{font-size:12.4pt;line-height:1.4}
-.meta b{display:inline-block;min-width:16mm}
+.meta b{display:inline-block;min-width:15mm}
+.meta p{white-space:nowrap}
 .float-r{float:right;margin:0 0 2mm 4mm;shape-outside:margin-box}
 .float-l{float:left;margin:0 4mm 2mm 0}
 .clear{clear:both}
@@ -118,9 +126,9 @@ table.hand td.line{color:var(--ink-light)}
 <body>
 
 <!-- ===== 1 · CAPA ===== -->
-<section class="page" id="p1">
-  <img class="ill" src="img/p01.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-  <div class="inner" style="padding-top:26mm;text-align:center">
+<section class="page nocorner" id="p1">
+  <img class="ill" src="img/p01.png" alt="" style="position:absolute;left:22mm;top:9mm;width:118mm;height:192mm;object-fit:contain">
+  <div class="inner" style="padding:32mm 22mm 0 30mm;text-align:center">
     <div class="tag" style="font-size:14pt">· meu grimório ·</div>
     <h1 style="font-size:27pt;line-height:1.45;margin:2mm 0 1mm">Consulta ao Oráculo<br>de Exu Ngombo</h1>
     <div class="note" style="font-size:14pt;margin-top:4mm;color:var(--ink-soft)">19 de outubro de 2026</div>
@@ -131,7 +139,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 1b · VERSO DA CAPA ===== -->
 <section class="page" id="p1b">
-  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
   <div class="inner" style="display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:30mm">
     <img class="divider" src="img/divider.png" alt="" style="margin-bottom:10mm">
     <p class="note" style="font-size:14pt;text-align:center;color:var(--ink-soft)">Este grimório pertence a</p>
@@ -142,7 +149,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 2 · O REINO QUE ME RESPONDE ===== -->
 <section class="page" id="p2">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 2</div>
   <div class="inner">
     <h1><small>· o reino que me responde ·</small>Reino da Lira</h1>
@@ -156,7 +162,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 3 · MEUS DONS ===== -->
 <section class="page" id="p3">
-  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
   <div class="folio">página 3</div>
   <div class="inner">
     <h1><small>· o que o jogo mostrou de bom ·</small>Meus dons</h1>
@@ -174,7 +179,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 4 · OS PORÉNS ===== -->
 <section class="page" id="p4">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 4</div>
   <div class="inner">
     <h1><small>· o que pede cuidado ·</small>Os poréns</h1>
@@ -194,7 +198,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 5 · CAMINHOS DA VIDA ===== -->
 <section class="page dense" id="p5">
-  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
   <div class="folio">página 5</div>
   <div class="inner" style="padding-top:13mm">
     <h1 style="font-size:17pt"><small>· a encruzilhada ·</small>Caminhos da vida</h1>
@@ -213,7 +216,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 6 · ESPIRITUALIDADE ===== -->
 <section class="page dense" id="p6">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 6</div>
   <div class="inner" style="padding-top:13mm">
     <h1 style="font-size:17pt"><small>· o que Exu mostrou ·</small>Espiritualidade</h1>
@@ -233,7 +235,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 7 · BANHO PARA O MUTUÊ ===== -->
 <section class="page" id="p7">
-  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
   <div class="folio">página 7</div>
   <div class="inner">
     <h1><small>· ervas frias ·</small>Banho para o mutuê</h1>
@@ -260,7 +261,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 8 · OS MEUS ANCESTRAIS ===== -->
 <section class="page dense" id="p8">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 8</div>
   <div class="inner" style="padding-top:13mm">
     <h1 style="font-size:17pt"><small>· bacuros ·</small>Os meus ancestrais</h1>
@@ -288,9 +288,8 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 9 · MINHA LISTA DE ANCESTRAIS ===== -->
 <section class="page" id="p9">
-  <img class="corner tr" src="img/corner.png" alt="">
   <div class="folio">página 9</div>
-  <img class="ill" src="img/p09.png" alt="" style="position:absolute;left:0;right:0;bottom:4mm;width:130mm;height:44mm;margin:0 auto">
+  <img class="ill" src="img/p09.png" alt="" style="position:absolute;left:14mm;right:24mm;bottom:9mm;width:106mm;height:38mm;margin:0 auto">
   <div class="inner">
     <h1><small>· para preencher à mão ·</small>Minha lista de ancestrais</h1>
     <div class="ruled" style="height:119mm;margin-top:2mm">
@@ -306,13 +305,12 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
 <section class="page" id="p10">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 10</div>
   <div class="inner">
     <h1><small>· pombagira tutelar ·</small><span class="ul-y">Maria Caveira</span></h1>
     <p class="note" style="margin-top:-1mm">do Reino do Cruzeiro, do povo do Cruzeiro de Mata</p>
     <div class="row" style="margin-top:2mm">
-      <img class="ill" src="img/p10.png" alt="" style="width:74mm;height:93mm;flex:none">
+      <img class="ill" src="img/p10.png" alt="" style="width:66mm;height:83mm;flex:none">
       <div class="meta" style="padding-top:4mm">
         <p><b>Vela:</b> preta</p>
         <p><b>Fumo:</b> cigarrilha</p>
@@ -330,7 +328,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 11 · OFERENDA E GUIA DE MARIA CAVEIRA ===== -->
 <section class="page" id="p11">
-  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
   <div class="folio">página 11</div>
   <div class="inner">
     <h1 style="font-size:17pt"><small>· Maria Caveira ·</small>Oferenda e guia</h1>
@@ -353,7 +350,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 12 · EXU TUTELAR ===== -->
 <section class="page" id="p12">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 12</div>
   <div class="inner">
     <h1><small>· exu tutelar ·</small><span class="ul-g">Exu Cobra Coral</span></h1>
@@ -365,7 +361,7 @@ table.hand td.line{color:var(--ink-light)}
         <p><b>Bebida:</b> cachaça</p>
         <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-g">verde</span></p>
       </div>
-      <img class="ill" src="img/p12.png" alt="" style="width:76mm;height:95mm;flex:none">
+      <img class="ill" src="img/p12.png" alt="" style="width:68mm;height:85mm;flex:none">
     </div>
     <img class="divider" src="img/divider.png" alt="">
     <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
@@ -375,7 +371,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 13 · OFERENDA E GUIA DO COBRA CORAL ===== -->
 <section class="page" id="p13">
-  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
   <div class="folio">página 13</div>
   <div class="inner">
     <h1 style="font-size:17pt"><small>· Exu Cobra Coral ·</small>Oferenda e guia</h1>
@@ -398,7 +393,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 14 · O CAVEIRA ===== -->
 <section class="page" id="p14">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 14</div>
   <div class="inner">
     <h1><small>· mais pra frente ·</small>O Caveira</h1>
@@ -412,9 +406,8 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 15 · LISTA DE COMPRAS ===== -->
 <section class="page" id="p15">
-  <img class="corner bl" src="img/corner.png" alt="">
-  <img class="ill" src="img/p15.png" alt="" style="position:absolute;right:2mm;top:12mm;width:26mm;height:78mm">
-  <div class="inner" style="padding-right:30mm">
+  <img class="ill" src="img/p15.png" alt="" style="position:absolute;left:9mm;top:14mm;width:22mm;height:70mm">
+  <div class="inner" style="padding-left:34mm;padding-right:24mm">
     <h1><small>· bilhete ·</small>Lista de compras</h1>
     <div class="bilhete">
       <div class="two" style="gap:5mm">
@@ -434,7 +427,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 16 · REGISTRO DOS BANHOS ===== -->
 <section class="page" id="p16">
-  <img class="corner bl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="folio">página 16</div>
   <div class="inner">
     <img class="ill" src="img/p16.png" alt="" style="width:110mm;height:36mm;margin:-6mm auto 0">
@@ -457,7 +449,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 17 · RECADO FINAL ===== -->
 <section class="page" id="p17">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner tr" src="img/corner.png" alt="">
   <div class="folio">página 17</div>
   <div class="inner">
     <h1><small>· palavras da Thali ·</small>Recado final</h1>
@@ -471,12 +462,11 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 18 · ANOTAÇÕES ===== -->
 <section class="page" id="p18">
-  <img class="corner tr" src="img/corner.png" alt="">
   <div class="folio">página 18</div>
-  <img class="ill" src="img/p18.png" alt="" style="position:absolute;left:4mm;bottom:4mm;width:44mm;height:44mm;transform:scaleX(-1)">
+  <img class="ill" src="img/p18.png" alt="" style="position:absolute;right:10mm;bottom:10mm;width:40mm;height:40mm">
   <div class="inner">
     <h1><small>· perguntas, sonhos e sinais ·</small>Anotações</h1>
-    <div class="ruled" style="height:153mm;margin-top:2mm"></div>
+    <div class="ruled" style="height:144mm;margin-top:2mm"></div>
   </div>
   <div class="pnum">— 19 —</div>
 </section>
@@ -484,7 +474,6 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 20 · CONTRACAPA ===== -->
 <section class="page" id="p20">
-  <img class="corner tl" src="img/corner.png" alt=""><img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
   <div class="inner" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
     <img class="ill" src="img/p18.png" alt="" style="width:60mm;height:60mm;object-position:right bottom;transform:translateX(-6mm)">
     <img class="divider" src="img/divider.png" alt="" style="margin-top:4mm">
