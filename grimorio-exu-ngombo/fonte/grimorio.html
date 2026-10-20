@@ -97,6 +97,16 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
 .pontos .linha{width:92mm;margin:3.5mm auto 0;border-bottom:.35mm solid var(--rule);height:7mm;text-align:center;font-family:'Caveat',cursive;font-weight:600;font-size:12.5pt;color:var(--ink-soft)}
 .page.pontos:nth-of-type(n) .src{margin-left:0;margin-right:0}
 
+
+/* páginas das entidades: tudo centralizado */
+.entidade .inner{text-align:center}
+.entidade h1,.entidade h1 small,.entidade .note{text-align:center}
+.entidade .foto{display:block;width:62mm;height:78mm;object-fit:contain;margin:0 auto}
+.entidade .dados{width:86mm;margin:2mm auto 0;text-align:center}
+.entidade .dados p{margin:0 0 .4mm;white-space:normal;font-size:12.8pt;line-height:1.28}
+.entidade .inner>p{font-size:12.4pt;line-height:1.3}
+.entidade .dados b{display:inline;min-width:0}
+
 /* ornamentos */
 .corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
 .corner.tl{top:3mm;left:3mm}
@@ -415,28 +425,24 @@ table.hand td.line{color:var(--ink-light)}
 </section>
 
 <!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
-<section class="page" id="p10">
-  <div class="folio">página 10</div>
-  <div class="inner">
-    <h1><small>· pombagira tutelar ·</small><span class="ul-y">Maria Caveira</span></h1>
-    <p class="note" style="margin-top:-1mm">do Reino do Cruzeiro, do povo do Cruzeiro de Mata</p>
-    <div class="row" style="margin-top:2mm">
-      <img class="ill" src="img/p10.png" alt="" style="width:66mm;height:83mm;flex:none">
-      <div class="meta" style="padding-top:4mm">
+<section class="page entidade" id="p10">
+    <div class="inner">
+      <h1><small>· pombagira tutelar ·</small><span class="ul-y">Maria Caveira</span></h1>
+      <p class="note" style="margin-top:-1mm">do Reino do Cruzeiro, do povo do Cruzeiro de Mata</p>
+      <img class="ill foto" src="img/p10.png" alt="">
+      <div class="dados">
         <p><b>Vela:</b> preta</p>
         <p><b>Fumo:</b> cigarrilha</p>
         <p><b>Bebida:</b> vinho seco</p>
-        <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-y">amarelo</span></p>
-        <p class="note" style="margin-top:3mm">amarelo é a cor do Cruzeiro</p>
+        <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-y">amarelo</span> <span class="note" style="font-size:11.5pt">(amarelo é a cor do Cruzeiro)</span></p>
       </div>
+      <img class="divider" src="img/divider.png" alt="" style="margin:.5mm auto;height:12mm">
+      <p style="margin-bottom:.8mm">Eu desconfiava que fosse uma Caveira, mas não imaginava qual.</p>
+      <p>Ela é a mais presente e é quem bate o martelo. É bem ranzinza, um pouquinho.</p>
     </div>
-    <img class="divider" src="img/divider.png" alt="">
-    <p>Eu desconfiava que fosse uma Caveira, mas não imaginava qual.</p>
-    <p>Ela é a mais presente e é quem bate o martelo. É bem ranzinza, um pouquinho.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
+    <div class="pnum"></div>
+    <div class="furos"></div>
+  </section>
 
 <!-- ===== 11 · OFERENDA E GUIA DE MARIA CAVEIRA ===== -->
 <section class="page dense" id="p11">
@@ -515,26 +521,23 @@ table.hand td.line{color:var(--ink-light)}
 </section>
 
 <!-- ===== 12 · EXU TUTELAR ===== -->
-<section class="page" id="p12">
-  <div class="folio">página 12</div>
-  <div class="inner">
-    <h1><small>· exu tutelar ·</small><span class="ul-g">Exu Cobra Coral</span></h1>
-    <p class="note" style="margin-top:-1mm">do Reino das Matas, do povo do Rio das Matas</p>
-    <div class="row" style="margin-top:2mm">
-      <div class="meta" style="padding-top:4mm;flex:1">
+<section class="page entidade" id="p12">
+    <div class="inner">
+      <h1><small>· exu tutelar ·</small><span class="ul-g">Exu Cobra Coral</span></h1>
+      <p class="note" style="margin-top:-1mm">do Reino das Matas, do povo do Rio das Matas</p>
+      <img class="ill foto" src="img/p12.png" alt="">
+      <div class="dados">
         <p><b>Vela:</b> preta e verde (bicolor)</p>
         <p><b>Fumo:</b> cachimbo ou cigarro</p>
         <p><b>Bebida:</b> cachaça</p>
         <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-g">verde</span></p>
       </div>
-      <img class="ill" src="img/p12.png" alt="" style="width:68mm;height:85mm;flex:none">
+      <img class="divider" src="img/divider.png" alt="" style="margin:.5mm auto;height:12mm">
+      <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
     </div>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
+    <div class="pnum"></div>
+    <div class="furos"></div>
+  </section>
 
 <!-- ===== 13 · OFERENDA E GUIA DO COBRA CORAL ===== -->
 <section class="page" id="p13">
