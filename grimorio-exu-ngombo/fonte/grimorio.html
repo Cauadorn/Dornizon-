@@ -49,6 +49,10 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
   box-shadow:inset 0 0 18mm rgba(95,75,45,.22), inset 0 0 3mm rgba(95,75,45,.12);
 }
 .inner{position:absolute;inset:0;padding:16mm 15mm 14mm 16mm}
+.page:nth-of-type(odd) .inner{padding-left:19mm;padding-right:13mm}
+.page:nth-of-type(even) .inner{padding-left:13mm;padding-right:19mm}
+.page:nth-of-type(odd) .pnum{left:4mm}
+.page:nth-of-type(even) .pnum{right:4mm}
 
 /* ornamentos */
 .corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
@@ -124,6 +128,18 @@ table.hand td.line{color:var(--ink-light)}
   </div>
 </section>
 
+
+<!-- ===== 1b · VERSO DA CAPA ===== -->
+<section class="page" id="p1b">
+  <img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt="">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:30mm">
+    <img class="divider" src="img/divider.png" alt="" style="margin-bottom:10mm">
+    <p class="note" style="font-size:14pt;text-align:center;color:var(--ink-soft)">Este grimório pertence a</p>
+    <div style="width:80mm;margin:6mm auto 0;border-bottom:.45mm solid var(--rule)"></div>
+    <p class="note" style="font-size:12.5pt;text-align:center;color:var(--ink-light);margin-top:10mm">Consulta ao Oráculo de Exu Ngombo · 19 de outubro de 2026<br>Sacerdotisa: Thali (Thalita Queres)</p>
+  </div>
+</section>
+
 <!-- ===== 2 · O REINO QUE ME RESPONDE ===== -->
 <section class="page" id="p2">
   <img class="corner tl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
@@ -135,7 +151,7 @@ table.hand td.line{color:var(--ink-light)}
     <p><b>Caiu:</b> negativo, com porém.</p>
     <p><b>Sinal:</b> sonhei de sábado para domingo com algo ligado ao povo da Lira, antes da consulta. Acordei com isso na cabeça.</p>
   </div>
-  <div class="pnum">— 2 —</div>
+  <div class="pnum">— 3 —</div>
 </section>
 
 <!-- ===== 3 · MEUS DONS ===== -->
@@ -153,7 +169,7 @@ table.hand td.line{color:var(--ink-light)}
       <li><b>Prosperidade:</b> meu potencial é muito grande, em qualquer área em que eu for trabalhar.</li>
     </ul>
   </div>
-  <div class="pnum">— 3 —</div>
+  <div class="pnum">— 4 —</div>
 </section>
 
 <!-- ===== 4 · OS PORÉNS ===== -->
@@ -173,7 +189,7 @@ table.hand td.line{color:var(--ink-light)}
     <img class="divider" src="img/divider.png" alt="">
     <p class="note" style="text-align:center">pegadas que dão voltas sem sair do lugar… e no centro, uma porta entreaberta.</p>
   </div>
-  <div class="pnum">— 4 —</div>
+  <div class="pnum">— 5 —</div>
 </section>
 
 <!-- ===== 5 · CAMINHOS DA VIDA ===== -->
@@ -192,7 +208,7 @@ table.hand td.line{color:var(--ink-light)}
     <h2>Relacionamentos</h2>
     <p>Cuidado com relações sustentadas só pela rotina. Às vezes a pessoa já não tem atitudes de quem deveria estar na minha vida, e mantê-la desequilibra a minha energia. Rever amizades, família e trabalho.</p>
   </div>
-  <div class="pnum">— 5 —</div>
+  <div class="pnum">— 6 —</div>
 </section>
 
 <!-- ===== 6 · ESPIRITUALIDADE ===== -->
@@ -212,7 +228,7 @@ table.hand td.line{color:var(--ink-light)}
     <h2>A casa que frequento</h2>
     <p>É uma casa de passagem, não é para ficar muito tempo. Maria Caveira discorda de comportamentos do sacerdote e lá não vão permitir que eu a cultue como ela quer ser cultuada. Ela já me intuiu e mostrou. É para eu ir me desvinculando. Ela vai me mostrar outra casa: é só ter paciência.</p>
   </div>
-  <div class="pnum">— 6 —</div>
+  <div class="pnum">— 7 —</div>
 </section>
 
 <!-- ===== 7 · BANHO PARA O MUTUÊ ===== -->
@@ -239,7 +255,7 @@ table.hand td.line{color:var(--ink-light)}
     <img class="divider" src="img/divider.png" alt="">
     <p class="note" style="text-align:center">verde das ervas, branco da canjica.</p>
   </div>
-  <div class="pnum">— 7 —</div>
+  <div class="pnum">— 8 —</div>
 </section>
 
 <!-- ===== 8 · OS MEUS ANCESTRAIS ===== -->
@@ -267,7 +283,7 @@ table.hand td.line{color:var(--ink-light)}
       <li>Sentar ali e conversar com eles.</li>
     </ol>
   </div>
-  <div class="pnum">— 8 —</div>
+  <div class="pnum">— 9 —</div>
 </section>
 
 <!-- ===== 9 · MINHA LISTA DE ANCESTRAIS ===== -->
@@ -285,7 +301,7 @@ table.hand td.line{color:var(--ink-light)}
       <h2 class="ancestor" style="display:inline-block">Os que não chegaram a nascer:</h2>
     </div>
   </div>
-  <div class="pnum">— 9 —</div>
+  <div class="pnum">— 10 —</div>
 </section>
 
 <!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
@@ -309,7 +325,7 @@ table.hand td.line{color:var(--ink-light)}
     <p>Eu desconfiava que fosse uma Caveira, mas não imaginava qual.</p>
     <p>Ela é a mais presente e é quem bate o martelo. É bem ranzinza, um pouquinho.</p>
   </div>
-  <div class="pnum">— 10 —</div>
+  <div class="pnum">— 11 —</div>
 </section>
 
 <!-- ===== 11 · OFERENDA E GUIA DE MARIA CAVEIRA ===== -->
@@ -332,7 +348,7 @@ table.hand td.line{color:var(--ink-light)}
       <li><b>Para cruzar:</b> no dia da oferenda, macerar rosas vermelhas, folha de pitanga e um pouco do vinho dela. Pedir que ela consagre e fortaleça a guia. Deixar até a vela terminar de queimar. Depois pode usar.</li>
     </ul>
   </div>
-  <div class="pnum">— 11 —</div>
+  <div class="pnum">— 12 —</div>
 </section>
 
 <!-- ===== 12 · EXU TUTELAR ===== -->
@@ -354,7 +370,7 @@ table.hand td.line{color:var(--ink-light)}
     <img class="divider" src="img/divider.png" alt="">
     <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
   </div>
-  <div class="pnum">— 12 —</div>
+  <div class="pnum">— 13 —</div>
 </section>
 
 <!-- ===== 13 · OFERENDA E GUIA DO COBRA CORAL ===== -->
@@ -377,7 +393,7 @@ table.hand td.line{color:var(--ink-light)}
     </ul>
     <p class="note" style="margin-top:2mm;padding-left:3mm;border-left:.4mm solid rgba(70,62,54,.3)">Nota na margem: folha de mamona é tóxica se ingerida. Macerar de luva, longe de crianças e bichos.</p>
   </div>
-  <div class="pnum">— 13 —</div>
+  <div class="pnum">— 14 —</div>
 </section>
 
 <!-- ===== 14 · O CAVEIRA ===== -->
@@ -391,7 +407,7 @@ table.hand td.line{color:var(--ink-light)}
     <p><b>A resposta:</b> o Caveira é um eixo que eu vou desenvolver mais para frente. Agora não é o momento. Por enquanto, cultuar só o Cobra Coral e a Dona Maria Caveira, e ir me afinizando.</p>
     <p class="note" style="text-align:center;margin-top:2mm">ainda não, mas vai abrir.</p>
   </div>
-  <div class="pnum">— 14 —</div>
+  <div class="pnum">— 15 —</div>
 </section>
 
 <!-- ===== 15 · LISTA DE COMPRAS ===== -->
@@ -413,7 +429,7 @@ table.hand td.line{color:var(--ink-light)}
       </div>
     </div>
   </div>
-  <div class="pnum">— 15 —</div>
+  <div class="pnum">— 16 —</div>
 </section>
 
 <!-- ===== 16 · REGISTRO DOS BANHOS ===== -->
@@ -436,7 +452,7 @@ table.hand td.line{color:var(--ink-light)}
     <img class="divider" src="img/divider.png" alt="" style="margin-top:6mm">
     <p class="note" style="text-align:center">uma lua para cada semana.</p>
   </div>
-  <div class="pnum">— 16 —</div>
+  <div class="pnum">— 17 —</div>
 </section>
 
 <!-- ===== 17 · RECADO FINAL ===== -->
@@ -450,19 +466,30 @@ table.hand td.line{color:var(--ink-light)}
     <img class="ill" src="img/p17.png" alt="" style="width:117mm;height:78mm;margin:1mm auto 2mm">
     <p>Qualquer dúvida (como fazer o banho, o agrado aos ancestrais, conferir se a oferenda ficou boa), posso chamar a Thali.</p>
   </div>
-  <div class="pnum">— 17 —</div>
+  <div class="pnum">— 18 —</div>
 </section>
 
 <!-- ===== 18 · ANOTAÇÕES ===== -->
 <section class="page" id="p18">
-  <img class="corner tl" src="img/corner.png" alt="">
+  <img class="corner tr" src="img/corner.png" alt="">
   <div class="folio">página 18</div>
-  <img class="ill" src="img/p18.png" alt="" style="position:absolute;right:4mm;bottom:4mm;width:44mm;height:44mm">
+  <img class="ill" src="img/p18.png" alt="" style="position:absolute;left:4mm;bottom:4mm;width:44mm;height:44mm;transform:scaleX(-1)">
   <div class="inner">
     <h1><small>· perguntas, sonhos e sinais ·</small>Anotações</h1>
     <div class="ruled" style="height:153mm;margin-top:2mm"></div>
   </div>
-  <div class="pnum">— 18 —</div>
+  <div class="pnum">— 19 —</div>
+</section>
+
+
+<!-- ===== 20 · CONTRACAPA ===== -->
+<section class="page" id="p20">
+  <img class="corner tl" src="img/corner.png" alt=""><img class="corner tr" src="img/corner.png" alt=""><img class="corner bl" src="img/corner.png" alt=""><img class="corner br" src="img/corner.png" alt="">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+    <img class="ill" src="img/p18.png" alt="" style="width:60mm;height:60mm;object-position:right bottom;transform:translateX(-6mm)">
+    <img class="divider" src="img/divider.png" alt="" style="margin-top:4mm">
+    <p class="note" style="font-size:13pt;text-align:center;color:var(--ink-soft);margin-top:4mm">Cuida desse povo bonito que você tem,<br>que sua vida vai deslanchar.</p>
+  </div>
 </section>
 
 </body>
