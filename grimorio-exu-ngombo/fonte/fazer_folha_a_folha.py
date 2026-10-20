@@ -23,8 +23,8 @@ for k in range(1, n//4+1):
 SW,SH = landscape(A4)
 c = canvas.Canvas(out_pdf, pagesize=(SW,SH))
 for name,l,r in faces:
-    im = Image.open(os.path.join(out_dir,name)).resize((2400, round(2400*H/W)), Image.LANCZOS)
-    b = io.BytesIO(); im.save(b,'JPEG',quality=80,optimize=True); b.seek(0)
+    im = Image.open(os.path.join(out_dir,name)).resize((1900, round(1900*H/W)), Image.LANCZOS)
+    b = io.BytesIO(); im.save(b,'JPEG',quality=76,optimize=True); b.seek(0)
     c.drawImage(ImageReader(b),0,0,SW,SH)
     c.setLineWidth(0.3); c.setStrokeGray(0.45); c.line(SW/2,0,SW/2,8); c.line(SW/2,SH-8,SW/2,SH)
     c.showPage()
