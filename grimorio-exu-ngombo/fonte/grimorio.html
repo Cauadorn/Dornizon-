@@ -70,16 +70,7 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
 .furos::before{content:"";position:absolute;top:12mm;bottom:12mm;width:.35mm;background:repeating-linear-gradient(to bottom, rgba(70,62,54,.38) 0 2.4mm, transparent 2.4mm 4mm)}
 .page:nth-of-type(odd) .furos::before{right:3mm}
 .page:nth-of-type(even) .furos::before{left:3mm}
-.furos i{position:absolute;width:6mm;height:6mm;border:.3mm dashed rgba(70,62,54,.5);border-radius:50%;box-sizing:border-box}
-.furos i::after{content:"";position:absolute;left:50%;top:50%;width:1mm;height:1mm;margin:-.5mm 0 0 -.5mm;border-radius:50%;background:rgba(70,62,54,.45)}
-.furos i:nth-child(1){top:62mm}   /* centro a 65mm do topo */
-.furos i:nth-child(2){top:142mm}  /* centro a 145mm do topo: 80mm entre furos */
-.page:nth-of-type(odd) .furos i{left:9mm}   /* centro a 12mm da dobra */
-.page:nth-of-type(even) .furos i{right:9mm}
-.furos small{position:absolute;font-family:'Reenie Beanie',cursive;font-size:8.5pt;color:var(--ink-light);letter-spacing:.05em;white-space:nowrap;transform:rotate(-90deg);transform-origin:left top;top:118mm}
-.page:nth-of-type(odd) .furos small{left:6mm}
-.page:nth-of-type(even) .furos small{right:-7mm}
-
+.page:nth-of-type(odd) .page:nth-of-type(even) .page:nth-of-type(odd) .page:nth-of-type(even) 
 /* ornamentos */
 .corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
 .corner.tl{top:3mm;left:3mm}
@@ -161,7 +152,7 @@ table.hand td.line{color:var(--ink-light)}
     <div class="note" style="font-size:12.5pt;margin-top:2mm;color:var(--ink-soft)">19 de outubro de 2026</div>
     <div class="note" style="font-size:11.5pt;color:var(--ink-soft)">Sacerdotisa: Thali (Thalita Queres)</div>
   </div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 
@@ -175,7 +166,7 @@ table.hand td.line{color:var(--ink-light)}
     <div style="width:80mm;margin:6mm auto 0;border-bottom:.45mm solid var(--rule)"></div>
     <p class="note" style="font-size:12.5pt;text-align:center;color:var(--ink-light);margin-top:10mm">Consulta ao Oráculo de Exu Ngombo · 19 de outubro de 2026<br>Sacerdotisa: Thali (Thalita Queres)</p>
   </div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 2 · O REINO QUE ME RESPONDE ===== -->
@@ -194,7 +185,7 @@ table.hand td.line{color:var(--ink-light)}
     </div>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 3 · MEUS DONS ===== -->
@@ -212,7 +203,7 @@ table.hand td.line{color:var(--ink-light)}
     </ul>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 4 · OS PORÉNS ===== -->
@@ -232,7 +223,7 @@ table.hand td.line{color:var(--ink-light)}
     <p class="note" style="text-align:center">pegadas que dão voltas sem sair do lugar… e no centro, uma porta entreaberta.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 5 · CAMINHOS DA VIDA ===== -->
@@ -251,7 +242,7 @@ table.hand td.line{color:var(--ink-light)}
     <p>Cuidado com relações sustentadas só pela rotina. Às vezes a pessoa já não tem atitudes de quem deveria estar na minha vida, e mantê-la desequilibra a minha energia. Rever amizades, família e trabalho.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 6 · ESPIRITUALIDADE ===== -->
@@ -271,7 +262,7 @@ table.hand td.line{color:var(--ink-light)}
     <p>É uma casa de passagem, não é para ficar muito tempo. Maria Caveira discorda de comportamentos do sacerdote e lá não vão permitir que eu a cultue como ela quer ser cultuada. Ela já me intuiu e mostrou. É para eu ir me desvinculando. Ela vai me mostrar outra casa: é só ter paciência.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 7 · BANHO PARA O MUTUÊ ===== -->
@@ -299,7 +290,41 @@ table.hand td.line{color:var(--ink-light)}
     <p class="note" style="text-align:center">verde das ervas, branco da canjica.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
+</section>
+
+<!-- ===== O BANHO, ERVA POR ERVA · 1 ===== -->
+<section class="page dense" id="pb1">
+  <div class="inner">
+    <h1 style="font-size:17pt"><small>· o que fui descobrir ·</small>O banho, erva por erva</h1>
+    <img class="ill" src="img/p_ervas.png" alt="" style="width:100mm;height:62mm;margin:-3mm auto 0">
+    <ul>
+      <li><b>Frias e quentes.</b> Na Umbanda as folhas se dividem pela energia, não pela temperatura: as quentes são de descarrego e vão do pescoço para baixo; as frias são de equilíbrio e podem ir na cabeça. Por isso a Thali mandou tomar <b>da cabeça aos pés</b>: banho de ervas frias é banho de assentar o mutuê.</li>
+      <li><b>Alecrim.</b> Erva fria, de Oxóssi com a luz de Oxalá. Limpeza, clareza mental e prosperidade; afasta inveja e olho gordo; favorece estudos e comércio. Casa com o recado do trabalho: estudar mais, ter autoridade para falar.</li>
+      <li><b>Boldo.</b> O "tapete de Oxalá": limpeza suave, acalma a mente, serenidade. Em muitas casas o banho de boldo é chamado de banho de Oxalá. Algumas classificações o chamam de erva morna; na minha casa ele entra no banho frio, e o fundamento da casa vale.</li>
+      <li><b>Hortelã.</b> Erva fria, de Iansã: clareza mental e renovação, o vento que limpa a cabeça.</li>
+    </ul>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
+</section>
+
+<!-- ===== O BANHO, ERVA POR ERVA · 2 ===== -->
+<section class="page dense" id="pb2">
+  <div class="inner">
+    <h1 style="font-size:17pt"><small>· continuação ·</small>Água de coco, canjica e o preparo</h1>
+    <ul>
+      <li><b>Água de coco e canjica branca</b> são comidas de Oxalá: o que é branco, fresco e de paz. Canjica, acaçá e água de coco estão entre as oferendas clássicas dele. No banho entram para esfriar e adoçar a cabeça, como o agrado dos ancestrais é todo branco.</li>
+      <li><b>Macerar, não ferver.</b> Folha fresca se amassa com as mãos em água fria ou morna, mentalizando o pedido; ferver tira a força dela. Folha seca, quando for o caso, se abafa em água quente por uns dez minutos. A Thali pediu macerar intencionando ao Exu e à Pombagira: a intenção é parte da receita.</li>
+      <li><b>Ordem.</b> Primeiro o banho de higiene, depois o de ervas, da cabeça aos pés, sem enxaguar. Deixar secar no corpo. As folhas que sobrarem, o costume é devolver à terra, numa planta ou canteiro, nunca no lixo.</li>
+      <li><b>Quando.</b> Um dia fixo da semana, durante um mês: quatro banhos. Algumas casas preferem lua crescente ou cheia; se a minha não disser nada, o dia escolhido basta.</li>
+      <li><b>Cuidado.</b> Alecrim, boldo e hortelã também são remédio de farmácia caseira; grávida, criança ou quem trata alguma doença pergunta antes. A folha cura e pede respeito.</li>
+    </ul>
+    <img class="divider" src="img/divider.png" alt="">
+    <p class="src" style="text-align:center">fontes: listas de ervas de Umbanda (classificação fria/morna/quente e regência) e matérias sobre o banho de Oxalá.</p>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 8 · OS MEUS ANCESTRAIS ===== -->
@@ -327,7 +352,7 @@ table.hand td.line{color:var(--ink-light)}
     </ol>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 9 · MINHA LISTA DE ANCESTRAIS ===== -->
@@ -346,7 +371,7 @@ table.hand td.line{color:var(--ink-light)}
     </div>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
@@ -370,11 +395,11 @@ table.hand td.line{color:var(--ink-light)}
     <p>Ela é a mais presente e é quem bate o martelo. É bem ranzinza, um pouquinho.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 11 · OFERENDA E GUIA DE MARIA CAVEIRA ===== -->
-<section class="page" id="p11">
+<section class="page dense" id="p11">
   <div class="folio">página 11</div>
   <div class="inner">
     <h1 style="font-size:17pt"><small>· Maria Caveira ·</small>Oferenda e guia</h1>
@@ -385,15 +410,16 @@ table.hand td.line{color:var(--ink-light)}
       <li>Colocar a farinha de mandioca e ir fazendo os pedidos.</li>
       <li>Por cima: bife de boi selado no dendê e rodelas de cebola branca crua.</li>
     </ol>
-    <img class="ill" src="img/p11.png" alt="" style="width:98mm;height:68mm;margin:0 auto">
+    <img class="ill" src="img/p11.png" alt="" style="width:88mm;height:60mm;margin:0 auto">
     <h2>Guia de proteção</h2>
     <ul>
       <li>Miçangas <span class="ul-k">pretas</span> e <span class="ul-y">amarelas</span>.</li>
       <li><b>Para cruzar:</b> no dia da oferenda, macerar rosas vermelhas, folha de pitanga e um pouco do vinho dela. Pedir que ela consagre e fortaleça a guia. Deixar até a vela terminar de queimar. Depois pode usar.</li>
     </ul>
+    <div class="cur"><p class="note" style="font-size:12pt"><b>Padê</b> vem do iorubá <em>ipadé</em>, encontro: a comida que se dá a Exu antes de tudo, porque Exu come primeiro. Oxalá, que veste branco, não come dendê. <b>Cruzar a guia</b> é consagrá-la com o que é dela: a rosa da Pombagira, a folha de pitanga (folha fria, de Oxóssi e Oxum) e o vinho.</p></div>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== SOBRE DONA MARIA CAVEIRA · 1 ===== -->
@@ -410,7 +436,7 @@ table.hand td.line{color:var(--ink-light)}
     </ul>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== SOBRE DONA MARIA CAVEIRA · 2 ===== -->
@@ -429,7 +455,7 @@ table.hand td.line{color:var(--ink-light)}
     <p class="src" style="text-align:center">fontes: páginas de Umbanda e Quimbanda e a Lei 13.088/2022 de Porto Alegre.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 12 · EXU TUTELAR ===== -->
@@ -451,7 +477,7 @@ table.hand td.line{color:var(--ink-light)}
     <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 13 · OFERENDA E GUIA DO COBRA CORAL ===== -->
@@ -474,7 +500,7 @@ table.hand td.line{color:var(--ink-light)}
     <p class="note" style="margin-top:2mm;padding-left:3mm;border-left:.4mm solid rgba(70,62,54,.3)">Nota na margem: folha de mamona é tóxica se ingerida. Macerar de luva, longe de crianças e bichos.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== SOBRE SEU EXU COBRA CORAL · 1 ===== -->
@@ -489,7 +515,7 @@ table.hand td.line{color:var(--ink-light)}
     </ul>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== SOBRE SEU EXU COBRA CORAL · 2 ===== -->
@@ -508,7 +534,7 @@ table.hand td.line{color:var(--ink-light)}
     <p class="src" style="text-align:center">fontes: páginas de Umbanda e Quimbanda e guias de fauna sobre a coral verdadeira.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 14 · O CAVEIRA ===== -->
@@ -523,7 +549,7 @@ table.hand td.line{color:var(--ink-light)}
     <p class="note" style="text-align:center;margin-top:1mm">ainda não, mas vai abrir.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 15 · LISTA DE COMPRAS ===== -->
@@ -545,7 +571,7 @@ table.hand td.line{color:var(--ink-light)}
     </div>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 16 · REGISTRO DOS BANHOS ===== -->
@@ -568,7 +594,39 @@ table.hand td.line{color:var(--ink-light)}
     <p class="note" style="text-align:center">uma lua para cada semana.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
+</section>
+
+<!-- ===== DE ONDE ELES VÊM · 1 ===== -->
+<section class="page dense" id="po1">
+  <div class="inner">
+    <h1 style="font-size:17pt"><small>· o que fui descobrir ·</small>De onde eles vêm</h1>
+    <img class="ill" src="img/p_mapa.png" alt="" style="width:94mm;height:70mm;margin:-3mm auto 0">
+    <ul>
+      <li><b>A palavra.</b> Quimbanda vem do kimbundu, língua banta de Angola: <em>kimbanda</em> é o curandeiro, o sacerdote, o que sabe de folha e de cura. Em Angola, os kimbanda cuidavam da saúde do povo com o que a natureza dava. No Brasil a palavra foi virada do avesso e passou a nomear a "magia da esquerda", por preconceito e olhar cristão. A raiz é cura.</li>
+      <li><b>Exu e Pombagira.</b> Na África iorubá, Exu é o orixá da comunicação e dos caminhos, o que leva o recado. Viajantes europeus o demonizaram. Na Umbanda e na Quimbanda ele deixa de ser orixá e vira um espírito que já viveu, próximo da gente, que cuida das coisas da rua. Pombagira vem do kimbundu <em>pambu njila</em>, encruzilhada, passando por Bombonjira, um nome congo de Exu.</li>
+      <li><b>Calunga.</b> Do kimbundu <em>ka'lunga</em>: mar, imensidão. A Calunga Grande é o mar, para onde foram os que morreram na travessia; a Calunga Pequena é o cemitério. Os dois são lugares de passagem entre os mundos, e Obaluaê e Omulu são os donos da pequena. É daí que vem a Maria Caveira.</li>
+    </ul>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
+</section>
+
+<!-- ===== DE ONDE ELES VÊM · 2 ===== -->
+<section class="page dense" id="po2">
+  <div class="inner">
+    <h1 style="font-size:17pt"><small>· continuação ·</small>A Quimbanda que joga búzios</h1>
+    <ul>
+      <li><b>Porto Alegre, anos 1950 e 60.</b> A Quimbanda como religião própria, com Exu Rei e Pombagira Rainha, se firmou no Rio Grande do Sul, chamada ali de Linha Cruzada, misturada ao Batuque afro-gaúcho. A casa de Mãe Ieda do Ogum, da Quimbanda de Exu Rei das Sete Encruzilhadas, é uma das referências.</li>
+      <li><b>Os sete reinos.</b> Encruzilhadas, Cruzeiro, Matas, Calunga, Almas, Lira e Praia. Cada reino tem um Exu Rei e uma Pombagira Rainha e se divide em nove povos: sessenta e três ao todo. É nesse mapa que a Maria Caveira é do Cruzeiro e o Cobra Coral é das Matas. Outras correntes desenham o mapa de outro jeito.</li>
+      <li><b>O jogo de búzios de Exu.</b> Vem do jogo africano de búzios, mas quem responde não são os orixás: são os Exus e as Pombagiras. É mais comum no Sul, na Argentina e no Uruguai. Conforme a casa, joga-se com 4, 7, 8 ou 21 búzios: aberto e fechado, positivo e negativo, "com porém".</li>
+      <li><b>Ngombo.</b> Não achei registro público de "Exu Ngombo"; deve ser fundamento da casa. Mas <em>ngombo</em>, entre os bantos de Angola, é a adivinhação pelo cesto e o espírito que a guia: um oráculo de Exu chamado Ngombo diz no nome o que faz.</li>
+      <li><b>Jurema.</b> A "ciência da Jurema" do Cobra Coral vem do Nordeste indígena: o catimbó-jurema, culto de mestres e caboclos e do "reino encantado" das cidades da Jurema, onde também moram exus e pombagiras.</li>
+    </ul>
+    <p class="src" style="text-align:center">fontes: Terra/UFF, Revista de Antropologia (USP), dissertações da UFRGS e da UnB, enciclopédias de terreiro e Wikipédia.</p>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 17 · RECADO FINAL ===== -->
@@ -582,7 +640,7 @@ table.hand td.line{color:var(--ink-light)}
     <p>Qualquer dúvida (como fazer o banho, o agrado aos ancestrais, conferir se a oferenda ficou boa), posso chamar a Thali.</p>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 <!-- ===== 18 · ANOTAÇÕES ===== -->
@@ -594,7 +652,7 @@ table.hand td.line{color:var(--ink-light)}
     <div class="ruled" style="height:144mm;margin-top:2mm"></div>
   </div>
   <div class="pnum"></div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 
@@ -605,7 +663,7 @@ table.hand td.line{color:var(--ink-light)}
     <img class="divider" src="img/divider.png" alt="" style="margin-top:4mm">
     <p class="note" style="font-size:13pt;text-align:center;color:var(--ink-soft);margin-top:4mm">Cuida desse povo bonito que você tem,<br>que sua vida vai deslanchar.</p>
   </div>
-  <div class="furos"><i></i><i></i><small>· dobra · furos ·</small></div>
+  <div class="furos"></div>
 </section>
 
 </body>

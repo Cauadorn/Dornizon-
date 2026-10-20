@@ -1,8 +1,8 @@
 # Grimório · Consulta ao Oráculo de Exu Ngombo
 
 ## Arquivos
-- `grimorio-caderninho-A4.pdf` — **use este para imprimir**. 6 folhas A4 paisagem, 12 faces, duas páginas A5 por face, já na ordem de caderno dobrado.
-- `grimorio-exu-ngombo.pdf` — as 24 páginas soltas em A5, na ordem de leitura (para ver na tela ou mandar para gráfica).
+- `grimorio-caderninho-A4.pdf` — **use este para imprimir**. 7 folhas A4 paisagem, 14 faces, duas páginas A5 por face, já na ordem de caderno dobrado.
+- `grimorio-exu-ngombo.pdf` — as 28 páginas soltas em A5, na ordem de leitura (para ver na tela ou mandar para gráfica).
 - `paginas/` — cada página em PNG.
 - `visao-folhas-A4.jpg` — prévia das 10 faces impressas; `visao-geral.jpg` — prévia das páginas.
 
@@ -10,20 +10,22 @@
 1. Abra `grimorio-caderninho-A4.pdf`.
 2. Papel A4, orientação **paisagem**, escala **100% / tamanho real** (não use "ajustar à página").
 3. Frente e verso (duplex) com **virar na borda curta** ("flip on short edge").
-   Se a impressora não tiver duplex: imprima só as páginas ímpares (1, 3, 5, 7, 9, 11), recoloque as folhas e imprima as pares (2, 4, 6, 8, 10, 12) no verso.
+   Se a impressora não tiver duplex: imprima só as páginas ímpares (1, 3, 5, 7, 9, 11, 13), recoloque as folhas e imprima as pares (2, 4, 6, 8, 10, 12, 14) no verso.
 4. Teste com a primeira folha antes de rodar tudo: a frente deve ter a contracapa à esquerda e a capa à direita; o verso, a página "Este grimório pertence a" à esquerda e "Anotações" à direita.
-5. Empilhe as 6 folhas na ordem e dobre o maço ao meio pela marquinha no centro (topo e base).
-6. **Furos:** toda página tem uma faixa padronizada de 27 mm junto à dobra, marcada por uma linha pontilhada a lápis. Dentro dela estão impressas duas marcas de furo iguais em todas as folhas, no padrão de furador comum (ISO 838): diâmetro 6 mm, centro a 12 mm da dobra, 80 mm entre os dois furos (a 65 mm e 145 mm do topo da página). Fure o maço dobrado em cima das marcas e prenda nas argolas. Nada de texto, ornamento ou ilustração entra nessa faixa.
+5. Empilhe as 7 folhas na ordem e dobre o maço ao meio pela marquinha no centro (topo e base).
+6. **Furos:** toda página tem uma faixa livre padronizada de 27 mm junto à dobra, marcada por uma linha pontilhada a lápis. Fure o maço dobrado dentro dessa faixa com o seu furador (um furador comum fura a 12 mm da borda, bem no meio dela) e prenda nas argolas. Nada de texto, ornamento ou ilustração entra nessa faixa.
 
 ## Margens pensadas para impressora caseira
 - Borda externa, topo e base: nada a menos de 8 mm da borda do papel (as impressoras não imprimem nos últimos 4 a 5 mm, então vai sobrar um filete branco de papel em volta do pergaminho; se a impressora tiver modo "sem borda", pode usar).
-- Lado da dobra: 27 mm livres para os furos, com linha de margem e marcas de furo impressas.
+- Lado da dobra: 27 mm livres para os furos, com linha de margem pontilhada.
 - Cantoneiras rabiscadas só nos cantos externos, a 8 mm da borda.
 
-Ordem das faces (esquerda | direita): 24|1, 2|23, 22|3, 4|21, 20|5, 6|19, 18|7, 8|17, 16|9, 10|15, 14|11, 12|13.
+Ordem das faces (esquerda | direita): 28|1, 2|27, 26|3, 4|25, 24|5, 6|23, 22|7, 8|21, 20|9, 10|19, 18|11, 12|17, 16|13, 14|15.
 
-## Páginas de curiosidades
-As páginas "Sobre Dona Maria Caveira" (13 e 14) e "Sobre Seu Cobra Coral" (17 e 18), mais as notas sobre o Reino da Lira, ngombo, mutuê, bacuro e Exu Caveira, foram escritas a partir de pesquisa em páginas de Umbanda e Quimbanda, museus (cesto ngombo) e guias de fauna. Fontes principais: axeumbanda.com.br (Cobra Coral e Maria Caveira), axedanfeero.com.br e joiamisticalaroye.com.br (reinos e povos da Quimbanda), quimbandanago.com (Reino da Lira), Câmara de Porto Alegre (Lei 13.088/2022, Dia da Pombagira Maria Caveira), Carlos Museum e MBAM (ngombo), InfoEscola e Fiocruz (cobra coral). Cada casa tem seu fundamento; o da sacerdotisa vem primeiro.
+## Páginas de pesquisa
+Páginas escritas a partir de pesquisa, para complementar a consulta: "O banho, erva por erva" (9 e 10), "Sobre Dona Maria Caveira" (15 e 16), "Sobre Seu Cobra Coral" (19 e 20) e "De onde eles vêm" (25 e 26), mais as notas sobre o Reino da Lira, ngombo, mutuê, bacuro, padê e guia, e Exu Caveira.
+Fontes principais: axeumbanda.com.br (ervas, Cobra Coral, Maria Caveira), bonsfluidos.com.br (ervas frias), axedanfeero.com.br e joiamisticalaroye.com.br (reinos e povos da Quimbanda), quimbandanago.com (Reino da Lira), Terra/UFF e Nei Lopes (etimologia de Quimbanda), Revista de Antropologia da USP e dissertações da UFRGS e da UnB (Quimbanda gaúcha, Mãe Ieda do Ogum), Câmara de Porto Alegre (Lei 13.088/2022), Wikipédia (Pombagira, Quimbanda), Carlos Museum e MBAM (ngombo), significados.com.br (calunga), artigos da UFPB e USP (Jurema), InfoEscola e Fiocruz (cobra coral), digitei.com e artigos acadêmicos (padê).
+Onde as fontes divergem, a página diz que divergem. Cada casa tem seu fundamento; o da sacerdotisa vem primeiro.
 
 ## Para editar
 O texto está em `fonte/grimorio.html`. Depois de mexer: `node fonte/render.mjs` gera o A5 e os PNGs; `python3 fonte/impor-caderninho.py grimorio-exu-ngombo.pdf grimorio-caderninho-A4.pdf` refaz a imposição.
