@@ -71,6 +71,20 @@ body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:ex
 .page:nth-of-type(odd) .furos::before{right:3mm}
 .page:nth-of-type(even) .furos::before{left:3mm}
 .page:nth-of-type(odd) .page:nth-of-type(even) .page:nth-of-type(odd) .page:nth-of-type(even) 
+
+/* elementos que trocam de lado conforme a página (lado externo) */
+.strip{position:absolute;top:14mm;width:22mm;height:70mm}
+.page:nth-of-type(odd) .strip{right:9mm}
+.page:nth-of-type(even) .strip{left:9mm}
+.page:nth-of-type(odd) .inner.lista{padding-left:27mm;padding-right:34mm}
+.page:nth-of-type(even) .inner.lista{padding-left:34mm;padding-right:27mm}
+.buzio{position:absolute;bottom:10mm;width:40mm;height:40mm}
+.page:nth-of-type(odd) .buzio{right:10mm}
+.page:nth-of-type(even) .buzio{left:10mm;transform:scaleX(-1)}
+
+.eles{position:absolute;top:10mm;width:112mm;height:150mm;object-fit:contain}
+.page:nth-of-type(odd) .eles{left:27mm}
+.page:nth-of-type(even) .eles{right:27mm}
 /* ornamentos */
 .corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
 .corner.tl{top:3mm;left:3mm}
@@ -374,6 +388,17 @@ table.hand td.line{color:var(--ink-light)}
   <div class="furos"></div>
 </section>
 
+<!-- ===== OS MEUS · ILUSTRAÇÃO ===== -->
+<section class="page nocorner" id="peles">
+  <img class="ill eles" src="img/p_eles.png" alt="">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:13mm;text-align:center">
+    <p class="tag" style="font-size:13pt;margin:0">· os que me guardam ·</p>
+    <h1 style="font-size:18pt;line-height:1.4;margin:0">Dona Maria Caveira<br>e Seu Exu Cobra Coral</h1>
+    <p class="note" style="margin:1mm 0 0;color:var(--ink-soft)">o Cruzeiro e a Mata, lado a lado no meu caminho.</p>
+  </div>
+  <div class="furos"></div>
+</section>
+
 <!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
 <section class="page" id="p10">
   <div class="folio">página 10</div>
@@ -554,8 +579,8 @@ table.hand td.line{color:var(--ink-light)}
 
 <!-- ===== 15 · LISTA DE COMPRAS ===== -->
 <section class="page nocorner" id="p15">
-  <img class="ill" src="img/p15.png" alt="" style="position:absolute;left:9mm;top:14mm;width:22mm;height:70mm">
-  <div class="inner" style="padding-left:34mm;padding-right:27mm">
+  <img class="ill strip" src="img/p15.png" alt="">
+  <div class="inner lista">
     <h1><small>· bilhete ·</small>Lista de compras</h1>
     <div class="bilhete">
       <div class="two" style="gap:5mm">
@@ -646,7 +671,7 @@ table.hand td.line{color:var(--ink-light)}
 <!-- ===== 18 · ANOTAÇÕES ===== -->
 <section class="page" id="p18">
   <div class="folio">página 18</div>
-  <img class="ill" src="img/p18.png" alt="" style="position:absolute;right:10mm;bottom:10mm;width:40mm;height:40mm">
+  <img class="ill buzio" src="img/p18.png" alt="">
   <div class="inner">
     <h1><small>· perguntas, sonhos e sinais ·</small>Anotações</h1>
     <div class="ruled" style="height:144mm;margin-top:2mm"></div>
@@ -655,6 +680,39 @@ table.hand td.line{color:var(--ink-light)}
   <div class="furos"></div>
 </section>
 
+
+<!-- ===== ANOTAÇÕES EXTRA ===== -->
+<section class="page" id="pnotas0">
+  <img class="ill buzio" src="img/p18.png" alt="" style="opacity:.75">
+  <div class="inner">
+    <h1><small>· o que ela me mostrou ·</small>Anotações</h1>
+    <div class="ruled" style="height:144mm;margin-top:2mm"></div>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
+</section>
+
+<!-- ===== ANOTAÇÕES EXTRA ===== -->
+<section class="page" id="pnotas1">
+  <img class="ill buzio" src="img/p18.png" alt="" style="opacity:.75">
+  <div class="inner">
+    <h1><small>· o que ele me mostrou ·</small>Anotações</h1>
+    <div class="ruled" style="height:144mm;margin-top:2mm"></div>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
+</section>
+
+<!-- ===== ANOTAÇÕES EXTRA ===== -->
+<section class="page" id="pnotas2">
+  <img class="ill buzio" src="img/p18.png" alt="" style="opacity:.75">
+  <div class="inner">
+    <h1><small>· sinais e sonhos ·</small>Anotações</h1>
+    <div class="ruled" style="height:144mm;margin-top:2mm"></div>
+  </div>
+  <div class="pnum"></div>
+  <div class="furos"></div>
+</section>
 
 <!-- ===== 20 · CONTRACAPA ===== -->
 <section class="page" id="p20">
