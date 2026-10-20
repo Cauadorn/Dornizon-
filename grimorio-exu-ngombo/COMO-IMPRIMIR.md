@@ -13,11 +13,11 @@
    Se a impressora não tiver duplex: imprima só as páginas ímpares (1, 3, 5, 7, 9, 11), recoloque as folhas e imprima as pares (2, 4, 6, 8, 10, 12) no verso.
 4. Teste com a primeira folha antes de rodar tudo: a frente deve ter a contracapa à esquerda e a capa à direita; o verso, a página "Este grimório pertence a" à esquerda e "Anotações" à direita.
 5. Empilhe as 6 folhas na ordem e dobre o maço ao meio pela marquinha no centro (topo e base).
-6. **Furos:** cada página tem 24 mm livres junto à dobra. Fure com o furador na dobra (centro dos furos a uns 10 a 12 mm da dobra) e prenda nas argolas do grimório. Nada de texto, ornamento ou ilustração entra nessa faixa.
+6. **Furos:** toda página tem uma faixa padronizada de 27 mm junto à dobra, marcada por uma linha pontilhada a lápis. Dentro dela estão impressas duas marcas de furo iguais em todas as folhas, no padrão de furador comum (ISO 838): diâmetro 6 mm, centro a 12 mm da dobra, 80 mm entre os dois furos (a 65 mm e 145 mm do topo da página). Fure o maço dobrado em cima das marcas e prenda nas argolas. Nada de texto, ornamento ou ilustração entra nessa faixa.
 
 ## Margens pensadas para impressora caseira
 - Borda externa, topo e base: nada a menos de 8 mm da borda do papel (as impressoras não imprimem nos últimos 4 a 5 mm, então vai sobrar um filete branco de papel em volta do pergaminho; se a impressora tiver modo "sem borda", pode usar).
-- Lado da dobra: 24 mm livres para os furos.
+- Lado da dobra: 27 mm livres para os furos, com linha de margem e marcas de furo impressas.
 - Cantoneiras rabiscadas só nos cantos externos, a 8 mm da borda.
 
 Ordem das faces (esquerda | direita): 24|1, 2|23, 22|3, 4|21, 20|5, 6|19, 18|7, 8|17, 16|9, 10|15, 14|11, 12|13.
