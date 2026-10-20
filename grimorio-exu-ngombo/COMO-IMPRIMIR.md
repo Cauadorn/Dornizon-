@@ -23,7 +23,7 @@
 Ordem das faces (esquerda | direita): 28|1, 2|27, 26|3, 4|25, 24|5, 6|23, 22|7, 8|21, 20|9, 10|19, 18|11, 12|17, 16|13, 14|15.
 
 ## Páginas de pesquisa
-Páginas escritas a partir de pesquisa, para complementar a consulta: "O banho, erva por erva" (9 e 10), "Sobre Dona Maria Caveira" (15 e 16), "Sobre Seu Cobra Coral" (19 e 20) e "De onde eles vêm" (25 e 26), mais as notas sobre o Reino da Lira, ngombo, mutuê, bacuro, padê e guia, e Exu Caveira.
+Páginas escritas a partir de pesquisa, para complementar a consulta: "O banho, erva por erva" (9 e 10), "Sobre Dona Maria Caveira" (15 e 16), "Sobre Seu Cobra Coral" (19 e 20) e "De onde eles vêm" (24 e 25), mais as notas sobre o Reino da Lira, ngombo, mutuê, bacuro, padê e guia, e Exu Caveira.
 Fontes principais: axeumbanda.com.br (ervas, Cobra Coral, Maria Caveira), bonsfluidos.com.br (ervas frias), axedanfeero.com.br e joiamisticalaroye.com.br (reinos e povos da Quimbanda), quimbandanago.com (Reino da Lira), Terra/UFF e Nei Lopes (etimologia de Quimbanda), Revista de Antropologia da USP e dissertações da UFRGS e da UnB (Quimbanda gaúcha, Mãe Ieda do Ogum), Câmara de Porto Alegre (Lei 13.088/2022), Wikipédia (Pombagira, Quimbanda), Carlos Museum e MBAM (ngombo), significados.com.br (calunga), artigos da UFPB e USP (Jurema), InfoEscola e Fiocruz (cobra coral), digitei.com e artigos acadêmicos (padê).
 Onde as fontes divergem, a página diz que divergem. Cada casa tem seu fundamento; o da sacerdotisa vem primeiro.
 
