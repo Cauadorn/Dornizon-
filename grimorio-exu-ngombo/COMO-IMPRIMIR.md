@@ -30,5 +30,9 @@ Onde as fontes divergem, a página diz que divergem. Cada casa tem seu fundament
 ## Se o PDF não abrir no celular
 Os dois PDFs são "leves" (cerca de 15 MB): cada página é uma imagem comprimida, o que abre bem no celular, no WhatsApp e em qualquer leitor. A impressão fica com cerca de 240 dpi, suficiente para o traço a lápis.
 
+## Se algum arquivo não abrir
+- `grimorio-caderninho-A4-pequeno.pdf` (3 MB): o mesmo caderninho, comprimido, para abrir e mandar fácil. Serve para imprimir em casa; a nitidez é um pouco menor.
+- `faces-A4/` e `grimorio-faces-A4.zip`: as 16 faces do caderninho como imagens JPEG de A4 deitado (`folha-1-frente`, `folha-1-verso`, ...). Dá para imprimir direto de qualquer app de fotos: frente e verso na ordem, virar na borda curta.
+
 ## Para editar
 O texto está em `fonte/grimorio.html`. Depois de mexer: `node fonte/render.mjs` gera o A5 e os PNGs; `python3 -I fonte/fazer_pdf_leve.py paginas grimorio-exu-ngombo.pdf grimorio-caderninho-A4.pdf` refaz os dois PDFs a partir das imagens em `paginas/`.
