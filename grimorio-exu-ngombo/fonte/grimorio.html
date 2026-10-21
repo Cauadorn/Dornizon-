@@ -858,7 +858,7 @@ document.querySelectorAll('[data-medalhao]').forEach(m=>{
     ticks+=`<line x1="${C+Math.cos(a)*R1}" y1="${C+Math.sin(a)*R1}" x2="${C+Math.cos(a)*(R1-l)}" y2="${C+Math.sin(a)*(R1-l)}"/>`;}
   const sq=Rr*Math.SQRT1_2;
   const pts=[0,90,180,270].map(d=>{const a=d*Math.PI/180;return [C+Math.cos(a)*Rr,C+Math.sin(a)*Rr]});
-  const centro = m.dataset.centro || 'img/emblema-provisorio.png';
+  const centro = m.dataset.centro || 'img/emblema.png';
   m.innerHTML=`<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <path id="arcTop" d="M ${C-Rt},${C} A ${Rt},${Rt} 0 0 1 ${C+Rt},${C}"/>
@@ -876,7 +876,7 @@ document.querySelectorAll('[data-medalhao]').forEach(m=>{
     ${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.2" fill="${RED}"/>`).join('')}
     <text font-family="Fondamento" font-style="italic" font-size="15.5" fill="${RED}" letter-spacing=".4"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">Pombagira Maria Caveira ✦ Exu Cobra Coral</textPath></text>
     <text font-family="Fondamento" font-style="italic" font-size="15.5" fill="${RED}" letter-spacing=".4" dominant-baseline="hanging"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">Cruzeiro de Mata ✦ Rio das Matas</textPath></text>
-    <image href="${centro}" x="${C-118}" y="${C-118}" width="236" height="236" preserveAspectRatio="xMidYMid meet"/>
+    <image href="${centro}" x="${C-140}" y="${C-140}" width="280" height="280" preserveAspectRatio="xMidYMid meet"/>
   </svg>`;
 });
 </script>

@@ -12,7 +12,6 @@ Mesmo formato do "Grimório dos Exus" do Cauã (estrutura, tipografia, molduras,
 
 ## Capa
 O centro do medalhão está provisório. Para trocar: salvar a arte do Gemini como `fonte/img/emblema.png` (fundo branco ou transparente) e, no HTML, trocar `img/emblema-provisorio.png` por `img/emblema.png`.
-
 ## Montagem das folhas (modo de construção)
 | Folha | Frente (esq. \| dir.) | Verso (esq. \| dir.) |
 |---|---|---|
