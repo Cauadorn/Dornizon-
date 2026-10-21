@@ -2,756 +2,883 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Meu Grimório · Consulta ao Oráculo de Exu Ngombo</title>
+<title>Grimório dos meus Exus</title>
 <style>
-@font-face{font-family:'Caveat';font-weight:400;src:url(fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SII.ttf) format('truetype')}
-@font-face{font-family:'Caveat';font-weight:600;src:url(fonts/WnznHAc5bAfYB2QRah7pcpNvOx-pjSx6SII.ttf) format('truetype')}
-@font-face{font-family:'Homemade Apple';src:url(fonts/Qw3EZQFXECDrI2q789EKQZJob3x9.ttf) format('truetype')}
-@font-face{font-family:'La Belle Aurore';src:url(fonts/RrQIbot8-mNYKnGNDkWlocovHeIIGw.ttf) format('truetype')}
-@font-face{font-family:'Reenie Beanie';src:url(fonts/z7NSdR76eDkaJKZJFkkjuvWxbP0.ttf) format('truetype')}
+@font-face{font-family:'Fell';font-style:normal;src:url(fonts/2sDGZGRQotv9nbn2qSl0TxXVYNw9ZA.ttf)}
+@font-face{font-family:'Fell';font-style:italic;src:url(fonts/2sDEZGRQotv9nbn2qSl0TxXVYNwNZgnQ.ttf)}
+@font-face{font-family:'Fondamento';font-style:italic;src:url(fonts/4UaFrEJGsxNmFTPDnkaJ96_p4g.ttf)}
+@font-face{font-family:'Fondamento';font-style:normal;src:url(fonts/4UaHrEJGsxNmFTPDnkaJx60.ttf)}
+@font-face{font-family:'Tangerine';font-weight:700;src:url(fonts/Iurd6Y5j_oScZZow4VO5srNpjA.ttf)}
+@font-face{font-family:'Aurore';src:url(fonts/RrQIbot8-mNYKnGNDkWlocovHeIIGw.ttf)}
 
 :root{
-  --paper:#eadfc4;
-  --paper-2:#e2d4b2;
-  --ink:#3b3733;
-  --ink-soft:#5a544d;
-  --ink-light:#8a8278;
-  --rule:rgba(70,62,54,.28);
-  --yellow:#d9b43a;
-  --green:#4f8a4a;
-  --black:#2b2926;
-  --red:#b8463f;
+  --ink:#36271d; --ink2:#5b4a3d; --ink3:#8a7a6c;
+  --red:#9e3b28; --red2:rgba(158,59,40,.55); --rule:rgba(90,70,55,.38);
+  --paper:#ece4d4;
+  --tw:107mm;            /* largura do texto: igual nos dois modos */
 }
 @page{size:148mm 210mm;margin:0}
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#6b6258}
-body{font-family:'Caveat',cursive;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#777}
+body{font-family:'Fell',serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11pt;line-height:1.42}
 
-.page{
-  position:relative;width:148mm;height:210mm;overflow:hidden;
-  margin:0 auto;page-break-after:always;break-after:page;
-  background-color:var(--paper);
-  background-image:
-    radial-gradient(ellipse at 50% 45%, rgba(255,250,235,.55) 0%, rgba(255,250,235,0) 60%),
-    radial-gradient(ellipse at 0% 0%, rgba(120,95,55,.22) 0%, rgba(120,95,55,0) 38%),
-    radial-gradient(ellipse at 100% 100%, rgba(120,95,55,.26) 0%, rgba(120,95,55,0) 40%),
-    radial-gradient(ellipse at 100% 0%, rgba(120,95,55,.14) 0%, rgba(120,95,55,0) 30%),
-    radial-gradient(ellipse at 10% 95%, rgba(120,95,55,.16) 0%, rgba(120,95,55,0) 32%),
-    radial-gradient(circle at 78% 18%, rgba(150,120,70,.10) 0%, rgba(150,120,70,0) 14%)}
-.page::before{ /* fibra do papel */
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .18 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
-  mix-blend-mode:multiply;
-}
-.page::after{ /* manchas nas bordas */
+/* ---------- página ---------- */
+.page{position:relative;width:148mm;height:210mm;overflow:hidden;margin:0 auto 6mm;page-break-after:always;break-after:page;background:var(--paper)}
+.page::before{ /* marcas de papel envelhecido em branco */
   content:"";position:absolute;inset:0;pointer-events:none;
-  box-shadow:inset 0 0 18mm rgba(95,75,45,.22), inset 0 0 3mm rgba(95,75,45,.12);
+  background:
+    radial-gradient(ellipse 30mm 22mm at 8% 6%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 26mm 34mm at 96% 94%, rgba(255,255,255,.45), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 40mm 18mm at 70% 3%, rgba(255,255,255,.35), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 18mm 30mm at 2% 70%, rgba(255,255,255,.35), rgba(255,255,255,0) 70%);
 }
-/* margens de impressão: 24mm na dobra (zona dos furos), 14mm na borda externa */
-.inner{position:absolute;inset:0;padding:17mm 14mm 16mm 27mm}
-.page:nth-of-type(odd) .inner{padding-left:27mm;padding-right:14mm}
-.page:nth-of-type(even) .inner{padding-left:14mm;padding-right:27mm}
-.page:nth-of-type(odd) .pnum{left:27mm;right:14mm}
-.page:nth-of-type(even) .pnum{left:14mm;right:27mm}
-/* cantoneiras só nos cantos externos, a 8mm da borda (lado oposto à dobra) */
-.inner::before,.inner::after{content:"";position:absolute;width:30mm;height:30mm;background-repeat:no-repeat;background-size:contain;opacity:.8;pointer-events:none}
-.page:nth-of-type(odd) .inner::before{top:8mm;right:8mm;background-image:url(img/corner_tr.png)}
-.page:nth-of-type(odd) .inner::after{bottom:8mm;right:8mm;background-image:url(img/corner_br.png)}
-.page:nth-of-type(even) .inner::before{top:7mm;left:7mm;width:26mm;height:26mm;background-image:url(img/corner_tl.png)}
-.page:nth-of-type(even) .inner > h1{margin-left:10mm}
-.page:nth-of-type(even) .inner::after{bottom:8mm;left:8mm;background-image:url(img/corner_bl.png)}
-.nocorner .inner::before,.nocorner .inner::after{display:none}
+.page::after{ /* anel de mancha, em branco, muda de lugar */
+  content:"";position:absolute;width:44mm;height:44mm;border-radius:50%;pointer-events:none;
+  border:1.6mm solid rgba(255,255,255,.42);filter:blur(.7mm);
+  top:-12mm;left:-14mm;
+}
+.page:nth-of-type(3n)::after{top:auto;bottom:-16mm;left:auto;right:-12mm;width:52mm;height:52mm}
+.page:nth-of-type(3n+1)::after{top:118mm;left:-30mm;width:48mm;height:48mm}
+.page:nth-of-type(4n)::after{display:none}
 
-
-/* faixa dos furos: igual em todas as páginas, do lado da dobra */
-.furos{position:absolute;top:0;bottom:0;width:27mm;pointer-events:none}
-.page:nth-of-type(odd) .furos{left:0}
-.page:nth-of-type(even) .furos{right:0}
-.furos::before{content:"";position:absolute;top:12mm;bottom:12mm;width:.35mm;background:repeating-linear-gradient(to bottom, rgba(70,62,54,.38) 0 2.4mm, transparent 2.4mm 4mm)}
-.page:nth-of-type(odd) .furos::before{right:3mm}
-.page:nth-of-type(even) .furos::before{left:3mm}
-
-/* elementos que trocam de lado conforme a página (lado externo) */
-.strip{position:absolute;top:14mm;width:22mm;height:70mm}
-.page:nth-of-type(odd) .strip{right:9mm}
-.page:nth-of-type(even) .strip{left:9mm}
-.page:nth-of-type(odd) .inner.lista{padding-left:27mm;padding-right:34mm}
-.page:nth-of-type(even) .inner.lista{padding-left:34mm;padding-right:27mm}
-.buzio{position:absolute;bottom:40mm;width:22mm;height:22mm;object-fit:contain}
-.page:nth-of-type(odd) .buzio{right:12mm}
-.page:nth-of-type(even) .buzio{left:12mm;transform:scaleX(-1)}
-
-.eles{position:absolute;top:10mm;width:112mm;height:150mm;object-fit:contain}
-.page:nth-of-type(odd) .eles{left:27mm}
-.page:nth-of-type(even) .eles{right:27mm}
-
-/* páginas de pontos: tudo centralizado */
-.pontos{text-align:center}
-.pontos h1{text-align:center}
-.pontos h1 small{text-align:center}
-.pontos .verso{font-size:12pt;line-height:1.3;margin:0 auto;max-width:92mm;color:var(--ink)}
-.pontos .verso b{display:block;font-family:'Reenie Beanie',cursive;font-weight:400;font-size:11.5pt;color:var(--ink-light);letter-spacing:.06em;margin-bottom:.6mm}
-.pontos .divider{width:34mm;height:9mm;margin:.5mm auto}
-.pontos .ruled{margin:1mm auto 0;width:96mm}
-.pontos .ruled h2{text-align:center}
-.pontos .linha{width:92mm;margin:3.5mm auto 0;border-bottom:.35mm solid var(--rule);height:7mm;text-align:center;font-family:'Caveat',cursive;font-weight:600;font-size:12.5pt;color:var(--ink-soft)}
-.page.pontos:nth-of-type(n) .src{margin-left:0;margin-right:0}
-
-
-/* páginas das entidades: tudo centralizado */
-.entidade .inner{text-align:center}
-.entidade h1,.entidade h1 small,.entidade .note{text-align:center}
-.entidade .foto{display:block;width:62mm;height:78mm;object-fit:contain;margin:0 auto}
-.entidade .dados{width:86mm;margin:2mm auto 0;text-align:center}
-.entidade .dados p{margin:0 0 .4mm;white-space:normal;font-size:12.8pt;line-height:1.28}
-.entidade .inner>p{font-size:12.4pt;line-height:1.3}
-.entidade .dados b{display:inline;min-width:0}
-
-/* ornamentos */
-.corner{position:absolute;width:32mm;height:32mm;object-fit:contain;opacity:.8}
-.corner.tl{top:3mm;left:3mm}
-.corner.tr{top:3mm;right:3mm;transform:scaleX(-1)}
-.corner.bl{bottom:3mm;left:3mm;transform:scaleY(-1)}
-.corner.br{bottom:3mm;right:3mm;transform:scale(-1,-1)}
-.divider{display:block;width:52mm;height:16mm;object-fit:contain;margin:2mm auto 1mm;opacity:.9}
-body{counter-reset:pg}
-.page{counter-increment:pg}
+.inner{position:absolute;top:16mm;bottom:17mm;width:var(--tw);left:calc((148mm - var(--tw)) / 2);z-index:2}
+.pnum{position:absolute;bottom:9mm;font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;z-index:2}
+.page:nth-of-type(odd) .pnum{right:calc((148mm - var(--tw)) / 2)}
+.page:nth-of-type(even) .pnum{left:calc((148mm - var(--tw)) / 2)}
 .pnum::after{content:counter(pg)}
-.pnum{position:absolute;bottom:8.5mm;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-weight:600;font-size:15pt;color:var(--ink-soft)}
-.folio{display:none}
+body{counter-reset:pg} .page{counter-increment:pg}
+.sem-num .pnum{display:none}
+.furo{display:none}
 
-/* ilustrações */
-.ill{display:block;object-fit:contain;opacity:.96}
+/* ---------- modo construção (impressão): sem fundo, faixa da dobra ---------- */
+body.construcao{background:#777}
+body.construcao .page{background:#fff}
+body.construcao .page::before,body.construcao .page::after{display:none}
+body.construcao .page:nth-of-type(odd) .inner{left:27mm}
+body.construcao .page:nth-of-type(even) .inner{left:14mm}
+body.construcao .page:nth-of-type(odd) .pnum{right:14mm}
+body.construcao .page:nth-of-type(even) .pnum{left:14mm}
+body.construcao .furo{display:block;position:absolute;top:12mm;bottom:12mm;width:.3mm;background:repeating-linear-gradient(to bottom, rgba(90,70,55,.35) 0 2.2mm, transparent 2.2mm 4mm);z-index:1}
+body.construcao .page:nth-of-type(odd) .furo{left:24mm}
+body.construcao .page:nth-of-type(even) .furo{right:24mm}
+body.construcao .cheia{left:auto}
 
-/* tipografia */
-h1{font-family:'Homemade Apple',cursive;font-weight:400;font-size:19pt;line-height:1.5;margin:0 0 2mm;color:var(--black);letter-spacing:.01em}
-h1 small{display:block;font-family:'Reenie Beanie',cursive;font-size:12.5pt;color:var(--ink-light);letter-spacing:.08em;line-height:1;margin-bottom:1mm}
-h2{font-family:'Caveat',cursive;font-weight:600;font-size:15pt;margin:3mm 0 .6mm;color:var(--black)}
-p{font-size:13.2pt;line-height:1.32;margin:0 0 1.8mm}
-ul,ol{margin:0 0 1.8mm;padding-left:5mm;font-size:13.2pt;line-height:1.32}
-.dense p,.dense ul,.dense ol{font-size:12.4pt;line-height:1.3}
-.dense h2{font-size:14.5pt;margin:2.5mm 0 .5mm}
-li{margin:0 0 .9mm;padding-left:.5mm}
-ul{list-style:none;padding-left:4.5mm}
-ul li{position:relative}
-ul li::before{content:"";position:absolute;left:-4mm;top:.42em;width:1.5mm;height:1.5mm;border-radius:50% 45% 55% 50%;background:var(--ink-soft);opacity:.8;transform:rotate(-12deg)}
-ol{list-style:none;counter-reset:n;padding-left:5.5mm}
-ol li{counter-increment:n;position:relative}
-ol li::before{content:counter(n) ".";position:absolute;left:-5.5mm;font-weight:600;color:var(--ink-soft)}
-b,strong{font-weight:600;color:var(--black)}
+/* ---------- tipografia ---------- */
+.kick{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:11pt;line-height:1.1;margin:0}
+.kick-row{display:flex;justify-content:space-between;align-items:baseline}
+.mao{font-family:'Aurore',cursive;color:var(--ink3);font-size:11pt;line-height:1.35}
+.mao.red{color:var(--red)}
+h1.t{font-family:'Tangerine';font-weight:700;font-size:42pt;line-height:.95;margin:.5mm 0 0;color:var(--ink);letter-spacing:.2pt}
+h1.t.c{text-align:center}
+h1.t .it{font-family:'Fell';font-style:italic;font-weight:400;font-size:24pt;letter-spacing:0}
+.flor{display:block;width:62mm;height:4mm;margin:.5mm 0 3mm}
+.flor.c{margin-left:auto;margin-right:auto}
+h3{font-family:'Fondamento';font-style:italic;font-weight:400;color:var(--red);font-size:13pt;margin:4mm 0 1mm;line-height:1.2}
+h3.ic{border-top:.3mm solid var(--rule);padding-top:2.5mm;display:flex;align-items:center;gap:2mm}
+h3.ic::before{content:"";width:3.4mm;height:4.6mm;flex:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 46'><ellipse cx='17' cy='23' rx='14' ry='20' fill='none' stroke='%235b4a3d' stroke-width='2.2'/><path d='M17 6 C 14 16, 14 30, 17 40 M 17 6 C 20 16, 20 30, 17 40' fill='none' stroke='%235b4a3d' stroke-width='1.6'/><path d='M13 14h3M13 19h3M13 24h3M13 29h3M18 14h3M18 19h3M18 24h3M18 29h3' stroke='%235b4a3d' stroke-width='1.2'/></svg>") center/contain no-repeat}
+p{margin:0 0 1.2mm;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+p+p{text-indent:5mm}
+p.ni,p.c{text-indent:0}
+p.c{text-align:center}
+.hl{color:var(--red)}
 em{font-style:italic}
-.note{font-family:'Reenie Beanie',cursive;font-size:12.5pt;color:var(--ink-soft);line-height:1.15}
-.tag{font-family:'Reenie Beanie',cursive;font-size:13pt;color:var(--ink-light);letter-spacing:.04em}
-.quote{font-size:12.6pt;line-height:1.32;padding-left:4mm;border-left:.5mm solid rgba(70,62,54,.35);margin:1.5mm 0 2mm;color:var(--ink)}
-.ul-y,.ul-g,.ul-k{background-repeat:no-repeat;background-size:100% 100%}
-.ul-y{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M1 16.5 C 20 15.5, 45 17.5, 70 16 S 95 16.5, 99 15.8' fill='none' stroke='rgb(217,180,58)' stroke-width='2.4' stroke-linecap='round' opacity='.85'/><path d='M3 18.2 C 25 17.4, 50 19, 80 17.8' fill='none' stroke='rgb(217,180,58)' stroke-width='1.2' stroke-linecap='round' opacity='.6'/></svg>")}
-.ul-g{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M1 16.5 C 20 15.5, 45 17.5, 70 16 S 95 16.5, 99 15.8' fill='none' stroke='rgb(79,138,74)' stroke-width='2.4' stroke-linecap='round' opacity='.8'/><path d='M3 18.2 C 25 17.4, 50 19, 80 17.8' fill='none' stroke='rgb(79,138,74)' stroke-width='1.2' stroke-linecap='round' opacity='.55'/></svg>")}
-.ul-k{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M1 16.5 C 20 15.5, 45 17.5, 70 16 S 95 16.5, 99 15.8' fill='none' stroke='rgb(43,41,38)' stroke-width='2.2' stroke-linecap='round' opacity='.7'/></svg>")}
-.cross{position:relative}
-.cross::after{content:"";position:absolute;left:-1%;right:-1%;top:52%;height:.5mm;background:var(--ink-soft);transform:rotate(-1.5deg);opacity:.8}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
-.row{display:flex;gap:4mm;align-items:flex-start}
-.row > *{min-width:0}
-.ruled{background-image:repeating-linear-gradient(to bottom, transparent 0, transparent calc(8.5mm - .35mm), var(--rule) calc(8.5mm - .35mm), var(--rule) 8.5mm);background-size:100% 8.5mm}
-.ruled h2{line-height:8.5mm;margin:0}
-.chk{display:inline-block;width:3.6mm;height:3.6mm;border:.45mm solid var(--ink-soft);border-radius:28% 36% 30% 34% / 32% 30% 38% 30%;vertical-align:-.6mm;margin-right:2mm;transform:rotate(-3deg);opacity:.85}
-.meta{font-size:12.4pt;line-height:1.4}
-.meta b{display:inline-block;min-width:15mm}
-.meta p{white-space:nowrap}
-.float-r{float:right;margin:0 0 2mm 4mm;shape-outside:margin-box}
-.float-l{float:left;margin:0 4mm 2mm 0}
+.cap{float:left;font-family:'Tangerine';font-weight:700;color:var(--red);font-size:58pt;line-height:.72;margin:1.2mm 1.6mm 0 -.5mm}
+.small{font-size:10.2pt;line-height:1.38}
+
+ul.star{list-style:none;margin:1mm 0 1.5mm;padding:0}
+ul.star li{position:relative;padding-left:5mm;margin:0 0 1.1mm;text-align:justify;hyphens:auto}
+ul.star li::before{content:"";position:absolute;left:.3mm;top:1.25mm;width:2.6mm;height:2.6mm;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 0 L6.2 3.8 L10 5 L6.2 6.2 L5 10 L3.8 6.2 L0 5 L3.8 3.8Z' fill='%239e3b28'/></svg>") center/contain no-repeat}
+ul.star li b{font-weight:400;color:var(--red)}
+ul.star.dois li b{display:block}
+ol.num{list-style:none;counter-reset:n;margin:1mm 0 1.5mm;padding:0}
+ol.num li{counter-increment:n;position:relative;padding-left:6mm;margin:0 0 1.3mm;text-align:justify;hyphens:auto}
+ol.num li::before{content:counter(n) ".";position:absolute;left:.5mm;color:var(--red);font-style:italic}
+ol.num li b{font-weight:400;color:var(--red)}
+
+/* ficha (tabela) */
+table.ficha{width:100%;border-collapse:collapse;margin:1mm 0 2mm}
+table.ficha td{border-bottom:.3mm solid var(--rule);padding:1.3mm 1mm 1.1mm 0;vertical-align:top;font-size:10.6pt;line-height:1.35}
+table.ficha tr:first-child td{border-top:.3mm solid var(--rule)}
+table.ficha td.l{font-family:'Aurore',cursive;color:var(--red);width:30mm;font-size:11.5pt;padding-top:1.6mm}
+
+/* moldura vermelha */
+.moldura{border:.35mm solid var(--red);outline:.25mm solid var(--red2);outline-offset:.9mm;padding:3mm 3.5mm 2.2mm;margin:3mm .9mm 3mm}
+.moldura .mt{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;margin:0 0 1.4mm}
+.moldura p{text-indent:0}
+.moldura .fala{font-style:italic;text-align:left;line-height:1.36}
+
+/* quadro "quem é" (pesquisa) */
+.quem{border-top:.3mm solid var(--rule);border-bottom:.3mm solid var(--rule);padding:2.2mm 0 1.6mm;margin:2.5mm 0 2.5mm}
+.quem .qt{font-style:italic;color:var(--ink2);font-size:11.5pt;margin:0 0 1mm}
+.quem p,.quem li{font-size:10.2pt;line-height:1.38}
+.quem p+p{text-indent:4mm}
+.quem .fonte{font-family:'Aurore',cursive;color:var(--ink3);font-size:9.5pt;text-indent:0;margin-top:1.2mm}
+
+/* figuras */
+.fig{display:block;margin:0 auto}
+.leg{text-align:center;margin-top:1mm}
+.leg .lt{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;line-height:1.2}
+.leg .mao{display:block;font-size:11pt;line-height:1.3;color:var(--ink2)}
+.flt-r{float:right;margin:0 0 2mm 4mm;text-align:center}
+.flt-l{float:left;margin:0 4mm 2mm 0;text-align:center}
 .clear{clear:both}
-table.hand{width:100%;border-collapse:collapse;font-size:12.2pt;margin-top:2mm}
-table.hand th{font-family:'Caveat',cursive;font-weight:600;text-align:left;padding:1.2mm 2mm;color:var(--black);border-bottom:.45mm solid rgba(70,62,54,.55)}
-table.hand td{padding:3.2mm 2mm;border-bottom:.35mm solid var(--rule);height:11.5mm;vertical-align:bottom}
-table.hand td.line{color:var(--ink-light)}
-.bilhete{background:rgba(255,250,236,.5);padding:3.5mm 4mm 2.5mm;transform:rotate(-.6deg);box-shadow:0 .6mm 2mm rgba(60,45,25,.18);border:.25mm solid rgba(90,75,50,.15);margin-top:2mm}
-.chklist{padding-left:0;font-size:12.4pt}
-.chklist li{padding-left:0;margin-bottom:1.3mm}
-.chklist li::before{display:none}
-.cur{border-left:.45mm solid rgba(70,62,54,.35);padding-left:3.5mm;margin:2mm 0}
-.cur p{margin-bottom:1.2mm}
-.page:nth-of-type(even) .src{margin-left:26mm}
-.page:nth-of-type(odd) .src{margin-right:26mm}
-.src{margin-bottom:4mm;font-family:'Reenie Beanie',cursive;font-size:10.5pt;color:var(--ink-light);line-height:1.15;margin-top:2mm}
-.ancestor{background:linear-gradient(transparent 60%, rgba(255,255,255,.55) 60%, rgba(255,255,255,.55) 94%, transparent 94%)}
+
+/* divisor com estrela */
+.estrela{display:block;width:34mm;height:4mm;margin:3mm auto}
+
+/* checklist */
+.check{columns:2;column-gap:8mm;margin:1mm 0 2mm}
+.check div{break-inside:avoid;display:flex;gap:2.2mm;align-items:flex-start;font-size:10.6pt;line-height:1.3;margin:0 0 1.5mm}
+.check div::before{content:"";flex:none;width:3.2mm;height:3.2mm;border:.3mm solid var(--ink2);margin-top:.6mm}
+
+/* pautado */
+.pauta{background-image:repeating-linear-gradient(to bottom, transparent 0, transparent calc(8mm - .3mm), var(--rule) calc(8mm - .3mm), var(--rule) 8mm)}
+
+/* pontos */
+.ponto{text-align:center;font-size:10.8pt;line-height:1.42;margin:0 0 1mm}
+.ponto .pk{display:block;font-family:'Fondamento';font-style:italic;color:var(--red);font-size:11pt;margin-bottom:.6mm}
+
+/* capa */
+.capa .inner{text-align:center}
+.medalhao{position:relative;margin:0 auto}
+.medalhao svg{position:absolute;inset:0;width:100%;height:100%}
+.medalhao .centro{position:absolute;object-fit:contain}
 </style>
 </head>
 <body>
 
-<!-- ===== 1 · CAPA ===== -->
-<section class="page nocorner" id="p1">
-  <img class="ill" src="img/p01.png" alt="" style="position:absolute;left:27mm;top:16mm;width:112mm;height:168mm;object-fit:contain">
-  <div class="inner" style="padding:29mm 17mm 0 37mm;text-align:center">
-    <div class="tag" style="font-size:14pt">· meu grimório ·</div>
-    <h1 style="font-size:22pt;line-height:1.42;margin:1mm 0 0">Consulta ao<br>Oráculo<br>de Exu Ngombo</h1>
-    <div class="note" style="font-size:12.5pt;margin-top:2mm;color:var(--ink-soft)">19 de outubro de 2026</div>
-    <div class="note" style="font-size:11.5pt;color:var(--ink-soft)">Sacerdotisa: Thali (Thalita Queres)</div>
+<!-- ======================= 1 · CAPA ======================= -->
+<section class="page capa sem-num" id="capa">
+  <div class="inner" style="top:20mm">
+    <p class="kick c" style="font-size:11.5pt">Quimbanda · Ngombo</p>
+    <h1 class="t c" style="font-size:66pt;margin-top:1mm">Grimório</h1>
+    <p class="c" style="font-style:italic;font-size:19pt;color:var(--ink2);margin-top:-1mm">dos meus Exus</p>
+    <div class="medalhao" style="width:96mm;height:96mm;margin-top:7mm" data-medalhao></div>
+    <p class="c" style="font-family:'Fondamento';font-size:13pt;margin-top:8mm;color:var(--ink)">Emilly</p>
+    <p class="c" style="font-size:10.5pt;color:var(--ink2);margin-top:-1mm">jogo de búzios de 19 de outubro de 2026</p>
+    <p class="c mao red" style="font-size:14pt;margin-top:4mm">Cuida desse povo bonito</p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
 </section>
 
-
-<!-- ===== 1b · VERSO DA CAPA ===== -->
-<section class="page" id="p1b">
-  <div class="inner" style="display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:26mm">
-    <img class="ill" src="img/p_ng.png" alt="" style="width:58mm;height:58mm;margin:0 auto 2mm">
-    <p class="note" style="font-size:12.5pt;color:var(--ink-soft)"><b>Ngombo.</b> Entre os povos bantos de Angola (chokwe, lunda), <em>ngombo</em> é o nome da adivinhação pelo cesto: o adivinho sacode um cesto raso com pequenos objetos de significado fixo (miniaturas de madeira, sementes, chifres, búzios) e lê a posição em que caem. Ngombo é também o espírito ancestral que guia a leitura. Dizem que os cestos só são tecidos por mulheres mais velhas. O prato de madeira com os búzios da Thali é bisneto disso.</p>
-    <img class="divider" src="img/divider.png" alt="" style="margin:4mm auto 6mm">
-    <p class="note" style="font-size:14pt;text-align:center;color:var(--ink-soft)">Este grimório pertence a</p>
-    <div style="width:80mm;margin:6mm auto 0;border-bottom:.45mm solid var(--rule)"></div>
-    <p class="note" style="font-size:12.5pt;text-align:center;color:var(--ink-light);margin-top:10mm">Consulta ao Oráculo de Exu Ngombo · 19 de outubro de 2026<br>Sacerdotisa: Thali (Thalita Queres)</p>
+<!-- ======================= 2 · ESTE CADERNO ======================= -->
+<section class="page" id="caderno">
+  <div class="inner" style="top:58mm">
+    <h3 style="margin-top:0">Este caderno</h3>
+    <p class="ni">Este é o grimório dos meus guias: quem são, o que pedem e como cuidar deles. Tudo o que está aqui veio do jogo de búzios, o <em>Ngombo</em>, que a Thali (Thalita Queres) abriu para mim em 19 de outubro de 2026, e ficou escrito para eu seguir.</p>
+    <p>Primeiro vem o que a mesa viu em mim, depois os meus ancestrais e o banho para o mutuê, depois a minha Pombagira e o meu Exu, os meus caminhos e de onde eles vêm. No fim, os conselhos por assunto, o que fazer e a lista do que comprar.</p>
+    <h3>Como ler</h3>
+    <div class="moldura">
+      <p class="mt">Nas molduras vermelhas</p>
+      <p>O que a mesa pediu para mim: receitas, palavras e o jeito de fazer. É o que vale.</p>
+    </div>
+    <p class="ni">Os quadros "quem é" são pesquisa: o que as casas e os livros contam. Quando não baterem com a mesa, vale a mesa e o fundamento da minha casa.</p>
+    <svg class="estrela" viewBox="0 0 120 12"><g fill="#9e3b28" stroke="#9e3b28" stroke-width=".8"><line x1="4" y1="6" x2="49" y2="6"/><circle cx="52" cy="6" r="1.1" stroke="none"/><path d="M60 0 L61.6 4.4 L66 6 L61.6 7.6 L60 12 L58.4 7.6 L54 6 L58.4 4.4Z" stroke="none"/><circle cx="68" cy="6" r="1.1" stroke="none"/><line x1="71" y1="6" x2="116" y2="6"/></g></svg>
+    <p class="c mao" style="font-size:12pt;color:var(--ink2)">Este grimório pertence a Emilly.<br>Se encontrar, devolva com respeito.</p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 2 · O REINO QUE ME RESPONDE ===== -->
-<section class="page" id="p2">
-  <div class="folio">página 2</div>
+<!-- ======================= 3 · OS FUNDAMENTOS ======================= -->
+<section class="page" id="fundamentos">
   <div class="inner">
-    <h1><small>· o reino que me responde ·</small>Reino da Lira</h1>
-    <img class="ill float-r" src="img/p02.png" alt="" style="width:54mm;height:66mm;margin-top:-6mm">
-    <p>O Reino da Lira não é o reino do meu Exu nem da minha Pombagira. É o reino que responde ao <b>momento atual</b> da minha vida.</p>
-    <p><b>Caiu:</b> negativo, com porém.</p>
-    <p><b>Sinal:</b> sonhei de sábado para domingo com algo ligado ao povo da Lira, antes da consulta. Acordei com isso na cabeça.</p>
-    <div class="cur" style="margin-top:3mm">
-      <p class="tag" style="margin-bottom:.5mm">· o que fui descobrir ·</p>
-      <p>O <b>Reino da Lira</b> é o reino da música, da arte, da poesia, da festa e da boemia. O nome vem da lira, o instrumento de Hermes e de Orfeu (o que desceu ao mundo dos mortos cantando) ou, em outra versão, de uma cidade africana chamada Lira. No Rio antigo, "povo da lira" era como chamavam os seresteiros da Pequena África: músicos de rua, capoeiras, malandros. Zé Pelintra mora aqui, no Povo dos Malandros.</p>
-      <p>Tem o lado da arte e do êxtase e tem o lado sombrio: vício, excesso, compensação. Bate com o jogo: a criatividade que me liberta e o "comprar para compensar".</p>
+    <p class="kick">Antes de tudo</p>
+    <h1 class="t">Os fundamentos</h1>
+    <svg class="flor" data-flor></svg>
+    <table class="ficha">
+      <tr><td class="l">Consulente</td><td>Emilly</td></tr>
+      <tr><td class="l">Mesa</td><td>Thali (Thalita Queres)</td></tr>
+      <tr><td class="l">Oráculo</td><td><em>Ngombo</em>, jogo de búzios de Exu</td></tr>
+      <tr><td class="l">Jogo</td><td>19 de outubro de 2026</td></tr>
+    </table>
+    <p class="ni"><span class="cap">E</span>xu mostra o caminho, mas não decide e não caminha por mim. Antes de qualquer oferenda, valem estes fundamentos que a mesa trouxe sobre a minha espiritualidade:</p>
+    <ul class="star">
+      <li><b>Não idealizar.</b> Não depender da espiritualidade para resolver tudo.</li>
+      <li><b>A minha própria fé.</b> Cuidado com a dependência da entidade dos outros. Minha entidade trabalha a minha paciência. Fortalecer a minha própria fé, caminhar de forma independente.</li>
+      <li><b>Sem gracinha.</b> Minhas entidades são territorialistas: não gostam de gracinha nem de bagunça.</li>
+      <li><b>Apaziguar a cabeça.</b> O pedido de apaziguamento da cabeça só vai se cumprir quando eu cultuar a minha ancestralidade. O caos na minha vida era para eu começar a cultuar e conhecer os meus espíritos. Estou no caminho certo.</li>
+      <li><b>O mutuê.</b> Mutuê na quimbanda: caiu sim, equilibrado com cinco porém. O porém é banho de ervas frias.</li>
+    </ul>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 4 · O JOGO ======================= -->
+<section class="page" id="jogo">
+  <div class="inner">
+    <p class="kick c">o que a mesa revelou</p>
+    <h1 class="t c" style="font-size:50pt">O Jogo</h1>
+    <div class="kick-row" style="margin-top:1mm"><p class="kick">Primeira caída</p><span class="mao">Reino da Lira</span></div>
+    <h1 class="t" style="font-size:34pt;margin-top:1mm">O que a mesa viu em mim</h1>
+    <p class="ni" style="margin-top:2mm"><span class="cap">O</span> jogo abriu no <span class="hl">Reino da Lira</span>. Não é o reino do meu Exu nem da minha Pombagira: é o reino que responde ao <span class="hl">momento atual</span> da minha vida. Caiu <span class="hl">negativo, com porém</span>.</p>
+    <p>Um sinal veio antes: sonhei de sábado para domingo com algo ligado ao povo da Lira, antes da consulta, e acordei com isso na cabeça.</p>
+    <div class="quem">
+      <p class="qt">O Reino da Lira · o que as casas contam</p>
+      <p>É o reino da música, da arte, da poesia, da festa e da boemia. O nome vem da lira, o instrumento de Hermes e de Orfeu (o que desceu ao mundo dos mortos cantando) ou, em outra versão, de uma cidade africana chamada Lira. No Rio antigo, "povo da lira" era como chamavam os seresteiros da Pequena África: músicos de rua, capoeiras, malandros. Zé Pelintra mora aqui, no Povo dos Malandros.</p>
+      <p>Tem o lado da arte e do êxtase e tem o lado sombrio: vício, excesso, compensação. Bate com o jogo: <span class="hl">a criatividade que me liberta e o "comprar para compensar"</span>.</p>
     </div>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 3 · MEUS DONS ===== -->
-<section class="page" id="p3">
-  <div class="folio">página 3</div>
-  <div class="inner">
-    <h1><small>· o que o jogo mostrou de bom ·</small>Meus dons</h1>
-    <img class="ill" src="img/p03.png" alt="" style="width:80mm;height:80mm;margin:0 auto 1mm">
-    <ul>
-      <li><b>Comunicação:</b> boa sorte comunicativa, saio e entro de situações com facilidade. A palavra e o diálogo são a minha base.</li>
-      <li><b>Intuição:</b> leio lugares, situações e pessoas. Bato o olho e sei quando algo não vai dar certo, e no final eu tinha razão.</li>
-      <li><b>Criatividade:</b> quando trabalho com arte e criação, me sinto livre, completa e entusiasmada.</li>
-      <li><b>Escuta:</b> sou atenciosa, boa ouvinte, conselheira de muita gente.</li>
-      <li><b>Prosperidade:</b> meu potencial é muito grande, em qualquer área em que eu for trabalhar.</li>
-    </ul>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 4 · OS PORÉNS ===== -->
-<section class="page" id="p4">
-  <div class="folio">página 4</div>
-  <div class="inner">
-    <h1><small>· o que pede cuidado ·</small>Os poréns</h1>
-    <img class="ill float-r" src="img/p04.png" alt="" style="width:62mm;height:62mm">
-    <ul>
-      <li><b>Instabilidade emocional:</b> momentos de querer o mundo e todo mundo por perto, e depois querer ficar sozinha, largar projetos e pessoas. Cuidado para não virar alguém sempre mudando de ciclo, de lugar e de pessoas.</li>
-      <li><b>Repetição de padrões familiares:</b> comportamentos ligados a dinheiro e a vícios. Vício não é só droga ou álcool, pode ser comprar para compensar um dia estressante. As mulheres da família podem repetir padrões fortes com homens e relacionamentos.</li>
-      <li><b>Aprisionamento em rotina desgastante:</b> quando não sei lidar com a rotina, fico infeliz, irritada, brava com tudo.</li>
-      <li><b>Sono:</b> atenção à privação de sono.</li>
-      <li><b>Conflito:</b> tento evitar ao máximo desavenças e conflitos.</li>
-    </ul>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="note" style="text-align:center">pegadas que dão voltas sem sair do lugar… e no centro, uma porta entreaberta.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 5 · CAMINHOS DA VIDA ===== -->
-<section class="page dense" id="p5">
-  <div class="folio">página 5</div>
-  <div class="inner" style="padding-top:13mm">
-    <h1 style="font-size:17pt"><small>· a encruzilhada ·</small>Caminhos da vida</h1>
-    <img class="ill float-r" src="img/p05.png" alt="" style="width:54mm;height:54mm;margin-top:-6mm">
-    <h2 style="margin-top:0">Trabalho</h2>
-    <p>Estudar mais, ter conhecimento e autoridade para falar. Usar a comunicação de forma estratégica e assertiva. Não absorver energia nociva: se alguém incomoda, fingir que não existe. Agora não é hora de buscar conflito nem de provar quem eu sou. É hora de me resguardar e cuidar da minha cabeça.</p>
-    <h2>Saúde</h2>
-    <p>Aparecem padrões de geração ligados ao sono e à parte hormonal e reprodutiva. Cuidar do corpo: atividade física, ambientes e alimentação. Um corpo mal alimentado padece e não aguenta o trampo da vida.</p>
-    <h2>Financeiro</h2>
-    <p>Padrões de geração: pensamento de escassez e a sensação de que prosperar (comprar um apartamento, casar, construir família) seria ofender quem da família não conseguiu. Fase de grandes oscilações. Cuidado com golpe, vício, manipulação de outras pessoas e ganhos de fonte que não é segura.</p>
-    <h2>Relacionamentos</h2>
-    <p>Cuidado com relações sustentadas só pela rotina. Às vezes a pessoa já não tem atitudes de quem deveria estar na minha vida, e mantê-la desequilibra a minha energia. Rever amizades, família e trabalho.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 6 · ESPIRITUALIDADE ===== -->
-<section class="page dense" id="p6">
-  <div class="folio">página 6</div>
-  <div class="inner" style="padding-top:13mm">
-    <h1 style="font-size:17pt"><small>· o que Exu mostrou ·</small>Espiritualidade</h1>
-    <img class="ill float-r" src="img/p06.png" alt="" style="width:52mm;height:65mm;margin-top:-4mm">
-    <ul>
-      <li>Não idealizar nem depender da espiritualidade para resolver tudo. Exu mostra o caminho, mas não decide e não caminha por mim.</li>
-      <li>Cuidado com a dependência da entidade dos outros. Minha entidade trabalha a minha paciência. Fortalecer a minha própria fé, caminhar de forma independente.</li>
-      <li>Minhas entidades são territorialistas: não gostam de gracinha nem de bagunça.</li>
-      <li><b>Pedido de apaziguamento da cabeça:</b> só vai apaziguar quando eu cultuar a minha ancestralidade. O caos na minha vida era para eu começar a cultuar e conhecer os meus espíritos. Estou no caminho certo.</li>
-      <li><b>Mutuê na quimbanda:</b> caiu sim, equilibrado com cinco porém. O porém é banho de ervas frias.</li>
-    </ul>
-    <h2>A casa que frequento</h2>
-    <p>É uma casa de passagem, não é para ficar muito tempo. Maria Caveira discorda de comportamentos do sacerdote e lá não vão permitir que eu a cultue como ela quer ser cultuada. Ela já me intuiu e mostrou. É para eu ir me desvinculando. Ela vai me mostrar outra casa: é só ter paciência.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 7 · BANHO PARA O MUTUÊ ===== -->
-<section class="page" id="p7">
-  <div class="folio">página 7</div>
-  <div class="inner">
-    <h1><small>· ervas frias ·</small>Banho para o mutuê</h1>
-    <div class="row">
-      <div style="flex:1">
-        <h2 style="margin-top:0">Ervas frias</h2>
-        <ul>
-          <li><span class="ul-g">Alecrim</span></li>
-          <li>Água de coco seco</li>
-          <li><span class="ul-g">Boldo</span></li>
-          <li><span class="ul-g">Hortelã</span></li>
-          <li>Água de canjica branca</li>
-        </ul>
-      </div>
-      <img class="ill" src="img/p07.png" alt="" style="width:74mm;height:74mm;flex:none">
+<!-- ======================= 5 · FIG. I ======================= -->
+<section class="page" id="fig1">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:center">
+    <img class="fig" src="img/p02.png" alt="" style="width:86mm;height:108mm;object-fit:contain">
+    <div class="leg">
+      <div class="lt">fig. I · Reino da Lira</div>
+      <span class="mao">o reino que responde ao meu momento:<br>caiu negativo, com porém</span>
     </div>
-    <p><b>Como fazer:</b> macerar o banho intencionando ao meu Exu e à minha Pombagira, pedindo clareza, discernimento, apaziguamento do mutuê, ajuda com a ansiedade e que me direcionem melhor. Depois do banho de higiene, tomar da cabeça aos pés.</p>
-    <p><b>Frequência:</b> durante um mês, escolher um dia da semana e fazer o banho.</p>
-    <div class="cur"><p class="note" style="font-size:12.5pt"><b>Mutuê</b> vem do banto (kimbundu <em>mutue</em>): cabeça. Mutuê equilibrado é cabeça no lugar. O banho de ervas frias é para esfriar, assentar, aquietar: alecrim, boldo e hortelã são folhas de acalmar, e a água de coco e a canjica branca são comida de paz.</p></div>
-    <img class="divider" src="img/divider.png" alt="" style="margin-top:1mm">
-    <p class="note" style="text-align:center">verde das ervas, branco da canjica.</p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== O BANHO, ERVA POR ERVA · 1 ===== -->
-<section class="page dense" id="pb1">
+<!-- ======================= 6 · QUEM EU SOU / DESAFIOS ======================= -->
+<section class="page" id="quem-sou">
   <div class="inner">
-    <h1 style="font-size:17pt"><small>· o que fui descobrir ·</small>O banho, erva por erva</h1>
-    <img class="ill" src="img/p_ervas.png" alt="" style="width:100mm;height:62mm;margin:-3mm auto 0">
-    <ul>
-      <li><b>Frias e quentes.</b> Na Umbanda as folhas se dividem pela energia, não pela temperatura: as quentes são de descarrego e vão do pescoço para baixo; as frias são de equilíbrio e podem ir na cabeça. Por isso a Thali mandou tomar <b>da cabeça aos pés</b>: banho de ervas frias é banho de assentar o mutuê.</li>
-      <li><b>Alecrim.</b> Erva fria, de Oxóssi com a luz de Oxalá. Limpeza, clareza mental e prosperidade; afasta inveja e olho gordo; favorece estudos e comércio. Casa com o recado do trabalho: estudar mais, ter autoridade para falar.</li>
-      <li><b>Boldo.</b> O "tapete de Oxalá": limpeza suave, acalma a mente, serenidade. Em muitas casas o banho de boldo é chamado de banho de Oxalá. Algumas classificações o chamam de erva morna; na minha casa ele entra no banho frio, e o fundamento da casa vale.</li>
-      <li><b>Hortelã.</b> Erva fria, de Iansã: clareza mental e renovação, o vento que limpa a cabeça.</li>
+    <h3 style="margin-top:0">Quem eu sou</h3>
+    <div class="flt-r" style="width:28mm"><img src="img/p03.png" alt="" style="width:28mm;height:28mm;object-fit:contain"><span class="mao" style="font-size:10pt;display:block;line-height:1.2">o olho no búzio:<br>o que o jogo<br>mostrou de bom</span></div>
+    <ul class="star">
+      <li><b>Comunicação.</b> Boa sorte comunicativa, saio e entro de situações com facilidade. A palavra e o diálogo são a minha base.</li>
+      <li><b>Intuição.</b> Leio lugares, situações e pessoas. Bato o olho e sei quando algo não vai dar certo, e no final eu tinha razão.</li>
+      <li><b>Criatividade.</b> Quando trabalho com arte e criação, me sinto livre, completa e entusiasmada.</li>
+      <li><b>Escuta.</b> Sou atenciosa, boa ouvinte, conselheira de muita gente.</li>
+      <li><b>Prosperidade.</b> Meu potencial é muito grande, em qualquer área em que eu for trabalhar.</li>
     </ul>
+    <h3 class="clear">Os desafios do momento</h3>
+    <ul class="star">
+      <li><b>Instabilidade emocional.</b> Momentos de querer o mundo e todo mundo por perto, e depois querer ficar sozinha, largar projetos e pessoas. Cuidado para não virar alguém sempre mudando de ciclo, de lugar e de pessoas.</li>
+      <li><b>Repetição de padrões familiares.</b> Comportamentos ligados a dinheiro e a vícios. Vício não é só droga ou álcool, pode ser comprar para compensar um dia estressante. As mulheres da família podem repetir padrões fortes com homens e relacionamentos.</li>
+      <li><b>Aprisionamento em rotina desgastante.</b> Quando não sei lidar com a rotina, fico infeliz, irritada, brava com tudo.</li>
+      <li><b>Sono.</b> Atenção à privação de sono.</li>
+      <li><b>Conflito.</b> Tento evitar ao máximo desavenças e conflitos.</li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:3mm;margin-top:1mm"><img src="img/p04.png" alt="" style="width:16mm;height:16mm;object-fit:contain;flex:none"><span class="mao" style="font-size:10.5pt;line-height:1.25">pegadas que dão voltas sem sair do lugar…<br>e no centro, uma porta entreaberta.</span></div>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== O BANHO, ERVA POR ERVA · 2 ===== -->
-<section class="page dense" id="pb2">
+<!-- ======================= 7 · CAMINHOS DA VIDA ======================= -->
+<section class="page" id="caminhos-vida">
   <div class="inner">
-    <h1 style="font-size:17pt"><small>· continuação ·</small>Água de coco, canjica e o preparo</h1>
-    <ul>
-      <li><b>Água de coco e canjica branca</b> são comidas de Oxalá: o que é branco, fresco e de paz. Canjica, acaçá e água de coco estão entre as oferendas clássicas dele. No banho entram para esfriar e adoçar a cabeça, como o agrado dos ancestrais é todo branco.</li>
-      <li><b>Macerar, não ferver.</b> Folha fresca se amassa com as mãos em água fria ou morna, mentalizando o pedido; ferver tira a força dela. Folha seca, quando for o caso, se abafa em água quente por uns dez minutos. A Thali pediu macerar intencionando ao Exu e à Pombagira: a intenção é parte da receita.</li>
-      <li><b>Ordem.</b> Primeiro o banho de higiene, depois o de ervas, da cabeça aos pés, sem enxaguar. Deixar secar no corpo. As folhas que sobrarem, o costume é devolver à terra, numa planta ou canteiro, nunca no lixo.</li>
-      <li><b>Quando.</b> Um dia fixo da semana, durante um mês: quatro banhos. Algumas casas preferem lua crescente ou cheia; se a minha não disser nada, o dia escolhido basta.</li>
-      <li><b>Cuidado.</b> Alecrim, boldo e hortelã também são remédio de farmácia caseira; grávida, criança ou quem trata alguma doença pergunta antes. A folha cura e pede respeito.</li>
-    </ul>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="src" style="text-align:center">fontes: listas de ervas de Umbanda (classificação fria/morna/quente e regência) e matérias sobre o banho de Oxalá.</p>
+    <div class="kick-row"><p class="kick">A encruzilhada</p><span class="mao">caminhos da vida</span></div>
+    <h3>O trabalho</h3>
+    <div class="flt-r" style="width:30mm;margin-top:-2mm"><img src="img/p05.png" alt="" style="width:30mm;height:30mm;object-fit:contain"></div>
+    <p class="ni">Estudar mais, ter conhecimento e <span class="hl">autoridade para falar</span>. Usar a comunicação de forma estratégica e assertiva. Não absorver energia nociva: se alguém incomoda, fingir que não existe. <span class="hl">Agora não é hora de buscar conflito nem de provar quem eu sou.</span> É hora de me resguardar e cuidar da minha cabeça.</p>
+    <h3>A saúde</h3>
+    <p class="ni">Aparecem padrões de geração ligados ao sono e à parte hormonal e reprodutiva. Cuidar do corpo: atividade física, ambientes e alimentação. Um corpo mal alimentado padece e não aguenta o trampo da vida.</p>
+    <h3>O financeiro</h3>
+    <p class="ni">Padrões de geração: pensamento de escassez e a sensação de que prosperar (comprar um apartamento, casar, construir família) seria ofender quem da família não conseguiu. <span class="hl">Fase de grandes oscilações.</span> Cuidado com golpe, vício, manipulação de outras pessoas e ganhos de fonte que não é segura.</p>
+    <h3>Os relacionamentos</h3>
+    <p class="ni">Cuidado com relações sustentadas só pela rotina. Às vezes a pessoa já não tem atitudes de quem deveria estar na minha vida, e mantê-la desequilibra a minha energia. <span class="hl">Rever amizades, família e trabalho.</span></p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 8 · OS MEUS ANCESTRAIS ===== -->
-<section class="page dense" id="p8">
-  <div class="folio">página 8</div>
-  <div class="inner" style="padding-top:13mm">
-    <h1 style="font-size:17pt"><small>· bacuros ·</small>Os meus ancestrais</h1>
-    <img class="ill float-r" src="img/p08.png" alt="" style="width:60mm;height:45mm;margin-top:-3mm">
-    <p><b>Bacuros:</b> meus antepassados, os mortos da minha família. Quando olhados, estão no negativo. Para positivar, eles querem ser lembrados.</p>
-    <h2>A lista</h2>
-    <ul>
+<!-- ======================= 8 · OS BACUROS ======================= -->
+<section class="page" id="bacuros">
+  <div class="inner">
+    <div class="kick-row"><p class="kick">Os antepassados</p><span class="mao">bakulu</span></div>
+    <h1 class="t" style="font-size:36pt">Os Bacuros <span class="it" style="font-size:19pt">— meus antepassados</span></h1>
+    <svg class="flor" data-flor></svg>
+    
+    <p class="ni"><span class="hl">Bacuros</span> são os meus antepassados, os mortos da minha família. Quando olhados, estão no negativo. <span class="hl">Para positivar, eles querem ser lembrados.</span></p>
+    <p>Bacuro vem de <em>bakulu</em>, palavra banto para "os antigos". No Congo e em Angola, os bakulu são os mortos da família que continuam cuidando dos vivos quando são lembrados e alimentados.</p>
+    <h3 class="clear">A lista dos nomes</h3>
+    <ul class="star">
       <li>Anotar o nome de todos os mortos da família, por parte de mãe e de pai, até onde a família lembrar.</li>
       <li>Avô, avó, tios, irmãos, primos, crianças que faleceram cedo.</li>
       <li>Bebês que não chegaram a nascer também entram, mesmo sem nome.</li>
-      <li>Até o parente de quem eu não gosto ou que me fez mal entra na lista. Pode ser justamente ele que está atrapalhando.</li>
+      <li><span class="hl">Até o parente de quem eu não gosto ou que me fez mal entra na lista.</span> Pode ser justamente ele que está atrapalhando.</li>
     </ul>
-    <h2>O agrado</h2>
-    <ol>
-      <li>Separar um pratinho da comida que eu fizer no dia (ex.: arroz, feijão, batata frita e bife). Bacuro come o que eu como.</li>
-      <li>Vela branca, copo com água e flores brancas.</li>
-      <li>Tudo branco, montado sobre um lugar branquinho e bonito.</li>
-      <li>Dizer que me lembro deles, que reconheço que existiram, que sou grata por cada um que passou na minha vida.</li>
-      <li>Pedir: <em>"Apazigua meus velhos. Peço que vocês apaziguem para que eu possa caminhar melhor, com pés mais firmes e mais livre."</em></li>
-      <li>Sentar ali e conversar com eles.</li>
-    </ol>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 9 · MINHA LISTA DE ANCESTRAIS ===== -->
-<section class="page" id="p9">
-  <div class="folio">página 9</div>
-  <img class="ill" src="img/p09.png" alt="" style="position:absolute;left:14mm;right:27mm;bottom:9mm;width:104mm;height:38mm;margin:0 auto">
+<!-- ======================= 8b · O AGRADO ======================= -->
+<section class="page" id="agrado">
   <div class="inner">
-    <h1><small>· para preencher à mão ·</small>Minha lista de ancestrais</h1>
-    <p class="note" style="margin-top:-1mm"><b>Bacuro</b> vem de <em>bakulu</em>, palavra banto para "os antigos", os antepassados. No Congo e em Angola, os bakulu são os mortos da família que continuam cuidando dos vivos quando são lembrados e alimentados.</p>
-    <div class="ruled" style="height:108mm;margin-top:1mm">
-      <h2 class="ancestor" style="display:inline-block">Por parte de mãe:</h2>
-      <div style="height:34mm"></div>
-      <h2 class="ancestor" style="display:inline-block">Por parte de pai:</h2>
-      <div style="height:25.5mm"></div>
-      <h2 class="ancestor" style="display:inline-block">Os que não chegaram a nascer:</h2>
+    <img src="img/p08.png" alt="" style="display:block;width:84mm;height:62mm;object-fit:contain;margin:0 auto">
+    <p class="c mao" style="font-size:10.5pt;margin-top:-1mm">a mesa branca dos meus velhos</p>
+    <div class="moldura">
+      <p class="mt">O agrado dos Bacuros</p>
+      <ol class="num">
+        <li>Separar um pratinho da comida que eu fizer no dia (ex.: arroz, feijão, batata frita e bife). Bacuro come o que eu como.</li>
+        <li>Vela branca, copo com água e flores brancas.</li>
+        <li>Tudo branco, montado sobre um lugar branquinho e bonito.</li>
+        <li>Dizer que me lembro deles, que reconheço que existiram, que sou grata por cada um que passou na minha vida.</li>
+        <li>Pedir:</li>
+      </ol>
+      <p class="fala">"Apazigua meus velhos. Peço que vocês apaziguem para que eu possa caminhar melhor, com pés mais firmes e mais livre."</p>
+      <ol class="num" start="6" style="counter-reset:n 5"><li>Sentar ali e conversar com eles.</li></ol>
     </div>
+    <h3>Sempre</h3>
+    <p class="ni">Bacuro come o que eu como. <span class="hl">Para positivar, eles querem ser lembrados.</span></p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== OS MEUS · ILUSTRAÇÃO ===== -->
-<section class="page nocorner" id="peles">
-  <img class="ill eles" src="img/p_eles.png" alt="">
-  <div class="inner" style="display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:13mm;text-align:center">
-    <p class="tag" style="font-size:13pt;margin:0">· os que me guardam ·</p>
-    <h1 style="font-size:18pt;line-height:1.4;margin:0">Dona Maria Caveira<br>e Seu Exu Cobra Coral</h1>
-    <p class="note" style="margin:1mm 0 0;color:var(--ink-soft)">o Cruzeiro e a Mata, lado a lado no meu caminho.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 10 · POMBAGIRA TUTELAR ===== -->
-<section class="page entidade" id="p10">
-    <div class="inner">
-      <h1><small>· pombagira tutelar ·</small><span class="ul-y">Maria Caveira</span></h1>
-      <p class="note" style="margin-top:-1mm">do Reino do Cruzeiro, do povo do Cruzeiro de Mata</p>
-      <img class="ill foto" src="img/p10.png" alt="">
-      <div class="dados">
-        <p><b>Vela:</b> preta</p>
-        <p><b>Fumo:</b> cigarrilha</p>
-        <p><b>Bebida:</b> vinho seco</p>
-        <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-y">amarelo</span> <span class="note" style="font-size:11.5pt">(amarelo é a cor do Cruzeiro)</span></p>
-      </div>
-      <img class="divider" src="img/divider.png" alt="" style="margin:.5mm auto;height:12mm">
-      <p style="margin-bottom:.8mm">Eu desconfiava que fosse uma Caveira, mas não imaginava qual.</p>
-      <p>Ela é a mais presente e é quem bate o martelo. É bem ranzinza, um pouquinho.</p>
-    </div>
-    <div class="pnum"></div>
-    <div class="furos"></div>
-  </section>
-
-<!-- ===== 11 · OFERENDA E GUIA DE MARIA CAVEIRA ===== -->
-<section class="page dense" id="p11">
-  <div class="folio">página 11</div>
+<!-- ======================= 9 · LISTA DE ANCESTRAIS ======================= -->
+<section class="page" id="lista-ancestrais">
   <div class="inner">
-    <h1 style="font-size:17pt"><small>· Maria Caveira ·</small>Oferenda e guia</h1>
-    <h2 style="margin-top:0">Padê de dendê quente</h2>
-    <ol>
-      <li>Aquecer o dendê na panela.</li>
-      <li>Refogar a cebola picadinha e a pimenta dedo-de-moça.</li>
-      <li>Colocar a farinha de mandioca e ir fazendo os pedidos.</li>
-      <li>Por cima: bife de boi selado no dendê e rodelas de cebola branca crua.</li>
-    </ol>
-    <img class="ill" src="img/p11.png" alt="" style="width:88mm;height:60mm;margin:0 auto">
-    <h2>Guia de proteção</h2>
-    <ul>
-      <li>Miçangas <span class="ul-k">pretas</span> e <span class="ul-y">amarelas</span>.</li>
-      <li><b>Para cruzar:</b> no dia da oferenda, macerar rosas vermelhas, folha de pitanga e um pouco do vinho dela. Pedir que ela consagre e fortaleça a guia. Deixar até a vela terminar de queimar. Depois pode usar.</li>
-    </ul>
-    <div class="cur"><p class="note" style="font-size:12pt"><b>Padê</b> vem do iorubá <em>ipadé</em>, encontro: a comida que se dá a Exu antes de tudo, porque Exu come primeiro. Oxalá, que veste branco, não come dendê. <b>Cruzar a guia</b> é consagrá-la com o que é dela: a rosa da Pombagira, a folha de pitanga (folha fria, de Oxóssi e Oxum) e o vinho.</p></div>
+    <p class="kick">Para preencher à mão</p>
+    <h1 class="t">Minha lista de ancestrais</h1>
+    <svg class="flor" data-flor></svg>
+    <h3 style="margin-top:1mm">Por parte de mãe</h3>
+    <div class="pauta" style="height:40mm"></div>
+    <h3>Por parte de pai</h3>
+    <div class="pauta" style="height:40mm"></div>
+    <h3>Os que não chegaram a nascer</h3>
+    <div class="pauta" style="height:16mm"></div>
+    <img src="img/p09.png" alt="" style="display:block;width:80mm;height:24mm;object-fit:contain;margin:1mm auto 0">
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== SOBRE DONA MARIA CAVEIRA · 1 ===== -->
-<section class="page" id="pmc1">
+<!-- ======================= 10 · O BANHO ======================= -->
+<section class="page" id="banho">
   <div class="inner">
-    <h1 style="font-size:17pt"><small>· o que fui descobrir ·</small>Sobre Dona <span class="ul-y">Maria Caveira</span></h1>
-    <p class="note" style="margin-top:-1mm">Fui atrás do que se conta sobre ela fora da casa. Anoto o que se repete, sabendo que cada terreiro tem seu fundamento e que, na minha relação com ela, quem manda é ela.</p>
-    <img class="ill float-r" src="img/p_mc.png" alt="" style="width:50mm;height:62mm;margin-top:1mm">
-    <ul>
-      <li><b>Da falange dos Caveiras.</b> Povo da Calunga, o cemitério: o povo da passagem, do fim dos ciclos e da transmutação. Trabalha ao lado de Exu Caveira e de João Caveira. Na Umbanda costuma vir na linha de Obaluaê/Omulu, o orixá da doença e da cura.</li>
-      <li><b>Reservada, séria, elegante.</b> Dizem que esconde o rosto com chapéu, véu ou capa. Não é de gira barulhenta; muita gente conta que ela raramente "trabalha em terra" e prefere agir no silêncio. Bate com o que a Thali falou: ranzinza, territorialista, não gosta de gracinha.</li>
-      <li><b>"Só avisa uma vez."</b> A frase aparece em quase todo relato sobre ela. Casa com o recado da consulta: ela já intuiu, já mostrou. Agora é eu me mexer.</li>
-      <li><b>Do que ela cuida:</b> autoestima, libertação, proteção da mulher, desfazer amarração, encerrar ciclo ruim, limpeza pesada, transmutar sofrimento. Por isso o recado final: ela vai me ajudar a largar a dependência da validação dos outros.</li>
-    </ul>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== SOBRE DONA MARIA CAVEIRA · 2 ===== -->
-<section class="page dense" id="pmc2">
-  <div class="inner">
-    <h1 style="font-size:17pt"><small>· continuação ·</small>Maria Caveira e o Cruzeiro</h1>
-    <ul>
-      <li><b>O Reino do Cruzeiro.</b> Na Quimbanda, o cruzeiro (a cruz alta das praças, das estradas e dos cemitérios) é o reino da comunicação com as almas, da justiça espiritual e da prestação de contas. Regido por Exu Rei dos Sete Cruzeiros e pela Pombagira Rainha dos Sete Cruzeiros. Na lista mais difundida, o Povo do Cruzeiro da Mata é chefiado por Exu Mangueira. Faz sentido ela ser do Cruzeiro de Mata e o Cobra Coral ser das Matas: os dois se encontram onde a mata e a cruz se tocam.</li>
-      <li><b>Cores e gostos.</b> De casa para casa aparecem preto, vermelho e branco; na minha casa é preto e amarelo, o amarelo do Cruzeiro. Gosta de bebida seca e de cigarrilha, exatamente o vinho seco e a cigarrilha dela.</li>
-      <li><b>As filhas dela,</b> dizem, são independentes, se cuidam sozinhas e não se apegam a amor passageiro. Mas têm que se cuidar, porque a mãe não repete aviso.</li>
-      <li><b>Dia dela no calendário.</b> Porto Alegre tem, por lei (Lei 13.088, de 2022), o <span class="ul-y">Dia da Pombagira Maria Caveira: 13 de novembro</span>. Marcar na agenda.</li>
-      <li><b>O nome não é biografia.</b> As histórias de "quem ela foi em vida" variam demais e são devocionais. Na Umbanda se ensina que o nome aponta a marca e o jeito de atuar, não uma pessoa.</li>
-      <li><b>Saudação:</b> Laroyê, Maria Caveira! Mojubá!</li>
-    </ul>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="src" style="text-align:center">fontes: páginas de Umbanda e Quimbanda e a Lei 13.088/2022 de Porto Alegre.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== PONTOS DE DONA MARIA CAVEIRA ===== -->
-<section class="page pontos" id="ppmc">
-  <div class="inner">
-    <h1 style="font-size:15pt;margin-bottom:1mm"><small>· pontos cantados · domínio popular ·</small>Pontos de Dona Maria Caveira</h1>
-    <p class="verso"><b>ponto de louvor</b>Maria Caveira, eu vim cantar em seu louvor<br>Meus caminhos estão fechados<br>Abra eles, por favor<br>Na barra da sua saia<br>Corre água e nasce flor</p>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="verso"><b>ponto de chegada</b>Se a catacumba tem mistérios<br>Ela é Maria Caveira<br>Rainha do cemitério<br>Ela é loira, tem olho azul<br>Maria Caveira, mensageira de Omolu</p>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="verso"><b>Exu Mangueira, chefe do Povo do Cruzeiro da Mata</b>Na cruz das almas o passarinho chorou<br>Chorou pelo ninho que o vento levou<br>Chorou pela saudade que o tempo deixou<br>Seu Exu Mangueira assoviou<br>Pra virar o tempo, e o tempo virou<br>Pra virar o vento, e o vento virou<br>O passarinho lá no galho cantou<br>Para avisar Exu Mangueira que o sol brilhou</p>
-    <div class="linha">o ponto que a Thali canta para ela</div>
-    <p class="src" style="text-align:center;margin-top:2mm">sem autoria indicada · cancioneiro do Terreiro do Pai Maneco</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 12 · EXU TUTELAR ===== -->
-<section class="page entidade" id="p12">
-    <div class="inner">
-      <h1><small>· exu tutelar ·</small><span class="ul-g">Exu Cobra Coral</span></h1>
-      <p class="note" style="margin-top:-1mm">do Reino das Matas, do povo do Rio das Matas</p>
-      <img class="ill foto" src="img/p12.png" alt="">
-      <div class="dados">
-        <p><b>Vela:</b> preta e verde (bicolor)</p>
-        <p><b>Fumo:</b> cachimbo ou cigarro</p>
-        <p><b>Bebida:</b> cachaça</p>
-        <p><b>Cores:</b> <span class="ul-k">preto</span> e <span class="ul-g">verde</span></p>
-      </div>
-      <img class="divider" src="img/divider.png" alt="" style="margin:.5mm auto;height:12mm">
-      <p class="note" style="text-align:center">uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
-    </div>
-    <div class="pnum"></div>
-    <div class="furos"></div>
-  </section>
-
-<!-- ===== 13 · OFERENDA E GUIA DO COBRA CORAL ===== -->
-<section class="page" id="p13">
-  <div class="folio">página 13</div>
-  <div class="inner">
-    <h1 style="font-size:17pt"><small>· Exu Cobra Coral ·</small>Oferenda e guia</h1>
-    <h2 style="margin-top:0">Padê de dendê com farofa de mandioca</h2>
-    <p class="note" style="margin-top:-1mm">(não vai ao fogo)</p>
-    <ol>
-      <li>Pegar a farinha de mandioca e ir misturando com o dendê, fazendo os pedidos.</li>
-      <li>Por cima: bisteca selada no dendê e bastante pimenta dedo-de-moça e malagueta.</li>
-    </ol>
-    <img class="ill" src="img/p13.png" alt="" style="width:98mm;height:68mm;margin:0 auto">
-    <h2>Guia</h2>
-    <ul>
-      <li>Miçangas <span class="ul-k">pretas</span> e <span class="ul-g">verdes</span>.</li>
-      <li><b>Para cruzar:</b> consagrar com folha de mamona e um pouco da cachaça dele maceradas. Deixar quando for fazer a oferenda. Depois pode usar.</li>
-    </ul>
-    <p class="note" style="margin-top:2mm;padding-left:3mm;border-left:.4mm solid rgba(70,62,54,.3)">Nota na margem: folha de mamona é tóxica se ingerida. Macerar de luva, longe de crianças e bichos.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== SOBRE SEU EXU COBRA CORAL · 1 ===== -->
-<section class="page" id="pcc1">
-  <div class="inner">
-    <h1 style="font-size:17pt"><small>· o que fui descobrir ·</small>Sobre Seu <span class="ul-g">Cobra Coral</span></h1>
-    <img class="ill float-r" src="img/p_cc.png" alt="" style="width:52mm;height:65mm;margin-top:-2mm">
-    <ul>
-      <li><b>Das matas e da esquerda.</b> Exu do povo das matas, ligado às ervas, aos bichos e à ciência da Jurema. Trabalha cura e limpeza com folha, descarrego, quebra de demanda, proteção contra inveja e firmeza. "Defesa afiada e cura": o veneno que mata é o mesmo que cura, na dose certa.</li>
-      <li><b>O Reino das Matas</b> é regido por Exu Rei das Matas e Pombagira Rainha das Matas. Governa tudo que tem árvore, menos o cemitério, que é de outro reino. Na lista mais difundida há um Povo das Cobras, chefiado por Exu Sete Cobras. "Rio das Matas" é fundamento da minha casa (não achei nas listas gerais), e tudo bem: cada casa desenha o seu mapa da mata.</li>
-      <li><b>A lição da coral de verdade.</b> A cobra coral verdadeira é discreta, passa a vida escondida, não dá bote e não é agressiva: só machuca quem mexe nela. Ameaçada, esconde a cabeça e levanta a cauda, fingindo que ali é a cabeça. A presa é pequena e fixa, por isso morde devagar em vez de picar, e mesmo assim tem o veneno mais potente entre as cobras do Brasil. Resumo: não procura briga, mas não aceita gracinha. Igual ao recado: "agora não é hora de buscar conflito nem de provar quem eu sou".</li>
-    </ul>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== SOBRE SEU EXU COBRA CORAL · 2 ===== -->
-<section class="page" id="pcc2">
-  <div class="inner">
-    <h1 style="font-size:17pt"><small>· continuação ·</small>Cobra Coral e a mata</h1>
-    <ul>
-      <li><b>Cores e dia.</b> Fora da minha casa aparece muito preto e vermelho; aqui é preto e verde, o verde da mata. O dia dele, na maioria das casas, é segunda-feira.</li>
-      <li><b>Cachimbo e cachaça.</b> O cachimbo é fumo de mato, de caboclo e de quem conhece folha: a fumaça limpa e abre caminho. A cachaça é a bebida da mata e da roça. Combina com um exu que trabalha entre raiz e rio.</li>
-      <li><b>Folha de mamona</b> na guia dele. Em muitas casas é folha de Exu e de Obaluaê: grande, de cinco a sete pontas, uma mão aberta. É tóxica se ingerida: macerar de luva, longe de criança e bicho.</li>
-      <li><b>Caboclo ou Exu?</b> Há casa em que "Cobra Coral" vem como caboclo, na linha de Oxóssi e Oxumarê, e casa em que vem como exu. É o mesmo nome em pontos diferentes da mata. O meu é exu, e é ele quem fica.</li>
-      <li><b>A serpente</b> troca de pele: é o bicho da transformação, de largar o que apertou e sair inteira do outro lado. Dos meus poréns, o que ela mais fala é o ciclo que se repete e a rotina que aprisiona.</li>
-      <li><b>Saudação:</b> Laroyê, Cobra Coral!</li>
-    </ul>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="src" style="text-align:center">fontes: páginas de Umbanda e Quimbanda e guias de fauna sobre a coral verdadeira.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== PONTOS DE SEU COBRA CORAL ===== -->
-<section class="page pontos" id="ppcc">
-  <div class="inner">
-    <h1 style="font-size:15pt;margin-bottom:1mm"><small>· ponto cantado · domínio popular ·</small>Pontos de Seu Cobra Coral</h1>
-    <p class="verso"><b>ponto de louvor · primeira parte</b>Cobra Coral, a sua banda está em festa<br>O céu e o mar estão cantando em seu louvor<br>Olha a cobra coral piou, piou<br>Olha a cobra coral piou, piou<br>Cobra Coral, estou cantando em seu louvor</p>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="verso"><b>segunda parte</b>Caiu uma folha na jurema<br>Veio o sereno e molhou<br>Mas depois veio o sol<br>Enxugou, enxugou<br>E a mata virgem se abriu toda em flor</p>
-    <img class="divider" src="img/divider.png" alt="">
-    <p class="note" style="text-align:center;max-width:92mm;margin:0 auto;color:var(--ink-soft);font-size:11.8pt">É o ponto clássico do Cobra Coral da mata, cantado nas casas em que ele vem como caboclo. Não achei ponto público dele como exu: na Quimbanda muitos pontos são da casa e passam de boca em boca.</p>
-    <div class="linha">o ponto que a Thali canta para ele</div>
-    <p class="src" style="text-align:center;margin-top:2mm">sem autoria indicada · pontosdeumbanda.com.br</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 14 · O CAVEIRA ===== -->
-<section class="page" id="p14">
-  <div class="folio">página 14</div>
-  <div class="inner">
-    <h1><small>· mais pra frente ·</small>O Caveira</h1>
-    <img class="ill" src="img/p14.png" alt="" style="width:64mm;height:80mm;margin:0 auto 1mm">
-    <p>Sonhei com Exu Caveira quando ainda nem conhecia, com pouco mais de um mês na umbanda. Depois tive intuição de comprar uma bebida específica.</p>
-    <p><b>A resposta:</b> o Caveira é um eixo que eu vou desenvolver mais para frente. Agora não é o momento. Por enquanto, cultuar só o Cobra Coral e a Dona Maria Caveira, e ir me afinizando.</p>
-    <div class="cur"><p class="note" style="font-size:12.5pt"><b>Exu Caveira</b> é o senhor dos cemitérios, do Povo das Caveiras: o que recolhe as almas perdidas e as leva até o portão (a calunga). Não confundir com João Caveira nem com Tatá Caveira, que são outros. Pela proximidade com Obaluaê, além do <em>Laroyê</em> também se ouve <em>Atotô, Exu Caveira</em>. Dona Maria Caveira é da mesma falange: ela já está na minha porta, ele vem depois.</p></div>
-    <p class="note" style="text-align:center;margin-top:1mm">ainda não, mas vai abrir.</p>
-  </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
-</section>
-
-<!-- ===== 15 · LISTA DE COMPRAS ===== -->
-<section class="page nocorner" id="p15">
-  <img class="ill strip" src="img/p15.png" alt="">
-  <div class="inner lista">
-    <h1><small>· bilhete ·</small>Lista de compras</h1>
-    <div class="bilhete">
-      <div class="two" style="gap:5mm">
-        <div>
-          <h2 style="margin-top:0">Artigos religiosos</h2>
-          <ul class="chklist"><li><span class="chk"></span>Vela branca</li><li><span class="chk"></span>Vela preta</li><li><span class="chk"></span>Vela bicolor preta e verde</li><li><span class="chk"></span>Cigarrilha</li><li><span class="chk"></span>Cachimbo com fumo ou cigarro</li><li><span class="chk"></span>Miçangas pretas e amarelas</li><li><span class="chk"></span>Miçangas pretas e verdes</li><li><span class="chk"></span>Pano branco</li></ul>
+    <div class="kick-row"><p class="kick">Para o mutuê</p><span class="mao">ervas frias</span></div>
+    <h1 class="t">O banho</h1>
+    <svg class="flor" data-flor></svg>
+    <p class="ni"><span class="hl">Mutuê</span> vem do banto (kimbundu <em>mutue</em>): cabeça. Mutuê equilibrado é cabeça no lugar. O banho de ervas frias é para esfriar, assentar, aquietar: alecrim, boldo e hortelã são folhas de acalmar, e a água de coco e a canjica branca são comida de paz.</p>
+    <div class="moldura">
+      <p class="mt">Banho de ervas frias</p>
+      <div style="display:flex;gap:3mm;align-items:flex-start">
+        <div style="flex:1">
+          <table class="ficha" style="margin:0">
+            <tr><td class="l" style="width:16mm">Ervas</td><td>alecrim, boldo, hortelã</td></tr>
+            <tr><td class="l" style="width:16mm">Águas</td><td>água de coco seco, água de canjica branca</td></tr>
+          </table>
         </div>
-        <div>
-          <h2 style="margin-top:0">Mercado e feira</h2>
-          <ul class="chklist"><li><span class="chk"></span>Vinho seco</li><li><span class="chk"></span>Cachaça</li><li><span class="chk"></span>Azeite de dendê</li><li><span class="chk"></span>Farinha de mandioca</li><li><span class="chk"></span>Bife de boi</li><li><span class="chk"></span>Bisteca</li><li><span class="chk"></span>Cebola e cebola branca</li><li><span class="chk"></span>Pimenta dedo-de-moça</li><li><span class="chk"></span>Pimenta malagueta</li><li><span class="chk"></span>Flores brancas</li><li><span class="chk"></span>Rosas vermelhas</li><li><span class="chk"></span>Folha de pitanga</li><li><span class="chk"></span>Folha de mamona</li><li><span class="chk"></span>Alecrim, boldo, hortelã <span class="note">(para 4 banhos)</span></li><li><span class="chk"></span>Coco seco</li><li><span class="chk"></span>Canjica branca</li></ul>
-        </div>
+        <img src="img/p07.png" alt="" style="width:30mm;height:30mm;object-fit:contain;flex:none">
       </div>
+      <ol class="num" style="margin-top:1.5mm">
+        <li><b>Macerar</b> o banho intencionando ao meu Exu e à minha Pombagira, pedindo clareza, discernimento, apaziguamento do mutuê, ajuda com a ansiedade e que me direcionem melhor.</li>
+        <li>Depois do banho de higiene, <b>tomar da cabeça aos pés</b>.</li>
+        <li><b>Durante um mês</b>, escolher um dia da semana e fazer o banho.</li>
+      </ol>
     </div>
+    <p class="c mao" style="font-size:11pt">verde das ervas, branco da canjica.</p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 16 · REGISTRO DOS BANHOS ===== -->
-<section class="page" id="p16">
-  <div class="folio">página 16</div>
+<!-- ======================= 11 · O BANHO, ERVA POR ERVA ======================= -->
+<section class="page" id="ervas">
   <div class="inner">
-    <img class="ill" src="img/p16.png" alt="" style="width:110mm;height:36mm;margin:-6mm auto 0">
-    <h1><small>· um mês de banhos ·</small>Registro dos banhos</h1>
-    <p style="margin-top:3mm"><b>Dia escolhido da semana:</b> <span style="display:inline-block;width:48mm;border-bottom:.4mm solid var(--rule);vertical-align:-1mm"></span></p>
-    <table class="hand">
-      <thead><tr><th style="width:22mm">Semana</th><th style="width:30mm">Data</th><th>Como me senti</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td class="line">___ / ___</td><td></td></tr>
-        <tr><td>2</td><td class="line">___ / ___</td><td></td></tr>
-        <tr><td>3</td><td class="line">___ / ___</td><td></td></tr>
-        <tr><td>4</td><td class="line">___ / ___</td><td></td></tr>
-      </tbody>
+    <img src="img/p_ervas.png" alt="" style="display:block;width:88mm;height:54mm;object-fit:contain;margin:0 auto">
+    <div class="quem" style="margin-top:1mm">
+      <p class="qt">O banho, erva por erva · o que as casas contam</p>
+      <ul class="star small">
+        <li><b>Frias e quentes.</b> Na Umbanda as folhas se dividem pela energia, não pela temperatura: as quentes são de descarrego e vão do pescoço para baixo; as frias são de equilíbrio e podem ir na cabeça. Por isso a Thali mandou tomar da cabeça aos pés: banho de ervas frias é banho de assentar o mutuê.</li>
+        <li><b>Alecrim.</b> Erva fria, de Oxóssi com a luz de Oxalá. Limpeza, clareza mental e prosperidade; afasta inveja e olho gordo; favorece estudos e comércio. Casa com o recado do trabalho: estudar mais, ter autoridade para falar.</li>
+        <li><b>Boldo.</b> O "tapete de Oxalá": limpeza suave, acalma a mente, serenidade. Em muitas casas o banho de boldo é chamado de banho de Oxalá. Algumas classificações o chamam de erva morna; na minha casa ele entra no banho frio, e o fundamento da casa vale.</li>
+        <li><b>Hortelã.</b> Erva fria, de Iansã: clareza mental e renovação, o vento que limpa a cabeça.</li>
+        <li><b>Água de coco e canjica branca</b> são comidas de Oxalá: o que é branco, fresco e de paz. Canjica, acaçá e água de coco estão entre as oferendas clássicas dele. No banho entram para esfriar e adoçar a cabeça, como o agrado dos ancestrais é todo branco.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 12 · PREPARO + REGISTRO ======================= -->
+<section class="page" id="preparo">
+  <div class="inner">
+    <div class="quem" style="margin-top:0">
+      <p class="qt">O preparo · o que as casas contam</p>
+      <ul class="star small">
+        <li><b>Macerar, não ferver.</b> Folha fresca se amassa com as mãos em água fria ou morna, mentalizando o pedido; ferver tira a força dela. Folha seca, quando for o caso, se abafa em água quente por uns dez minutos. A Thali pediu macerar intencionando ao Exu e à Pombagira: a intenção é parte da receita.</li>
+        <li><b>Ordem.</b> Primeiro o banho de higiene, depois o de ervas, da cabeça aos pés, sem enxaguar. Deixar secar no corpo. As folhas que sobrarem, o costume é devolver à terra, numa planta ou canteiro, nunca no lixo.</li>
+        <li><b>Quando.</b> Um dia fixo da semana, durante um mês: quatro banhos. Algumas casas preferem lua crescente ou cheia; se a minha não disser nada, o dia escolhido basta.</li>
+        <li><b>Cuidado.</b> Alecrim, boldo e hortelã também são remédio de farmácia caseira; grávida, criança ou quem trata alguma doença pergunta antes. A folha cura e pede respeito.</li>
+      </ul>
+      <p class="fonte">fontes: listas de ervas de Umbanda (classificação fria, morna e quente e regência) e matérias sobre o banho de Oxalá.</p>
+    </div>
+    <h3 class="ic">Registro dos banhos</h3>
+    <img src="img/p16.png" alt="" style="display:block;width:70mm;height:14mm;object-fit:contain;margin:0 auto 1mm">
+    <p class="ni" style="font-size:10.6pt">Dia escolhido da semana: <span style="display:inline-block;width:48mm;border-bottom:.3mm solid var(--rule)"></span></p>
+    <table class="ficha" style="margin-top:2mm">
+      <tr><td class="l" style="width:22mm">semana 1</td><td style="width:24mm;color:var(--ink3)">___ / ___</td><td style="height:9mm"></td></tr>
+      <tr><td class="l">semana 2</td><td style="color:var(--ink3)">___ / ___</td><td style="height:9mm"></td></tr>
+      <tr><td class="l">semana 3</td><td style="color:var(--ink3)">___ / ___</td><td style="height:9mm"></td></tr>
+      <tr><td class="l">semana 4</td><td style="color:var(--ink3)">___ / ___</td><td style="height:9mm"></td></tr>
     </table>
-    <img class="divider" src="img/divider.png" alt="" style="margin-top:6mm">
-    <p class="note" style="text-align:center">uma lua para cada semana.</p>
+    <p class="c mao" style="font-size:10.5pt">data e como me senti · uma lua para cada semana</p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== DE ONDE ELES VÊM · 1 ===== -->
-<section class="page dense" id="po1">
+<!-- ======================= 13 · OS DOIS ======================= -->
+<section class="page" id="os-dois">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:center">
+    <img class="fig" src="img/p_eles.png" alt="" style="width:100mm;height:140mm;object-fit:contain">
+    <div class="leg">
+      <div class="lt">fig. II · os que me guardam</div>
+      <span class="mao">Dona Maria Caveira e Seu Exu Cobra Coral:<br>o Cruzeiro e a Mata, lado a lado no meu caminho</span>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 14 · A MINHA POMBAGIRA ======================= -->
+<section class="page" id="pombagira">
   <div class="inner">
-    <h1 style="font-size:17pt"><small>· o que fui descobrir ·</small>De onde eles vêm</h1>
-    <img class="ill" src="img/p_mapa.png" alt="" style="width:94mm;height:70mm;margin:-3mm auto 0">
-    <ul>
-      <li><b>A palavra.</b> Quimbanda vem do kimbundu, língua banta de Angola: <em>kimbanda</em> é o curandeiro, o sacerdote, o que sabe de folha e de cura. Em Angola, os kimbanda cuidavam da saúde do povo com o que a natureza dava. No Brasil a palavra foi virada do avesso e passou a nomear a "magia da esquerda", por preconceito e olhar cristão. A raiz é cura.</li>
-      <li><b>Exu e Pombagira.</b> Na África iorubá, Exu é o orixá da comunicação e dos caminhos, o que leva o recado. Viajantes europeus o demonizaram. Na Umbanda e na Quimbanda ele deixa de ser orixá e vira um espírito que já viveu, próximo da gente, que cuida das coisas da rua. Pombagira vem do kimbundu <em>pambu njila</em>, encruzilhada, passando por Bombonjira, um nome congo de Exu.</li>
-      <li><b>Calunga.</b> Do kimbundu <em>ka'lunga</em>: mar, imensidão. A Calunga Grande é o mar, para onde foram os que morreram na travessia; a Calunga Pequena é o cemitério. Os dois são lugares de passagem entre os mundos, e Obaluaê e Omulu são os donos da pequena. É daí que vem a Maria Caveira.</li>
+    <div class="kick-row"><p class="kick">Pombagira tutelar</p><span class="mao">Reino do Cruzeiro</span></div>
+    <h1 class="t">A minha Pombagira</h1>
+    <div class="flt-r" style="width:42mm;margin-top:1mm"><img src="img/p10.png" alt="" style="width:42mm;height:52mm;object-fit:contain">
+      <div class="leg" style="margin-top:0"><div class="lt" style="font-size:11pt">Pombagira tutelar</div><span class="mao" style="font-size:9.8pt;line-height:1.2">Maria Caveira, do Reino do Cruzeiro, do povo do Cruzeiro de Mata</span></div></div>
+    <p class="ni" style="margin-top:2mm">A minha Pombagira é a <span class="hl">Dona Maria Caveira</span>, do Reino do Cruzeiro, do povo do Cruzeiro de Mata. Eu desconfiava que fosse uma Caveira, mas não imaginava qual.</p>
+    <p>Ela é <span class="hl">a mais presente e é quem bate o martelo</span>. É bem ranzinza, um pouquinho.</p>
+    <div class="quem clear">
+      <p class="qt">Quem é ela · o que as casas contam</p>
+      <ul class="star small">
+        <li><b>Da falange dos Caveiras.</b> Povo da Calunga, o cemitério: o povo da passagem, do fim dos ciclos e da transmutação. Trabalha ao lado de Exu Caveira e de João Caveira. Na Umbanda costuma vir na linha de Obaluaê/Omulu, o orixá da doença e da cura.</li>
+        <li><b>Reservada, séria, elegante.</b> Dizem que esconde o rosto com chapéu, véu ou capa. Não é de gira barulhenta; muita gente conta que ela raramente "trabalha em terra" e prefere agir no silêncio. Bate com o que a Thali falou: ranzinza, territorialista, não gosta de gracinha.</li>
+        <li><b>"Só avisa uma vez."</b> A frase aparece em quase todo relato sobre ela. Casa com o recado da consulta: ela já intuiu, já mostrou. Agora é eu me mexer.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 15 · QUEM É ELA (cont.) ======================= -->
+<section class="page" id="pombagira-2">
+  <div class="inner">
+    <div class="flt-l" style="width:36mm"><img src="img/p_mc.png" alt="" style="width:36mm;height:45mm;object-fit:contain"><span class="mao" style="font-size:9.8pt;display:block;line-height:1.2">chapéu, véu e rosa<br>ao pé do cruzeiro</span></div>
+    <div class="quem" style="margin-top:0">
+      <p class="qt">Quem é ela · continuação</p>
+      <ul class="star small">
+        <li><b>Do que ela cuida.</b> Autoestima, libertação, proteção da mulher, desfazer amarração, encerrar ciclo ruim, limpeza pesada, transmutar sofrimento. Por isso o recado final: ela vai me ajudar a largar a dependência da validação dos outros.</li>
+        <li><b>O Reino do Cruzeiro.</b> Na Quimbanda, o cruzeiro (a cruz alta das praças, das estradas e dos cemitérios) é o reino da comunicação com as almas, da justiça espiritual e da prestação de contas. Regido por Exu Rei dos Sete Cruzeiros e pela Pombagira Rainha dos Sete Cruzeiros. Na lista mais difundida, o Povo do Cruzeiro da Mata é chefiado por Exu Mangueira. Faz sentido ela ser do Cruzeiro de Mata e o Cobra Coral ser das Matas: os dois se encontram onde a mata e a cruz se tocam.</li>
+        <li><b>Cores e gostos.</b> De casa para casa aparecem preto, vermelho e branco; na minha casa é preto e amarelo, o amarelo do Cruzeiro. Gosta de bebida seca e de cigarrilha, exatamente o vinho seco e a cigarrilha dela.</li>
+        <li><b>As filhas dela,</b> dizem, são independentes, se cuidam sozinhas e não se apegam a amor passageiro. Mas têm que se cuidar, porque a mãe não repete aviso.</li>
+        <li><b>Dia dela no calendário.</b> Porto Alegre tem, por lei (Lei 13.088, de 2022), o Dia da Pombagira Maria Caveira: <span class="hl">13 de novembro</span>. Marcar na agenda.</li>
+        <li><b>O nome não é biografia.</b> As histórias de "quem ela foi em vida" variam demais e são devocionais. Na Umbanda se ensina que o nome aponta a marca e o jeito de atuar, não uma pessoa.</li>
+        <li><b>Saudação.</b> Laroyê, Maria Caveira! Mojubá!</li>
+      </ul>
+      <p class="fonte">fontes: páginas de Umbanda e Quimbanda e a Lei 13.088/2022 de Porto Alegre.</p>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 16 · O QUE ELA PEDE ======================= -->
+<section class="page" id="ela-pede">
+  <div class="inner">
+    <h3 class="ic" style="margin-top:0">O que ela pede</h3>
+    <table class="ficha">
+      <tr><td class="l">Vela</td><td>preta</td></tr>
+      <tr><td class="l">Fumo</td><td>cigarrilha</td></tr>
+      <tr><td class="l">Bebida</td><td>vinho seco</td></tr>
+      <tr><td class="l">Cores</td><td>preto e amarelo (o amarelo é a cor do Cruzeiro)</td></tr>
+      <tr><td class="l">Guia</td><td>miçangas pretas e amarelas</td></tr>
+    </table>
+    <h3 class="ic">A guia dela</h3>
+    <div class="moldura">
+      <p class="mt">Para cruzar a guia</p>
+      <p class="small">Miçangas <span class="hl">pretas e amarelas</span>. No dia da oferenda, macerar rosas vermelhas, folha de pitanga e um pouco do vinho dela. Pedir que ela consagre e fortaleça a guia. Deixar até a vela terminar de queimar. Depois pode usar.</p>
+    </div>
+    <p class="small ni" style="color:var(--ink2)"><em>Padê</em> vem do iorubá <em>ipadé</em>, encontro: a comida que se dá a Exu antes de tudo, porque Exu come primeiro. Oxalá, que veste branco, não come dendê. Cruzar a guia é consagrá-la com o que é dela: a rosa da Pombagira, a folha de pitanga (folha fria, de Oxóssi e Oxum) e o vinho.</p>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<section class="page" id="ela-pede-padê">
+  <div class="inner">
+    <h3 class="ic" style="margin-top:0">O padê dela</h3>
+    <img src="img/p11.png" alt="" style="display:block;width:96mm;height:66mm;object-fit:contain;margin:1mm auto 0">
+    <p class="c mao" style="font-size:10.5pt;margin-top:-1mm">o padê de dendê quente da Dona Maria Caveira</p>
+    <div class="moldura">
+        <p class="mt">Padê de dendê quente</p>
+        <ol class="num small">
+          <li>Aquecer o dendê na panela.</li>
+          <li>Refogar a cebola picadinha e a pimenta dedo-de-moça.</li>
+          <li>Colocar a farinha de mandioca e ir fazendo os pedidos.</li>
+          <li>Por cima: <span class="hl">bife de boi selado no dendê</span> e rodelas de cebola branca crua.</li>
+        </ol>
+      </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 17 · OS PONTOS DELA ======================= -->
+<section class="page" id="pontos-ela">
+  <div class="inner">
+    <p class="kick c">pontos cantados · domínio popular</p>
+    <h1 class="t c" style="font-size:36pt">Os pontos dela</h1>
+    <svg class="flor c" data-flor></svg>
+    <p class="ponto"><span class="pk">ponto de louvor</span>Maria Caveira, eu vim cantar em seu louvor<br>Meus caminhos estão fechados<br>Abra eles, por favor<br>Na barra da sua saia<br>Corre água e nasce flor</p>
+    <svg class="estrela" data-estrela style="margin:2mm auto"></svg>
+    <p class="ponto"><span class="pk">ponto de chegada</span>Se a catacumba tem mistérios<br>Ela é Maria Caveira<br>Rainha do cemitério<br>Ela é loira, tem olho azul<br>Maria Caveira, mensageira de Omolu</p>
+    <svg class="estrela" data-estrela style="margin:2mm auto"></svg>
+    <p class="ponto"><span class="pk">Exu Mangueira, chefe do Povo do Cruzeiro da Mata</span>Na cruz das almas o passarinho chorou<br>Chorou pelo ninho que o vento levou<br>Chorou pela saudade que o tempo deixou<br>Seu Exu Mangueira assoviou<br>Pra virar o tempo, e o tempo virou<br>Pra virar o vento, e o vento virou<br>O passarinho lá no galho cantou<br>Para avisar Exu Mangueira que o sol brilhou</p>
+    <p class="c mao" style="margin-top:3mm;border-bottom:.3mm solid var(--rule);padding-bottom:5mm">o ponto que a Thali canta para ela</p>
+    <p class="c mao" style="font-size:9.5pt;margin-top:1mm">sem autoria indicada · cancioneiro do Terreiro do Pai Maneco</p>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 18 · O MEU EXU ======================= -->
+<section class="page" id="exu">
+  <div class="inner">
+    <div class="kick-row"><p class="kick">Exu tutelar</p><span class="mao">Reino das Matas</span></div>
+    <h1 class="t">O meu Exu</h1>
+    <div class="flt-r" style="width:42mm;margin-top:1mm"><img src="img/p12.png" alt="" style="width:42mm;height:52mm;object-fit:contain">
+      <div class="leg" style="margin-top:0"><div class="lt" style="font-size:11pt">Exu tutelar</div><span class="mao" style="font-size:9.8pt;line-height:1.2">Exu Cobra Coral, do Reino das Matas, do povo do Rio das Matas</span></div></div>
+    <p class="ni" style="margin-top:0">O meu Exu é o <span class="hl">Seu Exu Cobra Coral</span>, do Reino das Matas, do povo do Rio das Matas: uma cobra coral enrolada numa raiz, à beira do rio, dentro da mata.</p>
+    <div class="quem clear">
+      <p class="qt">Quem é ele · o que as casas contam</p>
+      <ul class="star small">
+        <li><b>Das matas e da esquerda.</b> Exu do povo das matas, ligado às ervas, aos bichos e à ciência da Jurema. Trabalha cura e limpeza com folha, descarrego, quebra de demanda, proteção contra inveja e firmeza. "Defesa afiada e cura": o veneno que mata é o mesmo que cura, na dose certa.</li>
+        <li><b>O Reino das Matas</b> é regido por Exu Rei das Matas e Pombagira Rainha das Matas. Governa tudo que tem árvore, menos o cemitério, que é de outro reino. Na lista mais difundida há um Povo das Cobras, chefiado por Exu Sete Cobras. "Rio das Matas" é fundamento da minha casa (não achei nas listas gerais), e tudo bem: cada casa desenha o seu mapa da mata.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 19 · QUEM É ELE (cont.) ======================= -->
+<section class="page" id="exu-2">
+  <div class="inner">
+    <div class="flt-l" style="width:38mm"><img src="img/p_cc.png" alt="" style="width:38mm;height:48mm;object-fit:contain"><span class="mao" style="font-size:9.8pt;display:block;line-height:1.2">a coral, a mamona<br>e a jurema</span></div>
+    <div class="quem" style="margin-top:0">
+      <p class="qt">Quem é ele · continuação</p>
+      <ul class="star small">
+        <li><b>Cores e dia.</b> Fora da minha casa aparece muito preto e vermelho; aqui é preto e verde, o verde da mata. O dia dele, na maioria das casas, é segunda-feira.</li>
+        <li><b>A lição da coral de verdade.</b> A cobra coral verdadeira é discreta, passa a vida escondida, não dá bote e não é agressiva: só machuca quem mexe nela. Ameaçada, esconde a cabeça e levanta a cauda, fingindo que ali é a cabeça. A presa é pequena e fixa, por isso morde devagar em vez de picar, e mesmo assim tem o veneno mais potente entre as cobras do Brasil. Resumo: não procura briga, mas não aceita gracinha. Igual ao recado: "agora não é hora de buscar conflito nem de provar quem eu sou".</li>
+        <li><b>Cachimbo e cachaça.</b> O cachimbo é fumo de mato, de caboclo e de quem conhece folha: a fumaça limpa e abre caminho. A cachaça é a bebida da mata e da roça. Combina com um exu que trabalha entre raiz e rio.</li>
+        <li><b>Folha de mamona</b> na guia dele. Em muitas casas é folha de Exu e de Obaluaê: grande, de cinco a sete pontas, uma mão aberta. É tóxica se ingerida: macerar de luva, longe de criança e bicho.</li>
+        <li><b>Caboclo ou Exu?</b> Há casa em que "Cobra Coral" vem como caboclo, na linha de Oxóssi e Oxumarê, e casa em que vem como exu. É o mesmo nome em pontos diferentes da mata. O meu é exu, e é ele quem fica.</li>
+        <li><b>A serpente</b> troca de pele: é o bicho da transformação, de largar o que apertou e sair inteira do outro lado. Dos meus poréns, o que ela mais fala é o ciclo que se repete e a rotina que aprisiona.</li>
+        <li><b>Saudação.</b> Laroyê, Cobra Coral!</li>
+      </ul>
+      <p class="fonte">fontes: páginas de Umbanda e Quimbanda e guias de fauna sobre a coral verdadeira.</p>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 20 · O QUE ELE PEDE ======================= -->
+<section class="page" id="ele-pede">
+  <div class="inner">
+    <h3 class="ic" style="margin-top:0">O que ele pede</h3>
+    <table class="ficha">
+      <tr><td class="l">Vela</td><td>preta e verde (bicolor)</td></tr>
+      <tr><td class="l">Fumo</td><td>cachimbo ou cigarro</td></tr>
+      <tr><td class="l">Bebida</td><td>cachaça</td></tr>
+      <tr><td class="l">Cores</td><td>preto e verde</td></tr>
+      <tr><td class="l">Guia</td><td>miçangas pretas e verdes</td></tr>
+    </table>
+    <h3 class="ic">A guia dele</h3>
+    <div class="moldura">
+      <p class="mt">Para cruzar a guia</p>
+      <p class="small">Miçangas <span class="hl">pretas e verdes</span>. Consagrar com folha de mamona e um pouco da cachaça dele maceradas. Deixar quando for fazer a oferenda. Depois pode usar.</p>
+    </div>
+    <p class="small ni" style="color:var(--ink2)"><span class="hl">Nota na margem:</span> folha de mamona é tóxica se ingerida. Macerar de luva, longe de crianças e bichos.</p>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<section class="page" id="ele-pede-padê">
+  <div class="inner">
+    <h3 class="ic" style="margin-top:0">O padê dele</h3>
+    <img src="img/p13.png" alt="" style="display:block;width:96mm;height:66mm;object-fit:contain;margin:1mm auto 0">
+    <p class="c mao" style="font-size:10.5pt;margin-top:-1mm">o padê de farofa do Seu Cobra Coral</p>
+    <div class="moldura">
+        <p class="mt">Padê de dendê com farofa de mandioca</p>
+        <p class="small ni" style="color:var(--ink2);margin-top:-1mm"><em>não vai ao fogo</em></p>
+        <ol class="num small">
+          <li>Pegar a farinha de mandioca e ir misturando com o dendê, fazendo os pedidos.</li>
+          <li>Por cima: <span class="hl">bisteca selada no dendê</span> e bastante pimenta dedo-de-moça e malagueta.</li>
+        </ol>
+      </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 21 · OS PONTOS DELE ======================= -->
+<section class="page" id="pontos-ele">
+  <div class="inner">
+    <p class="kick c">ponto cantado · domínio popular</p>
+    <h1 class="t c" style="font-size:36pt">Os pontos dele</h1>
+    <svg class="flor c" data-flor></svg>
+    <p class="ponto"><span class="pk">ponto de louvor · primeira parte</span>Cobra Coral, a sua banda está em festa<br>O céu e o mar estão cantando em seu louvor<br>Olha a cobra coral piou, piou<br>Olha a cobra coral piou, piou<br>Cobra Coral, estou cantando em seu louvor</p>
+    <svg class="estrela" data-estrela style="margin:2mm auto"></svg>
+    <p class="ponto"><span class="pk">segunda parte</span>Caiu uma folha na jurema<br>Veio o sereno e molhou<br>Mas depois veio o sol<br>Enxugou, enxugou<br>E a mata virgem se abriu toda em flor</p>
+    <svg class="estrela" data-estrela style="margin:2mm auto"></svg>
+    <p class="c small" style="color:var(--ink2)">É o ponto clássico do Cobra Coral da mata, cantado nas casas em que ele vem como caboclo. Não achei ponto público dele como exu: na Quimbanda muitos pontos são da casa e passam de boca em boca.</p>
+    <p class="c mao" style="margin-top:3mm;border-bottom:.3mm solid var(--rule);padding-bottom:5mm">o ponto que a Thali canta para ele</p>
+    <p class="c mao" style="font-size:9.5pt;margin-top:1mm">sem autoria indicada · pontosdeumbanda.com.br</p>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 22 · O CAVEIRA ======================= -->
+<section class="page" id="caveira">
+  <div class="inner">
+    <div class="kick-row"><p class="kick">Mais pra frente</p><span class="mao">Povo das Caveiras</span></div>
+    <h1 class="t">O Caveira</h1>
+    <svg class="flor" data-flor></svg>
+    <div class="flt-r" style="width:40mm"><img src="img/p14.png" alt="" style="width:40mm;height:50mm;object-fit:contain"><span class="mao" style="font-size:9.8pt;display:block;line-height:1.2">ainda não,<br>mas vai abrir</span></div>
+    <p class="ni">Sonhei com <span class="hl">Exu Caveira</span> quando ainda nem conhecia, com pouco mais de um mês na umbanda. Depois tive intuição de comprar uma bebida específica.</p>
+    <p>A resposta: o Caveira é um eixo que eu vou desenvolver mais para frente. <span class="hl">Agora não é o momento.</span> Por enquanto, cultuar só o Cobra Coral e a Dona Maria Caveira, e ir me afinizando.</p>
+    <div class="quem clear">
+      <p class="qt">Quem é ele · o que as casas contam</p>
+      <p>Exu Caveira é o senhor dos cemitérios, do Povo das Caveiras: o que recolhe as almas perdidas e as leva até o portão (a calunga). Não confundir com João Caveira nem com Tatá Caveira, que são outros. Pela proximidade com Obaluaê, além do <em>Laroyê</em> também se ouve <em>Atotô, Exu Caveira</em>. Dona Maria Caveira é da mesma falange: ela já está na minha porta, ele vem depois.</p>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 23 · OS MEUS CAMINHOS ======================= -->
+<section class="page" id="caminhos">
+  <div class="inner">
+    <div class="kick-row"><p class="kick">O que a mesa abriu</p><span class="mao">a casa e a fé</span></div>
+    <h1 class="t">Os meus caminhos</h1>
+    <svg class="flor" data-flor></svg>
+    <h3 class="ic">A casa que frequento</h3>
+    <div class="flt-r" style="width:34mm"><img src="img/p06.png" alt="" style="width:34mm;height:42mm;object-fit:contain"><span class="mao" style="font-size:9.8pt;display:block;line-height:1.2">a vela que vira<br>caminho de casa</span></div>
+    <p class="ni">É uma <span class="hl">casa de passagem</span>, não é para ficar muito tempo. Maria Caveira discorda de comportamentos do sacerdote e lá não vão permitir que eu a cultue como ela quer ser cultuada. Ela já me intuiu e mostrou. <span class="hl">É para eu ir me desvinculando.</span> Ela vai me mostrar outra casa: é só ter paciência.</p>
+    <h3 class="ic clear">O oráculo</h3>
+    <div style="display:flex;gap:3mm;align-items:center">
+      <img src="img/p_ng.png" alt="" style="width:34mm;height:34mm;object-fit:contain;flex:none">
+      <p class="ni small"><span class="hl">Ngombo.</span> Entre os povos bantos de Angola (chokwe, lunda), <em>ngombo</em> é o nome da adivinhação pelo cesto: o adivinho sacode um cesto raso com pequenos objetos de significado fixo (miniaturas de madeira, sementes, chifres, búzios) e lê a posição em que caem. Ngombo é também o espírito ancestral que guia a leitura. Dizem que os cestos só são tecidos por mulheres mais velhas. O prato de madeira com os búzios da Thali é bisneto disso.</p>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 24 · DE ONDE ELES VÊM ======================= -->
+<section class="page" id="origem">
+  <div class="inner">
+    <div class="kick-row"><p class="kick">Para entender</p><span class="mao">Angola e o Brasil</span></div>
+    <h1 class="t">De onde eles vêm</h1>
+    <svg class="flor" data-flor></svg>
+    <img src="img/p_mapa.png" alt="" style="display:block;width:74mm;height:46mm;object-fit:contain;margin:-1mm auto 1mm">
+    <div class="quem" style="margin-top:0">
+      <ul class="star small">
+        <li><b>A palavra.</b> Quimbanda vem do kimbundu, língua banta de Angola: <em>kimbanda</em> é o curandeiro, o sacerdote, o que sabe de folha e de cura. Em Angola, os kimbanda cuidavam da saúde do povo com o que a natureza dava. No Brasil a palavra foi virada do avesso e passou a nomear a "magia da esquerda", por preconceito e olhar cristão. A raiz é cura.</li>
+        <li><b>Exu e Pombagira.</b> Na África iorubá, Exu é o orixá da comunicação e dos caminhos, o que leva o recado. Viajantes europeus o demonizaram. Na Umbanda e na Quimbanda ele deixa de ser orixá e vira um espírito que já viveu, próximo da gente, que cuida das coisas da rua. Pombagira vem do kimbundu <em>pambu njila</em>, encruzilhada, passando por Bombonjira, um nome congo de Exu.</li>
+        <li><b>Calunga.</b> Do kimbundu <em>ka'lunga</em>: mar, imensidão. A Calunga Grande é o mar, para onde foram os que morreram na travessia; a Calunga Pequena é o cemitério. Os dois são lugares de passagem entre os mundos, e Obaluaê e Omulu são os donos da pequena. É daí que vem a Maria Caveira.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 25 · A QUIMBANDA QUE JOGA BÚZIOS ======================= -->
+<section class="page" id="origem-2">
+  <div class="inner">
+    <h3 class="ic" style="margin-top:0">A Quimbanda que joga búzios</h3>
+    <div class="quem" style="margin-top:1mm;border-top:none;padding-top:0">
+      <ul class="star small">
+        <li><b>Porto Alegre, anos 1950 e 60.</b> A Quimbanda como religião própria, com Exu Rei e Pombagira Rainha, se firmou no Rio Grande do Sul, chamada ali de Linha Cruzada, misturada ao Batuque afro-gaúcho. A casa de Mãe Ieda do Ogum, da Quimbanda de Exu Rei das Sete Encruzilhadas, é uma das referências.</li>
+        <li><b>Os sete reinos.</b> Encruzilhadas, Cruzeiro, Matas, Calunga, Almas, Lira e Praia. Cada reino tem um Exu Rei e uma Pombagira Rainha e se divide em nove povos: sessenta e três ao todo. É nesse mapa que a Maria Caveira é do Cruzeiro e o Cobra Coral é das Matas. Outras correntes desenham o mapa de outro jeito.</li>
+        <li><b>O jogo de búzios de Exu.</b> Vem do jogo africano de búzios, mas quem responde não são os orixás: são os Exus e as Pombagiras. É mais comum no Sul, na Argentina e no Uruguai. Conforme a casa, joga-se com 4, 7, 8 ou 21 búzios: aberto e fechado, positivo e negativo, "com porém".</li>
+        <li><b>Ngombo.</b> Não achei registro público de "Exu Ngombo"; deve ser fundamento da casa. Mas <em>ngombo</em>, entre os bantos de Angola, é a adivinhação pelo cesto e o espírito que a guia: um oráculo de Exu chamado Ngombo diz no nome o que faz.</li>
+        <li><b>Jurema.</b> A "ciência da Jurema" do Cobra Coral vem do Nordeste indígena: o catimbó-jurema, culto de mestres e caboclos e do "reino encantado" das cidades da Jurema, onde também moram exus e pombagiras.</li>
+      </ul>
+      <p class="fonte">fontes: Terra/UFF, Revista de Antropologia (USP), dissertações da UFRGS e da UnB, enciclopédias de terreiro e Wikipédia.</p>
+    </div>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 26 · OS CONSELHOS (abertura) ======================= -->
+<section class="page" id="conselhos">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:center">
+    <p class="kick c">Para reler sempre</p>
+    <h1 class="t c" style="font-size:46pt">Os conselhos</h1>
+    <svg class="flor c" data-flor></svg>
+    <p class="c" style="padding:0 6mm">O que a mesa e a Thali me aconselharam, juntado por assunto. Quando eu perder o foco, voltar aqui.</p>
+    <div class="moldura" style="margin-top:4mm">
+      <p class="mt">Palavras da Thali</p>
+      <p class="fala">"Cuidado com o seu mental, com a sua cabeça, e principalmente com a dependência da validação dos outros. Ela vai te ajudar a se desfazer disso.</p>
+      <p class="fala">Muita prosperidade, caminhos abertos. Foi um jogo muito bonito. Seu povo é muito presente, principalmente a Dona Maria Caveira. Cuida desse povo bonito que você tem, que sua vida vai deslanchar."</p>
+    </div>
+    <p class="c" style="font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;line-height:1.5;margin-top:3mm">Comigo mesma · O trabalho · O dinheiro<br>A cabeça e o corpo · As relações<br>O culto · O caminho</p>
+    <svg class="estrela" data-estrela></svg>
+  </div>
+  <div class="pnum"></div><div class="furo"></div>
+</section>
+
+<!-- ======================= 27 · CONSELHOS 1 ======================= -->
+<section class="page" id="conselhos-1">
+  <div class="inner">
+    <h3 class="ic" style="margin-top:0">Comigo mesma</h3>
+    <ul class="star">
+      <li><b>Validação, não.</b> Cuidar do mental, da cabeça, e principalmente da dependência da validação dos outros. A Dona Maria Caveira vai me ajudar a me desfazer disso.</li>
+      <li><b>Não viver mudando de ciclo.</b> Cuidado para não virar alguém sempre mudando de ciclo, de lugar e de pessoas.</li>
+      <li><b>A rotina que aprisiona.</b> Quando não sei lidar com a rotina, fico infeliz, irritada, brava com tudo.</li>
+      <li><b>Sem provar nada.</b> Agora não é hora de buscar conflito nem de provar quem eu sou.</li>
+    </ul>
+    <h3 class="ic">O trabalho</h3>
+    <ul class="star">
+      <li><b>Estudar mais.</b> Ter conhecimento e autoridade para falar.</li>
+      <li><b>Falar com estratégia.</b> Usar a comunicação de forma estratégica e assertiva.</li>
+      <li><b>Não absorver o que é nocivo.</b> Se alguém incomoda, fingir que não existe.</li>
+    </ul>
+    <h3 class="ic">O dinheiro</h3>
+    <ul class="star">
+      <li><b>Prosperar não ofende ninguém.</b> O pensamento de escassez e a sensação de que prosperar seria ofender quem da família não conseguiu são padrões de geração.</li>
+      <li><b>Fase de oscilações.</b> Cuidado com golpe, vício, manipulação de outras pessoas e ganhos de fonte que não é segura.</li>
+      <li><b>Não comprar para compensar.</b> Vício também é comprar para compensar um dia estressante.</li>
     </ul>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== DE ONDE ELES VÊM · 2 ===== -->
-<section class="page dense" id="po2">
+<!-- ======================= 28 · CONSELHOS 2 ======================= -->
+<section class="page" id="conselhos-2">
   <div class="inner">
-    <h1 style="font-size:17pt"><small>· continuação ·</small>A Quimbanda que joga búzios</h1>
-    <ul>
-      <li><b>Porto Alegre, anos 1950 e 60.</b> A Quimbanda como religião própria, com Exu Rei e Pombagira Rainha, se firmou no Rio Grande do Sul, chamada ali de Linha Cruzada, misturada ao Batuque afro-gaúcho. A casa de Mãe Ieda do Ogum, da Quimbanda de Exu Rei das Sete Encruzilhadas, é uma das referências.</li>
-      <li><b>Os sete reinos.</b> Encruzilhadas, Cruzeiro, Matas, Calunga, Almas, Lira e Praia. Cada reino tem um Exu Rei e uma Pombagira Rainha e se divide em nove povos: sessenta e três ao todo. É nesse mapa que a Maria Caveira é do Cruzeiro e o Cobra Coral é das Matas. Outras correntes desenham o mapa de outro jeito.</li>
-      <li><b>O jogo de búzios de Exu.</b> Vem do jogo africano de búzios, mas quem responde não são os orixás: são os Exus e as Pombagiras. É mais comum no Sul, na Argentina e no Uruguai. Conforme a casa, joga-se com 4, 7, 8 ou 21 búzios: aberto e fechado, positivo e negativo, "com porém".</li>
-      <li><b>Ngombo.</b> Não achei registro público de "Exu Ngombo"; deve ser fundamento da casa. Mas <em>ngombo</em>, entre os bantos de Angola, é a adivinhação pelo cesto e o espírito que a guia: um oráculo de Exu chamado Ngombo diz no nome o que faz.</li>
-      <li><b>Jurema.</b> A "ciência da Jurema" do Cobra Coral vem do Nordeste indígena: o catimbó-jurema, culto de mestres e caboclos e do "reino encantado" das cidades da Jurema, onde também moram exus e pombagiras.</li>
+    <h3 class="ic" style="margin-top:0">A cabeça e o corpo</h3>
+    <ul class="star">
+      <li><b>Dormir.</b> Atenção à privação de sono.</li>
+      <li><b>Cuidar do corpo.</b> Atividade física, ambientes e alimentação. Um corpo mal alimentado padece e não aguenta o trampo da vida.</li>
+      <li><b>Assentar o mutuê.</b> O banho de ervas frias, um dia fixo da semana, durante um mês.</li>
     </ul>
-    <p class="src" style="text-align:center">fontes: Terra/UFF, Revista de Antropologia (USP), dissertações da UFRGS e da UnB, enciclopédias de terreiro e Wikipédia.</p>
+    <h3 class="ic">As relações</h3>
+    <ul class="star">
+      <li><b>Rever o que se sustenta só pela rotina.</b> Rever amizades, família e trabalho.</li>
+      <li><b>Olhar os padrões da família.</b> As mulheres da família podem repetir padrões fortes com homens e relacionamentos.</li>
+    </ul>
+    <h3 class="ic">O culto</h3>
+    <ul class="star">
+      <li><b>Lembrar os Bacuros.</b> A cabeça só apazigua quando eu cultuar a minha ancestralidade.</li>
+      <li><b>A minha própria fé.</b> Não idealizar nem depender da espiritualidade nem da entidade dos outros.</li>
+      <li><b>Sem gracinha.</b> As minhas entidades são territorialistas.</li>
+    </ul>
+    <h3 class="ic">O caminho</h3>
+    <ul class="star">
+      <li><b>Ir me desvinculando.</b> A casa de agora é de passagem; ela vai me mostrar outra casa. É só ter paciência.</li>
+      <li><b>O Caveira depois.</b> Por enquanto, só o Cobra Coral e a Dona Maria Caveira.</li>
+    </ul>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 17 · RECADO FINAL ===== -->
-<section class="page" id="p17">
-  <div class="folio">página 17</div>
+<!-- ======================= 29 · O QUE FAZER ======================= -->
+<section class="page" id="fazer">
   <div class="inner">
-    <h1><small>· palavras da Thali ·</small>Recado final</h1>
-    <p class="quote">Cuidado com o seu mental, com a sua cabeça, e principalmente com a dependência da validação dos outros. Ela vai te ajudar a se desfazer disso.</p>
-    <p class="quote">Muita prosperidade, caminhos abertos. Foi um jogo muito bonito. Seu povo é muito presente, principalmente a Dona Maria Caveira. Cuida desse povo bonito que você tem, que sua vida vai deslanchar.</p>
-    <img class="ill" src="img/p17.png" alt="" style="width:117mm;height:78mm;margin:1mm auto 2mm">
-    <p>Qualquer dúvida (como fazer o banho, o agrado aos ancestrais, conferir se a oferenda ficou boa), posso chamar a Thali.</p>
+    <p class="kick">Para seguir</p>
+    <h1 class="t">O que fazer</h1>
+    <svg class="flor" data-flor></svg>
+    <ol class="num">
+      <li><b>O banho de ervas frias.</b> Um dia fixo da semana, durante um mês, depois do banho de higiene, da cabeça aos pés. Anotar no registro dos banhos.</li>
+      <li><b>Lembrar os Bacuros.</b> Fazer a lista dos nomes, por parte de mãe e de pai, e montar o agrado todo branco.</li>
+      <li><b>A Dona Maria Caveira.</b> O padê de dendê quente, a vela preta, a cigarrilha e o vinho seco. Cruzar a guia preta e amarela no dia da oferenda.</li>
+      <li><b>O Seu Cobra Coral.</b> O padê de dendê com farofa, a vela preta e verde, o cachimbo e a cachaça. Cruzar a guia preta e verde.</li>
+      <li><b>A casa.</b> Ir me desvinculando da casa de agora, com paciência: ela vai me mostrar outra.</li>
+      <li><b>O Caveira, mais pra frente.</b> Agora não é o momento.</li>
+    </ol>
+    <div class="moldura" style="margin-top:4mm">
+      <p class="mt">Perguntar à Thali</p>
+      <p>Qualquer dúvida, como fazer o banho, o agrado aos ancestrais ou conferir se a oferenda ficou boa, posso chamar a Thali.</p>
+    </div>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 18 · ANOTAÇÕES ===== -->
-<section class="page" id="p18">
-  <div class="folio">página 18</div>
-  <img class="ill buzio" src="img/buzio.png" alt="">
+<!-- ======================= 30 · O QUE COMPRAR ======================= -->
+<section class="page" id="comprar">
   <div class="inner">
-    <h1><small>· perguntas, sonhos e sinais ·</small>Anotações</h1>
-    <div class="ruled" style="height:144mm;margin-top:2mm"></div>
+    <p class="kick">Para ter em casa</p>
+    <h1 class="t">O que comprar</h1>
+    <svg class="flor" data-flor></svg>
+    <h3 style="margin-top:1mm">Para a Dona Maria Caveira</h3>
+    <div class="check">
+      <div>vela preta</div><div>cigarrilha</div><div>vinho seco</div><div>miçangas pretas e amarelas</div><div>azeite de dendê</div><div>farinha de mandioca</div><div>cebola e cebola branca</div><div>pimenta dedo-de-moça</div><div>bife de boi</div><div>rosas vermelhas</div><div>folha de pitanga</div>
+    </div>
+    <h3>Para o Seu Cobra Coral</h3>
+    <div class="check">
+      <div>vela bicolor preta e verde</div><div>cachimbo com fumo ou cigarro</div><div>cachaça</div><div>miçangas pretas e verdes</div><div>azeite de dendê</div><div>farinha de mandioca</div><div>bisteca</div><div>pimenta dedo-de-moça</div><div>pimenta malagueta</div><div>folha de mamona</div>
+    </div>
+    <h3>Para os Bacuros</h3>
+    <div class="check">
+      <div>vela branca</div><div>flores brancas</div><div>pano branco</div><div>o pratinho da comida do dia</div>
+    </div>
+    <h3>Para o banho</h3>
+    <div class="check">
+      <div>alecrim, boldo, hortelã (4 banhos)</div><div>coco seco</div><div>canjica branca</div>
+    </div>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-
-<!-- ===== ANOTAÇÕES EXTRA ===== -->
-<section class="page" id="pnotas0">
-  <img class="ill buzio" src="img/buzio.png" alt="" style="opacity:.8">
+<!-- ======================= 31 · ANOTAÇÕES ======================= -->
+<section class="page" id="anotacoes">
   <div class="inner">
-    <h1><small>· o que ela me mostrou ·</small>Anotações</h1>
-    <div class="ruled" style="height:144mm;margin-top:2mm"></div>
+    <p class="kick">Perguntas, sonhos e sinais</p>
+    <h1 class="t">Anotações</h1>
+    <svg class="flor" data-flor></svg>
+    <div class="pauta" style="height:136mm;margin-top:2mm"></div>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="pnum"></div><div class="furo"></div>
 </section>
 
-<!-- ===== 20 · CONTRACAPA ===== -->
-<section class="page" id="p20">
+<!-- ======================= 35 · FECHAMENTO ======================= -->
+<section class="page sem-num" id="fecho">
   <div class="inner" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
-    <img class="ill" src="img/buzio.png" alt="" style="width:30mm;height:30mm">
-    <img class="divider" src="img/divider.png" alt="" style="margin-top:4mm">
-    <p class="note" style="font-size:13pt;text-align:center;color:var(--ink-soft);margin-top:4mm">Cuida desse povo bonito que você tem,<br>que sua vida vai deslanchar.</p>
+    <img src="img/p17.png" alt="" style="width:100mm;height:66mm;object-fit:contain">
+    <svg class="estrela" data-estrela style="margin-top:6mm"></svg>
+    <p class="c mao red" style="font-size:14pt;line-height:1.5">Cuida desse povo bonito que você tem,<br>que sua vida vai deslanchar.</p>
   </div>
-  <div class="pnum"></div>
-  <div class="furos"></div>
+  <div class="furo"></div>
 </section>
 
+<!-- ======================= 36 · CONTRACAPA ======================= -->
+<section class="page sem-num" id="contracapa">
+  <div class="inner" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+    <div class="medalhao" style="width:80mm;height:80mm" data-medalhao></div>
+    <p class="c" style="font-family:'Tangerine';font-weight:700;font-size:30pt;color:var(--ink2);margin-top:6mm">Grimório dos meus Exus</p>
+  </div>
+  <div class="furo"></div>
+</section>
+
+<script>
+// modo de construção (impressão) via ?modo=construcao
+if (new URLSearchParams(location.search).get('modo')==='construcao') document.body.classList.add('construcao');
+
+const RED='#9e3b28', INK='#5b4a3d';
+// floreio sob o título
+document.querySelectorAll('svg[data-flor]').forEach(s=>{
+  s.setAttribute('viewBox','0 0 300 14');
+  s.innerHTML=`<path d="M2 9.5 C 70 8, 150 10.6, 232 8.6 C 243 8.3, 250 4.4, 246 2.6 C 241.5 .8, 238 6.4, 245 9.2 C 252 11.6, 272 9.6, 298 9.4" fill="none" stroke="${RED}" stroke-width="1.1" stroke-linecap="round"/><path d="M8 12.2 C 80 11.2, 160 12.8, 226 11.8" fill="none" stroke="${RED}" stroke-width=".55" stroke-linecap="round" opacity=".8"/>`;
+});
+// divisor com estrela
+document.querySelectorAll('svg[data-estrela]').forEach(s=>{
+  s.setAttribute('viewBox','0 0 120 12');
+  s.innerHTML=`<g fill="${RED}" stroke="${RED}" stroke-width=".8"><line x1="4" y1="6" x2="49" y2="6"/><circle cx="52" cy="6" r="1.1" stroke="none"/><path d="M60 0 L61.6 4.4 L66 6 L61.6 7.6 L60 12 L58.4 7.6 L54 6 L58.4 4.4Z" stroke="none"/><circle cx="68" cy="6" r="1.1" stroke="none"/><line x1="71" y1="6" x2="116" y2="6"/></g>`;
+});
+// medalhão: anel de marcas, círculo vermelho, quadrado e losango, texto em volta e a arte no centro
+document.querySelectorAll('[data-medalhao]').forEach(m=>{
+  const C=200, R1=192, R2=178, Rt=160, Rr=146;
+  let ticks='';
+  for(let i=0;i<120;i++){const a=i*Math.PI*2/120, l=(i%5===0)?11:6;
+    ticks+=`<line x1="${C+Math.cos(a)*R1}" y1="${C+Math.sin(a)*R1}" x2="${C+Math.cos(a)*(R1-l)}" y2="${C+Math.sin(a)*(R1-l)}"/>`;}
+  const sq=Rr*Math.SQRT1_2;
+  const pts=[0,90,180,270].map(d=>{const a=d*Math.PI/180;return [C+Math.cos(a)*Rr,C+Math.sin(a)*Rr]});
+  const centro = m.dataset.centro || 'img/emblema-provisorio.png';
+  m.innerHTML=`<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <path id="arcTop" d="M ${C-Rt},${C} A ${Rt},${Rt} 0 0 1 ${C+Rt},${C}"/>
+      <path id="arcBot" d="M ${C-Rt+8},${C} A ${Rt-8},${Rt-8} 0 0 0 ${C+Rt-8},${C}"/>
+    </defs>
+    <circle cx="${C}" cy="${C}" r="${R1}" fill="none" stroke="${INK}" stroke-width="1.6"/>
+    <g stroke="${INK}" stroke-width="1">${ticks}</g>
+    <circle cx="${C}" cy="${C}" r="${R2}" fill="none" stroke="${INK}" stroke-width=".8"/>
+    <circle cx="${C}" cy="${C}" r="${Rr}" fill="none" stroke="${RED}" stroke-width="1.1"/>
+    <g fill="none" stroke="${INK}" stroke-width=".7" opacity=".7">
+      <rect x="${C-sq}" y="${C-sq}" width="${2*sq}" height="${2*sq}"/>
+      <polygon points="${pts.map(p=>p.join(',')).join(' ')}"/>
+    </g>
+    <g stroke="${INK}" stroke-width=".5" stroke-dasharray="3 4" opacity=".55"><line x1="${C}" y1="${C-Rr}" x2="${C}" y2="${C+Rr}"/><line x1="${C-Rr}" y1="${C}" x2="${C+Rr}" y2="${C}"/></g>
+    ${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.2" fill="${RED}"/>`).join('')}
+    <text font-family="Fondamento" font-style="italic" font-size="15.5" fill="${RED}" letter-spacing=".4"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">Pombagira Maria Caveira ✦ Exu Cobra Coral</textPath></text>
+    <text font-family="Fondamento" font-style="italic" font-size="15.5" fill="${RED}" letter-spacing=".4" dominant-baseline="hanging"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">Cruzeiro de Mata ✦ Rio das Matas</textPath></text>
+    <image href="${centro}" x="${C-118}" y="${C-118}" width="236" height="236" preserveAspectRatio="xMidYMid meet"/>
+  </svg>`;
+});
+</script>
 </body>
 </html>

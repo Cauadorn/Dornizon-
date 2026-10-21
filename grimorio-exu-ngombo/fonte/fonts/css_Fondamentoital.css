@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Fondamento';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/fondamento/v22/4UaFrEJGsxNmFTPDnkaJ96_p4g.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fondamento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/fondamento/v22/4UaHrEJGsxNmFTPDnkaJx60.ttf) format('truetype');
+}
