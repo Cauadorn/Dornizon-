@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Badauê · Vitória-régia</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+  body { display: flex; gap: 0; width: max-content; }
+  body.grade { gap: 40px; padding: 40px; background: #0d0d0d; }
+</style>
+</head>
+<body>
+<script type="module">
+  import { LAMINAS } from './textos.js';
+  import { logoSVG } from './logo.js';
+  import { buildScene, W } from './cena.js';
+
+  const q = new URLSearchParams(location.search);
+  const forcarVetor = q.has('vetor');
+  if (q.has('grade')) document.body.classList.add('grade');
+
+  const cena = buildScene(0, { estatico: true });
+  const recorte = (k) => cena.replace(/viewBox="[^"]*"/, `viewBox="${k * W} 0 ${W} 1350"`).replace(/width="\d+" height="\d+"/, 'width="1080" height="1350"');
+
+  const carregou = [];
+  LAMINAS.forEach((l, k) => {
+    const s = document.createElement('section');
+    s.className = 'lamina';
+    s.id = l.nome;
+    const veus = l.pos === 'topo-base' ? '<div class="veu topo"></div><div class="veu base"></div>'
+      : l.pos === 'centro' ? '<div class="veu centro"></div>' : '<div class="veu topo"></div>';
+    s.innerHTML = `<div class="fundo"></div>${veus}
+      ${l.pos === 'centro' ? '' : `<div class="marca">${logoSVG('currentColor', 30)}</div>`}
+      <div class="conteudo">${l.html.replace('{{LOGO}}', logoSVG('currentColor', 150))}</div>`;
+    document.body.appendChild(s);
+    const fundo = s.querySelector('.fundo');
+    const vetor = () => { fundo.innerHTML = recorte(k); };
+    if (forcarVetor) { vetor(); return; }
+    const img = new Image();
+    carregou.push(new Promise((ok) => {
+      img.onload = () => { fundo.appendChild(img); ok(); };
+      img.onerror = () => { vetor(); ok(); };
+    }));
+    img.src = `imagens/${String(k + 1).padStart(2, '0')}.jpg`;
+  });
+
+  await Promise.all(carregou);
+  await document.fonts.ready;
+  window.READY = true;
+</script>
+</body>
+</html>
