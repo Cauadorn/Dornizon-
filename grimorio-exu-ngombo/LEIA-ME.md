@@ -11,7 +11,8 @@ Mesmo formato do "Grimório dos Exus" do Cauã (estrutura, tipografia, molduras,
 - `versao-anterior/` — a versão anterior do grimório (32 páginas).
 
 ## Capa
-O centro do medalhão está provisório. Para trocar: salvar a arte do Gemini como `fonte/img/emblema.png` (fundo branco ou transparente) e, no HTML, trocar `img/emblema-provisorio.png` por `img/emblema.png`.
+O centro do medalhão é a arte do Gemini: `fonte/img/emblema.png`, com fundo transparente. O original está em `fonte/img_raw/emblema_gemini.webp`.
+
 ## Montagem das folhas (modo de construção)
 | Folha | Frente (esq. \| dir.) | Verso (esq. \| dir.) |
 |---|---|---|
