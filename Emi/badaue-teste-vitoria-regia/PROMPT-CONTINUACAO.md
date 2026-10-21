@@ -46,6 +46,12 @@ Desenvolver um **novo layout para o carrossel** do post https://www.instagram.co
 4. Ela quer coisas bonitas e não óbvias. Siga a análise do briefing para fugir dos clichês.
 
 ## O que já existe
+**Antes de tudo, baixe os arquivos.** Todas as referências (imagens, GIFs, PDF, logo) estão no GitHub:
+```
+git clone https://github.com/Cauadorn/Dornizon-.git && cd Dornizon- && git checkout claude/instagram-video-transcription-f82k8p
+```
+(Se o repositório já estiver clonado: `git fetch origin && git checkout claude/instagram-video-transcription-f82k8p && git pull`.) **Abra e olhe as imagens de referência** antes de propor qualquer coisa.
+
 O repositório é `Cauadorn/Dornizon-`, na branch `claude/instagram-video-transcription-f82k8p`, pasta **`Emi/badaue-teste-vitoria-regia/`**:
 - `README.md`: a análise completa do briefing. Leia primeiro.
 - `briefing/email-segunda-etapa-badaue.pdf`: o e-mail original.
