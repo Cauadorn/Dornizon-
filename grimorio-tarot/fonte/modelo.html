@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Grimório do Tarot · Arcanos Menores</title>
+<style>
+@font-face{font-family:'Fell';font-style:normal;src:url(fonts/2sDGZGRQotv9nbn2qSl0TxXVYNw9ZA.ttf)}
+@font-face{font-family:'Fell';font-style:italic;src:url(fonts/2sDEZGRQotv9nbn2qSl0TxXVYNwNZgnQ.ttf)}
+@font-face{font-family:'Fondamento';font-style:italic;src:url(fonts/4UaFrEJGsxNmFTPDnkaJ96_p4g.ttf)}
+@font-face{font-family:'Fondamento';font-style:normal;src:url(fonts/4UaHrEJGsxNmFTPDnkaJx60.ttf)}
+@font-face{font-family:'Tangerine';font-weight:700;src:url(fonts/Iurd6Y5j_oScZZow4VO5srNpjA.ttf)}
+@font-face{font-family:'Aurore';src:url(fonts/RrQIbot8-mNYKnGNDkWlocovHeIIGw.ttf)}
+
+:root{
+  --ink:#36271d; --ink2:#5b4a3d; --ink3:#8a7a6c;
+  --red:#9e3b28; --red2:rgba(158,59,40,.55); --rule:rgba(90,70,55,.38);
+  --paper:#ece4d4;
+  --tw:107mm;            /* largura do texto: igual nos dois modos */
+}
+@page{size:148mm 210mm;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#777}
+body{font-family:'Fell',serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11pt;line-height:1.42}
+
+/* ---------- página ---------- */
+.page{position:relative;width:148mm;height:210mm;overflow:hidden;margin:0 auto 6mm;page-break-after:always;break-after:page;background:var(--paper)}
+.page::before{ /* marcas de papel envelhecido em branco */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 30mm 22mm at 8% 6%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 26mm 34mm at 96% 94%, rgba(255,255,255,.45), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 40mm 18mm at 70% 3%, rgba(255,255,255,.35), rgba(255,255,255,0) 70%),
+    radial-gradient(ellipse 18mm 30mm at 2% 70%, rgba(255,255,255,.35), rgba(255,255,255,0) 70%);
+}
+.page::after{ /* anel de mancha, em branco, muda de lugar */
+  content:"";position:absolute;width:44mm;height:44mm;border-radius:50%;pointer-events:none;
+  border:1.6mm solid rgba(255,255,255,.42);filter:blur(.7mm);
+  top:-12mm;left:-14mm;
+}
+.page:nth-of-type(3n)::after{top:auto;bottom:-16mm;left:auto;right:-12mm;width:52mm;height:52mm}
+.page:nth-of-type(3n+1)::after{top:118mm;left:-30mm;width:48mm;height:48mm}
+.page:nth-of-type(4n)::after{display:none}
+
+.inner{position:absolute;top:15mm;bottom:16mm;width:var(--tw);left:calc((148mm - var(--tw)) / 2);z-index:2}
+.pnum{position:absolute;bottom:8.5mm;font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;z-index:2}
+.page:nth-of-type(odd) .pnum{right:calc((148mm - var(--tw)) / 2)}
+.page:nth-of-type(even) .pnum{left:calc((148mm - var(--tw)) / 2)}
+.pnum::after{content:counter(pg)}
+body{counter-reset:pg} .page{counter-increment:pg}
+.sem-num .pnum{display:none}
+.furo{display:none}
+
+/* ---------- modo construção (impressão): sem fundo, faixa da dobra ---------- */
+body.construcao .page{background:#fff}
+body.construcao .page::before,body.construcao .page::after{display:none}
+body.construcao .page:nth-of-type(odd) .inner{left:27mm}
+body.construcao .page:nth-of-type(even) .inner{left:14mm}
+body.construcao .page:nth-of-type(odd) .pnum{right:14mm}
+body.construcao .page:nth-of-type(even) .pnum{left:14mm}
+body.construcao .furo{display:block;position:absolute;top:12mm;bottom:12mm;width:.3mm;background:repeating-linear-gradient(to bottom, rgba(90,70,55,.35) 0 2.2mm, transparent 2.2mm 4mm);z-index:1}
+body.construcao .page:nth-of-type(odd) .furo{left:24mm}
+body.construcao .page:nth-of-type(even) .furo{right:24mm}
+
+/* ---------- tipografia ---------- */
+.kick{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:11pt;line-height:1.1;margin:0}
+.kick-row{display:flex;justify-content:space-between;align-items:baseline}
+.kick-row .mao{font-size:10.5pt}
+.mao{font-family:'Aurore',cursive;color:var(--ink3);font-size:11pt;line-height:1.35;margin:0}
+.mao.red{color:var(--red)}
+h1.t{font-family:'Tangerine';font-weight:700;font-size:42pt;line-height:.95;margin:.5mm 0 0;color:var(--ink);letter-spacing:.2pt}
+h1.t.c{text-align:center}
+.flor{display:block;width:62mm;height:4mm;margin:.5mm 0 3mm}
+.flor.c{margin-left:auto;margin-right:auto}
+h3{font-family:'Fondamento';font-style:italic;font-weight:400;color:var(--red);font-size:13pt;margin:4mm 0 1mm;line-height:1.2}
+h3.ic{border-top:.3mm solid var(--rule);padding-top:2.2mm;display:flex;align-items:center;gap:2mm}
+h3.ic::before{content:"";width:3mm;height:3mm;flex:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 0 L6.2 3.8 L10 5 L6.2 6.2 L5 10 L3.8 6.2 L0 5 L3.8 3.8Z' fill='%239e3b28'/></svg>") center/contain no-repeat}
+p{margin:0 0 1.2mm;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+p+p{text-indent:5mm}
+p.ni,p.c{text-indent:0}
+p.c{text-align:center}
+.hl{color:var(--red)}
+.cap{float:left;font-family:'Tangerine';font-weight:700;color:var(--red);font-size:58pt;line-height:.72;margin:1.2mm 1.6mm 0 -.5mm}
+.small{font-size:10.2pt;line-height:1.38}
+
+ul.star{list-style:none;margin:1mm 0 1.5mm;padding:0}
+ul.star li{position:relative;padding-left:4.4mm;margin:0 0 .9mm;text-align:left;hyphens:auto;-webkit-hyphens:auto}
+ul.star li::before{content:"";position:absolute;left:.2mm;top:.42em;width:2.4mm;height:2.4mm;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 0 L6.2 3.8 L10 5 L6.2 6.2 L5 10 L3.8 6.2 L0 5 L3.8 3.8Z' fill='%239e3b28'/></svg>") center/contain no-repeat}
+ul.star.sombra li::before{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M5 .8 L6 4 L9.2 5 L6 6 L5 9.2 L4 6 L.8 5 L4 4Z' fill='none' stroke='%235b4a3d' stroke-width='.9'/></svg>")}
+ul.star li b{font-weight:400;color:var(--red)}
+
+table.ficha{width:100%;border-collapse:collapse;margin:1mm 0 0}
+table.ficha td{border-bottom:.3mm solid var(--rule);padding:1.1mm 1mm .9mm 0;vertical-align:top;line-height:1.3}
+table.ficha tr:first-child td{border-top:.3mm solid var(--rule)}
+table.ficha td.l{font-family:'Aurore',cursive;color:var(--red);width:15mm;font-size:1.02em;padding-top:1.3mm}
+
+.moldura{border:.35mm solid var(--red);outline:.25mm solid var(--red2);outline-offset:.9mm;padding:2.2mm 3.5mm 1.6mm;margin:3.2mm .9mm 3mm}
+.moldura .mt{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:1.05em;margin:0 0 .6mm;text-indent:0}
+.moldura .fala{font-style:italic;text-align:left;line-height:1.36;text-indent:0;font-size:1.08em}
+
+.pauta{background-image:repeating-linear-gradient(to bottom, transparent 0, transparent calc(8mm - .3mm), var(--rule) calc(8mm - .3mm), var(--rule) 8mm)}
+
+/* ---------- capa ---------- */
+.capa .inner{text-align:center}
+.linha-nome{width:70mm;margin:9mm auto 0;border-bottom:.35mm solid var(--ink2)}
+
+/* ---------- como ler ---------- */
+.esquema{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:3mm 0 3mm}
+.folha{border:.3mm solid var(--ink2);padding:2.5mm 3mm 2mm;position:relative;background:rgba(255,255,255,.18)}
+.folha .ft{font-family:'Aurore',cursive;color:var(--ink3);font-size:10pt;margin:0;text-align:left}
+.folha .fs{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;margin:0 0 1mm;text-indent:0;text-align:left}
+.folha ul{margin:0;padding-left:4mm;font-size:10pt;line-height:1.35}
+.nrow{display:grid;grid-template-columns:12mm 1fr auto;gap:3mm;align-items:center;border-bottom:.3mm solid var(--rule);padding:1.6mm 0}
+.naipe.mini{width:12mm;height:12mm}
+.nrow .nn{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12.5pt;margin:0;text-indent:0;text-align:left}
+.nrow .ne{font-family:'Fell';font-style:normal;color:var(--ink2);font-size:10pt;margin-left:2mm}
+.nrow .nd{margin:0;font-size:10.2pt;text-indent:0;text-align:left;color:var(--ink2)}
+.nrow .np{font-family:'Fondamento';font-style:italic;color:var(--red);margin:0;text-indent:0}
+svg.el{width:3.2mm;height:2.9mm;vertical-align:-.2mm;display:inline-block}
+
+/* ---------- abertura do naipe ---------- */
+.abre{top:24mm}
+.naipe.grande{display:block;width:52mm;height:52mm;margin:4mm auto 5mm}
+.el-linha{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:13pt;margin:0}
+.el-linha svg.el{width:4.4mm;height:4mm;vertical-align:-.3mm}
+.abre-txt{font-size:11pt;line-height:1.45;margin:4mm 4mm 0}
+table.indice{width:100%;border-collapse:collapse;margin-top:1mm}
+table.indice td{border-bottom:.3mm solid var(--rule);padding:1.05mm 1mm .85mm 0;vertical-align:baseline;font-size:9.6pt;line-height:1.25}
+table.indice tr.th td{font-family:'Aurore',cursive;color:var(--ink3);font-size:9.5pt;border-bottom:.3mm solid var(--ink2)}
+table.indice .cn{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:10.6pt;margin-right:1.8mm;white-space:nowrap}
+table.indice .kw{color:var(--ink2)}
+table.indice td.s{width:12mm;text-align:center;font-style:italic}
+table.indice td.pg{width:8mm;text-align:right;font-family:'Fondamento';font-style:italic;color:var(--red)}
+
+/* ---------- carta: página da esquerda ---------- */
+.fit{font-size:var(--fs,10.4pt);line-height:1.36}
+.carta-esq .inner,.carta-dir .inner{top:13mm;bottom:14.5mm}
+.fit h1.t{font-size:40pt}
+.topo{display:grid;grid-template-columns:var(--cw,42mm) 1fr;gap:4.5mm;align-items:start}
+figure.carta{margin:0;padding:1.2mm;border:.3mm solid var(--ink2);background:rgba(255,255,255,.35);position:relative}
+figure.carta::after{content:"";position:absolute;inset:-1.2mm;border:.25mm solid var(--red2);pointer-events:none}
+figure.carta img{display:block;width:100%;border-radius:1.2mm;filter:sepia(.18) saturate(.88) contrast(.98)}
+.dados .rot{font-family:'Aurore',cursive;color:var(--ink3);margin:0 0 .4mm;font-size:1em;text-indent:0}
+.simnao{display:flex;gap:3.2mm;margin:0 0 2.2mm;text-indent:0;font-family:'Fondamento';font-style:italic;font-size:1.12em;color:var(--ink3)}
+.sn{position:relative;padding:0 .6mm}
+.sn.on{color:var(--ink)}
+.sn svg{position:absolute;left:-2.6mm;right:-2.6mm;top:-1.4mm;bottom:-1.6mm;width:calc(100% + 5.2mm);height:calc(100% + 3mm)}
+.gl{font-family:'DejaVu Sans',sans-serif;color:var(--red);font-size:.95em;margin-right:.6mm}
+td.tempo{font-size:.94em}
+.luzsombra{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+h3.ls{font-size:1.18em;margin:0 0 .8mm;border-bottom:.3mm solid var(--rule);padding-bottom:.6mm}
+h3.ls.sombra{color:var(--ink2)}
+.luzsombra ul.star{margin:0}
+.luzsombra li{font-size:.97em;line-height:1.3}
+
+/* ---------- carta: página da direita ---------- */
+.arq{font-style:italic;color:var(--ink2);border-left:.6mm solid var(--red2);padding:.2mm 0 .2mm 3mm;margin:2mm 0 2.4mm;text-indent:0;text-align:left;line-height:1.34}
+ul.simb{margin-top:2mm}
+ul.simb li{font-size:.95em;line-height:1.29;margin-bottom:.8mm;text-align:justify}
+.fit h3.ic{font-size:1.15em;margin:2.4mm 0 1.2mm}
+.cores{display:grid;grid-template-columns:1fr 1fr;gap:1.4mm 4.5mm}
+.cor{display:flex;gap:2mm;align-items:flex-start}
+.cor .dot{flex:none;width:3.8mm;height:3.8mm;border-radius:50%;border:.3mm solid var(--ink2);margin-top:.5mm;box-shadow:inset 0 0 0 .5mm rgba(255,255,255,.25)}
+.cor p{margin:0;font-size:.88em;line-height:1.28;text-align:left;text-indent:0}
+.cor b{font-weight:400;color:var(--red)}
+.pratica{display:grid;grid-template-columns:1.55fr 1fr;gap:5mm;border-top:.3mm solid var(--rule);margin-top:3mm;padding-top:2mm}
+.pratica .pt{font-family:'Fondamento';font-style:italic;color:var(--red);margin:0 0 .5mm;text-indent:0;font-size:1.05em}
+.pratica p{font-size:.9em;line-height:1.3;text-indent:0;text-align:left;margin:0}
+.pratica .nt{color:var(--red);font-style:italic}
+.carta-esq .bloco-cores{margin-top:1mm}
+.carta-esq .pratica{margin-top:3.5mm}
+</style>
+</head>
+<body>
+<!--PAGINAS-->
+<script>
+if (new URLSearchParams(location.search).get('modo')==='construcao') document.body.classList.add('construcao');
+const RED='#9e3b28';
+document.querySelectorAll('svg[data-flor]').forEach(s=>{
+  s.setAttribute('viewBox','0 0 300 14');
+  s.innerHTML=`<path d="M2 9.5 C 70 8, 150 10.6, 232 8.6 C 243 8.3, 250 4.4, 246 2.6 C 241.5 .8, 238 6.4, 245 9.2 C 252 11.6, 272 9.6, 298 9.4" fill="none" stroke="${RED}" stroke-width="1.1" stroke-linecap="round"/><path d="M8 12.2 C 80 11.2, 160 12.8, 226 11.8" fill="none" stroke="${RED}" stroke-width=".55" stroke-linecap="round" opacity=".8"/>`;
+});
+// ajuste: diminui a letra (e a carta) até caber na página
+window.ajustar = function(){
+  const over = el => { const r = el.getBoundingClientRect().bottom; let m = 0;
+    el.querySelectorAll('*').forEach(c => { const b = c.getBoundingClientRect(); if (b.height > 0) m = Math.max(m, b.bottom); }); return m - r; };
+  const caber = el => {
+    let fs = 10.4, cw = 42;
+    el.style.setProperty('--fs', fs + 'pt'); el.style.setProperty('--cw', cw + 'mm');
+    while (over(el) > 0 && fs > 8.2) { fs = +(fs - .2).toFixed(1); el.style.setProperty('--fs', fs + 'pt'); if (cw > 36) { cw -= 1; el.style.setProperty('--cw', cw + 'mm'); } }
+    el.dataset.fs = fs; return fs;
+  };
+  // se a página da direita aperta, tenta levar a prática ou as cores para a esquerda e fica com a melhor opção
+  document.querySelectorAll('.carta-dir .inner.fit').forEach(dir => {
+    const esq = dir.closest('.page').previousElementSibling.querySelector('.inner.fit');
+    const vaga = esq.querySelector('.vaga-cores');
+    const blocos = ['.bloco-cores', '.pratica'].map(q => dir.querySelector(q));
+    const casa = blocos.map(b => [b.parentNode, b.nextSibling]);
+    const nota = () => { const a = caber(esq), b = caber(dir); return (over(esq) <= 0 && over(dir) <= 0 ? 100 : 0) + Math.min(a, b); };
+    const montar = op => {
+      blocos.forEach((b, i) => casa[i][0].insertBefore(b, casa[i][1]));
+      op.forEach(i => vaga.appendChild(blocos[i]));
+    };
+    const ops = [[], [1], [0], [0, 1]]; let melhor = null, nm = -1;
+    for (const op of ops) { montar(op); const n = nota(); if (n > nm + .01) { nm = n; melhor = op; } if (n >= 109.4) break; }
+    montar(melhor); nota();
+  });
+};
+document.fonts.ready.then(() => { window.ajustar(); document.body.dataset.pronto = 1; });
+</script>
+</body>
+</html>
