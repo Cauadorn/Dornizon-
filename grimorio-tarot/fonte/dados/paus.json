@@ -96,7 +96,49 @@
   "elemento": "Fogo",
   "planeta": "Sol",
   "zodiaco": "Áries, Leão e Sagitário",
-  "tempo": "Imediato"
+  "tempo": "Imediato",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Folhas no cajado",
+    "sentido": "vida e crescimento",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Mão da nuvem",
+    "sentido": "dom divino",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Castelo ao fundo",
+    "sentido": "meta futura",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Rio",
+    "sentido": "movimento e emoções",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Bastão erguido",
+    "sentido": "fogo e vontade",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Aura da mão",
+    "sentido": "inspiração vital",
+    "icone": "sol"
+   },
+   {
+    "rotulo": "Montanhas",
+    "sentido": "desafios e superação",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Horizonte",
+    "sentido": "expansão e liberdade",
+    "icone": "caminho"
+   }
+  ]
  },
  {
   "pagina_pdf": 15,
@@ -193,7 +235,44 @@
   "elemento": "Fogo",
   "planeta": "Marte",
   "zodiaco": "Áries (1º decanato)",
-  "tempo": "Imediato se agir agora"
+  "tempo": "Imediato se agir agora",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Globo na mão",
+    "sentido": "poder de escolha",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Duas varas",
+    "sentido": "segurança x risco",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Vestimentas",
+    "sentido": "energia e visão",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Cruz pátea",
+    "sentido": "proteção e fé",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Homem no castelo",
+    "sentido": "desejo de expandir",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Castelo e muralha",
+    "sentido": "posição sólida",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Paisagem ampla",
+    "sentido": "futuro vasto",
+    "icone": "montanha"
+   }
+  ]
  },
  {
   "pagina_pdf": 16,
@@ -282,7 +361,44 @@
   "elemento": "Fogo",
   "planeta": "Sol",
   "zodiaco": "Áries (2º decanato)",
-  "tempo": "Resultados a caminho, chegando em breve — geralmente dentro de 3 semanas."
+  "tempo": "Resultados a caminho, chegando em breve — geralmente dentro de 3 semanas.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Céu amarelo",
+    "sentido": "clareza e confiança",
+    "icone": "sol"
+   },
+   {
+    "rotulo": "Vestimentas",
+    "sentido": "líder preparado",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Montanhas",
+    "sentido": "desafios futuros",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Rio amarelo",
+    "sentido": "prosperidade e expansão",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Figura de costas",
+    "sentido": "olha para o futuro",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Três bastões",
+    "sentido": "base e expansão",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Navios no mar",
+    "sentido": "frutos a caminho",
+    "icone": "barco"
+   }
+  ]
  },
  {
   "pagina_pdf": 17,
@@ -374,7 +490,44 @@
   "elemento": "Fogo",
   "planeta": "Vênus",
   "zodiaco": "Áries (3º decanato)",
-  "tempo": "Está muito próximo — algo em torno de 4 semanas ou no período de abril, tempo de celebração e conquista."
+  "tempo": "Está muito próximo — algo em torno de 4 semanas ou no período de abril, tempo de celebração e conquista.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Quatro bastões",
+    "sentido": "celebração e vitória",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Castelo",
+    "sentido": "segurança e proteção",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Outras pessoas",
+    "sentido": "alegria coletiva",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Céu amarelo",
+    "sentido": "alegria e vitalidade",
+    "icone": "sol"
+   },
+   {
+    "rotulo": "Flores e frutos",
+    "sentido": "conquista fértil",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "Figuras dançando",
+    "sentido": "união e alegria",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Arbustos",
+    "sentido": "harmonia com a natureza",
+    "icone": "arvore"
+   }
+  ]
  },
  {
   "pagina_pdf": 18,
@@ -454,7 +607,39 @@
   "elemento": "Fogo",
   "planeta": "Saturno",
   "zodiaco": "Leão (1º decanato)",
-  "tempo": "Leva um pouco mais de tempo, porque há obstáculos e disputas antes da realização."
+  "tempo": "Leva um pouco mais de tempo, porque há obstáculos e disputas antes da realização.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Cinco jovens",
+    "sentido": "conflito e rivalidade",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Roupas coloridas",
+    "sentido": "falta de unidade",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Grama parcial",
+    "sentido": "fértil mas instável",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Cinco bastões",
+    "sentido": "competição e desafios",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Céu claro",
+    "sentido": "conflito sem tragédia",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Posturas",
+    "sentido": "energia dispersa",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 19,
@@ -535,7 +720,29 @@
   "elemento": "Fogo",
   "planeta": "Júpiter",
   "zodiaco": "Leão (2º decanato)",
-  "tempo": "Prestes a ser reconhecido, portanto geralmente fala de um tempo curto ou intermediário"
+  "tempo": "Prestes a ser reconhecido, portanto geralmente fala de um tempo curto ou intermediário",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Bastão com louros",
+    "sentido": "triunfo e honra",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Multidão ao fundo",
+    "sentido": "apoio e aplauso",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Louros na cabeça",
+    "sentido": "vitória pessoal",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Cavaleiro a cavalo",
+    "sentido": "vitória legítima",
+    "icone": "animal"
+   }
+  ]
  },
  {
   "pagina_pdf": 20,
@@ -616,7 +823,39 @@
   "elemento": "Fogo",
   "planeta": "Marte",
   "zodiaco": "Leão (3º decanato)",
-  "tempo": "Leva um pouco mais de tempo, pois exige resistência e superação antes da conquista"
+  "tempo": "Leva um pouco mais de tempo, pois exige resistência e superação antes da conquista",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Figura central",
+    "sentido": "coragem e firmeza",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Vestes",
+    "sentido": "vitalidade e confiança",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Sapatos diferentes",
+    "sentido": "falta de preparo",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Céu claro",
+    "sentido": "conflito aberto",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Sete bastões",
+    "sentido": "rivais e pressões",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Colina",
+    "sentido": "vantagem estratégica",
+    "icone": "montanha"
+   }
+  ]
  },
  {
   "pagina_pdf": 21,
@@ -687,7 +926,29 @@
   "elemento": "Fogo",
   "planeta": "Mercúrio",
   "zodiaco": "Sagitário (1º decanato)",
-  "tempo": "Curto prazo - uma semana."
+  "tempo": "Curto prazo - uma semana.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Céu aberto",
+    "sentido": "clareza e otimismo",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Colinas verdes",
+    "sentido": "terreno fértil",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Bastões voando",
+    "sentido": "movimento rápido",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Rio fluindo",
+    "sentido": "fluxo natural",
+    "icone": "agua"
+   }
+  ]
  },
  {
   "pagina_pdf": 22,
@@ -765,7 +1026,29 @@
   "elemento": "Fogo",
   "planeta": "Lua",
   "zodiaco": "Sagitário (2º decanato)",
-  "tempo": "9 de Paus mostra que leva mais tempo, pois exige resistência antes da conquista."
+  "tempo": "9 de Paus mostra que leva mais tempo, pois exige resistência antes da conquista.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Homem ferido",
+    "sentido": "dor e resiliência",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Paisagem árida",
+    "sentido": "esforço e dureza",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Nove bastões",
+    "sentido": "proteção e peso",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Olhar vigilante",
+    "sentido": "espera desafios",
+    "icone": "olho"
+   }
+  ]
  },
  {
   "pagina_pdf": 23,
@@ -846,7 +1129,29 @@
   "elemento": "Fogo",
   "planeta": "Saturno",
   "zodiaco": "Sagitário (3º decanato)",
-  "tempo": "A realização vem mais tarde, depois de esforço e paciência"
+  "tempo": "A realização vem mais tarde, depois de esforço e paciência",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Dez bastões",
+    "sentido": "carga excessiva",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Terra fértil",
+    "sentido": "potencial de frutos",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Homem curvado",
+    "sentido": "sobrecarga e esforço",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Casa ao fundo",
+    "sentido": "objetivo final",
+    "icone": "castelo"
+   }
+  ]
  },
  {
   "pagina_pdf": 48,
@@ -932,7 +1237,39 @@
   "elemento": "Fogo",
   "planeta": "Marte",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (fogo). Corresponde aos signos de Áries - Leão - Sagitário.",
-  "tempo": "Indica acontecimentos rápidos, geralmente em dias ou poucas semanas."
+  "tempo": "Indica acontecimentos rápidos, geralmente em dias ou poucas semanas.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Pena vermelha",
+    "sentido": "ousadia criativa",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Salamandras",
+    "sentido": "transformação e coragem",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Postura ereta",
+    "sentido": "confiança e otimismo",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Jovem com vara",
+    "sentido": "início de jornada",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Deserto ao fundo",
+    "sentido": "começo do caminho",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Pirâmides",
+    "sentido": "estabilidade duradoura",
+    "icone": "outro"
+   }
+  ]
  },
  {
   "pagina_pdf": 49,
@@ -1026,7 +1363,44 @@
   "elemento": "Fogo",
   "planeta": "Júpiter",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (fogo). Corresponde aos signos de Áries - Leão - Sagitário.",
-  "tempo": "Indica acontecimentos rápidos, geralmente em dias ou poucas semanas."
+  "tempo": "Indica acontecimentos rápidos, geralmente em dias ou poucas semanas.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Vara erguida",
+    "sentido": "iniciativa e coragem",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Salamandras",
+    "sentido": "transformação e coragem",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Deserto ao fundo",
+    "sentido": "desafio e coragem",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Cavalo em movimento",
+    "sentido": "energia e ação",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Elmo com plumas",
+    "sentido": "ousadia e paixão",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Roupa em chamas",
+    "sentido": "fogo intenso",
+    "icone": "fogo"
+   },
+   {
+    "rotulo": "Pirâmides",
+    "sentido": "sabedoria e permanência",
+    "icone": "outro"
+   }
+  ]
  },
  {
   "pagina_pdf": 50,
@@ -1116,7 +1490,34 @@
   "elemento": "Fogo",
   "planeta": "Júpiter",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (fogo). Corresponde aos signos de Áries - Leão - Sagitário.",
-  "tempo": "Indica manifestação em semanas ou poucos meses, geralmente rápida."
+  "tempo": "Indica manifestação em semanas ou poucos meses, geralmente rápida.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Vara com folhas",
+    "sentido": "fogo criativo",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Vestes douradas",
+    "sentido": "energia vital",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Gato preto",
+    "sentido": "oculto e intuição",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Trono com leões",
+    "sentido": "força e abundância",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Coroa solar",
+    "sentido": "autoridade e poder",
+    "icone": "coroa"
+   }
+  ]
  },
  {
   "pagina_pdf": 51,
@@ -1214,6 +1615,43 @@
   "elemento": "Fogo",
   "planeta": "Júpiter",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (fogo). Corresponde aos signos de Áries - Leão - Sagitário.",
-  "tempo": "Indica manifestação em prazos médios a longos (até 3–6 meses)."
+  "tempo": "Indica manifestação em prazos médios a longos (até 3–6 meses).",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Cetro",
+    "sentido": "poder criativo",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Coroa",
+    "sentido": "sabedoria e autoridade",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Cenário árido",
+    "sentido": "resiliência e força",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Trono com leões",
+    "sentido": "força e domínio",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Manto amarelo",
+    "sentido": "fogo consciente",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Trono sólido",
+    "sentido": "estabilidade e firmeza",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Lagarto",
+    "sentido": "sabedoria instintiva",
+    "icone": "animal"
+   }
+  ]
  }
 ]

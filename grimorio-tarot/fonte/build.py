@@ -1,6 +1,8 @@
 # Gera grimorio.html a partir de dados/*.json (as fichas transcritas).
 # Uso: python3 -I build.py
-import json, os, html, re
+import json, os, html, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from icones import icone
 DIR = os.path.dirname(os.path.abspath(__file__))
 esc = html.escape
 
@@ -80,6 +82,7 @@ def md(t):
 
 def limpa_item(s):
     return md(s.strip().rstrip('.'))
+
 
 def medalhao():
     import math
@@ -164,12 +167,12 @@ page(f'''<div class="inner">
   <svg class="flor" data-flor></svg>
   <p class="ni">Cada carta ocupa duas páginas, uma de frente para a outra. Abra o caderno na carta que saiu e leia da esquerda para a direita:</p>
   <div class="esquema">
-    <div class="folha"><p class="ft">página da esquerda</p><p class="fs">a leitura rápida</p>
-      <ul><li>a carta</li><li>sim ou não</li><li>elemento, planeta, signo e tempo</li><li>a afirmação</li><li>luz e sombra</li></ul></div>
+    <div class="folha"><p class="ft">página da esquerda</p><p class="fs">o mapa da carta</p>
+      <ul><li>a carta no centro</li><li>simbologia em resumo</li><li>luz e sombra</li><li>sim ou não</li><li>a afirmação</li><li>elemento, planeta, signo e tempo</li></ul></div>
     <div class="folha"><p class="ft">página da direita</p><p class="fs">para aprofundar</p>
-      <ul><li>os símbolos da carta</li><li>as cores</li><li>a numerologia</li><li>ervas e cristais</li></ul></div>
+      <ul><li>os símbolos, um a um</li><li>as cores</li><li>a numerologia</li><li>ervas e cristais</li></ul></div>
   </div>
-  <p class="ni small"><span class="hl">Luz</span> são os aspectos positivos da carta; <span class="hl">sombra</span>, os negativos. O círculo vermelho marca a resposta para perguntas de sim ou não.</p>
+  <p class="ni small"><span class="hl">Luz</span> são os aspectos positivos da carta; <span class="hl">sombra</span>, os negativos. O círculo vermelho marca a resposta para perguntas de sim ou não. Os números da simbologia são os mesmos nas duas páginas: o <span class="nb">1</span> do mapa é explicado no <span class="nb">1</span> da direita.</p>
   <h3 class="ic">Os quatro naipes</h3>
   {linhas}
 </div>''')
@@ -194,52 +197,64 @@ def abertura(n, nome, el, sub, texto):
   <table class="indice"><tr class="th"><td>a carta e a sua primeira luz</td><td class="s">sim/não</td><td class="pg">pág.</td></tr>{rows}</table>
 </div>''')
 
+BADGE = ['Ás', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'Valete', 'Cavaleiro', 'Rainha', 'Rei']
+
 def carta(n, nome_naipe, el, i, c):
     img = f'img/cartas/p{c["pagina_pdf"]:02d}.jpg'
     nome = esc(c['nome'])
+    simbs = c.get('simbolos') or []
+    curtos = c.get('simbolos_curtos') or [{'rotulo': s['nome'], 'sentido': '', 'icone': 'outro'} for s in simbs]
+    lista = ''.join('<li><span class="nb">%d</span>%s<span><b>%s</b>%s</span></li>' % (
+        k + 1, icone(x.get('icone')), md(x['rotulo']), (': ' + md(x['sentido'])) if x.get('sentido') else '') for k, x in enumerate(curtos))
     pos = ''.join(f'<li>{limpa_item(x)}</li>' for x in c.get('positivos') or [])
     neg = ''.join(f'<li>{limpa_item(x)}</li>' for x in c.get('negativos') or [])
-    plan = c.get('planeta') or '—'; zod = c.get('zodiaco') or '—'
-    page(f'''<div class="inner fit">
-  <div class="kick-row"><p class="kick">{nome_naipe} · {el}</p><p class="mao">leitura rápida</p></div>
-  <h1 class="t">{nome}</h1>
-  <svg class="flor" data-flor></svg>
-  <div class="topo">
-    <figure class="carta"><img src="{img}" alt=""></figure>
-    <div class="dados">
-      <p class="rot">sim ou não</p>
+    elem = c.get('elemento') or el; plan = c.get('planeta') or '—'; zod = c.get('zodiaco') or '—'
+    longo = ' longo' if i >= 10 else ''
+    afirm = md((c.get('afirmacao') or '').strip().strip('“”"'))
+    page(f'''<div class="inner mapa fit">
+  <p class="kick c">{nome_naipe} · {el}</p>
+  <h1 class="t c">{nome}</h1>
+  <div class="m-simb alvo" data-seta="cima">
+    <p class="m-h"><span>✦</span> Simbologia <span>✦</span></p>
+    <ol class="m-lista">{lista}</ol>
+  </div>
+  <div class="m-meio">
+    <div class="m-col luz"><span class="pill luz alvo" data-seta="esq">✦ Luz</span><ul>{pos}</ul></div>
+    <div class="m-centro">
+      <figure class="carta m-carta"><span class="badge{longo}">{BADGE[i]}</span><img src="{img}" alt=""></figure>
       <p class="simnao">{simnao(c.get('sim_nao'))}</p>
-      <table class="ficha">
-        <tr><td class="l">Elemento</td><td>{svg_elemento(c.get('elemento') or el)} {md(c.get('elemento') or el)}</td></tr>
-        <tr><td class="l">Planeta</td><td>{glifos(plan, PLANETAS)} {md(plan)}</td></tr>
-        <tr><td class="l">Signo</td><td>{glifos(zod, SIGNOS)} {md(zod)}</td></tr>
-        <tr><td class="l">Tempo</td><td class="tempo">{md(c.get('tempo') or '—')}</td></tr>
-      </table>
     </div>
+    <div class="m-col sombra"><span class="pill sombra alvo" data-seta="dir">Sombra ✧</span><ul>{neg}</ul></div>
   </div>
-  <div class="moldura afirm"><p class="mt">Afirmação</p><p class="fala">“{md((c.get('afirmacao') or '').strip().strip('“”"'))}”</p></div>
-  <div class="luzsombra">
-    <div><h3 class="ls">✦ Luz</h3><ul class="star">{pos}</ul></div>
-    <div><h3 class="ls sombra">✧ Sombra</h3><ul class="star sombra">{neg}</ul></div>
+  <div class="moldura m-afirm alvo" data-seta="baixo"><p class="mt">Afirmação</p><p class="fala">“{afirm}”</p></div>
+  <div class="m-chips">
+    <div class="chip"><p class="ch">elemento</p><p>{svg_elemento(elem)} {md(elem)}</p></div>
+    <div class="chip"><p class="ch">planeta</p><p>{glifos(plan, PLANETAS)} {md(plan)}</p></div>
+    <div class="chip" style="flex:{max(1.1, len(zod) / 16):.2f} 1 0"><p class="ch">signo</p><p>{glifos(zod, SIGNOS)} {md(zod)}</p></div>
+    <div class="chip tempo" style="flex:{max(1.6, len(c.get('tempo') or '') / 16):.2f} 1 0"><p class="ch">tempo</p><p>{icone('ampulheta')} {md(c.get('tempo') or '—')}</p></div>
   </div>
-  <div class="vaga-cores"></div>
+  <div class="vaga"></div>
+  <svg class="m-setas"></svg>
 </div>''', 'carta-esq')
 
     arq = c.get('arquetipo')
-    simb = ''.join(f'<li><b>{md(s["nome"].strip().rstrip(":"))}.</b> {md(s.get("texto"))}</li>' for s in c.get('simbolos') or [])
+    simb = ''.join('<li><span class="nb">%d</span><p><b>%s.</b> %s</p></li>' % (
+        k + 1, md(s['nome'].strip().rstrip(':').rstrip('.')), md(s.get('texto'))) for k, s in enumerate(simbs))
     cores = ''.join(f'''<div class="cor"><span class="dot" style="background:{cor_hex(k['nome'])}"></span><p><b>{md(k['nome'])}</b>{('. ' + md(k['texto'])) if k.get('texto') else ''}</p></div>''' for k in c.get('cores') or [])
     num = c.get('numerologia') or {}
-    ervas = ', '.join(esc(x) for x in c.get('ervas') or []) or '—'
-    crist = ', '.join(esc(x) for x in c.get('cristais') or []) or '—'
+    ervas = ''.join(f'<li>{icone("folha")}{esc(x)}</li>' for x in c.get('ervas') or [])
+    crist = ''.join(f'<li>{icone("cristal")}{esc(x)}</li>' for x in c.get('cristais') or [])
+    nt = ('<span class="nt">' + md(num.get('titulo')) + '</span> ') if num.get('titulo') else ''
     page(f'''<div class="inner fit">
-  <div class="kick-row"><p class="kick">Os símbolos</p><p class="mao">{nome}</p></div>
+  <div class="kick-row"><p class="kick">Para aprofundar</p><p class="mao">{nome}</p></div>
   {f'<p class="arq">{md(arq)}</p>' if arq else ''}
-  <ul class="star simb">{simb}</ul>
-  <div class="bloco-cores"><h3 class="ic">As cores</h3>
-  <div class="cores">{cores}</div></div>
+  <h3 class="ic">Os símbolos, um a um</h3>
+  <ol class="simb-num">{simb}</ol>
+  <h3 class="ic">As cores</h3>
+  <div class="cores">{cores}</div>
   <div class="pratica">
-    <div class="num"><p class="pt">Numerologia</p><p>{('<span class="nt">' + md(num.get('titulo')) + '</span> ') if num.get('titulo') else ''}{md(num.get('texto'))}</p></div>
-    <div class="ec"><p class="pt">Ervas</p><p>{ervas}</p><p class="pt" style="margin-top:2mm">Cristais</p><p>{crist}</p></div>
+    <div class="num"><p class="pt">Numerologia</p><p>{nt}{md(num.get('texto'))}</p></div>
+    <div class="ec"><p class="pt">Ervas</p><ul class="ico-lista">{ervas}</ul><p class="pt" style="margin-top:1.6mm">Cristais</p><ul class="ico-lista">{crist}</ul></div>
   </div>
 </div>''', 'carta-dir')
 

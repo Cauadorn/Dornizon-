@@ -7,9 +7,10 @@ As "Fichas Rápidas" da Prof. Edite Pedro (60 páginas) reorganizadas no formato
 - Cada naipe abre com duas páginas: o naipe (elemento e tema) e o índice das 14 cartas, com a primeira palavra de luz, sim/não e a página.
   Copas p. 4 · Paus p. 34 · Espadas p. 64 · Ouros p. 94
 - **Cada carta ocupa duas páginas, uma de frente para a outra** (par à esquerda, ímpar à direita):
-  - esquerda, *leitura rápida*: a carta, sim/não circulado, elemento, planeta, signo, tempo, a afirmação na moldura, luz (positivos) e sombra (negativos);
-  - direita, *para aprofundar*: arquétipo, os símbolos da carta, as cores, numerologia, ervas e cristais.
-  - Nas fichas com muito texto, as cores ou a numerologia passam para a página da esquerda, para a letra não ficar pequena.
+  - esquerda, *o mapa da carta*: a carta no centro com o selo do número, setas pontilhadas para a simbologia em resumo (numerada, com ícones), a etiqueta verde **Luz** (positivos) e a vermelha **Sombra** (negativos), o sim/não circulado, a afirmação na moldura e a faixa com elemento, planeta, signo e tempo;
+  - direita, *para aprofundar*: arquétipo, os símbolos um a um (com os mesmos números do mapa), as cores, numerologia, ervas e cristais.
+  - Nas fichas com muito texto, numerologia, ervas e cristais passam para o mapa, para a letra não ficar pequena demais.
+- Os resumos da simbologia no mapa (ex.: "Pomba branca: paz e iluminação") foram tirados do texto de cada símbolo; o texto completo está na página da direita.
 - Ordem dentro do naipe: Ás ao 10, Valete, Cavaleiro, Rainha, Rei.
 - **124** sobre a Edite Pedro e anotações.
 
@@ -17,7 +18,7 @@ As "Fichas Rápidas" da Prof. Edite Pedro (60 páginas) reorganizadas no formato
 - `Grimorio_Tarot_A5_leitura.pdf` — modo de leitura: páginas A5 soltas, fundo de papel envelhecido.
 - `Grimorio_Tarot_A4_construcao.pdf` — modo de construção, para imprimir: 31 folhas A4 deitadas, frente e verso. Cada folha dobrada guarda 4 páginas seguidas. Sem fundo (o papel aparece), com faixa de 27 mm livre na dobra para os furos do fichário.
 - `faces-A4/` — as 62 faces de impressão em JPEG, caso o PDF não abra.
-- `fonte/` — gerador (`build.py`, `modelo.html`), dados das fichas (`dados/*.json`), imagens das cartas, fontes e scripts.
+- `fonte/` — gerador (`build.py`, `modelo.html`, `icones.py`), dados das fichas (`dados/*.json`, com `simbolos_curtos` para o mapa), imagens das cartas, fontes e scripts.
 
 ## Montagem das folhas (modo de construção)
 Folha *k*: frente = páginas [4k | 4k−3], verso = [4k−2 | 4k−1]. Exemplo: folha 1 = frente 4|1, verso 2|3; folha 2 = frente 8|5, verso 6|7 (o Ás de Copas). Empilhe as folhas dobradas na ordem e fure na dobra. Como cada folha é independente, dá para tirar e recolocar uma carta no fichário.

@@ -90,7 +90,44 @@
   "elemento": "Terra",
   "planeta": "Saturno e Vênus",
   "zodiaco": "Touro, Virgem e Capricórnio",
-  "tempo": "indica um início rápido de oportunidade, mas sua manifestação plena acontece de forma lenta e estável — geralmente dentro de 1 a 3 meses."
+  "tempo": "indica um início rápido de oportunidade, mas sua manifestação plena acontece de forma lenta e estável — geralmente dentro de 1 a 3 meses.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Moeda dourada",
+    "sentido": "abundância e valor",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Nuvens",
+    "sentido": "energia potencial",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Estradinha",
+    "sentido": "caminho a percorrer",
+    "icone": "caminho"
+   },
+   {
+    "rotulo": "Montanhas ao fundo",
+    "sentido": "desafios futuros",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Mão divina",
+    "sentido": "presente do universo",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Arco do jardim",
+    "sentido": "porta que se abre",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Jardim florido",
+    "sentido": "fertilidade e beleza",
+    "icone": "flor"
+   }
+  ]
  },
  {
   "pagina_pdf": 35,
@@ -172,7 +209,34 @@
   "elemento": "Terra",
   "planeta": "Júpiter",
   "zodiaco": "Capricórnio – 1º decanato",
-  "tempo": "O 2 de Ouros indica que o evento se manifestará em até 2 semanas, ou no fim de dezembro — mas exigirá flexibilidade e ajustes ao longo do caminho."
+  "tempo": "O 2 de Ouros indica que o evento se manifestará em até 2 semanas, ou no fim de dezembro — mas exigirá flexibilidade e ajustes ao longo do caminho.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Laço do infinito",
+    "sentido": "fluxo contínuo",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Navios nas ondas",
+    "sentido": "aprender a navegar",
+    "icone": "barco"
+   },
+   {
+    "rotulo": "Chão árido",
+    "sentido": "adaptação interna",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Malabarista",
+    "sentido": "busca de equilíbrio",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Duas moedas",
+    "sentido": "recursos a administrar",
+    "icone": "pentaculo"
+   }
+  ]
  },
  {
   "pagina_pdf": 36,
@@ -254,7 +318,34 @@
   "elemento": "Terra",
   "planeta": "Marte",
   "zodiaco": "Capricórnio – 2º decanato",
-  "tempo": "Indica manifestação em prazo médio — geralmente em até 3 semanas, ou no início de janeiro, como fruto de cooperação e trabalho bem estruturado."
+  "tempo": "Indica manifestação em prazo médio — geralmente em até 3 semanas, ou no início de janeiro, como fruto de cooperação e trabalho bem estruturado.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "O artesão",
+    "sentido": "habilidade prática",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Arco gótico",
+    "sentido": "projeto em andamento",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Banco elevado",
+    "sentido": "visão mais ampla",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Monge",
+    "sentido": "espiritualidade e valores",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "O arquiteto",
+    "sentido": "planejamento e visão",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 37,
@@ -348,7 +439,39 @@
   "elemento": "Terra",
   "planeta": "Sol",
   "zodiaco": "Capricórnio – 3º decanato",
-  "tempo": "É um tempo mais longo, porque fala de situações firmes e resistentes à mudança."
+  "tempo": "É um tempo mais longo, porque fala de situações firmes e resistentes à mudança.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Homem sentado",
+    "sentido": "medo de perder",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Coroa e vestes",
+    "sentido": "status e posição",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Cidade ao fundo",
+    "sentido": "vida coletiva",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Moeda na cabeça",
+    "sentido": "mente no dinheiro",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Moeda no peito",
+    "sentido": "apego emocional",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Moedas nos pés",
+    "sentido": "prisão ao material",
+    "icone": "pentaculo"
+   }
+  ]
  },
  {
   "pagina_pdf": 38,
@@ -438,7 +561,34 @@
   "elemento": "Terra",
   "planeta": "Mercúrio",
   "zodiaco": "Touro – 1º decanato",
-  "tempo": "Indica manifestação em prazo médio, É um tempo de desafio que pede paciência, adaptação e apoio externo"
+  "tempo": "Indica manifestação em prazo médio, É um tempo de desafio que pede paciência, adaptação e apoio externo",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Vitral da igreja",
+    "sentido": "ajuda disponível",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Neve e frio",
+    "sentido": "escassez e abandono",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Muletas",
+    "sentido": "apoio precário",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Dois mendigos",
+    "sentido": "necessidade material",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Pés descalços",
+    "sentido": "falta de proteção",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 39,
@@ -532,7 +682,39 @@
   "elemento": "Terra",
   "planeta": "Lua",
   "zodiaco": "Touro – 2º decanato",
-  "tempo": "O 6 de Ouros mostra manifestação em até 6 semanas. É um tempo em que a vida equilibra as trocas, trazendo ajuda ou que você a ofereça."
+  "tempo": "O 6 de Ouros mostra manifestação em até 6 semanas. É um tempo em que a vida equilibra as trocas, trazendo ajuda ou que você a ofereça.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Dois mendigos",
+    "sentido": "necessidade de apoio",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Roupa laranja",
+    "sentido": "ação e transformação",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Roupa verde",
+    "sentido": "esperança e renovação",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "O benfeitor",
+    "sentido": "recursos e poder",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Balança",
+    "sentido": "justiça e equilíbrio",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Moedas entregues",
+    "sentido": "partilha e ajuda",
+    "icone": "pentaculo"
+   }
+  ]
  },
  {
   "pagina_pdf": 40,
@@ -614,7 +796,34 @@
   "elemento": "Terra",
   "planeta": "Saturno",
   "zodiaco": "Touro – 3º decanato",
-  "tempo": "Indica manifestação lenta. É uma carta de paciência: os frutos virão, mas só no tempo certo."
+  "tempo": "Indica manifestação lenta. É uma carta de paciência: os frutos virão, mas só no tempo certo.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Arbusto carregado",
+    "sentido": "fruto do trabalho",
+    "icone": "arvore"
+   },
+   {
+    "rotulo": "Cenário simples",
+    "sentido": "ciclo natural",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Homem apoiado",
+    "sentido": "pausa consciente",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Enxada",
+    "sentido": "trabalho já realizado",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Postura do homem",
+    "sentido": "dúvida e espera",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 41,
@@ -708,7 +917,39 @@
   "elemento": "Terra",
   "planeta": "Sol",
   "zodiaco": "Virgem – 1º decanato",
-  "tempo": "O 8 de Ouros indica resultados em prazos médios. É uma carta que mostra evolução contínua, fruto da prática e da dedicação diária."
+  "tempo": "O 8 de Ouros indica resultados em prazos médios. É uma carta que mostra evolução contínua, fruto da prática e da dedicação diária.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Moedas na parede",
+    "sentido": "progresso visível",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Cidade distante",
+    "sentido": "foco na maestria",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Cabeça baixa",
+    "sentido": "concentração plena",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "O artesão",
+    "sentido": "disciplina e foco",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Banco e martelo",
+    "sentido": "trabalho meticuloso",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Moeda inacabada",
+    "sentido": "projeto atual",
+    "icone": "pentaculo"
+   }
+  ]
  },
  {
   "pagina_pdf": 42,
@@ -798,7 +1039,44 @@
   "elemento": "Terra",
   "planeta": "Vênus",
   "zodiaco": "Virgem – 2º decanato",
-  "tempo": "Indica manifestação em até 9 semanas. É a realização de algo sólido e refinado, fruto de disciplina e autovalorização."
+  "tempo": "Indica manifestação em até 9 semanas. É a realização de algo sólido e refinado, fruto de disciplina e autovalorização.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Jardim fértil",
+    "sentido": "abundância e conforto",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "Parreira com uvas",
+    "sentido": "colheita e prazer",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Vestes refinadas",
+    "sentido": "ação e sabedoria",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "O caracol",
+    "sentido": "tempo e constância",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Mulher elegante",
+    "sentido": "dona de si",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Falcão com capuz",
+    "sentido": "foco e disciplina",
+    "icone": "ave"
+   },
+   {
+    "rotulo": "Castelo ao fundo",
+    "sentido": "base sólida",
+    "icone": "castelo"
+   }
+  ]
  },
  {
   "pagina_pdf": 43,
@@ -900,7 +1178,44 @@
   "elemento": "Terra",
   "planeta": "Mercúrio",
   "zodiaco": "Virgem – 3º decanato",
-  "tempo": "O 10 de Ouros indica manifestação lenta e sólida, geralmente em até 10 meses ou no final de setembro. É algo que se consolida para durar."
+  "tempo": "O 10 de Ouros indica manifestação lenta e sólida, geralmente em até 10 meses ou no final de setembro. É algo que se consolida para durar.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Ancião",
+    "sentido": "tradição e sabedoria",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Brasão",
+    "sentido": "além do dinheiro",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Dois cães",
+    "sentido": "lealdade e proteção",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Dez pentáculos",
+    "sentido": "plenitude material",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Casal e criança",
+    "sentido": "família e legado",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Castelo ao fundo",
+    "sentido": "lar sólido",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Arco de entrada",
+    "sentido": "novo ciclo",
+    "icone": "castelo"
+   }
+  ]
  },
  {
   "pagina_pdf": 52,
@@ -982,7 +1297,34 @@
   "elemento": "Terra",
   "planeta": "Vênus",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (terra). Corresponde aos signos de Touro - Virgem - Capricórnio.",
-  "tempo": "Indica início de algo concreto, manifestando-se em semanas ou até 3 meses, exigindo dedicação e consistência."
+  "tempo": "Indica início de algo concreto, manifestando-se em semanas ou até 3 meses, exigindo dedicação e consistência.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Vestes coloridas",
+    "sentido": "crescimento e ação",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Solo fértil",
+    "sentido": "pronto para cultivo",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Jovem com pentáculo",
+    "sentido": "estudo e foco",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Pentáculo erguido",
+    "sentido": "foco e admiração",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Montanhas",
+    "sentido": "desafios e objetivos",
+    "icone": "montanha"
+   }
+  ]
  },
  {
   "pagina_pdf": 53,
@@ -1072,7 +1414,39 @@
   "elemento": "Terra",
   "planeta": "Mercúrio",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (terra). Corresponde aos signos de Touro - Virgem - Capricórnio.",
-  "tempo": "Indica início de algo concreto, manifestando-se em semanas ou até 3 meses, exigindo dedicação e consistência."
+  "tempo": "Indica início de algo concreto, manifestando-se em semanas ou até 3 meses, exigindo dedicação e consistência.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Armadura escura",
+    "sentido": "proteção e firmeza",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Céu claro",
+    "sentido": "clareza e estabilidade",
+    "icone": "sol"
+   },
+   {
+    "rotulo": "Cavalo preto",
+    "sentido": "proteção e segurança",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Cavalo imóvel",
+    "sentido": "paciência e foco",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Pentáculo nas mãos",
+    "sentido": "visão sem pressa",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Campos lavrados",
+    "sentido": "recompensa futura",
+    "icone": "folha"
+   }
+  ]
  },
  {
   "pagina_pdf": 54,
@@ -1166,7 +1540,44 @@
   "elemento": "Terra",
   "planeta": "Saturno",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (terra). Corresponde aos signos de Touro - Virgem - Capricórnio.",
-  "tempo": "Indica resultados sólidos em algumas semanas a poucos meses, especialmente no período de Touro ou Capricórnio."
+  "tempo": "Indica resultados sólidos em algumas semanas a poucos meses, especialmente no período de Touro ou Capricórnio.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Pentáculo acolhido",
+    "sentido": "cuidado e afeto",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Jardim florido",
+    "sentido": "vida e florescimento",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "Paisagem",
+    "sentido": "vida plena e estabilidade",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Trono",
+    "sentido": "harmonia com a natureza",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Vestuário",
+    "sentido": "amor ao belo",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Carneiro",
+    "sentido": "prosperidade e proteção",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Coelho",
+    "sentido": "fertilidade e abundância",
+    "icone": "animal"
+   }
+  ]
  },
  {
   "pagina_pdf": 55,
@@ -1256,6 +1667,38 @@
   "elemento": "Terra",
   "planeta": "Saturno",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (terra). Corresponde aos signos de Touro - Virgem - Capricórnio.",
-  "tempo": "Indica uma realização lenta, mas segura e duradoura, geralmente em meses, ou no período de Touro."
+  "tempo": "Indica uma realização lenta, mas segura e duradoura, geralmente em meses, ou no período de Touro.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Trono com touros",
+    "sentido": "força e abundância",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Cetro de cedro",
+    "sentido": "autoridade legítima",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Vestes luxuosas",
+    "sentido": "abundância e prazer",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Campos e castelo",
+    "sentido": "frutos e segurança",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Pentáculo nas mãos",
+    "sentido": "domínio material",
+    "icone": "pentaculo"
+   },
+   {
+    "rotulo": "Touro",
+    "sentido": "perseverança e estabilidade",
+    "icone": "animal"
+   }
+  ]
  }
 ]

@@ -96,7 +96,59 @@
   "elemento": "Água",
   "planeta": "Netuno",
   "zodiaco": "Câncer, Escorpião e Peixes",
-  "tempo": "A energia se coloca em curso com base na ação. Se agir hoje o resultado é hoje imediato."
+  "tempo": "A energia se coloca em curso com base na ação. Se agir hoje o resultado é hoje imediato.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Pomba branca",
+    "sentido": "paz e iluminação",
+    "icone": "ave"
+   },
+   {
+    "rotulo": "Cinco correntes",
+    "sentido": "fluxos da intuição",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Disco com cruz",
+    "sentido": "comunhão espiritual",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Letra W no cálice",
+    "sentido": "mistério oculto",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Gotas que caem",
+    "sentido": "bênçãos divinas",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Montanhas",
+    "sentido": "crescimento espiritual",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Cálice dourado",
+    "sentido": "coração e abundância",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Mão da nuvem",
+    "sentido": "dádiva divina",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Nuvens",
+    "sentido": "o não revelado",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Lírios e lótus",
+    "sentido": "fertilidade e pureza",
+    "icone": "flor"
+   }
+  ]
  },
  {
   "pagina_pdf": 5,
@@ -195,7 +247,59 @@
   "elemento": "Água",
   "planeta": "Vênus",
   "zodiaco": "Câncer",
-  "tempo": "A energia se coloca em curso com base na ação. Se agir hoje o resultado é hoje imediato."
+  "tempo": "A energia se coloca em curso com base na ação. Se agir hoje o resultado é hoje imediato.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Leão alado",
+    "sentido": "força vital e paixão",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Coroa de louros",
+    "sentido": "vitória e conquista",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Casal com taças",
+    "sentido": "união e confiança",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Manto azul",
+    "sentido": "sabedoria e clareza",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Vegetação",
+    "sentido": "fertilidade e crescimento",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Pé de fora",
+    "sentido": "movimento à união",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Coroa de flores",
+    "sentido": "ciclo da vida",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "Caduceu de Hermes",
+    "sentido": "cura e equilíbrio",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Duas taças",
+    "sentido": "vínculos afetivos",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Vestido florido",
+    "sentido": "ciclos naturais",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 6,
@@ -285,7 +389,49 @@
   "elemento": "Água",
   "planeta": "Mercúrio",
   "zodiaco": "Planeta regente: Câncer (2º decanato)",
-  "tempo": "Aproximadamente de 1 a 2 semanas."
+  "tempo": "Aproximadamente de 1 a 2 semanas.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Três mulheres",
+    "sentido": "amizade e irmandade",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Flores na cabeça",
+    "sentido": "graça e leveza",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "Roupas brancas",
+    "sentido": "pureza e paz",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Roupas vermelhas",
+    "sentido": "paixão e energia",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Três taças",
+    "sentido": "celebração e harmonia",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Dança em círculo",
+    "sentido": "união e celebração",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Frutos e uvas",
+    "sentido": "abundância e colheita",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Traje dourado",
+    "sentido": "abundância e alegria",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 7,
@@ -385,7 +531,54 @@
   "elemento": "Água",
   "planeta": "Vênus",
   "zodiaco": "Câncer (3º decanato)",
-  "tempo": "Sem previsão"
+  "tempo": "Sem previsão",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Jovem sentado",
+    "sentido": "introspecção e apatia",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Mão com nova taça",
+    "sentido": "nova chance",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Montanhas cinza",
+    "sentido": "desafios em espera",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Três taças",
+    "sentido": "oportunidades existentes",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Árvore",
+    "sentido": "estabilidade e imobilidade",
+    "icone": "arvore"
+   },
+   {
+    "rotulo": "Nuvem",
+    "sentido": "intervenção do invisível",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Braços cruzados",
+    "sentido": "resistência e pausa",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Pernas cruzadas",
+    "sentido": "postura defensiva",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Gramado verde",
+    "sentido": "esperança e renovação",
+    "icone": "folha"
+   }
+  ]
  },
  {
   "pagina_pdf": 8,
@@ -482,7 +675,59 @@
   "elemento": "Água",
   "planeta": "Marte",
   "zodiaco": "Escorpião",
-  "tempo": "Pode levar dias ou pode levar uma vida toda."
+  "tempo": "Pode levar dias ou pode levar uma vida toda.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Figura curvada",
+    "sentido": "perda e decepção",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Manto preto",
+    "sentido": "luto e recolhimento",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Castelo ao fundo",
+    "sentido": "segurança futura",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Planície verde",
+    "sentido": "a vida segue",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Rio que corre",
+    "sentido": "fluxo da vida",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Taças derramadas",
+    "sentido": "o que foi perdido",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Céu crepuscular",
+    "sentido": "clima de transição",
+    "icone": "sol"
+   },
+   {
+    "rotulo": "Ponte sobre o rio",
+    "sentido": "transição e saída",
+    "icone": "caminho"
+   },
+   {
+    "rotulo": "Duas taças de pé",
+    "sentido": "o que ainda resta",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Terra árida",
+    "sentido": "necessidade de mudança",
+    "icone": "outro"
+   }
+  ]
  },
  {
   "pagina_pdf": 9,
@@ -580,7 +825,54 @@
   "elemento": "Água",
   "planeta": "Sol",
   "zodiaco": "Escorpião (2º decanato)",
-  "tempo": "Curto prazo → em até 6 dias/semanas, especialmente para reencontros, memórias ou contatos do passado."
+  "tempo": "Curto prazo → em até 6 dias/semanas, especialmente para reencontros, memórias ou contatos do passado.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Duas crianças",
+    "sentido": "inocência e nostalgia",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Idoso ao fundo",
+    "sentido": "o tempo que passa",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Jardim",
+    "sentido": "vida e fertilidade",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Pedestal com taça",
+    "sentido": "amor celebrado",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Cruz em X",
+    "sentido": "selo da memória",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Vila medieval",
+    "sentido": "lar e raízes",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "6 cálices floridos",
+    "sentido": "lembranças boas",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "Flor branca",
+    "sentido": "amor inocente",
+    "icone": "flor"
+   },
+   {
+    "rotulo": "4 taças com flores",
+    "sentido": "memórias doces",
+    "icone": "taca"
+   }
+  ]
  },
  {
   "pagina_pdf": 10,
@@ -686,7 +978,59 @@
   "elemento": "Água",
   "planeta": "Vênus",
   "zodiaco": "Escorpião (3º decanato)",
-  "tempo": "Pode indicar 7 dias, 7 semanas ou o mês de julho."
+  "tempo": "Pode indicar 7 dias, 7 semanas ou o mês de julho.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Homem no centro",
+    "sentido": "momento da decisão",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Face feminina",
+    "sentido": "amor e desejo",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Figura velada",
+    "sentido": "mistério espiritual",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Castelo",
+    "sentido": "poder e status",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Joias e tesouros",
+    "sentido": "riqueza material",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Silhueta",
+    "sentido": "fantasia ou realidade",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Serpente",
+    "sentido": "sabedoria e transformação",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Nuvens",
+    "sentido": "sonhos e ilusões",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Coroa de vitória",
+    "sentido": "êxito e glória",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Dragão",
+    "sentido": "força instintiva",
+    "icone": "animal"
+   }
+  ]
  },
  {
   "pagina_pdf": 11,
@@ -780,7 +1124,49 @@
   "elemento": "Água",
   "planeta": "Saturno",
   "zodiaco": "Peixes (1º decanato)",
-  "tempo": "Processo prolongado e disciplinado, portanto tende a demorar mais que cartas."
+  "tempo": "Processo prolongado e disciplinado, portanto tende a demorar mais que cartas.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Homem de costas",
+    "sentido": "desapego e renúncia",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Lua dupla",
+    "sentido": "dualidade emocional",
+    "icone": "lua"
+   },
+   {
+    "rotulo": "Rio ou lago",
+    "sentido": "emoções a atravessar",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Pedras no rio",
+    "sentido": "desafios do caminho",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Montanhas ao fundo",
+    "sentido": "busca espiritual",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Cajado",
+    "sentido": "sabedoria e guia",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Capa vermelha",
+    "sentido": "coragem para partir",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Lacuna entre taças",
+    "sentido": "falta e vazio",
+    "icone": "taca"
+   }
+  ]
  },
  {
   "pagina_pdf": 12,
@@ -877,7 +1263,54 @@
   "elemento": "Água",
   "planeta": "Júpiter",
   "zodiaco": "Peixes (2º decanato)",
-  "tempo": "Médio a longo prazo."
+  "tempo": "Médio a longo prazo.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Homem sentado",
+    "sentido": "realização e prazer",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Turbante vermelho",
+    "sentido": "energia vital",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Toalha longa",
+    "sentido": "celebração e fartura",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Rosto feliz",
+    "sentido": "contentamento e orgulho",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Braços cruzados",
+    "sentido": "confiança e orgulho",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Nove taças",
+    "sentido": "realizações conquistadas",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Toalha azul",
+    "sentido": "serenidade e equilíbrio",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Banco baixo",
+    "sentido": "conquista momentânea",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Túnica branca",
+    "sentido": "prazer equilibrado",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 13,
@@ -974,7 +1407,49 @@
   "elemento": "Água",
   "planeta": "Marte",
   "zodiaco": "Peixes (3º decanato)",
-  "tempo": "Não rápido → é uma conquista sólida e duradoura, que precisa de maturação."
+  "tempo": "Não rápido → é uma conquista sólida e duradoura, que precisa de maturação.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Natureza",
+    "sentido": "fertilidade e crescimento",
+    "icone": "arvore"
+   },
+   {
+    "rotulo": "Rio",
+    "sentido": "plenitude que flui",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Casal celebrando",
+    "sentido": "união e gratidão",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Terra",
+    "sentido": "felicidade concreta",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Arco-íris",
+    "sentido": "promessa e paz",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Dez taças",
+    "sentido": "completude e abundância",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Casa ao fundo",
+    "sentido": "lar seguro",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Duas crianças",
+    "sentido": "felicidade simples",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 44,
@@ -1056,7 +1531,34 @@
   "elemento": "Água",
   "planeta": "Vênus",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (água). Corresponde aos signos de água - peixes, câncer e escorpião.",
-  "tempo": "Indica eventos rápidos e inesperados, geralmente em poucos dias"
+  "tempo": "Indica eventos rápidos e inesperados, geralmente em poucos dias",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Taça com peixe",
+    "sentido": "surpresa e intuição",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Traje colorido",
+    "sentido": "emoção e imaginação",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Postura jovial",
+    "sentido": "abertura ao novo",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Chapéu com pluma",
+    "sentido": "espírito sonhador",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Mar ondulado",
+    "sentido": "mundo das emoções",
+    "icone": "agua"
+   }
+  ]
  },
  {
   "pagina_pdf": 45,
@@ -1150,7 +1652,39 @@
   "elemento": "Água",
   "planeta": "Plutão",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (água). Corresponde aos signos de água - peixes, câncer e escorpião.",
-  "tempo": "A energia está em curso - a e a resposta chega em no máximo 3 semanas."
+  "tempo": "A energia está em curso - a e a resposta chega em no máximo 3 semanas.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Asas no elmo",
+    "sentido": "leveza e inspiração",
+    "icone": "ave"
+   },
+   {
+    "rotulo": "Armadura prateada",
+    "sentido": "proteção e honra",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Paisagem",
+    "sentido": "realidade e esperança",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Cavalo branco",
+    "sentido": "pureza e idealismo",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Cálice erguido",
+    "sentido": "amor oferecido",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Rio ao fundo",
+    "sentido": "fluxo emocional",
+    "icone": "agua"
+   }
+  ]
  },
  {
   "pagina_pdf": 46,
@@ -1244,7 +1778,39 @@
   "elemento": "Água",
   "planeta": "Netuno",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (água). Corresponde aos signos de água - peixes, câncer e escorpião.",
-  "tempo": "Indica um tempo médio de manifestação — geralmente entre 1 a 3 meses."
+  "tempo": "Indica um tempo médio de manifestação — geralmente entre 1 a 3 meses.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Paredão verde",
+    "sentido": "emoção e estabilidade",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Cálice fechado",
+    "sentido": "mistério interior",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Mar ao fundo",
+    "sentido": "emoções profundas",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Trono ornamentado",
+    "sentido": "domínio emocional",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Colunas",
+    "sentido": "estrutura e estabilidade",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Capa azul/branca",
+    "sentido": "intuição e pureza",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 47,
@@ -1334,6 +1900,43 @@
   "elemento": "Água",
   "planeta": "Netuno",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (água). Corresponde aos signos de água - peixes, câncer e escorpião.",
-  "tempo": "Indica um tempo médio a longo para manifestação — em geral, de 3 a 6 meses,"
+  "tempo": "Indica um tempo médio a longo para manifestação — em geral, de 3 a 6 meses,",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Taça na mão",
+    "sentido": "sentimentos e intuição",
+    "icone": "taca"
+   },
+   {
+    "rotulo": "Peixe",
+    "sentido": "intuição e criatividade",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Manto bicolor",
+    "sentido": "força e sensibilidade",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Trono sobre o mar",
+    "sentido": "domínio emocional",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Cetro",
+    "sentido": "autoridade e liderança",
+    "icone": "bastao"
+   },
+   {
+    "rotulo": "Barco ao fundo",
+    "sentido": "viagens emocionais",
+    "icone": "barco"
+   },
+   {
+    "rotulo": "Águas agitadas",
+    "sentido": "emoções em movimento",
+    "icone": "agua"
+   }
+  ]
  }
 ]

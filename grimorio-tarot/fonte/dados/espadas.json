@@ -87,7 +87,44 @@
   "elemento": "Ar",
   "planeta": "Mercúrio",
   "zodiaco": "Gêmeos, Libra e Aquário",
-  "tempo": "Imediato - ação."
+  "tempo": "Imediato - ação.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Coroa na espada",
+    "sentido": "vitória e soberania",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Mão da nuvem",
+    "sentido": "dom divino",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Montanhas ao fundo",
+    "sentido": "desafios da vida",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Espada erguida",
+    "sentido": "verdade e clareza",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Palma e louro",
+    "sentido": "vitória completa",
+    "icone": "folha"
+   },
+   {
+    "rotulo": "Céu azul-claro",
+    "sentido": "clareza e lucidez",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Círculo dourado",
+    "sentido": "clareza iluminada",
+    "icone": "sol"
+   }
+  ]
  },
  {
   "pagina_pdf": 25,
@@ -177,7 +214,44 @@
   "elemento": "Ar",
   "planeta": "Lua",
   "zodiaco": "Libra (1º decanato)",
-  "tempo": "Leva um tempo de espera e reflexão — geralmente em até 2 semanas ou no período de final de setembro/início de outubro."
+  "tempo": "Leva um tempo de espera e reflexão — geralmente em até 2 semanas ou no período de final de setembro/início de outubro.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Espadas cruzadas",
+    "sentido": "decisão difícil",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Lua crescente",
+    "sentido": "intuição e mistério",
+    "icone": "lua"
+   },
+   {
+    "rotulo": "Banco de pedra",
+    "sentido": "posição inflexível",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Ponta dos pés",
+    "sentido": "prontidão e potencial",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Mulher vendada",
+    "sentido": "pausa e reflexão",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Ilhas ao fundo",
+    "sentido": "isolamento e solidão",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Roupa branca",
+    "sentido": "pureza e neutralidade",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 26,
@@ -255,7 +329,39 @@
   "elemento": "Ar",
   "planeta": "Saturno",
   "zodiaco": "Libra (2º decanato)",
-  "tempo": "Energia → rápida, súbita. O 3 de Espadas é como um raio: acontece de repente e com impacto imediato."
+  "tempo": "Energia → rápida, súbita. O 3 de Espadas é como um raio: acontece de repente e com impacto imediato.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Nuvens cinzentas",
+    "sentido": "confusão mental",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Chuva",
+    "sentido": "lágrimas e catarse",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Coração vermelho",
+    "sentido": "dor emocional",
+    "icone": "coracao"
+   },
+   {
+    "rotulo": "Céu cinza",
+    "sentido": "verdade crua",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Coração ferido",
+    "sentido": "dor e transformação",
+    "icone": "coracao"
+   },
+   {
+    "rotulo": "Céu azul",
+    "sentido": "serenidade futura",
+    "icone": "nuvem"
+   }
+  ]
  },
  {
   "pagina_pdf": 27,
@@ -331,7 +437,29 @@
   "elemento": "Ar",
   "planeta": "Júpiter",
   "zodiaco": "Libra (3º decanato)",
-  "tempo": "O evento depende de recolhimento, espera e preparação → é um tempo de pausa antes da ação."
+  "tempo": "O evento depende de recolhimento, espera e preparação → é um tempo de pausa antes da ação.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Vitrais coloridos",
+    "sentido": "proteção divina",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Espada horizontal",
+    "sentido": "ameaça latente",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "3 espadas na parede",
+    "sentido": "dor anterior",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Figura deitada",
+    "sentido": "descanso e pausa",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 28,
@@ -421,7 +549,39 @@
   "elemento": "Ar",
   "planeta": "Vênus",
   "zodiaco": "Aquário (1º decanato)",
-  "tempo": "De forma repentina — geralmente em até 5 semanas ou por volta de janeiro"
+  "tempo": "De forma repentina — geralmente em até 5 semanas ou por volta de janeiro",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Céu nublado",
+    "sentido": "tensão e conflito",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Homens partindo",
+    "sentido": "perda e decepção",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Espadas recolhidas",
+    "sentido": "vitória e perdas",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Homem sorrindo",
+    "sentido": "vitória superficial",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Mar ao fundo",
+    "sentido": "emoções turbulentas",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Montanhas pretas",
+    "sentido": "vitória amarga",
+    "icone": "montanha"
+   }
+  ]
  },
  {
   "pagina_pdf": 29,
@@ -511,7 +671,44 @@
   "elemento": "Ar",
   "planeta": "Mercúrio",
   "zodiaco": "Aquário (2º decanato)",
-  "tempo": "De forma repentina — geralmente em até 5 semanas ou por volta de janeiro"
+  "tempo": "De forma repentina — geralmente em até 5 semanas ou por volta de janeiro",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Espadas no barco",
+    "sentido": "bagagem emocional",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Barqueiro",
+    "sentido": "guia da travessia",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Criança",
+    "sentido": "inocência e esperança",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Terra ao fundo",
+    "sentido": "porto seguro",
+    "icone": "montanha"
+   },
+   {
+    "rotulo": "Barco na água",
+    "sentido": "deixar o caos",
+    "icone": "barco"
+   },
+   {
+    "rotulo": "Mulher encapuzada",
+    "sentido": "tristeza e luto",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Rio agitado",
+    "sentido": "emoções descontroladas",
+    "icone": "agua"
+   }
+  ]
  },
  {
   "pagina_pdf": 30,
@@ -601,7 +798,39 @@
   "elemento": "Ar",
   "planeta": "Lua",
   "zodiaco": "Aquário – 3º decanato",
-  "tempo": "O 7 de Espadas indica manifestações rápidas e inesperadas, geralmente em até 7 semanas ou por volta de fevereiro."
+  "tempo": "O 7 de Espadas indica manifestações rápidas e inesperadas, geralmente em até 7 semanas ou por volta de fevereiro.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Acampamento",
+    "sentido": "pressão social",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "5 espadas nas mãos",
+    "sentido": "excesso mental",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Terreno amarelo",
+    "sentido": "orgulho e vaidade",
+    "icone": "caminho"
+   },
+   {
+    "rotulo": "Figura furtiva",
+    "sentido": "mente astuta",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Espadas deixadas",
+    "sentido": "verdades ignoradas",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Olhar para trás",
+    "sentido": "medo e culpa",
+    "icone": "olho"
+   }
+  ]
  },
  {
   "pagina_pdf": 31,
@@ -698,7 +927,49 @@
   "elemento": "Ar",
   "planeta": "Júpiter",
   "zodiaco": "Gêmeos – 1º decanato",
-  "tempo": "A manifestação é lenta, pois depende da superação de bloqueios mentais."
+  "tempo": "A manifestação é lenta, pois depende da superação de bloqueios mentais.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "8 espadas ao redor",
+    "sentido": "prisão mental",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Terra úmida",
+    "sentido": "peso e estagnação",
+    "icone": "caminho"
+   },
+   {
+    "rotulo": "Água rasa",
+    "sentido": "emoções superficiais",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Pé para fora",
+    "sentido": "a saída existe",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Mulher vendada",
+    "sentido": "paralisia mental",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Vítima",
+    "sentido": "dependência e submissão",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Castelo",
+    "sentido": "solução distante",
+    "icone": "castelo"
+   },
+   {
+    "rotulo": "Ataduras frouxas",
+    "sentido": "prisão autoimposta",
+    "icone": "outro"
+   }
+  ]
  },
  {
   "pagina_pdf": 32,
@@ -787,7 +1058,39 @@
   "elemento": "Ar",
   "planeta": "Marte",
   "zodiaco": "Gêmeos (2º decanato)",
-  "tempo": "Indica acontecimentos rápidos que provocam ansiedade"
+  "tempo": "Indica acontecimentos rápidos que provocam ansiedade",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Fundo preto",
+    "sentido": "vazio e isolamento",
+    "icone": "lua"
+   },
+   {
+    "rotulo": "9 espadas na parede",
+    "sentido": "peso acumulado",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Cama de madeira",
+    "sentido": "desconforto físico",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Rosto coberto",
+    "sentido": "desespero imediato",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Colchão vermelho",
+    "sentido": "intensidade da dor",
+    "icone": "outro"
+   },
+   {
+    "rotulo": "Colcha de rosas",
+    "sentido": "paixão e ciclos",
+    "icone": "flor"
+   }
+  ]
  },
  {
   "pagina_pdf": 33,
@@ -876,7 +1179,39 @@
   "elemento": "Ar",
   "planeta": "Sol",
   "zodiaco": "Gêmeos – 3º decanato",
-  "tempo": "O 10 de Espadas indica um desfecho rápido e definitivo — geralmente em até 10 semanas ou por volta de junho"
+  "tempo": "O 10 de Espadas indica um desfecho rápido e definitivo — geralmente em até 10 semanas ou por volta de junho",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Céu e aurora",
+    "sentido": "promessa de renovação",
+    "icone": "sol"
+   },
+   {
+    "rotulo": "Mar calmo",
+    "sentido": "equilíbrio restabelecido",
+    "icone": "agua"
+   },
+   {
+    "rotulo": "Roupa bicolor",
+    "sentido": "vida e consciência",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Homem caído",
+    "sentido": "colapso e traição",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "10 espadas alinhadas",
+    "sentido": "fim de ciclo",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Solo",
+    "sentido": "materialização da dor",
+    "icone": "caminho"
+   }
+  ]
  },
  {
   "pagina_pdf": 56,
@@ -970,7 +1305,44 @@
   "elemento": "Ar",
   "planeta": "Mercúrio",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (ar). Corresponde aos signos de Gêmeos - Libra - Aquário.",
-  "tempo": "Indica acontecimentos rápidos, em dias ou poucas semanas, ligados a novidades, ideias ou comunicações."
+  "tempo": "Indica acontecimentos rápidos, em dias ou poucas semanas, ligados a novidades, ideias ou comunicações.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Céu ventoso",
+    "sentido": "mudanças rápidas",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Roupa bicolor",
+    "sentido": "clareza e energia",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Árvores",
+    "sentido": "crescimento e vitalidade",
+    "icone": "arvore"
+   },
+   {
+    "rotulo": "Pássaros",
+    "sentido": "ideias e mensagens",
+    "icone": "ave"
+   },
+   {
+    "rotulo": "Nuvens",
+    "sentido": "instabilidade e mudança",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Jovem com espada",
+    "sentido": "mente alerta",
+    "icone": "pessoa"
+   },
+   {
+    "rotulo": "Pés em movimento",
+    "sentido": "natureza inquieta",
+    "icone": "pessoa"
+   }
+  ]
  },
  {
   "pagina_pdf": 57,
@@ -1064,7 +1436,39 @@
   "elemento": "Ar",
   "planeta": "Mercúrio",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (ar). Corresponde aos signos de Gêmeos - Libra - Aquário.",
-  "tempo": "Indica acontecimentos muito rápidos, geralmente em dias ou poucas semanas, chegando de forma inesperada e intensa."
+  "tempo": "Indica acontecimentos muito rápidos, geralmente em dias ou poucas semanas, chegando de forma inesperada e intensa.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Espada erguida",
+    "sentido": "clareza de propósito",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Ventos fortes",
+    "sentido": "movimento rápido",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Árvores",
+    "sentido": "resistência às mudanças",
+    "icone": "arvore"
+   },
+   {
+    "rotulo": "Cavalo branco",
+    "sentido": "ímpeto veloz",
+    "icone": "animal"
+   },
+   {
+    "rotulo": "Armadura",
+    "sentido": "proteção e disciplina",
+    "icone": "roupa"
+   },
+   {
+    "rotulo": "Manto vermelho",
+    "sentido": "paixão e coragem",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 58,
@@ -1166,7 +1570,49 @@
   "elemento": "Ar",
   "planeta": "Urano",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (ar). Corresponde aos signos de Gêmeos - Libra - Aquário.",
-  "tempo": "Indica manifestação em semanas ou poucos meses, trazendo clareza, decisão e objetividade."
+  "tempo": "Indica manifestação em semanas ou poucos meses, trazendo clareza, decisão e objetividade.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Pássaros",
+    "sentido": "visão ampla",
+    "icone": "ave"
+   },
+   {
+    "rotulo": "Coroa",
+    "sentido": "transformação mental",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Trono",
+    "sentido": "pureza e discernimento",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Paisagem",
+    "sentido": "vida e esperança",
+    "icone": "arvore"
+   },
+   {
+    "rotulo": "Espada erguida",
+    "sentido": "verdade e justiça",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Mão estendida",
+    "sentido": "ouvir e acolher",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Céu com nuvens",
+    "sentido": "movimento da mente",
+    "icone": "nuvem"
+   },
+   {
+    "rotulo": "Vestes azuis",
+    "sentido": "clareza e pureza",
+    "icone": "roupa"
+   }
+  ]
  },
  {
   "pagina_pdf": 59,
@@ -1256,6 +1702,33 @@
   "elemento": "Ar",
   "planeta": "Urano",
   "zodiaco": "Não está associado a um único signo mas ao seu elemento (ar). Corresponde aos signos de Gêmeos - Libra - Aquário.",
-  "tempo": "Indica resultados em prazos médios a longos, geralmente meses, ou no período de Gêmeos, Libra ou Aquário."
+  "tempo": "Indica resultados em prazos médios a longos, geralmente meses, ou no período de Gêmeos, Libra ou Aquário.",
+  "simbolos_curtos": [
+   {
+    "rotulo": "Espada erguida",
+    "sentido": "mente e razão",
+    "icone": "espada"
+   },
+   {
+    "rotulo": "Trono decorado",
+    "sentido": "sabedoria superior",
+    "icone": "trono"
+   },
+   {
+    "rotulo": "Coroa dourada",
+    "sentido": "iluminação mental",
+    "icone": "coroa"
+   },
+   {
+    "rotulo": "Mão no colo",
+    "sentido": "ação com ponderação",
+    "icone": "mao"
+   },
+   {
+    "rotulo": "Paisagem",
+    "sentido": "conhecimento enraizado",
+    "icone": "arvore"
+   }
+  ]
  }
 ]

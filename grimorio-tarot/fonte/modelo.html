@@ -104,13 +104,13 @@ table.ficha td.l{font-family:'Aurore',cursive;color:var(--red);width:15mm;font-s
 .linha-nome{width:70mm;margin:9mm auto 0;border-bottom:.35mm solid var(--ink2)}
 
 /* ---------- como ler ---------- */
-.esquema{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:3mm 0 3mm}
+.esquema{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:2mm 0 2mm}
 .folha{border:.3mm solid var(--ink2);padding:2.5mm 3mm 2mm;position:relative;background:rgba(255,255,255,.18)}
 .folha .ft{font-family:'Aurore',cursive;color:var(--ink3);font-size:10pt;margin:0;text-align:left}
 .folha .fs{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12pt;margin:0 0 1mm;text-indent:0;text-align:left}
-.folha ul{margin:0;padding-left:4mm;font-size:10pt;line-height:1.35}
-.nrow{display:grid;grid-template-columns:12mm 1fr auto;gap:3mm;align-items:center;border-bottom:.3mm solid var(--rule);padding:1.6mm 0}
-.naipe.mini{width:12mm;height:12mm}
+.folha ul{margin:0;padding-left:4mm;font-size:9.4pt;line-height:1.28}
+.nrow{display:grid;grid-template-columns:11mm 1fr auto;gap:3mm;align-items:center;border-bottom:.3mm solid var(--rule);padding:1.1mm 0}
+.naipe.mini{width:10.5mm;height:10.5mm}
 .nrow .nn{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:12.5pt;margin:0;text-indent:0;text-align:left}
 .nrow .ne{font-family:'Fell';font-style:normal;color:var(--ink2);font-size:10pt;margin-left:2mm}
 .nrow .nd{margin:0;font-size:10.2pt;text-indent:0;text-align:left;color:var(--ink2)}
@@ -168,6 +168,56 @@ ul.simb li{font-size:.95em;line-height:1.29;margin-bottom:.8mm;text-align:justif
 .pratica .nt{color:var(--red);font-style:italic}
 .carta-esq .bloco-cores{margin-top:1mm}
 .carta-esq .pratica{margin-top:3.5mm}
+
+/* ---------- carta: o mapa (página da esquerda) ---------- */
+:root{--verde:#57743f}
+.mapa{text-align:center}
+.mapa .kick{font-size:10.5pt}
+.mapa h1.t{font-size:36pt;margin:0 0 2mm}
+.m-simb{border:.3mm solid var(--rule);border-radius:2.2mm;background:rgba(255,255,255,.3);padding:1.4mm 2.6mm 1mm}
+.m-h{font-family:'Fondamento';font-style:italic;color:var(--red);font-size:1.15em;margin:0 0 .8mm;text-align:center;text-indent:0}
+.m-h span{font-size:.7em;vertical-align:.15em;margin:0 1mm}
+.m-lista{list-style:none;margin:0;padding:0;columns:2;column-gap:4mm;text-align:left}
+.m-lista li{display:flex;gap:1.1mm;align-items:flex-start;break-inside:avoid;font-size:.86em;line-height:1.24;margin:0 0 .7mm}
+.m-lista b{font-weight:400;color:var(--red)}
+.nb{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:1.32em;height:1.32em;padding:0 .22em;border-radius:.66em;background:var(--red);color:#fff;font-family:'Fondamento';font-size:.78em;line-height:1;margin-top:.05em}
+svg.ico{flex:none;width:1.15em;height:1.15em;color:var(--ink2);margin-top:.02em}
+.m-meio{display:grid;grid-template-columns:1fr var(--cw,34mm) 1fr;gap:3.2mm;margin-top:6.5mm;align-items:start}
+.m-col ul{list-style:none;margin:5mm 0 0;padding:0}
+.mapa .vaga .pratica{margin-top:2.4mm;text-align:left}
+.m-col li{position:relative;font-size:.9em;line-height:1.27;margin:0 0 1mm;hyphens:auto;-webkit-hyphens:auto}
+.m-col.luz{text-align:left}
+.m-col.luz li{padding-left:2.4mm}
+.m-col.luz li::before{content:"";position:absolute;left:0;top:.5em;width:1.2mm;height:1.2mm;border-radius:50%;background:var(--verde)}
+.m-col.sombra{text-align:right}
+.m-col.sombra li{padding-right:2.4mm}
+.m-col.sombra li::before{content:"";position:absolute;right:0;top:.5em;width:1.2mm;height:1.2mm;border-radius:50%;background:var(--red)}
+.pill{display:inline-block;font-family:'Fondamento';font-style:italic;color:#fff;border-radius:3mm;padding:.45mm 3.2mm .65mm;font-size:1.06em;line-height:1.2}
+.pill.luz{background:var(--verde)} .pill.sombra{background:var(--red)}
+.m-carta{position:relative;margin:2mm 0 0}
+.m-carta .badge{position:absolute;top:-3.4mm;left:50%;transform:translateX(-50%);z-index:3;background:var(--red);color:#fff;font-family:'Fondamento';font-size:.82em;line-height:1;padding:1.3mm 2mm 1.2mm;border-radius:3mm;outline:.5mm solid var(--paper);white-space:nowrap}
+body.construcao .m-carta .badge{outline-color:#fff}
+.m-centro .simnao{justify-content:center;margin:2.6mm 0 0;font-size:.96em;gap:2.4mm}
+.m-afirm{margin-top:5mm;text-align:center}
+.m-afirm .mt{text-align:center}
+.m-afirm .fala{text-align:center}
+.m-chips{display:flex;gap:3.2mm;margin-top:1mm;border-top:.3mm solid var(--rule);padding-top:1.6mm;text-align:left}
+.chip{flex:0 0 auto;min-width:13mm}
+.chip:nth-child(-n+2){max-width:24mm}
+.chip p{margin:0;font-size:.86em;line-height:1.25;text-indent:0;text-align:left}
+.chip .ch{font-family:'Aurore',cursive;color:var(--red);font-size:.98em;margin-bottom:.2mm}
+.chip svg.ico{display:inline-block;vertical-align:-.15em;color:var(--red)}
+.m-setas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;overflow:visible}
+
+/* ---------- carta: para aprofundar (página da direita) ---------- */
+ol.simb-num{list-style:none;margin:1mm 0 1mm;padding:0}
+ol.simb-num li{display:flex;gap:1.8mm;align-items:flex-start;margin:0 0 .9mm}
+ol.simb-num li p{margin:0;font-size:.95em;line-height:1.29;text-align:justify;text-indent:0;hyphens:auto}
+ol.simb-num li b{font-weight:400;color:var(--red)}
+ol.simb-num .nb{margin-top:.15em}
+ul.ico-lista{list-style:none;margin:0;padding:0}
+ul.ico-lista li{display:flex;gap:1.2mm;align-items:center;font-size:.9em;line-height:1.35}
+ul.ico-lista svg.ico{color:var(--verde)}
 </style>
 </head>
 <body>
@@ -182,29 +232,50 @@ document.querySelectorAll('svg[data-flor]').forEach(s=>{
 // ajuste: diminui a letra (e a carta) até caber na página
 window.ajustar = function(){
   const over = el => { const r = el.getBoundingClientRect().bottom; let m = 0;
-    el.querySelectorAll('*').forEach(c => { const b = c.getBoundingClientRect(); if (b.height > 0) m = Math.max(m, b.bottom); }); return m - r; };
-  const caber = el => {
-    let fs = 10.4, cw = 42;
+    el.querySelectorAll('*').forEach(c => { if (c.closest('.m-setas')) return; const b = c.getBoundingClientRect(); if (b.height > 0) m = Math.max(m, b.bottom); }); return m - r; };
+  const caber = (el, cw0, cwMin) => {
+    let fs = 10.4, cw = cw0;
     el.style.setProperty('--fs', fs + 'pt'); el.style.setProperty('--cw', cw + 'mm');
-    while (over(el) > 0 && fs > 8.2) { fs = +(fs - .2).toFixed(1); el.style.setProperty('--fs', fs + 'pt'); if (cw > 36) { cw -= 1; el.style.setProperty('--cw', cw + 'mm'); } }
+    while (over(el) > 0 && fs > 8.2) { fs = +(fs - .2).toFixed(1); el.style.setProperty('--fs', fs + 'pt'); if (cw > cwMin) { cw -= 1; el.style.setProperty('--cw', cw + 'mm'); } }
     el.dataset.fs = fs; return fs;
   };
-  // se a página da direita aperta, tenta levar a prática ou as cores para a esquerda e fica com a melhor opção
+  const fitar = el => el.classList.contains('mapa') ? caber(el, 35, 30) : caber(el, 42, 36);
+  document.querySelectorAll('.inner.fit').forEach(fitar);
+  // página da direita apertada: leva numerologia, ervas e cristais para o mapa, se ficar melhor
   document.querySelectorAll('.carta-dir .inner.fit').forEach(dir => {
-    const esq = dir.closest('.page').previousElementSibling.querySelector('.inner.fit');
-    const vaga = esq.querySelector('.vaga-cores');
-    const blocos = ['.bloco-cores', '.pratica'].map(q => dir.querySelector(q));
-    const casa = blocos.map(b => [b.parentNode, b.nextSibling]);
-    const nota = () => { const a = caber(esq), b = caber(dir); return (over(esq) <= 0 && over(dir) <= 0 ? 100 : 0) + Math.min(a, b); };
-    const montar = op => {
-      blocos.forEach((b, i) => casa[i][0].insertBefore(b, casa[i][1]));
-      op.forEach(i => vaga.appendChild(blocos[i]));
-    };
-    const ops = [[], [1], [0], [0, 1]]; let melhor = null, nm = -1;
-    for (const op of ops) { montar(op); const n = nota(); if (n > nm + .01) { nm = n; melhor = op; } if (n >= 109.4) break; }
-    montar(melhor); nota();
+    const esq = dir.closest('.page').previousElementSibling.querySelector('.inner.mapa');
+    if (+dir.dataset.fs >= 9.2 && over(dir) <= 0) return;
+    const pr = dir.querySelector('.pratica'), antes = [+esq.dataset.fs, +dir.dataset.fs, over(dir) <= 0];
+    esq.querySelector('.vaga').appendChild(pr); fitar(esq); fitar(dir);
+    const ok = over(esq) <= 0 && over(dir) <= 0;
+    if (!ok || Math.min(+esq.dataset.fs, +dir.dataset.fs) <= Math.min(antes[0], antes[1]) && antes[2]) { dir.appendChild(pr); fitar(esq); fitar(dir); }
   });
+  document.querySelectorAll('.mapa').forEach(setas);
 };
+// setas pontilhadas da carta até cada bloco do mapa
+function setas(m){
+  const svg = m.querySelector('.m-setas'), R = m.getBoundingClientRect(), mm = R.width / 107;
+  const r = el => { const b = el.getBoundingClientRect(); return { l: b.left - R.left, r: b.right - R.left, t: b.top - R.top, b: b.bottom - R.top, cx: (b.left + b.right) / 2 - R.left, cy: (b.top + b.bottom) / 2 - R.top }; };
+  const C = r(m.querySelector('.m-carta img')), S = r(m.querySelector('.m-simb')), L = r(m.querySelector('.pill.luz')), D = r(m.querySelector('.pill.sombra'));
+  const A = r(m.querySelector('.m-afirm')), N = r(m.querySelector('.m-centro .simnao'));
+  const g = 1.2 * mm, out = [];
+  const seta = (x1, y1, x2, y2, qx, qy) => {
+    out.push(`<path d="M${x1} ${y1} Q${qx} ${qy} ${x2} ${y2}" fill="none" stroke="#8a7a6c" stroke-width="${.28 * mm}" stroke-dasharray="${.5 * mm} ${.9 * mm}" stroke-linecap="round" marker-end="url(#ponta)"/>`);
+    out.push(`<circle cx="${x1}" cy="${y1}" r="${.55 * mm}" fill="#9e3b28"/>`);
+  };
+  // para cima, até a simbologia
+  seta(C.l + C.cx * 0 + (C.r - C.l) * .18, C.t - g, S.l + (S.r - S.l) * .3, S.b + g, C.l, S.b + (C.t - S.b) * .4);
+  seta(C.r - (C.r - C.l) * .18, C.t - g, S.l + (S.r - S.l) * .7, S.b + g, C.r, S.b + (C.t - S.b) * .4);
+  // para os lados, até luz e sombra
+  // para os lados, na altura das etiquetas (acima das listas)
+  const yl = Math.max(L.cy, C.t + 2 * mm) + 3 * mm, yd = Math.max(D.cy, C.t + 2 * mm) + 3 * mm;
+  seta(C.l - g, yl, L.r + g, L.cy, (L.r + C.l) / 2, yl);
+  seta(C.r + g, yd, D.l - g, D.cy, (D.l + C.r) / 2, yd);
+  // para baixo, até a afirmação
+  if (A.t - N.b > 2.2 * mm) seta(N.cx, N.b + g * .6, A.cx, A.t - g, N.cx, (N.b + A.t) / 2);
+  svg.setAttribute('viewBox', `0 0 ${R.width} ${R.height}`);
+  svg.innerHTML = `<defs><marker id="ponta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="${2.2 * mm}" markerHeight="${2.2 * mm}" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8a7a6c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>` + out.join('');
+}
 document.fonts.ready.then(() => { window.ajustar(); document.body.dataset.pronto = 1; });
 </script>
 </body>
