@@ -25,6 +25,11 @@ Exemplos já feitos neste repositório: `video-permissao/HANDOFF.md` (filme moti
 
 Narração: cerca de 140 palavras por minuto falado com calma. Frases curtas. Português falado do Brasil, sem jargão de marketing.
 
+## Formatos
+
+- **Ensaio:** uma tese pessoal sobre o processo criativo, com um objeto que carrega a ideia. Exemplo: `roteiros/gosto-2027/`.
+- **Análise:** pegar algo em alta ou que todo mundo vê todo dia (uma marca, a direção de arte de um filme, um rebranding) e mostrar com olho de designer o que ninguém reparou. É a pegada do André Pilli, diretor que analisa luz e direção de arte de jogos e filmes. Estrutura: "repara numa coisa" → 3 pontos numerados com prova na tela → por que isso acontece → o que isso muda → pergunta final. Exemplo: `roteiros/marcas-de-ia/`. Toda afirmação sobre uma marca precisa bater com um print atual.
+
 ## Conceito visual
 
 Todo roteiro precisa de **um objeto ou cenário que carrega a ideia** (uma parede de folhas, um caderno, uma tela rolando). Ele deve ser barato e caber em casa. O primeiro e o último plano usam o mesmo enquadramento para mostrar o antes e o depois.
