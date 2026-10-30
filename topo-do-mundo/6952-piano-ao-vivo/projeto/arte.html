@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Piano ao Vivo · Topo do Mundo</title>
+<style>
+  @font-face { font-family: 'Poppins'; font-weight: 300; src: url(fontes/Poppins-Light.ttf); }
+  @font-face { font-family: 'Poppins'; font-weight: 400; src: url(fontes/Poppins-Regular.ttf); }
+  @font-face { font-family: 'Poppins'; font-weight: 600; src: url(fontes/Poppins-SemiBold.ttf); }
+  @font-face { font-family: 'Titulo'; font-style: italic; src: url(fontes/PlayfairDisplay-Italic.ttf); }
+  @font-face { font-family: 'Data'; src: url(fontes/NotoSerifDisplay.ttf); }
+
+  :root {
+    --dourado: #F0C48C;
+    --creme: #F8F4EC;
+    --reservas: #E8E0D0;
+    --preto: #120E0D;
+    --margem: 92px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #000; }
+  .arte { position: relative; overflow: hidden; background: var(--preto); color: #fff; }
+  .feed  { width: 1080px; height: 1350px; }
+  .story { width: 1080px; height: 1920px; }
+
+  .foto { position: absolute; width: 1400px; left: -150px; filter: contrast(1.08) saturate(1.06) brightness(1.04); }
+  .feed .foto  { top: -60px; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 66%, transparent 97%); }
+  .story .foto { top: 250px; -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 70%, transparent 97%); }
+  .aquece { position: absolute; inset: 0; background: #F0A050; mix-blend-mode: soft-light; opacity: .22; }
+  .degrade { position: absolute; inset: 0; }
+  .feed .degrade { background: linear-gradient(180deg, rgba(13,9,8,0) 0%, rgba(13,9,8,0) 42%, rgba(13,9,8,.55) 58%, rgba(13,9,8,.88) 75%, rgba(13,9,8,.96) 100%); }
+  .story .degrade { background: linear-gradient(180deg, rgba(13,9,8,0) 0%, rgba(13,9,8,0) 45%, rgba(13,9,8,.55) 58%, rgba(13,9,8,.88) 72%, rgba(13,9,8,.97) 100%); }
+
+  .texto { position: absolute; left: var(--margem); right: var(--margem); }
+  .feed .texto  { top: 786px; }
+  .story .texto { top: 1150px; }
+
+  .titulo { font-family: 'Titulo'; font-style: italic; font-weight: 400; color: var(--dourado);
+    font-size: 104px; line-height: 1.05; letter-spacing: -1px; }
+  .data { font-family: 'Data'; font-weight: 600; color: var(--creme); font-size: 66px; line-height: 1.1;
+    margin-top: 2px; font-variation-settings: 'wdth' 112; }
+  .linha { font-family: 'Poppins'; font-size: 32px; margin-top: 48px; color: #fff; white-space: nowrap; }
+  .linha b { font-weight: 600; }
+  .linha .ponto { color: var(--dourado); margin: 0 14px; }
+  .reservas { font-family: 'Poppins'; font-weight: 300; font-size: 25px; color: var(--reservas); margin-top: 20px; }
+
+  .logo { position: absolute; left: 50%; transform: translateX(-50%); width: 160px; }
+  .feed .logo  { top: 1187px; }
+  .story .logo { top: 1595px; }
+</style>
+</head>
+<body>
+<div id="arte" class="arte">
+  <img class="foto" alt="">
+  <div class="aquece"></div>
+  <div class="degrade"></div>
+  <div class="texto">
+    <div class="titulo" data-t="titulo"></div>
+    <div class="data" data-t="data"></div>
+    <div class="linha"><b data-t="atracao"></b><span class="ponto">•</span><span data-t="horario"></span></div>
+    <div class="reservas" data-t="reservas"></div>
+  </div>
+  <img class="logo" src="assets/logo-topo-do-mundo-branco.svg" alt="Topo do Mundo restaurante">
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const formato = q.get('f') || 'feed';
+  const arte = document.getElementById('arte');
+  arte.classList.add(formato);
+  fetch(q.get('t') || 'textos.json').then(r => r.json()).then(async t => {
+    for (const el of document.querySelectorAll('[data-t]')) el.textContent = t[el.dataset.t] ?? '';
+    const foto = arte.querySelector('.foto');
+    foto.src = t.foto;
+    await document.fonts.ready;
+    await foto.decode();
+    await arte.querySelector('.logo').decode();
+    window.READY = true;
+  });
+</script>
+</body>
+</html>
