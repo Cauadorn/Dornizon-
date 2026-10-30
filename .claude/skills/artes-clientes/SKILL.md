@@ -7,9 +7,22 @@ description: Motor de criação de artes da 4D para qualquer cliente (IDEX, Quer
 
 Regra do Cauã, vale para **todos os clientes**:
 
-1. **Antes de criar**, abrir a identidade visual do cliente no Drive (manual, brandbook, logos) **e** as artes mais recentes da pasta de publicações dele. As artes recentes mandam no padrão atual; o manual manda em cor, fonte e uso do logo.
-2. **Depois de criar**, subir a arte final na pasta do cliente no Drive, para a pasta dele sempre refletir a versão mais nova do padrão visual.
-3. Registrar o que foi aprendido (cor nova, layout novo, pasta nova) no arquivo do cliente em `clientes/<cliente>.md` e fazer commit.
+1. **O motor de criação é o Design System do cliente no Claude** (artifacts do tipo "Design System", tabela abaixo). Antes de criar, ler dele: `project/README.md`, `project/guidelines/*`, `project/tokens.css`, os templates e as pastas de assets (logo, grafismo, references, referencias-direcao, Uploads). O Drive é só fonte secundária (cronograma, pasta do card).
+2. **Depois de criar**, subir a arte final no asset store do Design System do cliente (Artifact publish com `url` do DS, `asset: true`), para o motor sempre ter as artes mais novas como referência. Se o Cauã pedir, subir também no Drive.
+3. Registrar o que foi aprendido no arquivo do cliente em `clientes/<cliente>.md` e fazer commit.
+
+## Design Systems (motor) por cliente
+
+| Cliente | Design System |
+|---|---|
+| IDEX | https://claude.ai/artifact/2KgLdSoAFWtbQHTtT8pLKC |
+| CREDFRANCO | https://claude.ai/artifact/9FcPBfHChAXCSyWh924PS7 |
+| Quero +Crédito | https://claude.ai/artifact/WfsBkHA9rMfKxTuQw6ZhNG |
+| X3 Promotora | https://claude.ai/artifact/9Lg4J1Pc2qZxFhKSgUJP9t |
+| i3Cred | https://claude.ai/artifact/SRz9MHLCDgdCKJeyhiAjW2 |
+| Chat Doutor | https://claude.ai/artifact/GFJPCRUnoywHemwBwKkGij |
+
+Há outros artifacts chamados só "Design System" (sem cliente no título): ler o README de cada um para descobrir o cliente e completar a tabela.
 
 ## Passo a passo
 
