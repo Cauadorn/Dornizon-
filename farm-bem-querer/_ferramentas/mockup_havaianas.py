@@ -35,6 +35,7 @@ def main():
     ap.add_argument('--contorno', default='auto', help="contorno do logo: auto (cor do fundo da arte), #hex ou nao")
     ap.add_argument('--contorno-px', dest='contorno_px', type=float, default=1.0, help='espessura do contorno em px da foto')
     ap.add_argument('--contorno-op', dest='contorno_op', type=float, default=0.85, help='opacidade do contorno')
+    ap.add_argument('--fundo', default='neutro', choices=['neutro', 'original'], help='neutro: fundo cinza-claro limpo, sombra cinza (visual de estúdio)')
     a = ap.parse_args()
 
     foto = Image.open(os.path.join(MOLDE, a.molde)).convert('RGB')
@@ -56,7 +57,18 @@ def main():
     luz = luz / (np.median(luz[sola > 0.5]) + 1e-4)
     luz = np.clip(0.88 + 0.12 * luz, 0.8, 1.08)
 
-    borda_cor = hex2rgb(a.borda)
+    # borda da sola: 'tira' usa a cor da tira (como nos modelos da Havaianas), senão #hex
+    if a.borda == 'fundo':
+        # cor de fundo da estampa (cor mais frequente), um pouco mais escura: a lateral da sola na mesma borracha
+        _a = Image.open(a.arte).convert('RGB').resize((256, 256))
+        _q = (np.asarray(_a, np.int32) // 24).reshape(-1, 3)
+        _k = _q[:, 0] * 10000 + _q[:, 1] * 100 + _q[:, 2]
+        _v, _c = np.unique(_k, return_counts=True)
+        borda_cor = np.asarray(_a, np.float32).reshape(-1, 3)[_k == _v[_c.argmax()]].mean(0) / 255 * 0.86
+    elif a.borda == 'tira':
+        borda_cor = hex2rgb(a.tira.split(',')[0]) * 0.92
+    else:
+        borda_cor = hex2rgb(a.borda)
     cores_tira = [hex2rgb(c) for c in a.tira.split(',')]
     if len(cores_tira) == 1:
         cores_tira = cores_tira * 2
@@ -195,6 +207,16 @@ def main():
     tcol = np.clip(cor_map * rel[..., None] * 1.02, 0, 1)
     out = out * (1 - tira[..., None]) + tcol * tira[..., None]
 
+    if a.fundo == 'neutro':
+        # fundo de estúdio: tira o tom creme da foto e deixa a sombra cinza, mantendo a luz original
+        obj = np.maximum(sola, tira)
+        obj = np.asarray(Image.fromarray((obj * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(5)), np.float32) / 255
+        obj = blur(obj, 1.2)
+        lum = F.mean(2)
+        ref_l = np.percentile(lum[obj < 0.05], 90)
+        base = np.array([0.955, 0.957, 0.960], np.float32)
+        neutro = np.clip(base[None, None, :] * (lum / ref_l)[..., None], 0, 1)
+        out = out * obj[..., None] + neutro * (1 - obj[..., None])
     Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8)).save(a.saida, quality=95, subsampling=0)
     print('ok', a.saida)
 
