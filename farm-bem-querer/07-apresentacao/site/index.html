@@ -98,7 +98,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .foto{margin:0;background:#FFFDF8;padding:10px 10px 12px;box-shadow:0 14px 30px -18px rgba(0,0,0,.55);transform:rotate(var(--r));position:relative;color:#2A2520}
 .foto::before{content:"";position:absolute;top:-11px;left:50%;width:74px;height:22px;margin-left:-37px;background:rgba(255,255,255,.55);box-shadow:0 1px 2px rgba(0,0,0,.08);transform:rotate(calc(var(--r) * -2))}
 .foto img{aspect-ratio:4/3;object-fit:cover;width:100%}
-.foto figcaption{font:500 14px/1.35 var(--f-texto);padding-top:9px}
+.foto figcaption{font:500 14px/1.35 var(--f-texto);padding-top:9px;color:#2A2520}
 .foto figcaption span{display:block;font-size:11px;color:#7A7067;margin-top:3px}
 .duo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:start}
 .palmilha{margin:0}
@@ -108,7 +108,7 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
 .ficha dt{font:600 11px/1 var(--f-texto);letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
 .ficha dd{margin:4px 0 0;font-size:17px}
 .paleta{display:flex;gap:8px;margin-top:26px}
-.sw{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12),0 0 0 2px var(--bg)}
+.sw{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--ink) 35%,transparent)}
 .ilu{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:end}
 .ilu figure{margin:0}
 .ilu figure img{width:100%;border-radius:2px;box-shadow:0 26px 50px -30px rgba(0,0,0,.65)}
@@ -120,6 +120,36 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
 .mosaico{display:grid;grid-template-columns:1fr .703fr .703fr 1fr;gap:14px;align-items:start}
 .mosaico img{width:100%;border-radius:3px;object-fit:cover;aspect-ratio:9/16}
 .mosaico .est,.mosaico .camp{aspect-ratio:4/5}
+
+/* caderno de campo dentro de cada capítulo */
+.caderno{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start}
+.cronica{background:#FFFDF8;color:#2A2520;padding:30px 34px 26px;border-radius:2px;box-shadow:0 18px 36px -24px rgba(0,0,0,.55);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(70,110,160,.13) 31px 32px);background-position:0 18px;transform:rotate(-.4deg)}
+.cronica .rot{color:#8A7F74}
+.cronica p{font:400 italic 19px/32px var(--f-titulo);margin:0 0 12px}
+.cronica .trilha{font:500 14px/1.5 var(--f-texto);font-style:normal;color:#5B5249;margin:6px 0 0}
+.cronica .trilha span{font:600 11px/1 var(--f-texto);letter-spacing:.14em;text-transform:uppercase;color:#8A7F74;margin-right:8px}
+.lateral .rot{margin-top:4px}
+.palavras{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-wrap:wrap;gap:10px}
+.palavras li{font:600 25px/1 var(--f-mao);background:var(--ac);color:#1D1915;padding:8px 14px 9px;border-radius:2px;transform:rotate(var(--r));box-shadow:0 6px 12px -8px rgba(0,0,0,.5)}
+.evitar{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15px}
+.evitar li{padding-left:26px;position:relative}
+.evitar li::before{content:"✕";position:absolute;left:0;top:0;color:var(--ac);font-weight:600}
+
+/* mural da pesquisa */
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:8px 0 48px}
+.numeros div{border-top:2px solid var(--tinta);padding-top:12px}
+.numeros b{display:block;font:500 clamp(40px,5vw,64px)/1 var(--f-titulo);font-variation-settings:"SOFT" 100,"WONK" 1}
+.numeros span{font-size:14px;color:#4B443D}
+.mural{display:grid;grid-template-columns:repeat(7,1fr);gap:18px 14px;margin-top:40px}
+.mural .foto{padding:7px 7px 9px}
+.mural .foto img{aspect-ratio:1}
+.mural .foto figcaption{font-size:12px;padding-top:6px}
+.regras{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+.regras div{background:#fff;border:1px solid var(--linha);padding:20px 22px;border-radius:2px}
+.regras h3{font-size:22px;margin-bottom:6px}
+.regras p{margin:0;font-size:15px}
+
 /* corações e coleção */
 .grade-cor{display:grid;grid-template-columns:repeat(7,1fr);gap:22px 16px}
 .grade-cor figure{margin:0}
@@ -145,13 +175,17 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
   .mosaico img{aspect-ratio:4/5}
   .passos{grid-template-columns:repeat(3,1fr)}
   .grade-cor,.colecao{grid-template-columns:repeat(4,1fr)}
-  .duo,.ilu,.decisao,.cols{grid-template-columns:minmax(0,1fr);gap:32px}
+  .duo,.ilu,.decisao,.cols,.caderno{grid-template-columns:minmax(0,1fr);gap:32px}
+  .mural{grid-template-columns:repeat(4,1fr)}
+  .numeros,.regras{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:640px){
   body{font-size:16px}
   .fotos{grid-template-columns:minmax(0,1fr);gap:30px}
   .passos{grid-template-columns:repeat(2,1fr)}
-  .grade-cor,.colecao{grid-template-columns:repeat(2,1fr)}
+  .grade-cor,.colecao,.mural{grid-template-columns:repeat(2,1fr)}
+  .regras{grid-template-columns:minmax(0,1fr)}
+  .cronica{padding:24px 22px 20px}
   .mosaico{grid-template-columns:repeat(2,1fr)}
   .mosaico .est,.mosaico .camp{grid-column:span 2}
   .notas{grid-template-columns:minmax(0,1fr)}
@@ -200,6 +234,25 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="pesquisa">
+  <div class="wrap">
+    <p class="eyebrow">a pesquisa</p>
+    <h2>Antes do desenho, a rua</h2>
+    <div class="numeros">
+      <div><b>14</b><span>estados, das cinco regiões</span></div>
+      <div><b>312</b><span>fotos reais reunidas na pesquisa de campo</span></div>
+      <div><b>139</b><span>fotógrafos, todos creditados</span></div>
+      <div><b>1</b><span>âncora por estado: o que é dali e de nenhum outro lugar</span></div>
+    </div>
+    <div class="regras">
+      <div><h3>O lugar confere</h3><p>Cada foto só entrou depois de o local aparecer no título, nas tags ou na descrição. Pinhão de Portugal e “capim dourado” que era foto de reunião ficaram de fora.</p></div>
+      <div><h3>Cotidiano antes do postal</h3><p>Feira, mesa, festa, ofício e quintal vêm primeiro. O cartão-postal só entra quando é a âncora do lugar.</p></div>
+      <div><h3>O que é sagrado fica</h3><p>Imagem de santo, coroa de Congado e estandarte não viram enfeite. A festa entra pela cor, pela fita e pela flor de papel.</p></div>
+    </div>
+    <div class="mural"><figure class="foto" style="--r:-2deg"><img src="img/mg-campo-1.jpg" alt="Igreja das Mercês entre os casarões, Ouro Preto" loading="lazy"><figcaption>Minas Gerais</figcaption></figure><figure class="foto" style="--r:1.5deg"><img src="img/rj-campo-1.jpg" alt="O bonde amarelo em Santa Teresa" loading="lazy"><figcaption>Rio de Janeiro</figcaption></figure><figure class="foto" style="--r:-1deg"><img src="img/ba-campo-1.jpg" alt="Largo do Pelourinho, Salvador" loading="lazy"><figcaption>Bahia</figcaption></figure><figure class="foto" style="--r:2deg"><img src="img/pe-campo-1.jpg" alt="Passistas de frevo em Olinda" loading="lazy"><figcaption>Pernambuco</figcaption></figure><figure class="foto" style="--r:-1.5deg"><img src="img/ce-campo-1.jpg" alt="Jangadas na areia" loading="lazy"><figcaption>Ceará</figcaption></figure><figure class="foto" style="--r:1deg"><img src="img/ma-campo-1.jpg" alt="Lagoa Bonita, Lençóis Maranhenses" loading="lazy"><figcaption>Maranhão</figcaption></figure><figure class="foto" style="--r:-2.5deg"><img src="img/am-campo-1.jpg" alt="Encontro das Águas, Manaus" loading="lazy"><figcaption>Amazonas</figcaption></figure><figure class="foto" style="--r:-2deg"><img src="img/pa-campo-1.jpg" alt="Mercado do Ver-o-Peso, Belém" loading="lazy"><figcaption>Pará</figcaption></figure><figure class="foto" style="--r:1.5deg"><img src="img/to-campo-1.jpg" alt="Dunas do Jalapão" loading="lazy"><figcaption>Tocantins</figcaption></figure><figure class="foto" style="--r:-1deg"><img src="img/ms-campo-1.jpg" alt="Rio cristalino em Bonito" loading="lazy"><figcaption>Mato Grosso do Sul</figcaption></figure><figure class="foto" style="--r:2deg"><img src="img/go-campo-1.jpg" alt="Cavalhadas de Pirenópolis" loading="lazy"><figcaption>Goiás</figcaption></figure><figure class="foto" style="--r:-1.5deg"><img src="img/pr-campo-1.jpg" alt="Araucárias nos Campos Gerais" loading="lazy"><figcaption>Paraná</figcaption></figure><figure class="foto" style="--r:1deg"><img src="img/sc-campo-1.jpg" alt="APA da Baleia Franca, litoral sul" loading="lazy"><figcaption>Santa Catarina</figcaption></figure><figure class="foto" style="--r:-2.5deg"><img src="img/rs-campo-1.jpg" alt="Cuia de chimarrão" loading="lazy"><figcaption>Rio Grande do Sul</figcaption></figure></div>
   </div>
 </section>
 
@@ -254,9 +307,23 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">O ouro das igrejas de Ouro Preto, mas visto de perto: a talha que sobe pelos altares e as rosas que o Mestre Ataíde pintou no forro da São Francisco de Assis.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Minas não se mostra de uma vez. Vai aparecendo devagar: na ladeira de pedra que obriga a andar mais lento, na parede caiada com janela azul, vermelho sangue-de-boi e barrado ocre, no ouro que escorre por dentro das igrejas. Em Minas se recebe na cozinha: café passado no pano, queijo curando na tábua, pão de queijo saindo do forno e um <em>“cê aceita mais um?”</em> que não espera resposta. E tem a festa: o Congado desce a rua com fita, tambor e coroa, e a pedra-sabão do Largo de Coimbra vira panela, santo e profeta.</p>
+        <p class="trilha"><span>trilha</span><em>Clube da Esquina</em> (Milton Nascimento e Lô Borges, 1972) · as caixas do Congado na rua · o apito da Maria-Fumaça entre São João del-Rei e Tiradentes</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">uai</li><li style="--r:3deg">trem</li><li style="--r:-2deg">sô</li><li style="--r:5deg">nó!</li><li style="--r:-3deg">cê</li><li style="--r:2deg">quitanda</li><li style="--r:-5deg">causo</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Jabuticaba como símbolo de Minas:</strong> tem jabuticaba no quintal de meio Brasil; ficou na primeira versão e saiu.</li><li><strong>Lobo-guará e ipê sozinhos:</strong> são do Cerrado e do país inteiro, não gritam Minas.</li><li><strong>Escrever “uai” ou “trem” na estampa:</strong> vira souvenir de rodoviária.</li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
-      <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/mg-campo-1.jpg" alt="Igreja das Mercês entre os casarões, Ouro Preto" loading="lazy"><figcaption>Igreja das Mercês entre os casarões, Ouro Preto<span>foto: Lídia Andrade · CC BY-SA 4.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/mg-campo-2.jpg" alt="Rua de Tiradentes" loading="lazy"><figcaption>Rua de Tiradentes<span>foto: Cyro A. Silva from Rio de Janeiro, Brasil · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/mg-campo-3.jpg" alt="Casario da Rua Geraldo Resende, Tiradentes" loading="lazy"><figcaption>Casario da Rua Geraldo Resende, Tiradentes<span>foto: Alexandre D. R. da Fonseca · CC BY-SA 4.0</span></figcaption></figure></div>
+      <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/mg-campo-1.jpg" alt="Igreja das Mercês entre os casarões, Ouro Preto" loading="lazy"><figcaption>Igreja das Mercês entre os casarões, Ouro Preto<span>foto: Lídia Andrade · CC BY-SA 4.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/mg-campo-2.jpg" alt="Rua de Tiradentes" loading="lazy"><figcaption>Rua de Tiradentes<span>foto: Cyro A. Silva · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/mg-campo-3.jpg" alt="Casario da Rua Geraldo Resende, Tiradentes" loading="lazy"><figcaption>Casario da Rua Geraldo Resende, Tiradentes<span>foto: Alexandre D. R. da Fonseca · CC BY-SA 4.0</span></figcaption></figure></div>
     </div>
 
     <div class="bloco duo">
@@ -299,6 +366,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="estampa">Bonde de Santa Teresa</p>
       <p class="lead">O Rio que sobe o morro: o bondinho amarelo atravessando os Arcos da Lapa e as amendoeiras que vestem as ruas da cidade de verde, vermelho e laranja.</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>A própria FARM diz que o Rio é zero sutil. Mas o Rio que a gente quer mora entre o calçadão e o subúrbio: as ondas pretas e brancas de pedra portuguesa em Copacabana, o mate gelado no galão e o biscoito de polvilho na mão, o guarda-sol listrado fincado na areia, o bonde amarelo subindo Santa Teresa por cima dos Arcos da Lapa. À noite, a roda de samba na Pedra do Sal; de dia, o Mercadão de Madureira, onde tem de tudo, até o que você não sabia que precisava.</p>
+        <p class="trilha"><span>trilha</span>roda de samba na Pedra do Sal · <em>Garota de Ipanema</em> (Tom Jobim e Vinicius de Moraes) · o grito do vendedor na areia: “olha o mate!”</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">coé</li><li style="--r:3deg">mermão</li><li style="--r:-2deg">caraca</li><li style="--r:5deg">partiu</li><li style="--r:-3deg">maneiro</li><li style="--r:2deg">valeu</li><li style="--r:-5deg">biscoito, não bolacha</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Cristo e Pão de Açúcar como cartão-postal:</strong> a FARM já é o Rio; a V2 vai no detalhe do dia a dia.</li><li><strong>Embalagem de marca</strong> (biscoito, mate): sem collab, entra só o objeto, sem logo.</li><li><strong>Favela como cenário exótico:</strong> o subúrbio entra pela feira e pelo samba, com gente de verdade.</li></ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -346,6 +427,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">O sul da Bahia que dá o cacau e a Salvador que amarra fita no portão do Bonfim, juntos no mesmo par.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Salvador começa no alto do Pelourinho, com casarões cor de bala (rosa, amarelo, azul, verde) e termina no tabuleiro da baiana, de saia rodada e turbante branco, com cheiro de dendê no ar. As fitas do Senhor do Bonfim balançam amarradas no gradil, cada uma com um pedido; na Lavagem, as baianas sobem a colina com potes de água de cheiro. O tambor ecoa nas ladeiras, o Elevador Lacerda liga a cidade alta à baixa, e no sul do estado o cacau amadurece na sombra da mata.</p>
+        <p class="trilha"><span>trilha</span><em>O que é que a baiana tem?</em> (Dorival Caymmi) · tambores no Pelourinho · o berimbau da roda de capoeira</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">oxe</li><li style="--r:3deg">oxente</li><li style="--r:-2deg">massa!</li><li style="--r:5deg">barril</li><li style="--r:-3deg">painho</li><li style="--r:2deg">mainha</li><li style="--r:-5deg">ó paí, ó</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Orixás e Iemanjá como enfeite:</strong> são divindades do candomblé, não estampa.</li><li><strong>Fita com texto escrito:</strong> vira souvenir; a fita entra só como cor.</li><li><strong>Baiana como fantasia de carnaval:</strong> o ofício é patrimônio; entra a saia rodada e a renda, com respeito.</li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
       <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/ba-campo-1.jpg" alt="Largo do Pelourinho, Salvador" loading="lazy"><figcaption>Largo do Pelourinho, Salvador<span>foto: José e Marina · CC BY-NC-SA 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/ba-campo-2.jpg" alt="Fitas do Senhor do Bonfim" loading="lazy"><figcaption>Fitas do Senhor do Bonfim<span>foto: Leandro&#x27;s World Tour · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/ba-campo-3.jpg" alt="Amêndoas de cacau secando" loading="lazy"><figcaption>Amêndoas de cacau secando<span>foto: cid.edson · CC BY-NC-SA 2.0</span></figcaption></figure></div>
@@ -391,6 +486,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="estampa">Passo de Frevo</p>
       <p class="lead">A sombrinha que abre o carnaval de Recife e Olinda, girando entre as buganvílias das ladeiras.</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Pernambuco é chão de frevo: a sombrinha pequena de quatro cores girando na mão do passista, o Galo da Madrugada atravessando o Recife, os bonecos gigantes de Olinda balançando ladeira abaixo. No interior, o caboclo de lança do maracatu rural sacode a cabeleira de papel celofane e o surrão de chocalhos; em Bezerros, a goiva abre a madeira da xilogravura; em Caruaru, o barro do Alto do Moura vira gente. E depois da festa tem bolo de rolo, fino como papel, enrolado com goiabada.</p>
+        <p class="trilha"><span>trilha</span><em>Vassourinhas</em> (marcha de frevo) · o baque do maracatu nação · Chico Science &amp; Nação Zumbi, <em>Da Lama ao Caos</em></p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">oxente</li><li style="--r:3deg">arretado</li><li style="--r:-2deg">visse?</li><li style="--r:5deg">vixe</li><li style="--r:-3deg">massa</li><li style="--r:2deg">frevo</li><li style="--r:-5deg">mangue</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Cangaço e Lampião:</strong> são do sertão de vários estados e viram caricatura.</li><li><strong>Copiar a xilogravura de J. Borges:</strong> obra autoral; a escola de Bezerros é referência, não molde.</li><li><strong>Símbolos rituais do maracatu nação:</strong> têm raiz no candomblé.</li></ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -438,6 +547,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">O vento do Ceará enche a vela da jangada, balança o caju no cajueiro e passa pelos bilros das rendeiras.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>O Ceará tem vento. Ele enche a vela triangular da jangada no Mucuripe, empurra as dunas de Jericoacoara e balança o caju pendurado no cajueiro. Nas falésias de Canoa Quebrada e Morro Branco a areia tem dezenas de cores, e em Beberibe ela vira desenho dentro da garrafinha. Na varanda, em Aquiraz, a rendeira cruza os bilros sobre a almofada, num barulhinho de madeira que não para. E a carnaúba dá cera, palha e sombra.</p>
+        <p class="trilha"><span>trilha</span><em>Mucuripe</em> (Fagner e Belchior) · o estalo dos bilros na almofada · o vento nas velas da jangada</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">macho</li><li style="--r:3deg">arre égua</li><li style="--r:-2deg">mah</li><li style="--r:5deg">aperreado</li><li style="--r:-3deg">pense!</li><li style="--r:2deg">frescar</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Cacto e caveira de boi:</strong> sertão genérico, não é o Ceará que a gente quer mostrar.</li><li><strong>Chapéu de couro como fantasia.</strong></li><li><strong>Caju sozinho:</strong> também é do Rio Grande do Norte e do Piauí; aqui ele vem com a jangada e a renda.</li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
       <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/ce-campo-1.jpg" alt="Jangadas na areia" loading="lazy"><figcaption>Jangadas na areia<span>foto: Ric e Ette · CC BY-NC-SA 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/ce-campo-2.jpg" alt="Cajueiral em Pacajus" loading="lazy"><figcaption>Cajueiral em Pacajus<span>foto: Porto Neto · CC BY-SA 4.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/ce-campo-3.jpg" alt="Falésias de Canoa Quebrada" loading="lazy"><figcaption>Falésias de Canoa Quebrada<span>foto: Elton Jr. · CC BY-SA 2.0</span></figcaption></figure></div>
@@ -484,9 +607,23 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">As noites de São João em São Luís, quando o boi chega bordado em veludo preto, e os guarás vermelhos que pintam o litoral do Maranhão.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>São Luís é a cidade dos azulejos: casarões do centro histórico vestem fachadas inteiras de azulejo português azul e branco, que espanta o calor. Em junho, a ilha inteira vira terreiro: o boi chega bordado em veludo preto, coberto de miçanga, canutilho e lantejoula, girando ao som das matracas e dos pandeirões. No mangue, o guará pinta tudo de vermelho; e em Barreirinhas, os Lençóis são dunas brancas com lagoas de água doce no meio.</p>
+        <p class="trilha"><span>trilha</span>toada de bumba-meu-boi de matraca · tambor de crioula · reggae nas radiolas de São Luís</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">guarnicê</li><li style="--r:3deg">toada</li><li style="--r:-2deg">matraca</li><li style="--r:5deg">pandeirão</li><li style="--r:-3deg">sotaque</li><li style="--r:2deg">brilho</li><li style="--r:-5deg">égua!</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Lençóis como “deserto” genérico:</strong> são dunas com água; e não podem ser só fundo.</li><li><strong>Copiar o couro de um boi específico:</strong> cada couro é obra de bordadeira, com autoria.</li><li><strong>Reggae como estereótipo de “Jamaica brasileira”.</strong></li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
-      <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/ma-campo-1.jpg" alt="Lagoa Bonita, Lençóis Maranhenses" loading="lazy"><figcaption>Lagoa Bonita, Lençóis Maranhenses<span>foto: Fred Schinke · CC BY-ND 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/ma-campo-2.jpg" alt="Revoada de guarás" loading="lazy"><figcaption>Revoada de guarás<span>foto: andresumida · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/ma-campo-3.jpg" alt="Boi do bumba-meu-boi em São Luís" loading="lazy"><figcaption>Boi do bumba-meu-boi em São Luís<span>foto: marcusrg - Hello, nice to meet you! · CC BY 2.0</span></figcaption></figure></div>
+      <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/ma-campo-1.jpg" alt="Lagoa Bonita, Lençóis Maranhenses" loading="lazy"><figcaption>Lagoa Bonita, Lençóis Maranhenses<span>foto: Fred Schinke · CC BY-ND 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/ma-campo-2.jpg" alt="Revoada de guarás" loading="lazy"><figcaption>Revoada de guarás<span>foto: andresumida · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/ma-campo-3.jpg" alt="Boi do bumba-meu-boi em São Luís" loading="lazy"><figcaption>Boi do bumba-meu-boi em São Luís<span>foto: marcusrg · CC BY 2.0</span></figcaption></figure></div>
     </div>
 
     <div class="bloco duo">
@@ -529,6 +666,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="estampa">Encontro das Águas</p>
       <p class="lead">Os dois rios que correm lado a lado sem se misturar perto de Manaus: o par de chinelos é o encontro, um pé de cada água.</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Manaus nasceu do encontro de dois rios que não se misturam: o Negro, cor de café, e o Solimões, cor de barro, correndo lado a lado por quilômetros. Na cidade, o Teatro Amazonas ergue a cúpula de escamas verde, amarela e azul; no porto, os barcos de recreio partem com redes coloridas penduradas lado a lado. E em junho Parintins se divide em duas cores: o vermelho do Garantido, o boi do coração na testa, e o azul do Caprichoso, o boi da estrela. Na várzea, a vitória-régia abre a folha redonda do tamanho de uma mesa.</p>
+        <p class="trilha"><span>trilha</span>toadas de Garantido e Caprichoso · <em>Vermelho</em> (Chico da Silva) · a buzina do barco saindo do porto de Manaus</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">maninho</li><li style="--r:3deg">mana</li><li style="--r:-2deg">leseira</li><li style="--r:5deg">de bubuia</li><li style="--r:-3deg">pai d’égua</li><li style="--r:2deg">caboco</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>“Índio” genérico de cocar:</strong> estereótipo; povos indígenas têm nome, e só entram com parceria.</li><li><strong>Selva verde genérica com papagaio.</strong></li><li><strong>Escolher um boi só:</strong> Parintins é os dois; a estampa homenageia coração e estrela.</li></ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -576,9 +727,23 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">Os brinquedos de miriti de Abaetetuba em revoada sobre o roxo do açaí que chega de barco ao Ver-o-Peso.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Belém amanhece no Ver-o-Peso: barco chegando com açaí no paneiro, peixe na pedra, garrafada de ervas e cheiro-cheiroso nas barracas de lona. A cidade anda na sombra das mangueiras e, em outubro, para inteira para o Círio de Nazaré: a corda puxada por promesseiros, as flores, a multidão. De Abaetetuba vêm os brinquedos de miriti, barquinhos, cobras, pássaros e bailarinas pintados de cores vivas, feitos do talo da palmeira. E em Icoaraci o barro segue aprendendo com os desenhos marajoaras.</p>
+        <p class="trilha"><span>trilha</span>carimbó (Mestre Verequete, Pinduca) · guitarrada · aparelhagem e tecnobrega de Belém</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">égua!</li><li style="--r:3deg">pai d’égua</li><li style="--r:-2deg">maninha</li><li style="--r:5deg">pavulagem</li><li style="--r:-3deg">de rocha</li><li style="--r:2deg">mermo</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Copiar grafismo marajoara de peça arqueológica:</strong> é patrimônio indígena; entram só princípios (faixa, simetria).</li><li><strong>Imagem de Nossa Senhora de Nazaré como estampa:</strong> é devoção; o Círio entra pela cor das flores e da corda.</li><li><strong>Selva genérica:</strong> o Pará que a gente quer é o da feira e do brinquedo.</li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
-      <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/pa-campo-1.jpg" alt="Mercado do Ver-o-Peso, Belém" loading="lazy"><figcaption>Mercado do Ver-o-Peso, Belém<span>foto: marcusrg - Hello, nice to meet you! · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/pa-campo-2.jpg" alt="Barquinhos de miriti" loading="lazy"><figcaption>Barquinhos de miriti<span>foto: Celso Abreu · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/pa-campo-3.jpg" alt="Paneiros de açaí no cais" loading="lazy"><figcaption>Paneiros de açaí no cais<span>foto: Helder da Rocha · CC BY-SA 2.0</span></figcaption></figure></div>
+      <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/pa-campo-1.jpg" alt="Mercado do Ver-o-Peso, Belém" loading="lazy"><figcaption>Mercado do Ver-o-Peso, Belém<span>foto: marcusrg · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/pa-campo-2.jpg" alt="Barquinhos de miriti" loading="lazy"><figcaption>Barquinhos de miriti<span>foto: Celso Abreu · CC BY 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/pa-campo-3.jpg" alt="Paneiros de açaí no cais" loading="lazy"><figcaption>Paneiros de açaí no cais<span>foto: Helder da Rocha · CC BY-SA 2.0</span></figcaption></figure></div>
     </div>
 
     <div class="bloco duo">
@@ -588,7 +753,7 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
         <dl>
           <dt>âncora</dt><dd>o <strong>brinquedo de miriti</strong>, feito à mão em Abaetetuba e vendido no Círio.</dd>
           <dt>no chinelo</dt><dd>pé esquerdo com pássaros, barquinho e cobra de miriti pintados; pé direito com cachos de açaí e um paneiro cheio.</dd>
-          <dt>fundo e tira</dt><dd>roxo-açaí; tira amarelo-miriti.</dd>
+          <dt>fundo e tira</dt><dd>roxo-açaí; tira vermelho-miriti.</dd>
           <dt>na ilustração</dt><dd>o Mercado de Ferro do Ver-o-Peso visto da baía ao amanhecer, barcos chegando com paneiros de açaí e pássaros de miriti no céu.</dd>
         </dl>
         <div class="paleta"><span class="sw" style="background:#4B1F3F" title="#4B1F3F"></span><span class="sw" style="background:#D93A2E" title="#D93A2E"></span><span class="sw" style="background:#F2C53D" title="#F2C53D"></span><span class="sw" style="background:#2E9A55" title="#2E9A55"></span><span class="sw" style="background:#2F6DB5" title="#2F6DB5"></span></div>
@@ -622,6 +787,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">O capim que brilha como ouro nas veredas do Jalapão, trançado pelas artesãs da Mumbuca, entre buritis e dunas cor de laranja.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>O Jalapão é de areia cor de laranja, água transparente e capim que brilha como ouro. Nas veredas, o buriti alinha as palmeiras em fila; nos fervedouros, a água borbulha de baixo e não deixa ninguém afundar. Na comunidade quilombola da Mumbuca, as artesãs colhem o capim dourado a partir de 20 de setembro e costuram com a seda tirada do broto do buriti: saem bolsas, mandalas, brincos e chapéus. Ouro que não pesa.</p>
+        <p class="trilha"><span>trilha</span>a Festa da Colheita do Capim Dourado, na Mumbuca · o vento nas dunas · a água borbulhando no fervedouro</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">capim dourado</li><li style="--r:3deg">seda de buriti</li><li style="--r:-2deg">vereda</li><li style="--r:5deg">fervedouro</li><li style="--r:-3deg">Mumbuca</li><li style="--r:2deg">colheita</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Deserto genérico:</strong> o Jalapão é Cerrado, com água por todo lado.</li><li><strong>Copiar peças da Mumbuca:</strong> cada mandala e bolsa é autoral.</li><li><strong>Agro e boiada como identidade única do estado.</strong></li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
       <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/to-campo-1.jpg" alt="Dunas do Jalapão" loading="lazy"><figcaption>Dunas do Jalapão<span>foto: A. Duarte · CC BY-SA 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/to-campo-2.jpg" alt="Fervedouro no Jalapão" loading="lazy"><figcaption>Fervedouro no Jalapão<span>foto: Lucas Flavio · CC BY-NC 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/to-campo-3.jpg" alt="Rio entre as dunas do Jalapão" loading="lazy"><figcaption>Rio entre as dunas do Jalapão<span>foto: Mari Lucia · CC BY-NC 2.0</span></figcaption></figure></div>
@@ -634,7 +813,7 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
         <dl>
           <dt>âncora</dt><dd>o <strong>capim dourado trançado</strong>, saber das artesãs quilombolas da Mumbuca.</dd>
           <dt>no chinelo</dt><dd>pé esquerdo com folhas em leque e cachos de frutos do buriti; pé direito com hastes de capim dourado e uma mandala trançada em espiral.</dd>
-          <dt>fundo e tira</dt><dd>terracota das dunas ao pôr do sol; tira dourada.</dd>
+          <dt>fundo e tira</dt><dd>terracota das dunas ao pôr do sol; tira verde-buriti.</dd>
           <dt>na ilustração</dt><dd>as dunas laranja com a Serra do Espírito Santo ao fundo, um fervedouro turquesa no centro cercado de buritis e capim dourado nos cantos de baixo.</dd>
         </dl>
         <div class="paleta"><span class="sw" style="background:#C9652E" title="#C9652E"></span><span class="sw" style="background:#E8B83A" title="#E8B83A"></span><span class="sw" style="background:#2F5E3A" title="#2F5E3A"></span><span class="sw" style="background:#7A2E1C" title="#7A2E1C"></span><span class="sw" style="background:#39B5B0" title="#39B5B0"></span></div>
@@ -667,6 +846,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="estampa">Onça de Bonito</p>
       <p class="lead">A onça-pintada e o tuiuiú do Pantanal sul, sobre a água transparente dos rios de Bonito.</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>No Pantanal sul, a água manda: na cheia o campo vira lagoa, na seca o tuiuiú desfila de pescoço vermelho entre os jacarés. A arara-azul passa gritando em pares e a piúva pinta o fim do inverno de rosa. O peão pantaneiro toca a comitiva com o berrante. Em Bonito, o rio é tão transparente que dá para contar os peixes. E em Campo Grande, a Feira Central serve sobá, herança dos imigrantes de Okinawa, enquanto a roda de tereré gelado passa de mão em mão, herança da fronteira com o Paraguai.</p>
+        <p class="trilha"><span>trilha</span><em>Chalana</em> (Mário Zan e Arlindo Pinto) · a viola de Almir Sater · o berrante da comitiva</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">tereré</li><li style="--r:3deg">sobá</li><li style="--r:-2deg">chipa</li><li style="--r:5deg">berrante</li><li style="--r:-3deg">comitiva</li><li style="--r:2deg">piúva</li><li style="--r:-5deg">chalana</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Pantanal sem marcar o sul:</strong> MS e MT dividem o bioma; o que é só daqui é Bonito, o sobá, o tereré e a piúva no Pantanal sul.</li><li><strong>Onça agressiva, de boca aberta:</strong> a onça daqui é observada, não caçada.</li><li><strong>Cowboy americano no lugar do peão pantaneiro.</strong></li></ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -714,6 +907,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">As Cavalhadas de Pirenópolis, quando os cavalos saem enfeitados de flor de papel e fita, com o pequi do cerrado em volta.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Em Pirenópolis, maio é tempo de Festa do Divino: as Cavalhadas encenam a batalha de mouros e cristãos, vermelho contra azul, e os mascarados invadem a rua a cavalo com máscaras de boi enfeitadas de flores de papel, fitas e brilho, fazendo o “curucucu”. Na Cidade de Goiás, o casario baixo à beira do Rio Vermelho guarda a casa de Cora Coralina e seus doces. E em toda cozinha goiana tem pequi, amarelo e perfumado, que se come com cuidado por causa dos espinhos.</p>
+        <p class="trilha"><span>trilha</span>o “curucucu” dos mascarados · a banda de música na Festa do Divino · moda de viola</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">trem</li><li style="--r:3deg">dimais da conta</li><li style="--r:-2deg">pamonhada</li><li style="--r:5deg">curucucu</li><li style="--r:-3deg">pequi</li><li style="--r:2deg">cavalhada</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Brasília:</strong> é Distrito Federal, não Goiás.</li><li><strong>Agro e sertanejo como identidade única do estado.</strong></li><li><strong>Cerrado genérico sem a festa:</strong> o que é só de Goiás é a Cavalhada, o mascarado e o pequi na panela.</li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
       <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/go-campo-1.jpg" alt="Cavalhadas de Pirenópolis" loading="lazy"><figcaption>Cavalhadas de Pirenópolis<span>foto: asleeponasunbeam · CC BY-NC-ND 2.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/go-campo-2.jpg" alt="Rua de Pirenópolis em dia de festa" loading="lazy"><figcaption>Rua de Pirenópolis em dia de festa<span>foto: fabian.kron · CC BY-ND 2.0</span></figcaption></figure><figure class="foto" style="--r:-0.8deg"><img src="img/go-campo-3.jpg" alt="Pequi aberto" loading="lazy"><figcaption>Pequi aberto<span>foto: capelati · CC BY-SA 2.0</span></figcaption></figure></div>
@@ -759,6 +966,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="estampa">Gralha e Pinhão</p>
       <p class="lead">A gralha-azul enterra o pinhão e planta a floresta de araucária sem querer: por isso virou o símbolo do Paraná.</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>O Paraná tem forma de araucária: copa aberta como um candelabro, recortada no céu frio dos Campos Gerais. A gralha-azul enterra o pinhão e planta a floresta sem querer, e por isso virou símbolo do estado. Em Curitiba, a estufa de vidro e ferro do Jardim Botânico brilha no meio dos canteiros, e o inverno pede pinhão cozido. Em Prudentópolis, as igrejas ucranianas têm cúpulas em forma de cebola, e as pêssankas, ovos pintados com cera, guardam desenhos antigos. O trem desce a Serra do Mar até Morretes, onde o barreado cozinha devagar.</p>
+        <p class="trilha"><span>trilha</span>o apito do trem da Serra do Mar · o fandango caiçara do litoral · a chaleira do pinhão no fogão</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">piá</li><li style="--r:3deg">vina</li><li style="--r:-2deg">penal</li><li style="--r:5deg">japona</li><li style="--r:-3deg">capaz!</li><li style="--r:2deg">pinhão</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Frio “europeu” genérico:</strong> o Paraná tem araucária, pinhão e gralha.</li><li><strong>Cataratas como cartão-postal sozinho:</strong> são divididas com a Argentina.</li><li><strong>Copiar pêssankas de família:</strong> cada desenho tem história; parceria com a comunidade.</li></ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -806,6 +1027,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="lead">Todo inverno a baleia-franca volta para ter filhote no litoral de Santa Catarina; na ilha, as ostras crescem em fileiras no mar.</p>
     </header>
 
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>Florianópolis é ilha açoriana: casinhas coloridas de porta e janela na beira da baía, em Santo Antônio de Lisboa e no Ribeirão da Ilha, onde as ostras crescem em fileiras de boias no mar. Na Lagoa da Conceição, a rendeira cruza os bilros como aprendeu com a avó, que aprendeu com a dela, vinda dos Açores no século XVIII. No verão o boi-de-mamão dança com a Bernunça e a Maricota. A Ponte Hercílio Luz atravessa, branca, para o continente. E de julho a novembro a baleia-franca volta para ter filhote nas enseadas do sul.</p>
+        <p class="trilha"><span>trilha</span>a cantoria do boi-de-mamão · a ratoeira, cantiga de roda açoriana · o bilro batendo na almofada</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">manezinho</li><li style="--r:3deg">tás tolo?</li><li style="--r:-2deg">ó-lhó-lhó!</li><li style="--r:5deg">segue reto toda vida</li><li style="--r:-3deg">Bernunça</li><li style="--r:2deg">renda</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>A baleia debaixo da ponte:</strong> ela não aparece no centro de Florianópolis; a ilustração foi para Garopaba.</li><li><strong>Oktoberfest e enxaimel na estampa da ilha:</strong> são do Vale do Itajaí (rendem outra estampa no Drop 2).</li><li><strong>Praia de surf genérica.</strong></li></ul>
+      </div>
+    </div>
+
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
       <div class="fotos"><figure class="foto" style="--r:-2.2deg"><img src="img/sc-campo-1.jpg" alt="APA da Baleia Franca, litoral sul" loading="lazy"><figcaption>APA da Baleia Franca, litoral sul<span>foto: Ctseelig · CC BY-SA 4.0</span></figcaption></figure><figure class="foto" style="--r:1.6deg"><img src="img/sc-campo-2.jpg" alt="Costão na APA da Baleia Franca" loading="lazy"><figcaption>Costão na APA da Baleia Franca<span>foto: Ctseelig · CC BY-SA 4.0</span></figcaption></figure></div>
@@ -851,6 +1086,20 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
       <p class="estampa">Roda de Chimarrão</p>
       <p class="lead">A cuia que passa de mão em mão e o quero-quero que guarda o pampa no fim da tarde.</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>No Rio Grande, a roda começa cedo: a cuia de chimarrão passa de mão em mão, bomba de prata, erva verde e água quente que não pode ferver. No pampa o campo é largo e baixo, e o quero-quero grita guardando o ninho. O gaúcho de bombacha, lenço no pescoço e chapéu monta o cavalo crioulo; no 20 de setembro, o Desfile Farroupilha toma Porto Alegre. Nas Missões, as ruínas vermelhas de São Miguel guardam a história guarani. E o pôr do sol do Guaíba, visto da Usina do Gasômetro, é o mais bonito do mundo (pergunte a qualquer porto-alegrense).</p>
+        <p class="trilha"><span>trilha</span><em>Querência Amada</em> (Teixeirinha) · milonga no violão · a gaita de botão no CTG</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras"><li style="--r:-4deg">bah!</li><li style="--r:3deg">tchê</li><li style="--r:-2deg">tri</li><li style="--r:5deg">guri</li><li style="--r:-3deg">guria</li><li style="--r:2deg">bergamota</li><li style="--r:-5deg">cacetinho</li></ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar"><li><strong>Gaúcho caricato de piada.</strong></li><li><strong>Gramado e Natal Luz como o único RS:</strong> são turismo; o estado é o pampa e a roda de chimarrão.</li><li><strong>Missões sem crédito guarani.</strong></li></ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -921,7 +1170,7 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
 <footer class="rodape">
   <div class="wrap">
     <p class="eyebrow" style="margin-bottom:14px">fotos de campo</p>
-    <ul class="creditos"><li><b>Minas Gerais</b> · Igreja das Mercês entre os casarões, Ouro Preto: Lídia Andrade, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Igreja_Nossa_Senhora_das_Merces_vista_entre_as_fachdas_dos_casarios.JPG">fonte</a>); Rua de Tiradentes: Cyro A. Silva from Rio de Janeiro, Brasil, CC BY 2.0 (<a href="https://commons.wikimedia.org/wiki/File:Rua_de_Tiradentes_-_Minas_Gerais_(2979358955).jpg">fonte</a>); Casario da Rua Geraldo Resende, Tiradentes: Alexandre D. R. da Fonseca, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Conjunto_arquitet%C3%B4nico_da_Rua_Geraldo_Resende_-_Tiradentes_-_Minas_Gerais_-_Brasil.jpg">fonte</a>)</li><li><b>Rio de Janeiro</b> · O bonde amarelo em Santa Teresa: Rodrigo_Soldon, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/1709274176">fonte</a>); O bondinho subindo a ladeira: Rodrigo_Soldon, CC BY 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/3725743219">fonte</a>); O bonde nos trilhos de Santa Teresa: Rodrigo_Soldon, CC BY 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/3725749583">fonte</a>)</li><li><b>Bahia</b> · Largo do Pelourinho, Salvador: José e Marina, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/24463583@N03/15868401991">fonte</a>); Fitas do Senhor do Bonfim: Leandro&#x27;s World Tour, CC BY 2.0 (<a href="https://www.flickr.com/photos/18115835@N00/5564595344">fonte</a>); Amêndoas de cacau secando: cid.edson, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/32902527@N08/5892185959">fonte</a>)</li><li><b>Pernambuco</b> · Passistas de frevo em Olinda: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/3219530631">fonte</a>); Caboclos de lança: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/3299482425">fonte</a>); Bonecos gigantes nas ladeiras de Olinda: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/4379926398">fonte</a>)</li><li><b>Ceará</b> · Jangadas na areia: Ric e Ette, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/34708734@N00/197079424">fonte</a>); Cajueiral em Pacajus: Porto Neto, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg">fonte</a>); Falésias de Canoa Quebrada: Elton Jr., CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/134400688@N08/19824109622">fonte</a>)</li><li><b>Maranhão</b> · Lagoa Bonita, Lençóis Maranhenses: Fred Schinke, CC BY-ND 2.0 (<a href="https://www.flickr.com/photos/30296867@N04/5843496041">fonte</a>); Revoada de guarás: andresumida, CC BY 2.0 (<a href="https://www.flickr.com/photos/35069660@N00/48627413588">fonte</a>); Boi do bumba-meu-boi em São Luís: marcusrg - Hello, nice to meet you!, CC BY 2.0 (<a href="https://www.flickr.com/photos/49503185029@N01/874109589">fonte</a>)</li><li><b>Amazonas</b> · Encontro das Águas, Manaus: whl.travel, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/40382540@N08/4009155340">fonte</a>); Boto-cor-de-rosa: Georg Sander, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/7960563@N07/4466309717">fonte</a>); Vitória-régia em Manaus: Arnoldo Riker, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/17919385@N00/3776340252">fonte</a>)</li><li><b>Pará</b> · Mercado do Ver-o-Peso, Belém: marcusrg - Hello, nice to meet you!, CC BY 2.0 (<a href="https://www.flickr.com/photos/49503185029@N01/454611567">fonte</a>); Barquinhos de miriti: Celso Abreu, CC BY 2.0 (<a href="https://www.flickr.com/photos/13656399@N02/4993760899">fonte</a>); Paneiros de açaí no cais: Helder da Rocha, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/49503071578@N01/2330906600">fonte</a>)</li><li><b>Tocantins</b> · Dunas do Jalapão: A. Duarte, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/30411166@N04/23082887694">fonte</a>); Fervedouro no Jalapão: Lucas Flavio, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/13166094@N08/6331617889">fonte</a>); Rio entre as dunas do Jalapão: Mari Lucia, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/25173980@N00/4169373738">fonte</a>)</li><li><b>Mato Grosso do Sul</b> · Rio cristalino em Bonito: Fernando Stankuns, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/82289802@N00/14323002462">fonte</a>); Aguapés no rio Salobra: dany13, CC BY 2.0 (<a href="https://www.flickr.com/photos/11493299@N00/15706377191">fonte</a>); Gruta do Lago Azul, Bonito: Valdiney Pimenta, CC BY 2.0 (<a href="https://www.flickr.com/photos/13061113@N05/3319551627">fonte</a>)</li><li><b>Goiás</b> · Cavalhadas de Pirenópolis: asleeponasunbeam, CC BY-NC-ND 2.0 (<a href="https://www.flickr.com/photos/66995057@N00/48036338107">fonte</a>); Rua de Pirenópolis em dia de festa: fabian.kron, CC BY-ND 2.0 (<a href="https://www.flickr.com/photos/10239854@N07/52197135396">fonte</a>); Pequi aberto: capelati, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/66895716@N03/8428425646">fonte</a>)</li><li><b>Paraná</b> · Araucárias nos Campos Gerais: RadamesM, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/58965011@N05/8475950116">fonte</a>); Araucária na neblina: RadamesM, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/58965011@N05/8924831824">fonte</a>)</li><li><b>Santa Catarina</b> · APA da Baleia Franca, litoral sul: Ctseelig, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(13).jpg">fonte</a>); Costão na APA da Baleia Franca: Ctseelig, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(01).jpg">fonte</a>)</li><li><b>Rio Grande do Sul</b> · Cuia de chimarrão: Cleber Rech, CC BY 2.0 (<a href="https://www.flickr.com/photos/7272193@N02/21375180151">fonte</a>); Fim de tarde no pampa, Pelotas: Eduardo Amorim, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/75133058@N00/866865208">fonte</a>); Chimarrão perto do fogo: Eduardo Amorim, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/75133058@N00/29440539126">fonte</a>)</li></ul>
+    <ul class="creditos"><li><b>Minas Gerais</b> · Igreja das Mercês entre os casarões, Ouro Preto: Lídia Andrade, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Igreja_Nossa_Senhora_das_Merces_vista_entre_as_fachdas_dos_casarios.JPG">fonte</a>); Rua de Tiradentes: Cyro A. Silva, CC BY 2.0 (<a href="https://commons.wikimedia.org/wiki/File:Rua_de_Tiradentes_-_Minas_Gerais_(2979358955).jpg">fonte</a>); Casario da Rua Geraldo Resende, Tiradentes: Alexandre D. R. da Fonseca, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Conjunto_arquitet%C3%B4nico_da_Rua_Geraldo_Resende_-_Tiradentes_-_Minas_Gerais_-_Brasil.jpg">fonte</a>)</li><li><b>Rio de Janeiro</b> · O bonde amarelo em Santa Teresa: Rodrigo_Soldon, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/1709274176">fonte</a>); O bondinho subindo a ladeira: Rodrigo_Soldon, CC BY 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/3725743219">fonte</a>); O bonde nos trilhos de Santa Teresa: Rodrigo_Soldon, CC BY 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/3725749583">fonte</a>)</li><li><b>Bahia</b> · Largo do Pelourinho, Salvador: José e Marina, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/24463583@N03/15868401991">fonte</a>); Fitas do Senhor do Bonfim: Leandro&#x27;s World Tour, CC BY 2.0 (<a href="https://www.flickr.com/photos/18115835@N00/5564595344">fonte</a>); Amêndoas de cacau secando: cid.edson, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/32902527@N08/5892185959">fonte</a>)</li><li><b>Pernambuco</b> · Passistas de frevo em Olinda: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/3219530631">fonte</a>); Caboclos de lança: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/3299482425">fonte</a>); Bonecos gigantes nas ladeiras de Olinda: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/4379926398">fonte</a>)</li><li><b>Ceará</b> · Jangadas na areia: Ric e Ette, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/34708734@N00/197079424">fonte</a>); Cajueiral em Pacajus: Porto Neto, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg">fonte</a>); Falésias de Canoa Quebrada: Elton Jr., CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/134400688@N08/19824109622">fonte</a>)</li><li><b>Maranhão</b> · Lagoa Bonita, Lençóis Maranhenses: Fred Schinke, CC BY-ND 2.0 (<a href="https://www.flickr.com/photos/30296867@N04/5843496041">fonte</a>); Revoada de guarás: andresumida, CC BY 2.0 (<a href="https://www.flickr.com/photos/35069660@N00/48627413588">fonte</a>); Boi do bumba-meu-boi em São Luís: marcusrg, CC BY 2.0 (<a href="https://www.flickr.com/photos/49503185029@N01/874109589">fonte</a>)</li><li><b>Amazonas</b> · Encontro das Águas, Manaus: whl.travel, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/40382540@N08/4009155340">fonte</a>); Boto-cor-de-rosa: Georg Sander, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/7960563@N07/4466309717">fonte</a>); Vitória-régia em Manaus: Arnoldo Riker, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/17919385@N00/3776340252">fonte</a>)</li><li><b>Pará</b> · Mercado do Ver-o-Peso, Belém: marcusrg, CC BY 2.0 (<a href="https://www.flickr.com/photos/49503185029@N01/454611567">fonte</a>); Barquinhos de miriti: Celso Abreu, CC BY 2.0 (<a href="https://www.flickr.com/photos/13656399@N02/4993760899">fonte</a>); Paneiros de açaí no cais: Helder da Rocha, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/49503071578@N01/2330906600">fonte</a>)</li><li><b>Tocantins</b> · Dunas do Jalapão: A. Duarte, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/30411166@N04/23082887694">fonte</a>); Fervedouro no Jalapão: Lucas Flavio, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/13166094@N08/6331617889">fonte</a>); Rio entre as dunas do Jalapão: Mari Lucia, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/25173980@N00/4169373738">fonte</a>)</li><li><b>Mato Grosso do Sul</b> · Rio cristalino em Bonito: Fernando Stankuns, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/82289802@N00/14323002462">fonte</a>); Aguapés no rio Salobra: dany13, CC BY 2.0 (<a href="https://www.flickr.com/photos/11493299@N00/15706377191">fonte</a>); Gruta do Lago Azul, Bonito: Valdiney Pimenta, CC BY 2.0 (<a href="https://www.flickr.com/photos/13061113@N05/3319551627">fonte</a>)</li><li><b>Goiás</b> · Cavalhadas de Pirenópolis: asleeponasunbeam, CC BY-NC-ND 2.0 (<a href="https://www.flickr.com/photos/66995057@N00/48036338107">fonte</a>); Rua de Pirenópolis em dia de festa: fabian.kron, CC BY-ND 2.0 (<a href="https://www.flickr.com/photos/10239854@N07/52197135396">fonte</a>); Pequi aberto: capelati, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/66895716@N03/8428425646">fonte</a>)</li><li><b>Paraná</b> · Araucárias nos Campos Gerais: RadamesM, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/58965011@N05/8475950116">fonte</a>); Araucária na neblina: RadamesM, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/58965011@N05/8924831824">fonte</a>)</li><li><b>Santa Catarina</b> · APA da Baleia Franca, litoral sul: Ctseelig, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(13).jpg">fonte</a>); Costão na APA da Baleia Franca: Ctseelig, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(01).jpg">fonte</a>)</li><li><b>Rio Grande do Sul</b> · Cuia de chimarrão: Cleber Rech, CC BY 2.0 (<a href="https://www.flickr.com/photos/7272193@N02/21375180151">fonte</a>); Fim de tarde no pampa, Pelotas: Eduardo Amorim, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/75133058@N00/866865208">fonte</a>); Chimarrão perto do fogo: Eduardo Amorim, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/75133058@N00/29440539126">fonte</a>)</li></ul>
     <p style="margin-top:28px">Bem-Querer é um projeto fictício de portfólio de Cauã Dorn. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p>
     <p>As fotos de campo são de seus autores, sob as licenças Creative Commons indicadas, e foram usadas como pesquisa.</p>
   </div>

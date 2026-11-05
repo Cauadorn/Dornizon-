@@ -14,6 +14,20 @@ mv = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mv)
 V = {k.lower(): v['estampa'] for k, v in mv.V.items()}
 
+# caderno de campo: crônica, palavras, trilha e o que a gente evitou
+T = {}
+for nome in ('textos_estados_1', 'textos_estados_2'):
+    sp = importlib.util.spec_from_file_location(nome, P + f'/_ferramentas/{nome}.py')
+    mm = importlib.util.module_from_spec(sp)
+    sp.loader.exec_module(mm)
+    T.update({k.lower(): v for k, v in mm.T.items()})
+T['mg'] = json.load(open(P + '/_ferramentas/caderno_mg.json', encoding='utf8'))
+T['go']['cronica'] = T['go']['cronica'].replace(' Em 2026 a festa fez 200 anos.', '')
+EVITAR_EXTRA = {
+    'mg': ['**Jabuticaba como símbolo de Minas:** tem jabuticaba no quintal de meio Brasil; ficou na primeira versão e saiu.'],
+    'sc': ['**A baleia debaixo da ponte:** ela não aparece no centro de Florianópolis; a ilustração foi para Garopaba.'],
+}
+
 # lote 1, no mesmo formato do textos_v2
 V['mg'] = {
     'nome': 'Barroco de Minas',
@@ -88,8 +102,13 @@ def e(s):
     return html.escape(s or '', quote=True)
 
 
+def autor(a):
+    return (a or '').split(' - ')[0].split(' from ')[0].strip()
+
+
 def md(s):
-    return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', e(s))
+    t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', e(s))
+    return re.sub(r'(?<![\w])_(.+?)_(?![\w])', r'<em>\1</em>', t)
 
 
 def lum(h):
@@ -107,8 +126,11 @@ def capitulo(i, s):
     sub = 'rgba(255,251,244,.74)' if escuro else 'rgba(29,25,21,.68)'
     campo = ''.join(
         f'<figure class="foto" style="--r:{(-2.2, 1.6, -0.8)[k % 3]}deg"><img src="img/{e(f["img"])}" alt="{e(LEGENDA[uf][k])}" loading="lazy">'
-        f'<figcaption>{e(LEGENDA[uf][k])}<span>foto: {e(f["autor"])} · {e(f["licenca"])}</span></figcaption></figure>'
+        f'<figcaption>{e(LEGENDA[uf][k])}<span>foto: {e(autor(f["autor"]))} · {e(f["licenca"])}</span></figcaption></figure>'
         for k, f in enumerate(s['campo']))
+    cad = T[uf]
+    palavras = ''.join(f'<li style="--r:{(-4, 3, -2, 5, -3, 2, -5, 4)[k % 8]}deg">{e(w)}</li>' for k, w in enumerate(cad['palavras'][:7]))
+    evitar = ''.join(f'<li>{md(x)}</li>' for x in (EVITAR_EXTRA.get(uf, []) + list(cad['evitar']))[:3])
     sw = ''.join(f'<span class="sw" style="background:{x}" title="{x}"></span>' for x in c)
     lugar = ''.join(f'<img src="img/{e(x)}" alt="O par de {e(s["nome"])} fotografado no lugar" loading="lazy">' for x in s['lugar'])
     camp = f'<img class="camp" src="img/{e(s["campanha"])}" alt="Cena de campanha de {e(s["nome"])}" loading="lazy">' if s.get('campanha') else ''
@@ -121,6 +143,20 @@ def capitulo(i, s):
       <p class="estampa">{e(t["nome"])}</p>
       <p class="lead">{e(t["conceito"])}</p>
     </header>
+
+    <div class="bloco caderno">
+      <div class="cronica">
+        <h3 class="rot">caderno de campo</h3>
+        <p>{md(cad["cronica"])}</p>
+        <p class="trilha"><span>trilha</span>{md(cad["trilha"])}</p>
+      </div>
+      <div class="lateral">
+        <h3 class="rot">palavras de lá</h3>
+        <ul class="palavras">{palavras}</ul>
+        <h3 class="rot">o que a gente evitou</h3>
+        <ul class="evitar">{evitar}</ul>
+      </div>
+    </div>
 
     <div class="bloco campo">
       <h3 class="rot">o que a gente viu</h3>
@@ -172,13 +208,16 @@ colecao = ''.join(
     for s in data)
 creditos = ''.join(
     f'<li><b>{e(s["nome"])}</b> · ' + '; '.join(
-        f'{e(campo_leg[s["uf"]][k])}: {e(f["autor"])}, {e(f["licenca"])}' + (f' (<a href="{e(f["pagina"])}">fonte</a>)' if f.get('pagina') else '')
+        f'{e(campo_leg[s["uf"]][k])}: {e(autor(f["autor"]))}, {e(f["licenca"])}' + (f' (<a href="{e(f["pagina"])}">fonte</a>)' if f.get('pagina') else '')
         for k, f in enumerate(s['campo'])) + '</li>' for s in data)
+mural = ''.join(
+    f'<figure class="foto" style="--r:{(-2, 1.5, -1, 2, -1.5, 1, -2.5)[k % 7]}deg"><img src="img/{e(s["campo"][0]["img"])}" alt="{e(LEGENDA[s["uf"]][0])}" loading="lazy"><figcaption>{e(s["nome"])}</figcaption></figure>'
+    for k, s in enumerate(data))
 faixa = ''.join(f'<img src="img/{e(s["palmilha"])}" alt="" loading="lazy">' for s in data)
 
 doc = open(P + '/_ferramentas/site_modelo.html', encoding='utf8').read()
 for k, v in {'{{NAV}}': nav, '{{CAPITULOS}}': caps, '{{CORACOES}}': coracoes, '{{COLECAO}}': colecao,
-             '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa}.items():
+             '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa, '{{MURAL}}': mural}.items():
     doc = doc.replace(k, v)
 open(SITE + '/index.html', 'w', encoding='utf8').write(doc)
 print('ok', len(doc) // 1024, 'KB')
