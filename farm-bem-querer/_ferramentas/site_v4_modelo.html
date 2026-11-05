@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bem-Querer · havaianas ♥ FARM Rio</title>
+<meta name="description" content="Projeto de portfólio: uma cápsula V2 da collab havaianas ♥ FARM Rio, com 14 estados, 14 pares e um coração escondido em cada estampa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&display=swap">
+<style>
+/* v4: editorial. Creme, vinho e laranja; a arte grande num arco; uma ideia por tela. */
+:root{
+  --creme:#F4EDE3; --tinta:#2A1A17; --vinho:#6A1B29; --laranja:#E07A2E; --suave:#857568; --linha:rgba(42,26,23,.15);
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --sans:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+body{margin:0;background:var(--creme);color:var(--tinta);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--vinho);outline-offset:3px}
+.eb{font:500 12px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave);margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
+
+/* topo */
+.topo{position:fixed;inset:0 0 auto;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,2.4vw,32px);padding-top:max(16px,env(safe-area-inset-top));pointer-events:none}
+.topo > *{pointer-events:auto}
+.topo{transition:background .4s,backdrop-filter .4s}
+.topo.solido{background:rgba(244,237,227,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:italic 400 24px/1 var(--serif)}
+.marca svg{width:30px}
+.pilula{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--tinta);border-radius:99px;padding:11px 16px;background:var(--creme);color:var(--tinta);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.pilula i{width:7px;height:7px;border-radius:50%;background:var(--laranja)}
+.menu{position:fixed;inset:0;z-index:55;background:var(--creme);padding:96px clamp(16px,6vw,96px) 40px;display:grid;align-content:center;visibility:hidden;opacity:0;transition:opacity .4s,visibility .4s}
+.menu.aberto{visibility:visible;opacity:1}
+.menu ol{list-style:none;margin:0;padding:0;columns:2;column-gap:6vw}
+.menu a{display:flex;align-items:baseline;gap:14px;text-decoration:none;font:400 clamp(30px,4.2vw,64px)/1.15 var(--serif);break-inside:avoid}
+.menu a span{font:500 12px/1 var(--sans);letter-spacing:.14em;color:var(--suave)}
+.menu a:hover{color:var(--vinho);font-style:italic}
+
+/* carregador */
+.carrega{position:fixed;inset:0;z-index:90;background:var(--creme);transition:opacity .7s,visibility .7s}
+.carrega.foi{opacity:0;visibility:hidden}
+.carrega .cl{position:absolute;left:50%;top:50%;width:84px;transform:translate(-50%,-50%);aspect-ratio:212/196}
+.carrega .cl svg{position:absolute;inset:0;width:100%;height:100%}
+.carrega .vazio{opacity:.12;filter:grayscale(1)}
+.carrega .cheio{clip-path:inset(calc(100% - var(--p,0%)) 0 0 0)}
+.carrega .pct{position:absolute;left:clamp(16px,2.4vw,32px);bottom:clamp(10px,2vw,24px);font:400 clamp(80px,14vw,220px)/.8 var(--serif);font-variant-numeric:tabular-nums}
+
+/* abertura: a janela em arco */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.janela{position:absolute;inset:0;z-index:1;clip-path:inset(22% 36% 0% 36% round 50vw 50vw 0 0)}
+.janela img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 34%;opacity:0;transition:opacity 1.4s ease}
+.janela img.on{opacity:1}
+.palavra{position:absolute;z-index:2;top:54%;margin:0;font:400 clamp(64px,11vw,196px)/.8 var(--serif);letter-spacing:-.035em;white-space:nowrap;margin-top:-.42em}
+.p-bem{right:66vw}
+.p-querer{left:66vw;font-style:italic}
+.hero .rodape-h{position:absolute;z-index:2;left:clamp(16px,2.4vw,32px);right:clamp(16px,2.4vw,32px);bottom:22px;display:flex;justify-content:space-between;gap:20px}
+.hero .rodape-h .eb{color:var(--tinta)}
+
+/* manifesto */
+.manif{padding:24svh clamp(16px,6vw,96px) 22svh;text-align:center}
+.m-txt{font:400 clamp(34px,4.6vw,78px)/1.12 var(--serif);letter-spacing:-.015em;max-width:21ch;margin:0 auto}
+.m-txt em{color:var(--vinho)}
+.pil{display:inline-block;width:1.7em;height:.82em;border-radius:99px;overflow:hidden;vertical-align:-.06em;margin:0 .06em;background:#E6DCCF}
+.pil img{width:100%;height:100%;object-fit:cover}
+.pil.redonda{width:.82em}
+.m-assina{margin-top:44px}
+
+/* a roda */
+.roda-palco{position:relative;height:100svh;min-height:620px;overflow:hidden;--R:min(78svh,66vw);--cy:calc(100% + .3 * var(--R));--w:min(15vw,24svh)}
+.roda-topo{position:relative;z-index:3;padding:96px clamp(16px,6vw,96px) 0}
+.roda-topo h2{font-size:clamp(46px,5.6vw,96px);line-height:.95;letter-spacing:-.02em;margin-top:12px}
+.cupula{position:absolute;left:50%;top:var(--cy);width:calc(var(--R) * 1.64);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--vinho);z-index:0}
+.anel{position:absolute;inset:0;width:100%;height:100%;font:italic 400 50px var(--serif);fill:var(--laranja)}
+.aro{position:absolute;left:50%;top:var(--cy);width:0;height:0;z-index:2}
+.item{position:absolute;left:0;top:0;width:var(--w);margin-left:calc(var(--w) / -2);margin-top:calc(var(--w) * -.555);transform:rotate(calc(var(--i) * 25.7143deg)) translateY(calc(-1 * var(--R)))}
+.item img{width:100%;transform:scale(var(--s,1));transition:transform .35s;filter:drop-shadow(0 22px 18px rgba(40,10,10,.26))}
+.roda-info{position:absolute;left:50%;bottom:6svh;transform:translateX(-50%);z-index:3;text-align:center;color:#FFF3E6;width:min(560px,92vw)}
+.roda-info .n{display:block;font:italic 400 clamp(40px,4vw,64px)/1 var(--serif);color:var(--laranja)}
+.roda-info strong{display:block;font:400 clamp(34px,3.8vw,60px)/1 var(--serif);font-weight:400;letter-spacing:-.01em}
+.roda-info em{display:block;font:italic 400 20px/1.4 var(--serif);opacity:.8;margin-top:4px}
+.roda-bts{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.roda-bts button,.roda-bts a{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#FFF3E6;background:none;border:1px solid rgba(255,243,230,.5);padding:11px 15px;border-radius:99px;cursor:pointer;text-decoration:none}
+.roda-bts button:hover,.roda-bts a:hover{background:#FFF3E6;color:var(--vinho)}
+.sem-g .aro,.sem-g .anel{transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+
+/* capítulos */
+.cena{padding:20svh 0 8svh}
+.cena-in{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:6vw;align-items:center;max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,64px)}
+.cena.dir .cena-txt{order:2}
+.num{font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave);margin:0}
+.num b{color:var(--ac);font-weight:500}
+.cena h2{font-size:clamp(58px,7.6vw,132px);line-height:.86;letter-spacing:-.03em;margin:22px 0 14px}
+.est{font:italic 400 clamp(26px,2.5vw,38px)/1.1 var(--serif);color:var(--ac);margin:0 0 26px}
+.conc{max-width:42ch;margin:0 0 34px;color:#4C3C35}
+.cor-mini{display:flex;gap:16px;align-items:center;max-width:44ch;padding-top:22px;border-top:1px solid var(--linha)}
+.cor-mini img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none}
+.cor-mini p{margin:0;font-size:15px;color:#4C3C35}
+.cor-mini b{display:block;font:italic 400 21px/1.15 var(--serif);color:var(--ac);font-weight:400;margin-bottom:2px}
+.cena-arte{position:relative}
+.arco-ilu{margin:0 0 0 auto;width:min(100%,64svh);aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:#E6DCCF}
+.cena.dir .arco-ilu{margin:0 auto 0 0}
+.arco-ilu img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+.par-flutua{position:absolute;z-index:2;width:46%;left:-12%;bottom:-10%;transform:rotate(-9deg);filter:drop-shadow(0 30px 26px rgba(40,10,10,.28))}
+.cena.dir .par-flutua{left:auto;right:-12%;transform:rotate(9deg)}
+.campo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);max-width:1360px;margin:18svh auto 0;padding:0 clamp(16px,4vw,64px)}
+.campo figure{margin:0}
+.campo .moldura{overflow:hidden;background:#E6DCCF}
+.campo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.campo figure:nth-child(even){margin-top:8svh}
+.campo figcaption{font-size:14px;line-height:1.4;margin-top:12px}
+.campo figcaption span{display:block;font-size:12px;color:var(--suave);margin-top:2px}
+
+/* método */
+.metodo{padding:22svh clamp(16px,6vw,96px) 16svh;max-width:1360px;margin:0 auto}
+.metodo h2{font-size:clamp(46px,5.6vw,96px);line-height:.95;letter-spacing:-.02em;margin:12px 0 48px}
+.passos{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--linha)}
+.passos li{display:grid;grid-template-columns:80px minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid var(--linha)}
+.passos span{font:500 12px/1 var(--sans);letter-spacing:.16em;color:var(--suave)}
+.passos h3{font-size:clamp(36px,4.2vw,68px);line-height:1;letter-spacing:-.015em;transition:color .3s,transform .4s}
+.passos p{margin:0;color:#4C3C35;max-width:44ch}
+.passos li:hover h3{color:var(--vinho);font-style:italic;transform:translateX(12px)}
+.foto-mouse{position:fixed;left:0;top:0;z-index:40;width:260px;aspect-ratio:4/5;object-fit:cover;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.85);transition:opacity .3s,transform .3s;border-radius:999px 999px 0 0}
+.foto-mouse.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* fim */
+.fim{padding:16svh clamp(16px,4vw,64px) 40px;border-top:1px solid var(--linha)}
+.fim-grande{font:italic 400 clamp(84px,18vw,320px)/.8 var(--serif);letter-spacing:-.04em;margin:0 0 6svh;color:var(--vinho)}
+.fim-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;font-size:14px;color:#4C3C35}
+.fim-cols p{margin:0 0 10px}
+.fim details{margin-top:10px}
+.fim summary{cursor:pointer;font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.creditos{list-style:none;padding:0;margin:16px 0 0;font-size:12.5px;columns:2;column-gap:32px}
+.creditos li{break-inside:avoid;margin-bottom:10px}
+
+@media (max-width:900px){
+  .janela{clip-path:inset(34% 12% 0% 12% round 50vw 50vw 0 0)}
+  .palavra{top:auto;margin-top:0;left:0;right:0;text-align:center;font-size:21vw}
+  .p-bem{top:11%}
+  .p-querer{top:20%}
+  .hero .rodape-h{display:none}
+  .roda-palco{--R:96vw;--cy:calc(100% - .02 * var(--R));--w:31vw}
+  .roda-topo{padding-top:84px}
+  .roda-info{bottom:3svh}
+  .cena{padding-top:14svh}
+  .cena-in{grid-template-columns:minmax(0,1fr);gap:48px}
+  .cena.dir .cena-txt{order:0}
+  .arco-ilu,.cena.dir .arco-ilu{margin:0 auto;width:86%}
+  .par-flutua,.cena.dir .par-flutua{width:46%;left:-2%;right:auto;bottom:-8%}
+  .campo{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12svh}
+  .passos li{grid-template-columns:44px minmax(0,1fr)}
+  .passos p{grid-column:2}
+  .fim-cols{grid-template-columns:minmax(0,1fr)}
+  .creditos{columns:1}
+  .menu ol{columns:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .janela img{transition:none}
+  .item img{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="carrega" aria-hidden="true"><div class="cl"><svg class="vazio" viewBox="-6 6 212 196">{{SIMB}}</svg><svg class="cheio" viewBox="-6 6 212 196">{{SIMB}}</svg></div><span class="pct">0</span></div>
+
+<header class="topo">
+  <a class="marca" href="#topo" aria-label="Bem-Querer, voltar ao início"><svg viewBox="-6 6 212 196" aria-hidden="true">{{SIMB}}</svg>bem-querer</a>
+  <button class="pilula" type="button" aria-expanded="false" aria-controls="menu"><i></i>14 estados</button>
+</header>
+<nav class="menu" id="menu" aria-label="Estados"><ol>{{MENU}}</ol></nav>
+
+<main>
+<section class="hero" id="topo">
+  <div class="janela" aria-hidden="true">{{JANELA}}</div>
+  <h1 class="palavra p-bem">Bem-</h1>
+  <p class="palavra p-querer" aria-hidden="true">Querer</p>
+  <div class="rodape-h"><p class="eb">havaianas ♥ FARM RIO · cápsula V2</p><p class="eb">role para descobrir</p></div>
+</section>
+
+<section class="manif">
+  <p class="m-txt">A gente saiu do Rio <span class="pil"><img src="{{IMG_RJ}}" alt=""></span> e foi até quatorze estados. Em cada um, um par de chinelos <span class="pil"><img src="{{IMG_MS}}" alt="" style="object-fit:contain;background:#E6DCCF"></span> feito com os elementos de lá, e um coração <span class="pil redonda"><img src="{{IMG_COR}}" alt=""></span> que só aparece <em>na segunda olhada</em>.</p>
+  <p class="eb m-assina">projeto de portfólio de Cauã Dorn · fictício, sem vínculo com as marcas</p>
+</section>
+
+<section class="roda" id="colecao" aria-label="A coleção: os quatorze pares">
+  <div class="roda-palco">
+    <div class="roda-topo"><p class="eb">a coleção</p><h2>Quatorze pares,<br><em>um em cada estado</em></h2></div>
+    <div class="cupula" aria-hidden="true">
+      <svg class="anel" viewBox="0 0 1000 1000"><defs><path id="circ" d="M500,500 m-430,0 a430,430 0 1,1 860,0 a430,430 0 1,1 -860,0"/></defs>
+        <text><textPath href="#circ" textLength="2690" lengthAdjust="spacing">bem-querer · do Rio para o Brasil · quatorze estados · quatorze pares · bem-querer · do Rio para o Brasil · quatorze estados ·</textPath></text></svg>
+    </div>
+    <div class="aro">{{RODA}}</div>
+    <div class="roda-info" aria-live="polite"><span class="n">01</span><strong>Minas Gerais</strong><em>Barroco de Minas</em>
+      <div class="roda-bts"><button type="button" class="r-ant" aria-label="Par anterior">‹</button><a class="r-ver" href="#mg">ver o estado</a><button type="button" class="r-prox" aria-label="Próximo par">›</button></div></div>
+  </div>
+</section>
+
+{{CENAS}}
+
+<section class="metodo" id="metodo">
+  <p class="eb">o método</p>
+  <h2>Como cada par nasce</h2>
+  <ol class="passos">
+    <li data-img="img/mg-campo-1.jpg"><span>01</span><h3>Campo</h3><p>Fotos reais do lugar, com autor e licença, e o local de cada uma conferido antes de entrar.</p></li>
+    <li data-img="img/mg-coracao.jpg"><span>02</span><h3>Âncora</h3><p>Um elemento que é daquele estado e de nenhum outro. Sem âncora, o chinelo fica só bonito.</p></li>
+    <li data-img="img/mg-palmilha.jpg"><span>03</span><h3>Chinelo</h3><p>Díptico: o pé esquerdo e o direito contam metades da mesma história. Só elementos.</p></li>
+    <li data-img="img/mg-ilustracao.jpg"><span>04</span><h3>Ilustração</h3><p>O lugar inteiro, centralizado, feito com os mesmos elementos do chinelo.</p></li>
+    <li data-img="img/mg-estudio.jpg"><span>05</span><h3>O par</h3><p>A tira repete uma cor da estampa e a assinatura da collab fica no calcanhar, sem mudança.</p></li>
+  </ol>
+  <img class="foto-mouse" alt="" aria-hidden="true">
+</section>
+</main>
+
+<footer class="fim">
+  <p class="fim-grande">bem-querer</p>
+  <div class="fim-cols">
+    <div><p class="eb" style="margin-bottom:12px">ficha técnica</p><p>Conceito, pesquisa de campo, direção de arte, estampas, ilustrações e chinelos: Cauã Dorn.</p><p>Assinatura: a da collab havaianas ♥ FARM RIO, sem alteração.</p></div>
+    <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
+    <div><p class="eb" style="margin-bottom:12px">fotos de campo</p><p>139 fotógrafos, sob licenças Creative Commons, usados como pesquisa.</p>
+      <details><summary>ver todos os créditos</summary><ul class="creditos">{{CREDITOS}}</ul></details></div>
+  </div>
+</footer>
+
+<script src="js/gsap.min.js" defer></script>
+<script src="js/ScrollTrigger.min.js" defer></script>
+<script src="js/lenis.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fino = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var G = window.gsap && !reduz ? window.gsap : null;
+  var lenis = null;
+  if (G) {
+    G.registerPlugin(ScrollTrigger);
+    if (window.Lenis) {
+      lenis = new Lenis({ lerp: .09 });
+      lenis.on('scroll', ScrollTrigger.update);
+      G.ticker.add(function (t) { lenis.raf(t * 1000); });
+      G.ticker.lagSmoothing(0);
+    }
+  }
+  function vaiPara(alvo) {
+    var sp = alvo.closest('.pin-spacer'), y = (sp || alvo).getBoundingClientRect().top + scrollY;
+    if (lenis) lenis.scrollTo(y, { duration: 1.6 }); else scrollTo({ top: y, behavior: reduz ? 'auto' : 'smooth' });
+  }
+
+  /* o topo ganha fundo depois da abertura */
+  var topo = document.querySelector('.topo');
+  function fundoTopo() { topo.classList.toggle('solido', scrollY > innerHeight * 1.6); }
+  addEventListener('scroll', fundoTopo, { passive: true }); fundoTopo();
+
+  /* menu */
+  var bt = document.querySelector('.topo .pilula'), menu = document.getElementById('menu');
+  function abre(sim) { menu.classList.toggle('aberto', sim); bt.setAttribute('aria-expanded', sim); if (lenis) { sim ? lenis.stop() : lenis.start(); } }
+  bt.addEventListener('click', function () { abre(!menu.classList.contains('aberto')); });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape') abre(false); });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').length < 2) return;
+    var alvo = document.getElementById(a.getAttribute('href').slice(1));
+    if (!alvo) return;
+    e.preventDefault(); abre(false); vaiPara(alvo);
+  });
+
+  /* carregador */
+  var cl = document.querySelector('.carrega'), pct = cl.querySelector('.pct'), clS = cl.querySelector('.cl');
+  var ims = [].slice.call(document.querySelectorAll('.janela img')), feitas = 0, mostrado = 0, acabou = false;
+  function mostra(v) { pct.textContent = v; clS.style.setProperty('--p', v + '%'); }
+  function fim() { if (acabou) return; acabou = true; mostra(100); setTimeout(function () { cl.classList.add('foi'); entrada(); }, reduz ? 0 : 500); }
+  function conta() {
+    feitas++;
+    var alvo = Math.round(feitas / ims.length * 100);
+    if (G) G.to({ v: mostrado }, { v: alvo, duration: .6, ease: 'power2.out', onUpdate: function () { mostrado = Math.round(this.targets()[0].v); mostra(mostrado); } });
+    else mostra(alvo);
+    if (feitas >= ims.length) setTimeout(fim, G ? 650 : 0);
+  }
+  ims.forEach(function (im) { if (im.complete) conta(); else { im.addEventListener('load', conta); im.addEventListener('error', conta); } });
+  setTimeout(fim, 4500);
+
+  /* a janela troca de estado sozinha */
+  var k = 0, troca = null;
+  function proxima() { ims[k].classList.remove('on'); k = (k + 1) % ims.length; ims[k].classList.add('on'); }
+  if (!reduz) troca = setInterval(proxima, 2600);
+
+  function entrada() {
+    if (!G) return;
+    G.from('.p-bem', { xPercent: -14, opacity: 0, duration: 1.4, ease: 'expo.out' });
+    G.from('.p-querer', { xPercent: 14, opacity: 0, duration: 1.4, ease: 'expo.out' });
+    G.fromTo('.janela', { clipPath: JAN0.replace(/inset\(\d+%/, 'inset(100%') }, { clipPath: JAN0, duration: 1.6, ease: 'expo.out' });
+    G.from('.hero .rodape-h', { opacity: 0, y: 20, duration: 1, delay: .5 });
+  }
+
+  /* abertura: a janela abre até a tela inteira (criada antes da roda, para a roda contar com este pino) */
+  var celular = matchMedia('(max-width: 900px)').matches;
+  var JAN0 = celular ? 'inset(34% 12% 0% 12% round 50vw 50vw 0vw 0vw)' : 'inset(22% 36% 0% 36% round 50vw 50vw 0vw 0vw)';
+  var JAN1 = 'inset(0% 0% 0% 0% round 0vw 0vw 0vw 0vw)';
+  if (G) {
+    var tl = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: .8 } });
+    tl.fromTo('.janela', { clipPath: JAN0 }, { clipPath: JAN1, ease: 'none', immediateRender: false }, 0)
+      .to('.p-bem', { xPercent: -60, opacity: 0, ease: 'none' }, 0)
+      .to('.p-querer', { xPercent: 60, opacity: 0, ease: 'none' }, 0)
+      .to('.hero .rodape-h', { opacity: 0, ease: 'none', duration: .3 }, 0);
+  }
+
+  /* a roda */
+  var roda = document.querySelector('.roda'), irPara = function () {};
+  if (roda) {
+    var itens = [].slice.call(roda.querySelectorAll('.item')), N = itens.length, passo = 360 / N;
+    var aro = roda.querySelector('.aro'), anel = roda.querySelector('.anel'), info = roda.querySelector('.roda-info');
+    var nEl = info.querySelector('.n'), nmEl = info.querySelector('strong'), esEl = info.querySelector('em'), ver = info.querySelector('.r-ver');
+    var atual = -1;
+    var gira = function (phi) {
+      aro.style.transform = 'rotate(' + (-phi) + 'deg)';
+      anel.style.transform = 'rotate(' + (phi * .5) + 'deg)';
+      itens.forEach(function (it, i) {
+        var d = ((i * passo - phi) % 360 + 540) % 360 - 180;
+        it.style.setProperty('--s', (1 + .24 * Math.max(0, 1 - Math.abs(d) / (passo * 1.1))).toFixed(3));
+      });
+      var kk = ((Math.round(phi / passo) % N) + N) % N;
+      if (kk !== atual) { atual = kk; var it = itens[kk]; nEl.textContent = it.dataset.n; nmEl.textContent = it.dataset.nome; esEl.textContent = it.dataset.est; ver.href = '#' + it.dataset.uf; }
+    };
+    gira(0);
+    if (G) {
+      var o = { phi: 0 };
+      var tw = G.to(o, { phi: (N - 1) * passo, ease: 'none', onUpdate: function () { gira(o.phi); },
+        scrollTrigger: { trigger: roda, start: 'top top', end: function () { return '+=' + innerHeight * 3.4; }, pin: true, scrub: .9, invalidateOnRefresh: true } });
+      irPara = function (n) { n = Math.max(0, Math.min(N - 1, n)); var st = tw.scrollTrigger, y = st.start + (st.end - st.start) * n / (N - 1); if (lenis) lenis.scrollTo(y, { duration: 1 }); else scrollTo(0, y); };
+    } else {
+      roda.classList.add('sem-g');
+      irPara = function (n) { gira(n * passo); };
+    }
+    roda.querySelector('.r-prox').addEventListener('click', function () { irPara(atual + 1); });
+    roda.querySelector('.r-ant').addEventListener('click', function () { irPara(atual - 1); });
+  }
+
+  /* método: a foto acompanha o mouse */
+  var fm = document.querySelector('.foto-mouse');
+  if (fino && fm) {
+    var fx = G ? G.quickTo(fm, 'left', { duration: .5, ease: 'power3' }) : function (v) { fm.style.left = v + 'px'; };
+    var fy = G ? G.quickTo(fm, 'top', { duration: .5, ease: 'power3' }) : function (v) { fm.style.top = v + 'px'; };
+    document.querySelectorAll('.passos li').forEach(function (li) {
+      li.addEventListener('pointerenter', function () { fm.src = li.dataset.img; fm.classList.add('on'); });
+      li.addEventListener('pointerleave', function () { fm.classList.remove('on'); });
+    });
+    addEventListener('pointermove', function (e) { fx(e.clientX + 150); fy(e.clientY); });
+  }
+
+  if (!G) return;
+
+
+  /* manifesto: as palavras acendem com a rolagem */
+  var mt = document.querySelector('.m-txt');
+  var partes = [];
+  [].slice.call(mt.childNodes).forEach(function (n) {
+    if (n.nodeType === 3) {
+      n.textContent.split(/(\s+)/).forEach(function (w) {
+        if (!w) return;
+        if (/^\s+$/.test(w)) { partes.push(document.createTextNode(w)); return; }
+        var s = document.createElement('span'); s.className = 'w'; s.textContent = w; partes.push(s);
+      });
+    } else { n.classList && n.classList.add('w'); partes.push(n); }
+  });
+  mt.textContent = ''; partes.forEach(function (p) { mt.appendChild(p); });
+  G.fromTo(mt.querySelectorAll('.w'), { opacity: .14 }, { opacity: 1, stagger: .05, ease: 'none',
+    scrollTrigger: { trigger: mt, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+
+  /* capítulos */
+  G.utils.toArray('.cena').forEach(function (c) {
+    var arco = c.querySelector('.arco-ilu'), img = arco.querySelector('img'), par = c.querySelector('.par-flutua');
+    G.fromTo(arco, { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 0px 0px)', duration: 1.4, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: arco, start: 'top 85%', once: true } });
+    G.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'bottom top', scrub: true } });
+    G.fromTo(par, { y: 140 }, { y: -60, ease: 'none', scrollTrigger: { trigger: c.querySelector('.cena-in'), start: 'top bottom', end: 'bottom top', scrub: true } });
+    G.from(c.querySelectorAll('.cena-txt > *'), { y: 40, opacity: 0, duration: 1, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 70%', once: true } });
+    c.querySelectorAll('.campo .moldura').forEach(function (m) {
+      G.fromTo(m, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: m, start: 'top 90%', once: true } });
+      G.fromTo(m.querySelector('img'), { scale: 1.18 }, { scale: 1, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: m, start: 'top 90%', once: true } });
+    });
+  });
+  G.from('.passos li', { y: 30, opacity: 0, duration: .9, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.passos', start: 'top 80%', once: true } });
+  addEventListener('load', function () { ScrollTrigger.refresh(); });
+});
+</script>
+</body>
+</html>
