@@ -66,7 +66,8 @@ REGRAS_DNA = [
 CORACAO_REGRAS = [
     'O coração **herda a cor do elemento** que ele substitui: a pinta da onça continua preta, a lantejoula continua dourada.',
     'Ele **se deforma com a anatomia**: acompanha a curva do corpo, muda de tamanho e nunca é perfeitamente simétrico.',
-    '**No máximo um coração óbvio por arte**; o resto é descoberta.',
+    '**Todos os corações são sutis, em todos os estados:** no primeiro olhar a pessoa vê o estado; no segundo, descobre o coração. Nenhum coração é o assunto da arte.',
+    '**É sempre o mesmo coração:** o desenho feito à mão da assinatura, levemente assimétrico. Ele se repete nas 14 estampas e é o que costura a coleção.',
     'Proibido: coração de emoji, contorno de adesivo, coração carimbado ou entalhado.',
     'O coração do conector **havaianas ♥ FARM RIO** e o das estampas são **o mesmo desenho**, feito à mão. É isso que amarra marca e ilustração.',
 ]
