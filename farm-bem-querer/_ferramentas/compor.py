@@ -31,6 +31,7 @@ def main():
     ap.add_argument('--faixa', type=float, default=0.13, help='altura da faixa de base (fração da altura)')
     ap.add_argument('--largura', type=float, default=0.30)
     ap.add_argument('--tom', default='auto', choices=['auto', 'claro', 'escuro'])
+    ap.add_argument('--ink', default=None, help='cor da assinatura (#hex); padrão: off-white ou quase preto pelo tom')
     a = ap.parse_args()
     uf = a.uf.lower()
     os.makedirs(a.saida, exist_ok=True)
@@ -41,7 +42,7 @@ def main():
     lw = int(W * a.largura)
     margem = int(W * 0.06)
     # area provavel onde a assinatura cai (estimativa p/ escolher o tom)
-    est_h = int(lw * (0.62 if a.forma == 'empilhado' else 0.11))
+    est_h = int(lw * 0.47)
     if a.pos == 'faixa':
         fh = int(H * a.faixa)
         x, y = (W - lw) // 2, H - fh + (fh - est_h) // 2
@@ -54,8 +55,15 @@ def main():
     regiao = np.asarray(arte.convert('L').crop((x, y, x + lw, y + est_h)), dtype=np.float32)
     tom = a.tom if a.tom != 'auto' else ('claro' if regiao.mean() < 140 else 'escuro')
 
-    svg = os.path.join(LOGOS, f'assinatura-{uf}-{a.forma}-{tom}.svg')
+    # assinatura oficial da collab (FARM RIO / coração / havaianas), a mesma do chinelo
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('ac', os.path.join(HERE, 'assinatura_collab.py'))
+    ac = importlib.util.module_from_spec(spec); spec.loader.exec_module(ac)
+    ink = a.ink or ('#FFFDF7' if tom == 'claro' else '#1E1A17')
     with tempfile.TemporaryDirectory() as td:
+        svg = os.path.join(td, 'l.svg')
+        ww, hh_, body = ac.collab(ink)
+        open(svg, 'w').write(ac.K.svg(ww, hh_, body))
         logo = rasterizar(svg, lw, os.path.join(td, 'l.png'))
     if a.pos == 'faixa':
         y = H - fh + (fh - logo.height) // 2
