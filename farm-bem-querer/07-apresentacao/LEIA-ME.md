@@ -1,16 +1,18 @@
-# Apresentação · site do case
+# Site Bem-Querer
 
-`site/index.html` é o case completo, uma página só. Abra direto no navegador (as fontes vêm do Google Fonts; o resto é local).
+No ar: https://cauadorn.github.io/Dornizon-/
 
-Ordem da página:
-1. Abertura: Bem-Querer e as 14 palmilhas
-2. A ideia: por que uma V2 da collab
-3. O método: campo, âncora, chinelo, ilustração, par
-4. O que ficou pelo caminho: as decisões que mudaram o desenho (Minas, Santa Catarina, igrejinhas, coração)
-5. Os 14 estados: fotos de campo, palmilha, ficha da estampa, ilustração, coração em zoom e o par (estúdio, no lugar, campanha)
-6. Onde o coração mora
-7. Os quatorze pares
-8. A assinatura
-9. Créditos das fotos de campo e aviso de projeto fictício
+## Páginas
+- `index.html` início: abertura em arco, manifesto, roda dos 14 pares e índice do site
+- `projeto.html`, `pesquisa.html`, `colecao.html`, `processo.html`, `campanha.html`, `identidade.html`, `creditos.html`
+- `estados/<nome-do-estado>.html` uma página por estado, dentro da Coleção (encontre o coração, o par, caderno de campo, rua, lugar, o que a gente evitou)
 
-Para refazer: `python _ferramentas/site_assets.py <scratchpad>` (imagens) e `python _ferramentas/gerar_site.py` (HTML). O modelo da página fica em `_ferramentas/site_modelo.html`.
+## Como gerar e publicar
+```
+cd /tmp && python3 -I /home/user/Dornizon-/farm-bem-querer/_ferramentas/gerar_site_v5.py
+bash /home/user/Dornizon-/farm-bem-querer/_ferramentas/publicar_pages.sh "mensagem"
+```
+- Estilo e comportamento comuns: `_ferramentas/v5/bq.css` e `_ferramentas/v5/bq.js` (copiados para `site/css` e `site/js`).
+- GSAP, ScrollTrigger e Lenis ficam em `site/js` (o site não depende de CDN além do Google Fonts).
+- Os textos vêm de `gerar_site.py` (dados), `textos_v2.py` e dos cadernos; as caixas do coração de `mapa_coracoes_caixas.json`.
+- `gerar_site.py`, `gerar_v4.py` e os modelos antigos ficam só como histórico: não rodar, eles sobrescrevem o `index.html`.
