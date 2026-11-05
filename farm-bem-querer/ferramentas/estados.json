@@ -1,0 +1,16 @@
+[
+ {"uf":"MG","nome":"Minas Gerais","regiao":"Sudeste","bg":"#F1E3C2","paleta":["#B3261E","#F1E3C2","#C99A2E","#2C4A7A","#3F5B3A"],"logo_ink":"#2C4A7A","logo_heart":"#B3261E","logo_paper":"#F1E3C2"},
+ {"uf":"RJ","nome":"Rio de Janeiro","regiao":"Sudeste","bg":"#1C1C1C","paleta":["#1C1C1C","#F3EEE4","#1F6FA8","#2F7A4F","#F08A3C"],"logo_ink":"#1C1C1C","logo_heart":"#F08A3C","logo_paper":"#F3EEE4"},
+ {"uf":"BA","nome":"Bahia","regiao":"Nordeste","bg":"#2B6CC4","paleta":["#2B6CC4","#F7C600","#E4312B","#1E9A4A","#F4EFE6"],"logo_ink":"#2B6CC4","logo_heart":"#E4312B","logo_paper":"#F4EFE6"},
+ {"uf":"PE","nome":"Pernambuco","regiao":"Nordeste","bg":"#F4EFE3","paleta":["#F2B705","#D7262E","#1E8A4C","#1F4FA0","#1A1A1A"],"logo_ink":"#1A1A1A","logo_heart":"#D7262E","logo_paper":"#F4EFE3"},
+ {"uf":"CE","nome":"Ceará","regiao":"Nordeste","bg":"#F6B21B","paleta":["#E9452B","#F6B21B","#6E8B3D","#1D5D9B","#F7F2E8"],"logo_ink":"#1D5D9B","logo_heart":"#E9452B","logo_paper":"#F7F2E8"},
+ {"uf":"MA","nome":"Maranhão","regiao":"Nordeste","bg":"#141414","paleta":["#141414","#D8A72B","#E0457B","#1BA6A6","#D9412B"],"logo_ink":"#D8A72B","logo_heart":"#E0457B","logo_paper":"#141414"},
+ {"uf":"AM","nome":"Amazonas","regiao":"Norte","bg":"#1F5A3A","paleta":["#C8102E","#1D3F8F","#1F5A3A","#F2A1B3","#F3ECDD"],"logo_ink":"#1F5A3A","logo_heart":"#C8102E","logo_paper":"#F3ECDD"},
+ {"uf":"PA","nome":"Pará","regiao":"Norte","bg":"#3D1E3F","paleta":["#3D1E3F","#A8432A","#EFE3CC","#2F6B3B","#E8A33D"],"logo_ink":"#3D1E3F","logo_heart":"#A8432A","logo_paper":"#EFE3CC"},
+ {"uf":"TO","nome":"Tocantins","regiao":"Norte","bg":"#E58A3A","paleta":["#D9A520","#E58A3A","#3BA6C4","#4E7A3A","#7A4A2A"],"logo_ink":"#7A4A2A","logo_heart":"#D9A520","logo_paper":"#F5E9D2"},
+ {"uf":"MS","nome":"Mato Grosso do Sul","regiao":"Centro-Oeste","bg":"#1F4D47","paleta":["#E27BA6","#D9A441","#1F4D47","#2A4FA8","#C8322B"],"logo_ink":"#1F4D47","logo_heart":"#E27BA6","logo_paper":"#F3EBDD"},
+ {"uf":"GO","nome":"Goiás","regiao":"Centro-Oeste","bg":"#F4C21F","paleta":["#E2337A","#F4C21F","#2847A8","#6C8A2E","#F2ECE0"],"logo_ink":"#2847A8","logo_heart":"#E2337A","logo_paper":"#F2ECE0"},
+ {"uf":"PR","nome":"Paraná","regiao":"Sul","bg":"#DCE3E0","paleta":["#1F4E9C","#24492F","#8A4B2A","#DCE3E0","#E2B04A"],"logo_ink":"#24492F","logo_heart":"#1F4E9C","logo_paper":"#EEF1EC"},
+ {"uf":"SC","nome":"Santa Catarina","regiao":"Sul","bg":"#1E4F7A","paleta":["#1E4F7A","#F6F2EA","#E8735A","#3E7A5A","#B9B2A6"],"logo_ink":"#1E4F7A","logo_heart":"#E8735A","logo_paper":"#F6F2EA"},
+ {"uf":"RS","nome":"Rio Grande do Sul","regiao":"Sul","bg":"#4D6B32","paleta":["#A3262A","#4D6B32","#EFE6D2","#1C1A18","#D8A23A"],"logo_ink":"#1C1A18","logo_heart":"#A3262A","logo_paper":"#EFE6D2"}
+]

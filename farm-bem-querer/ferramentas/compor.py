@@ -1,0 +1,79 @@
+"""Gera as duas versoes de cada arte: SEM logo (limpa) e COM logo (assinatura V2).
+
+Uso: python compor.py arte.png UF saida_dir [--pos base|topo|canto] [--largura 0.30]
+A cor da assinatura (clara/escura) e escolhida pela luminancia da area onde ela cai.
+"""
+import argparse
+import os
+import shutil
+import subprocess
+import tempfile
+
+import numpy as np
+from PIL import Image
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+LOGOS = '/home/user/Dornizon-/farm-bem-querer/logo/assinatura-v2'
+
+
+def rasterizar(svg_path, largura_px, out_png):
+    subprocess.run(['node', os.path.join(HERE, 'svg_raster.js'), svg_path, str(largura_px), out_png], check=True)
+    return Image.open(out_png).convert('RGBA')
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('arte')
+    ap.add_argument('uf')
+    ap.add_argument('saida')
+    ap.add_argument('--pos', default='base', choices=['base', 'topo', 'canto'])
+    ap.add_argument('--largura', type=float, default=0.30)
+    ap.add_argument('--tom', default='auto', choices=['auto', 'claro', 'escuro'])
+    a = ap.parse_args()
+    uf = a.uf.lower()
+    os.makedirs(a.saida, exist_ok=True)
+    arte = Image.open(a.arte).convert('RGBA')
+    W, H = arte.size
+    base = os.path.splitext(os.path.basename(a.arte))[0]
+
+    lw = int(W * a.largura)
+    margem = int(W * 0.06)
+    # area provavel onde a assinatura cai (estimativa p/ escolher o tom)
+    est_h = int(lw * 0.62)
+    if a.pos == 'base':
+        x, y = (W - lw) // 2, H - margem - est_h
+    elif a.pos == 'topo':
+        x, y = (W - lw) // 2, margem
+    else:
+        x, y = W - margem - lw, H - margem - est_h
+    regiao = np.asarray(arte.convert('L').crop((x, y, x + lw, y + est_h)), dtype=np.float32)
+    tom = a.tom if a.tom != 'auto' else ('claro' if regiao.mean() < 140 else 'escuro')
+
+    svg = os.path.join(LOGOS, f'assinatura-{uf}-empilhado-{tom}.svg')
+    with tempfile.TemporaryDirectory() as td:
+        logo = rasterizar(svg, lw, os.path.join(td, 'l.png'))
+    if a.pos == 'base':
+        y = H - margem - logo.height
+    elif a.pos == 'canto':
+        y = H - margem - logo.height
+    com = arte.copy()
+    # sombra suave so quando o fundo e muito movimentado (desvio alto)
+    if regiao.std() > 55:
+        sombra = Image.new('RGBA', logo.size, (0, 0, 0, 0))
+        alpha = logo.split()[3].point(lambda v: int(v * 0.35))
+        sombra.putalpha(alpha)
+        from PIL import ImageFilter
+        sombra = sombra.filter(ImageFilter.GaussianBlur(6))
+        com.alpha_composite(sombra, (x + 2, y + 3))
+    com.alpha_composite(logo, (x, y))
+
+    sem_p = os.path.join(a.saida, f'{base}__sem-logo.png')
+    com_p = os.path.join(a.saida, f'{base}__com-logo.png')
+    if os.path.abspath(a.arte) != os.path.abspath(sem_p):
+        shutil.copyfile(a.arte, sem_p)
+    com.convert('RGB').save(com_p, optimize=True)
+    print('ok', tom, sem_p, com_p)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,6 @@
+Hand-drawn digital illustration made by a human illustrator in Procreate, in the tradition of contemporary Brazilian editorial and textile illustration. Flat color shapes painted with a textured gouache brush: visible brush strokes, dry broken edges, subtle paper grain, slightly imperfect hand-drawn contours. Volume shown with only 2-3 flat tones per shape. No gradients, no airbrush, no glossy highlights, no 3D render, no photorealism, no excessive micro-detail.
+Limited palette of exactly these colors: {PALETA}. Solid flat background color {FUNDO} filling the canvas.
+Composition: {PROTAGONISTA} as the single hero, large and boldly cropped by the edges of the frame; supporting elements: {COADJUVANTES}. Asymmetrical, generous negative space. Keep the bottom 18% of the canvas calm (mostly background color) to receive a logo later.
+Graphic device: {RECURSO}.
+Hidden hearts, the signature of the collection: {CORACAO_MACRO}; {CORACAO_MEDIO}; {CORACAO_MICRO}. The hearts follow the natural anatomy and colors of each element: they are discovered, not stamped. Never emoji-like, never outlined stickers, never more than one obvious heart.
+No text, no letters, no numbers, no signature, no watermark, no frame unless described.
