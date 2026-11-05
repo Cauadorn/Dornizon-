@@ -29,6 +29,8 @@ def get(url, tries=4):
                 return r.read()
         except Exception as e:
             last = e
+            if '424' in str(e) or '404' in str(e):
+                break
             time.sleep(10 * (i + 1) if '429' in str(e) else 3)
     raise last
 
@@ -38,6 +40,8 @@ def busca(q, chaves, n=3, exigir_local=True):
     d = json.loads(get(API + '?' + urllib.parse.urlencode(p)))
     cand = []
     for r in d.get('results', []):
+        if r.get('source') != 'flickr':  # thumbs do Wikimedia via Openverse falham (424)
+            continue
         lic = (r.get('license') or '').lower()
         if lic not in LIVRES | NC:
             continue

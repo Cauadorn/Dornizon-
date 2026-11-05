@@ -1,0 +1,33 @@
+{
+ "hero": "pelourinho-2.jpg", "hero_pos": "22% 50%", "hero_legenda": "Pelourinho, Salvador",
+ "paleta": [
+  {"nome": "céu de Salvador", "foto": "#79AFF9", "estampa": "#6FA8EE"},
+  {"nome": "azul do casarão", "foto": "#326A82", "estampa": "#2E7590"},
+  {"nome": "amarelo do casarão", "foto": "#9B8B48", "estampa": "#E8BE48"},
+  {"nome": "vermelho da fita", "foto": "#A52835", "estampa": "#C2303A"},
+  {"nome": "vinho do cacau", "foto": "#672017", "estampa": "#6B1F18"},
+  {"nome": "branco da baiana", "foto": "#DCD9A7", "estampa": "#F4F0E2"}],
+ "painel": [
+  ["pelourinho-1.jpg", "rua", "Igreja do Rosário dos Pretos e casario, Pelourinho", "w2 h2"],
+  ["fitas-bonfim-1.jpg", "fé", "Fitas do Senhor do Bonfim", "h2"],
+  ["baiana-acaraje-1.jpg", "mesa", "Baiana de acarajé, Salvador", ""],
+  ["capoeira-1.jpg", "festa", "Berimbaus, Pelourinho", ""],
+  ["cacau-1.jpg", "roça", "Cacau secando, Ilhéus", ""],
+  ["fitas-bonfim-0.jpg", "fé", "Fitas, Bonfim", ""],
+  ["pelourinho-2.jpg", "rua", "Ladeira do Pelourinho", "", "80% 50%"],
+  ["cacau-0.jpg", "roça", "Barcaça de cacau, Ilhéus", ""],
+  ["elevador-lacerda-0.jpg", "cidade", "Elevador Lacerda e a Baía de Todos os Santos", "w2 h2"],
+  ["olodum-0.jpg", "festa", "Tambores pintados, Pelourinho", "h2"],
+  ["lavagem-bonfim-1.jpg", "festa", "Lavagem do Bonfim", "w2"],
+  ["capoeira-0.jpg", "mãos", "Berimbaus pendurados, Salvador", ""],
+  ["cacau-2.jpg", "roça", "Sacas de cacau, Ilhéus", ""],
+  ["elevador-lacerda-1.jpg", "cidade", "Cidade alta e cidade baixa", ""],
+  ["lavagem-bonfim-0.jpg", "festa", "Cortejo da Lavagem", ""]],
+ "motivos": [
+  ["pelourinho-1.jpg", "Casarões cor de bala", "fachadas azul, amarelo e rosa com sacadas de ferro: o ritmo e a paleta da estampa."],
+  ["baiana-acaraje-1.jpg", "Saia da baiana", "a roda branca de renda em movimento, sem rosto e sem caricatura."],
+  ["fitas-bonfim-1.jpg", "Fitas do Bonfim", "só as cores e o balanço das fitas, sem o texto bordado."],
+  ["capoeira-1.jpg", "Berimbau", "a cabaça e o arco entram como desenho de ornamento."],
+  ["cacau-1.jpg", "Cacau", "a semente e o fruto do sul da Bahia, para o lenço e a barra."],
+  ["olodum-0.jpg", "Tambor pintado", "as listras vermelho, amarelo e verde como ritmo; sem logo de bloco."]]
+}

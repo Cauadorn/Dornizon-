@@ -27,18 +27,14 @@
   ],
   "buscas": {
    "calcadao": "Calçadão de Copacabana",
-   "pao-de-acucar": "Pão de Açúcar Urca",
    "arcos-lapa": "Arcos da Lapa bonde",
    "bonde-santa-teresa": "Bonde de Santa Teresa",
-   "praia-guarda-sol": "Ipanema praia guarda-sol",
-   "mate-praia": "vendedor de mate praia Rio de Janeiro",
    "obj-biscoito-globo": "Biscoito Globo",
    "jardim-botanico": "Jardim Botânico Rio de Janeiro palmeiras imperiais",
    "pedra-do-sal": "Pedra do Sal samba",
    "sapucai": "Sapucaí desfile escola de samba",
    "madureira": "Mercadão de Madureira",
    "botequim": "botequim Rio de Janeiro",
-   "amendoeira": "amendoeira Copacabana",
    "alt-sugarloaf": "Sugarloaf Mountain Rio de Janeiro",
    "alt-beach-umbrella": "Ipanema beach umbrellas",
    "alt-mate": "mate leao seller beach Rio",
@@ -73,10 +69,7 @@
    "capoeira": "capoeira Salvador berimbau",
    "olodum": "Olodum Pelourinho tambor",
    "cacau": "cacau Ilhéus Bahia",
-   "farol-barra": "Farol da Barra Salvador",
-   "feira-sao-joaquim": "Feira de São Joaquim Salvador",
-   "dendezeiro": "dendê Bahia",
-   "cabruca": "cacau cabruca Bahia"
+   "feira-sao-joaquim": "Feira de São Joaquim Salvador"
   }
  },
  "PE": {
@@ -104,9 +97,7 @@
    "caboclo-lanca": "caboclo de lança maracatu rural",
    "xilogravura": "xilogravura Bezerros",
    "obj-bolo-de-rolo": "bolo de rolo",
-   "recife-antigo": "Recife Antigo Rua do Bom Jesus",
-   "caruaru-barro": "Caruaru Alto do Moura barro",
-   "brennand": "Oficina Brennand Recife"
+   "caruaru-barro": "Caruaru Alto do Moura barro"
   }
  },
  "CE": {
@@ -139,10 +130,7 @@
    "areia-colorida": "garrafa areia colorida Ceará",
    "caju": "caju cajueiro Ceará",
    "carnauba": "carnaúba Ceará",
-   "jericoacoara": "Jericoacoara duna",
-   "dragao-do-mar": "Dragão do Mar Fortaleza",
-   "mercado-central-ce": "Mercado Central Fortaleza",
-   "juazeiro": "Juazeiro do Norte romeiros"
+   "jericoacoara": "Jericoacoara duna"
   }
  },
  "MA": {
@@ -164,12 +152,9 @@
    "lencois-dunas": "Lençóis Maranhenses dunas",
    "guara": "guará Maranhão",
    "tambor-crioula": "tambor de crioula",
-   "alcantara": "Alcântara Maranhão ruínas",
    "barreirinhas": "Barreirinhas Rio Preguiças",
    "juçara": "juçara São Luís",
-   "reggae": "reggae São Luís",
-   "bicho-guara-2": "guará Alcântara Maranhão",
-   "bicho-guara-3": "scarlet ibis Maranhão"
+   "bicho-guara-2": "guará Alcântara Maranhão"
   }
  },
  "AM": {
@@ -191,16 +176,12 @@
    "encontro-aguas": "Encontro das Águas Manaus",
    "parintins-garantido": "Parintins Garantido boi",
    "parintins-caprichoso": "Parintins Caprichoso boi",
-   "parintins-festival": "Festival de Parintins bumbódromo",
    "vitoria-regia": "vitória-régia Amazonas",
    "boto": "boto-cor-de-rosa Amazonas",
    "mercado-adolpho": "Mercado Adolpho Lisboa Manaus",
    "barco-recreio": "barco recreio redes Manaus",
-   "flutuante": "casa flutuante Manaus",
    "anavilhanas": "Anavilhanas Rio Negro",
-   "pirarucu": "pirarucu Amazonas",
-   "bicho-boto-2": "boto Rio Negro Amazonas",
-   "bicho-boto-3": "pink river dolphin Amazonas"
+   "bicho-boto-2": "boto Rio Negro Amazonas"
   }
  },
  "PA": {
@@ -228,10 +209,7 @@
    "icoaraci": "cerâmica Icoaraci",
    "acai-belem": "açaí Belém",
    "bufalo-marajo": "búfalo Marajó Soure",
-   "mangueiras": "mangueiras Belém avenida",
-   "theatro-paz": "Theatro da Paz Belém",
-   "alter-do-chao": "Alter do Chão praia",
-   "estacao-docas": "Estação das Docas Belém"
+   "mangueiras": "mangueiras Belém avenida"
   }
  },
  "TO": {
@@ -254,11 +232,7 @@
    "cachoeira-velha": "Cachoeira da Velha Jalapão",
    "pedra-furada": "Pedra Furada Jalapão",
    "serra-espirito-santo": "Serra do Espírito Santo Jalapão",
-   "buriti-vereda": "buriti vereda Tocantins",
-   "palmas": "Palmas Tocantins Palácio Araguaia",
-   "ilha-bananal": "Ilha do Bananal",
-   "natividade": "Natividade Tocantins igreja",
-   "taquarucu": "Taquaruçu cachoeira"
+   "buriti-vereda": "buriti vereda Tocantins"
   }
  },
  "MS": {
@@ -285,12 +259,9 @@
    "feira-central": "Feira Central Campo Grande",
    "sobá": "sobá Campo Grande",
    "jacare": "jacaré Pantanal Corumbá",
-   "comitiva": "comitiva pantaneira peão",
-   "corumba": "Corumbá casario porto",
    "onca": "onça-pintada Pantanal Mato Grosso do Sul",
    "obj-terere": "tereré",
-   "bicho-onca-2": "onça Pantanal Miranda",
-   "bicho-arara-azul-2": "arara-azul Campo Grande"
+   "bicho-onca-2": "onça Pantanal Miranda"
   }
  },
  "GO": {
@@ -315,9 +286,6 @@
    "pequi": "pequi Goiás",
    "veadeiros": "Chapada dos Veadeiros cachoeira",
    "veadeiros-campo": "Chapada dos Veadeiros cerrado",
-   "obj-empadao": "empadão goiano",
-   "romaria-trindade": "Romaria Divino Pai Eterno Trindade Goiás",
-   "goiania-art-deco": "Goiânia art déco",
    "bicho-cavalo": "cavalo Cavalhadas Pirenópolis enfeitado",
    "bicho-cavalo-2": "cavaleiros Cavalhadas Pirenópolis"
   }
@@ -347,10 +315,7 @@
    "ucranianos": "Prudentópolis igreja ucraniana",
    "pessanka": "pessanka Prudentópolis",
    "trem-serra": "trem Serra do Mar Curitiba Morretes",
-   "morretes": "Morretes casario",
-   "vila-velha": "Vila Velha Ponta Grossa arenito",
-   "bicho-gralha-2": "gralha-azul Curitiba",
-   "bicho-gralha-3": "azure jay Paraná"
+   "bicho-gralha-2": "gralha-azul Curitiba"
   }
  },
  "SC": {
@@ -380,12 +345,8 @@
    "boi-de-mamao": "boi de mamão Santa Catarina",
    "baleia-franca": "baleia-franca Santa Catarina",
    "ostras": "ostras Florianópolis",
-   "enxaimel": "enxaimel Pomerode",
-   "oktoberfest": "Oktoberfest Blumenau",
-   "rio-do-rastro": "Serra do Rio do Rastro",
    "lagoa-conceicao": "Lagoa da Conceição Florianópolis",
-   "bicho-baleia-2": "baleia-franca Imbituba",
-   "bicho-baleia-3": "southern right whale Santa Catarina"
+   "bicho-baleia-2": "baleia-franca Imbituba"
   }
  },
  "RS": {
@@ -413,14 +374,10 @@
    "ctg": "CTG dança gaúcha prenda",
    "missoes": "São Miguel das Missões ruínas",
    "itaimbezinho": "Itaimbezinho cânion",
-   "vinhedos": "vinhedos Bento Gonçalves",
-   "gramado": "Gramado Rio Grande do Sul",
    "gasometro": "Usina do Gasômetro Porto Alegre pôr do sol",
    "pampa": "pampa Rio Grande do Sul campo",
    "churrasco": "churrasco fogo de chão Rio Grande do Sul",
-   "doces-pelotas": "doces de Pelotas",
-   "bicho-quero-quero": "quero-quero Rio Grande do Sul",
-   "bicho-quero-quero-2": "southern lapwing Rio Grande do Sul"
+   "bicho-quero-quero": "quero-quero Rio Grande do Sul"
   }
  }
 }
