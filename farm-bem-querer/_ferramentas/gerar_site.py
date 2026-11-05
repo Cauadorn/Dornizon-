@@ -117,85 +117,76 @@ def lum(h):
     return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
 
 
+SETA = ('<svg class="seta" viewBox="0 0 120 60" aria-hidden="true"><path d="M114 8 C 86 4, 52 10, 30 34 C 24 40, 20 46, 16 52" '
+        'fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M8 40 L16 53 L29 47" fill="none" '
+        'stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+ROT = (-2.2, 1.8, -1.2, 2.6, -1.6, 1.2)
+
+
 def capitulo(i, s):
     uf = s['uf']
     t = V[uf]
     c = COR[uf]
+    cad = T[uf]
     escuro = lum(c[0]) < 0.32
     ink = '#FFFBF4' if escuro else '#1D1915'
-    sub = 'rgba(255,251,244,.74)' if escuro else 'rgba(29,25,21,.68)'
-    campo = ''.join(
-        f'<figure class="foto" style="--r:{(-2.2, 1.6, -0.8)[k % 3]}deg"><img src="img/{e(f["img"])}" alt="{e(LEGENDA[uf][k])}" loading="lazy">'
+    sub = 'rgba(255,251,244,.74)' if escuro else 'rgba(29,25,21,.66)'
+    lay = 'a' if i % 2 else 'b'
+    fotos = ''.join(
+        f'<figure class="foto f{k + 1}"><img src="img/{e(f["img"])}" alt="{e(LEGENDA[uf][k])}" loading="lazy">'
         f'<figcaption>{e(LEGENDA[uf][k])}<span>foto: {e(autor(f["autor"]))} · {e(f["licenca"])}</span></figcaption></figure>'
         for k, f in enumerate(s['campo']))
-    cad = T[uf]
-    palavras = ''.join(f'<li style="--r:{(-4, 3, -2, 5, -3, 2, -5, 4)[k % 8]}deg">{e(w)}</li>' for k, w in enumerate(cad['palavras'][:7]))
+    palavras = ''.join(f'<li style="--r:{(-4, 3, -2, 5, -3, 2, -5, 4)[k % 8]}deg">{e(w)}</li>' for k, w in enumerate(cad['palavras'][:6]))
     evitar = ''.join(f'<li>{md(x)}</li>' for x in (EVITAR_EXTRA.get(uf, []) + list(cad['evitar']))[:3])
-    sw = ''.join(f'<span class="sw" style="background:{x}" title="{x}"></span>' for x in c)
-    lugar = ''.join(f'<img src="img/{e(x)}" alt="O par de {e(s["nome"])} fotografado no lugar" loading="lazy">' for x in s['lugar'])
-    camp = f'<img class="camp" src="img/{e(s["campanha"])}" alt="Cena de campanha de {e(s["nome"])}" loading="lazy">' if s.get('campanha') else ''
-    return f'''
-<section class="cap" id="{uf}" style="--bg:{c[0]};--ink:{ink};--sub:{sub};--ac:{c[1]}">
+    sw = ''.join(f'<span class="sw" style="background:{x}"></span>' for x in c)
+    par = [('est', s['estudio'], 'estúdio')] + [('lug', x, 'no lugar') for x in s['lugar'][:1]]
+    if s.get('campanha'):
+        par.append(('camp', s['campanha'], 'campanha'))
+    par += [('lug', x, 'no lugar') for x in s['lugar'][1:2]]
+    fotos_par = ''.join(
+        f'<figure class="p-{tipo}" style="--r:{ROT[k]}deg;--y:{(0, 38, -10, 26)[k % 4]}px"><img src="img/{e(src)}" alt="O par de {e(s["nome"])}, {rot}" loading="lazy"><figcaption>{rot}</figcaption></figure>'
+        for k, (tipo, src, rot) in enumerate(par))
+    return f"""
+<section class="cap lay-{lay}" id="{uf}" style="--bg:{c[0]};--ink:{ink};--sub:{sub};--ac:{c[1]}">
   <div class="wrap">
     <header class="cap-h">
-      <p class="eyebrow">{i:02d} de 14 · {REGIAO[uf]}</p>
+      <p class="eyebrow">{i:02d} · {REGIAO[uf]}</p>
       <h2>{e(s["nome"])}</h2>
       <p class="estampa">{e(t["nome"])}</p>
       <p class="lead">{e(t["conceito"])}</p>
     </header>
 
-    <div class="bloco caderno">
-      <div class="cronica">
-        <h3 class="rot">caderno de campo</h3>
-        <p>{md(cad["cronica"])}</p>
-        <p class="trilha"><span>trilha</span>{md(cad["trilha"])}</p>
-      </div>
-      <div class="lateral">
-        <h3 class="rot">palavras de lá</h3>
-        <ul class="palavras">{palavras}</ul>
-        <h3 class="rot">o que a gente evitou</h3>
-        <ul class="evitar">{evitar}</ul>
-      </div>
-    </div>
-
-    <div class="bloco campo">
-      <h3 class="rot">o que a gente viu</h3>
-      <div class="fotos">{campo}</div>
-    </div>
-
-    <div class="bloco duo">
-      <figure class="palmilha"><img src="img/{e(s["palmilha"])}" alt="Arte da palmilha de {e(s["nome"])}, em díptico" loading="lazy"><figcaption>a palmilha · o pé esquerdo e o direito contam metades da mesma história</figcaption></figure>
-      <div class="ficha">
-        <h3 class="rot">o que virou estampa</h3>
-        <dl>
-          <dt>âncora</dt><dd>{md(t["ancora"])}</dd>
-          <dt>no chinelo</dt><dd>{md(t["chinelo"])}</dd>
-          <dt>fundo e tira</dt><dd>{md(t["fundo"])}</dd>
-          <dt>na ilustração</dt><dd>{md(t["ilustracao"])}</dd>
-        </dl>
-        <div class="paleta">{sw}</div>
-      </div>
-    </div>
-
-    <div class="bloco ilu">
-      <figure><img src="img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}" loading="lazy"><figcaption>a ilustração · o lugar inteiro, com os mesmos elementos do chinelo</figcaption></figure>
-      <aside class="coracao">
+    <div class="colagem">
+      <figure class="pc ilu"><img src="img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}" loading="lazy"></figure>
+      <figure class="pc palm"><img src="img/{e(s["palmilha"])}" alt="Arte da palmilha de {e(s["nome"])}, em díptico" loading="lazy"></figure>
+      {fotos}
+      <div class="cor">
         <img src="img/{e(s["coracao"])}" alt="Detalhe do coração escondido na ilustração de {e(s["nome"])}" loading="lazy">
         <p class="mao">{e(s["coracao_texto"])}</p>
-      </aside>
+        {SETA}
+      </div>
+      <div class="cron"><p class="rot">caderno de campo</p><p>{md(cad["cronica"])}</p><p class="trilha"><span>trilha</span>{md(cad["trilha"])}</p></div>
+      <ul class="palavras">{palavras}</ul>
+      <p class="anc mao">âncora: {md(t["ancora"])}</p>
     </div>
 
-    <div class="bloco vida">
-      <h3 class="rot">o par</h3>
-      <div class="mosaico" style="--n:{len(s['lugar']) + (1 if s.get('campanha') else 0) + 1}">
-        <img class="est" src="img/{e(s["estudio"])}" alt="O par de {e(s["nome"])} em foto de estúdio" loading="lazy">
-        {lugar}
-        {camp}
-      </div>
+    <div class="par">{fotos_par}</div>
+
+    <div class="notas-cap">
+      <div class="post"><h3 class="mao">no chinelo</h3><p>{md(t["chinelo"])}</p><p class="tira">{md(t["fundo"])}</p><div class="paleta">{sw}</div></div>
+      <div class="post"><h3 class="mao">na ilustração</h3><p>{md(t["ilustracao"])}</p></div>
+      <div class="post"><h3 class="mao">o que a gente evitou</h3><ul>{evitar}</ul></div>
     </div>
   </div>
-</section>'''
+</section>"""
 
+
+HERO = [(1, 3, -6, 12), (13.5, -1, 4, 11), (23.5, 3, -3, 9.5), (66.5, -3, 5, 10.5), (76, 6, -4, 12), (89, 1, 6, 10.5),
+        (0, 56, 5, 12), (13, 64, -5, 11), (26, 72, 3, 10), (64, 70, -4, 10), (76, 58, 5, 12), (89, 64, -6, 10.5),
+        (40, 80, 2, 9), (51, 82, -3, 9)]
+hero = ''.join(
+    f'<img src="img/{e(s["ilu_sem"])}" alt="" style="left:{x}%;top:{y}%;width:{w}%;--r:{r}deg" loading="eager">'
+    for s, (x, y, r, w) in zip(data, HERO))
 
 nav = ''.join(f'<a href="#{s["uf"]}" style="--c:{COR[s["uf"]][0]}">{s["uf"].upper()}</a>' for s in data)
 caps = ''.join(capitulo(i + 1, s) for i, s in enumerate(data))
@@ -204,8 +195,8 @@ coracoes = ''.join(
     f'<figure><img src="img/{e(s["coracao"])}" alt="Coração de {e(s["nome"])}" loading="lazy"><figcaption><b>{e(s["nome"])}</b>{e(s["coracao_texto"])}</figcaption></figure>'
     for s in data)
 colecao = ''.join(
-    f'<a href="#{s["uf"]}"><img src="img/{e(s["estudio"])}" alt="Par de {e(s["nome"])}" loading="lazy"><span>{e(s["nome"])}</span></a>'
-    for s in data)
+    f'<a href="#{s["uf"]}" style="--r:{ROT[i % 6]}deg"><img src="img/{e(s["estudio"])}" alt="Par de {e(s["nome"])}" loading="lazy"><span>{e(s["nome"])}</span></a>'
+    for i, s in enumerate(data))
 creditos = ''.join(
     f'<li><b>{e(s["nome"])}</b> · ' + '; '.join(
         f'{e(campo_leg[s["uf"]][k])}: {e(autor(f["autor"]))}, {e(f["licenca"])}' + (f' (<a href="{e(f["pagina"])}">fonte</a>)' if f.get('pagina') else '')
@@ -217,7 +208,7 @@ faixa = ''.join(f'<img src="img/{e(s["palmilha"])}" alt="" loading="lazy">' for 
 
 doc = open(P + '/_ferramentas/site_modelo.html', encoding='utf8').read()
 for k, v in {'{{NAV}}': nav, '{{CAPITULOS}}': caps, '{{CORACOES}}': coracoes, '{{COLECAO}}': colecao,
-             '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa, '{{MURAL}}': mural}.items():
+             '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa, '{{MURAL}}': mural, '{{HERO}}': hero}.items():
     doc = doc.replace(k, v)
 open(SITE + '/index.html', 'w', encoding='utf8').write(doc)
 print('ok', len(doc) // 1024, 'KB')

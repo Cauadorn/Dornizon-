@@ -44,10 +44,11 @@ for uf, pasta, nome in EST:
     pal = glob.glob(d + '/chinelo/palmilha-*.png')[0]
     st = {'uf': uf, 'nome': nome, 'slug': os.path.basename(ilu).split('__')[0]}
     st['ilu'] = save(ilu, f'{uf}-ilustracao.jpg', 1100)
+    st['ilu_sem'] = save(ilu.replace('__com-logo', '__sem-logo'), f'{uf}-ilu-sem.jpg', 700, 78)
     st['palmilha'] = save(pal, f'{uf}-palmilha.jpg', 1000)
     st['estudio'] = save(d + f'/chinelo/estudio-{uf}.jpg', f'{uf}-estudio.jpg', 1000)
     lug = sorted(glob.glob(d + '/campanha/lugar-*.jpg'))
-    st['lugar'] = [save(f, f'{uf}-lugar-{i+1}.jpg', 900) for i, f in enumerate(lug[:2])]
+    st['lugar'] = [save(f, f'{uf}-lugar-{i+1}.jpg', 800) for i, f in enumerate(lug[:2])]
     cp = d + f'/campanha/campanha-{uf}-{CAMP[uf]}.jpg'
     st['campanha'] = save(cp, f'{uf}-campanha.jpg', 1000) if os.path.exists(cp) else None
     st['campo'] = []

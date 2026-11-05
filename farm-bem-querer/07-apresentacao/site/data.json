@@ -4,6 +4,7 @@
   "nome": "Minas Gerais",
   "slug": "janela-barroca",
   "ilu": "mg-ilustracao.jpg",
+  "ilu_sem": "mg-ilu-sem.jpg",
   "palmilha": "mg-palmilha.jpg",
   "estudio": "mg-estudio.jpg",
   "lugar": [
@@ -49,6 +50,7 @@
   "nome": "Rio de Janeiro",
   "slug": "bonde-de-santa-teresa",
   "ilu": "rj-ilustracao.jpg",
+  "ilu_sem": "rj-ilu-sem.jpg",
   "palmilha": "rj-palmilha.jpg",
   "estudio": "rj-estudio.jpg",
   "lugar": [
@@ -94,6 +96,7 @@
   "nome": "Bahia",
   "slug": "largo-do-pelourinho",
   "ilu": "ba-ilustracao.jpg",
+  "ilu_sem": "ba-ilu-sem.jpg",
   "palmilha": "ba-palmilha.jpg",
   "estudio": "ba-estudio.jpg",
   "lugar": [
@@ -139,6 +142,7 @@
   "nome": "Pernambuco",
   "slug": "olinda-e-frevo",
   "ilu": "pe-ilustracao.jpg",
+  "ilu_sem": "pe-ilu-sem.jpg",
   "palmilha": "pe-palmilha.jpg",
   "estudio": "pe-estudio.jpg",
   "lugar": [
@@ -184,6 +188,7 @@
   "nome": "Ceará",
   "slug": "renda-ao-vento",
   "ilu": "ce-ilustracao.jpg",
+  "ilu_sem": "ce-ilu-sem.jpg",
   "palmilha": "ce-palmilha.jpg",
   "estudio": "ce-estudio.jpg",
   "lugar": [
@@ -229,6 +234,7 @@
   "nome": "Maranhão",
   "slug": "couro-de-boi",
   "ilu": "ma-ilustracao.jpg",
+  "ilu_sem": "ma-ilu-sem.jpg",
   "palmilha": "ma-palmilha.jpg",
   "estudio": "ma-estudio.jpg",
   "lugar": [
@@ -274,6 +280,7 @@
   "nome": "Amazonas",
   "slug": "encontro-das-aguas",
   "ilu": "am-ilustracao.jpg",
+  "ilu_sem": "am-ilu-sem.jpg",
   "palmilha": "am-palmilha.jpg",
   "estudio": "am-estudio.jpg",
   "lugar": [
@@ -319,6 +326,7 @@
   "nome": "Pará",
   "slug": "revoada-de-miriti",
   "ilu": "pa-ilustracao.jpg",
+  "ilu_sem": "pa-ilu-sem.jpg",
   "palmilha": "pa-palmilha.jpg",
   "estudio": "pa-estudio.jpg",
   "lugar": [
@@ -364,6 +372,7 @@
   "nome": "Tocantins",
   "slug": "ouro-do-jalapao",
   "ilu": "to-ilustracao.jpg",
+  "ilu_sem": "to-ilu-sem.jpg",
   "palmilha": "to-palmilha.jpg",
   "estudio": "to-estudio.jpg",
   "lugar": [
@@ -409,6 +418,7 @@
   "nome": "Mato Grosso do Sul",
   "slug": "onca-de-bonito",
   "ilu": "ms-ilustracao.jpg",
+  "ilu_sem": "ms-ilu-sem.jpg",
   "palmilha": "ms-palmilha.jpg",
   "estudio": "ms-estudio.jpg",
   "lugar": [
@@ -454,6 +464,7 @@
   "nome": "Goiás",
   "slug": "cavalhada-de-pirenopolis",
   "ilu": "go-ilustracao.jpg",
+  "ilu_sem": "go-ilu-sem.jpg",
   "palmilha": "go-palmilha.jpg",
   "estudio": "go-estudio.jpg",
   "lugar": [
@@ -499,6 +510,7 @@
   "nome": "Paraná",
   "slug": "gralha-e-pinhao",
   "ilu": "pr-ilustracao.jpg",
+  "ilu_sem": "pr-ilu-sem.jpg",
   "palmilha": "pr-palmilha.jpg",
   "estudio": "pr-estudio.jpg",
   "lugar": [
@@ -537,6 +549,7 @@
   "nome": "Santa Catarina",
   "slug": "enseada-da-baleia",
   "ilu": "sc-ilustracao.jpg",
+  "ilu_sem": "sc-ilu-sem.jpg",
   "palmilha": "sc-palmilha.jpg",
   "estudio": "sc-estudio.jpg",
   "lugar": [
@@ -575,6 +588,7 @@
   "nome": "Rio Grande do Sul",
   "slug": "roda-de-chimarrao",
   "ilu": "rs-ilustracao.jpg",
+  "ilu_sem": "rs-ilu-sem.jpg",
   "palmilha": "rs-palmilha.jpg",
   "estudio": "rs-estudio.jpg",
   "lugar": [
