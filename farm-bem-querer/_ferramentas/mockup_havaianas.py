@@ -28,6 +28,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('arte'); ap.add_argument('uf'); ap.add_argument('tira'); ap.add_argument('borda'); ap.add_argument('saida')
     ap.add_argument('--tom', default='auto')
+    ap.add_argument('--logo', default='preto', help='cor da assinatura collab sobre fundo claro')
     ap.add_argument('--molde', default='banana-0.jpg')
     ap.add_argument('--modo', default='posicionada', choices=['posicionada', 'rapport', 'diptico'])
     ap.add_argument('--escala', type=float, default=0.75, help='rapport: largura do módulo em relação à largura da sola')
@@ -106,12 +107,13 @@ def main():
         ys, xs = np.where(sola[:, metade] > 0.5)
         y1 = ys.max(); xs = xs + metade.start
         cx = (xs.min() + xs.max()) // 2
-        lw = int((xs.max() - xs.min()) * 0.46)
+        lw = int((xs.max() - xs.min()) * 0.50)
         reg = out[y1 - int(lw * 0.9): y1 - int(lw * 0.2), cx - lw // 2: cx + lw // 2]
         t = tom if tom != 'auto' else ('claro' if reg.mean() < 0.5 else 'escuro')
         with tempfile.TemporaryDirectory() as td:
             png = os.path.join(td, 'l.png')
-            subprocess.run(['node', os.path.join(HERE, 'svg_raster.js'), os.path.join(LOGOS, f'assinatura-{a.uf.lower()}-empilhado-{t}.svg'), str(lw * 2), png], check=True)
+            cor_logo = 'branco' if t == 'claro' else a.logo
+            subprocess.run(['node', os.path.join(HERE, 'svg_raster.js'), os.path.join('/home/user/Dornizon-/farm-bem-querer/03-marca/assinatura-collab', f'assinatura-collab-{cor_logo}.svg'), str(lw * 2), png], check=True)
             lg = Image.open(png).convert('RGBA').resize((lw, None) if False else (lw, int(lw * Image.open(png).height / Image.open(png).width)), Image.LANCZOS)
         L = np.asarray(lg, np.float32) / 255
         lh = L.shape[0]
