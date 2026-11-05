@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bem-Querer · havaianas ♥ FARM Rio</title>
+<meta name="description" content="Projeto de portfólio: uma cápsula V2 da collab havaianas ♥ FARM Rio, com 14 estados, 14 pares e um coração escondido em cada estampa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&display=swap">
+<style>
+/* v4: editorial. Creme, vinho e laranja; a arte grande num arco; uma ideia por tela. */
+:root{
+  --creme:#F4EDE3; --tinta:#2A1A17; --vinho:#6A1B29; --laranja:#E07A2E; --suave:#857568; --linha:rgba(42,26,23,.15);
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --sans:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+body{margin:0;background:var(--creme);color:var(--tinta);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--vinho);outline-offset:3px}
+.eb{font:500 12px/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave);margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
+
+/* topo */
+.topo{position:fixed;inset:0 0 auto;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,2.4vw,32px);padding-top:max(16px,env(safe-area-inset-top));pointer-events:none}
+.topo > *{pointer-events:auto}
+.topo{transition:background .4s,backdrop-filter .4s}
+.topo.solido{background:rgba(244,237,227,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:italic 400 24px/1 var(--serif)}
+.marca svg{width:30px}
+.pilula{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--tinta);border-radius:99px;padding:11px 16px;background:var(--creme);color:var(--tinta);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.pilula i{width:7px;height:7px;border-radius:50%;background:var(--laranja)}
+.menu{position:fixed;inset:0;z-index:55;background:var(--creme);padding:96px clamp(16px,6vw,96px) 40px;display:grid;align-content:center;visibility:hidden;opacity:0;transition:opacity .4s,visibility .4s}
+.menu.aberto{visibility:visible;opacity:1}
+.menu ol{list-style:none;margin:0;padding:0;columns:2;column-gap:6vw}
+.menu a{display:flex;align-items:baseline;gap:14px;text-decoration:none;font:400 clamp(30px,4.2vw,64px)/1.15 var(--serif);break-inside:avoid}
+.menu a span{font:500 12px/1 var(--sans);letter-spacing:.14em;color:var(--suave)}
+.menu a:hover{color:var(--vinho);font-style:italic}
+
+/* carregador */
+.carrega{position:fixed;inset:0;z-index:90;background:var(--creme);transition:opacity .7s,visibility .7s}
+.carrega.foi{opacity:0;visibility:hidden}
+.carrega .cl{position:absolute;left:50%;top:50%;width:84px;transform:translate(-50%,-50%);aspect-ratio:212/196}
+.carrega .cl svg{position:absolute;inset:0;width:100%;height:100%}
+.carrega .vazio{opacity:.12;filter:grayscale(1)}
+.carrega .cheio{clip-path:inset(calc(100% - var(--p,0%)) 0 0 0)}
+.carrega .pct{position:absolute;left:clamp(16px,2.4vw,32px);bottom:clamp(10px,2vw,24px);font:400 clamp(80px,14vw,220px)/.8 var(--serif);font-variant-numeric:tabular-nums}
+
+/* abertura: a janela em arco */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.janela{position:absolute;inset:0;z-index:1;clip-path:inset(22% 36% 0% 36% round 50vw 50vw 0 0)}
+.janela img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 34%;opacity:0;transition:opacity 1.4s ease}
+.janela img.on{opacity:1}
+.palavra{position:absolute;z-index:2;top:54%;margin:0;font:400 clamp(64px,11vw,196px)/.8 var(--serif);letter-spacing:-.035em;white-space:nowrap;margin-top:-.42em}
+.p-bem{right:66vw}
+.p-querer{left:66vw;font-style:italic}
+.hero .rodape-h{position:absolute;z-index:2;left:clamp(16px,2.4vw,32px);right:clamp(16px,2.4vw,32px);bottom:22px;display:flex;justify-content:space-between;gap:20px}
+.hero .rodape-h .eb{color:var(--tinta)}
+
+/* manifesto */
+.manif{padding:24svh clamp(16px,6vw,96px) 22svh;text-align:center}
+.m-txt{font:400 clamp(34px,4.6vw,78px)/1.12 var(--serif);letter-spacing:-.015em;max-width:21ch;margin:0 auto}
+.m-txt em{color:var(--vinho)}
+.pil{display:inline-block;width:1.7em;height:.82em;border-radius:99px;overflow:hidden;vertical-align:-.06em;margin:0 .06em;background:#E6DCCF}
+.pil img{width:100%;height:100%;object-fit:cover}
+.pil.redonda{width:.82em}
+.m-assina{margin-top:44px}
+
+/* a roda */
+.roda-palco{position:relative;height:100svh;min-height:620px;overflow:hidden;--R:min(78svh,66vw);--cy:calc(100% + .3 * var(--R));--w:min(15vw,24svh)}
+.roda-topo{position:relative;z-index:3;padding:96px clamp(16px,6vw,96px) 0}
+.roda-topo h2{font-size:clamp(46px,5.6vw,96px);line-height:.95;letter-spacing:-.02em;margin-top:12px}
+.cupula{position:absolute;left:50%;top:var(--cy);width:calc(var(--R) * 1.64);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--vinho);z-index:0}
+.anel{position:absolute;inset:0;width:100%;height:100%;font:italic 400 50px var(--serif);fill:var(--laranja)}
+.aro{position:absolute;left:50%;top:var(--cy);width:0;height:0;z-index:2}
+.item{position:absolute;left:0;top:0;width:var(--w);margin-left:calc(var(--w) / -2);margin-top:calc(var(--w) * -.555);transform:rotate(calc(var(--i) * 25.7143deg)) translateY(calc(-1 * var(--R)))}
+.item img{width:100%;transform:scale(var(--s,1));transition:transform .35s;filter:drop-shadow(0 22px 18px rgba(40,10,10,.26))}
+.roda-info{position:absolute;left:50%;bottom:6svh;transform:translateX(-50%);z-index:3;text-align:center;color:#FFF3E6;width:min(560px,92vw)}
+.roda-info .n{display:block;font:italic 400 clamp(40px,4vw,64px)/1 var(--serif);color:var(--laranja)}
+.roda-info strong{display:block;font:400 clamp(34px,3.8vw,60px)/1 var(--serif);font-weight:400;letter-spacing:-.01em}
+.roda-info em{display:block;font:italic 400 20px/1.4 var(--serif);opacity:.8;margin-top:4px}
+.roda-bts{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.roda-bts button,.roda-bts a{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#FFF3E6;background:none;border:1px solid rgba(255,243,230,.5);padding:11px 15px;border-radius:99px;cursor:pointer;text-decoration:none}
+.roda-bts button:hover,.roda-bts a:hover{background:#FFF3E6;color:var(--vinho)}
+.sem-g .aro,.sem-g .anel{transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+
+/* capítulos */
+.cena{padding:20svh 0 8svh}
+.cena-in{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:6vw;align-items:center;max-width:1360px;margin:0 auto;padding:0 clamp(16px,4vw,64px)}
+.cena.dir .cena-txt{order:2}
+.num{font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave);margin:0}
+.num b{color:var(--ac);font-weight:500}
+.cena h2{font-size:clamp(58px,7.6vw,132px);line-height:.86;letter-spacing:-.03em;margin:22px 0 14px}
+.est{font:italic 400 clamp(26px,2.5vw,38px)/1.1 var(--serif);color:var(--ac);margin:0 0 26px}
+.conc{max-width:42ch;margin:0 0 34px;color:#4C3C35}
+.cor-mini{display:flex;gap:16px;align-items:center;max-width:44ch;padding-top:22px;border-top:1px solid var(--linha)}
+.cor-mini img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none}
+.cor-mini p{margin:0;font-size:15px;color:#4C3C35}
+.cor-mini b{display:block;font:italic 400 21px/1.15 var(--serif);color:var(--ac);font-weight:400;margin-bottom:2px}
+.cena-arte{position:relative}
+.arco-ilu{margin:0 0 0 auto;width:min(100%,64svh);aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:#E6DCCF}
+.cena.dir .arco-ilu{margin:0 auto 0 0}
+.arco-ilu img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+.par-flutua{position:absolute;z-index:2;width:46%;left:-12%;bottom:-10%;transform:rotate(-9deg);filter:drop-shadow(0 30px 26px rgba(40,10,10,.28))}
+.cena.dir .par-flutua{left:auto;right:-12%;transform:rotate(9deg)}
+.campo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);max-width:1360px;margin:18svh auto 0;padding:0 clamp(16px,4vw,64px)}
+.campo figure{margin:0}
+.campo .moldura{overflow:hidden;background:#E6DCCF}
+.campo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.campo figure:nth-child(even){margin-top:8svh}
+.campo figcaption{font-size:14px;line-height:1.4;margin-top:12px}
+.campo figcaption span{display:block;font-size:12px;color:var(--suave);margin-top:2px}
+
+/* método */
+.metodo{padding:22svh clamp(16px,6vw,96px) 16svh;max-width:1360px;margin:0 auto}
+.metodo h2{font-size:clamp(46px,5.6vw,96px);line-height:.95;letter-spacing:-.02em;margin:12px 0 48px}
+.passos{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--linha)}
+.passos li{display:grid;grid-template-columns:80px minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid var(--linha)}
+.passos span{font:500 12px/1 var(--sans);letter-spacing:.16em;color:var(--suave)}
+.passos h3{font-size:clamp(36px,4.2vw,68px);line-height:1;letter-spacing:-.015em;transition:color .3s,transform .4s}
+.passos p{margin:0;color:#4C3C35;max-width:44ch}
+.passos li:hover h3{color:var(--vinho);font-style:italic;transform:translateX(12px)}
+.foto-mouse{position:fixed;left:0;top:0;z-index:40;width:260px;aspect-ratio:4/5;object-fit:cover;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.85);transition:opacity .3s,transform .3s;border-radius:999px 999px 0 0}
+.foto-mouse.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* fim */
+.fim{padding:16svh clamp(16px,4vw,64px) 40px;border-top:1px solid var(--linha)}
+.fim-grande{font:italic 400 clamp(84px,18vw,320px)/.8 var(--serif);letter-spacing:-.04em;margin:0 0 6svh;color:var(--vinho)}
+.fim-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;font-size:14px;color:#4C3C35}
+.fim-cols p{margin:0 0 10px}
+.fim details{margin-top:10px}
+.fim summary{cursor:pointer;font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.creditos{list-style:none;padding:0;margin:16px 0 0;font-size:12.5px;columns:2;column-gap:32px}
+.creditos li{break-inside:avoid;margin-bottom:10px}
+
+@media (max-width:900px){
+  .janela{clip-path:inset(34% 12% 0% 12% round 50vw 50vw 0 0)}
+  .palavra{top:auto;margin-top:0;left:0;right:0;text-align:center;font-size:21vw}
+  .p-bem{top:11%}
+  .p-querer{top:20%}
+  .hero .rodape-h{display:none}
+  .roda-palco{--R:96vw;--cy:calc(100% - .02 * var(--R));--w:31vw}
+  .roda-topo{padding-top:84px}
+  .roda-info{bottom:3svh}
+  .cena{padding-top:14svh}
+  .cena-in{grid-template-columns:minmax(0,1fr);gap:48px}
+  .cena.dir .cena-txt{order:0}
+  .arco-ilu,.cena.dir .arco-ilu{margin:0 auto;width:86%}
+  .par-flutua,.cena.dir .par-flutua{width:46%;left:-2%;right:auto;bottom:-8%}
+  .campo{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12svh}
+  .passos li{grid-template-columns:44px minmax(0,1fr)}
+  .passos p{grid-column:2}
+  .fim-cols{grid-template-columns:minmax(0,1fr)}
+  .creditos{columns:1}
+  .menu ol{columns:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .janela img{transition:none}
+  .item img{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="carrega" aria-hidden="true"><div class="cl"><svg class="vazio" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg><svg class="cheio" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div><span class="pct">0</span></div>
+
+<header class="topo">
+  <a class="marca" href="#topo" aria-label="Bem-Querer, voltar ao início"><svg viewBox="-6 6 212 196" aria-hidden="true"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg>bem-querer</a>
+  <button class="pilula" type="button" aria-expanded="false" aria-controls="menu"><i></i>14 estados</button>
+</header>
+<nav class="menu" id="menu" aria-label="Estados"><ol><li><a href="#mg"><span>01</span>Minas Gerais</a></li><li><a href="#rj"><span>02</span>Rio de Janeiro</a></li><li><a href="#ba"><span>03</span>Bahia</a></li><li><a href="#pe"><span>04</span>Pernambuco</a></li><li><a href="#ce"><span>05</span>Ceará</a></li><li><a href="#ma"><span>06</span>Maranhão</a></li><li><a href="#am"><span>07</span>Amazonas</a></li><li><a href="#pa"><span>08</span>Pará</a></li><li><a href="#to"><span>09</span>Tocantins</a></li><li><a href="#ms"><span>10</span>Mato Grosso do Sul</a></li><li><a href="#go"><span>11</span>Goiás</a></li><li><a href="#pr"><span>12</span>Paraná</a></li><li><a href="#sc"><span>13</span>Santa Catarina</a></li><li><a href="#rs"><span>14</span>Rio Grande do Sul</a></li></ol></nav>
+
+<main>
+<section class="hero" id="topo">
+  <div class="janela" aria-hidden="true"><img src="img/mg-ilustracao.jpg" alt="" class=on loading="eager"><img src="img/rj-ilustracao.jpg" alt="" loading="eager"><img src="img/ba-ilustracao.jpg" alt="" loading="eager"><img src="img/pe-ilustracao.jpg" alt="" loading="eager"><img src="img/ce-ilustracao.jpg" alt="" loading="eager"><img src="img/ma-ilustracao.jpg" alt="" loading="eager"><img src="img/am-ilustracao.jpg" alt="" loading="eager"><img src="img/pa-ilustracao.jpg" alt="" loading="eager"><img src="img/to-ilustracao.jpg" alt="" loading="eager"><img src="img/ms-ilustracao.jpg" alt="" loading="eager"><img src="img/go-ilustracao.jpg" alt="" loading="eager"><img src="img/pr-ilustracao.jpg" alt="" loading="eager"><img src="img/sc-ilustracao.jpg" alt="" loading="eager"><img src="img/rs-ilustracao.jpg" alt="" loading="eager"></div>
+  <h1 class="palavra p-bem">Bem-</h1>
+  <p class="palavra p-querer" aria-hidden="true">Querer</p>
+  <div class="rodape-h"><p class="eb">havaianas ♥ FARM RIO · cápsula V2</p><p class="eb">role para descobrir</p></div>
+</section>
+
+<section class="manif">
+  <p class="m-txt">A gente saiu do Rio <span class="pil"><img src="img/rj-campo-1.jpg" alt=""></span> e foi até quatorze estados. Em cada um, um par de chinelos <span class="pil"><img src="img/ms-par.webp" alt="" style="object-fit:contain;background:#E6DCCF"></span> feito com os elementos de lá, e um coração <span class="pil redonda"><img src="img/sc-coracao.jpg" alt=""></span> que só aparece <em>na segunda olhada</em>.</p>
+  <p class="eb m-assina">projeto de portfólio de Cauã Dorn · fictício, sem vínculo com as marcas</p>
+</section>
+
+<section class="roda" id="colecao" aria-label="A coleção: os quatorze pares">
+  <div class="roda-palco">
+    <div class="roda-topo"><p class="eb">a coleção</p><h2>Quatorze pares,<br><em>um em cada estado</em></h2></div>
+    <div class="cupula" aria-hidden="true">
+      <svg class="anel" viewBox="0 0 1000 1000"><defs><path id="circ" d="M500,500 m-430,0 a430,430 0 1,1 860,0 a430,430 0 1,1 -860,0"/></defs>
+        <text><textPath href="#circ" textLength="2690" lengthAdjust="spacing">bem-querer · do Rio para o Brasil · quatorze estados · quatorze pares · bem-querer · do Rio para o Brasil · quatorze estados ·</textPath></text></svg>
+    </div>
+    <div class="aro"><a class="item" href="#mg" style="--i:0" data-n="01" data-nome="Minas Gerais" data-est="Barroco de Minas" data-uf="mg"><img src="img/mg-par.webp" alt="Par de Minas Gerais" loading="lazy"></a><a class="item" href="#rj" style="--i:1" data-n="02" data-nome="Rio de Janeiro" data-est="Bonde de Santa Teresa" data-uf="rj"><img src="img/rj-par.webp" alt="Par de Rio de Janeiro" loading="lazy"></a><a class="item" href="#ba" style="--i:2" data-n="03" data-nome="Bahia" data-est="Cacau e Fita" data-uf="ba"><img src="img/ba-par.webp" alt="Par de Bahia" loading="lazy"></a><a class="item" href="#pe" style="--i:3" data-n="04" data-nome="Pernambuco" data-est="Passo de Frevo" data-uf="pe"><img src="img/pe-par.webp" alt="Par de Pernambuco" loading="lazy"></a><a class="item" href="#ce" style="--i:4" data-n="05" data-nome="Ceará" data-est="Renda ao Vento" data-uf="ce"><img src="img/ce-par.webp" alt="Par de Ceará" loading="lazy"></a><a class="item" href="#ma" style="--i:5" data-n="06" data-nome="Maranhão" data-est="Couro de Boi" data-uf="ma"><img src="img/ma-par.webp" alt="Par de Maranhão" loading="lazy"></a><a class="item" href="#am" style="--i:6" data-n="07" data-nome="Amazonas" data-est="Encontro das Águas" data-uf="am"><img src="img/am-par.webp" alt="Par de Amazonas" loading="lazy"></a><a class="item" href="#pa" style="--i:7" data-n="08" data-nome="Pará" data-est="Revoada de Miriti" data-uf="pa"><img src="img/pa-par.webp" alt="Par de Pará" loading="lazy"></a><a class="item" href="#to" style="--i:8" data-n="09" data-nome="Tocantins" data-est="Ouro do Jalapão" data-uf="to"><img src="img/to-par.webp" alt="Par de Tocantins" loading="lazy"></a><a class="item" href="#ms" style="--i:9" data-n="10" data-nome="Mato Grosso do Sul" data-est="Onça de Bonito" data-uf="ms"><img src="img/ms-par.webp" alt="Par de Mato Grosso do Sul" loading="lazy"></a><a class="item" href="#go" style="--i:10" data-n="11" data-nome="Goiás" data-est="Cavalhada" data-uf="go"><img src="img/go-par.webp" alt="Par de Goiás" loading="lazy"></a><a class="item" href="#pr" style="--i:11" data-n="12" data-nome="Paraná" data-est="Gralha e Pinhão" data-uf="pr"><img src="img/pr-par.webp" alt="Par de Paraná" loading="lazy"></a><a class="item" href="#sc" style="--i:12" data-n="13" data-nome="Santa Catarina" data-est="Baleia e Ostra" data-uf="sc"><img src="img/sc-par.webp" alt="Par de Santa Catarina" loading="lazy"></a><a class="item" href="#rs" style="--i:13" data-n="14" data-nome="Rio Grande do Sul" data-est="Roda de Chimarrão" data-uf="rs"><img src="img/rs-par.webp" alt="Par de Rio Grande do Sul" loading="lazy"></a></div>
+    <div class="roda-info" aria-live="polite"><span class="n">01</span><strong>Minas Gerais</strong><em>Barroco de Minas</em>
+      <div class="roda-bts"><button type="button" class="r-ant" aria-label="Par anterior">‹</button><a class="r-ver" href="#mg">ver o estado</a><button type="button" class="r-prox" aria-label="Próximo par">›</button></div></div>
+  </div>
+</section>
+
+
+<section class="cena dir" id="mg" style="--ac:#7C2420">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>01</b> / 14 · Sudeste</p>
+      <h2>Minas Gerais</h2>
+      <p class="est">Barroco de Minas</p>
+      <p class="conc">O ouro das igrejas de Ouro Preto, mas visto de perto: a talha que sobe pelos altares e as rosas que o Mestre Ataíde pintou no forro da São Francisco de Assis.</p>
+      <div class="cor-mini"><img src="img/mg-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>a sombra da veneziana aberta na parede caiada</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/mg-ilustracao.jpg" alt="Ilustração de Minas Gerais" loading="lazy"></figure>
+      <img class="par-flutua" src="img/mg-par.webp" alt="O par de Minas Gerais" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/mg-campo-1.jpg" alt="Igreja das Mercês entre os casarões, Ouro Preto" loading="lazy"></div><figcaption>Igreja das Mercês entre os casarões, Ouro Preto<span>foto: Lídia Andrade · CC BY-SA 4.0</span></figcaption></figure><figure><div class="moldura"><img src="img/mg-campo-2.jpg" alt="Rua de Tiradentes" loading="lazy"></div><figcaption>Rua de Tiradentes<span>foto: Cyro A. Silva · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/mg-campo-3.jpg" alt="Casario da Rua Geraldo Resende, Tiradentes" loading="lazy"></div><figcaption>Casario da Rua Geraldo Resende, Tiradentes<span>foto: Alexandre D. R. da Fonseca · CC BY-SA 4.0</span></figcaption></figure><figure><div class="moldura"><img src="img/mg-campanha.jpg" alt="O par de Minas Gerais na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="rj" style="--ac:#8C2F1F">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>02</b> / 14 · Sudeste</p>
+      <h2>Rio de Janeiro</h2>
+      <p class="est">Bonde de Santa Teresa</p>
+      <p class="conc">O Rio que sobe o morro: o bondinho amarelo atravessando os Arcos da Lapa e as amendoeiras que vestem as ruas da cidade de verde, vermelho e laranja.</p>
+      <div class="cor-mini"><img src="img/rj-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>duas folhas de amendoeira caindo juntas, ao lado do bonde</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/rj-ilustracao.jpg" alt="Ilustração de Rio de Janeiro" loading="lazy"></figure>
+      <img class="par-flutua" src="img/rj-par.webp" alt="O par de Rio de Janeiro" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/rj-campo-1.jpg" alt="O bonde amarelo em Santa Teresa" loading="lazy"></div><figcaption>O bonde amarelo em Santa Teresa<span>foto: Rodrigo_Soldon · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/rj-campo-2.jpg" alt="O bondinho subindo a ladeira" loading="lazy"></div><figcaption>O bondinho subindo a ladeira<span>foto: Rodrigo_Soldon · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/rj-campo-3.jpg" alt="O bonde nos trilhos de Santa Teresa" loading="lazy"></div><figcaption>O bonde nos trilhos de Santa Teresa<span>foto: Rodrigo_Soldon · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/rj-campanha.jpg" alt="O par de Rio de Janeiro na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena dir" id="ba" style="--ac:#6B1F18">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>03</b> / 14 · Nordeste</p>
+      <h2>Bahia</h2>
+      <p class="est">Cacau e Fita</p>
+      <p class="conc">O sul da Bahia que dá o cacau e a Salvador que amarra fita no portão do Bonfim, juntos no mesmo par.</p>
+      <div class="cor-mini"><img src="img/ba-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>dois cacaus, um amarelo e um vinho, de pontas encostadas</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/ba-ilustracao.jpg" alt="Ilustração de Bahia" loading="lazy"></figure>
+      <img class="par-flutua" src="img/ba-par.webp" alt="O par de Bahia" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/ba-campo-1.jpg" alt="Largo do Pelourinho, Salvador" loading="lazy"></div><figcaption>Largo do Pelourinho, Salvador<span>foto: José e Marina · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ba-campo-2.jpg" alt="Fitas do Senhor do Bonfim" loading="lazy"></div><figcaption>Fitas do Senhor do Bonfim<span>foto: Leandro&#x27;s World Tour · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ba-campo-3.jpg" alt="Amêndoas de cacau secando" loading="lazy"></div><figcaption>Amêndoas de cacau secando<span>foto: cid.edson · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ba-campanha.jpg" alt="O par de Bahia na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="pe" style="--ac:#D7262E">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>04</b> / 14 · Nordeste</p>
+      <h2>Pernambuco</h2>
+      <p class="est">Passo de Frevo</p>
+      <p class="conc">A sombrinha que abre o carnaval de Recife e Olinda, girando entre as buganvílias das ladeiras.</p>
+      <div class="cor-mini"><img src="img/pe-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>as pontinhas da franja da sombrinha de frevo</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/pe-ilustracao.jpg" alt="Ilustração de Pernambuco" loading="lazy"></figure>
+      <img class="par-flutua" src="img/pe-par.webp" alt="O par de Pernambuco" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/pe-campo-1.jpg" alt="Passistas de frevo em Olinda" loading="lazy"></div><figcaption>Passistas de frevo em Olinda<span>foto: Prefeitura de Olinda · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pe-campo-2.jpg" alt="Caboclos de lança" loading="lazy"></div><figcaption>Caboclos de lança<span>foto: Prefeitura de Olinda · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pe-campo-3.jpg" alt="Bonecos gigantes nas ladeiras de Olinda" loading="lazy"></div><figcaption>Bonecos gigantes nas ladeiras de Olinda<span>foto: Prefeitura de Olinda · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pe-campanha.jpg" alt="O par de Pernambuco na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena dir" id="ce" style="--ac:#D2372B">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>05</b> / 14 · Nordeste</p>
+      <h2>Ceará</h2>
+      <p class="est">Renda ao Vento</p>
+      <p class="conc">O vento do Ceará enche a vela da jangada, balança o caju no cajueiro e passa pelos bilros das rendeiras.</p>
+      <div class="cor-mini"><img src="img/ce-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>um ponto da renda de bilro, na barra</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/ce-ilustracao.jpg" alt="Ilustração de Ceará" loading="lazy"></figure>
+      <img class="par-flutua" src="img/ce-par.webp" alt="O par de Ceará" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/ce-campo-1.jpg" alt="Jangadas na areia" loading="lazy"></div><figcaption>Jangadas na areia<span>foto: Ric e Ette · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ce-campo-2.jpg" alt="Cajueiral em Pacajus" loading="lazy"></div><figcaption>Cajueiral em Pacajus<span>foto: Porto Neto · CC BY-SA 4.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ce-campo-3.jpg" alt="Falésias de Canoa Quebrada" loading="lazy"></div><figcaption>Falésias de Canoa Quebrada<span>foto: Elton Jr. · CC BY-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ce-campanha.jpg" alt="O par de Ceará na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="ma" style="--ac:#E0402F">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>06</b> / 14 · Nordeste</p>
+      <h2>Maranhão</h2>
+      <p class="est">Couro de Boi</p>
+      <p class="conc">As noites de São João em São Luís, quando o boi chega bordado em veludo preto, e os guarás vermelhos que pintam o litoral do Maranhão.</p>
+      <div class="cor-mini"><img src="img/ma-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>uma florzinha de miçanga no bordado do boi</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/ma-ilustracao.jpg" alt="Ilustração de Maranhão" loading="lazy"></figure>
+      <img class="par-flutua" src="img/ma-par.webp" alt="O par de Maranhão" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/ma-campo-1.jpg" alt="Lagoa Bonita, Lençóis Maranhenses" loading="lazy"></div><figcaption>Lagoa Bonita, Lençóis Maranhenses<span>foto: Fred Schinke · CC BY-ND 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ma-campo-2.jpg" alt="Revoada de guarás" loading="lazy"></div><figcaption>Revoada de guarás<span>foto: andresumida · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ma-campo-3.jpg" alt="Boi do bumba-meu-boi em São Luís" loading="lazy"></div><figcaption>Boi do bumba-meu-boi em São Luís<span>foto: marcusrg · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ma-campanha.jpg" alt="O par de Maranhão na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena dir" id="am" style="--ac:#4F8A3C">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>07</b> / 14 · Norte</p>
+      <h2>Amazonas</h2>
+      <p class="est">Encontro das Águas</p>
+      <p class="conc">Os dois rios que correm lado a lado sem se misturar perto de Manaus: o par de chinelos é o encontro, um pé de cada água.</p>
+      <div class="cor-mini"><img src="img/am-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>os anéis de água em volta do boto</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/am-ilustracao.jpg" alt="Ilustração de Amazonas" loading="lazy"></figure>
+      <img class="par-flutua" src="img/am-par.webp" alt="O par de Amazonas" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/am-campo-1.jpg" alt="Encontro das Águas, Manaus" loading="lazy"></div><figcaption>Encontro das Águas, Manaus<span>foto: whl.travel · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/am-campo-2.jpg" alt="Boto-cor-de-rosa" loading="lazy"></div><figcaption>Boto-cor-de-rosa<span>foto: Georg Sander · CC BY-NC 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/am-campo-3.jpg" alt="Vitória-régia em Manaus" loading="lazy"></div><figcaption>Vitória-régia em Manaus<span>foto: Arnoldo Riker · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/am-campanha.jpg" alt="O par de Amazonas na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="pa" style="--ac:#D93A2E">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>08</b> / 14 · Norte</p>
+      <h2>Pará</h2>
+      <p class="est">Revoada de Miriti</p>
+      <p class="conc">Os brinquedos de miriti de Abaetetuba em revoada sobre o roxo do açaí que chega de barco ao Ver-o-Peso.</p>
+      <div class="cor-mini"><img src="img/pa-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>dois pássaros de miriti que voam um para o outro</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/pa-ilustracao.jpg" alt="Ilustração de Pará" loading="lazy"></figure>
+      <img class="par-flutua" src="img/pa-par.webp" alt="O par de Pará" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/pa-campo-1.jpg" alt="Mercado do Ver-o-Peso, Belém" loading="lazy"></div><figcaption>Mercado do Ver-o-Peso, Belém<span>foto: marcusrg · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pa-campo-2.jpg" alt="Barquinhos de miriti" loading="lazy"></div><figcaption>Barquinhos de miriti<span>foto: Celso Abreu · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pa-campo-3.jpg" alt="Paneiros de açaí no cais" loading="lazy"></div><figcaption>Paneiros de açaí no cais<span>foto: Helder da Rocha · CC BY-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pa-campanha.jpg" alt="O par de Pará na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena dir" id="to" style="--ac:#C9652E">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>09</b> / 14 · Norte</p>
+      <h2>Tocantins</h2>
+      <p class="est">Ouro do Jalapão</p>
+      <p class="conc">O capim que brilha como ouro nas veredas do Jalapão, trançado pelas artesãs da Mumbuca, entre buritis e dunas cor de laranja.</p>
+      <div class="cor-mini"><img src="img/to-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>duas hastes de capim dourado que se cruzam</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/to-ilustracao.jpg" alt="Ilustração de Tocantins" loading="lazy"></figure>
+      <img class="par-flutua" src="img/to-par.webp" alt="O par de Tocantins" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/to-campo-1.jpg" alt="Dunas do Jalapão" loading="lazy"></div><figcaption>Dunas do Jalapão<span>foto: A. Duarte · CC BY-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/to-campo-2.jpg" alt="Fervedouro no Jalapão" loading="lazy"></div><figcaption>Fervedouro no Jalapão<span>foto: Lucas Flavio · CC BY-NC 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/to-campo-3.jpg" alt="Rio entre as dunas do Jalapão" loading="lazy"></div><figcaption>Rio entre as dunas do Jalapão<span>foto: Mari Lucia · CC BY-NC 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/to-campanha.jpg" alt="O par de Tocantins na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="ms" style="--ac:#C8302B">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>10</b> / 14 · Centro-Oeste</p>
+      <h2>Mato Grosso do Sul</h2>
+      <p class="est">Onça de Bonito</p>
+      <p class="conc">A onça-pintada e o tuiuiú do Pantanal sul, sobre a água transparente dos rios de Bonito.</p>
+      <div class="cor-mini"><img src="img/ms-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>uma folha de aguapé na beira do rio de Bonito</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/ms-ilustracao.jpg" alt="Ilustração de Mato Grosso do Sul" loading="lazy"></figure>
+      <img class="par-flutua" src="img/ms-par.webp" alt="O par de Mato Grosso do Sul" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/ms-campo-1.jpg" alt="Rio cristalino em Bonito" loading="lazy"></div><figcaption>Rio cristalino em Bonito<span>foto: Fernando Stankuns · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ms-campo-2.jpg" alt="Aguapés no rio Salobra" loading="lazy"></div><figcaption>Aguapés no rio Salobra<span>foto: dany13 · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ms-campo-3.jpg" alt="Gruta do Lago Azul, Bonito" loading="lazy"></div><figcaption>Gruta do Lago Azul, Bonito<span>foto: Valdiney Pimenta · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/ms-campanha.jpg" alt="O par de Mato Grosso do Sul na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena dir" id="go" style="--ac:#B8283C">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>11</b> / 14 · Centro-Oeste</p>
+      <h2>Goiás</h2>
+      <p class="est">Cavalhada</p>
+      <p class="conc">As Cavalhadas de Pirenópolis, quando os cavalos saem enfeitados de flor de papel e fita, com o pequi do cerrado em volta.</p>
+      <div class="cor-mini"><img src="img/go-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>duas folhas de pequi que se encontram sob o peito do cavalo</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/go-ilustracao.jpg" alt="Ilustração de Goiás" loading="lazy"></figure>
+      <img class="par-flutua" src="img/go-par.webp" alt="O par de Goiás" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/go-campo-1.jpg" alt="Cavalhadas de Pirenópolis" loading="lazy"></div><figcaption>Cavalhadas de Pirenópolis<span>foto: asleeponasunbeam · CC BY-NC-ND 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/go-campo-2.jpg" alt="Rua de Pirenópolis em dia de festa" loading="lazy"></div><figcaption>Rua de Pirenópolis em dia de festa<span>foto: fabian.kron · CC BY-ND 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/go-campo-3.jpg" alt="Pequi aberto" loading="lazy"></div><figcaption>Pequi aberto<span>foto: capelati · CC BY-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/go-campanha.jpg" alt="O par de Goiás na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="pr" style="--ac:#2C63C6">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>12</b> / 14 · Sul</p>
+      <h2>Paraná</h2>
+      <p class="est">Gralha e Pinhão</p>
+      <p class="conc">A gralha-azul enterra o pinhão e planta a floresta de araucária sem querer: por isso virou o símbolo do Paraná.</p>
+      <div class="cor-mini"><img src="img/pr-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>dois pinhões encostados na grama</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/pr-ilustracao.jpg" alt="Ilustração de Paraná" loading="lazy"></figure>
+      <img class="par-flutua" src="img/pr-par.webp" alt="O par de Paraná" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/pr-campo-1.jpg" alt="Araucárias nos Campos Gerais" loading="lazy"></div><figcaption>Araucárias nos Campos Gerais<span>foto: RadamesM · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pr-campo-2.jpg" alt="Araucária na neblina" loading="lazy"></div><figcaption>Araucária na neblina<span>foto: RadamesM · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/pr-campanha.jpg" alt="O par de Paraná na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena dir" id="sc" style="--ac:#1F4E6E">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>13</b> / 14 · Sul</p>
+      <h2>Santa Catarina</h2>
+      <p class="est">Baleia e Ostra</p>
+      <p class="conc">Todo inverno a baleia-franca volta para ter filhote no litoral de Santa Catarina; na ilha, as ostras crescem em fileiras no mar.</p>
+      <div class="cor-mini"><img src="img/sc-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>a cauda da baleia-franca na enseada de Garopaba</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/sc-ilustracao.jpg" alt="Ilustração de Santa Catarina" loading="lazy"></figure>
+      <img class="par-flutua" src="img/sc-par.webp" alt="O par de Santa Catarina" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/sc-campo-1.jpg" alt="APA da Baleia Franca, litoral sul" loading="lazy"></div><figcaption>APA da Baleia Franca, litoral sul<span>foto: Ctseelig · CC BY-SA 4.0</span></figcaption></figure><figure><div class="moldura"><img src="img/sc-campo-2.jpg" alt="Costão na APA da Baleia Franca" loading="lazy"></div><figcaption>Costão na APA da Baleia Franca<span>foto: Ctseelig · CC BY-SA 4.0</span></figcaption></figure><figure><div class="moldura"><img src="img/sc-campanha.jpg" alt="O par de Santa Catarina na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+<section class="cena esq" id="rs" style="--ac:#B7322A">
+  <div class="cena-in">
+    <div class="cena-txt">
+      <p class="num"><b>14</b> / 14 · Sul</p>
+      <h2>Rio Grande do Sul</h2>
+      <p class="est">Roda de Chimarrão</p>
+      <p class="conc">A cuia que passa de mão em mão e o quero-quero que guarda o pampa no fim da tarde.</p>
+      <div class="cor-mini"><img src="img/rs-coracao.jpg" alt="Detalhe do coração na ilustração" loading="lazy"><p><b>onde está o coração</b>duas folhas de erva-mate ao pé do mourão</p></div>
+    </div>
+    <div class="cena-arte">
+      <figure class="arco-ilu"><img src="img/rs-ilustracao.jpg" alt="Ilustração de Rio Grande do Sul" loading="lazy"></figure>
+      <img class="par-flutua" src="img/rs-par.webp" alt="O par de Rio Grande do Sul" loading="lazy">
+    </div>
+  </div>
+  <div class="campo"><figure><div class="moldura"><img src="img/rs-campo-1.jpg" alt="Cuia de chimarrão" loading="lazy"></div><figcaption>Cuia de chimarrão<span>foto: Cleber Rech · CC BY 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/rs-campo-2.jpg" alt="Fim de tarde no pampa, Pelotas" loading="lazy"></div><figcaption>Fim de tarde no pampa, Pelotas<span>foto: Eduardo Amorim · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/rs-campo-3.jpg" alt="Chimarrão perto do fogo" loading="lazy"></div><figcaption>Chimarrão perto do fogo<span>foto: Eduardo Amorim · CC BY-NC-SA 2.0</span></figcaption></figure><figure><div class="moldura"><img src="img/rs-campanha.jpg" alt="O par de Rio Grande do Sul na campanha" loading="lazy"></div><figcaption>O par no lugar<span>campanha</span></figcaption></figure></div>
+</section>
+
+<section class="metodo" id="metodo">
+  <p class="eb">o método</p>
+  <h2>Como cada par nasce</h2>
+  <ol class="passos">
+    <li data-img="img/mg-campo-1.jpg"><span>01</span><h3>Campo</h3><p>Fotos reais do lugar, com autor e licença, e o local de cada uma conferido antes de entrar.</p></li>
+    <li data-img="img/mg-coracao.jpg"><span>02</span><h3>Âncora</h3><p>Um elemento que é daquele estado e de nenhum outro. Sem âncora, o chinelo fica só bonito.</p></li>
+    <li data-img="img/mg-palmilha.jpg"><span>03</span><h3>Chinelo</h3><p>Díptico: o pé esquerdo e o direito contam metades da mesma história. Só elementos.</p></li>
+    <li data-img="img/mg-ilustracao.jpg"><span>04</span><h3>Ilustração</h3><p>O lugar inteiro, centralizado, feito com os mesmos elementos do chinelo.</p></li>
+    <li data-img="img/mg-estudio.jpg"><span>05</span><h3>O par</h3><p>A tira repete uma cor da estampa e a assinatura da collab fica no calcanhar, sem mudança.</p></li>
+  </ol>
+  <img class="foto-mouse" alt="" aria-hidden="true">
+</section>
+</main>
+
+<footer class="fim">
+  <p class="fim-grande">bem-querer</p>
+  <div class="fim-cols">
+    <div><p class="eb" style="margin-bottom:12px">ficha técnica</p><p>Conceito, pesquisa de campo, direção de arte, estampas, ilustrações e chinelos: Cauã Dorn.</p><p>Assinatura: a da collab havaianas ♥ FARM RIO, sem alteração.</p></div>
+    <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
+    <div><p class="eb" style="margin-bottom:12px">fotos de campo</p><p>139 fotógrafos, sob licenças Creative Commons, usados como pesquisa.</p>
+      <details><summary>ver todos os créditos</summary><ul class="creditos"><li><b>Minas Gerais</b> · Igreja das Mercês entre os casarões, Ouro Preto: Lídia Andrade, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Igreja_Nossa_Senhora_das_Merces_vista_entre_as_fachdas_dos_casarios.JPG">fonte</a>); Rua de Tiradentes: Cyro A. Silva, CC BY 2.0 (<a href="https://commons.wikimedia.org/wiki/File:Rua_de_Tiradentes_-_Minas_Gerais_(2979358955).jpg">fonte</a>); Casario da Rua Geraldo Resende, Tiradentes: Alexandre D. R. da Fonseca, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Conjunto_arquitet%C3%B4nico_da_Rua_Geraldo_Resende_-_Tiradentes_-_Minas_Gerais_-_Brasil.jpg">fonte</a>)</li><li><b>Rio de Janeiro</b> · O bonde amarelo em Santa Teresa: Rodrigo_Soldon, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/1709274176">fonte</a>); O bondinho subindo a ladeira: Rodrigo_Soldon, CC BY 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/3725743219">fonte</a>); O bonde nos trilhos de Santa Teresa: Rodrigo_Soldon, CC BY 2.0 (<a href="https://www.flickr.com/photos/8865243@N02/3725749583">fonte</a>)</li><li><b>Bahia</b> · Largo do Pelourinho, Salvador: José e Marina, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/24463583@N03/15868401991">fonte</a>); Fitas do Senhor do Bonfim: Leandro&#x27;s World Tour, CC BY 2.0 (<a href="https://www.flickr.com/photos/18115835@N00/5564595344">fonte</a>); Amêndoas de cacau secando: cid.edson, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/32902527@N08/5892185959">fonte</a>)</li><li><b>Pernambuco</b> · Passistas de frevo em Olinda: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/3219530631">fonte</a>); Caboclos de lança: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/3299482425">fonte</a>); Bonecos gigantes nas ladeiras de Olinda: Prefeitura de Olinda, CC BY 2.0 (<a href="https://www.flickr.com/photos/34141375@N03/4379926398">fonte</a>)</li><li><b>Ceará</b> · Jangadas na areia: Ric e Ette, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/34708734@N00/197079424">fonte</a>); Cajueiral em Pacajus: Porto Neto, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg">fonte</a>); Falésias de Canoa Quebrada: Elton Jr., CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/134400688@N08/19824109622">fonte</a>)</li><li><b>Maranhão</b> · Lagoa Bonita, Lençóis Maranhenses: Fred Schinke, CC BY-ND 2.0 (<a href="https://www.flickr.com/photos/30296867@N04/5843496041">fonte</a>); Revoada de guarás: andresumida, CC BY 2.0 (<a href="https://www.flickr.com/photos/35069660@N00/48627413588">fonte</a>); Boi do bumba-meu-boi em São Luís: marcusrg, CC BY 2.0 (<a href="https://www.flickr.com/photos/49503185029@N01/874109589">fonte</a>)</li><li><b>Amazonas</b> · Encontro das Águas, Manaus: whl.travel, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/40382540@N08/4009155340">fonte</a>); Boto-cor-de-rosa: Georg Sander, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/7960563@N07/4466309717">fonte</a>); Vitória-régia em Manaus: Arnoldo Riker, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/17919385@N00/3776340252">fonte</a>)</li><li><b>Pará</b> · Mercado do Ver-o-Peso, Belém: marcusrg, CC BY 2.0 (<a href="https://www.flickr.com/photos/49503185029@N01/454611567">fonte</a>); Barquinhos de miriti: Celso Abreu, CC BY 2.0 (<a href="https://www.flickr.com/photos/13656399@N02/4993760899">fonte</a>); Paneiros de açaí no cais: Helder da Rocha, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/49503071578@N01/2330906600">fonte</a>)</li><li><b>Tocantins</b> · Dunas do Jalapão: A. Duarte, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/30411166@N04/23082887694">fonte</a>); Fervedouro no Jalapão: Lucas Flavio, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/13166094@N08/6331617889">fonte</a>); Rio entre as dunas do Jalapão: Mari Lucia, CC BY-NC 2.0 (<a href="https://www.flickr.com/photos/25173980@N00/4169373738">fonte</a>)</li><li><b>Mato Grosso do Sul</b> · Rio cristalino em Bonito: Fernando Stankuns, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/82289802@N00/14323002462">fonte</a>); Aguapés no rio Salobra: dany13, CC BY 2.0 (<a href="https://www.flickr.com/photos/11493299@N00/15706377191">fonte</a>); Gruta do Lago Azul, Bonito: Valdiney Pimenta, CC BY 2.0 (<a href="https://www.flickr.com/photos/13061113@N05/3319551627">fonte</a>)</li><li><b>Goiás</b> · Cavalhadas de Pirenópolis: asleeponasunbeam, CC BY-NC-ND 2.0 (<a href="https://www.flickr.com/photos/66995057@N00/48036338107">fonte</a>); Rua de Pirenópolis em dia de festa: fabian.kron, CC BY-ND 2.0 (<a href="https://www.flickr.com/photos/10239854@N07/52197135396">fonte</a>); Pequi aberto: capelati, CC BY-SA 2.0 (<a href="https://www.flickr.com/photos/66895716@N03/8428425646">fonte</a>)</li><li><b>Paraná</b> · Araucárias nos Campos Gerais: RadamesM, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/58965011@N05/8475950116">fonte</a>); Araucária na neblina: RadamesM, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/58965011@N05/8924831824">fonte</a>)</li><li><b>Santa Catarina</b> · APA da Baleia Franca, litoral sul: Ctseelig, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(13).jpg">fonte</a>); Costão na APA da Baleia Franca: Ctseelig, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(01).jpg">fonte</a>)</li><li><b>Rio Grande do Sul</b> · Cuia de chimarrão: Cleber Rech, CC BY 2.0 (<a href="https://www.flickr.com/photos/7272193@N02/21375180151">fonte</a>); Fim de tarde no pampa, Pelotas: Eduardo Amorim, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/75133058@N00/866865208">fonte</a>); Chimarrão perto do fogo: Eduardo Amorim, CC BY-NC-SA 2.0 (<a href="https://www.flickr.com/photos/75133058@N00/29440539126">fonte</a>)</li></ul></details></div>
+  </div>
+</footer>
+
+<script src="js/gsap.min.js" defer></script>
+<script src="js/ScrollTrigger.min.js" defer></script>
+<script src="js/lenis.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fino = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var G = window.gsap && !reduz ? window.gsap : null;
+  var lenis = null;
+  if (G) {
+    G.registerPlugin(ScrollTrigger);
+    if (window.Lenis) {
+      lenis = new Lenis({ lerp: .09 });
+      lenis.on('scroll', ScrollTrigger.update);
+      G.ticker.add(function (t) { lenis.raf(t * 1000); });
+      G.ticker.lagSmoothing(0);
+    }
+  }
+  function vaiPara(alvo) {
+    var sp = alvo.closest('.pin-spacer'), y = (sp || alvo).getBoundingClientRect().top + scrollY;
+    if (lenis) lenis.scrollTo(y, { duration: 1.6 }); else scrollTo({ top: y, behavior: reduz ? 'auto' : 'smooth' });
+  }
+
+  /* o topo ganha fundo depois da abertura */
+  var topo = document.querySelector('.topo');
+  function fundoTopo() { topo.classList.toggle('solido', scrollY > innerHeight * 1.6); }
+  addEventListener('scroll', fundoTopo, { passive: true }); fundoTopo();
+
+  /* menu */
+  var bt = document.querySelector('.topo .pilula'), menu = document.getElementById('menu');
+  function abre(sim) { menu.classList.toggle('aberto', sim); bt.setAttribute('aria-expanded', sim); if (lenis) { sim ? lenis.stop() : lenis.start(); } }
+  bt.addEventListener('click', function () { abre(!menu.classList.contains('aberto')); });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape') abre(false); });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').length < 2) return;
+    var alvo = document.getElementById(a.getAttribute('href').slice(1));
+    if (!alvo) return;
+    e.preventDefault(); abre(false); vaiPara(alvo);
+  });
+
+  /* carregador */
+  var cl = document.querySelector('.carrega'), pct = cl.querySelector('.pct'), clS = cl.querySelector('.cl');
+  var ims = [].slice.call(document.querySelectorAll('.janela img')), feitas = 0, mostrado = 0, acabou = false;
+  function mostra(v) { pct.textContent = v; clS.style.setProperty('--p', v + '%'); }
+  function fim() { if (acabou) return; acabou = true; mostra(100); setTimeout(function () { cl.classList.add('foi'); entrada(); }, reduz ? 0 : 500); }
+  function conta() {
+    feitas++;
+    var alvo = Math.round(feitas / ims.length * 100);
+    if (G) G.to({ v: mostrado }, { v: alvo, duration: .6, ease: 'power2.out', onUpdate: function () { mostrado = Math.round(this.targets()[0].v); mostra(mostrado); } });
+    else mostra(alvo);
+    if (feitas >= ims.length) setTimeout(fim, G ? 650 : 0);
+  }
+  ims.forEach(function (im) { if (im.complete) conta(); else { im.addEventListener('load', conta); im.addEventListener('error', conta); } });
+  setTimeout(fim, 4500);
+
+  /* a janela troca de estado sozinha */
+  var k = 0, troca = null;
+  function proxima() { ims[k].classList.remove('on'); k = (k + 1) % ims.length; ims[k].classList.add('on'); }
+  if (!reduz) troca = setInterval(proxima, 2600);
+
+  function entrada() {
+    if (!G) return;
+    G.from('.p-bem', { xPercent: -14, opacity: 0, duration: 1.4, ease: 'expo.out' });
+    G.from('.p-querer', { xPercent: 14, opacity: 0, duration: 1.4, ease: 'expo.out' });
+    G.fromTo('.janela', { clipPath: JAN0.replace(/inset\(\d+%/, 'inset(100%') }, { clipPath: JAN0, duration: 1.6, ease: 'expo.out' });
+    G.from('.hero .rodape-h', { opacity: 0, y: 20, duration: 1, delay: .5 });
+  }
+
+  /* abertura: a janela abre até a tela inteira (criada antes da roda, para a roda contar com este pino) */
+  var celular = matchMedia('(max-width: 900px)').matches;
+  var JAN0 = celular ? 'inset(34% 12% 0% 12% round 50vw 50vw 0vw 0vw)' : 'inset(22% 36% 0% 36% round 50vw 50vw 0vw 0vw)';
+  var JAN1 = 'inset(0% 0% 0% 0% round 0vw 0vw 0vw 0vw)';
+  if (G) {
+    var tl = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: .8 } });
+    tl.fromTo('.janela', { clipPath: JAN0 }, { clipPath: JAN1, ease: 'none', immediateRender: false }, 0)
+      .to('.p-bem', { xPercent: -60, opacity: 0, ease: 'none' }, 0)
+      .to('.p-querer', { xPercent: 60, opacity: 0, ease: 'none' }, 0)
+      .to('.hero .rodape-h', { opacity: 0, ease: 'none', duration: .3 }, 0);
+  }
+
+  /* a roda */
+  var roda = document.querySelector('.roda'), irPara = function () {};
+  if (roda) {
+    var itens = [].slice.call(roda.querySelectorAll('.item')), N = itens.length, passo = 360 / N;
+    var aro = roda.querySelector('.aro'), anel = roda.querySelector('.anel'), info = roda.querySelector('.roda-info');
+    var nEl = info.querySelector('.n'), nmEl = info.querySelector('strong'), esEl = info.querySelector('em'), ver = info.querySelector('.r-ver');
+    var atual = -1;
+    var gira = function (phi) {
+      aro.style.transform = 'rotate(' + (-phi) + 'deg)';
+      anel.style.transform = 'rotate(' + (phi * .5) + 'deg)';
+      itens.forEach(function (it, i) {
+        var d = ((i * passo - phi) % 360 + 540) % 360 - 180;
+        it.style.setProperty('--s', (1 + .24 * Math.max(0, 1 - Math.abs(d) / (passo * 1.1))).toFixed(3));
+      });
+      var kk = ((Math.round(phi / passo) % N) + N) % N;
+      if (kk !== atual) { atual = kk; var it = itens[kk]; nEl.textContent = it.dataset.n; nmEl.textContent = it.dataset.nome; esEl.textContent = it.dataset.est; ver.href = '#' + it.dataset.uf; }
+    };
+    gira(0);
+    if (G) {
+      var o = { phi: 0 };
+      var tw = G.to(o, { phi: (N - 1) * passo, ease: 'none', onUpdate: function () { gira(o.phi); },
+        scrollTrigger: { trigger: roda, start: 'top top', end: function () { return '+=' + innerHeight * 3.4; }, pin: true, scrub: .9, invalidateOnRefresh: true } });
+      irPara = function (n) { n = Math.max(0, Math.min(N - 1, n)); var st = tw.scrollTrigger, y = st.start + (st.end - st.start) * n / (N - 1); if (lenis) lenis.scrollTo(y, { duration: 1 }); else scrollTo(0, y); };
+    } else {
+      roda.classList.add('sem-g');
+      irPara = function (n) { gira(n * passo); };
+    }
+    roda.querySelector('.r-prox').addEventListener('click', function () { irPara(atual + 1); });
+    roda.querySelector('.r-ant').addEventListener('click', function () { irPara(atual - 1); });
+  }
+
+  /* método: a foto acompanha o mouse */
+  var fm = document.querySelector('.foto-mouse');
+  if (fino && fm) {
+    var fx = G ? G.quickTo(fm, 'left', { duration: .5, ease: 'power3' }) : function (v) { fm.style.left = v + 'px'; };
+    var fy = G ? G.quickTo(fm, 'top', { duration: .5, ease: 'power3' }) : function (v) { fm.style.top = v + 'px'; };
+    document.querySelectorAll('.passos li').forEach(function (li) {
+      li.addEventListener('pointerenter', function () { fm.src = li.dataset.img; fm.classList.add('on'); });
+      li.addEventListener('pointerleave', function () { fm.classList.remove('on'); });
+    });
+    addEventListener('pointermove', function (e) { fx(e.clientX + 150); fy(e.clientY); });
+  }
+
+  if (!G) return;
+
+
+  /* manifesto: as palavras acendem com a rolagem */
+  var mt = document.querySelector('.m-txt');
+  var partes = [];
+  [].slice.call(mt.childNodes).forEach(function (n) {
+    if (n.nodeType === 3) {
+      n.textContent.split(/(\s+)/).forEach(function (w) {
+        if (!w) return;
+        if (/^\s+$/.test(w)) { partes.push(document.createTextNode(w)); return; }
+        var s = document.createElement('span'); s.className = 'w'; s.textContent = w; partes.push(s);
+      });
+    } else { n.classList && n.classList.add('w'); partes.push(n); }
+  });
+  mt.textContent = ''; partes.forEach(function (p) { mt.appendChild(p); });
+  G.fromTo(mt.querySelectorAll('.w'), { opacity: .14 }, { opacity: 1, stagger: .05, ease: 'none',
+    scrollTrigger: { trigger: mt, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+
+  /* capítulos */
+  G.utils.toArray('.cena').forEach(function (c) {
+    var arco = c.querySelector('.arco-ilu'), img = arco.querySelector('img'), par = c.querySelector('.par-flutua');
+    G.fromTo(arco, { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 0px 0px)', duration: 1.4, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: arco, start: 'top 85%', once: true } });
+    G.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'bottom top', scrub: true } });
+    G.fromTo(par, { y: 140 }, { y: -60, ease: 'none', scrollTrigger: { trigger: c.querySelector('.cena-in'), start: 'top bottom', end: 'bottom top', scrub: true } });
+    G.from(c.querySelectorAll('.cena-txt > *'), { y: 40, opacity: 0, duration: 1, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 70%', once: true } });
+    c.querySelectorAll('.campo .moldura').forEach(function (m) {
+      G.fromTo(m, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: m, start: 'top 90%', once: true } });
+      G.fromTo(m.querySelector('img'), { scale: 1.18 }, { scale: 1, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: m, start: 'top 90%', once: true } });
+    });
+  });
+  G.from('.passos li', { y: 30, opacity: 0, duration: .9, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.passos', start: 'top 80%', once: true } });
+  addEventListener('load', function () { ScrollTrigger.refresh(); });
+});
+</script>
+</body>
+</html>
