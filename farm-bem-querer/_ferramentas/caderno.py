@@ -35,7 +35,9 @@ def autor_limpo(a):
 
 def credito(c):
     lic = f' · {e(c["licenca"])}' if c.get('licenca') else ''
-    nc = ' (uso não comercial)' if c.get('nc') else ''
+    lic_up = (c.get('licenca') or '').upper()
+    avisos = [t for k, t in (('NC', 'uso não comercial'), ('ND', 'sem alterações')) if k in lic_up.split('-') or f'-{k}' in lic_up or f' {k}' in lic_up]
+    nc = f' ({", ".join(avisos)})' if avisos else ''
     fonte = {'flickr': 'Flickr', 'wikimedia': 'Wikimedia Commons'}.get(c.get('fonte'), 'Wikimedia Commons')
     return f'{e(autor_limpo(c["autor"]))}{lic}{nc} · {fonte}'
 

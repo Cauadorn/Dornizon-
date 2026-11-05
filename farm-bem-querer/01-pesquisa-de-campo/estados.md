@@ -18,7 +18,7 @@ Cada caderno tem 3 páginas: **abertura** (foto, texto de campo, palavras, trilh
 | 08 | Pará | Revoada de Miriti | — | coletando fotos |
 | 09 | Tocantins | Ouro do Jalapão | — | coletando fotos |
 | 10 | Mato Grosso do Sul | Onça de Bonito | onça-pintada | coletando fotos |
-| 11 | Goiás | Mascarado | cavalo das Cavalhadas | coletando fotos |
+| 11 | Goiás | Mascarado | cavalo das Cavalhadas | pronto |
 | 12 | Paraná | Gralha e Pinhão | gralha-azul | coletando fotos |
 | 13 | Santa Catarina | Mar de Renda | baleia-franca | coletando fotos |
 | 14 | Rio Grande do Sul | Roda de Chimarrão | quero-quero (coadjuvante) | coletando fotos |
