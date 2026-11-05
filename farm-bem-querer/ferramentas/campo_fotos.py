@@ -43,7 +43,7 @@ def busca(q, n=6):
             continue
         autor = md.get('Artist', {}).get('value', '')
         import re
-        autor = re.sub('<[^>]+>', '', autor).strip()[:80]
+        autor = re.sub(r'\s+', ' ', re.sub('<[^>]+>', ' ', autor)).strip()[:80]
         out.append({'titulo': pg['title'], 'thumb': ii.get('thumburl'), 'pagina': ii.get('descriptionurl'),
                     'autor': autor or 'autor no Wikimedia Commons', 'licenca': lic})
         if len(out) >= n:
