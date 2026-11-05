@@ -17,23 +17,39 @@
 
 As referências são estudo de linguagem: identificar e creditar a autoria antes de publicar; não usar como imagem de entrada em IA.
 
-## As 7 regras do traço
+## O método (validado no lote 1: MG, BA, PE, GO)
 
-1. Um protagonista; no máximo dois coadjuvantes.
-2. Fundo de cor única e forte. Sem céu degradê, sem paisagem realista.
-3. Paleta curta (4 a 6 cores), tirada das fotos de campo.
-4. Uma textura por arte (guache seco, granulado ou hachura).
-5. Volume em 2 a 3 tons chapados; nada de brilho plástico.
-6. Recorte ousado e composição assimétrica.
-7. Um recurso gráfico de assinatura + respiro na base para a assinatura da collab.
+Cada estado tem **duas peças unidas pelos mesmos elementos**:
+
+| | Ilustração (campanha) | Chinelo (produto) |
+|---|---|---|
+| Papel | mostrar o **lugar**: bater o olho e saber o estado | levar os **elementos**, como no modelo Ararinhas da collab |
+| Forma | cena **centralizada e simétrica** (conferida por medição) | **díptico**: palmilha esquerda + direita, fundo chapado |
+| Texto | nenhum | nenhum (letreiro só se o estado precisar, como o R\|J da collab) |
+| Base | faixa chapada de cor da paleta para o logo | respiro no calcanhar para o logo |
+
+- O chinelo precisa de **uma âncora**: um elemento que é daquele estado e de nenhum outro (fita do Bonfim, sombrinha de frevo, talha do barroco mineiro, cavalo da Cavalhada). O resto dá a beleza.
+- A ilustração reaproveita os elementos do chinelo (coroa barroca e guirlanda em MG, cacau e fitas na BA, sombrinha e buganvília em PE, cavalo e pequi em GO).
+- **Variedade entre estados:** cada lugar com um tipo de cena diferente. **Igreja não é a solução padrão** (o lote 1 já tem as quatro); nos próximos, buscar mercado, rio, praia, duna, festa, ofício, mesa, barco, ponte, paisagem.
+
+## As regras do traço
+
+1. Guache digital: pincelada visível, borda seca, 2 a 3 tons chapados por forma, sem degradê nem brilho plástico.
+2. Paleta curta (5 a 7 cores) tirada das fotos de campo; a tira do chinelo repete uma cor da estampa.
+3. Elementos grandes, recortados pela borda da palmilha; cheio, mas com respiro.
+4. Nada de cena dentro do chinelo; nada de pessoa com rosto.
 
 ## O coração (o que une a coleção)
 
-- Três níveis em toda estampa: **macro** (composição ou espaço negativo), **médio** (o padrão do elemento: pinta, pena, escama, bordado), **micro** (um detalhe para quem chega perto).
-- **Todos sutis:** no primeiro olhar se vê o estado; no segundo, o coração.
-- **Sempre o mesmo desenho:** o coração feito à mão da assinatura, levemente assimétrico.
-- O coração herda a cor do elemento e se deforma com a anatomia. Nada de emoji, adesivo ou coração carimbado.
-- **Decorações suaves** em todas as artes: ramos, pontinhos, fitas finas.
+- **Formado pelos próprios elementos**, nunca desenhado em cima deles: duas folhas que se encontram, duas volutas espelhadas, o vão entre duas fitas, dois frutos de pontas encostadas, as pontinhas da franja da sombrinha, a sombra da veneziana.
+- **Proibido:** coração pintado em fruta, brilho em forma de coração, confete de coração, coração grande no centro da cena, coração carimbado ou emoji.
+- **Sutil:** no primeiro olhar se vê o estado; no segundo, o coração. Um ou dois por peça.
+
+## O logo
+
+Sempre a assinatura oficial da collab (FARM RIO / coração / havaianas), em vetor, aplicada depois:
+- **chinelo:** centralizado no calcanhar (eixo medido nas linhas do calcanhar), tom sobre tom, com um fio fino na cor do fundo quando passa sobre um elemento;
+- **ilustração:** centralizado na faixa da base, com a mesma folga em cima e embaixo.
 
 ## Bicho
 
@@ -41,8 +57,8 @@ Só onde ele é identidade do estado: MS (onça), AM (boto), MA (guará), GO (ca
 
 ## O que denuncia IA (e a revisão barra)
 
-Detalhe demais por toda parte · brilho e degradê · paisagem realista dentro do desenho · anatomia errada · coração carimbado · simetria perfeita · texto gerado (o logo é sempre aplicado depois, em vetor). Exemplos em `testes-descartados/`.
+Detalhe demais por toda parte · brilho e degradê · paisagem realista dentro do chinelo · anatomia errada · coração carimbado ou desenhado em objeto · composição torta (eixo fora do centro) · texto gerado (o logo é sempre aplicado depois, em vetor). Exemplos em `testes-descartados/`.
 
 ## Prompt-base
 
-Ver `prompt-base.txt`. Uma geração por estado, só com o briefing aprovado.
+Ver `prompt-base.txt` (dois moldes: chinelo e ilustração). Uma geração por peça, só com o briefing aprovado; ajustes por edição da própria imagem.
