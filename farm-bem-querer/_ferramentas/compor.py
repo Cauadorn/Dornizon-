@@ -26,7 +26,9 @@ def main():
     ap.add_argument('arte')
     ap.add_argument('uf')
     ap.add_argument('saida')
-    ap.add_argument('--pos', default='base', choices=['base', 'topo', 'canto'])
+    ap.add_argument('--pos', default='base', choices=['base', 'topo', 'canto', 'faixa'])
+    ap.add_argument('--forma', default='empilhado', choices=['empilhado', 'horizontal'])
+    ap.add_argument('--faixa', type=float, default=0.13, help='altura da faixa de base (fração da altura)')
     ap.add_argument('--largura', type=float, default=0.30)
     ap.add_argument('--tom', default='auto', choices=['auto', 'claro', 'escuro'])
     a = ap.parse_args()
@@ -39,8 +41,11 @@ def main():
     lw = int(W * a.largura)
     margem = int(W * 0.06)
     # area provavel onde a assinatura cai (estimativa p/ escolher o tom)
-    est_h = int(lw * 0.62)
-    if a.pos == 'base':
+    est_h = int(lw * (0.62 if a.forma == 'empilhado' else 0.11))
+    if a.pos == 'faixa':
+        fh = int(H * a.faixa)
+        x, y = (W - lw) // 2, H - fh + (fh - est_h) // 2
+    elif a.pos == 'base':
         x, y = (W - lw) // 2, H - margem - est_h
     elif a.pos == 'topo':
         x, y = (W - lw) // 2, margem
@@ -49,10 +54,12 @@ def main():
     regiao = np.asarray(arte.convert('L').crop((x, y, x + lw, y + est_h)), dtype=np.float32)
     tom = a.tom if a.tom != 'auto' else ('claro' if regiao.mean() < 140 else 'escuro')
 
-    svg = os.path.join(LOGOS, f'assinatura-{uf}-empilhado-{tom}.svg')
+    svg = os.path.join(LOGOS, f'assinatura-{uf}-{a.forma}-{tom}.svg')
     with tempfile.TemporaryDirectory() as td:
         logo = rasterizar(svg, lw, os.path.join(td, 'l.png'))
-    if a.pos == 'base':
+    if a.pos == 'faixa':
+        y = H - fh + (fh - logo.height) // 2
+    elif a.pos == 'base':
         y = H - margem - logo.height
     elif a.pos == 'canto':
         y = H - margem - logo.height
