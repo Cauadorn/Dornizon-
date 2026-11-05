@@ -171,7 +171,28 @@ def escrever(nome, conteudo):
 
 
 # ---------------- início ----------------
-janela = ''.join(f'<img src="img/{e(s["ilu"])}" alt="" {"class=on " if k == 0 else ""}loading="eager">' for k, s in enumerate(data))
+def tem_video(uf):
+    return os.path.exists(os.path.join(SITE, 'video', f'{uf}.mp4'))
+
+
+def midia(s, r='', classe='', auto=False, extra=''):
+    """A ilustração em movimento quando o vídeo existe (site/video/<uf>.mp4); senão, a imagem parada."""
+    if tem_video(s['uf']):
+        tocar = ' data-auto loop' if auto else ''
+        return f'<video src="{r}video/{s["uf"]}.mp4" poster="{r}img/{e(s["ilu"])}" muted playsinline preload="metadata"{tocar}{classe}{extra}></video>'
+    return f'<img src="{r}img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}" loading="lazy"{classe}{extra}>'
+
+
+ordem_janela = data[data.index(POR['ms']):] + data[:data.index(POR['ms'])]   # abre com a onça
+janela = ''.join(midia(s, classe=' class="on"' if k == 0 else '', extra=f' data-n="{data.index(s) + 1:02d}" data-nome="{e(s["nome"])}" data-est="{e(s["est"])}"')
+                 .replace('loading="lazy"', 'loading="eager"') for k, s in enumerate(ordem_janela))
+trilho = ''.join(f'<a href="{s["url"]}"><div class="arco">{midia(s, auto=True)}</div><strong>{e(s["nome"])}</strong><em>{e(s["est"])}</em></a>' for s in data)
+_vistas = []
+for _s in data:
+    for _w in T[_s['uf']]['palavras'][:3]:
+        if _w.lower().strip('!?') not in [v.lower().strip('!?') for v in _vistas] and len([v for v in _vistas if v in T[_s['uf']]['palavras']]) < 2:
+            _vistas.append(_w)
+todas_palavras = ' <i>♥</i> '.join(e(w) for w in _vistas)
 roda = ''.join(f'<a class="item" href="{s["url"]}" style="--i:{i}" data-n="{i + 1:02d}" data-nome="{e(s["nome"])}" data-est="{e(s["est"])}">'
                f'<img src="img/{s["uf"]}-par.webp" alt="Par de {e(s["nome"])}" loading="lazy"></a>' for i, s in enumerate(data))
 IMG_PAG = {'projeto': POR['rj']['ilu'], 'pesquisa': POR['mg']['campo'][0]['img'], 'colecao': POR['ms']['estudio'], 'processo': POR['mg']['palmilha'],
@@ -184,10 +205,15 @@ corpo = f'''
   <h1 class="palavra p-bem">Bem-</h1>
   <p class="palavra p-querer" aria-hidden="true">Querer</p>
   <div class="rodape-h"><p class="eb">havaianas ♥ FARM Rio · cápsula V2</p><p class="eb">role para descobrir</p></div>
+  <p class="eb janela-leg" aria-live="polite"></p>
 </section>
 <section class="manif">
   <p class="m-txt">A gente saiu do Rio <span class="pil"><img src="img/{e(POR['rj']['campo'][0]['img'])}" alt=""></span> e foi até quatorze estados. Em cada um, um par de chinelos <span class="pil"><img src="img/ms-par.webp" alt="" style="object-fit:contain"></span> feito com os elementos de lá, e um coração <span class="pil redonda"><img src="img/{e(POR['sc']['coracao'])}" alt=""></span> que só aparece <em>na segunda olhada</em>.</p>
   <p class="eb m-assina">projeto de portfólio de Emilly Silva · fictício, sem vínculo com as marcas</p>
+</section>
+<section class="estados-h">
+  <div class="secao-t"><div><p class="eb">os quatorze estados</p><h2>Um lugar <em>em cada arte</em></h2></div><p class="eb">arraste para o lado →</p></div>
+  <div class="trilho">{trilho}</div>
 </section>
 <section class="roda" aria-label="A coleção: os quatorze pares">
   <div class="roda-palco">
@@ -201,6 +227,7 @@ corpo = f'''
       <div class="roda-bts"><button type="button" class="r-ant" aria-label="Par anterior">‹</button><a class="r-ver" href="{data[0]["url"]}">ver o estado</a><button type="button" class="r-prox" aria-label="Próximo par">›</button></div></div>
   </div>
 </section>
+<section class="faixa-pal" aria-label="Palavras ouvidas na rua"><div class="fp-in"><span>{todas_palavras} <i>♥</i></span><span aria-hidden="true">{todas_palavras} <i>♥</i></span></div></section>
 <section class="indice">
   <p class="eb">o site</p>
   <h2>Por onde <em>começar</em></h2>
@@ -397,7 +424,8 @@ for i, s in enumerate(data):
     x0, y0, x1, y1 = caixas[s['nome']]
     d = max(x1 - x0, y1 - y0) * 1.3
     campo = ''.join(figura_campo(s, k, f, r=R) for k, f in enumerate(s['campo'][:3]))
-    lug = ([(s['campanha'], 'campanha')] if s.get('campanha') else []) + [(x, 'no lugar') for x in s['lugar'][:2]]
+    lug = [(x, 'no lugar') for x in s['lugar'][:2]]
+    pal_estado = ' <i>♥</i> '.join(e(w) for w in cad['palavras'])
     lugar = ''.join(f'<figure><div class="moldura"><img src="{R}img/{e(src)}" alt="O par de {e(s["nome"])}, {rot}" loading="lazy"></div><figcaption>{rot}</figcaption></figure>' for src, rot in lug)
     evitar = ''.join(f'<li><span>{k + 1:02d}</span><p>{md(x)}</p></li>' for k, x in enumerate((EVITAR_EXTRA.get(uf, []) + list(cad['evitar']))[:3]))
     prox, ant = data[(i + 1) % len(data)], data[i - 1]
@@ -415,11 +443,12 @@ for i, s in enumerate(data):
       <p class="num"><b>{i + 1:02d}</b> / 14 · {REGIAO[uf]}</p>
     </div>
     <div class="cena-arte">
-      <figure class="arco-ilu"><img src="{R}img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}, {e(t["nome"])}" loading="eager"></figure>
+      <figure class="arco-ilu">{midia(s, r=R, auto=True).replace('loading="lazy"', 'loading="eager"')}</figure>
       <img class="par-flutua" src="{R}img/{uf}-par.webp" alt="O par de {e(s["nome"])}" loading="eager">
     </div>
   </div>
 </section>
+<section class="faixa-pal" aria-label="Palavras ouvidas na rua"><div class="fp-in"><span>{pal_estado} <i>♥</i></span><span aria-hidden="true">{pal_estado} <i>♥</i></span></div></section>
 <section class="busca" id="coracao" aria-labelledby="busca-t">
   <div class="busca-in">
     <div>
@@ -439,13 +468,17 @@ for i, s in enumerate(data):
     <h2>Dois pés, uma história</h2>
     <div class="bloco"><p class="eb">na palmilha</p><p>{md(t["chinelo"])}</p></div>
     <div class="bloco"><p class="eb">borracha e tira</p><p>{md(t["fundo"])}</p><div class="paleta">{paleta}</div></div>
-    <div class="bloco"><p class="eb">a arte da palmilha</p><img class="palm" src="{R}img/{e(s["palmilha"])}" alt="Arte da palmilha de {e(s["nome"])}, em díptico" loading="lazy"></div>
   </div>
+</section>
+<section class="diptico" style="--bgd:{COR[uf][0]};--inkd:{"#FFF3E6" if lum(COR[uf][0]) < .3 else "#2A1A17"}">
+  <p class="eb">a arte da palmilha</p>
+  <h2>Em díptico</h2>
+  <img src="{R}img/{e(s["palmilha"])}" alt="Arte da palmilha de {e(s["nome"])}, em díptico: o pé esquerdo e o direito contam metades da mesma cena" loading="lazy">
+  <div class="dp-leg"><span>pé esquerdo</span><span>pé direito</span></div>
 </section>
 <section class="caderno">
   <p class="eb">caderno de campo</p>
   <p class="cronica">{md(cad["cronica"])}</p>
-  <p class="palavras-e">{" · ".join(e(w) for w in cad["palavras"])}</p>
   <p class="trilha-e">trilha · {md(cad["trilha"])}</p>
   <p class="ancora-e">A âncora: {md(t["ancora"])}</p>
 </section>
@@ -453,9 +486,10 @@ for i, s in enumerate(data):
   <div class="secao-t"><p class="eb">pesquisa de campo</p><h2>Na rua, antes do desenho</h2></div>
   <div class="campo tres-col">{campo}</div>
 </section>
-<section class="e-lugar">
-  <div class="secao-t"><p class="eb">campanha</p><h2>O par no lugar</h2></div>
-  <div class="lugar">{lugar}</div>
+<section class="cinema"><img src="{R}img/{e(s.get("campanha") or s["lugar"][0])}" alt="O par de {e(s["nome"])} na campanha" loading="lazy">
+  <div class="cin-leg"><p class="eb">campanha</p><h2>O par <em>no lugar</em></h2></div></section>
+<section class="e-lugar" style="padding-top:12svh">
+  <div class="lugar dois">{lugar}</div>
 </section>
 <section class="e-evitar">
   <p class="eb">o que ficou de fora</p>

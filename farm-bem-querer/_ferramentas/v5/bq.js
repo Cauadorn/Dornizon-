@@ -68,18 +68,32 @@ document.addEventListener('DOMContentLoaded', function () {
     $('.alvo', busca).addEventListener('click', function () { achou(true); });
   }
 
-  /* ---- início: carregador e janela ---- */
-  var JAN0 = celular ? 'inset(34% 12% 0% 12% round 50vw 50vw 0vw 0vw)' : 'inset(22% 36% 0% 36% round 50vw 50vw 0vw 0vw)';
-  var JAN1 = 'inset(0% 0% 0% 0% round 0vw 0vw 0vw 0vw)';
+  /* ---- início: carregador e a janela com as ilustrações inteiras (vídeo quando houver) ---- */
   if (hero) {
-    var ims = $$('.janela img'), k = 0;
-    if (!reduz) setInterval(function () { ims[k].classList.remove('on'); k = (k + 1) % ims.length; ims[k].classList.add('on'); }, 2600);
+    var ims = $$('.janela > *'), k = 0, leg = $('.janela-leg'), troca = null;
+    var legenda = function (m) { if (leg) leg.innerHTML = '<b>' + m.dataset.n + '</b> · ' + m.dataset.nome + ' · ' + m.dataset.est; };
+    var mostraMidia = function (i) {
+      var velho = ims[k]; velho.classList.remove('on'); if (velho.pause) velho.pause();
+      k = (i + ims.length) % ims.length;
+      var m = ims[k];
+      m.classList.add('on'); legenda(m);
+      clearTimeout(troca);
+      if (reduz) return;
+      if (m.tagName === 'VIDEO') {
+        m.currentTime = 0;
+        m.onended = function () { mostraMidia(k + 1); };
+        var pr = m.play(); if (pr && pr.catch) pr.catch(function () { troca = setTimeout(function () { mostraMidia(k + 1); }, 3200); });
+      } else troca = setTimeout(function () { mostraMidia(k + 1); }, 3200);
+    };
+    legenda(ims[0]);
     var entrada = function () {
+      mostraMidia(0);
       if (!G) return;
       G.from('.p-bem', { xPercent: -14, opacity: 0, duration: 1.4, ease: 'expo.out' });
       G.from('.p-querer', { xPercent: 14, opacity: 0, duration: 1.4, ease: 'expo.out' });
-      G.fromTo('.janela', { clipPath: JAN0.replace(/inset\(\d+%/, 'inset(100%') }, { clipPath: JAN0, duration: 1.6, ease: 'expo.out' });
+      G.fromTo('.janela', { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 0px 0px)', duration: 1.6, ease: 'expo.out', clearProps: 'clipPath' });
       G.from('.hero .rodape-h', { opacity: 0, y: 20, duration: 1, delay: .5 });
+      G.from('.janela-leg', { opacity: 0, duration: 1, delay: .7 });
     };
     var cl = $('.carrega'), visto = false;
     try { visto = sessionStorage.getItem('bq-visto') === '1'; sessionStorage.setItem('bq-visto', '1'); } catch (e) {}
@@ -94,21 +108,33 @@ document.addEventListener('DOMContentLoaded', function () {
         else mostra(alvo);
         if (feitas >= ims.length) setTimeout(fim, G ? 650 : 0);
       };
-      ims.forEach(function (im) { if (im.complete) conta(); else { im.addEventListener('load', conta); im.addEventListener('error', conta); } });
+      ims.forEach(function (m) {
+        if (m.tagName === 'VIDEO') { if (m.readyState >= 1) conta(); else { m.addEventListener('loadedmetadata', conta, { once: true }); m.addEventListener('error', conta, { once: true }); } }
+        else if (m.complete) conta(); else { m.addEventListener('load', conta); m.addEventListener('error', conta); }
+      });
       setTimeout(fim, 4500);
     } else {
       if (cl) cl.classList.add('foi');
       entrada();
     }
     if (G) {
-      var tl = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: .8 } });
-      tl.fromTo('.janela', { clipPath: JAN0 }, { clipPath: JAN1, ease: 'none', immediateRender: false }, 0)
-        .to('.p-bem', { xPercent: -60, opacity: 0, ease: 'none' }, 0)
-        .to('.p-querer', { xPercent: 60, opacity: 0, ease: 'none' }, 0)
-        .to('.hero .rodape-h', { opacity: 0, ease: 'none', duration: .3 }, 0);
+      var tl = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .8 } });
+      tl.to('.p-bem', { xPercent: -40, opacity: 0, ease: 'none' }, 0)
+        .to('.p-querer', { xPercent: 40, opacity: 0, ease: 'none' }, 0)
+        .to('.janela > *', { scale: 1.1, ease: 'none' }, 0)
+        .to('.hero .rodape-h, .janela-leg', { opacity: 0, ease: 'none', duration: .3 }, 0);
     }
   } else {
     var cl2 = $('.carrega'); if (cl2) cl2.remove();
+  }
+
+  /* ---- vídeos fora da abertura: tocam só quando aparecem ---- */
+  var vids = $$('video[data-auto]');
+  if (vids.length && !reduz && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) { var pr = x.target.play(); if (pr && pr.catch) pr.catch(function () {}); } else x.target.pause(); });
+    }, { threshold: .25 });
+    vids.forEach(function (v) { io.observe(v); });
   }
 
   /* ---- a roda dos pares ---- */
@@ -169,12 +195,15 @@ document.addEventListener('DOMContentLoaded', function () {
     G.from('.e-hero .par-flutua', { y: 160, rotation: 24, opacity: 0, duration: 1.6, ease: 'expo.out', delay: .5 });
     G.to('.e-hero .par-flutua', { y: -90, ease: 'none', scrollTrigger: { trigger: eh, start: 'top top', end: 'bottom top', scrub: true } });
   }
-  $$('.arco-ilu img').forEach(function (img) {
+  $$('.cinema img').forEach(function (img) {
+    G.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  $$('.arco-ilu img, .arco-ilu video').forEach(function (img) {
     G.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.closest('section'), start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
   /* ---- entradas genéricas ---- */
-  $$('.moldura, .foto-est, .quadro-cor, .carta-e .arco').forEach(function (m) {
+  $$('.moldura, .foto-est, .quadro-cor, .carta-e .arco, .trilho .arco').forEach(function (m) {
     G.fromTo(m, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: m, start: 'top 90%', once: true } });
   });
   $$('[data-rev], .linhas li, .evita li, .tres > div, .numeros > div, .coracoes a, .paletas a, .bloco, .caderno > *, .secao-t > *, .busca-in > div > :not(.resp), .prosa > *').forEach(function (el) {

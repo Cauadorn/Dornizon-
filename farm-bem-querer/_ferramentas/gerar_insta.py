@@ -161,7 +161,7 @@ figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:4
 .capa-eb{margin-top:26px;color:var(--tinta)}
 .capa-arte{position:absolute;left:50%;bottom:0;width:600px;transform:translateX(-50%)}
 .capa-arte .arco{aspect-ratio:3/4.1}
-.capa .flutua{width:300px;left:-160px;bottom:40px;transform:rotate(-10deg)}
+.capa .flutua{width:280px;left:-170px;bottom:15%;transform:rotate(-10deg)}
 /* manifesto */
 .centro{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .manif{font:400 84px/1.1 var(--serif);letter-spacing:-.015em;margin:34px 0 60px}
@@ -177,7 +177,7 @@ figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:4
 .est{font:italic 400 48px/1.1 var(--serif);color:var(--vinho);margin:0}
 .estado .arte{position:absolute;left:50%;bottom:150px;width:620px;transform:translateX(-30%)}
 .estado .arte .arco{aspect-ratio:3/3.6}
-.estado .flutua{width:330px;left:-250px;bottom:-30px;transform:rotate(-10deg)}
+.estado .flutua{width:300px;left:-250px;bottom:15%;transform:rotate(-10deg)}
 .cor-l{position:absolute;left:84px;right:84px;bottom:60px;margin:0;font:italic 400 34px/1.25 var(--serif);color:var(--tinta)}
 .cor-l b{font:500 18px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);font-style:normal;margin-right:8px}
 /* busca */
