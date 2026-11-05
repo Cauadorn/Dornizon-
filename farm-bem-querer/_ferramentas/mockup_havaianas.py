@@ -29,7 +29,7 @@ def main():
     ap.add_argument('arte'); ap.add_argument('uf'); ap.add_argument('tira'); ap.add_argument('borda'); ap.add_argument('saida')
     ap.add_argument('--tom', default='auto')
     ap.add_argument('--molde', default='banana-0.jpg')
-    ap.add_argument('--modo', default='posicionada', choices=['posicionada', 'rapport'])
+    ap.add_argument('--modo', default='posicionada', choices=['posicionada', 'rapport', 'diptico'])
     ap.add_argument('--escala', type=float, default=0.75, help='rapport: largura do módulo em relação à largura da sola')
     a = ap.parse_args()
 
@@ -73,6 +73,16 @@ def main():
             off = (x0 * 7) % tw
             cam[y0:y1 + 1, x0:x1 + 1] = grande[0:bh, off:off + bw]
         else:
+            fonte = arte
+            if a.modo == 'diptico':
+                meio = arte.width // 2
+                fonte = arte.crop((0, 0, meio, arte.height)) if metade.start == 0 else arte.crop((meio, 0, arte.width, arte.height))
+            esc = max(bh / fonte.height, bw / fonte.width)
+            rw, rh = int(fonte.width * esc) + 2, int(fonte.height * esc) + 2
+            art = np.asarray(fonte.resize((rw, rh), Image.LANCZOS), np.float32) / 255
+            ox = (rw - bw) // 2
+            cam[y0:y1 + 1, x0:x1 + 1] = art[0:bh, ox:ox + bw]
+        if False:
             esc = max(bh / arte.height, bw / arte.width)
             rw, rh = int(arte.width * esc) + 2, int(arte.height * esc) + 2
             art = np.asarray(arte.resize((rw, rh), Image.LANCZOS), np.float32) / 255
