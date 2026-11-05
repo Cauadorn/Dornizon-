@@ -147,7 +147,7 @@ paginas.append(pg(13, f'''
 <p class="eb">o que ficou pelo caminho</p><h2>Decisões que <em>mudaram o desenho</em></h2>
 <div class="decisoes">
   <div><div class="ad"><figure class="antes"><img src="{jpg("mg-antes-jabuticaba.jpg", 600)}" alt=""><figcaption>antes</figcaption></figure><figure><img src="{jpg("mg-depois-barroco.jpg", 600)}" alt=""><figcaption>depois</figcaption></figure></div>
-    <h3>Minas não é só jabuticaba</h3><p>Jabuticaba tem em meio Brasil. Ficou o barroco: a talha do Aleijadinho e as rosas do Mestre Ataíde.</p></div>
+    <h3>O que só Minas tem</h3><p>Jabuticaba tem em meio Brasil. Ficou o barroco: a talha do Aleijadinho e as rosas do Mestre Ataíde.</p></div>
   <div><div class="ad"><figure class="antes"><img src="{jpg("sc-antes-ponte.jpg", 600)}" alt=""><figcaption>antes</figcaption></figure><figure><img src="{jpg("sc-depois-enseada.jpg", 600)}" alt=""><figcaption>depois</figcaption></figure></div>
     <h3>A baleia não passa debaixo da ponte</h3><p>A baleia-franca chega perto da areia nas enseadas do sul, não no centro de Florianópolis. Foi para Garopaba.</p></div>
 </div>'''))

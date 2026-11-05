@@ -331,7 +331,7 @@ corpo = pg_hero('o processo', 'Como cada par <em>nasce</em>', 'Cinco passos, sem
 <section class="decisao">
   <div class="antes-depois"><figure class="antes"><div class="moldura"><img src="img/mg-antes-jabuticaba.jpg" alt="Primeira palmilha de Minas, com jabuticaba e sabiá" loading="lazy"></div><figcaption>antes</figcaption></figure>
     <figure><div class="moldura"><img src="img/mg-depois-barroco.jpg" alt="Palmilha final de Minas, com o barroco" loading="lazy"></div><figcaption>depois</figcaption></figure></div>
-  <div><p class="eb">Minas Gerais</p><h2>Minas não é só jabuticaba</h2><p>O primeiro par tinha jabuticaba, sabiá e sempre-viva. Era bonito e não dizia Minas: tem jabuticaba no quintal de meio Brasil. Queijo também não servia, porque queijo não nasce em galho. Ficou o barroco, com a talha dourada do Aleijadinho e as rosas do forro do Mestre Ataíde.</p></div>
+  <div><p class="eb">Minas Gerais</p><h2>O que só Minas tem</h2><p>O primeiro par tinha jabuticaba, sabiá e sempre-viva. Era bonito e não dizia Minas: tem jabuticaba no quintal de meio Brasil. Queijo também não servia, porque queijo não nasce em galho. Ficou o barroco, com a talha dourada do Aleijadinho e as rosas do forro do Mestre Ataíde.</p></div>
 </section>
 <section class="decisao">
   <div class="antes-depois"><figure class="antes"><div class="moldura"><img src="img/sc-antes-ponte.jpg" alt="Primeira ilustração de Santa Catarina, com a baleia sob a ponte" loading="lazy"></div><figcaption>antes</figcaption></figure>

@@ -107,9 +107,9 @@ sl(f'''<h2>Dois pés, <em>uma história</em></h2><div class="palm"><img src="{jp
 <p class="sub">O pé esquerdo e o direito contam metades da mesma cena. Em Minas: a talha dourada de um lado, a guirlanda de rosas do outro.</p>''',
    'Arte da palmilha de Minas Gerais em díptico: talha dourada barroca no pé esquerdo, guirlanda de rosas e fita azul no direito.')
 # 5 decisão
-sl(f'''<h2>Minas não é <em>só jabuticaba</em></h2>
+sl(f'''<h2>O que só <em>Minas tem</em></h2>
 <div class="dupla"><figure class="antes"><img src="{jpg("mg-antes-jabuticaba.jpg")}" alt=""><figcaption>antes</figcaption></figure><figure><img src="{jpg("mg-depois-barroco.jpg")}" alt=""><figcaption>depois</figcaption></figure></div>
-<p class="sub">O primeiro par tinha jabuticaba e sabiá. Bonito, mas tem jabuticaba em meio Brasil. Ficou o barroco, que só Minas tem.</p>''',
+<p class="sub">O primeiro par tinha jabuticaba e sabiá. Bonito, mas tem jabuticaba em meio Brasil. Ficou o barroco de Ouro Preto.</p>''',
    'Antes e depois da palmilha de Minas: a primeira, com jabuticaba e sabiá, desbotada; a final, com o barroco dourado e as rosas.')
 # 6-8 estados
 for uf in ['pa', 'ms', 'sc']:
