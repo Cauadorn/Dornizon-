@@ -1,12 +1,36 @@
 {
  "fotos": [
   {
+   "titulo": "File:PARQUE NACIONAL SERRA DA CANASTRA - ELVIO GUSMÃO (3).jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/PARQUE_NACIONAL_SERRA_DA_CANASTRA_-_ELVIO_GUSM%C3%83O_%283%29.jpg/960px-PARQUE_NACIONAL_SERRA_DA_CANASTRA_-_ELVIO_GUSM%C3%83O_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "pagina": "https://commons.wikimedia.org/wiki/File:PARQUE_NACIONAL_SERRA_DA_CANASTRA_-_ELVIO_GUSM%C3%83O_(3).jpg",
+   "autor": "ELVIO GUSMÃO SANTOS",
+   "licenca": "CC BY-SA 4.0",
+   "arquivo": "canastra-5.jpg"
+  },
+  {
    "titulo": "File:Congado Oliveira-MG 13.jpg",
    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Congado_Oliveira-MG_13.jpg/960px-Congado_Oliveira-MG_13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "pagina": "https://commons.wikimedia.org/wiki/File:Congado_Oliveira-MG_13.jpg",
    "autor": "Jonathan Jefferson",
    "licenca": "CC BY-SA 4.0",
    "arquivo": "congado-5.jpg"
+  },
+  {
+   "titulo": "File:Jabuticaba fruto.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Jabuticaba_fruto.jpg/960px-Jabuticaba_fruto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Jabuticaba_fruto.jpg",
+   "autor": "Alexandre CampolinaCampola",
+   "licenca": "CC BY 3.0",
+   "arquivo": "jabuticaba-0.jpg"
+  },
+  {
+   "titulo": "File:Plinia cauliflora 2.jpg",
+   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Plinia_cauliflora_2.jpg/960px-Plinia_cauliflora_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Plinia_cauliflora_2.jpg",
+   "autor": "Bruno.karklis",
+   "licenca": "CC BY-SA 4.0",
+   "arquivo": "jabuticaba-1.jpg"
   },
   {
    "titulo": "File:De Tiradentes a São João Del Rei. Um belo passeio nesta Maria Fumaça com Vagões de Madeira. (8834965628).jpg",

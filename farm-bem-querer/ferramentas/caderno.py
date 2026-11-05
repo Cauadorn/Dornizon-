@@ -104,7 +104,11 @@ if __name__ == '__main__':
     cfg = json.load(open(sys.argv[1], encoding='utf8'))
     fotos_dir = sys.argv[2]
     out = sys.argv[3]
-    creditos = json.load(open(os.path.join(fotos_dir, 'creditos.json'), encoding='utf8'))
+    creditos = {}
+    for _f in sorted(os.listdir(fotos_dir)):
+        if _f.startswith("creditos") and _f.endswith(".json"):
+            _d = json.load(open(os.path.join(fotos_dir, _f), encoding="utf8"))
+            creditos.update(_d if "fotos" not in _d else {"fotos": _d["fotos"]})
     rel = os.path.relpath(fotos_dir, os.path.dirname(out))
     corpo = build(cfg, rel, creditos)
     doc = (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
