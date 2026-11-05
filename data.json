@@ -1,0 +1,632 @@
+[
+ {
+  "uf": "mg",
+  "nome": "Minas Gerais",
+  "slug": "janela-barroca",
+  "ilu": "mg-ilustracao.jpg",
+  "ilu_sem": "mg-ilu-sem.jpg",
+  "palmilha": "mg-palmilha.jpg",
+  "estudio": "mg-estudio.jpg",
+  "lugar": [
+   "mg-lugar-1.jpg",
+   "mg-lugar-2.jpg"
+  ],
+  "campanha": "mg-campanha.jpg",
+  "campo": [
+   {
+    "img": "mg-campo-1.jpg",
+    "titulo": "File:Igreja Nossa Senhora das Merces vista entre as fachdas dos casarios.JPG",
+    "autor": "Lídia Andrade",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Igreja_Nossa_Senhora_das_Merces_vista_entre_as_fachdas_dos_casarios.JPG"
+   },
+   {
+    "img": "mg-campo-2.jpg",
+    "titulo": "File:Rua de Tiradentes - Minas Gerais (2979358955).jpg",
+    "autor": "Cyro A. Silva from Rio de Janeiro, Brasil",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rua_de_Tiradentes_-_Minas_Gerais_(2979358955).jpg"
+   },
+   {
+    "img": "mg-campo-3.jpg",
+    "titulo": "File:Conjunto arquitetônico da Rua Geraldo Resende - Tiradentes - Minas Gerais - Brasil.jpg",
+    "autor": "Alexandre D. R. da Fonseca",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Conjunto_arquitet%C3%B4nico_da_Rua_Geraldo_Resende_-_Tiradentes_-_Minas_Gerais_-_Brasil.jpg"
+   }
+  ],
+  "coracao": "mg-coracao.jpg",
+  "coracao_texto": "a sombra da veneziana aberta na parede caiada",
+  "paleta": [
+   "#8B6048",
+   "#F5E5D4",
+   "#D4A067",
+   "#F3E3D1",
+   "#F6E7D6"
+  ]
+ },
+ {
+  "uf": "rj",
+  "nome": "Rio de Janeiro",
+  "slug": "bonde-de-santa-teresa",
+  "ilu": "rj-ilustracao.jpg",
+  "ilu_sem": "rj-ilu-sem.jpg",
+  "palmilha": "rj-palmilha.jpg",
+  "estudio": "rj-estudio.jpg",
+  "lugar": [
+   "rj-lugar-1.jpg",
+   "rj-lugar-2.jpg"
+  ],
+  "campanha": "rj-campanha.jpg",
+  "campo": [
+   {
+    "img": "rj-campo-1.jpg",
+    "titulo": "Bonde de Santa Teresa",
+    "autor": "Rodrigo_Soldon",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/8865243@N02/1709274176"
+   },
+   {
+    "img": "rj-campo-2.jpg",
+    "titulo": "Bondinho de Santa Teresa",
+    "autor": "Rodrigo_Soldon",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/8865243@N02/3725743219"
+   },
+   {
+    "img": "rj-campo-3.jpg",
+    "titulo": "Bondinho de Santa Teresa",
+    "autor": "Rodrigo_Soldon",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/8865243@N02/3725749583"
+   }
+  ],
+  "coracao": "rj-coracao.jpg",
+  "coracao_texto": "duas folhas de amendoeira caindo juntas, ao lado do bonde",
+  "paleta": [
+   "#923B23",
+   "#F0B091",
+   "#9D722E",
+   "#EEAB8E",
+   "#EDA778"
+  ]
+ },
+ {
+  "uf": "ba",
+  "nome": "Bahia",
+  "slug": "largo-do-pelourinho",
+  "ilu": "ba-ilustracao.jpg",
+  "ilu_sem": "ba-ilu-sem.jpg",
+  "palmilha": "ba-palmilha.jpg",
+  "estudio": "ba-estudio.jpg",
+  "lugar": [
+   "ba-lugar-1.jpg",
+   "ba-lugar-2.jpg"
+  ],
+  "campanha": "ba-campanha.jpg",
+  "campo": [
+   {
+    "img": "ba-campo-1.jpg",
+    "titulo": "Pelourinho",
+    "autor": "José e Marina",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/24463583@N03/15868401991"
+   },
+   {
+    "img": "ba-campo-2.jpg",
+    "titulo": "Fitinhas do Bonfim",
+    "autor": "Leandro's World Tour",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/18115835@N00/5564595344"
+   },
+   {
+    "img": "ba-campo-3.jpg",
+    "titulo": "Cacau seco",
+    "autor": "cid.edson",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/32902527@N08/5892185959"
+   }
+  ],
+  "coracao": "ba-coracao.jpg",
+  "coracao_texto": "dois cacaus, um amarelo e um vinho, de pontas encostadas",
+  "paleta": [
+   "#67A5F7",
+   "#844127",
+   "#97843E",
+   "#D7C190",
+   "#8CA6B6"
+  ]
+ },
+ {
+  "uf": "pe",
+  "nome": "Pernambuco",
+  "slug": "olinda-e-frevo",
+  "ilu": "pe-ilustracao.jpg",
+  "ilu_sem": "pe-ilu-sem.jpg",
+  "palmilha": "pe-palmilha.jpg",
+  "estudio": "pe-estudio.jpg",
+  "lugar": [
+   "pe-lugar-1.jpg",
+   "pe-lugar-2.jpg"
+  ],
+  "campanha": "pe-campanha.jpg",
+  "campo": [
+   {
+    "img": "pe-campo-1.jpg",
+    "titulo": "Passistas",
+    "autor": "Prefeitura de Olinda",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/34141375@N03/3219530631"
+   },
+   {
+    "img": "pe-campo-2.jpg",
+    "titulo": "Dupla de caboclos de lança mostra toda a sua exuberância",
+    "autor": "Prefeitura de Olinda",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/34141375@N03/3299482425"
+   },
+   {
+    "img": "pe-campo-3.jpg",
+    "titulo": "Encontro dos Bonecos Gigantes - Carnaval 2010",
+    "autor": "Prefeitura de Olinda",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/34141375@N03/4379926398"
+   }
+  ],
+  "coracao": "pe-coracao.jpg",
+  "coracao_texto": "as pontinhas da franja da sombrinha de frevo",
+  "paleta": [
+   "#FCDEB8",
+   "#CB2945",
+   "#9B794B",
+   "#FDE0BE",
+   "#F8D39F"
+  ]
+ },
+ {
+  "uf": "ce",
+  "nome": "Ceará",
+  "slug": "renda-ao-vento",
+  "ilu": "ce-ilustracao.jpg",
+  "ilu_sem": "ce-ilu-sem.jpg",
+  "palmilha": "ce-palmilha.jpg",
+  "estudio": "ce-estudio.jpg",
+  "lugar": [
+   "ce-lugar-1.jpg",
+   "ce-lugar-2.jpg"
+  ],
+  "campanha": "ce-campanha.jpg",
+  "campo": [
+   {
+    "img": "ce-campo-1.jpg",
+    "titulo": "Jangadas",
+    "autor": "Ric e Ette",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/34708734@N00/197079424"
+   },
+   {
+    "img": "ce-campo-2.jpg",
+    "titulo": "Plantação de caju em Pacajus.jpg",
+    "autor": "Porto Neto",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Planta%C3%A7%C3%A3o_de_caju_em_Pacajus.jpg"
+   },
+   {
+    "img": "ce-campo-3.jpg",
+    "titulo": "Falésias Canoa Quebrada - CE",
+    "autor": "Elton Jr.",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/134400688@N08/19824109622"
+   }
+  ],
+  "coracao": "ce-coracao.jpg",
+  "coracao_texto": "um ponto da renda de bilro, na barra",
+  "paleta": [
+   "#FDB730",
+   "#9D5921",
+   "#FADDBC",
+   "#FEB935",
+   "#E3A42D"
+  ]
+ },
+ {
+  "uf": "ma",
+  "nome": "Maranhão",
+  "slug": "couro-de-boi",
+  "ilu": "ma-ilustracao.jpg",
+  "ilu_sem": "ma-ilu-sem.jpg",
+  "palmilha": "ma-palmilha.jpg",
+  "estudio": "ma-estudio.jpg",
+  "lugar": [
+   "ma-lugar-1.jpg",
+   "ma-lugar-2.jpg"
+  ],
+  "campanha": "ma-campanha.jpg",
+  "campo": [
+   {
+    "img": "ma-campo-1.jpg",
+    "titulo": "Lençóis Maranhenses - Lagoa Bonita",
+    "autor": "Fred Schinke",
+    "licenca": "CC BY-ND 2.0",
+    "pagina": "https://www.flickr.com/photos/30296867@N04/5843496041"
+   },
+   {
+    "img": "ma-campo-2.jpg",
+    "titulo": "Revoada de Guarás-Maranhão-19-06-23-55.jpg",
+    "autor": "andresumida",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/35069660@N00/48627413588"
+   },
+   {
+    "img": "ma-campo-3.jpg",
+    "titulo": "Bumba Meu Boi - Brazilian Folklore",
+    "autor": "marcusrg - Hello, nice to meet you!",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/49503185029@N01/874109589"
+   }
+  ],
+  "coracao": "ma-coracao.jpg",
+  "coracao_texto": "uma florzinha de miçanga no bordado do boi",
+  "paleta": [
+   "#182444",
+   "#A33F35",
+   "#AB9449",
+   "#16213E",
+   "#41202F"
+  ]
+ },
+ {
+  "uf": "am",
+  "nome": "Amazonas",
+  "slug": "encontro-das-aguas",
+  "ilu": "am-ilustracao.jpg",
+  "ilu_sem": "am-ilu-sem.jpg",
+  "palmilha": "am-palmilha.jpg",
+  "estudio": "am-estudio.jpg",
+  "lugar": [
+   "am-lugar-1.jpg",
+   "am-lugar-2.jpg"
+  ],
+  "campanha": "am-campanha.jpg",
+  "campo": [
+   {
+    "img": "am-campo-1.jpg",
+    "titulo": "Encontro das Águas - Manaus, Brazil",
+    "autor": "whl.travel",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/40382540@N08/4009155340"
+   },
+   {
+    "img": "am-campo-2.jpg",
+    "titulo": "Amazon River Dolphin / Amazonasdelfin (02)",
+    "autor": "Georg Sander",
+    "licenca": "CC BY-NC 2.0",
+    "pagina": "https://www.flickr.com/photos/7960563@N07/4466309717"
+   },
+   {
+    "img": "am-campo-3.jpg",
+    "titulo": "Vitória Régia - Manaus - Amazonas",
+    "autor": "Arnoldo Riker",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/17919385@N00/3776340252"
+   }
+  ],
+  "coracao": "am-coracao.jpg",
+  "coracao_texto": "os anéis de água em volta do boto",
+  "paleta": [
+   "#B17338",
+   "#352017",
+   "#894E2C",
+   "#D3A67C",
+   "#A88146"
+  ]
+ },
+ {
+  "uf": "pa",
+  "nome": "Pará",
+  "slug": "revoada-de-miriti",
+  "ilu": "pa-ilustracao.jpg",
+  "ilu_sem": "pa-ilu-sem.jpg",
+  "palmilha": "pa-palmilha.jpg",
+  "estudio": "pa-estudio.jpg",
+  "lugar": [
+   "pa-lugar-1.jpg",
+   "pa-lugar-2.jpg"
+  ],
+  "campanha": "pa-campanha.jpg",
+  "campo": [
+   {
+    "img": "pa-campo-1.jpg",
+    "titulo": "Ver-o-Peso - Belém do Pará",
+    "autor": "marcusrg - Hello, nice to meet you!",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/49503185029@N01/454611567"
+   },
+   {
+    "img": "pa-campo-2.jpg",
+    "titulo": "Brinquedo de miriti",
+    "autor": "Celso Abreu",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/13656399@N02/4993760899"
+   },
+   {
+    "img": "pa-campo-3.jpg",
+    "titulo": "Belém: açaí",
+    "autor": "Helder da Rocha",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/49503071578@N01/2330906600"
+   }
+  ],
+  "coracao": "pa-coracao.jpg",
+  "coracao_texto": "dois pássaros de miriti que voam um para o outro",
+  "paleta": [
+   "#59173B",
+   "#CFA665",
+   "#5A173B",
+   "#733A42",
+   "#541637"
+  ]
+ },
+ {
+  "uf": "to",
+  "nome": "Tocantins",
+  "slug": "ouro-do-jalapao",
+  "ilu": "to-ilustracao.jpg",
+  "ilu_sem": "to-ilu-sem.jpg",
+  "palmilha": "to-palmilha.jpg",
+  "estudio": "to-estudio.jpg",
+  "lugar": [
+   "to-lugar-1.jpg",
+   "to-lugar-2.jpg"
+  ],
+  "campanha": "to-campanha.jpg",
+  "campo": [
+   {
+    "img": "to-campo-1.jpg",
+    "titulo": "Jalapão Dunes - Dunas do Jalapão",
+    "autor": "A. Duarte",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/30411166@N04/23082887694"
+   },
+   {
+    "img": "to-campo-2.jpg",
+    "titulo": "Fervedouro - Jalapão-TO 24.06.11 003",
+    "autor": "Lucas Flavio",
+    "licenca": "CC BY-NC 2.0",
+    "pagina": "https://www.flickr.com/photos/13166094@N08/6331617889"
+   },
+   {
+    "img": "to-campo-3.jpg",
+    "titulo": "Jalapão (TO) - Novembro 2009",
+    "autor": "Mari Lucia",
+    "licenca": "CC BY-NC 2.0",
+    "pagina": "https://www.flickr.com/photos/25173980@N00/4169373738"
+   }
+  ],
+  "coracao": "to-coracao.jpg",
+  "coracao_texto": "duas hastes de capim dourado que se cruzam",
+  "paleta": [
+   "#C65820",
+   "#714220",
+   "#E9A339",
+   "#B37B28",
+   "#BC5F23"
+  ]
+ },
+ {
+  "uf": "ms",
+  "nome": "Mato Grosso do Sul",
+  "slug": "onca-de-bonito",
+  "ilu": "ms-ilustracao.jpg",
+  "ilu_sem": "ms-ilu-sem.jpg",
+  "palmilha": "ms-palmilha.jpg",
+  "estudio": "ms-estudio.jpg",
+  "lugar": [
+   "ms-lugar-1.jpg",
+   "ms-lugar-2.jpg"
+  ],
+  "campanha": "ms-campanha.jpg",
+  "campo": [
+   {
+    "img": "ms-campo-1.jpg",
+    "titulo": "flutuação",
+    "autor": "Fernando Stankuns",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/82289802@N00/14323002462"
+   },
+   {
+    "img": "ms-campo-2.jpg",
+    "titulo": "IMG_0113/Brasil/Pantanal/ Riviere Salobra et Jacinthes Eichhornia Crassipes",
+    "autor": "dany13",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/11493299@N00/15706377191"
+   },
+   {
+    "img": "ms-campo-3.jpg",
+    "titulo": "Gruta do Lago Azul - Bonito - MS",
+    "autor": "Valdiney Pimenta",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/13061113@N05/3319551627"
+   }
+  ],
+  "coracao": "ms-coracao.jpg",
+  "coracao_texto": "uma folha de aguapé na beira do rio de Bonito",
+  "paleta": [
+   "#0CA5AE",
+   "#6A5F33",
+   "#EFD1B6",
+   "#84AD83",
+   "#639872"
+  ]
+ },
+ {
+  "uf": "go",
+  "nome": "Goiás",
+  "slug": "cavalhada-de-pirenopolis",
+  "ilu": "go-ilustracao.jpg",
+  "ilu_sem": "go-ilu-sem.jpg",
+  "palmilha": "go-palmilha.jpg",
+  "estudio": "go-estudio.jpg",
+  "lugar": [
+   "go-lugar-1.jpg",
+   "go-lugar-2.jpg"
+  ],
+  "campanha": "go-campanha.jpg",
+  "campo": [
+   {
+    "img": "go-campo-1.jpg",
+    "titulo": "Cavalhadas - Pirenópolis/GO",
+    "autor": "asleeponasunbeam",
+    "licenca": "CC BY-NC-ND 2.0",
+    "pagina": "https://www.flickr.com/photos/66995057@N00/48036338107"
+   },
+   {
+    "img": "go-campo-2.jpg",
+    "titulo": "Pirenópolis",
+    "autor": "fabian.kron",
+    "licenca": "CC BY-ND 2.0",
+    "pagina": "https://www.flickr.com/photos/10239854@N07/52197135396"
+   },
+   {
+    "img": "go-campo-3.jpg",
+    "titulo": "Pequi",
+    "autor": "capelati",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/66895716@N03/8428425646"
+   }
+  ],
+  "coracao": "go-coracao.jpg",
+  "coracao_texto": "duas folhas de pequi que se encontram sob o peito do cavalo",
+  "paleta": [
+   "#59A4D9",
+   "#78683D",
+   "#823C41",
+   "#E4C796",
+   "#85A29E"
+  ]
+ },
+ {
+  "uf": "pr",
+  "nome": "Paraná",
+  "slug": "gralha-e-pinhao",
+  "ilu": "pr-ilustracao.jpg",
+  "ilu_sem": "pr-ilu-sem.jpg",
+  "palmilha": "pr-palmilha.jpg",
+  "estudio": "pr-estudio.jpg",
+  "lugar": [
+   "pr-lugar-1.jpg",
+   "pr-lugar-2.jpg"
+  ],
+  "campanha": "pr-campanha.jpg",
+  "campo": [
+   {
+    "img": "pr-campo-1.jpg",
+    "titulo": "Pines",
+    "autor": "RadamesM",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/58965011@N05/8475950116"
+   },
+   {
+    "img": "pr-campo-2.jpg",
+    "titulo": "Good morning, mister pine",
+    "autor": "RadamesM",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/58965011@N05/8924831824"
+   }
+  ],
+  "coracao": "pr-coracao.jpg",
+  "coracao_texto": "dois pinhões encostados na grama",
+  "paleta": [
+   "#BACAC0",
+   "#423D37",
+   "#606258",
+   "#AEB7A3",
+   "#BBCCC2"
+  ]
+ },
+ {
+  "uf": "sc",
+  "nome": "Santa Catarina",
+  "slug": "enseada-da-baleia",
+  "ilu": "sc-ilustracao.jpg",
+  "ilu_sem": "sc-ilu-sem.jpg",
+  "palmilha": "sc-palmilha.jpg",
+  "estudio": "sc-estudio.jpg",
+  "lugar": [
+   "sc-lugar-1.jpg",
+   "sc-lugar-2.jpg"
+  ],
+  "campanha": "sc-campanha.jpg",
+  "campo": [
+   {
+    "img": "sc-campo-1.jpg",
+    "titulo": "Área de Proteção Ambiental da Baleia Franca Claudio Seelig (13).jpg",
+    "autor": "Ctseelig",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(13).jpg"
+   },
+   {
+    "img": "sc-campo-2.jpg",
+    "titulo": "Área de Proteção Ambiental da Baleia Franca Claudio Seelig (01).jpg",
+    "autor": "Ctseelig",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_(01).jpg"
+   }
+  ],
+  "coracao": "sc-coracao.jpg",
+  "coracao_texto": "a cauda da baleia-franca na enseada de Garopaba",
+  "paleta": [
+   "#AAD1E3",
+   "#4C5863",
+   "#AFA599",
+   "#ABD0E1",
+   "#C3D8E0"
+  ]
+ },
+ {
+  "uf": "rs",
+  "nome": "Rio Grande do Sul",
+  "slug": "roda-de-chimarrao",
+  "ilu": "rs-ilustracao.jpg",
+  "ilu_sem": "rs-ilu-sem.jpg",
+  "palmilha": "rs-palmilha.jpg",
+  "estudio": "rs-estudio.jpg",
+  "lugar": [
+   "rs-lugar-1.jpg",
+   "rs-lugar-2.jpg"
+  ],
+  "campanha": "rs-campanha.jpg",
+  "campo": [
+   {
+    "img": "rs-campo-1.jpg",
+    "titulo": "Cuia de chimarrão",
+    "autor": "Cleber Rech",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://www.flickr.com/photos/7272193@N02/21375180151"
+   },
+   {
+    "img": "rs-campo-2.jpg",
+    "titulo": "Cuidando o campo",
+    "autor": "Eduardo Amorim",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/75133058@N00/866865208"
+   },
+   {
+    "img": "rs-campo-3.jpg",
+    "titulo": "Galponeando chuva e frio",
+    "autor": "Eduardo Amorim",
+    "licenca": "CC BY-NC-SA 2.0",
+    "pagina": "https://www.flickr.com/photos/75133058@N00/29440539126"
+   }
+  ],
+  "coracao": "rs-coracao.jpg",
+  "coracao_texto": "duas folhas de erva-mate ao pé do mourão",
+  "paleta": [
+   "#E19A31",
+   "#72471D",
+   "#DE9830",
+   "#A38032",
+   "#E2AB59"
+  ]
+ }
+]
