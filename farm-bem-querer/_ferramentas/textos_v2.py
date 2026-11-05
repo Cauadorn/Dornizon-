@@ -1,0 +1,130 @@
+"""Estampa no método validado no lote 1: âncora + chinelo (elementos) + ilustração (o lugar).
+Substitui o bloco 'estampa' antigo de textos_estados_* e textos_bichos."""
+
+V = {
+    'RJ': {
+        'painel_titulo': 'Bonde, arcos, amendoeira e samba',
+        'evitar_extra': ['**Repetir a collab:** calçadão, Pão de Açúcar, Copacabana e arara já estão na coleção original; a V2 sobe o morro de Santa Teresa.'],
+        'estampa': {
+            'nome': 'Bonde de Santa Teresa',
+            'conceito': 'O Rio que sobe o morro: o bondinho amarelo atravessando os Arcos da Lapa e as amendoeiras que vestem as ruas da cidade de verde, vermelho e laranja.',
+            'ancora': 'o **bondinho amarelo de Santa Teresa**, que só existe aqui e ainda roda sobre os Arcos da Lapa.',
+            'chinelo': 'pé esquerdo com o galho de amendoeira (folhas verdes virando vermelhas e laranja, amêndoas verdes); pé direito com o bondinho amarelo atravessando na diagonal.',
+            'fundo': 'rosa-empoeirado das casas de Santa Teresa; tira amarelo-bonde.',
+            'ilustracao': 'os Arcos da Lapa de frente, centralizados, com o bondinho amarelo passando por cima e amendoeiras emoldurando os dois cantos.',
+            'coracoes': ['duas folhas de amendoeira que se sobrepõem pelo cabo e fecham um coração.'],
+            'pecas': 'Vestido midi rosa com a amendoeira; Havaianas com o bonde no pé direito e tira amarela.',
+            'cuidado': 'O bonde entra como desenho, sem número de linha nem letreiro.',
+            'fontes': 'Arcos da Lapa (Aqueduto da Carioca, concluído em 1750), tombado pelo IPHAN; bonde de Santa Teresa, em operação desde o século XIX.'}},
+    'CE': {
+        'estampa': {
+            'nome': 'Renda ao Vento',
+            'conceito': 'O vento do Ceará enche a vela da jangada, balança o caju no cajueiro e passa pelos bilros das rendeiras.',
+            'ancora': 'a **renda de bilro com a vela da jangada**: juntas, só no Ceará (o caju sozinho também é do RN e do PI).',
+            'chinelo': 'pé esquerdo com o galho de cajueiro e cajus vermelhos e amarelos com a castanha; pé direito com um pedaço de renda de bilro, bilros pendurados e uma vela branca de jangada.',
+            'fundo': 'amarelo-sol; tira vermelho-caju.',
+            'ilustracao': 'jangadas de vela triangular no mar turquesa entre as falésias coloridas de Canoa Quebrada, cajueiro emoldurando em cima e uma barra de renda de bilro na base.',
+            'coracoes': ['na renda, um motivo em que duas conchinhas se encontram e formam um coração, como as rendeiras fazem.'],
+            'pecas': 'Blusa de renda e saia amarela; Havaianas com o caju e a renda, tira vermelha.',
+            'cuidado': 'A renda é obra das rendeiras (Aquiraz, Prainha, Trairi): proposta de parceria com crédito nominal e pagamento justo.',
+            'fontes': 'Renda de bilro do Ceará: saber tradicional das rendeiras do litoral; jangada do Mucuripe.'}},
+    'MA': {
+        'estampa': {
+            'nome': 'Couro de Boi',
+            'conceito': 'As noites de São João em São Luís, quando o boi chega bordado em veludo preto, e os guarás vermelhos que pintam o litoral do Maranhão.',
+            'ancora': 'o **couro bordado do bumba-meu-boi do Maranhão**: veludo preto coberto de miçanga, canutilho e lantejoula.',
+            'chinelo': 'pé esquerdo com guarás voando e um pousado no galho de mangue; pé direito com um pedaço do couro de veludo bordado, flores e estrelas de miçanga e fitas coloridas.',
+            'fundo': 'azul-noite de São João; tira vermelho-guará.',
+            'ilustracao': 'as dunas brancas e as lagoas azuis dos Lençóis Maranhenses, uma revoada de guarás no céu e, no centro, o boi bordado dançando na areia.',
+            'coracoes': ['no bordado, uma flor de miçanga cujas duas pétalas redondas se encontram num coração.'],
+            'pecas': 'Vestido preto bordado de miçanga; Havaianas noite com guarás, tira vermelha.',
+            'cuidado': 'Cada couro é obra de uma bordadeira, com autoria: o bordado é criado para a coleção, inspirado na técnica, sem copiar um boi específico.',
+            'fontes': 'Complexo Cultural do Bumba-meu-boi do Maranhão: Patrimônio Cultural Imaterial da Humanidade (UNESCO, 2019).'}},
+    'AM': {
+        'painel_titulo': 'Rio Negro, Solimões, boto e vitória-régia',
+        'estampa': {
+            'nome': 'Encontro das Águas',
+            'conceito': 'Os dois rios que correm lado a lado sem se misturar perto de Manaus: o par de chinelos é o encontro, um pé de cada água.',
+            'ancora': 'o **Encontro das Águas**: o pé esquerdo é o rio Negro, cor de café; o direito é o Solimões, cor de barro.',
+            'chinelo': 'pé esquerdo com o boto-cor-de-rosa subindo na água escura entre vitórias-régias; pé direito com vitórias-régias e uma flor branca virando rosa na água barrenta.',
+            'fundo': 'café do rio Negro e caramelo do Solimões; tira rosa-boto.',
+            'ilustracao': 'o Encontro das Águas visto do alto, a linha entre os dois rios no centro, o boto saltando sobre ela e vitórias-régias nos cantos de baixo.',
+            'coracoes': ['duas vitórias-régias que se sobrepõem e, com as bordas viradas, desenham um coração.'],
+            'pecas': 'Saia de duas cores (café e caramelo); Havaianas em que cada pé é um rio, tira rosa.',
+            'cuidado': 'O boto é encantado nas histórias ribeirinhas: entra com carinho, nunca como mascote.',
+            'fontes': 'Encontro das Águas dos rios Negro e Solimões, perto de Manaus.'}},
+    'PA': {
+        'estampa': {
+            'nome': 'Revoada de Miriti',
+            'conceito': 'Os brinquedos de miriti de Abaetetuba em revoada sobre o roxo do açaí que chega de barco ao Ver-o-Peso.',
+            'ancora': 'o **brinquedo de miriti**, feito à mão em Abaetetuba e vendido no Círio.',
+            'chinelo': 'pé esquerdo com pássaros, barquinho e cobra de miriti pintados; pé direito com cachos de açaí e um paneiro cheio.',
+            'fundo': 'roxo-açaí; tira amarelo-miriti.',
+            'ilustracao': 'o Mercado de Ferro do Ver-o-Peso visto da baía ao amanhecer, barcos chegando com paneiros de açaí e pássaros de miriti no céu.',
+            'coracoes': ['dois pássaros de miriti voando de frente um para o outro, com as asas levantadas formando um coração.'],
+            'pecas': 'Vestido curto bem colorido, bolsa-paneiro (com artesãos); Havaianas roxa com os brinquedos, tira amarela.',
+            'cuidado': 'Os brinquedos de miriti são obra dos artesãos de Abaetetuba: parceria com crédito nominal. O Círio é devoção: sem imagens sagradas.',
+            'fontes': 'Círio de Nazaré: Patrimônio Imaterial da Humanidade (UNESCO, 2013). Brinquedos de miriti de Abaetetuba.'}},
+    'TO': {
+        'estampa': {
+            'nome': 'Ouro do Jalapão',
+            'conceito': 'O capim que brilha como ouro nas veredas do Jalapão, trançado pelas artesãs da Mumbuca, entre buritis e dunas cor de laranja.',
+            'ancora': 'o **capim dourado trançado**, saber das artesãs quilombolas da Mumbuca.',
+            'chinelo': 'pé esquerdo com folhas em leque e cachos de frutos do buriti; pé direito com hastes de capim dourado e uma mandala trançada em espiral.',
+            'fundo': 'terracota das dunas ao pôr do sol; tira dourada.',
+            'ilustracao': 'as dunas laranja com a Serra do Espírito Santo ao fundo, um fervedouro turquesa no centro cercado de buritis e capim dourado nos cantos de baixo.',
+            'coracoes': ['duas hastes de capim dourado que se curvam uma para a outra e fecham um coração.'],
+            'pecas': 'Bolsa e cinto em capim dourado (com a Associação da Mumbuca); Havaianas terracota com tira dourada.',
+            'cuidado': 'O capim dourado tem regra de colheita (só após a floração) e indicação geográfica: entra com as artesãs, nunca copiado.',
+            'fontes': 'Capim dourado da região do Jalapão: Indicação Geográfica registrada no INPI. Parque Estadual do Jalapão.'}},
+    'MS': {
+        'estampa': {
+            'nome': 'Onça de Bonito',
+            'conceito': 'A onça-pintada e o tuiuiú do Pantanal sul, sobre a água transparente dos rios de Bonito.',
+            'ancora': 'a **água cristalina de Bonito com as piraputangas**: o Pantanal é dividido com o MT, Bonito é só daqui.',
+            'chinelo': 'pé esquerdo com a onça (cabeça e ombros) entre aguapés; pé direito com o tuiuiú, aguapés e duas piraputangas.',
+            'fundo': 'turquesa dos rios de Bonito; tira vermelho-tuiuiú.',
+            'ilustracao': 'o rio transparente de Bonito em corte, metade sobre a água e metade embaixo: a onça bebendo na margem, piraputangas nadando sobre a areia branca, aguapés nos cantos.',
+            'coracoes': ['uma folha de aguapé, que já é redonda, levemente em coração.', 'uma única pinta no ombro da onça em forma de coração, seguindo o desenho do pelo.'],
+            'pecas': 'Vestido turquesa com a onça; Havaianas turquesa, tira vermelha.',
+            'cuidado': 'A onça daqui é observada, não caçada: calma, sem boca aberta. Turismo de observação regulado em Bonito.',
+            'fontes': 'Pantanal: Patrimônio Natural da Humanidade (UNESCO, 2000). Bonito: referência em ecoturismo com controle de visitação.'}},
+    'PR': {
+        'estampa': {
+            'nome': 'Gralha e Pinhão',
+            'conceito': 'A gralha-azul enterra o pinhão e planta a floresta de araucária sem querer: por isso virou o símbolo do Paraná.',
+            'ancora': 'a **araucária com a gralha-azul**, árvore e ave símbolo do Paraná.',
+            'chinelo': 'pé esquerdo com o galho de araucária, a pinha abrindo e pinhões soltos; pé direito com a gralha-azul segurando um pinhão no bico.',
+            'fundo': 'verde-neblina da mata de araucária; tira azul-gralha.',
+            'ilustracao': 'a mata de araucárias na neblina dos Campos Gerais, uma araucária grande no centro e a gralha-azul voando com o pinhão.',
+            'coracoes': ['dois pinhões encostados pelas pontas formando um coração.'],
+            'pecas': 'Casaco de tricô verde com a gralha; Havaianas verde-neblina, tira azul.',
+            'cuidado': 'A araucária está ameaçada de extinção: a coleção pode apoiar um projeto de plantio.',
+            'fontes': 'Gralha-azul: ave símbolo do Paraná. Araucaria angustifolia: espécie ameaçada de extinção (lista oficial do MMA).'}},
+    'SC': {
+        'painel_titulo': 'Baleia, enseada, ostra e casario açoriano',
+        'estampa': {
+            'nome': 'Baleia e Ostra',
+            'conceito': 'Todo inverno a baleia-franca volta para ter filhote no litoral de Santa Catarina; na ilha, as ostras crescem em fileiras no mar.',
+            'ancora': 'a **baleia-franca com o filhote**, que todo inverno escolhe as enseadas do litoral sul catarinense (Garopaba, Praia do Rosa, Imbituba) como berçário.',
+            'chinelo': 'pé esquerdo com a baleia-franca e o filhote, a cauda levantada; pé direito com ostras abertas, um pedaço de tarrafa e conchinhas.',
+            'fundo': 'azul açoriano das casinhas de Florianópolis; tira azul-oceano.',
+            'ilustracao': 'a enseada de Garopaba, onde a baleia-franca chega perto da praia: a mãe e o filhote no meio da baía, a cauda levantada, canoas de pesca na areia e a tarrafa secando.',
+            'coracoes': ['a cauda da baleia vista de trás, que já desenha um coração.'],
+            'pecas': 'Vestido azul-claro com a baleia; Havaianas azul açoriano, tira azul-oceano.',
+            'cuidado': 'A observação da baleia-franca segue as regras da APA da Baleia Franca (distância, sem perseguição).',
+            'fontes': 'APA da Baleia Franca (ICMBio), no litoral sul de Santa Catarina. Ponte Hercílio Luz (1926), tombada pelo IPHAN.'}},
+    'RS': {
+        'painel_titulo': 'Cuia, pampa, quero-quero e roda',
+        'estampa': {
+            'nome': 'Roda de Chimarrão',
+            'conceito': 'A cuia que passa de mão em mão e o quero-quero que guarda o pampa no fim da tarde.',
+            'ancora': 'a **cuia de chimarrão** com a bomba de prata e a erva verde.',
+            'chinelo': 'pé esquerdo com a cuia e galhos de erva-mate com frutinhos vermelhos; pé direito com o quero-quero entre o capim do pampa e florzinhas amarelas.',
+            'fundo': 'mostarda do pôr do sol no pampa; tira verde-erva.',
+            'ilustracao': 'o pampa largo ao pôr do sol com um umbu solitário no centro, quero-queros no campo e a cuia em primeiro plano sobre o mourão da cerca.',
+            'coracoes': ['duas folhas de erva-mate que se encontram pelo cabo e fecham um coração.'],
+            'pecas': 'Poncho leve mostarda; Havaianas mostarda com a cuia, tira verde.',
+            'cuidado': 'O gaúcho entra sem caricatura; a roda de chimarrão é hábito, não fantasia.',
+            'fontes': 'Chimarrão: bebida símbolo do Rio Grande do Sul, por lei estadual. Quero-quero: ave símbolo do RS.'}},
+}
