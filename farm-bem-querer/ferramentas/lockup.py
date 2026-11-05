@@ -35,6 +35,21 @@ def _hav(x, y, w, ink):
     return f'<path fill="{ink}" transform="translate({x:.1f} {y:.1f}) scale({s:.4f})" d="{HAV_D}"/>', HAV_H * s
 
 
+def _linha_capsula(estado, ink, cx, y, largura_max, size=46, track=0.24):
+    a, b = 'BEM-QUERER', estado.upper()
+    gap = size * 0.9
+    while True:
+        wa = L.JOST_M.width(a, size, track)
+        wb = L.JOST_L.width(b, size, track)
+        if wa + gap + wb <= largura_max or size < 20:
+            break
+        size -= 1
+        gap = size * 0.9
+    x = cx - (wa + gap + wb) / 2
+    d = L.JOST_M.line(a, size, x, y, track) + ' ' + L.JOST_L.line(b, size, x + wa + gap, y, track)
+    return f'<path fill="{ink}" d="{d}"/>', size
+
+
 def empilhado(estado, ink, heart_c):
     W = 1000
     hav, hh = _hav(60, 30, 880, ink)
@@ -42,21 +57,12 @@ def empilhado(estado, ink, heart_c):
     hrt = L.heart(W / 2, y + 48, 104, -6)
     y += 104 + 30
     farm, fh = _farm_img(W / 2 - 370, y, 740, ink, 'fi' + ink.strip('#'))
-    y += fh + 52
-    # fio + linha da capsula
-    rule = f'<rect x="{W / 2 - 60}" y="{y}" width="120" height="4" fill="{ink}"/>'
-    y += 30
-    cap = 'bem-querer'
-    s1 = 84
-    w1 = L.MED.width(cap, s1)
-    st = estado.upper()
-    s2 = 38
-    w2 = L.SEMI.width(st, s2, 0.2)
-    y1 = y + s1 * 0.8
-    d = L.MED.line(cap, s1, W / 2 - w1 / 2, y1) + ' ' + L.SEMI.line(st, s2, W / 2 - w2 / 2, y1 + 70, 0.2)
-    H = y1 + 70 + 24
-    body = (f'{hav}<g fill="{heart_c}">{hrt}</g>{farm}{rule}<path fill="{ink}" d="{d}"/>')
-    return W, round(H), body
+    y += fh + 56
+    rule = f'<rect x="{W / 2 - 370}" y="{y}" width="740" height="2.5" fill="{ink}" opacity=".55"/>'
+    y += 30 + 40
+    cap, size = _linha_capsula(estado, ink, W / 2, y, 740)
+    H = y + 22
+    return W, round(H), f'{hav}<g fill="{heart_c}">{hrt}</g>{farm}{rule}{cap}'
 
 
 def horizontal(estado, ink, heart_c):
@@ -66,17 +72,14 @@ def horizontal(estado, ink, heart_c):
     hrt = L.heart(x + 42, H / 2 + 2, 84, -6)
     x += 84 + 40
     farm, fh = _farm_img(x, (H - 600 * FARM_H / FARM_W) / 2, 600, ink, 'fh' + ink.strip('#'))
-    x += 600 + 50
-    bar = f'<rect x="{x}" y="40" width="4" height="{H - 80}" fill="{ink}"/>'
-    x += 50
-    cap = 'bem-querer'
-    s1 = 68
-    d = L.MED.line(cap, s1, x, H / 2 + 4)
-    st = estado.upper()
-    d += ' ' + L.SEMI.line(st, 30, x + 4, H / 2 + 52, 0.2)
-    W = x + max(L.MED.width(cap, s1), L.SEMI.width(st, 30, 0.2)) + 30
-    body = f'{hav}<g fill="{heart_c}">{hrt}</g>{farm}{bar}<path fill="{ink}" d="{d}"/>'
-    return round(W), H, body
+    x += 600 + 54
+    bar = f'<rect x="{x}" y="52" width="2.5" height="{H - 104}" fill="{ink}" opacity=".55"/>'
+    x += 54
+    s1 = 34
+    t = 0.24
+    d = L.JOST_M.line('BEM-QUERER', s1, x, H / 2 - 6, t) + ' ' + L.JOST_L.line(estado.upper(), s1, x, H / 2 + 42, t)
+    W = x + max(L.JOST_M.width('BEM-QUERER', s1, t), L.JOST_L.width(estado.upper(), s1, t)) + 24
+    return round(W), H, f'{hav}<g fill="{heart_c}">{hrt}</g>{farm}{bar}<path fill="{ink}" d="{d}"/>'
 
 
 def svg(w, h, body, textured=False):  # logos oficiais nunca recebem textura
