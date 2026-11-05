@@ -73,7 +73,7 @@ CARIMBO = lambda cor, txt_cima, txt_baixo, centro, w=300, rot=-8: f'''
 </svg>'''
 
 html = f'''<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Jost:wght@400;500;600&family=Caveat:wght@600;700&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Jost:wght@400;500;600&display=block">
 <style>
 *{{box-sizing:border-box}}
 body{{margin:0;width:1400px;background:{PAPEL};color:{TINTA};font:400 15px/1.5 Jost,sans-serif;padding:56px 56px 64px}}
@@ -160,7 +160,7 @@ h1{{font:400 46px/1.05 Fraunces;font-variation-settings:"SOFT" 100,"WONK" 1,"ops
   <div class="box ty"><h3>tipografia (para qualquer caminho)</h3>
     <div><span style="font:italic 480 34px/1 Fraunces;font-variation-settings:'SOFT' 100,'WONK' 1">Fraunces</span><small>títulos · emblema</small></div>
     <div><span style="font:500 24px/1 Jost">Jost</span><small>texto · etiqueta · linha da cápsula</small></div>
-    <div><span style="font:700 28px/1 Caveat">Caveat</span><small>anotação de caderno</small></div>
+    <div><span style="font:italic 400 24px/1 Fraunces;font-variation-settings:'SOFT' 100,'WONK' 1">Fraunces Itálico</span><small>anotação · legenda</small></div>
   </div>
   <div class="box"><h3>cores-base + uma paleta por estado</h3>
     <div class="cores"><span style="background:{PAPEL}"></span><span style="background:{TINTA}"></span><span style="background:{CORACAO}"></span><span style="background:{FOLHA_A}"></span><span style="background:{FOLHA_B}"></span>

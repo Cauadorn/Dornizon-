@@ -224,6 +224,10 @@ colecao = ''.join(
     + (f'<img class="b" src="img/{e(s["campanha"])}" alt="" loading="lazy">' if s.get('campanha') else '') +
     f'</span><strong>{e(s["nome"])}</strong><em>{e(V[s["uf"]]["nome"])}</em></a>'
     for i, s in enumerate(data))
+roda = ''.join(
+    f'<a class="item" href="#{s["uf"]}" style="--i:{i}" data-n="{i + 1:02d}" data-uf="{s["uf"]}" data-nome="{e(s["nome"])}" data-est="{e(V[s["uf"]]["nome"])}">'
+    f'<img src="img/{s["uf"]}-par.webp" alt="Par de {e(s["nome"])}" loading="lazy"></a>'
+    for i, s in enumerate(data))
 creditos = ''.join(
     f'<li><b>{e(s["nome"])}</b> · ' + '; '.join(
         f'{e(campo_leg[s["uf"]][k])}: {e(autor(f["autor"]))}, {e(f["licenca"])}' + (f' (<a href="{e(f["pagina"])}">fonte</a>)' if f.get('pagina') else '')
@@ -234,9 +238,11 @@ mural = ''.join(
 faixa = ''.join(f'<img src="img/{e(s["palmilha"])}" alt="" loading="lazy">' for s in data)
 
 doc = open(P + '/_ferramentas/site_modelo.html', encoding='utf8').read()
+_s = open(P + '/03-marca/identidade-bem-querer/simbolo-cor.svg', encoding='utf8').read()
+simb = _s[_s.index('>') + 1:_s.rindex('</svg>')]
 for k, v in {'{{NAV}}': nav, '{{CAPITULOS}}': caps, '{{CORACOES}}': coracoes, '{{COLECAO}}': colecao,
              '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa, '{{MURAL}}': mural, '{{HERO}}': hero,
-             '{{REEL}}': reel, '{{PALAVRAS1}}': pal1, '{{PALAVRAS2}}': pal2}.items():
+             '{{REEL}}': reel, '{{RODA}}': roda, '{{SIMB}}': simb, '{{PALAVRAS1}}': pal1, '{{PALAVRAS2}}': pal2}.items():
     doc = doc.replace(k, v)
 open(SITE + '/index.html', 'w', encoding='utf8').write(doc)
 print('ok', len(doc) // 1024, 'KB')
