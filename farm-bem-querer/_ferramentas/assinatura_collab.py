@@ -11,7 +11,7 @@ def collab(ink):
     W = 1000
     farm, fh = K._farm_img(120, 20, 760, ink, 'fc' + ink.strip('#'))
     y = 20 + fh + 26
-    hs = 0.9
+    hs = 1.3
     heart = f'<path fill="{ink}" transform="translate({W / 2 - 50 * hs} {y}) scale({hs})" d="{CORACAO}"/>'
     y += 90 * hs + 22
     hav, hh = K._hav(160, y, 680, ink)

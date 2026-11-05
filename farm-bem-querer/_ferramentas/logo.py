@@ -11,8 +11,6 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'logo-out')
-os.makedirs(OUT, exist_ok=True)
 
 
 class Font:
@@ -215,6 +213,8 @@ def moldura(state, ink, accent, W=1500, H=2000):
 
 
 if __name__ == '__main__':
+    OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'logo-out')
+    os.makedirs(OUT, exist_ok=True)
     states = json.load(open(os.path.join(HERE, 'estados.json')))
     W, H, b = wordmark('#2B1D16', '#D7262E')
     open(f'{OUT}/bem-querer-wordmark.svg', 'w').write(svg(round(W), round(H), b))
