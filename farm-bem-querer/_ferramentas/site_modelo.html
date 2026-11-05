@@ -150,6 +150,12 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
 .regras h3{font-size:22px;margin-bottom:6px}
 .regras p{margin:0;font-size:15px}
 
+/* ficha técnica */
+.ficha-tec dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 28px;margin:0;font-size:14px;color:#3B342E}
+.ficha-tec dt{font-weight:600}
+.ficha-tec dd{margin:0}
+@media (max-width:640px){.ficha-tec dl{grid-template-columns:minmax(0,1fr);gap:2px}.ficha-tec dd{margin-bottom:10px}}
+
 /* corações e coleção */
 .grade-cor{display:grid;grid-template-columns:repeat(7,1fr);gap:22px 16px}
 .grade-cor figure{margin:0}
@@ -210,7 +216,7 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
     <p class="eyebrow">havaianas ♥ FARM Rio · cápsula V2 · projeto de portfólio</p>
     <h1>Bem-Que<span>r</span>er</h1>
     <div class="assina">
-      <p class="lead">A gente saiu do Rio. Foram quatorze estados e quatorze pares de chinelo, e em cada estampa tem um coração que só aparece na segunda olhada.</p>
+      <div><p class="lead">A gente saiu do Rio. Foram quatorze estados e quatorze pares de chinelo, e em cada estampa tem um coração que só aparece na segunda olhada.</p><p class="mao" style="margin:18px 0 0;color:var(--coracao)">do Rio para o Brasil, com bem-querer</p></div>
       <img src="img/assinatura-collab.svg" alt="Assinatura havaianas ♥ FARM Rio">
     </div>
   </div>
@@ -227,7 +233,7 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
         <p>Cada estado ganhou um par. O par carrega os elementos do lugar do jeito que a FARM já faz nos chinelos: folha, bicho, fruta e objeto, grandes e recortados pela borda da palmilha. Junto do par vem uma ilustração com o lugar inteiro, para quem é de lá olhar e reconhecer na hora.</p>
       </div>
       <div>
-        <p>O ponto de partida foi sempre a rua, não o cartão-postal. Antes de desenhar, cada estado passou por uma pesquisa de campo com fotos reais, autor e licença de cada imagem, e o local conferido foto por foto. Se a legenda não dizia onde era, a foto não entrava.</p>
+        <p>A FARM se descreve como <a href="https://investnews.com.br/negocios/cada-vez-mais-internacional-farm-vira-a-locomotiva-estampada-da-azzas-2154">“uma escola de estamparia”</a>, e a escola dela sempre foi a viagem: paisagem, festa, arquitetura e arte de rua viram estampa. A V2 segue a mesma regra. O ponto de partida foi sempre a rua, não o cartão-postal. Antes de desenhar, cada estado passou por uma pesquisa de campo com fotos reais, autor e licença de cada imagem, e o local conferido foto por foto. Se a legenda não dizia onde era, a foto não entrava.</p>
         <div class="destaque">
           <h3>O que costura tudo</h3>
           <p>O coração. Ele nunca é desenhado em cima de nada: aparece quando duas folhas se encontram, quando a cauda da baleia sai da água, quando a franja da sombrinha de frevo termina em pontinhas. É o bem-querer de cada lugar e a única coisa que se repete nos quatorze pares.</p>
@@ -329,7 +335,16 @@ figcaption{font-size:13px;color:var(--sub);margin-top:10px}
 
 <footer class="rodape">
   <div class="wrap">
-    <p class="eyebrow" style="margin-bottom:14px">fotos de campo</p>
+    <div class="ficha-tec">
+      <p class="eyebrow" style="margin-bottom:14px">ficha técnica</p>
+      <dl>
+        <dt>Conceito, pesquisa de campo e direção de arte</dt><dd>Cauã Dorn</dd>
+        <dt>Estampas, ilustrações e chinelos</dt><dd>Cauã Dorn</dd>
+        <dt>Fotos de campo</dt><dd>139 fotógrafos, creditados abaixo, sob licenças Creative Commons</dd>
+        <dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd>
+      </dl>
+    </div>
+    <p class="eyebrow" style="margin:40px 0 14px">fotos de campo</p>
     <ul class="creditos">{{CREDITOS}}</ul>
     <p style="margin-top:28px">Bem-Querer é um projeto fictício de portfólio de Cauã Dorn. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p>
     <p>As fotos de campo são de seus autores, sob as licenças Creative Commons indicadas, e foram usadas como pesquisa.</p>
