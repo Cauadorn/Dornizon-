@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bem-Querer · havaianas ♥ FARM Rio</title>
+<meta name="description" content="Projeto de portfólio: uma cápsula V2 da collab havaianas ♥ FARM Rio, com 14 estados, 14 pares e um coração escondido em cada estampa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,100,1;1,9..144,300..800,100,1&family=Jost:wght@400;500;600&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Layout: uma página que viaja; cada estado é um capítulo pintado com o fundo da sua própria estampa. */
+:root{
+  --papel:#FCFAF6; --tinta:#1D1915; --cinza:#6E655C; --linha:#E4DCCF; --coracao:#D7262E;
+  --f-titulo:"Fraunces","Iowan Old Style","Georgia",serif;
+  --f-texto:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-mao:"Caveat","Bradley Hand","Comic Sans MS",cursive;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 17px/1.6 var(--f-texto);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:500;text-wrap:balance;margin:0;font-variation-settings:"SOFT" 100,"WONK" 1}
+.eyebrow,.rot{font:600 12px/1.2 var(--f-texto);letter-spacing:.16em;text-transform:uppercase}
+.mao{font-family:var(--f-mao);font-size:26px;line-height:1.15}
+:focus-visible{outline:3px solid var(--coracao);outline-offset:3px}
+
+/* navegação */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(252,250,246,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--papel);z-index:21}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:54px}
+.nav .marca{font:600 13px/1 var(--f-texto);letter-spacing:.08em;white-space:nowrap;text-decoration:none}
+.nav .marca i{color:var(--coracao);font-style:normal}
+.nav .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.nav .chips::-webkit-scrollbar{display:none}
+.nav .chips a{flex:none;font:600 11px/1 var(--f-texto);letter-spacing:.06em;text-decoration:none;padding:7px 9px;border-radius:99px;background:var(--c);color:#1D1915;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.nav .chips a[href="#ma"],.nav .chips a[href="#am"],.nav .chips a[href="#pa"]{color:#FFFBF4}
+
+/* abertura */
+.abre{padding-block:72px 40px}
+.abre .eyebrow{color:var(--cinza)}
+.abre h1{font-size:clamp(72px,15vw,200px);line-height:.9;font-style:italic;font-weight:400;letter-spacing:-.02em;margin:18px 0 44px}
+.abre h1 span{color:var(--coracao)}
+.abre .lead{font-size:clamp(19px,2.2vw,24px);max-width:34ch;line-height:1.45;margin:0}
+.abre .assina{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.abre .assina img{width:170px;opacity:.9}
+.faixa{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(110px,13vw,160px);gap:10px;overflow-x:auto;padding:28px max(20px,env(safe-area-inset-left,0px)) 34px;scrollbar-width:thin}
+.faixa img{aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:0 8px 20px -12px rgba(0,0,0,.4)}
+
+/* seções de texto */
+.sec{padding-block:72px;border-top:1px solid var(--linha)}
+.sec h2{font-size:clamp(40px,6vw,72px);line-height:1;margin-bottom:28px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.cols p{margin:0 0 1em;max-width:62ch}
+.destaque{background:#F4EADB;padding:28px 30px;border-radius:2px;position:relative}
+.destaque h3{font-size:30px;margin-bottom:10px}
+.destaque p{margin:0}
+.destaque::after{content:"";position:absolute;width:86px;height:26px;background:rgba(215,38,46,.18);top:-12px;left:28px;transform:rotate(-3deg)}
+
+.passos{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:p;margin-top:8px}
+.passo{counter-increment:p}
+.passo figure{margin:0 0 12px;aspect-ratio:4/5;overflow:hidden;border-radius:3px;background:#EEE6D8}
+.passo figure img{width:100%;height:100%;object-fit:cover}
+.passo h3{font-size:24px;display:flex;gap:10px;align-items:baseline}
+.passo h3::before{content:counter(p);font:600 13px/1 var(--f-texto);color:var(--coracao)}
+.passo p{font-size:15px;margin:6px 0 0;color:#433C35}
+
+.decisoes{display:grid;gap:56px}
+.decisao{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.decisao .par{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.decisao figure{margin:0;position:relative}
+.decisao figure img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:3px}
+.decisao figcaption{font:500 12px/1.3 var(--f-texto);letter-spacing:.1em;text-transform:uppercase;margin-top:8px;color:var(--cinza)}
+.decisao .antes img{filter:saturate(.55);opacity:.82}
+.decisao .antes::after{content:"";position:absolute;inset:0 0 auto;aspect-ratio:4/5;background:linear-gradient(to top right,transparent calc(50% - 1.5px),var(--coracao) calc(50% - 1.5px),var(--coracao) calc(50% + 1.5px),transparent calc(50% + 1.5px));pointer-events:none}
+.decisao h3{font-size:34px;margin-bottom:12px}
+.decisao p{margin:0;max-width:52ch}
+.notas{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.nota{border:1px solid var(--linha);padding:24px;border-radius:2px;background:#fff}
+.nota h3{font-size:24px;margin-bottom:8px}
+.nota p{margin:0;font-size:16px}
+
+/* capítulos */
+.cap{background:var(--bg);color:var(--ink);padding-block:88px 96px}
+.cap-h{max-width:820px;margin-bottom:48px}
+.cap-h .eyebrow{color:var(--sub)}
+.cap h2{font-size:clamp(52px,9vw,124px);line-height:.92;letter-spacing:-.015em;margin:14px 0 6px}
+.cap .estampa{font:italic 400 clamp(24px,3vw,34px)/1.2 var(--f-titulo);margin:0 0 18px}
+.cap .lead{font-size:clamp(18px,1.8vw,21px);max-width:52ch;margin:0}
+.bloco{margin-top:64px}
+.rot{color:var(--sub);margin-bottom:18px}
+.fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.foto{margin:0;background:#FFFDF8;padding:10px 10px 12px;box-shadow:0 14px 30px -18px rgba(0,0,0,.55);transform:rotate(var(--r));position:relative;color:#2A2520}
+.foto::before{content:"";position:absolute;top:-11px;left:50%;width:74px;height:22px;margin-left:-37px;background:rgba(255,255,255,.55);box-shadow:0 1px 2px rgba(0,0,0,.08);transform:rotate(calc(var(--r) * -2))}
+.foto img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.foto figcaption{font:500 14px/1.35 var(--f-texto);padding-top:9px}
+.foto figcaption span{display:block;font-size:11px;color:#7A7067;margin-top:3px}
+.duo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:start}
+.palmilha{margin:0}
+.palmilha img{width:100%;border-radius:4px;box-shadow:0 22px 44px -26px rgba(0,0,0,.6)}
+figcaption{font-size:13px;color:var(--sub);margin-top:10px}
+.ficha dl{margin:0;display:grid;gap:14px}
+.ficha dt{font:600 11px/1 var(--f-texto);letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
+.ficha dd{margin:4px 0 0;font-size:17px}
+.paleta{display:flex;gap:8px;margin-top:26px}
+.sw{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12),0 0 0 2px var(--bg)}
+.ilu{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:48px;align-items:end}
+.ilu figure{margin:0}
+.ilu figure img{width:100%;border-radius:2px;box-shadow:0 26px 50px -30px rgba(0,0,0,.65)}
+.coracao{display:grid;gap:14px;justify-items:start}
+.coracao img{width:min(300px,100%);aspect-ratio:1;object-fit:cover;border-radius:50%;box-shadow:0 0 0 6px var(--bg),0 0 0 8px var(--coracao)}
+.coracao .mao{margin:0;max-width:16ch;color:var(--ink)}
+.coracao .mao::before{content:"♥ ";color:var(--coracao)}
+/* fotos do par: estúdio e campanha em 4:5, fotos no lugar em 9:16, todas com a mesma altura */
+.mosaico{display:grid;grid-template-columns:1fr .703fr .703fr 1fr;gap:14px;align-items:start}
+.mosaico img{width:100%;border-radius:3px;object-fit:cover;aspect-ratio:9/16}
+.mosaico .est,.mosaico .camp{aspect-ratio:4/5}
+/* corações e coleção */
+.grade-cor{display:grid;grid-template-columns:repeat(7,1fr);gap:22px 16px}
+.grade-cor figure{margin:0}
+.grade-cor img{aspect-ratio:1;object-fit:cover;border-radius:50%;width:100%;box-shadow:0 0 0 2px var(--papel),0 0 0 3.5px var(--coracao)}
+.grade-cor figcaption{font-size:13px;line-height:1.35;color:#433C35;margin-top:10px}
+.grade-cor b{display:block;font-weight:600;color:var(--tinta)}
+.colecao{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.colecao a{text-decoration:none;display:grid;gap:6px}
+.colecao img{aspect-ratio:4/5;object-fit:cover;border-radius:3px;transition:transform .25s}
+.colecao a:hover img{transform:translateY(-4px)}
+@media (prefers-reduced-motion:reduce){.colecao img{transition:none}}
+.colecao span{font-size:12px;letter-spacing:.04em}
+.assinatura{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.assinatura img{width:240px}
+.assinatura p{margin:0 0 1em;max-width:58ch}
+.creditos{font-size:13px;color:#4B443D;columns:2;column-gap:40px;padding:0;list-style:none}
+.creditos li{break-inside:avoid;margin-bottom:12px}
+.rodape{padding-block:40px 64px;font-size:13px;color:var(--cinza);border-top:1px solid var(--linha)}
+.rodape p{max-width:80ch;margin:0 0 .6em}
+
+@media (max-width:980px){
+  .mosaico{grid-template-columns:repeat(2,1fr)}
+  .mosaico img{aspect-ratio:4/5}
+  .passos{grid-template-columns:repeat(3,1fr)}
+  .grade-cor,.colecao{grid-template-columns:repeat(4,1fr)}
+  .duo,.ilu,.decisao,.cols{grid-template-columns:minmax(0,1fr);gap:32px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .fotos{grid-template-columns:minmax(0,1fr);gap:30px}
+  .passos{grid-template-columns:repeat(2,1fr)}
+  .grade-cor,.colecao{grid-template-columns:repeat(2,1fr)}
+  .mosaico{grid-template-columns:repeat(2,1fr)}
+  .mosaico .est,.mosaico .camp{grid-column:span 2}
+  .notas{grid-template-columns:minmax(0,1fr)}
+  .assinatura{grid-template-columns:minmax(0,1fr)}
+  .creditos{columns:1}
+  .nav .marca{display:none}
+  .cap{padding-block:64px 72px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Estados">
+  <div class="wrap">
+    <a class="marca" href="#topo">BEM-QUERER <i>♥</i></a>
+    <div class="chips">{{NAV}}</div>
+  </div>
+</nav>
+
+<header class="abre" id="topo">
+  <div class="wrap">
+    <p class="eyebrow">havaianas ♥ FARM Rio · cápsula V2 · projeto de portfólio</p>
+    <h1>Bem-Que<span>r</span>er</h1>
+    <div class="assina">
+      <p class="lead">A gente saiu do Rio. Foram quatorze estados e quatorze pares de chinelo, e em cada estampa tem um coração que só aparece na segunda olhada.</p>
+      <img src="img/assinatura-collab.svg" alt="Assinatura havaianas ♥ FARM Rio">
+    </div>
+  </div>
+  <div class="faixa" aria-label="As quatorze palmilhas">{{FAIXA}}</div>
+</header>
+
+<section class="sec" id="ideia">
+  <div class="wrap">
+    <p class="eyebrow">a ideia</p>
+    <h2>Por que uma V2</h2>
+    <div class="cols">
+      <div>
+        <p>A collab entre a havaianas e a FARM Rio já existe e já deu certo: arara, bananeira, folhagem, o Rio inteiro na palmilha. A V2 não cria outra marca nem outro logo. Ela entra como uma participação dentro da collab, com a mesma assinatura no calcanhar, e muda só o mapa. Em vez de olhar para o Rio, olha para o Brasil.</p>
+        <p>Cada estado ganhou um par. O par carrega os elementos do lugar do jeito que a FARM já faz nos chinelos: folha, bicho, fruta e objeto, grandes e recortados pela borda da palmilha. Junto do par vem uma ilustração com o lugar inteiro, para quem é de lá olhar e reconhecer na hora.</p>
+      </div>
+      <div>
+        <p>O ponto de partida foi sempre a rua, não o cartão-postal. Antes de desenhar, cada estado passou por uma pesquisa de campo com fotos reais, autor e licença de cada imagem, e o local conferido foto por foto. Se a legenda não dizia onde era, a foto não entrava.</p>
+        <div class="destaque">
+          <h3>O que costura tudo</h3>
+          <p>O coração. Ele nunca é desenhado em cima de nada: aparece quando duas folhas se encontram, quando a cauda da baleia sai da água, quando a franja da sombrinha de frevo termina em pontinhas. É o bem-querer de cada lugar e a única coisa que se repete nos quatorze pares.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="metodo">
+  <div class="wrap">
+    <p class="eyebrow">o método</p>
+    <h2>Como cada par nasce</h2>
+    <div class="passos">
+      <div class="passo"><figure><img src="img/mg-campo-1.jpg" alt="Foto de campo de Ouro Preto" loading="lazy"></figure><h3>Campo</h3><p>Fotos reais do lugar, com autor e licença. O local de cada foto é conferido antes de entrar.</p></div>
+      <div class="passo"><figure><img src="img/mg-coracao.jpg" alt="Detalhe da talha barroca" loading="lazy" style="object-position:center"></figure><h3>Âncora</h3><p>Um elemento que é daquele estado e de nenhum outro. Sem âncora, o chinelo fica só bonito.</p></div>
+      <div class="passo"><figure><img src="img/mg-palmilha.jpg" alt="Palmilha de Minas Gerais" loading="lazy"></figure><h3>Chinelo</h3><p>Díptico: o pé esquerdo e o direito contam metades da mesma história. Só elementos, sem cena e sem letreiro.</p></div>
+      <div class="passo"><figure><img src="img/mg-ilustracao.jpg" alt="Ilustração de Minas Gerais" loading="lazy"></figure><h3>Ilustração</h3><p>A cena do lugar, centralizada, feita com os mesmos elementos do chinelo. É ela que faz o estado ser reconhecido.</p></div>
+      <div class="passo"><figure><img src="img/mg-estudio.jpg" alt="O par de Minas Gerais" loading="lazy"></figure><h3>Par</h3><p>A tira repete uma cor da estampa e a assinatura da collab fica centralizada no calcanhar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="caminho">
+  <div class="wrap">
+    <p class="eyebrow">o que ficou pelo caminho</p>
+    <h2>Decisões que mudaram o desenho</h2>
+    <div class="decisoes">
+      <div class="decisao">
+        <div class="par">
+          <figure class="antes"><img src="img/mg-antes-jabuticaba.jpg" alt="Primeira palmilha de Minas, com jabuticaba e sabiá" loading="lazy"><figcaption>primeira versão</figcaption></figure>
+          <figure><img src="img/mg-depois-barroco.jpg" alt="Palmilha final de Minas, com o barroco" loading="lazy"><figcaption>versão final</figcaption></figure>
+        </div>
+        <div><h3>Minas não é só jabuticaba</h3><p>O primeiro par de Minas tinha jabuticaba, sabiá e sempre-viva. Era bonito e não dizia Minas: tem jabuticaba no quintal de meio Brasil. Queijo também não servia, porque queijo não nasce em galho. Ficou o barroco, com a talha dourada do Aleijadinho e as rosas do forro do Mestre Ataíde.</p></div>
+      </div>
+      <div class="decisao">
+        <div class="par">
+          <figure class="antes"><img src="img/sc-antes-ponte.jpg" alt="Primeira ilustração de Santa Catarina, com a baleia sob a ponte" loading="lazy"><figcaption>primeira versão</figcaption></figure>
+          <figure><img src="img/sc-depois-enseada.jpg" alt="Ilustração final de Santa Catarina, na enseada de Garopaba" loading="lazy"><figcaption>versão final</figcaption></figure>
+        </div>
+        <div><h3>A baleia não passa debaixo da ponte</h3><p>A primeira Santa Catarina juntava a Ponte Hercílio Luz e a baleia-franca. Ficou bonito e errado, porque a baleia não aparece no centro de Florianópolis. Ela chega perto da areia nas enseadas do litoral sul. A ilustração foi para Garopaba.</p></div>
+      </div>
+      <div class="notas">
+        <div class="nota"><h3>Menos igrejinha</h3><p>No primeiro lote, quatro estados terminavam numa torre de igreja. A partir do segundo, a regra virou uma cena diferente para cada lugar: rio, mercado, duna, pampa, mata, ponte de barco.</p></div>
+        <div class="nota"><h3>Coração não é carimbo</h3><p>Nos primeiros testes, o coração aparecia pintado no brilho da jabuticaba. Saiu tudo. Hoje ele é a franja da sombrinha, a cauda da baleia, duas folhas de amendoeira caindo juntas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{CAPITULOS}}
+
+<section class="sec" id="coracoes">
+  <div class="wrap">
+    <p class="eyebrow">o fio da coleção</p>
+    <h2>Onde o coração mora</h2>
+    <div class="grade-cor">{{CORACOES}}</div>
+  </div>
+</section>
+
+<section class="sec" id="colecao">
+  <div class="wrap">
+    <p class="eyebrow">a coleção</p>
+    <h2>Os quatorze pares</h2>
+    <div class="colecao">{{COLECAO}}</div>
+  </div>
+</section>
+
+<section class="sec" id="assinatura">
+  <div class="wrap assinatura">
+    <img src="img/assinatura-collab.svg" alt="Assinatura havaianas ♥ FARM Rio">
+    <div>
+      <p class="eyebrow">a assinatura</p>
+      <h2>A mesma da collab</h2>
+      <p>A V2 não ganha logo próprio. A assinatura é a mesma que já vai na palmilha da collab: FARM RIO, o coração e havaianas, empilhados e centralizados no calcanhar.</p>
+      <p>A cor acompanha o fundo de cada estampa, tom sobre tom. Quando o logo passa por cima de um elemento, ganha um fio fino na cor do fundo para continuar legível.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap">
+    <p class="eyebrow" style="margin-bottom:14px">fotos de campo</p>
+    <ul class="creditos">{{CREDITOS}}</ul>
+    <p style="margin-top:28px">Bem-Querer é um projeto fictício de portfólio de Cauã Dorn. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p>
+    <p>As fotos de campo são de seus autores, sob as licenças Creative Commons indicadas, e foram usadas como pesquisa.</p>
+  </div>
+</footer>
+
+</body>
+</html>
