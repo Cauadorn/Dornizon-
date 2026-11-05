@@ -87,7 +87,7 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
     links = ''.join(f'<a href="{r}{p}.html"{" aria-current=page" if p == pid else ""}>{nome[p]}</a>' for p in NO_TOPO)
     m_pag = ''.join(f'<li><a href="{r}{p}.html">{n}</a></li>' for p, n, _ in PAGINAS)
     m_est = ''.join(f'<li><a href="{r}{s["url"]}"><span>{i + 1:02d}</span>{e(s["nome"])}</a></li>' for i, s in enumerate(data))
-    f_pag = ''.join(f'<li><a href="{r}{p}.html">{n}</a></li>' for p, n, _ in PAGINAS)
+    f_pag = ''.join(f'<li><a href="{r}{p}.html">{n}</a></li>' for p, n, _ in PAGINAS) + f'<li><a href="{r}bem-querer-apresentacao.pdf" target="_blank" rel="noopener">Apresentação em PDF ↓</a></li>'
     f_est1 = ''.join(f'<li><a href="{r}{s["url"]}">{e(s["nome"])}</a></li>' for s in data[:7])
     f_est2 = ''.join(f'<li><a href="{r}{s["url"]}">{e(s["nome"])}</a></li>' for s in data[7:])
     carrega = (f'<div class="carrega" aria-hidden="true"><div class="cl">{svg_simb(extra=" class=vazio")}{svg_simb(extra=" class=cheio")}</div><span class="pct">0</span></div>'
@@ -472,6 +472,9 @@ for i, s in enumerate(data):
 os.makedirs(SITE + '/css', exist_ok=True)
 shutil.copy(os.path.join(AQUI, 'v5', 'bq.css'), SITE + '/css/bq.css')
 shutil.copy(os.path.join(AQUI, 'v5', 'bq.js'), SITE + '/js/bq.js')
+_pdf = os.path.join(P, '07-apresentacao', 'pdf', 'bem-querer-apresentacao.pdf')
+if os.path.exists(_pdf):
+    shutil.copy(_pdf, SITE + '/bem-querer-apresentacao.pdf')
 for velho in ['v4.html'] + [f'{s["uf"]}.html' for s in data]:
     p_ = os.path.join(SITE, velho)
     if os.path.exists(p_):
