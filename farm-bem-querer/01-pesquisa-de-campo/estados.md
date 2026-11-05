@@ -11,7 +11,7 @@ Cada caderno tem 3 páginas: **abertura** (foto, texto de campo, palavras, trilh
 | 01 | Minas Gerais | Janela de Minas | — | pronto |
 | 02 | Rio de Janeiro | Calçadão | — | fotos em curadoria |
 | 03 | Bahia | Ladeira do Pelô | — | pronto |
-| 04 | Pernambuco | Passo de Frevo | — | coletando fotos |
+| 04 | Pernambuco | Passo de Frevo | — | pronto |
 | 05 | Ceará | Renda ao Vento | — | coletando fotos |
 | 06 | Maranhão | Couro de Boi | guará | coletando fotos |
 | 07 | Amazonas | Encontro das Águas | boto-cor-de-rosa | coletando fotos |
