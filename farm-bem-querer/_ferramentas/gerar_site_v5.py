@@ -127,7 +127,7 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
     <div><p class="eb" style="margin-bottom:12px">o site</p><ul>{f_pag}</ul></div>
     <div><p class="eb" style="margin-bottom:12px">os estados</p><ul>{f_est1}</ul></div>
     <div><p class="eb" style="margin-bottom:12px">&nbsp;</p><ul>{f_est2}</ul></div>
-    <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio de Cauã Dorn. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
+    <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
   </div>
 </footer>
 <img class="foto-mouse" alt="" aria-hidden="true">
@@ -187,7 +187,7 @@ corpo = f'''
 </section>
 <section class="manif">
   <p class="m-txt">A gente saiu do Rio <span class="pil"><img src="img/{e(POR['rj']['campo'][0]['img'])}" alt=""></span> e foi até quatorze estados. Em cada um, um par de chinelos <span class="pil"><img src="img/ms-par.webp" alt="" style="object-fit:contain"></span> feito com os elementos de lá, e um coração <span class="pil redonda"><img src="img/{e(POR['sc']['coracao'])}" alt=""></span> que só aparece <em>na segunda olhada</em>.</p>
-  <p class="eb m-assina">projeto de portfólio de Cauã Dorn · fictício, sem vínculo com as marcas</p>
+  <p class="eb m-assina">projeto de portfólio de Emilly Silva · fictício, sem vínculo com as marcas</p>
 </section>
 <section class="roda" aria-label="A coleção: os quatorze pares">
   <div class="roda-palco">
@@ -377,8 +377,8 @@ cred = ''.join(
 corpo = pg_hero('créditos', 'Ficha <em>técnica</em>', 'Quem fez o quê, de onde vieram as fotos de campo e o aviso de que tudo isto é um projeto de portfólio.') + f'''
 <section class="miolo" style="padding-bottom:10svh">
   <dl class="ficha">
-    <dt>Conceito, pesquisa de campo e direção de arte</dt><dd>Cauã Dorn</dd>
-    <dt>Estampas, ilustrações e chinelos</dt><dd>Cauã Dorn</dd>
+    <dt>Conceito, pesquisa de campo e direção de arte</dt><dd>Emilly Silva</dd>
+    <dt>Estampas, ilustrações e chinelos</dt><dd>Emilly Silva</dd>
     <dt>Fotos de campo</dt><dd>139 fotógrafos, creditados abaixo, sob licenças Creative Commons</dd>
     <dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd>
     <dt>Fontes</dt><dd>Instrument Serif e Jost, licença livre (Google Fonts)</dd>
@@ -386,7 +386,7 @@ corpo = pg_hero('créditos', 'Ficha <em>técnica</em>', 'Quem fez o quê, de ond
 </section>
 <section class="secao-t"><p class="eb">fotos de campo</p><h2>Os fotógrafos</h2></section>
 <section class="miolo" style="padding-top:36px;padding-bottom:10svh"><ul class="creditos">{cred}</ul>
-  <p style="margin-top:40px;max-width:70ch;color:#4C3C35">As fotos de campo são de seus autores, sob as licenças Creative Commons indicadas, e foram usadas como pesquisa. Bem-Querer é um projeto fictício de portfólio de Cauã Dorn. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas.</p></section>''' + proxima('creditos')
+  <p style="margin-top:40px;max-width:70ch;color:#4C3C35">As fotos de campo são de seus autores, sob as licenças Creative Commons indicadas, e foram usadas como pesquisa. Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas.</p></section>''' + proxima('creditos')
 escrever('creditos.html', casca('creditos', 'Créditos · Bem-Querer', 'Ficha técnica e créditos das fotos de campo do projeto Bem-Querer.', corpo))
 
 # ---------------- estados ----------------
