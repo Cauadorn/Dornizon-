@@ -33,6 +33,8 @@ def main():
     ap.add_argument('--modo', default='posicionada', choices=['posicionada', 'rapport', 'diptico'])
     ap.add_argument('--escala', type=float, default=0.75, help='rapport: largura do módulo em relação à largura da sola')
     ap.add_argument('--contorno', default='auto', help="contorno do logo: auto (cor do fundo da arte), #hex ou nao")
+    ap.add_argument('--contorno-px', dest='contorno_px', type=float, default=1.0, help='espessura do contorno em px da foto')
+    ap.add_argument('--contorno-op', dest='contorno_op', type=float, default=0.85, help='opacidade do contorno')
     a = ap.parse_args()
 
     foto = Image.open(os.path.join(MOLDE, a.molde)).convert('RGB')
@@ -138,7 +140,7 @@ def main():
             svgp = os.path.join(td, 'l.svg'); png = os.path.join(td, 'l.png')
             ww, hh_, body = ac.collab(ink)
             open(svgp, 'w').write(ac.K.svg(ww, hh_, body))
-            subprocess.run(['node', os.path.join(HERE, 'svg_raster.js'), svgp, str(lw * 2), png], check=True)
+            subprocess.run(['node', os.path.join(HERE, 'svg_raster.js'), svgp, str(lw * 4), png], check=True)
             raw = Image.open(png).convert('RGBA')
             lg = raw.resize((lw, int(lw * raw.height / raw.width)), Image.LANCZOS)
         L = np.asarray(lg, np.float32) / 255
@@ -161,12 +163,20 @@ def main():
                 cor_fundo = px[chave == vals[cont.argmax()]].mean(0) / 255
             else:
                 cor_fundo = hex2rgb(a.contorno)
-            r = max(2, int(lw * 0.022)) | 1
-            pad = r * 2
-            alp = np.zeros((lh + 2 * pad, lw + 2 * pad), np.float32)
-            alp[pad:pad + lh, pad:pad + lw] = L[..., 3]
-            halo = np.asarray(Image.fromarray((alp * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(r * 2 + 1)), np.float32) / 255
-            halo = blur(halo, max(0.6, r * 0.22)) * 0.95
+            # contorno fino e redondo: dilatação octogonal em 4x e redução com antialias
+            S4 = 4
+            A4 = np.asarray(raw, np.float32)[..., 3] / 255
+            pad = int(np.ceil(a.contorno_px)) + 2
+            P4 = pad * S4
+            m = np.pad(A4, P4)
+            for i in range(int(round(a.contorno_px * S4))):
+                q_ = np.pad(m, 1)
+                viz = [q_[1:-1, 1:-1], q_[:-2, 1:-1], q_[2:, 1:-1], q_[1:-1, :-2], q_[1:-1, 2:]]
+                if i % 2:
+                    viz += [q_[:-2, :-2], q_[:-2, 2:], q_[2:, :-2], q_[2:, 2:]]
+                m = np.maximum.reduce(viz)
+            halo = np.asarray(Image.fromarray((m * 255).astype(np.uint8)).resize((lw + 2 * pad, lh + 2 * pad), Image.LANCZOS), np.float32) / 255
+            halo = halo * a.contorno_op
             ys_, xs_ = slice(yy - pad, yy + lh + pad), slice(cx - lw // 2 - pad, cx - lw // 2 + lw + pad)
             hc = cor_fundo * luz[ys_, xs_][..., None]
             out[ys_, xs_] = out[ys_, xs_] * (1 - halo[..., None]) + hc * halo[..., None]
@@ -185,7 +195,7 @@ def main():
     tcol = np.clip(cor_map * rel[..., None] * 1.02, 0, 1)
     out = out * (1 - tira[..., None]) + tcol * tira[..., None]
 
-    Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8)).save(a.saida, quality=92)
+    Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8)).save(a.saida, quality=95, subsampling=0)
     print('ok', a.saida)
 
 
