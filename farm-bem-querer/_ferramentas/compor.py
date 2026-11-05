@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LOGOS = '/home/user/Dornizon-/farm-bem-querer/logo/assinatura-v2'
+LOGOS = '/home/user/Dornizon-/farm-bem-querer/03-marca/assinatura-v2'
 
 
 def rasterizar(svg_path, largura_px, out_png):

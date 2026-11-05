@@ -8,7 +8,7 @@ import sys
 import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PROJ = '/home/user/Dornizon-/farm-bem-querer/pesquisa-de-campo'
+PROJ = '/home/user/Dornizon-/farm-bem-querer/01-pesquisa-de-campo'
 
 
 def carrega(nome):
