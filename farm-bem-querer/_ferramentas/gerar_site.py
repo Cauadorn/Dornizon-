@@ -146,6 +146,11 @@ def capitulo(i, s):
     fotos_par = ''.join(
         f'<figure class="p-{tipo}" style="--r:{ROT[k]}deg;--y:{(0, 38, -10, 26)[k % 4]}px"><img src="img/{e(src)}" alt="O par de {e(s["nome"])}, {rot}" loading="lazy"><figcaption>{rot}</figcaption></figure>'
         for k, (tipo, src, rot) in enumerate(par))
+    if s.get('video'):
+        ilu = (f'<video src="img/{e(s["video"])}" poster="img/{e(s["ilu"])}" muted loop playsinline preload="none" '
+               f'aria-label="Ilustração animada de {e(s["nome"])}"></video>')
+    else:
+        ilu = f'<img src="img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}" loading="lazy">'
     return f"""
 <section class="cap lay-{lay}" id="{uf}" style="--bg:{c[0]};--ink:{ink};--sub:{sub};--ac:{c[1]}">
   <div class="wrap">
@@ -155,9 +160,12 @@ def capitulo(i, s):
       <p class="estampa">{e(t["nome"])}</p>
       <p class="lead">{e(t["conceito"])}</p>
     </header>
+  </div>
+  <div class="nomao" aria-hidden="true"><span>{e(s["nome"])} · {e(t["nome"])} · {e(s["nome"])} · {e(t["nome"])} ·</span></div>
+  <div class="wrap">
 
     <div class="colagem">
-      <figure class="pc ilu"><img src="img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}" loading="lazy"></figure>
+      <figure class="pc ilu">{ilu}</figure>
       <figure class="pc palm"><img src="img/{e(s["palmilha"])}" alt="Arte da palmilha de {e(s["nome"])}, em díptico" loading="lazy"></figure>
       {fotos}
       <div class="cor">
@@ -184,9 +192,24 @@ def capitulo(i, s):
 HERO = [(1, 3, -6, 12), (13.5, -1, 4, 11), (23.5, 3, -3, 9.5), (66.5, -3, 5, 10.5), (76, 6, -4, 12), (89, 1, 6, 10.5),
         (0, 56, 5, 12), (13, 64, -5, 11), (26, 72, 3, 10), (64, 70, -4, 10), (76, 58, 5, 12), (89, 64, -6, 10.5),
         (40, 80, 2, 9), (51, 82, -3, 9)]
+PROF = (1.3, .7, 1.0, .8, 1.4, .6, 1.2, .9, .5, .8, 1.3, .7, .6, 1.1)
 hero = ''.join(
-    f'<img src="img/{e(s["ilu_sem"])}" alt="" style="left:{x}%;top:{y}%;width:{w}%;--r:{r}deg" loading="eager">'
-    for s, (x, y, r, w) in zip(data, HERO))
+    f'<img src="img/{e(s["ilu_sem"])}" alt="" style="left:{x}%;top:{y}%;width:{w}%;--r:{r}deg" data-d="{d}" loading="eager">'
+    for s, (x, y, r, w), d in zip(data, HERO, PROF))
+
+def quadro(s):
+    midia = (f'<video src="img/{e(s["video"])}" poster="img/{e(s["ilu_sem"])}" muted playsinline preload="none"></video>'
+             if s.get('video') else f'<img src="img/{e(s["ilu_sem"])}" alt="" loading="lazy">')
+    return (f'<figure class="quadro" data-uf="{s["uf"].upper()}" data-nome="{e(s["nome"])}" data-est="{e(V[s["uf"]]["nome"])}" '
+            f'style="--ac:{COR[s["uf"]][1]}">{midia}</figure>')
+
+reel = ''.join(quadro(s) for s in data)
+
+def palavras_linha(ini):
+    return ''.join(f'<span>{e(w)}<sup>{s["uf"].upper()}</sup></span><i>♥</i>'
+                   for s in data for w in T[s['uf']]['palavras'][ini:ini + 2])
+
+pal1, pal2 = palavras_linha(0), palavras_linha(2)
 
 nav = ''.join(f'<a href="#{s["uf"]}" style="--c:{COR[s["uf"]][0]}">{s["uf"].upper()}</a>' for s in data)
 caps = ''.join(capitulo(i + 1, s) for i, s in enumerate(data))
@@ -195,7 +218,11 @@ coracoes = ''.join(
     f'<figure><img src="img/{e(s["coracao"])}" alt="Coração de {e(s["nome"])}" loading="lazy"><figcaption><b>{e(s["nome"])}</b>{e(s["coracao_texto"])}</figcaption></figure>'
     for s in data)
 colecao = ''.join(
-    f'<a href="#{s["uf"]}" style="--r:{ROT[i % 6]}deg"><img src="img/{e(s["estudio"])}" alt="Par de {e(s["nome"])}" loading="lazy"><span>{e(s["nome"])}</span></a>'
+    f'<a class="carta" href="#{s["uf"]}" style="--c:{COR[s["uf"]][0]};--r:{ROT[i % 6]}deg">'
+    f'<span class="num">{i + 1:02d}</span>'
+    f'<span class="im"><img class="a" src="img/{e(s["estudio"])}" alt="Par de {e(s["nome"])} no estúdio" loading="lazy">'
+    + (f'<img class="b" src="img/{e(s["campanha"])}" alt="" loading="lazy">' if s.get('campanha') else '') +
+    f'</span><strong>{e(s["nome"])}</strong><em>{e(V[s["uf"]]["nome"])}</em></a>'
     for i, s in enumerate(data))
 creditos = ''.join(
     f'<li><b>{e(s["nome"])}</b> · ' + '; '.join(
@@ -208,7 +235,8 @@ faixa = ''.join(f'<img src="img/{e(s["palmilha"])}" alt="" loading="lazy">' for 
 
 doc = open(P + '/_ferramentas/site_modelo.html', encoding='utf8').read()
 for k, v in {'{{NAV}}': nav, '{{CAPITULOS}}': caps, '{{CORACOES}}': coracoes, '{{COLECAO}}': colecao,
-             '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa, '{{MURAL}}': mural, '{{HERO}}': hero}.items():
+             '{{CREDITOS}}': creditos, '{{FAIXA}}': faixa, '{{MURAL}}': mural, '{{HERO}}': hero,
+             '{{REEL}}': reel, '{{PALAVRAS1}}': pal1, '{{PALAVRAS2}}': pal2}.items():
     doc = doc.replace(k, v)
 open(SITE + '/index.html', 'w', encoding='utf8').write(doc)
 print('ok', len(doc) // 1024, 'KB')
