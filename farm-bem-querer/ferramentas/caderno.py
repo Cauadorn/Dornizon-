@@ -35,7 +35,9 @@ def autor_limpo(a):
 
 def credito(c):
     lic = f' · {e(c["licenca"])}' if c.get('licenca') else ''
-    return f'{e(autor_limpo(c["autor"]))}{lic} · Wikimedia Commons'
+    nc = ' (uso não comercial)' if c.get('nc') else ''
+    fonte = {'flickr': 'Flickr', 'wikimedia': 'Wikimedia Commons'}.get(c.get('fonte'), 'Wikimedia Commons')
+    return f'{e(autor_limpo(c["autor"]))}{lic}{nc} · {fonte}'
 
 
 def build(cfg, fotos_rel, creditos):
@@ -91,7 +93,8 @@ def build(cfg, fotos_rel, creditos):
       <div><div class="caixa"><div class="kicker">estampa {e(n)}</div><h2 style="margin-bottom:2mm">{e(est["nome"])}</h2>
         <p>{md(est["conceito"])}</p>
         <p><strong>Protagonista:</strong> {md(est["protagonista"])}<br><strong>Em volta:</strong> {md(est["coadjuvantes"])}<br>
-        <strong>Fundo:</strong> {md(est["fundo"])}</p></div>
+        <strong>Fundo:</strong> {md(est["fundo"])}{('<br><strong>Decorações:</strong> ' + md(est["decoracao"])) if est.get("decoracao") else ''}</p>
+        {('<p class="kicker" style="margin:2mm 0 0">bicho-guia · ' + e(cfg["bicho"]) + '</p>') if cfg.get("bicho") else ''}</div>
         <h3>onde o coração mora</h3><div class="tres">{tres}</div>
         <h3 style="margin-top:4mm">peças</h3><p>{md(est["pecas"])}</p>
         <h3>crédito e cuidado</h3><p style="font-size:8.4pt">{md(est["cuidado"])}</p>
