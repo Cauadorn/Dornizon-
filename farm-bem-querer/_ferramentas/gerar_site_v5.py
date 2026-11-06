@@ -308,9 +308,9 @@ REG = ['Sudeste', 'Nordeste', 'Norte', 'Centro-Oeste', 'Sul']
 blocos = ''
 for rg in REG:
     cartas = ''.join(
-        f'<a class="carta-e" href="{s["url"]}" style="--ac:{acento(s["uf"])}"><span class="arco"><span class="n">{data.index(s) + 1:02d}</span>'
-        f'<img src="img/{e(s["ilu"])}" alt="Ilustração de {e(s["nome"])}" loading="lazy"></span>'
-        f'<img class="par" src="img/{s["uf"]}-par.webp" alt="" loading="lazy"><strong>{e(s["nome"])}</strong><em>{e(s["est"])}</em></a>'
+        f'<a class="carta-e" href="{s["url"]}" style="--ac:{acento(s["uf"])}"><span class="arte-c"><span class="arco"><span class="n">{data.index(s) + 1:02d}</span>'
+        f'{midia(s, auto=True)}</span>'
+        f'<img class="par" src="img/{s["uf"]}-par.webp" alt="" loading="lazy"></span><strong>{e(s["nome"])}</strong><em>{e(s["est"])}</em></a>'
         for s in data if REGIAO[s['uf']] == rg)
     blocos += f'<section class="regiao"><p class="eb">{rg}</p><div class="arcos">{cartas}</div></section>'
 cors = ''.join(f'<a href="{s["url"]}#coracao"><img src="img/{e(s["coracao"])}" alt="Coração de {e(s["nome"])}" loading="lazy"><b>{e(s["nome"])}</b><span>{e(s["coracao_texto"])}</span></a>' for s in data)
@@ -320,7 +320,7 @@ corpo = pg_hero('a coleção', 'Quatorze <em>pares</em>', 'Um par por estado, co
 escrever('colecao.html', casca('colecao', 'Coleção · Bem-Querer', 'Os quatorze pares da cápsula Bem-Querer, por região.', corpo))
 
 # ---------------- processo ----------------
-cenas_regras = ''.join(f'<a class="carta-e" href="{POR[u]["url"]}"><span class="arco">{midia(POR[u], auto=True)}</span><img class="par" src="img/{u}-par.webp" alt="" loading="lazy"><strong>{e(POR[u]["nome"])}</strong><em>{e(POR[u]["est"])}</em></a>' for u in ['am', 'pa', 'ma', 'rs'])
+cenas_regras = ''.join(f'<a class="carta-e" href="{POR[u]["url"]}"><span class="arte-c"><span class="arco">{midia(POR[u], auto=True)}</span><img class="par" src="img/{u}-par.webp" alt="" loading="lazy"></span><strong>{e(POR[u]["nome"])}</strong><em>{e(POR[u]["est"])}</em></a>' for u in ['am', 'pa', 'ma', 'rs'])
 corpo = pg_hero('o processo', 'Como cada par <em>nasce</em>', 'Cinco passos, sempre na mesma ordem, do campo ao chinelo.') + f'''
 <section class="indice" style="padding-top:4svh">
   <ol class="linhas">

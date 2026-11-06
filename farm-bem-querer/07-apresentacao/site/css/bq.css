@@ -230,9 +230,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 .regiao > .eb{padding-bottom:18px;border-bottom:1px solid var(--linha)}
 .arcos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.4vw,40px);margin-top:36px}
 .carta-e{position:relative;text-decoration:none;display:block}
-.carta-e .arco{position:relative;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:var(--creme2)}
+.carta-e .arte-c{position:relative;display:block}
+.carta-e .arco{display:block;position:relative;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;clip-path:inset(0 round 999px 999px 0 0);background:var(--creme2)}
 .carta-e .arco img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.carta-e .par{position:absolute;z-index:2;width:62%;left:-8%;bottom:-6%;transform:rotate(-10deg) translateY(16px);opacity:0;transition:opacity .45s,transform .6s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 18px 16px rgba(40,10,10,.28))}
+.carta-e .par{position:absolute;z-index:2;width:56%;left:-10%;bottom:15%;transform:rotate(-10deg) translateY(16px);opacity:0;transition:opacity .45s,transform .6s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 18px 16px rgba(40,10,10,.28))}
 .carta-e:hover .arco img{transform:scale(1.06)}
 .carta-e:hover .par,.carta-e:focus-visible .par{opacity:1;transform:rotate(-10deg) translateY(0)}
 .carta-e strong{display:block;font:400 clamp(26px,2.2vw,36px)/1.05 var(--serif);margin-top:18px;font-weight:400}
@@ -373,7 +374,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 .estados-h .secao-t{display:flex;justify-content:space-between;align-items:end;gap:20px}
 .trilho{display:flex;gap:clamp(16px,2vw,30px);overflow-x:auto;scroll-snap-type:x mandatory;padding:48px var(--mx) 30px;scrollbar-width:thin}
 .trilho a{flex:none;width:clamp(200px,20vw,300px);scroll-snap-align:start;text-decoration:none}
-.trilho .arco{aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:var(--creme2)}
+.trilho .arco{aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;clip-path:inset(0 round 999px 999px 0 0);background:var(--creme2)}
 .trilho img,.trilho video{width:100%;height:100%;object-fit:cover;transition:transform .8s}
 .trilho a:hover img{transform:scale(1.05)}
 .trilho strong{display:block;font:400 clamp(24px,2vw,32px)/1.05 var(--serif);margin-top:14px;font-weight:400}
