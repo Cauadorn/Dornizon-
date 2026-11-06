@@ -225,7 +225,12 @@ doc = f'''<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>B
 <style>{CSS}</style></head><body>{"".join(slides)}</body></html>'''
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tipografia import sem_viuvas, CSS_TEXTO  # noqa: E402
-doc = sem_viuvas(doc.replace('</style>', CSS_TEXTO + '</style>', 1))
+doc = doc.replace('</style>', CSS_TEXTO + '</style>', 1)
+LINK_BIO = 'O projeto completo, estado por estado, está no site. <b>Link na bio.</b>'
+assert doc.count(LINK_BIO) == 1
+doc_li = doc.replace(LINK_BIO, 'O projeto completo, estado por estado, está no site: <b>cauadorn.github.io/Dornizon-</b>')
+open(os.path.join(OUT, 'carrossel-linkedin.html'), 'w', encoding='utf8').write(sem_viuvas(doc_li))
+doc = sem_viuvas(doc)
 open(os.path.join(OUT, 'carrossel.html'), 'w', encoding='utf8').write(doc)
 
 legenda = '''A gente saiu do Rio e foi até quatorze estados. Em cada um, um par de chinelos feito com os elementos de lá, e um coração escondido na estampa. Achou o do slide 9?

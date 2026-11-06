@@ -42,3 +42,10 @@ python3 -I behance_pacote.py      # behance/pacote/ (capa, módulos em ordem, te
 ```
 Os dois filmes (abertura e "a coleção em movimento") são animados em HTML com GSAP e renderizados quadro a quadro; os motions entram como sequência de quadros.
 Os vídeos juntam o módulo parado, o motion de `site/video/<uf>.mp4` recortado no arco e os chinelos por cima.
+
+## PDF do Behance e LinkedIn
+```
+cd /home/user/Dornizon-/farm-bem-querer/_ferramentas && python3 -I behance_pdf.py      # behance/behance-bem-querer.pdf (um módulo por página)
+node insta_render.js carrossel-linkedin.html slides-linkedin                           # carrossel com o site no lugar de "link na bio"
+```
+O PDF do LinkedIn (linkedin/bem-querer-linkedin.pdf) junta os slides de instagram/slides-linkedin; o texto do post está em linkedin/post-linkedin.txt.

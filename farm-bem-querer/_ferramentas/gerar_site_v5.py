@@ -442,7 +442,6 @@ for i, s in enumerate(data):
     lug = [(x, 'no lugar') for x in s['lugar'][:2] if x not in FOTO_FORA]
     pal_estado = ' <i>♥</i> '.join(e(w) for w in cad['palavras'])
     lugar = ''.join(f'<figure><div class="moldura"><img src="{R}img/{e(src)}" alt="O par de {e(s["nome"])}, {rot}" loading="lazy"></div><figcaption>{rot}</figcaption></figure>' for src, rot in lug)
-    evitar = ''.join(f'<li><span>{k + 1:02d}</span><p>{md(x)}</p></li>' for k, x in enumerate((EVITAR_EXTRA.get(uf, []) + list(cad['evitar']))[:3]))
     prox, ant = data[(i + 1) % len(data)], data[i - 1]
     cred = ''.join(f'<li>{e(LEGENDA[uf][k])}: {e(autor(f["autor"]))}, {e(f["licenca"])}' + (f' (<a href="{e(f["pagina"])}">fonte</a>)' if f.get('pagina') else '') + '</li>'
                    for k, f in enumerate(s['campo']))
@@ -504,11 +503,6 @@ for i, s in enumerate(data):
   <div class="cin-leg"><p class="eb">campanha</p><h2>O par <em>no lugar</em></h2></div></section>
 <section class="e-lugar" style="padding-top:12svh">
   <div class="lugar {'dois' if len(lug) > 1 else 'um'}">{lugar}</div>
-</section>
-<section class="e-evitar">
-  <p class="eb">o que ficou de fora</p>
-  <h2 class="titulo-sec">O que a gente evitou</h2>
-  <ol class="evita">{evitar}</ol>
 </section>
 <section class="miolo" style="padding-top:8svh"><p class="eb" style="margin-bottom:14px">fotos de campo deste estado</p><ul class="creditos">{cred}</ul></section>
 <a class="prox" href="{R}{prox["url"]}"><span><span class="eb">próximo estado · {(i + 1) % len(data) + 1:02d} / 14</span><strong>{e(prox["nome"])}</strong><em>{e(prox["est"])}</em></span><span class="mini"><img src="{R}img/{e(prox["ilu"])}" alt="" loading="lazy"></span></a>
