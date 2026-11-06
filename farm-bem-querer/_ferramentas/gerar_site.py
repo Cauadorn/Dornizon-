@@ -43,7 +43,7 @@ V['ba'] = {
     'ancora': 'a **fita do Senhor do Bonfim**, que qualquer brasileiro reconhece de longe.',
     'chinelo': 'pé esquerdo com o galho de cacau e um fruto aberto; pé direito com as fitas do Bonfim, sem letreiro, descendo em ondas.',
     'fundo': 'azul do céu de Salvador; tira vermelho-fita.',
-    'ilustracao': 'o Largo do Pelourinho visto de baixo, com a igreja do Rosário dos Pretos no alto, fitas entre as sacadas, uma baiana de costas e o cacau emoldurando a cena.',
+    'ilustracao': 'o Largo do Pelourinho visto de baixo, com a igreja do Rosário dos Pretos no alto, fitas entre as sacadas, a ladeira vazia subindo até a escadaria e o cacau emoldurando a cena.',
 }
 V['pe'] = {
     'nome': 'Passo de Frevo',

@@ -168,7 +168,7 @@ def figura_campo(s, k, f, link=False, r=''):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tipografia import sem_viuvas  # noqa: E402
-from notas_estado import NOTA  # noqa: E402
+from notas_estado import FOTO_FORA, notas_html  # noqa: E402
 
 
 def escrever(nome, conteudo):
@@ -439,7 +439,7 @@ for i, s in enumerate(data):
     x0, y0, x1, y1 = caixas[s['nome']]
     d = max(x1 - x0, y1 - y0) * 1.3
     campo = ''.join(figura_campo(s, k, f, r=R) for k, f in enumerate(s['campo'][:3]))
-    lug = [(x, 'no lugar') for x in s['lugar'][:2]]
+    lug = [(x, 'no lugar') for x in s['lugar'][:2] if x not in FOTO_FORA]
     pal_estado = ' <i>♥</i> '.join(e(w) for w in cad['palavras'])
     lugar = ''.join(f'<figure><div class="moldura"><img src="{R}img/{e(src)}" alt="O par de {e(s["nome"])}, {rot}" loading="lazy"></div><figcaption>{rot}</figcaption></figure>' for src, rot in lug)
     evitar = ''.join(f'<li><span>{k + 1:02d}</span><p>{md(x)}</p></li>' for k, x in enumerate((EVITAR_EXTRA.get(uf, []) + list(cad['evitar']))[:3]))
@@ -454,7 +454,7 @@ for i, s in enumerate(data):
       <a class="e-volta" href="{R}colecao.html">← coleção</a>
       <h1>{e(s["nome"])}</h1>
       <p class="est">{e(t["nome"])}</p>
-      <p class="conc">{e(t["conceito"])}</p>{f'<p class="nota-v">{e(NOTA[uf])}</p>' if uf in NOTA else ''}
+      <p class="conc">{e(t["conceito"])}</p>{notas_html(uf, e)}
       <p class="num"><b>{i + 1:02d}</b> / 14 · {REGIAO[uf]}</p>
     </div>
     <div class="cena-arte">
@@ -503,7 +503,7 @@ for i, s in enumerate(data):
 <section class="cinema"><img src="{R}img/{e(s.get("campanha") or s["lugar"][0])}" alt="O par de {e(s["nome"])} na campanha" loading="lazy">
   <div class="cin-leg"><p class="eb">campanha</p><h2>O par <em>no lugar</em></h2></div></section>
 <section class="e-lugar" style="padding-top:12svh">
-  <div class="lugar dois">{lugar}</div>
+  <div class="lugar {'dois' if len(lug) > 1 else 'um'}">{lugar}</div>
 </section>
 <section class="e-evitar">
   <p class="eb">o que ficou de fora</p>

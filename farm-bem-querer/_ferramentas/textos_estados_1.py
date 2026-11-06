@@ -30,7 +30,7 @@ T['BA'] = {
  'evitar': [
   '**Orixás e Iemanjá como enfeite:** são divindades do candomblé, não estampa.',
   '**Fita com texto escrito:** vira souvenir; a fita entra só como cor.',
-  '**Baiana como fantasia de carnaval:** o ofício é patrimônio; entra a saia rodada e a renda, com respeito.',
+  '**Baiana como figura no desenho:** o ofício das baianas de acarajé é patrimônio e a roupa tem ligação com o candomblé; nenhuma baiana entra na estampa.',
   '**Praia genérica com coqueiro:** a Bahia que a gente quer é a da cidade e da festa.'],
  'estampa': {
   'nome': 'Ladeira do Pelô', 'conceito': 'Três casarões cor de bala do Pelourinho e, dobrando a esquina, a saia branca rendada de uma baiana. No gradil, fitas coloridas ao vento.',

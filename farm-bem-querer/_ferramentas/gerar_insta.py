@@ -17,7 +17,7 @@ IMG = os.path.join(OUT, '_img')
 os.makedirs(IMG, exist_ok=True)
 POR = {s['uf']: s for s in data}
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from notas_estado import NOTA, VERMELHO  # noqa: E402
+from notas_estado import notas_html  # noqa: E402
 
 
 def e(s):
@@ -67,7 +67,7 @@ def sl(corpo, alt, classe='', topo=True):
 
 def arco_estado(uf):
     s, t = POR[uf], V[uf]
-    sl(f'''<p class="eb">{data.index(s) + 1:02d} / 14 · {REGIAO[uf]}</p><h2 class="nome">{e(s["nome"])}</h2><p class="est">{e(t["nome"])}</p>{f'<p class="nota-v">{e(NOTA[uf])}</p>' if uf in NOTA else ''}
+    sl(f'''<p class="eb">{data.index(s) + 1:02d} / 14 · {REGIAO[uf]}</p><h2 class="nome">{e(s["nome"])}</h2><p class="est">{e(t["nome"])}</p>{notas_html(uf, e)}
 <div class="arte"><div class="arco"><img src="{jpg(s["ilu"])}" alt=""></div><img class="flutua" src="{par(uf)}" alt=""></div>
 <p class="cor-l"><b>o coração:</b> {e(s["coracao_texto"])}</p>''',
        f'{s["nome"]}: ilustração "{t["nome"]}" num arco, com o par de chinelos por cima. {t["conceito"]} O coração escondido: {s["coracao_texto"]}.', 'estado')
@@ -180,6 +180,7 @@ figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:4
 /* estado */
 .estado .nome{font-size:130px;line-height:.86;margin:18px 0 10px}
 .est{font:italic 400 48px/1.1 var(--serif);color:var(--vinho);margin:0}
+.nota-c{color:#6A1B29 !important}
 .nota-v{margin:22px 0 0;max-width:660px;font:400 21px/1.42 var(--sans);color:#C8321F;padding-left:16px;border-left:2px solid currentColor}
 .estado .arte{position:absolute;left:50%;bottom:150px;width:620px;transform:translateX(-42%)}
 .estado .arte .arco{aspect-ratio:3/3.6}
