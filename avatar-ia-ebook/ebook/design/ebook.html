@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Prato Pequeno, Proteína Grande</title>
+<style>@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal;
+  src: url("fontes/dm-serif-display-400-normal.ttf") format("truetype"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic;
+  src: url("fontes/dm-serif-display-400-italic.ttf") format("truetype"); }
+@font-face { font-family: "DM Sans"; font-weight: 400; font-style: normal;
+  src: url("fontes/dm-sans-400-normal.ttf") format("truetype"); }
+@font-face { font-family: "DM Sans"; font-weight: 400; font-style: italic;
+  src: url("fontes/dm-sans-400-italic.ttf") format("truetype"); }
+@font-face { font-family: "DM Sans"; font-weight: 700; font-style: normal;
+  src: url("fontes/dm-sans-700-normal.ttf") format("truetype"); }
+
+:root {
+  --salvia: #8FA38A;
+  --salvia-escura: #566B50;
+  --salvia-clara: #E4E9DE;
+  --creme: #F4EEE3;
+  --papel: #FBF8F2;
+  --terracota: #C8693F;
+  --grafite: #2E2E2C;
+  --cinza: #66645F;
+  --serif: "DM Serif Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #ddd; }
+body { font-family: var(--sans); color: var(--grafite); font-size: 13.5px; line-height: 1.5; }
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: var(--papel);
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+
+.folio {
+  position: absolute; bottom: 26px; left: 0; right: 0;
+  text-align: center; font-size: 10px; letter-spacing: 0.12em; color: var(--cinza);
+}
+
+.kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--salvia-escura);
+}
+h2 { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1.08; margin-top: 8px; }
+h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--terracota); margin-bottom: 10px; }
+h4 { font-size: 14px; font-weight: 700; }
+strong, b { font-weight: 700; }
+em { font-style: italic; }
+
+/* ------------------------------------------------------------ capa */
+.capa { background: var(--creme); padding: 64px 64px 0; }
+.capa .sobre-titulo { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--salvia-escura); }
+.capa h1 { font-family: var(--serif); font-weight: 400; font-size: 74px; line-height: 1.0; margin-top: 22px; }
+.capa h1 em { color: var(--terracota); }
+.capa .sub { font-size: 17px; line-height: 1.4; margin-top: 20px; max-width: 440px; color: var(--grafite); }
+.capa .autora { font-size: 15px; margin-top: 18px; color: var(--cinza); }
+.capa .autora strong { color: var(--grafite); }
+.capa .foto-capa { position: absolute; left: 0; bottom: 0; width: 794px; height: 520px; display: block; }
+.capa .selo {
+  position: absolute; right: 56px; bottom: 470px; width: 112px; height: 112px; border-radius: 50%;
+  background: var(--terracota); color: var(--papel); text-align: center; padding-top: 22px;
+}
+.capa .selo strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1; }
+.capa .selo span { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 4px; }
+
+/* ------------------------------------------------------------ páginas de texto */
+.texto { padding: 72px 72px 80px; }
+.texto h2 { margin-bottom: 22px; max-width: 560px; }
+.texto p { margin-bottom: 14px; max-width: 610px; font-size: 15.5px; }
+.texto .lead { font-size: 16px; line-height: 1.5; }
+.preencher { color: var(--terracota); font-weight: 700; }
+.bloco-bia { margin-top: 40px; padding: 28px 32px 18px; background: var(--salvia-clara); border-radius: 18px; }
+.bloco-bia .kicker { margin-bottom: 10px; }
+
+.legenda { display: flex; margin: 28px 0 22px; padding: 18px 0; border-top: 1px solid #D9D3C7;
+  border-bottom: 1px solid #D9D3C7; }
+.legenda div { flex: 1; }
+.legenda b { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.1; }
+.legenda div:first-child b { color: var(--terracota); }
+.legenda span { display: block; font-size: 11.5px; color: var(--cinza); margin-top: 4px; max-width: 120px; line-height: 1.3; }
+.texto .nota { font-size: 12.5px; color: var(--cinza); }
+.titulo-dicas { margin-top: 34px; margin-bottom: 14px; }
+.dicas { display: flex; gap: 16px; }
+.card { flex: 1; background: var(--creme); border-radius: 16px; padding: 22px 20px 12px; }
+.card b { display: block; font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1;
+  color: var(--terracota); margin-bottom: 10px; }
+.card h4 { margin-bottom: 6px; }
+.card p { font-size: 13px; line-height: 1.45; }
+
+.despensa { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+.grupo { background: var(--creme); border-radius: 16px; padding: 20px 24px 10px; }
+.grupo h4 { color: var(--terracota); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 8px; }
+.grupo p { font-size: 13.5px; line-height: 1.65; }
+.grupo.largo { grid-column: span 2; }
+.grupo.largo p { columns: 3; column-gap: 24px; }
+
+.sumario { padding-bottom: 60px; }
+.indice { columns: 2; column-gap: 40px; margin-top: 20px; }
+.indice .cap { break-inside: avoid; margin-bottom: 28px; }
+.indice h4 { color: var(--terracota); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 6px; }
+.indice p { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; margin-bottom: 7px;
+  line-height: 1.45; max-width: none; }
+.indice .pg { color: var(--cinza); }
+
+.ranking { margin-top: 10px; }
+.ranking p { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid #E3DDD1; margin: 0; max-width: none;
+  font-size: 14px; }
+.ranking span:first-child { flex: 1; }
+.ranking .v { width: 60px; text-align: right; color: var(--terracota); font-weight: 700; }
+.ranking .k { width: 80px; text-align: right; color: var(--cinza); }
+.ranking .pg { width: 48px; text-align: right; color: var(--cinza); }
+.rapidas { font-size: 13.5px; line-height: 1.7; }
+
+/* ------------------------------------------------------------ aberturas de capítulo */
+.abertura { background: var(--salvia); color: var(--papel); padding: 120px 72px; }
+.abertura .cap-num { font-family: var(--serif); font-size: 190px; line-height: 0.9; color: var(--creme); opacity: 0.9; }
+.abertura h2 { font-size: 64px; margin-top: 18px; color: var(--papel); }
+.abertura .cap-qtd { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-top: 18px; color: var(--grafite); }
+.abertura .cap-lista { font-size: 15px; line-height: 1.75; margin-top: 46px; color: var(--grafite); }
+.abertura .folio { color: var(--grafite); }
+
+/* ------------------------------------------------------------ receita */
+.receita .foto { display: block; width: 794px; height: 400px; }
+.receita .conteudo { padding: 34px 60px 0; }
+.receita h2 { font-size: 42px; margin-top: 6px; }
+.stats { display: flex; margin: 20px 0 24px; padding: 14px 0 12px; border-top: 1px solid #D9D3C7;
+  border-bottom: 1px solid #D9D3C7; }
+.stats div { flex: 1; }
+.stats b { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.1; }
+.stats span { display: block; font-size: 11px; color: var(--cinza); margin-top: 2px; line-height: 1.3; max-width: 130px; }
+.stats .destaque b { color: var(--terracota); }
+.colunas { display: flex; gap: 34px; }
+.ingredientes { width: 40%; }
+.preparo { flex: 1; }
+.ingredientes ul { list-style: none; }
+.ingredientes li { padding-left: 14px; text-indent: -14px; margin-bottom: 8px; font-size: 14px; line-height: 1.4; }
+.ingredientes li .m { display: inline-block; width: 14px; text-indent: 0; color: var(--terracota); font-weight: 700; }
+.ingredientes li.temperos { color: var(--cinza); font-style: italic; }
+.preparo p { padding-left: 28px; text-indent: -28px; margin-bottom: 11px; font-size: 14.5px; line-height: 1.5; }
+.preparo p b { display: inline-block; width: 28px; text-indent: 0; font-family: var(--serif); font-weight: 400;
+  font-size: 19px; line-height: 1; color: var(--terracota); }
+.dica { margin-top: 16px; padding: 14px 20px 12px; background: var(--salvia-clara); border-radius: 14px; }
+.dica h4 { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--salvia-escura);
+  margin-bottom: 3px; }
+.dica p { font-size: 14px; line-height: 1.45; }
+.dica.congela { background: var(--creme); }
+.dica.congela h4 { color: var(--terracota); }
+
+/* ------------------------------------------------------------ fecho */
+.fecho { background: var(--terracota); color: var(--papel); padding: 200px 72px; }
+.fecho h2 { font-size: 84px; line-height: 1.0; color: var(--papel); }
+.fecho h2 em { color: var(--grafite); }
+.fecho p { font-size: 18px; line-height: 1.5; margin-top: 30px; max-width: 520px; }
+.fecho .assina { font-size: 18px; margin-top: 50px; }
+.fecho .assina strong { font-family: var(--serif); font-weight: 400; font-size: 34px; }
+.fecho .preencher-claro { font-weight: 700; text-decoration: underline; }
+.fecho .rodape-ia { position: absolute; left: 72px; bottom: 60px; font-size: 12px; margin: 0; opacity: 0.85; }
+.fecho .folio { color: var(--papel); }
+</style>
+</head>
+<body>
+<section class="page capa">
+      <p class="sobre-titulo">Ebook de receitas</p>
+      <h1>Prato Pequeno,<br><em>Proteína Grande</em></h1>
+      <p class="sub">40 receitas proteicas em porção pequena, sem complicação</p>
+      <p class="autora">por <strong>Bia</strong></p>
+      <img class="foto-capa" src="guia-capa.png" alt="Foto da capa">
+      <div class="selo"><strong>40</strong><span>receitas</span></div>
+    </section><section class="page texto">
+      <p class="kicker">Antes de começar</p>
+      <h2>Receitas, não um plano alimentar</h2>
+      <p>Este ebook traz receitas. Ele não substitui consulta com nutricionista ou médico.</p>
+      <p>Se você usa medicação para emagrecer, tem diabetes, doença renal ou outra condição de saúde, está
+      grávida ou amamentando, siga a orientação do seu profissional de saúde sobre quanto e o que comer.</p>
+      <p>Confira alergias e intolerâncias: as receitas usam ovo, leite e derivados, amendoim, peixe, frutos do
+      mar e aveia (que pode conter glúten).</p>
+      <div class="bloco-bia">
+        <p class="kicker">Quem é a Bia</p>
+        <p>A Bia é uma personagem criada com inteligência artificial para o perfil
+        <span class="preencher">[@perfil]</span>. Ela cozinha prático, com ingrediente de mercado comum, e
+        acredita que comida boa não precisa de frescura.</p>
+        <p>As receitas foram desenvolvidas por <span class="preencher">[autor]</span> e revisadas por
+        <span class="preencher">[nome da nutricionista], CRN [número]</span>.</p>
+      </div>
+    <p class="folio">2</p></section><section class="page texto">
+      <p class="kicker">Como usar este ebook</p>
+      <h2>Cada garfada precisa valer mais</h2>
+      <p class="lead">Quando a gente come menos, a proteína faz falta. Por isso todas as receitas daqui são
+      <strong>porções pequenas com bastante proteína</strong>, feitas com coisas que você acha em qualquer
+      mercado.</p>
+      <div class="legenda">
+        <div><b>22 g</b><span>proteína por porção</span></div>
+        <div><b>260</b><span>kcal por porção</span></div>
+        <div><b>4 min</b><span>do primeiro passo ao prato</span></div>
+        <div><b>1</b><span>quantas porções rende</span></div>
+      </div>
+      <p class="nota">Proteína e calorias são aproximadas e mudam com a marca e o tamanho dos ingredientes.
+      Sal, alho, ervas, limão e especiarias não entram na conta. Colher de sopa de aveia ou de leite em pó:
+      cerca de 10 g. Xícara: 240 ml.</p>
+      <h3 class="titulo-dicas">Três coisas que deixam a semana mais fácil</h3>
+      <div class="dicas">
+        <div class="card"><b>1</b><h4>Frango desfiado pronto</h4><p>Cozinhe 1 kg de peito no domingo, desfie
+        e guarde em potes. Ele aparece em 7 receitas.</p></div>
+        <div class="card"><b>2</b><h4>Ovos cozidos</h4><p>Cozidos e com casca, duram até 1 semana na
+        geladeira.</p></div>
+        <div class="card"><b>3</b><h4>Leite em pó desnatado</h4><p>O truque mais barato para pôr proteína em
+        doce, mingau e vitamina.</p></div>
+      </div>
+    <p class="folio">3</p></section><section class="page texto">
+      <p class="kicker">Despensa básica</p>
+      <h2>Tudo o que aparece nas 40 receitas</h2>
+      <p class="lead">Fora os temperos. Com isso na geladeira e no armário, você faz o ebook inteiro.</p>
+      <div class="despensa"><div class="grupo"><h4>Proteínas</h4><p>Ovos<br>Peito de frango<br>Patinho moído<br>Filé de tilápia<br>Camarão limpo<br>Atum em lata (em água)</p></div><div class="grupo"><h4>Laticínios</h4><p>Iogurte natural<br>Leite desnatado<br>Leite em pó desnatado<br>Ricota<br>Queijo cottage<br>Queijo minas frescal<br>Mussarela<br>Parmesão ralado<br>Requeijão light</p></div><div class="grupo"><h4>Grãos e farinhas</h4><p>Aveia em flocos<br>Goma de tapioca<br>Pão integral<br>Wrap integral<br>Grão-de-bico<br>Feijão carioca<br>Farinha de mandioca<br>Amido de milho<br>Chia</p></div><div class="grupo"><h4>Despensa</h4><p>Molho de tomate (passata)<br>Champignon em conserva<br>Pasta de amendoim<br>Amendoim torrado sem sal<br>Cacau em pó 100%<br>Gelatina incolor sem sabor<br>Azeite<br>Shoyu</p></div><div class="grupo largo"><h4>Hortifrúti</h4><p>Abóbora cabotiá<br>Couve-flor<br>Abobrinha<br>Espinafre<br>Alface<br>Pepino<br>Tomate<br>Cebola<br>Pimentão<br>Cenoura<br>Couve<br>Brócolis<br>Banana<br>Maçã<br>Morango<br>Frutas vermelhas congeladas</p></div></div>
+    <p class="folio">4</p></section><section class="page texto sumario">
+      <p class="kicker">Sumário</p>
+      <h2>40 receitas</h2>
+      <div class="indice"><div class="cap"><h4>Café da manhã</h4><p><span>1. Omelete de caneca</span><span class="pg">7</span></p><p><span>2. Crepioca de queijo</span><span class="pg">8</span></p><p><span>3. Overnight oats de pote</span><span class="pg">9</span></p><p><span>4. Pão de queijo de frigideira</span><span class="pg">10</span></p><p><span>5. Mingau de aveia com ovo</span><span class="pg">11</span></p><p><span>6. Tapioca de frango com requeijão</span><span class="pg">12</span></p><p><span>7. Ovos mexidos cremosos com ricota</span><span class="pg">13</span></p><p><span>8. Vitamina de banana e cacau</span><span class="pg">14</span></p></div><div class="cap"><h4>Almoço e jantar</h4><p><span>9. Frango cremoso de frigideira</span><span class="pg">16</span></p><p><span>10. Carne moída com abobrinha</span><span class="pg">17</span></p><p><span>11. Omelete de forno de legumes</span><span class="pg">18</span></p><p><span>12. Tilápia de frigideira com limão</span><span class="pg">19</span></p><p><span>13. Escondidinho de frango com couve-flor</span><span class="pg">20</span></p><p><span>14. Strogonoff de frango com iogurte</span><span class="pg">21</span></p><p><span>15. Salada morna de atum e grão-de-bico</span><span class="pg">22</span></p><p><span>16. Panqueca de carne com massa de ovo</span><span class="pg">23</span></p><p><span>17. Creme de abóbora com frango</span><span class="pg">24</span></p><p><span>18. Kafta de frigideira com molho de iogurte</span><span class="pg">25</span></p><p><span>19. Tropeiro de frango</span><span class="pg">26</span></p><p><span>20. Ovos no molho de tomate</span><span class="pg">27</span></p><p><span>21. Frango xadrez rápido</span><span class="pg">28</span></p><p><span>22. Abobrinha recheada com carne</span><span class="pg">29</span></p><p><span>23. Camarão no alho com abobrinha em fita</span><span class="pg">30</span></p><p><span>24. Salpicão leve de frango</span><span class="pg">31</span></p></div><div class="cap"><h4>Lanches</h4><p><span>25. Wrap de atum</span><span class="pg">33</span></p><p><span>26. Muffin salgado de frango</span><span class="pg">34</span></p><p><span>27. Ovos recheados com atum</span><span class="pg">35</span></p><p><span>28. Torrada de ricota, tomate e ovo</span><span class="pg">36</span></p><p><span>29. Iscas de frango crocantes na air fryer</span><span class="pg">37</span></p><p><span>30. Pasta de ricota com ervas e palitos</span><span class="pg">38</span></p><p><span>31. Hambúrguer de frango caseiro</span><span class="pg">39</span></p><p><span>32. Pizza de frigideira</span><span class="pg">40</span></p></div><div class="cap"><h4>Doces</h4><p><span>33. Mousse de cacau proteica</span><span class="pg">42</span></p><p><span>34. Brigadeiro de colher proteico</span><span class="pg">43</span></p><p><span>35. Bolo de caneca de banana</span><span class="pg">44</span></p><p><span>36. Panqueca de ricota com frutas vermelhas</span><span class="pg">45</span></p><p><span>37. Cheesecake de pote</span><span class="pg">46</span></p><p><span>38. Picolé de iogurte com morango</span><span class="pg">47</span></p><p><span>39. Maçã assada com ricota e canela</span><span class="pg">48</span></p><p><span>40. Sorvete de banana com pasta de amendoim</span><span class="pg">49</span></p></div></div>
+    <p class="folio">5</p></section><section class="page abertura">
+      <p class="cap-num">01</p>
+      <h2>Café da manhã</h2>
+      <p class="cap-qtd">8 receitas · páginas 7 a 14</p>
+      <p class="cap-lista">1. Omelete de caneca<br>2. Crepioca de queijo<br>3. Overnight oats de pote<br>4. Pão de queijo de frigideira<br>5. Mingau de aveia com ovo<br>6. Tapioca de frango com requeijão<br>7. Ovos mexidos cremosos com ricota<br>8. Vitamina de banana e cacau</p>
+    <p class="folio">6</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Omelete de caneca">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 01</p>
+        <h2>Omelete de caneca</h2>
+        <div class="stats">
+          <div class="destaque"><b>22 g</b><span>proteína</span></div>
+          <div><b>260</b><span>kcal</span></div>
+          <div><b>4 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>2 colheres de sopa de cottage (30 g)</li><li><span class="m">•</span>1 fatia média de queijo minas frescal picada (30 g)</li><li><span class="m">•</span>1 punhado de espinafre picado</li><li><span class="m">•</span>1/2 tomate picado</li><li class="temperos"><span class="m"></span>Sal, pimenta-do-reino e orégano a gosto; óleo em spray para untar</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Unte uma caneca grande e bata os ovos com um garfo dentro dela.</p><p><b>2</b>Misture o cottage, o queijo, o espinafre, o tomate e os temperos.</p><p><b>3</b>Leve ao micro-ondas por 1 minuto, mexa e volte por mais 1 minuto a 1min30, até firmar.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>A caneca precisa ser grande: o ovo sobe no micro-ondas e depois baixa.</p></div>
+      </div>
+    <p class="folio">7</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Crepioca de queijo">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 02</p>
+        <h2>Crepioca de queijo</h2>
+        <div class="stats">
+          <div class="destaque"><b>21 g</b><span>proteína</span></div>
+          <div><b>290</b><span>kcal</span></div>
+          <div><b>7 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>2 claras</li><li><span class="m">•</span>2 colheres de sopa de goma de tapioca (30 g)</li><li><span class="m">•</span>40 g de queijo minas frescal</li><li><span class="m">•</span>1/2 tomate em rodelas</li><li class="temperos"><span class="m"></span>Sal e orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata o ovo, as claras, a goma e uma pitada de sal com um garfo.</p><p><b>2</b>Despeje numa frigideira antiaderente untada, em fogo médio, e tampe por 2 minutos.</p><p><b>3</b>Vire, coloque o queijo e o tomate numa metade, dobre e deixe mais 1 minuto para o queijo amolecer.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">8</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Overnight oats de pote">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 03</p>
+        <h2>Overnight oats de pote</h2>
+        <div class="stats">
+          <div class="destaque"><b>20 g</b><span>proteína</span></div>
+          <div><b>350</b><span>kcal</span></div>
+          <div><b>5 min</b><span>+ 1 noite na geladeira</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>3 colheres de sopa de aveia em flocos (30 g)</li><li><span class="m">•</span>1 pote de iogurte natural (170 g)</li><li><span class="m">•</span>2 colheres de sopa de leite em pó desnatado (20 g)</li><li><span class="m">•</span>1 colher de sopa de chia (10 g)</li><li><span class="m">•</span>1/2 xícara de frutas vermelhas (50 g)</li><li class="temperos"><span class="m"></span>Canela e adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Num pote com tampa, misture a aveia, o iogurte, o leite em pó, a chia, a canela e o adoçante.</p><p><b>2</b>Cubra com as frutas vermelhas, tampe e deixe na geladeira de um dia para o outro.</p><p><b>3</b>Coma gelado, direto do pote.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Faça 3 potes de uma vez no domingo: duram até 3 dias na geladeira.</p></div>
+      </div>
+    <p class="folio">9</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Pão de queijo de frigideira">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 04</p>
+        <h2>Pão de queijo de frigideira</h2>
+        <div class="stats">
+          <div class="destaque"><b>17 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>8 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>1 clara</li><li><span class="m">•</span>2 colheres de sopa de goma de tapioca (30 g)</li><li><span class="m">•</span>2 colheres de sopa cheias de cottage (40 g)</li><li><span class="m">•</span>1 colher de sopa de parmesão ralado</li><li class="temperos"><span class="m"></span>1 pitada de sal</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata tudo com um garfo até virar uma massa mole.</p><p><b>2</b>Despeje numa frigideira pequena antiaderente untada, em fogo baixo.</p><p><b>3</b>Tampe e deixe 3 minutos de cada lado, até dourar.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">10</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Mingau de aveia com ovo">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 05</p>
+        <h2>Mingau de aveia com ovo</h2>
+        <div class="stats">
+          <div class="destaque"><b>18 g</b><span>proteína</span></div>
+          <div><b>310</b><span>kcal</span></div>
+          <div><b>6 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>3 colheres de sopa de aveia em flocos (30 g)</li><li><span class="m">•</span>1 xícara de leite desnatado (200 ml)</li><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>1/2 banana amassada</li><li class="temperos"><span class="m"></span>Canela a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Leve o leite, a aveia e a banana ao fogo baixo, mexendo, por 3 minutos.</p><p><b>2</b>Desligue. Bata o ovo à parte e junte ao mingau mexendo rápido.</p><p><b>3</b>Volte ao fogo por 1 minuto sem parar de mexer. Sirva com canela.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Ninguém percebe o ovo: ele só deixa o mingau mais cremoso e mais proteico.</p></div>
+      </div>
+    <p class="folio">11</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Tapioca de frango com requeijão">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 06</p>
+        <h2>Tapioca de frango com requeijão</h2>
+        <div class="stats">
+          <div class="destaque"><b>21 g</b><span>proteína</span></div>
+          <div><b>230</b><span>kcal</span></div>
+          <div><b>6 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>3 colheres de sopa de goma de tapioca (40 g)</li><li><span class="m">•</span>60 g de frango cozido desfiado</li><li><span class="m">•</span>1 colher de sopa de requeijão light</li><li class="temperos"><span class="m"></span>Orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Espalhe a goma numa frigideira antiaderente fria e leve ao fogo médio até as bordas soltarem.</p><p><b>2</b>Vire e espalhe o requeijão e o frango numa metade.</p><p><b>3</b>Dobre e deixe mais 1 minuto.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Deixe frango desfiado pronto na geladeira: serve aqui, no wrap e na pizza de frigideira.</p></div>
+      </div>
+    <p class="folio">12</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Ovos mexidos cremosos com ricota">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 07</p>
+        <h2>Ovos mexidos cremosos com ricota</h2>
+        <div class="stats">
+          <div class="destaque"><b>19 g</b><span>proteína</span></div>
+          <div><b>250</b><span>kcal</span></div>
+          <div><b>5 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>2 colheres de sopa de ricota esfarelada (30 g)</li><li><span class="m">•</span>1 fatia de pão integral</li><li class="temperos"><span class="m"></span>Sal, pimenta-do-reino e cebolinha a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata os ovos com sal e leve a uma frigideira antiaderente em fogo baixo.</p><p><b>2</b>Mexa devagar com uma espátula. Quando estiverem quase firmes, junte a ricota.</p><p><b>3</b>Desligue (eles terminam no calor da panela) e sirva sobre o pão tostado com cebolinha.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">13</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Vitamina de banana e cacau">
+      <div class="conteudo">
+        <p class="kicker">Café da manhã · 08</p>
+        <h2>Vitamina de banana e cacau</h2>
+        <div class="stats">
+          <div class="destaque"><b>16 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>3 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 copo de leite desnatado gelado (200 ml)</li><li><span class="m">•</span>1 banana pequena</li><li><span class="m">•</span>1 colher de sopa de cacau em pó 100%</li><li><span class="m">•</span>2 colheres de sopa de leite em pó desnatado (20 g)</li><li class="temperos"><span class="m"></span>Gelo e adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata tudo no liquidificador por 1 minuto.</p><p><b>2</b>Sirva na hora.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Banana congelada em rodelas deixa a vitamina com textura de milk-shake.</p></div>
+      </div>
+    <p class="folio">14</p></section><section class="page abertura">
+      <p class="cap-num">02</p>
+      <h2>Almoço e jantar</h2>
+      <p class="cap-qtd">16 receitas · páginas 16 a 31</p>
+      <p class="cap-lista">9. Frango cremoso de frigideira<br>10. Carne moída com abobrinha<br>11. Omelete de forno de legumes<br>12. Tilápia de frigideira com limão<br>13. Escondidinho de frango com couve-flor<br>14. Strogonoff de frango com iogurte<br>15. Salada morna de atum e grão-de-bico<br>16. Panqueca de carne com massa de ovo<br>17. Creme de abóbora com frango<br>18. Kafta de frigideira com molho de iogurte<br>19. Tropeiro de frango<br>20. Ovos no molho de tomate<br>21. Frango xadrez rápido<br>22. Abobrinha recheada com carne<br>23. Camarão no alho com abobrinha em fita<br>24. Salpicão leve de frango</p>
+    <p class="folio">15</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Frango cremoso de frigideira">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 09</p>
+        <h2>Frango cremoso de frigideira</h2>
+        <div class="stats">
+          <div class="destaque"><b>30 g</b><span>proteína</span></div>
+          <div><b>230</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>2</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>250 g de peito de frango em cubos</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>1 tomate picado</li><li><span class="m">•</span>3 colheres de sopa de requeijão light</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>Alho, sal, páprica e salsinha a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Tempere o frango com sal, alho e páprica.</p><p><b>2</b>Doure no azeite em fogo alto por 5 a 6 minutos.</p><p><b>3</b>Junte a cebola e o tomate e cozinhe por 3 minutos.</p><p><b>4</b>Desligue o fogo, misture o requeijão e finalize com salsinha.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Sirva com legumes no vapor ou uma colher de arroz.</p></div>
+      </div>
+    <p class="folio">16</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Carne moída com abobrinha">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 10</p>
+        <h2>Carne moída com abobrinha</h2>
+        <div class="stats">
+          <div class="destaque"><b>29 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>2</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>250 g de patinho moído</li><li><span class="m">•</span>1 abobrinha média em cubos</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>1 tomate picado</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>Alho, sal, cominho e cheiro-verde a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Doure a carne no azeite em fogo alto, soltando bem com a colher.</p><p><b>2</b>Junte a cebola, o alho e o tomate e refogue por 2 minutos.</p><p><b>3</b>Acrescente a abobrinha e os temperos e cozinhe tampado por 5 minutos (ela deve ficar al dente).</p></div>
+        </div>
+        <div class="dica congela"><h4>Congela</h4><p>Congela em porções por até 2 meses.</p></div>
+      </div>
+    <p class="folio">17</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Omelete de forno de legumes">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 11</p>
+        <h2>Omelete de forno de legumes</h2>
+        <div class="stats">
+          <div class="destaque"><b>22 g</b><span>proteína</span></div>
+          <div><b>270</b><span>kcal</span></div>
+          <div><b>30 min</b><span>25 no forno</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>6 ovos</li><li><span class="m">•</span>100 g de ricota esfarelada</li><li><span class="m">•</span>3 colheres de sopa de parmesão ralado</li><li><span class="m">•</span>1 abobrinha ralada</li><li><span class="m">•</span>1 cenoura ralada</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>1 punhado de espinafre</li><li class="temperos"><span class="m"></span>Sal e pimenta-do-reino a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Preaqueça o forno a 200 °C e unte um refratário de uns 20 × 20 cm.</p><p><b>2</b>Bata os ovos e misture todos os outros ingredientes.</p><p><b>3</b>Despeje no refratário e asse por 25 minutos, até dourar e firmar no centro.</p></div>
+        </div>
+        <div class="dica congela"><h4>Congela</h4><p>Corte em 3 e congele em potes separados.</p></div>
+      </div>
+    <p class="folio">18</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Tilápia de frigideira com limão">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 12</p>
+        <h2>Tilápia de frigideira com limão</h2>
+        <div class="stats">
+          <div class="destaque"><b>32 g</b><span>proteína</span></div>
+          <div><b>210</b><span>kcal</span></div>
+          <div><b>12 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 filé de tilápia (150 g)</li><li><span class="m">•</span>1 colher de chá de azeite</li><li><span class="m">•</span>1 xícara de brócolis</li><li class="temperos"><span class="m"></span>Sal, alho, páprica e limão a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Tempere o peixe com sal, alho, páprica e limão.</p><p><b>2</b>Aqueça bem a frigideira com o azeite e coloque o filé. Não mexa por 3 a 4 minutos.</p><p><b>3</b>Vire com cuidado e deixe mais 3 minutos.</p><p><b>4</b>Cozinhe o brócolis no vapor ou no micro-ondas com um pouco de água por 3 minutos.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Peixe gruda quando a frigideira está fria ou quando você mexe antes da hora.</p></div>
+      </div>
+    <p class="folio">19</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Escondidinho de frango com couve-flor">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 13</p>
+        <h2>Escondidinho de frango com couve-flor</h2>
+        <div class="stats">
+          <div class="destaque"><b>28 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>25 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 couve-flor pequena cozida (400 g)</li><li><span class="m">•</span>3 colheres de sopa de requeijão light</li><li><span class="m">•</span>200 g de frango cozido desfiado</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>1 tomate picado</li><li><span class="m">•</span>40 g de mussarela ralada</li><li class="temperos"><span class="m"></span>Sal, alho e noz-moscada a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Cozinhe a couve-flor até ficar bem macia e amasse (ou processe) com o requeijão, sal e noz-moscada.</p><p><b>2</b>Refogue o frango com a cebola, o alho e o tomate por 3 minutos.</p><p><b>3</b>Num refratário, faça uma camada de frango, cubra com o purê e espalhe a mussarela.</p><p><b>4</b>Gratine no forno a 200 °C ou na air fryer por 10 minutos.</p></div>
+        </div>
+        <div class="dica congela"><h4>Congela</h4><p>Congela montado, em potes individuais.</p></div>
+      </div>
+    <p class="folio">20</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Strogonoff de frango com iogurte">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 14</p>
+        <h2>Strogonoff de frango com iogurte</h2>
+        <div class="stats">
+          <div class="destaque"><b>32 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>20 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>400 g de peito de frango em tiras</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>1 vidro pequeno de champignon fatiado (100 g)</li><li><span class="m">•</span>3 colheres de sopa de molho de tomate</li><li><span class="m">•</span>1 pote de iogurte natural (170 g)</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>1 colher de sopa de mostarda, sal e alho a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Doure o frango no azeite em fogo alto.</p><p><b>2</b>Junte a cebola e o alho, depois o champignon, o molho de tomate e a mostarda. Cozinhe 3 minutos.</p><p><b>3</b>Desligue o fogo, espere 1 minuto e só então misture o iogurte.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>O segredo é desligar o fogo antes do iogurte: se ferver, ele talha.</p></div>
+      </div>
+    <p class="folio">21</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Salada morna de atum e grão-de-bico">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 15</p>
+        <h2>Salada morna de atum e grão-de-bico</h2>
+        <div class="stats">
+          <div class="destaque"><b>30 g</b><span>proteína</span></div>
+          <div><b>310</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>2</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 lata de atum em água, escorrido (120 g)</li><li><span class="m">•</span>1 xícara de grão-de-bico cozido (160 g)</li><li><span class="m">•</span>2 ovos cozidos</li><li><span class="m">•</span>1 tomate picado</li><li><span class="m">•</span>1/4 de cebola roxa fatiada fina</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>Alho, sal, limão e salsinha a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Cozinhe os ovos por 10 minutos, esfrie e corte em quartos.</p><p><b>2</b>Aqueça o grão-de-bico numa frigideira com o azeite e o alho por 2 minutos.</p><p><b>3</b>Misture com o atum, o tomate e a cebola. Tempere com limão, sal e salsinha e cubra com os ovos.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Grão-de-bico em conserva, bem lavado, resolve em dia corrido.</p></div>
+      </div>
+    <p class="folio">22</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Panqueca de carne com massa de ovo">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 16</p>
+        <h2>Panqueca de carne com massa de ovo</h2>
+        <div class="stats">
+          <div class="destaque"><b>37 g</b><span>proteína</span></div>
+          <div><b>340</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>1 colher de sopa de aveia em flocos finos</li><li><span class="m">•</span>100 g de patinho moído</li><li><span class="m">•</span>2 colheres de sopa de molho de tomate</li><li><span class="m">•</span>1 colher de sopa de cebola picada</li><li class="temperos"><span class="m"></span>Sal, alho e orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Refogue a carne com a cebola, o alho e metade do molho de tomate.</p><p><b>2</b>Bata os ovos com a aveia e uma pitada de sal.</p><p><b>3</b>Faça 2 discos finos numa frigideira antiaderente untada, 1 minuto de cada lado.</p><p><b>4</b>Recheie, enrole e cubra com o resto do molho e orégano.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">23</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Creme de abóbora com frango">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 17</p>
+        <h2>Creme de abóbora com frango</h2>
+        <div class="stats">
+          <div class="destaque"><b>25 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>25 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>500 g de abóbora cabotiá descascada em cubos</li><li><span class="m">•</span>1/2 cebola</li><li><span class="m">•</span>200 g de frango cozido desfiado</li><li><span class="m">•</span>3 colheres de sopa de requeijão light</li><li class="temperos"><span class="m"></span>2 dentes de alho, sal e cheiro-verde a gosto; 500 ml de água</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Cozinhe a abóbora com a cebola, o alho e a água por 15 minutos, até desmanchar.</p><p><b>2</b>Bata no liquidificador com o requeijão.</p><p><b>3</b>Volte à panela, junte o frango, acerte o sal e aqueça por 2 minutos. Finalize com cheiro-verde.</p></div>
+        </div>
+        <div class="dica congela"><h4>Congela</h4><p>Congela por até 3 meses.</p></div>
+      </div>
+    <p class="folio">24</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Kafta de frigideira com molho de iogurte">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 18</p>
+        <h2>Kafta de frigideira com molho de iogurte</h2>
+        <div class="stats">
+          <div class="destaque"><b>32 g</b><span>proteína</span></div>
+          <div><b>230</b><span>kcal</span></div>
+          <div><b>20 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>400 g de patinho moído</li><li><span class="m">•</span>1/2 cebola ralada</li><li><span class="m">•</span>1 pote de iogurte natural (170 g), para o molho</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>Hortelã, salsinha, cominho, sal, alho e limão a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Misture a carne com a cebola, hortelã e salsinha picadas, cominho e sal.</p><p><b>2</b>Modele 9 kaftas compridas.</p><p><b>3</b>Doure na frigideira com o azeite, 4 minutos de cada lado.</p><p><b>4</b>Para o molho, misture o iogurte com limão, alho amassado, hortelã e sal.</p></div>
+        </div>
+        <div class="dica congela"><h4>Congela</h4><p>Congele as kaftas cruas, separadas por papel-manteiga.</p></div>
+      </div>
+    <p class="folio">25</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Tropeiro de frango">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 19</p>
+        <h2>Tropeiro de frango</h2>
+        <div class="stats">
+          <div class="destaque"><b>31 g</b><span>proteína</span></div>
+          <div><b>300</b><span>kcal</span></div>
+          <div><b>20 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>200 g de frango cozido desfiado</li><li><span class="m">•</span>2 xícaras de feijão carioca cozido e escorrido (300 g)</li><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>2 folhas de couve fatiadas fino</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>3 colheres de sopa de farinha de mandioca</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>Alho, sal e cheiro-verde a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Refogue a cebola e o alho no azeite.</p><p><b>2</b>Quebre os ovos na panela e mexa até firmar.</p><p><b>3</b>Junte o frango e o feijão e cozinhe por 3 minutos. Acrescente a couve por 1 minuto.</p><p><b>4</b>Desligue e misture a farinha aos poucos. Finalize com cheiro-verde.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">26</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Ovos no molho de tomate">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 20</p>
+        <h2>Ovos no molho de tomate</h2>
+        <div class="stats">
+          <div class="destaque"><b>22 g</b><span>proteína</span></div>
+          <div><b>300</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 xícara de molho de tomate (200 g)</li><li><span class="m">•</span>1/4 de cebola picada</li><li><span class="m">•</span>1/4 de pimentão picado</li><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>30 g de queijo minas frescal esfarelado</li><li class="temperos"><span class="m"></span>Cominho, páprica, sal e salsinha a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Numa frigideira pequena, refogue a cebola e o pimentão em 2 colheres de sopa do próprio molho.</p><p><b>2</b>Junte o resto do molho e os temperos e cozinhe por 5 minutos.</p><p><b>3</b>Abra 2 espaços no molho, quebre um ovo em cada, tampe e deixe 5 a 6 minutos.</p><p><b>4</b>Finalize com o queijo e salsinha.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Gema mole: 5 minutos. Gema firme: 7.</p></div>
+      </div>
+    <p class="folio">27</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Frango xadrez rápido">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 21</p>
+        <h2>Frango xadrez rápido</h2>
+        <div class="stats">
+          <div class="destaque"><b>32 g</b><span>proteína</span></div>
+          <div><b>250</b><span>kcal</span></div>
+          <div><b>20 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>400 g de peito de frango em cubos</li><li><span class="m">•</span>1/2 pimentão verde e 1/2 vermelho em quadrados</li><li><span class="m">•</span>1 cebola em pétalas</li><li><span class="m">•</span>2 colheres de sopa de shoyu</li><li><span class="m">•</span>1 colher de sopa de amido de milho</li><li><span class="m">•</span>2 colheres de sopa de amendoim torrado sem sal</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>Alho e gengibre ralado a gosto; 1/2 xícara de água</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Doure o frango no azeite em fogo alto.</p><p><b>2</b>Junte alho, gengibre, pimentões e cebola e salteie por 3 minutos (eles devem ficar crocantes).</p><p><b>3</b>Dissolva o amido na água com o shoyu, despeje e mexa por 1 minuto, até engrossar.</p><p><b>4</b>Sirva com o amendoim por cima.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">28</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Abobrinha recheada com carne">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 22</p>
+        <h2>Abobrinha recheada com carne</h2>
+        <div class="stats">
+          <div class="destaque"><b>29 g</b><span>proteína</span></div>
+          <div><b>250</b><span>kcal</span></div>
+          <div><b>25 min</b><span>de preparo</span></div>
+          <div><b>2</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 abobrinhas médias</li><li><span class="m">•</span>200 g de patinho moído</li><li><span class="m">•</span>1/2 cebola picada</li><li><span class="m">•</span>1 tomate picado</li><li><span class="m">•</span>40 g de mussarela ralada</li><li class="temperos"><span class="m"></span>Alho, sal e orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Corte as abobrinhas ao meio no comprimento e tire o miolo com uma colher. Pique o miolo.</p><p><b>2</b>Refogue a carne com a cebola, o alho, o tomate e o miolo picado por 5 minutos.</p><p><b>3</b>Recheie as abobrinhas e cubra com a mussarela e orégano.</p><p><b>4</b>Asse na air fryer a 180 °C por 12 minutos ou no forno a 200 °C por 15 a 20 minutos.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">29</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Camarão no alho com abobrinha em fita">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 23</p>
+        <h2>Camarão no alho com abobrinha em fita</h2>
+        <div class="stats">
+          <div class="destaque"><b>32 g</b><span>proteína</span></div>
+          <div><b>210</b><span>kcal</span></div>
+          <div><b>12 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>150 g de camarão limpo</li><li><span class="m">•</span>1 abobrinha cortada em fitas com descascador</li><li><span class="m">•</span>1 colher de chá de azeite</li><li class="temperos"><span class="m"></span>3 dentes de alho fatiados, sal, limão, salsinha e pimenta calabresa a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Doure o alho no azeite por 30 segundos.</p><p><b>2</b>Junte o camarão e deixe 2 minutos de cada lado, até ficar rosado. Retire.</p><p><b>3</b>Na mesma frigideira, salteie a abobrinha por 2 minutos.</p><p><b>4</b>Volte o camarão, tempere com limão, sal e salsinha.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Camarão passa do ponto rápido: rosado e curvado em C está pronto.</p></div>
+      </div>
+    <p class="folio">30</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Salpicão leve de frango">
+      <div class="conteudo">
+        <p class="kicker">Almoço e jantar · 24</p>
+        <h2>Salpicão leve de frango</h2>
+        <div class="stats">
+          <div class="destaque"><b>34 g</b><span>proteína</span></div>
+          <div><b>230</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>300 g de frango cozido desfiado</li><li><span class="m">•</span>1 pote de iogurte natural (170 g)</li><li><span class="m">•</span>1 cenoura ralada</li><li><span class="m">•</span>1 maçã picada com casca</li><li class="temperos"><span class="m"></span>1 colher de sopa de mostarda, limão, sal e salsinha a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Misture o iogurte com a mostarda, limão e sal.</p><p><b>2</b>Junte o frango, a cenoura e a maçã.</p><p><b>3</b>Finalize com salsinha e sirva gelado.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Dura 3 dias na geladeira e vira recheio de wrap ou de pão integral.</p></div>
+      </div>
+    <p class="folio">31</p></section><section class="page abertura">
+      <p class="cap-num">03</p>
+      <h2>Lanches</h2>
+      <p class="cap-qtd">8 receitas · páginas 33 a 40</p>
+      <p class="cap-lista">25. Wrap de atum<br>26. Muffin salgado de frango<br>27. Ovos recheados com atum<br>28. Torrada de ricota, tomate e ovo<br>29. Iscas de frango crocantes na air fryer<br>30. Pasta de ricota com ervas e palitos<br>31. Hambúrguer de frango caseiro<br>32. Pizza de frigideira</p>
+    <p class="folio">32</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Wrap de atum">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 25</p>
+        <h2>Wrap de atum</h2>
+        <div class="stats">
+          <div class="destaque"><b>21 g</b><span>proteína</span></div>
+          <div><b>230</b><span>kcal</span></div>
+          <div><b>5 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 wrap integral</li><li><span class="m">•</span>1/2 lata de atum em água, escorrido</li><li><span class="m">•</span>1 colher de sopa de requeijão light</li><li><span class="m">•</span>2 folhas de alface</li><li><span class="m">•</span>1/2 tomate em rodelas</li><li class="temperos"><span class="m"></span>Limão e pimenta-do-reino a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Misture o atum com o requeijão, limão e pimenta.</p><p><b>2</b>Espalhe no wrap com a alface e o tomate.</p><p><b>3</b>Enrole bem apertado e aqueça 1 minuto de cada lado numa frigideira seca, se quiser.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">33</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Muffin salgado de frango">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 26</p>
+        <h2>Muffin salgado de frango</h2>
+        <div class="stats">
+          <div class="destaque"><b>26 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>25 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>3 ovos</li><li><span class="m">•</span>150 g de frango cozido desfiado</li><li><span class="m">•</span>3 colheres de sopa de ricota</li><li><span class="m">•</span>3 colheres de sopa de aveia em flocos</li><li><span class="m">•</span>1/2 cenoura ralada</li><li><span class="m">•</span>1/4 de cebola picada</li><li class="temperos"><span class="m"></span>1 colher de chá de fermento em pó, sal e orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Misture tudo, deixando o fermento por último.</p><p><b>2</b>Distribua em 6 forminhas de silicone.</p><p><b>3</b>Asse na air fryer a 170 °C por 15 minutos ou no forno a 180 °C por 20 minutos.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Rende 6 muffins; a porção é 2.</p></div><div class="dica congela"><h4>Congela</h4><p>Congela por até 2 meses. Aqueça na air fryer.</p></div>
+      </div>
+    <p class="folio">34</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Ovos recheados com atum">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 27</p>
+        <h2>Ovos recheados com atum</h2>
+        <div class="stats">
+          <div class="destaque"><b>21 g</b><span>proteína</span></div>
+          <div><b>190</b><span>kcal</span></div>
+          <div><b>15 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>1/4 de lata de atum em água, escorrido</li><li><span class="m">•</span>1 colher de sopa de iogurte natural</li><li class="temperos"><span class="m"></span>1 colher de chá de mostarda, páprica e cebolinha a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Cozinhe os ovos por 10 minutos e passe para água fria.</p><p><b>2</b>Descasque, corte ao meio e retire as gemas.</p><p><b>3</b>Amasse as gemas com o atum, o iogurte e a mostarda.</p><p><b>4</b>Recheie as claras e finalize com páprica e cebolinha.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">35</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Torrada de ricota, tomate e ovo">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 28</p>
+        <h2>Torrada de ricota, tomate e ovo</h2>
+        <div class="stats">
+          <div class="destaque"><b>16 g</b><span>proteína</span></div>
+          <div><b>210</b><span>kcal</span></div>
+          <div><b>8 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 fatia de pão integral</li><li><span class="m">•</span>3 colheres de sopa de ricota</li><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>1/2 tomate em rodelas</li><li class="temperos"><span class="m"></span>Sal, pimenta-do-reino e orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Toste o pão.</p><p><b>2</b>Amasse a ricota com sal e orégano e espalhe no pão.</p><p><b>3</b>Cubra com o tomate e um ovo frito na frigideira antiaderente sem óleo.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">36</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Iscas de frango crocantes na air fryer">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 29</p>
+        <h2>Iscas de frango crocantes na air fryer</h2>
+        <div class="stats">
+          <div class="destaque"><b>26 g</b><span>proteína</span></div>
+          <div><b>200</b><span>kcal</span></div>
+          <div><b>20 min</b><span>de preparo</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>300 g de peito de frango em tiras</li><li><span class="m">•</span>1 ovo batido</li><li><span class="m">•</span>4 colheres de sopa de aveia em flocos finos</li><li><span class="m">•</span>1 colher de sopa de parmesão ralado</li><li class="temperos"><span class="m"></span>Sal, páprica e alho em pó a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Tempere as tiras de frango.</p><p><b>2</b>Passe no ovo e depois na mistura de aveia com parmesão e páprica.</p><p><b>3</b>Asse na air fryer a 200 °C por 12 a 15 minutos, virando na metade.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Molho rápido: iogurte natural com limão, alho e sal.</p></div>
+      </div>
+    <p class="folio">37</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Pasta de ricota com ervas e palitos">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 30</p>
+        <h2>Pasta de ricota com ervas e palitos</h2>
+        <div class="stats">
+          <div class="destaque"><b>15 g</b><span>proteína</span></div>
+          <div><b>190</b><span>kcal</span></div>
+          <div><b>5 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>100 g de ricota</li><li><span class="m">•</span>1 colher de sopa de iogurte natural</li><li><span class="m">•</span>1/2 cenoura em palitos</li><li><span class="m">•</span>1/2 pepino em palitos</li><li class="temperos"><span class="m"></span>Cebolinha, salsinha, limão, sal e pimenta-do-reino a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Amasse a ricota com o iogurte até ficar cremosa.</p><p><b>2</b>Misture as ervas picadas, limão, sal e pimenta.</p><p><b>3</b>Sirva com os palitos de legumes.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">38</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Hambúrguer de frango caseiro">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 31</p>
+        <h2>Hambúrguer de frango caseiro</h2>
+        <div class="stats">
+          <div class="destaque"><b>24 g</b><span>proteína</span></div>
+          <div><b>150</b><span>kcal</span></div>
+          <div><b>20 min</b><span>de preparo</span></div>
+          <div><b>5</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>500 g de peito de frango moído</li><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>1/2 cebola ralada</li><li><span class="m">•</span>2 colheres de sopa de aveia em flocos finos</li><li class="temperos"><span class="m"></span>Alho, páprica defumada, salsinha e sal a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Misture tudo com as mãos (ou bata o peito no processador, se comprou inteiro).</p><p><b>2</b>Faça 5 bolas e achate em discos.</p><p><b>3</b>Doure em frigideira untada, 4 a 5 minutos de cada lado, ou na air fryer a 180 °C por 12 minutos.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Rende 5 hambúrgueres; a porção é 1. Fica ótimo no pão integral com alface e tomate.</p></div><div class="dica congela"><h4>Congela</h4><p>Congele cru, separado por papel-manteiga.</p></div>
+      </div>
+    <p class="folio">39</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Pizza de frigideira">
+      <div class="conteudo">
+        <p class="kicker">Lanches · 32</p>
+        <h2>Pizza de frigideira</h2>
+        <div class="stats">
+          <div class="destaque"><b>30 g</b><span>proteína</span></div>
+          <div><b>340</b><span>kcal</span></div>
+          <div><b>10 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 ovos</li><li><span class="m">•</span>1 colher de sopa de goma de tapioca</li><li><span class="m">•</span>2 colheres de sopa de molho de tomate</li><li><span class="m">•</span>30 g de mussarela ralada</li><li><span class="m">•</span>30 g de frango cozido desfiado</li><li><span class="m">•</span>algumas rodelas de tomate</li><li class="temperos"><span class="m"></span>Sal e orégano a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata os ovos com a goma e uma pitada de sal.</p><p><b>2</b>Despeje numa frigideira antiaderente untada, em fogo baixo, e tampe por 3 minutos.</p><p><b>3</b>Vire, espalhe o molho, o frango, a mussarela e o tomate.</p><p><b>4</b>Tampe até o queijo derreter e finalize com orégano.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">40</p></section><section class="page abertura">
+      <p class="cap-num">04</p>
+      <h2>Doces</h2>
+      <p class="cap-qtd">8 receitas · páginas 42 a 49</p>
+      <p class="cap-lista">33. Mousse de cacau proteica<br>34. Brigadeiro de colher proteico<br>35. Bolo de caneca de banana<br>36. Panqueca de ricota com frutas vermelhas<br>37. Cheesecake de pote<br>38. Picolé de iogurte com morango<br>39. Maçã assada com ricota e canela<br>40. Sorvete de banana com pasta de amendoim</p>
+    <p class="folio">41</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Mousse de cacau proteica">
+      <div class="conteudo">
+        <p class="kicker">Doces · 33</p>
+        <h2>Mousse de cacau proteica</h2>
+        <div class="stats">
+          <div class="destaque"><b>13 g</b><span>proteína</span></div>
+          <div><b>130</b><span>kcal</span></div>
+          <div><b>10 min</b><span>+ 2 h na geladeira</span></div>
+          <div><b>3</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 potes de iogurte natural (340 g)</li><li><span class="m">•</span>4 colheres de sopa de leite em pó desnatado (40 g)</li><li><span class="m">•</span>2 colheres de sopa de cacau em pó 100%</li><li><span class="m">•</span>1 envelope de gelatina incolor sem sabor (12 g)</li><li class="temperos"><span class="m"></span>5 colheres de sopa de água; adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Hidrate a gelatina na água por 5 minutos e derreta no micro-ondas por 10 a 15 segundos.</p><p><b>2</b>Bata o iogurte, o leite em pó, o cacau e o adoçante no liquidificador.</p><p><b>3</b>Com o liquidificador ligado, junte a gelatina.</p><p><b>4</b>Distribua em 3 potinhos e leve à geladeira por 2 horas.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">42</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Brigadeiro de colher proteico">
+      <div class="conteudo">
+        <p class="kicker">Doces · 34</p>
+        <h2>Brigadeiro de colher proteico</h2>
+        <div class="stats">
+          <div class="destaque"><b>13 g</b><span>proteína</span></div>
+          <div><b>140</b><span>kcal</span></div>
+          <div><b>3 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>3 colheres de sopa de leite em pó desnatado (30 g)</li><li><span class="m">•</span>1 colher de sopa de cacau em pó 100%</li><li><span class="m">•</span>3 colheres de sopa de leite desnatado</li><li class="temperos"><span class="m"></span>Adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Misture tudo até virar um creme liso. Se ficar grosso, pingue mais leite.</p><p><b>2</b>Coma morno (20 segundos no micro-ondas) ou deixe 15 minutos na geladeira para firmar.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">43</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Bolo de caneca de banana">
+      <div class="conteudo">
+        <p class="kicker">Doces · 35</p>
+        <h2>Bolo de caneca de banana</h2>
+        <div class="stats">
+          <div class="destaque"><b>14 g</b><span>proteína</span></div>
+          <div><b>260</b><span>kcal</span></div>
+          <div><b>4 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>1 banana pequena bem madura</li><li><span class="m">•</span>2 colheres de sopa de aveia em flocos</li><li><span class="m">•</span>1 colher de sopa de leite em pó desnatado</li><li class="temperos"><span class="m"></span>Canela a gosto; 1/2 colher de chá de fermento em pó</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Amasse a banana dentro de uma caneca grande.</p><p><b>2</b>Junte o ovo, a aveia, o leite em pó e a canela e misture bem. Por último, o fermento.</p><p><b>3</b>Micro-ondas por 1min30 a 2 minutos.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Quanto mais madura a banana, menos adoçante você precisa (às vezes nenhum).</p></div>
+      </div>
+    <p class="folio">44</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Panqueca de ricota com frutas vermelhas">
+      <div class="conteudo">
+        <p class="kicker">Doces · 36</p>
+        <h2>Panqueca de ricota com frutas vermelhas</h2>
+        <div class="stats">
+          <div class="destaque"><b>16 g</b><span>proteína</span></div>
+          <div><b>240</b><span>kcal</span></div>
+          <div><b>10 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 ovo</li><li><span class="m">•</span>3 colheres de sopa de ricota</li><li><span class="m">•</span>2 colheres de sopa de aveia em flocos finos</li><li><span class="m">•</span>1/2 xícara de frutas vermelhas</li><li class="temperos"><span class="m"></span>1/2 colher de chá de fermento em pó, canela e adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata o ovo, a ricota, a aveia, a canela e o adoçante com um garfo. Junte o fermento.</p><p><b>2</b>Faça 3 panquecas pequenas numa frigideira antiaderente untada, em fogo baixo, 2 minutos de cada lado.</p><p><b>3</b>Aqueça as frutas vermelhas no micro-ondas por 1 minuto e sirva por cima.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">45</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Cheesecake de pote">
+      <div class="conteudo">
+        <p class="kicker">Doces · 37</p>
+        <h2>Cheesecake de pote</h2>
+        <div class="stats">
+          <div class="destaque"><b>15 g</b><span>proteína</span></div>
+          <div><b>210</b><span>kcal</span></div>
+          <div><b>10 min</b><span>+ 30 min na geladeira</span></div>
+          <div><b>2</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>2 colheres de sopa de aveia em flocos</li><li><span class="m">•</span>150 g de ricota</li><li><span class="m">•</span>1 pote de iogurte natural (170 g)</li><li><span class="m">•</span>1 xícara de frutas vermelhas</li><li class="temperos"><span class="m"></span>Raspas e suco de 1/2 limão; adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Toste a aveia numa frigideira seca por 2 minutos.</p><p><b>2</b>Bata a ricota, o iogurte, o limão e o adoçante até ficar liso.</p><p><b>3</b>Em 2 potes, monte: aveia, creme e frutas vermelhas amassadas com um garfo.</p><p><b>4</b>Geladeira por 30 minutos.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">46</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Picolé de iogurte com morango">
+      <div class="conteudo">
+        <p class="kicker">Doces · 38</p>
+        <h2>Picolé de iogurte com morango</h2>
+        <div class="stats">
+          <div class="destaque"><b>9 g</b><span>proteína</span></div>
+          <div><b>100</b><span>kcal</span></div>
+          <div><b>10 min</b><span>+ 6 h no congelador</span></div>
+          <div><b>5</b><span>porções</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>3 potes de iogurte natural (510 g)</li><li><span class="m">•</span>6 colheres de sopa de leite em pó desnatado (60 g)</li><li><span class="m">•</span>1 xícara de morango picado</li><li class="temperos"><span class="m"></span>Adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata o iogurte, o leite em pó e o adoçante.</p><p><b>2</b>Misture o morango picado com uma colher.</p><p><b>3</b>Distribua em 5 forminhas de picolé e congele por 6 horas.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Rende 5 picolés; a porção é 1.</p></div>
+      </div>
+    <p class="folio">47</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Maçã assada com ricota e canela">
+      <div class="conteudo">
+        <p class="kicker">Doces · 39</p>
+        <h2>Maçã assada com ricota e canela</h2>
+        <div class="stats">
+          <div class="destaque"><b>12 g</b><span>proteína</span></div>
+          <div><b>220</b><span>kcal</span></div>
+          <div><b>10 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 maçã em cubos</li><li><span class="m">•</span>3 colheres de sopa de ricota</li><li><span class="m">•</span>1 colher de sopa de leite em pó desnatado</li><li><span class="m">•</span>1 colher de sopa de aveia em flocos</li><li class="temperos"><span class="m"></span>Canela e adoçante a gosto</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Coloque a maçã num pote com canela, cubra e leve ao micro-ondas por 3 minutos.</p><p><b>2</b>Amasse a ricota com o leite em pó e o adoçante até virar creme.</p><p><b>3</b>Toste a aveia numa frigideira seca por 1 minuto.</p><p><b>4</b>Sirva a maçã quente com o creme e a aveia por cima.</p></div>
+        </div>
+        
+      </div>
+    <p class="folio">48</p></section><section class="page receita">
+      <img class="foto" src="guia-receita.png" alt="Foto: Sorvete de banana com pasta de amendoim">
+      <div class="conteudo">
+        <p class="kicker">Doces · 40</p>
+        <h2>Sorvete de banana com pasta de amendoim</h2>
+        <div class="stats">
+          <div class="destaque"><b>13 g</b><span>proteína</span></div>
+          <div><b>270</b><span>kcal</span></div>
+          <div><b>5 min</b><span>de preparo</span></div>
+          <div><b>1</b><span>porção</span></div>
+        </div>
+        <div class="colunas">
+          <div class="ingredientes"><h3>Ingredientes</h3><ul><li><span class="m">•</span>1 banana congelada em rodelas</li><li><span class="m">•</span>2 colheres de sopa de leite em pó desnatado (20 g)</li><li><span class="m">•</span>1 colher de sopa de pasta de amendoim</li><li><span class="m">•</span>3 colheres de sopa de leite desnatado</li></ul></div>
+          <div class="preparo"><h3>Modo de preparo</h3><p><b>1</b>Bata tudo no processador, parando para raspar as laterais, até virar um creme.</p><p><b>2</b>Coma na hora ou congele por 30 minutos para ficar mais firme.</p></div>
+        </div>
+        <div class="dica"><h4>Dica da Bia</h4><p>Congele bananas maduras em rodelas sempre que sobrarem: é a base do sorvete e da vitamina.</p></div>
+      </div>
+    <p class="folio">49</p></section><section class="page texto">
+      <p class="kicker">Atalhos</p>
+      <h2>As 10 com mais proteína</h2>
+      <div class="ranking"><p><span>Panqueca de carne com massa de ovo</span><span class="v">37 g</span><span class="k">340 kcal</span><span class="pg">p. 23</span></p><p><span>Salpicão leve de frango</span><span class="v">34 g</span><span class="k">230 kcal</span><span class="pg">p. 31</span></p><p><span>Tilápia de frigideira com limão</span><span class="v">32 g</span><span class="k">210 kcal</span><span class="pg">p. 19</span></p><p><span>Strogonoff de frango com iogurte</span><span class="v">32 g</span><span class="k">220 kcal</span><span class="pg">p. 21</span></p><p><span>Kafta de frigideira com molho de iogurte</span><span class="v">32 g</span><span class="k">230 kcal</span><span class="pg">p. 25</span></p><p><span>Frango xadrez rápido</span><span class="v">32 g</span><span class="k">250 kcal</span><span class="pg">p. 28</span></p><p><span>Camarão no alho com abobrinha em fita</span><span class="v">32 g</span><span class="k">210 kcal</span><span class="pg">p. 30</span></p><p><span>Tropeiro de frango</span><span class="v">31 g</span><span class="k">300 kcal</span><span class="pg">p. 26</span></p><p><span>Frango cremoso de frigideira</span><span class="v">30 g</span><span class="k">230 kcal</span><span class="pg">p. 16</span></p><p><span>Salada morna de atum e grão-de-bico</span><span class="v">30 g</span><span class="k">310 kcal</span><span class="pg">p. 22</span></p></div>
+      <h3 class="titulo-dicas">Prontas em até 15 minutos</h3>
+      <p class="rapidas">Omelete de caneca (7), Crepioca de queijo (8), Pão de queijo de frigideira (10), Mingau de aveia com ovo (11), Tapioca de frango com requeijão (12), Ovos mexidos cremosos com ricota (13), Vitamina de banana e cacau (14), Frango cremoso de frigideira (16), Carne moída com abobrinha (17), Tilápia de frigideira com limão (19), Salada morna de atum e grão-de-bico (22), Panqueca de carne com massa de ovo (23), Ovos no molho de tomate (27), Camarão no alho com abobrinha em fita (30), Salpicão leve de frango (31), Wrap de atum (33), Ovos recheados com atum (35), Torrada de ricota, tomate e ovo (36), Pasta de ricota com ervas e palitos (38), Pizza de frigideira (40), Brigadeiro de colher proteico (43), Bolo de caneca de banana (44), Panqueca de ricota com frutas vermelhas (45), Maçã assada com ricota e canela (48), Sorvete de banana com pasta de amendoim (49).</p>
+    <p class="folio">50</p></section><section class="page fecho">
+      <h2>Fez?<br><em>Me mostra!</em></h2>
+      <p>Tira uma foto do seu prato e marca <span class="preencher-claro">[@perfil]</span> nos stories.
+      Eu reposto as minhas favoritas.</p>
+      <p class="assina">Com carinho,<br><strong>Bia</strong></p>
+      <p class="rodape-ia">A Bia é uma personagem criada com inteligência artificial.</p>
+    <p class="folio">51</p></section>
+</body>
+</html>

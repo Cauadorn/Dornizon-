@@ -28,6 +28,7 @@ Plano B, com o mesmo passo a passo: **finanças pessoais** (organizar o salário
 | [`prompts-flow.md`](prompts-flow.md) | prompts de imagem e vídeo do Flow, na ordem, e a montagem no CapCut |
 | [`ebook/ebook.md`](ebook/ebook.md) | texto completo do ebook *Prato Pequeno, Proteína Grande* (40 receitas) |
 | [`ebook/receitas.py`](ebook/receitas.py) | fonte das receitas; recalcula proteína e kcal e gera o `ebook.md` |
+| [`ebook/design/`](ebook/design/) | ebook diagramado (A4, 51 páginas): `python3 build.py && node render.mjs` gera o PDF inteiro e as 3 partes que vão pro Canva |
 
 ## Personagem (rascunho)
 

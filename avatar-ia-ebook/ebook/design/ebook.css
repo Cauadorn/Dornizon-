@@ -1,0 +1,170 @@
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: normal;
+  src: url("fontes/dm-serif-display-400-normal.ttf") format("truetype"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-style: italic;
+  src: url("fontes/dm-serif-display-400-italic.ttf") format("truetype"); }
+@font-face { font-family: "DM Sans"; font-weight: 400; font-style: normal;
+  src: url("fontes/dm-sans-400-normal.ttf") format("truetype"); }
+@font-face { font-family: "DM Sans"; font-weight: 400; font-style: italic;
+  src: url("fontes/dm-sans-400-italic.ttf") format("truetype"); }
+@font-face { font-family: "DM Sans"; font-weight: 700; font-style: normal;
+  src: url("fontes/dm-sans-700-normal.ttf") format("truetype"); }
+
+:root {
+  --salvia: #8FA38A;
+  --salvia-escura: #566B50;
+  --salvia-clara: #E4E9DE;
+  --creme: #F4EEE3;
+  --papel: #FBF8F2;
+  --terracota: #C8693F;
+  --grafite: #2E2E2C;
+  --cinza: #66645F;
+  --serif: "DM Serif Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #ddd; }
+body { font-family: var(--sans); color: var(--grafite); font-size: 13.5px; line-height: 1.5; }
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: var(--papel);
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+
+.folio {
+  position: absolute; bottom: 26px; left: 0; right: 0;
+  text-align: center; font-size: 10px; letter-spacing: 0.12em; color: var(--cinza);
+}
+
+.kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--salvia-escura);
+}
+h2 { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1.08; margin-top: 8px; }
+h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--terracota); margin-bottom: 10px; }
+h4 { font-size: 14px; font-weight: 700; }
+strong, b { font-weight: 700; }
+em { font-style: italic; }
+
+/* ------------------------------------------------------------ capa */
+.capa { background: var(--creme); padding: 64px 64px 0; }
+.capa .sobre-titulo { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--salvia-escura); }
+.capa h1 { font-family: var(--serif); font-weight: 400; font-size: 74px; line-height: 1.0; margin-top: 22px; }
+.capa h1 em { color: var(--terracota); }
+.capa .sub { font-size: 17px; line-height: 1.4; margin-top: 20px; max-width: 440px; color: var(--grafite); }
+.capa .autora { font-size: 15px; margin-top: 18px; color: var(--cinza); }
+.capa .autora strong { color: var(--grafite); }
+.capa .foto-capa { position: absolute; left: 0; bottom: 0; width: 794px; height: 520px; display: block; }
+.capa .selo {
+  position: absolute; right: 56px; bottom: 470px; width: 112px; height: 112px; border-radius: 50%;
+  background: var(--terracota); color: var(--papel); text-align: center; padding-top: 22px;
+}
+.capa .selo strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1; }
+.capa .selo span { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 4px; }
+
+/* ------------------------------------------------------------ páginas de texto */
+.texto { padding: 72px 72px 80px; }
+.texto h2 { margin-bottom: 22px; max-width: 560px; }
+.texto p { margin-bottom: 14px; max-width: 610px; font-size: 15.5px; }
+.texto .lead { font-size: 16px; line-height: 1.5; }
+.preencher { color: var(--terracota); font-weight: 700; }
+.bloco-bia { margin-top: 40px; padding: 28px 32px 18px; background: var(--salvia-clara); border-radius: 18px; }
+.bloco-bia .kicker { margin-bottom: 10px; }
+
+.legenda { display: flex; margin: 28px 0 22px; padding: 18px 0; border-top: 1px solid #D9D3C7;
+  border-bottom: 1px solid #D9D3C7; }
+.legenda div { flex: 1; }
+.legenda b { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.1; }
+.legenda div:first-child b { color: var(--terracota); }
+.legenda span { display: block; font-size: 11.5px; color: var(--cinza); margin-top: 4px; max-width: 120px; line-height: 1.3; }
+.texto .nota { font-size: 12.5px; color: var(--cinza); }
+.titulo-dicas { margin-top: 34px; margin-bottom: 14px; }
+.dicas { display: flex; gap: 16px; }
+.card { flex: 1; background: var(--creme); border-radius: 16px; padding: 22px 20px 12px; }
+.card b { display: block; font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1;
+  color: var(--terracota); margin-bottom: 10px; }
+.card h4 { margin-bottom: 6px; }
+.card p { font-size: 13px; line-height: 1.45; }
+
+.despensa { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+.grupo { background: var(--creme); border-radius: 16px; padding: 20px 24px 10px; }
+.grupo h4 { color: var(--terracota); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 8px; }
+.grupo p { font-size: 13.5px; line-height: 1.65; }
+.grupo.largo { grid-column: span 2; }
+.grupo.largo p { columns: 3; column-gap: 24px; }
+
+.sumario { padding-bottom: 60px; }
+.indice { columns: 2; column-gap: 40px; margin-top: 20px; }
+.indice .cap { break-inside: avoid; margin-bottom: 28px; }
+.indice h4 { color: var(--terracota); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 6px; }
+.indice p { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; margin-bottom: 7px;
+  line-height: 1.45; max-width: none; }
+.indice .pg { color: var(--cinza); }
+
+.ranking { margin-top: 10px; }
+.ranking p { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid #E3DDD1; margin: 0; max-width: none;
+  font-size: 14px; }
+.ranking span:first-child { flex: 1; }
+.ranking .v { width: 60px; text-align: right; color: var(--terracota); font-weight: 700; }
+.ranking .k { width: 80px; text-align: right; color: var(--cinza); }
+.ranking .pg { width: 48px; text-align: right; color: var(--cinza); }
+.rapidas { font-size: 13.5px; line-height: 1.7; }
+
+/* ------------------------------------------------------------ aberturas de capítulo */
+.abertura { background: var(--salvia); color: var(--papel); padding: 120px 72px; }
+.abertura .cap-num { font-family: var(--serif); font-size: 190px; line-height: 0.9; color: var(--creme); opacity: 0.9; }
+.abertura h2 { font-size: 64px; margin-top: 18px; color: var(--papel); }
+.abertura .cap-qtd { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-top: 18px; color: var(--grafite); }
+.abertura .cap-lista { font-size: 15px; line-height: 1.75; margin-top: 46px; color: var(--grafite); }
+.abertura .folio { color: var(--grafite); }
+
+/* ------------------------------------------------------------ receita */
+.receita .foto { display: block; width: 794px; height: 400px; }
+.receita .conteudo { padding: 34px 60px 0; }
+.receita h2 { font-size: 42px; margin-top: 6px; }
+.stats { display: flex; margin: 20px 0 24px; padding: 14px 0 12px; border-top: 1px solid #D9D3C7;
+  border-bottom: 1px solid #D9D3C7; }
+.stats div { flex: 1; }
+.stats b { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.1; }
+.stats span { display: block; font-size: 11px; color: var(--cinza); margin-top: 2px; line-height: 1.3; max-width: 130px; }
+.stats .destaque b { color: var(--terracota); }
+.colunas { display: flex; gap: 34px; }
+.ingredientes { width: 40%; }
+.preparo { flex: 1; }
+.ingredientes ul { list-style: none; }
+.ingredientes li { padding-left: 14px; text-indent: -14px; margin-bottom: 8px; font-size: 14px; line-height: 1.4; }
+.ingredientes li .m { display: inline-block; width: 14px; text-indent: 0; color: var(--terracota); font-weight: 700; }
+.ingredientes li.temperos { color: var(--cinza); font-style: italic; }
+.preparo p { padding-left: 28px; text-indent: -28px; margin-bottom: 11px; font-size: 14.5px; line-height: 1.5; }
+.preparo p b { display: inline-block; width: 28px; text-indent: 0; font-family: var(--serif); font-weight: 400;
+  font-size: 19px; line-height: 1; color: var(--terracota); }
+.dica { margin-top: 16px; padding: 14px 20px 12px; background: var(--salvia-clara); border-radius: 14px; }
+.dica h4 { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--salvia-escura);
+  margin-bottom: 3px; }
+.dica p { font-size: 14px; line-height: 1.45; }
+.dica.congela { background: var(--creme); }
+.dica.congela h4 { color: var(--terracota); }
+
+/* ------------------------------------------------------------ fecho */
+.fecho { background: var(--terracota); color: var(--papel); padding: 200px 72px; }
+.fecho h2 { font-size: 84px; line-height: 1.0; color: var(--papel); }
+.fecho h2 em { color: var(--grafite); }
+.fecho p { font-size: 18px; line-height: 1.5; margin-top: 30px; max-width: 520px; }
+.fecho .assina { font-size: 18px; margin-top: 50px; }
+.fecho .assina strong { font-family: var(--serif); font-weight: 400; font-size: 34px; }
+.fecho .preencher-claro { font-weight: 700; text-decoration: underline; }
+.fecho .rodape-ia { position: absolute; left: 72px; bottom: 60px; font-size: 12px; margin: 0; opacity: 0.85; }
+.fecho .folio { color: var(--papel); }
