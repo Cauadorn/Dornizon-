@@ -130,7 +130,7 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
     <div><p class="eb" style="margin-bottom:12px">o site</p><ul>{f_pag}</ul></div>
     <div><p class="eb" style="margin-bottom:12px">os estados</p><ul>{f_est1}</ul></div>
     <div><p class="eb" style="margin-bottom:12px">&nbsp;</p><ul>{f_est2}</ul></div>
-    <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia. As imagens e os motions foram gerados com IA, sob a direção de arte dela (<a href="{r}creditos.html#como-foi-feito">como foi feito</a>).</p></div>
+    <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
   </div>
 </footer>
 <img class="foto-mouse" alt="" aria-hidden="true">
@@ -407,20 +407,11 @@ cred = ''.join(
     f'<li><b>{e(s["nome"])}</b> · ' + '; '.join(
         f'{e(LEGENDA[s["uf"]][k])}: {e(autor(f["autor"]))}, {e(f["licenca"])}' + (f' (<a href="{e(f["pagina"])}">fonte</a>)' if f.get('pagina') else '')
         for k, f in enumerate(s['campo'])) + '</li>' for s in data)
-corpo = pg_hero('créditos', 'Ficha <em>técnica</em>', 'Quem fez o quê, sem esconder nada: o que é da Emilly, o que foi gerado com IA, de onde vieram as fotos de campo e o aviso de que tudo isto é um projeto de portfólio.') + f'''
-<section class="secao-t" id="como-foi-feito"><p class="eb">como foi feito</p><h2>A ideia é dela. <em>A IA executou.</em></h2></section>
-<div class="tres feito">
-  <div><p class="eb">Emilly Silva</p><h3>Pensamento e direção</h3><p>A ideia de uma V2 da collab, a escolha dos quatorze estados e da cena de cada um, a regra do coração formado pelos próprios elementos, a paleta de cada par, a direção de arte de cada imagem e a curadoria do que ficou e do que foi refeito.</p></div>
-  <div><p class="eb">IA generativa</p><h3>Imagem e movimento</h3><p>As ilustrações, as estampas dos chinelos, os mockups e as fotos de campanha foram gerados com IA de imagem (Nano Banana, via Freepik). Os motions saíram das próprias ilustrações, com IA de vídeo (Kling, via Higgsfield). Nada foi gerado sem um pedido dela, e nada entrou sem a aprovação dela.</p></div>
-  <div><p class="eb">fotos reais + apoio de IA</p><h3>Pesquisa, texto e código</h3><p>As fotos de campo não são IA: são de 139 fotógrafos, creditados abaixo. A pesquisa, os textos e este site foram construídos por ela com apoio de um assistente de IA (Claude), que ajudou a reunir as fontes, a redigir e a programar.</p></div>
-</div>
+corpo = pg_hero('créditos', 'Ficha <em>técnica</em>', 'Quem fez o quê, de onde vieram as fotos de campo e o aviso de que tudo isto é um projeto de portfólio.') + f'''
 <section class="miolo" style="padding-bottom:10svh">
   <dl class="ficha">
-    <dt>Conceito, direção de arte e curadoria</dt><dd>Emilly Silva</dd>
-    <dt>Pesquisa e textos</dt><dd>Emilly Silva, com apoio de IA (Claude)</dd>
-    <dt>Site e animações</dt><dd>programados com apoio de IA (Claude), sob direção de Emilly Silva</dd>
-    <dt>Ilustrações, estampas, chinelos e campanha</dt><dd>geradas com IA (Nano Banana, via Freepik), sob direção de arte de Emilly Silva</dd>
-    <dt>Motions</dt><dd>gerados com IA (Kling, via Higgsfield) a partir das ilustrações</dd>
+    <dt>Conceito, pesquisa e direção de arte</dt><dd>Emilly Silva</dd>
+    <dt>Imagens e motions</dt><dd>gerados com IA, sob direção de arte de Emilly Silva</dd>
     <dt>Fotos de campo</dt><dd>139 fotógrafos, creditados abaixo, sob licenças Creative Commons</dd>
     <dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd>
     <dt>Fontes</dt><dd>Instrument Serif e Jost, licença livre (Google Fonts)</dd>

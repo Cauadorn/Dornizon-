@@ -136,7 +136,7 @@ for uf in ['mg', 'ba', 'pa', 'ms', 'sc', 'ce']:
               f'<span>foto: {e(autor(f0["autor"]))} · {e(f0["licenca"])}</span></figcaption></figure>')
 mod('pesquisa', f'''<p class="eb">processo · pesquisa de campo</p><h2>Antes do desenho, <em>a rua</em></h2>
 <div class="fotos">{fotos}</div>
-<p class="nota">312 fotos de 139 fotógrafos, com autor, licença e local conferidos. As fotos de campo são reais, não foram geradas por IA.</p>''', 'c2')
+<p class="nota">312 fotos de 139 fotógrafos, com autor, licença e local conferidos.</p>''', 'c2')
 
 # 05 método
 mg = POR['mg']
@@ -203,11 +203,9 @@ mod('identidade', f'''<p class="eb">identidade</p><h2>A assinatura <em>não muda
 <div class="tipos"><p class="t-serif">Bem-<em>Querer</em></p><p class="eb">Instrument Serif · títulos</p><p class="t-sans">quatorze estados</p><p class="eb">Jost · texto e etiqueta</p></div>
 <div class="paleta">{paleta}</div></div>''')
 
-# 16 como foi feito
-mod('como-foi-feito', '''<p class="eb">como foi feito</p><h2>A ideia é minha. <em>A IA executou.</em></h2>
-<div class="tres"><div><p class="eb">Emilly Silva</p><h3>Pensamento e direção</h3><p>A ideia de uma V2 da collab, a escolha dos quatorze estados e da cena de cada um, a regra do coração formado pelos próprios elementos, a paleta de cada par, a direção de arte de cada imagem e a curadoria do que ficou e do que foi refeito.</p></div>
-<div><p class="eb">IA generativa</p><h3>Imagem e movimento</h3><p>As ilustrações, as estampas dos chinelos, os mockups e as fotos de campanha foram gerados com IA de imagem (Nano Banana, via Freepik). Os motions saíram das próprias ilustrações, com IA de vídeo (Kling, via Higgsfield). Nada foi gerado sem um pedido meu, e nada entrou sem a minha aprovação.</p></div>
-<div><p class="eb">fotos reais + apoio de IA</p><h3>Pesquisa, texto e código</h3><p>As fotos de campo não são IA: são de 139 fotógrafos, com crédito completo no site. A pesquisa, os textos, o site e as animações de texto foram construídos por mim com apoio de um assistente de IA (Claude), que ajudou a reunir as fontes, a redigir e a programar.</p></div></div>
+# 16 ficha técnica
+mod('ficha', '''<p class="eb">ficha técnica</p><h2>Obrigada por <em>chegar até aqui</em></h2>
+<dl class="ficha-b"><dt>Conceito, pesquisa e direção de arte</dt><dd>Emilly Silva</dd><dt>Imagens e motions</dt><dd>gerados com IA, sob a minha direção de arte</dd><dt>Fotos de campo</dt><dd>139 fotógrafos, sob licenças Creative Commons, com crédito completo no site</dd><dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd></dl>
 <div class="rodape-f"><p><b>o projeto inteiro</b>cauadorn.github.io/Dornizon-</p><p class="aviso">Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>''', 'vinho')
 
 CAPA = f'''<section class="capa-b" id="capa-behance"><div class="cb-arte">{arco("ms")}<img class="flutua" src="{par("ms")}" alt=""></div></section>'''
@@ -327,7 +325,10 @@ figure{margin:0}
 .paleta span{width:64px;height:64px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(42,26,23,.15)}
 .paleta b{font-weight:500}
 .paleta i{font-style:normal;color:var(--suave);font-size:16px}
-/* como foi feito */
+/* ficha técnica */
+.ficha-b{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:18px 56px;margin:70px 0 0;font-size:19px;line-height:1.45}
+.ficha-b dt{color:rgba(255,243,230,.6)}
+.ficha-b dd{margin:0;color:#FFF3E6}
 .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:70px}
 .tres > div{border-top:1px solid rgba(255,243,230,.35);padding-top:22px}
 .tres h3{font-size:38px}

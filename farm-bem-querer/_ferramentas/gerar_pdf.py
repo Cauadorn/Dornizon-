@@ -165,7 +165,7 @@ paginas.append(pg(15, f'''
 <p class="fim-g">bem-querer</p>
 <div class="fim-c">
   <div><p class="eb">o site</p><p class="link">cauadorn.github.io/Dornizon-</p><p>Os quatorze estados por inteiro: o caderno de campo, o coração escondido e o par no lugar.</p></div>
-  <div><p class="eb">ficha técnica</p><p>Conceito, direção de arte e curadoria: Emilly Silva. Ilustrações, estampas, chinelos e campanha gerados com IA (Nano Banana, via Freepik) e motions com IA de vídeo (Kling, via Higgsfield), sempre sob essa direção de arte. Pesquisa e textos: Emilly Silva, com apoio de IA (Claude). Fotos de campo: 139 fotógrafos reais, sob licenças Creative Commons. Assinatura: a da collab, sem alteração.</p></div>
+  <div><p class="eb">ficha técnica</p><p>Conceito, pesquisa e direção de arte: Emilly Silva. Imagens e motions gerados com IA, sob essa direção de arte. Fotos de campo: 139 fotógrafos, sob licenças Creative Commons, com crédito completo no site. Assinatura: a da collab, sem alteração.</p></div>
   <div><p class="eb">aviso</p><p>Bem-Querer é um projeto fictício de portfólio. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
 </div>''', 'fim', rodape=False))
 

@@ -12,7 +12,7 @@ const so = process.argv[3] ? +process.argv[3] : 0;
   fs.mkdirSync(pasta, { recursive: true });
   for (const f of fs.readdirSync(pasta)) fs.unlinkSync(path.join(pasta, f));
   const b = await chromium.launch();
-  const p = await b.newPage({ viewport: { width: 1400, height: 1200 }, deviceScaleFactor: 1 });
+  const p = await b.newPage({ viewport: { width: 1400, height: 1400 }, deviceScaleFactor: 1 });
   const erros = []; p.on('pageerror', e => erros.push(e.message));
   await p.goto('file://' + path.join(B, 'filmes', nome + '.html'), { waitUntil: 'networkidle' });
   await p.evaluate(() => window.PRONTO);
@@ -29,7 +29,7 @@ const so = process.argv[3] ? +process.argv[3] : 0;
   fs.mkdirSync(path.join(B, 'videos'), { recursive: true });
   const saida = path.join(B, 'videos', `filme-${nome}.mp4`);
   execFileSync('ffmpeg', ['-v', 'error', '-y', '-framerate', '24', '-i', path.join(pasta, '%04d.jpg'),
-    '-vf', 'scale=1280:-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-profile:v', 'high', '-crf', '17', '-preset', 'slow',
+    '-vf', 'scale=min(1280\\,iw):-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-profile:v', 'high', '-crf', '17', '-preset', 'slow',
     '-movflags', '+faststart', saida]);
   console.log(nome, n, 'quadros', (n / 24).toFixed(1) + 's', (fs.statSync(saida).size / 1e6).toFixed(1), 'MB');
 })();

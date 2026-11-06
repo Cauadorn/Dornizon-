@@ -87,7 +87,7 @@ Bem-Querer · havaianas ♥ FARM Rio (conceito)
 
 DESCRIÇÃO DO PROJETO
 Bem-Querer é uma V2 conceitual da collab havaianas ♥ FARM Rio: quatorze pares de chinelos, um por estado, cada um feito com os elementos de lá e com um coração escondido na estampa, formado pelos próprios elementos.
-Conceito, direção de arte e curadoria: Emilly Silva. Ilustrações, estampas, mockups e motions gerados com IA (Nano Banana, via Freepik; Kling, via Higgsfield) a partir dessa direção. Pesquisa, textos, site e animações de texto com apoio de IA (Claude). Fotos de campo reais, de fotógrafos creditados no site.
+Conceito, pesquisa e direção de arte: Emilly Silva. Imagens e motions gerados com IA, a partir da minha direção de arte.
 Projeto fictício de portfólio, sem vínculo com a FARM Rio ou a havaianas.
 Site completo: cauadorn.github.io/Dornizon-
 
@@ -98,7 +98,7 @@ TAGS (10)
 estamparia, design de superfície, ilustração, chinelo, havaianas, FARM Rio, direção de arte, projeto conceitual, Brasil, motion
 
 FERRAMENTAS (campo "Ferramentas usadas"; o Behance pede que projetos com IA generativa declarem as ferramentas)
-Nano Banana (Google) · Freepik · Kling AI · Higgsfield · Claude
+Nano Banana (Google) · Freepik · Kling AI · Higgsfield
 
 TEXTOS OPCIONAIS ENTRE OS MÓDULOS (blocos de texto do Behance; ajudam na busca)
 Depois do módulo 05 (processo):
@@ -107,8 +107,8 @@ Cada estado começou por fotos reais do lugar, com autor e local conferidos, e p
 Depois do módulo 10 (solução):
 Quatorze cenas, quatorze pares e uma regra que amarra tudo: o coração nunca é desenhado em cima de nada. Ele aparece quando os elementos se encontram. As ilustrações ganharam movimento para o site e para as redes.
 
-Depois do módulo 17 (reflexão):
-Gerar imagem com IA não tirou o trabalho de direção: cada estado passou por pesquisa, escolha de âncora, paleta e várias rodadas de ajuste até o coração aparecer sem ser desenhado. O que ficou é o que passou por esse crivo.
+Depois do módulo 17 (fechamento):
+Cada estado passou por pesquisa, escolha de âncora, paleta e várias rodadas de ajuste até o coração aparecer sem ser desenhado. O que ficou é o que passou por esse crivo.
 
 CRÉDITOS DAS FOTOS DE CAMPO DO MÓDULO 04
 Os autores e licenças estão escritos embaixo de cada foto. A lista completa (139 fotógrafos) está no site, em Créditos.
