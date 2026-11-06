@@ -33,7 +33,8 @@ for m in mods:
     jpg = os.path.join(B, 'modulos', f'{nn}-{m["id"]}.jpg')
     mp4 = os.path.join(VIDS, f'modulo-{nn}.mp4')
     if m['id'] == 'capa' and os.path.exists(os.path.join(VIDS, 'filme-abertura.mp4')):
-        itens.append(('abertura', os.path.join(VIDS, 'filme-abertura.mp4'), jpg))
+        still = os.path.join(REND, 'abertura', '0217.jpg')
+        itens.append(('abertura', os.path.join(VIDS, 'filme-abertura.mp4'), still if os.path.exists(still) else jpg))
     elif m['video'] and os.path.exists(mp4):
         itens.append((m['id'], mp4, jpg))
     else:
@@ -72,8 +73,8 @@ TXT = f'''BEM-QUERER · POST DO BEHANCE
 COMO SUBIR
 1. Crie o projeto e suba os arquivos da pasta 2-modulos-em-ordem, nesta ordem:
 {lista}
-   O primeiro vídeo é a abertura (15,6 s): a assinatura da collab, as duas folhas que caem e formam o coração,
-   Bem-Querer letra a letra e o arco com os motions. \"A coleção em movimento\" passa os 14 estados (32 s).
+   O primeiro vídeo é a abertura (11,2 s), só tipografia: a assinatura da collab, as duas folhas que caem
+   e formam o coração e Bem-Querer letra a letra. \"A coleção em movimento\" passa os 14 estados (32 s).
    Os outros vídeos têm 12,9 s. Todos com 1280 px de largura (o máximo do Behance para vídeo enviado) e sem som.
    Se o editor oferecer reprodução automática e repetição para o vídeo, ative as duas.
    Se o vídeo der problema, use a imagem de mesmo número da pasta 3-alternativas-paradas.

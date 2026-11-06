@@ -118,7 +118,8 @@ mod('capa', f'''<p class="eb topo-c">havaianas ♥ FARM Rio · uma V2 conceitual
 <p class="aviso">Projeto fictício de portfólio de Emilly Silva. Sem vínculo com a FARM Rio ou a havaianas.</p></div>''', 'capa', video=True)
 
 # 02 manifesto
-mod('ideia', f'''<p class="eb">a ideia</p><p class="manif">A gente saiu do Rio e foi até <em>quatorze estados</em>. Em cada um, um par de chinelos feito com os elementos de lá, e um coração que só aparece na segunda olhada.</p>{svg(mono("#FFF3E6", "#6A1B29"), 92)}''', 'vinho centro')
+mod('ideia', f'''<p class="eb">a ideia</p><p class="manif">A gente saiu do Rio e foi até <em>quatorze estados</em>. Em cada um, um par de chinelos feito com os elementos de lá, e um coração que só aparece na segunda olhada.</p>{svg(mono("#FFF3E6", "#6A1B29"), 92)}
+<p class="aviso-i">Projeto fictício de portfólio de Emilly Silva. Sem vínculo com a FARM Rio ou a havaianas.</p>''', 'vinho centro')
 
 # 03 desafio
 mod('desafio', '''<p class="eb">o desafio</p><h2 class="h-larga">Levar o Rio para conhecer o Brasil, <em>sem virar cartão-postal</em></h2>
@@ -247,6 +248,7 @@ figure{margin:0}
 /* manifesto */
 .manif{font:400 72px/1.1 var(--serif);letter-spacing:-.015em;max-width:1080px;margin:14px 0 56px}
 .manif em{color:#F2B98A}
+.aviso-i{position:absolute;left:0;right:0;bottom:54px;text-align:center;font:400 15px/1.4 var(--sans);color:rgba(255,243,230,.6)}
 /* desafio */
 .h-larga{max-width:1160px}
 .duas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:60px;margin-top:56px}
