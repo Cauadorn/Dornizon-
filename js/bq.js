@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ---- entradas genéricas ---- */
-  $$('.moldura, .foto-est, .quadro-cor, .carta-e .arco, .trilho .arco').forEach(function (m) {
+  $$('.moldura, .foto-est, .quadro-cor').forEach(function (m) {
     G.fromTo(m, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.out', clearProps: 'clipPath', scrollTrigger: { trigger: m, start: 'top 90%', once: true } });
   });
   $$('[data-rev], .linhas li, .evita li, .tres > div, .numeros > div, .coracoes a, .paletas a, .bloco, .caderno > *, .secao-t > *, .busca-in > div > :not(.resp), .prosa > *').forEach(function (el) {
