@@ -186,7 +186,7 @@ h3{font:400 40px/1.05 var(--serif);margin:14px 0 8px}
 .rod{position:absolute;left:110px;right:110px;bottom:44px;display:flex;justify-content:space-between;align-items:center;font:500 14px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
 .rod span:first-child{display:flex;align-items:center;gap:10px;font:italic 400 24px/1 var(--serif);letter-spacing:0;text-transform:none;color:var(--tinta)}
 .arco{border-radius:999px 999px 0 0;overflow:hidden;background:var(--creme2);aspect-ratio:3/4}
-.arco img{width:100%;height:100%;object-fit:cover}
+.arco img{width:100%;height:100%;object-fit:cover;object-position:50% 100%}
 /* capa */
 .capa-arco{position:absolute;left:50%;bottom:0;width:560px;height:820px;transform:translateX(-50%);border-radius:999px 999px 0 0;overflow:hidden}
 .capa-arco img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}

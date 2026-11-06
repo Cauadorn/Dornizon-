@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var tl = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .8 } });
       tl.to('.p-bem', { xPercent: -40, opacity: 0, ease: 'none' }, 0)
         .to('.p-querer', { xPercent: 40, opacity: 0, ease: 'none' }, 0)
-        .to('.janela > *', { scale: 1.1, ease: 'none' }, 0)
+        .to('.janela > *', { scale: 1.1, transformOrigin: '50% 100%', ease: 'none' }, 0)
         .to('.hero .rodape-h, .janela-leg', { opacity: 0, ease: 'none', duration: .3 }, 0);
     }
   } else {
@@ -242,8 +242,9 @@ document.addEventListener('DOMContentLoaded', function () {
   $$('.cinema img').forEach(function (img) {
     G.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
+  // a arte do estado aproxima devagar ao rolar, presa pela base (a assinatura fica sempre inteira)
   $$('.arco-ilu img, .arco-ilu video').forEach(function (img) {
-    G.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.closest('section'), start: 'top bottom', end: 'bottom top', scrub: true } });
+    G.fromTo(img, { scale: 1 }, { scale: 1.06, transformOrigin: '50% 100%', ease: 'none', scrollTrigger: { trigger: img.closest('section'), start: 'top top', end: 'bottom top', scrub: true } });
   });
 
   /* ---- entradas genéricas ---- */
