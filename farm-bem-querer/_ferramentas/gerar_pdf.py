@@ -61,7 +61,7 @@ mono = lambda cor, veia: SIMB_T.replace('#1D1915', cor).replace('#FCFAF6', veia)
 ASSIN = open(os.path.join(SITE, 'img', 'assinatura-collab.svg'), encoding='utf8').read()
 ASSIN = ASSIN[ASSIN.index('<svg'):]
 
-TOTAL = 16
+TOTAL = 15
 
 
 def pg(n, corpo, classe='', rodape=True):
@@ -142,23 +142,13 @@ for n, uf in zip(range(8, 12), ['mg', 'pa', 'ms', 'sc']):
 cors = ''.join(f'<div><img src="{jpg(s["coracao"], 300)}" alt=""><b>{e(s["nome"])}</b><span>{e(s["coracao_texto"])}</span></div>' for s in data)
 paginas.append(pg(12, f'<p class="eb">o fio da coleção</p><h2>Onde o coração <em>mora</em></h2><div class="sete cors">{cors}</div>'))
 
-# 13 decisões
-paginas.append(pg(13, f'''
-<p class="eb">o que ficou pelo caminho</p><h2>Decisões que <em>mudaram o desenho</em></h2>
-<div class="decisoes">
-  <div><div class="ad"><figure class="antes"><img src="{jpg("mg-antes-jabuticaba.jpg", 600)}" alt=""><figcaption>antes</figcaption></figure><figure><img src="{jpg("mg-depois-barroco.jpg", 600)}" alt=""><figcaption>depois</figcaption></figure></div>
-    <h3>O que só Minas tem</h3><p>Jabuticaba tem em meio Brasil. Ficou o barroco: a talha do Aleijadinho e as rosas do Mestre Ataíde.</p></div>
-  <div><div class="ad"><figure class="antes"><img src="{jpg("sc-antes-ponte.jpg", 600)}" alt=""><figcaption>antes</figcaption></figure><figure><img src="{jpg("sc-depois-enseada.jpg", 600)}" alt=""><figcaption>depois</figcaption></figure></div>
-    <h3>A baleia não passa debaixo da ponte</h3><p>A baleia-franca chega perto da areia nas enseadas do sul, não no centro de Florianópolis. Foi para Garopaba.</p></div>
-</div>'''))
-
 # 14 campanha
 camp = ''.join(f'<figure><img src="{jpg(POR[u]["campanha"], 900)}" alt=""><figcaption>{e(POR[u]["nome"])}</figcaption></figure>' for u in ['ce', 'ba', 'pa', 'rs', 'am', 'mg'])
-paginas.append(pg(14, f'<p class="eb">a campanha</p><h2>O par <em>no lugar</em></h2><div class="seis">{camp}</div>'))
+paginas.append(pg(13, f'<p class="eb">a campanha</p><h2>O par <em>no lugar</em></h2><div class="seis">{camp}</div>'))
 
 # 15 identidade
 pal = ''.join('<div class="faixas">' + ''.join(f'<span style="background:{c}"></span>' for c in COR[s['uf']]) + '</div>' for s in data)
-paginas.append(pg(15, f'''
+paginas.append(pg(14, f'''
 <div class="duas">
   <div class="marca-g">{svg(w=150)}<p class="wm">bem-querer</p><p class="eb">o emblema da cápsula · duas folhas de amendoeira que caem juntas</p></div>
   <div><p class="eb">identidade</p><h2>A assinatura é a da collab; <em>o emblema é da cápsula</em></h2>
@@ -168,7 +158,7 @@ paginas.append(pg(15, f'''
 </div>'''))
 
 # 16 fim
-paginas.append(pg(16, f'''
+paginas.append(pg(15, f'''
 <p class="fim-g">bem-querer</p>
 <div class="fim-c">
   <div><p class="eb">o site</p><p class="link">cauadorn.github.io/Dornizon-</p><p>Os quatorze estados por inteiro: o caderno de campo, o coração escondido e o par no lugar.</p></div>

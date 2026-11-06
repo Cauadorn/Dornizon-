@@ -106,11 +106,11 @@ sl(f'''<h2>Antes do desenho, <em>a rua</em></h2>
 sl(f'''<h2>Dois pés, <em>uma história</em></h2><div class="palm"><img src="{jpg(mg["palmilha"], 1400)}" alt=""></div>
 <p class="sub">O pé esquerdo e o direito contam metades da mesma cena. Em Minas: a talha dourada de um lado, a guirlanda de rosas do outro.</p>''',
    'Arte da palmilha de Minas Gerais em díptico: talha dourada barroca no pé esquerdo, guirlanda de rosas e fita azul no direito.')
-# 5 decisão
-sl(f'''<h2>O que só <em>Minas tem</em></h2>
-<div class="dupla"><figure class="antes"><img src="{jpg("mg-antes-jabuticaba.jpg")}" alt=""><figcaption>antes</figcaption></figure><figure><img src="{jpg("mg-depois-barroco.jpg")}" alt=""><figcaption>depois</figcaption></figure></div>
-<p class="sub">O primeiro par tinha jabuticaba e sabiá. Bonito, mas tem jabuticaba em meio Brasil. Ficou o barroco de Ouro Preto.</p>''',
-   'Antes e depois da palmilha de Minas: a primeira, com jabuticaba e sabiá, desbotada; a final, com o barroco dourado e as rosas.')
+# 5 uma cena para cada lugar
+cenas = ''.join(f'<figure><div class="arco"><img src="{jpg(POR[u]["ilu"])}" alt=""></div><figcaption>{e(POR[u]["nome"])}</figcaption></figure>' for u in ['am', 'pa', 'ma', 'rs'])
+sl(f'''<h2>Uma cena <em>para cada lugar</em></h2><div class="quatro">{cenas}</div>
+<p class="sub">Rio, mercado, duna, pampa: cada estado tem uma cena própria, escolhida pelo que é dele e de nenhum outro.</p>''',
+   'Quatro ilustrações lado a lado, cada uma com uma cena diferente: o encontro das águas no Amazonas, o mercado do Ver-o-Peso no Pará, as dunas e o boi no Maranhão e o pampa no Rio Grande do Sul.')
 # 6-8 estados
 for uf in ['pa', 'ms', 'sc']:
     arco_estado(uf)
@@ -170,6 +170,8 @@ figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:4
 .dupla img{width:100%;aspect-ratio:3/4;object-fit:cover}
 .dupla .arco img{aspect-ratio:auto}
 .antes img{filter:saturate(.35);opacity:.8}
+.quatro{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;width:760px;margin:0 auto}
+.quatro figcaption{text-align:center}
 .palm{background:var(--creme2);padding:40px;display:grid;place-items:center}
 .palm img{max-height:780px}
 /* estado */

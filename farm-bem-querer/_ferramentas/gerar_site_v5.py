@@ -70,11 +70,13 @@ def simb_mono(cor, veia):
     return SIMB_T.replace('#1D1915', cor).replace('#FCFAF6', veia)
 
 
+import hashlib as _h
+VERSAO = _h.md5((open(os.path.join(AQUI, 'v5', 'bq.css'), 'rb').read() + open(os.path.join(AQUI, 'v5', 'bq.js'), 'rb').read())).hexdigest()[:8]
 PAGINAS = [('index', 'Início', 'A abertura, o manifesto e a roda dos pares.'),
            ('projeto', 'Projeto', 'Por que uma V2 da collab, e por que o coração.'),
            ('pesquisa', 'Pesquisa', 'Antes do desenho, a rua: fotos reais dos quatorze estados.'),
            ('colecao', 'Coleção', 'Os quatorze pares, por região, e onde mora cada coração.'),
-           ('processo', 'Processo', 'Como cada par nasce e as decisões que mudaram o desenho.'),
+           ('processo', 'Processo', 'Como cada par nasce, do campo ao chinelo, e as regras da coleção.'),
            ('campanha', 'Campanha', 'Cada par fotografado no lugar da sua arte.'),
            ('identidade', 'Identidade', 'A assinatura da collab, o emblema da cápsula, fontes e cores.'),
            ('creditos', 'Créditos', 'Ficha técnica, fotos de campo e aviso.')]
@@ -103,7 +105,7 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
 <meta property="og:description" content="{e(descricao)}">
 <script>try{{if(sessionStorage.getItem('bq-cortina')==='1'){{document.documentElement.classList.add('chegando');sessionStorage.removeItem('bq-cortina')}}}}catch(e){{}}</script>
 {FONTES}
-<link rel="stylesheet" href="{r}css/bq.css">
+<link rel="stylesheet" href="{r}css/bq.css?v={VERSAO}">
 </head>
 <body{estilo_body}>
 <a class="pular" href="#conteudo">pular para o conteúdo</a>
@@ -134,7 +136,7 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
 <script src="{r}js/gsap.min.js" defer></script>
 <script src="{r}js/ScrollTrigger.min.js" defer></script>
 <script src="{r}js/lenis.min.js" defer></script>
-<script src="{r}js/bq.js" defer></script>
+<script src="{r}js/bq.js?v={VERSAO}" defer></script>
 </body>
 </html>
 '''
@@ -282,7 +284,7 @@ corpo = pg_hero('a pesquisa', 'Antes do desenho, <em>a rua</em>', 'Cada estado c
   <div><b>1</b><span>âncora por estado: o que é dali e de nenhum outro lugar</span></div>
 </section>
 <section class="tres">
-  <div><p class="eb">regra 1</p><h3>O lugar confere</h3><p>Cada foto só entrou depois de o local aparecer no título, nas tags ou na descrição. Pinhão de Portugal e “capim dourado” que era foto de reunião ficaram de fora.</p></div>
+  <div><p class="eb">regra 1</p><h3>O lugar confere</h3><p>Cada foto só entrou depois de o local aparecer no título, nas tags ou na descrição.</p></div>
   <div><p class="eb">regra 2</p><h3>Cotidiano antes do postal</h3><p>Feira, mesa, festa, ofício e quintal vêm primeiro. O cartão-postal só entra quando é a âncora do lugar.</p></div>
   <div><p class="eb">regra 3</p><h3>O que é sagrado fica</h3><p>Imagem de santo, coroa de Congado e estandarte não viram enfeite. A festa entra pela cor, pela fita e pela flor de papel.</p></div>
 </section>
@@ -318,7 +320,8 @@ corpo = pg_hero('a coleção', 'Quatorze <em>pares</em>', 'Um par por estado, co
 escrever('colecao.html', casca('colecao', 'Coleção · Bem-Querer', 'Os quatorze pares da cápsula Bem-Querer, por região.', corpo))
 
 # ---------------- processo ----------------
-corpo = pg_hero('o processo', 'Como cada par <em>nasce</em>', 'Cinco passos, sempre na mesma ordem. E duas decisões que mudaram o desenho no meio do caminho.') + f'''
+cenas_regras = ''.join(f'<a class="carta-e" href="{POR[u]["url"]}"><span class="arco">{midia(POR[u], auto=True)}</span><img class="par" src="img/{u}-par.webp" alt="" loading="lazy"><strong>{e(POR[u]["nome"])}</strong><em>{e(POR[u]["est"])}</em></a>' for u in ['am', 'pa', 'ma', 'rs'])
+corpo = pg_hero('o processo', 'Como cada par <em>nasce</em>', 'Cinco passos, sempre na mesma ordem, do campo ao chinelo.') + f'''
 <section class="indice" style="padding-top:4svh">
   <ol class="linhas">
     <li data-img="img/mg-campo-1.jpg"><div class="ln"><span>01</span><h3>Campo</h3><p>Fotos reais do lugar, com autor e licença, e o local de cada uma conferido antes de entrar.</p></div></li>
@@ -328,23 +331,14 @@ corpo = pg_hero('o processo', 'Como cada par <em>nasce</em>', 'Cinco passos, sem
     <li data-img="img/mg-estudio.jpg"><div class="ln"><span>05</span><h3>O par</h3><p>A tira repete uma cor da estampa e a assinatura da collab fica no calcanhar, sem mudança.</p></div></li>
   </ol>
 </section>
-<section class="secao-t"><p class="eb">o que ficou pelo caminho</p><h2>Decisões que mudaram o desenho</h2></section>
-<section class="decisao">
-  <div class="antes-depois"><figure class="antes"><div class="moldura"><img src="img/mg-antes-jabuticaba.jpg" alt="Primeira palmilha de Minas, com jabuticaba e sabiá" loading="lazy"></div><figcaption>antes</figcaption></figure>
-    <figure><div class="moldura"><img src="img/mg-depois-barroco.jpg" alt="Palmilha final de Minas, com o barroco" loading="lazy"></div><figcaption>depois</figcaption></figure></div>
-  <div><p class="eb">Minas Gerais</p><h2>O que só Minas tem</h2><p>O primeiro par tinha jabuticaba, sabiá e sempre-viva. Era bonito e não dizia Minas: tem jabuticaba no quintal de meio Brasil. Queijo também não servia, porque queijo não nasce em galho. Ficou o barroco, com a talha dourada do Aleijadinho e as rosas do forro do Mestre Ataíde.</p></div>
-</section>
-<section class="decisao">
-  <div class="antes-depois"><figure class="antes"><div class="moldura"><img src="img/sc-antes-ponte.jpg" alt="Primeira ilustração de Santa Catarina, com a baleia sob a ponte" loading="lazy"></div><figcaption>antes</figcaption></figure>
-    <figure><div class="moldura"><img src="img/sc-depois-enseada.jpg" alt="Ilustração final de Santa Catarina, na enseada de Garopaba" loading="lazy"></div><figcaption>depois</figcaption></figure></div>
-  <div><p class="eb">Santa Catarina</p><h2>A baleia não passa debaixo da ponte</h2><p>A primeira versão juntava a Ponte Hercílio Luz e a baleia-franca. Ficou bonito e errado: a baleia não aparece no centro de Florianópolis, ela chega perto da areia nas enseadas do litoral sul. A ilustração foi para Garopaba.</p></div>
-</section>
+<section class="secao-t"><p class="eb">as regras da coleção</p><h2>Uma cena <em>para cada lugar</em></h2></section>
+<section class="regiao" style="padding-top:0"><div class="arcos">{cenas_regras}</div></section>
 <section class="tres">
-  <div><p class="eb">regra que nasceu</p><h3>Menos igrejinha</h3><p>No primeiro lote, quatro estados terminavam numa torre de igreja. A partir do segundo, cada lugar ganhou uma cena diferente: rio, mercado, duna, pampa, mata.</p></div>
-  <div><p class="eb">regra que nasceu</p><h3>Coração não é carimbo</h3><p>Nos primeiros testes, o coração aparecia pintado no brilho da jabuticaba. Saiu tudo. Hoje ele é a franja da sombrinha, a cauda da baleia, duas folhas caindo juntas.</p></div>
-  <div><p class="eb">regra que nasceu</p><h3>A assinatura não muda</h3><p>O logo da collab vai no calcanhar, centralizado, tom sobre tom. Quando passa por cima de um elemento, ganha só um fio fino na cor do fundo.</p></div>
+  <div><p class="eb">regra</p><h3>Cada lugar, uma cena</h3><p>Rio, mercado, duna, pampa, mata, janela, largo: cada estado tem uma cena própria, escolhida pelo que é dele e de nenhum outro.</p></div>
+  <div><p class="eb">regra</p><h3>O coração é formado</h3><p>Ele nunca é desenhado em cima de nada. É a franja da sombrinha, a cauda da baleia, duas folhas caindo juntas.</p></div>
+  <div><p class="eb">regra</p><h3>A assinatura não muda</h3><p>O logo da collab vai no calcanhar, centralizado, tom sobre tom. Quando passa por cima de um elemento, ganha só um fio fino na cor do fundo.</p></div>
 </section>''' + proxima('processo')
-escrever('processo.html', casca('processo', 'Processo · Bem-Querer', 'Como cada par nasce e as decisões que mudaram o desenho.', corpo))
+escrever('processo.html', casca('processo', 'Processo · Bem-Querer', 'Como cada par nasce, do campo ao chinelo, e as regras da coleção.', corpo))
 
 # ---------------- campanha ----------------
 gal = ''
