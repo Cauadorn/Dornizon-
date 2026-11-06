@@ -20,6 +20,15 @@ emagrecendo, inclusive com caneta**.
 
 Plano B, com o mesmo passo a passo: **finanças pessoais** (organizar o salário e sair das dívidas).
 
+## Arquivos
+
+| Arquivo | O que é |
+|---|---|
+| [`personagem.md`](personagem.md) | ficha da Bia: aparência, cozinha, voz, bordões, marca, bio do Instagram |
+| [`prompts-flow.md`](prompts-flow.md) | prompts de imagem e vídeo do Flow, na ordem, e a montagem no CapCut |
+| [`ebook/ebook.md`](ebook/ebook.md) | texto completo do ebook *Prato Pequeno, Proteína Grande* (40 receitas) |
+| [`ebook/receitas.py`](ebook/receitas.py) | fonte das receitas; recalcula proteína e kcal e gera o `ebook.md` |
+
 ## Personagem (rascunho)
 
 - Mulher de uns 35 anos, cozinha prática, "receitas proteicas em 15 minutos". Uma amiga que cozinha
