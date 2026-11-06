@@ -410,7 +410,7 @@ cred = ''.join(
 corpo = pg_hero('créditos', 'Ficha <em>técnica</em>', 'Quem fez o quê, de onde vieram as fotos de campo e o aviso de que tudo isto é um projeto de portfólio.') + f'''
 <section class="miolo" style="padding-bottom:10svh">
   <dl class="ficha">
-    <dt>Conceito, pesquisa e direção de arte</dt><dd>Emilly Silva</dd>
+    <dt>Conceito, pesquisa, textos e direção de arte</dt><dd>Emilly Silva</dd>
     <dt>Imagens e motions</dt><dd>gerados com IA, sob direção de arte de Emilly Silva</dd>
     <dt>Fotos de campo</dt><dd>139 fotógrafos, creditados abaixo, sob licenças Creative Commons</dd>
     <dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd>

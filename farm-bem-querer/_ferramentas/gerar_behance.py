@@ -205,7 +205,7 @@ mod('identidade', f'''<p class="eb">identidade</p><h2>A assinatura <em>não muda
 
 # 16 ficha técnica
 mod('ficha', '''<p class="eb">ficha técnica</p><h2>Obrigada por <em>chegar até aqui</em></h2>
-<dl class="ficha-b"><dt>Conceito, pesquisa e direção de arte</dt><dd>Emilly Silva</dd><dt>Imagens e motions</dt><dd>gerados com IA, sob a minha direção de arte</dd><dt>Fotos de campo</dt><dd>139 fotógrafos, sob licenças Creative Commons, com crédito completo no site</dd><dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd></dl>
+<dl class="ficha-b"><dt>Conceito, pesquisa, textos e direção de arte</dt><dd>Emilly Silva</dd><dt>Imagens e motions</dt><dd>gerados com IA, sob a minha direção de arte</dd><dt>Fotos de campo</dt><dd>139 fotógrafos, sob licenças Creative Commons, com crédito completo no site</dd><dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem alteração</dd></dl>
 <div class="rodape-f"><p><b>o projeto inteiro</b>cauadorn.github.io/Dornizon-</p><p class="aviso">Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>''', 'vinho')
 
 CAPA = f'''<section class="capa-b" id="capa-behance"><div class="cb-arte">{arco("ms")}<img class="flutua" src="{par("ms")}" alt=""></div></section>'''

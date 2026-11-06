@@ -87,7 +87,7 @@ Bem-Querer · havaianas ♥ FARM Rio (conceito)
 
 DESCRIÇÃO DO PROJETO
 Bem-Querer é uma V2 conceitual da collab havaianas ♥ FARM Rio: quatorze pares de chinelos, um por estado, cada um feito com os elementos de lá e com um coração escondido na estampa, formado pelos próprios elementos.
-Conceito, pesquisa e direção de arte: Emilly Silva. Imagens e motions gerados com IA, a partir da minha direção de arte.
+Conceito, pesquisa, textos e direção de arte: Emilly Silva. Imagens e motions gerados com IA, a partir da minha direção de arte.
 Projeto fictício de portfólio, sem vínculo com a FARM Rio ou a havaianas.
 Site completo: cauadorn.github.io/Dornizon-
 
