@@ -129,10 +129,10 @@ sl(f'''<div class="cheia"><img src="{jpg(ce["campanha"], 1500)}" alt=""></div><d
 # 13 fim (único slide com a menção a IA)
 sl(f'''<div class="fim-in">{svg(mono("#FFF3E6", "#6A1B29"), 110)}<p class="fim-g">bem-querer</p>
 <p class="fim-t">O projeto completo, estado por estado, está no site. <b>Link na bio.</b></p>
-<div class="fim-c"><p><b>Ficha</b> Conceito, pesquisa de campo e direção de arte: Emilly Silva. Ilustrações, estampas e fotos dos pares feitas com IA generativa, a partir dessa direção de arte.</p>
+<div class="fim-c"><p><b>Ficha</b> Conceito, direção de arte e curadoria: Emilly Silva. Ilustrações, estampas, fotos dos pares e motions gerados com IA (Nano Banana e Kling), sob a direção de arte dela. Pesquisa e textos com apoio de IA.</p>
 <p><b>Fotos de campo</b> 139 fotógrafos, sob licenças Creative Commons, com crédito completo no site.</p>
 <p><b>Aviso</b> Projeto conceitual de portfólio. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas.</p></div></div>''',
-   'Último slide, em vinho: bem-querer, link na bio, ficha técnica (direção de arte de Emilly Silva; ilustrações, estampas e fotos dos pares feitas com IA generativa), créditos das fotos de campo e aviso de projeto conceitual sem vínculo com as marcas.', 'fim', topo=False)
+   'Último slide, em vinho: bem-querer, link na bio, ficha técnica (conceito e direção de arte de Emilly Silva; ilustrações, estampas, fotos dos pares e motions gerados com IA sob essa direção; pesquisa e textos com apoio de IA), créditos das fotos de campo e aviso de projeto conceitual sem vínculo com as marcas.', 'fim', topo=False)
 assert len(slides) == N, len(slides)
 
 CSS = '''
@@ -149,7 +149,7 @@ h2{font-size:104px;line-height:.92;letter-spacing:-.02em;margin:0 0 44px}
 h2 em,h1 em,.manif em{color:var(--vinho)}
 .sub{font-size:30px;line-height:1.4;color:#3E2F29;margin:36px 0 0;max-width:30ch}
 .arco{border-radius:999px 999px 0 0;overflow:hidden;background:var(--creme2);aspect-ratio:3/4}
-.arco img{width:100%;height:100%;object-fit:cover}
+.arco img{width:100%;height:100%;object-fit:cover;object-position:50% 100%}
 .flutua{position:absolute;filter:drop-shadow(0 26px 22px rgba(40,10,10,.3))}
 figure{margin:0}
 figcaption{font:500 18px/1.35 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--suave);margin-top:14px}
@@ -162,7 +162,7 @@ figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:4
 .capa-eb{margin-top:26px;color:var(--tinta)}
 .capa-arte{position:absolute;left:50%;bottom:0;width:600px;transform:translateX(-50%)}
 .capa-arte .arco{aspect-ratio:3/4.1}
-.capa .flutua{width:280px;left:-170px;bottom:15%;transform:rotate(-10deg)}
+.capa .flutua{width:210px;left:-120px;top:-34px;transform:rotate(-12deg)}
 /* manifesto */
 .centro{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .manif{font:400 84px/1.1 var(--serif);letter-spacing:-.015em;margin:34px 0 60px}
@@ -178,9 +178,9 @@ figcaption span{display:block;text-transform:none;letter-spacing:0;font-weight:4
 /* estado */
 .estado .nome{font-size:130px;line-height:.86;margin:18px 0 10px}
 .est{font:italic 400 48px/1.1 var(--serif);color:var(--vinho);margin:0}
-.estado .arte{position:absolute;left:50%;bottom:150px;width:620px;transform:translateX(-30%)}
+.estado .arte{position:absolute;left:50%;bottom:150px;width:620px;transform:translateX(-42%)}
 .estado .arte .arco{aspect-ratio:3/3.6}
-.estado .flutua{width:300px;left:-250px;bottom:15%;transform:rotate(-10deg)}
+.estado .flutua{width:210px;left:-120px;top:-34px;transform:rotate(-12deg)}
 .cor-l{position:absolute;left:84px;right:84px;bottom:60px;margin:0;font:italic 400 34px/1.25 var(--serif);color:var(--tinta)}
 .cor-l b{font:500 18px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);font-style:normal;margin-right:8px}
 /* busca */
