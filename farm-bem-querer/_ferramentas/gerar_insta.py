@@ -129,7 +129,7 @@ sl(f'''<div class="cheia"><img src="{jpg(ce["campanha"], 1500)}" alt=""></div><d
 # 13 fim (único slide com a menção a IA)
 sl(f'''<div class="fim-in">{svg(mono("#FFF3E6", "#6A1B29"), 110)}<p class="fim-g">bem-querer</p>
 <p class="fim-t">O projeto completo, estado por estado, está no site. <b>Link na bio.</b></p>
-<div class="fim-c"><p><b>Ficha</b> Conceito, direção de arte e curadoria: Emilly Silva. Ilustrações, estampas, fotos dos pares e motions gerados com IA (Nano Banana e Kling), sob a direção de arte dela. Pesquisa e textos com apoio de IA.</p>
+<div class="fim-c"><p><b>Ficha</b> Conceito, direção de arte e curadoria: Emilly Silva. Ilustrações, estampas, fotos dos pares e motions gerados com IA (Nano Banana e Kling), sob essa direção de arte. Pesquisa e textos com apoio de IA.</p>
 <p><b>Fotos de campo</b> 139 fotógrafos, sob licenças Creative Commons, com crédito completo no site.</p>
 <p><b>Aviso</b> Projeto conceitual de portfólio. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas.</p></div></div>''',
    'Último slide, em vinho: bem-querer, link na bio, ficha técnica (conceito e direção de arte de Emilly Silva; ilustrações, estampas, fotos dos pares e motions gerados com IA sob essa direção; pesquisa e textos com apoio de IA), créditos das fotos de campo e aviso de projeto conceitual sem vínculo com as marcas.', 'fim', topo=False)
