@@ -19,8 +19,11 @@ antes e depois e não fala de remédio. Ela é a amiga que cozinha bem.
 | | |
 |---|---|
 | Pele | morena clara, subtom quente, textura real (poros, sem filtro) |
-| Cabelo | castanho-escuro, liso com leve onda, na altura dos ombros, quase sempre preso num coque baixo com uma **piranha caramelo** |
-| Rosto | oval, maçãs do rosto marcadas, sobrancelhas naturais, olhos castanhos, sorriso largo |
+| Cabelo | castanho-escuro ondulado, abaixo dos ombros, **meio preso** no alto da cabeça com uma **piranha caramelo**, fios soltos na frente |
+| Rosto | oval, maçãs do rosto marcadas, sobrancelhas naturais, olhos castanhos, sorriso largo com dentes à mostra, **sardas leves** no nariz e nas bochechas |
+
+Rosto oficial aprovado: [`referencias/rosto-oficial.jpg`](referencias/rosto-oficial.jpg). Ele manda: se algum
+texto desta ficha discordar da foto, vale a foto.
 | Corpo | comum, estatura média; nem magra de academia nem modelo |
 | Roupa fixa | camiseta básica off-white + **avental verde-sálvia** de alça cruzada |
 | Marcas registradas | avental verde-sálvia e piranha caramelo: aparecem em **todo** vídeo |
