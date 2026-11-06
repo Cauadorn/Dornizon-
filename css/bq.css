@@ -145,6 +145,9 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 .tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;max-width:var(--max);margin:0 auto;padding:6svh var(--mx) 12svh}
 .tres h3{font-size:clamp(28px,2.4vw,38px);line-height:1.1;margin:10px 0 10px}
 .tres p{margin:0;color:#4C3C35}
+.tres.feito{padding-top:40px}
+.tres.feito > div{border-top:1px solid rgba(42,26,23,.35);padding-top:20px}
+.fim-cols p a{text-decoration:underline;text-underline-offset:3px}
 
 /* fotos */
 .moldura{overflow:hidden;background:var(--creme2)}
@@ -169,7 +172,7 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 .arco-ilu img,.arco-ilu video{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
 .carta-e .arco video,.prox .mini video{width:100%;height:100%;object-fit:cover;display:block}
 /* o par flutua sobre a arte, sempre acima da faixa da assinatura (que ocupa os 12% de baixo) */
-.par-flutua{position:absolute;z-index:2;width:40%;left:-16%;bottom:15%;transform:rotate(-9deg);filter:drop-shadow(0 30px 26px rgba(40,10,10,.28))}
+.par-flutua{position:absolute;z-index:2;width:28%;left:-11%;top:-3%;transform:rotate(-12deg);filter:drop-shadow(0 30px 26px rgba(40,10,10,.28))}
 .e-hero{padding:clamp(120px,18svh,180px) 0 14svh}
 .e-volta{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--suave)}
 .e-volta:hover{color:var(--vinho)}
@@ -240,9 +243,9 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 .carta-e .arte-c{position:relative;display:block}
 .carta-e .arco{display:block;position:relative;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;clip-path:inset(0 round 999px 999px 0 0);background:var(--creme2)}
 .carta-e .arco img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.carta-e .par{position:absolute;z-index:2;width:56%;left:-10%;bottom:15%;transform:rotate(-10deg) translateY(16px);opacity:0;transition:opacity .45s,transform .6s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 18px 16px rgba(40,10,10,.28))}
+.carta-e .par{position:absolute;z-index:2;width:38%;left:-9%;top:-5%;transform:rotate(-12deg) translateY(10px);opacity:0;transition:opacity .45s,transform .6s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 18px 16px rgba(40,10,10,.28))}
 .carta-e:hover .arco img{transform:scale(1.06)}
-.carta-e:hover .par,.carta-e:focus-visible .par{opacity:1;transform:rotate(-10deg) translateY(0)}
+.carta-e:hover .par,.carta-e:focus-visible .par{opacity:1;transform:rotate(-12deg) translateY(0)}
 .carta-e strong{display:block;font:400 clamp(26px,2.2vw,36px)/1.05 var(--serif);margin-top:18px;font-weight:400}
 .carta-e em{display:block;font:italic 400 17px/1.3 var(--serif);color:var(--suave)}
 .carta-e .n{position:absolute;z-index:3;top:14px;left:50%;transform:translateX(-50%);font:500 11px/1 var(--sans);letter-spacing:.14em;color:#FFF3E6;background:rgba(42,26,23,.45);padding:6px 9px;border-radius:99px}
@@ -308,7 +311,7 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 .fim-cols p{margin:0 0 10px}
 .fim-cols ul{list-style:none;margin:0;padding:0}
 .fim-cols li{margin-bottom:6px}
-.fim-cols a{text-decoration:none}
+.fim-cols p a{text-decoration:none}
 .fim-cols a:hover{color:var(--vinho)}
 
 @media (max-width:1080px){
@@ -345,7 +348,7 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
   .campo,.campo.tres-col{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cena{padding-top:14svh}
   .arco-ilu{margin:0 auto;width:86%}
-  .par-flutua{width:38%;left:-3%;bottom:15%}
+  .par-flutua{width:30%;left:-4%;top:-3%}
   .quadro-cor{height:auto;width:100%;margin:0}
   .lugar{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lugar figure:first-child{grid-column:1 / -1}
@@ -357,7 +360,7 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
   .reg-h{grid-template-columns:minmax(0,1fr);padding-top:20px}
   .reg-h h2{font-size:52px}
   .reg-l{text-align:left;margin:0;font-size:16px}
-  .carta-e .par{opacity:1;transform:rotate(-10deg)}
+  .carta-e .par{opacity:1;transform:rotate(-12deg);width:40%;left:-7%}
   .coracoes{grid-template-columns:repeat(3,minmax(0,1fr))}
   .galeria{columns:2}
   .aplic,.base{grid-template-columns:minmax(0,1fr)}
