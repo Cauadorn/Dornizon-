@@ -5,6 +5,7 @@ Grava 07-apresentacao/pdf/apresentacao.html (fonte) e, com o node, bem-querer-ap
 import html
 import json
 import os
+import sys
 import re
 
 from PIL import Image
@@ -281,5 +282,8 @@ figure{margin:0}
 doc = f'''<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Bem-Querer · apresentação</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&display=block">
 <style>{CSS}</style></head><body>{"".join(paginas)}</body></html>'''
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tipografia import sem_viuvas, CSS_TEXTO  # noqa: E402
+doc = sem_viuvas(doc.replace('</style>', CSS_TEXTO + '</style>', 1))
 open(os.path.join(OUT, 'apresentacao.html'), 'w', encoding='utf8').write(doc)
 print('ok', len(paginas), 'páginas')

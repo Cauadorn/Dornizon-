@@ -6,6 +6,7 @@ import glob
 import html
 import json
 import os
+import sys
 import re
 import shutil
 import unicodedata
@@ -165,7 +166,13 @@ def figura_campo(s, k, f, link=False, r=''):
     return f'<figure><a href="{r}{s["url"]}">{corpo}</a></figure>' if link else f'<figure>{corpo}</figure>'
 
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tipografia import sem_viuvas  # noqa: E402
+
+
 def escrever(nome, conteudo):
+    if nome.endswith('.html'):
+        conteudo = sem_viuvas(conteudo)
     caminho = os.path.join(SITE, nome)
     os.makedirs(os.path.dirname(caminho), exist_ok=True)
     open(caminho, 'w', encoding='utf8').write(conteudo)
@@ -204,8 +211,7 @@ indice = ''.join(f'<li data-img="img/{e(IMG_PAG[p])}"><a href="{p}.html"><span>{
 corpo = f'''
 <section class="hero" id="topo">
   <div class="janela" aria-hidden="true">{janela}</div>
-  <h1 class="palavra p-bem">Bem-</h1>
-  <p class="palavra p-querer" aria-hidden="true">Querer</p>
+  <h1 class="titulo-h"><span class="palavra p-bem">Bem-</span><span class="palavra p-querer">Querer</span></h1>
   <div class="rodape-h"><p class="eb">coleção Bem-Querer · 14 estados</p><p class="eb">role para descobrir</p></div>
   <p class="eb janela-leg" aria-live="polite"></p>
 </section>

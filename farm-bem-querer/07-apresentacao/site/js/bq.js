@@ -219,9 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var partes = [];
     [].slice.call(mt.childNodes).forEach(function (n) {
       if (n.nodeType === 3) {
-        n.textContent.split(/(\s+)/).forEach(function (w) {
+        n.textContent.split(/([ \t\r\n]+)/).forEach(function (w) {
           if (!w) return;
-          if (/^\s+$/.test(w)) { partes.push(document.createTextNode(w)); return; }
+          if (/^[ \t\r\n]+$/.test(w)) { partes.push(document.createTextNode(w)); return; }
           var s = document.createElement('span'); s.className = 'w'; s.textContent = w; partes.push(s);
         });
       } else { if (n.classList) n.classList.add('w'); partes.push(n); }
