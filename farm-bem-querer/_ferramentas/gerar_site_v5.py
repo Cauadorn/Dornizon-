@@ -110,7 +110,7 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
 <div class="cortina" aria-hidden="true"></div>
 {carrega}
 <header class="topo">
-  <a class="marca" href="{r}index.html" aria-label="Bem-Querer, início">{svg_simb()}bem-querer</a>
+  <a class="marca" href="{r}index.html" aria-label="FARM Rio ♥ havaianas, coleção Bem-Querer: início"><img class="m-assin" src="{r}img/assinatura-topo.svg" alt=""><span class="m-sep" aria-hidden="true"></span><span class="m-col"><small>coleção</small>Bem-Querer</span></a>
   <nav class="links" aria-label="Páginas">{links}</nav>
   <button class="pilula" type="button" aria-expanded="false" aria-controls="menu"><i></i>menu</button>
 </header>
@@ -204,7 +204,7 @@ corpo = f'''
   <div class="janela" aria-hidden="true">{janela}</div>
   <h1 class="palavra p-bem">Bem-</h1>
   <p class="palavra p-querer" aria-hidden="true">Querer</p>
-  <div class="rodape-h"><p class="eb">havaianas ♥ FARM Rio · cápsula V2</p><p class="eb">role para descobrir</p></div>
+  <div class="rodape-h"><p class="eb">coleção Bem-Querer · 14 estados</p><p class="eb">role para descobrir</p></div>
   <p class="eb janela-leg" aria-live="polite"></p>
 </section>
 <section class="manif">
@@ -506,6 +506,7 @@ for i, s in enumerate(data):
 os.makedirs(SITE + '/css', exist_ok=True)
 shutil.copy(os.path.join(AQUI, 'v5', 'bq.css'), SITE + '/css/bq.css')
 shutil.copy(os.path.join(AQUI, 'v5', 'bq.js'), SITE + '/js/bq.js')
+shutil.copy(os.path.join(AQUI, 'v5', 'assinatura-topo.svg'), SITE + '/img/assinatura-topo.svg')
 _pdf = os.path.join(P, '07-apresentacao', 'pdf', 'bem-querer-apresentacao.pdf')
 if os.path.exists(_pdf):
     shutil.copy(_pdf, SITE + '/bem-querer-apresentacao.pdf')
