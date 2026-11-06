@@ -23,6 +23,8 @@ OUT = os.path.join(P, '07-apresentacao', 'behance')
 IMG = os.path.join(OUT, '_img')
 os.makedirs(IMG, exist_ok=True)
 POR = {s['uf']: s for s in data}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from notas_estado import NOTA, VERMELHO  # noqa: E402
 PASTA = {s['uf']: glob.glob(os.path.join(P, '05-estampas', f'{i + 1:02d}-*'))[0] for i, s in enumerate(data)}
 
 
@@ -158,7 +160,7 @@ def destaque(uf):
     s, t = POR[uf], V[uf]
     ac = '#6A1B29'
     mod(f'estado-{uf}', f'''<div class="d-topo"><div class="d-txt"><p class="eb">{data.index(s) + 1:02d} / 14 · {REGIAO[uf]}</p><h2>{e(s["nome"])}</h2>
-<p class="d-est" style="color:{ac}">{e(t["nome"])}</p><p class="txt">{e(t["conceito"])}</p>
+<p class="d-est" style="color:{ac}">{e(t["nome"])}</p><p class="txt">{e(t["conceito"])}</p>{f'<p class="nota-v">{e(NOTA[uf])}</p>' if uf in NOTA else ''}
 <div class="d-cor"><img src="{site_img(s["coracao"], 500)}" alt=""><p><b>onde está o coração</b>{e(s["coracao_texto"])}</p></div></div>
 <div class="d-arte">{arco(uf)}<img class="flutua" src="{par(uf)}" alt=""></div></div>
 <div class="d-tres"><figure><img src="{img(uf, "palmilha", 1000)}" alt=""><figcaption>o díptico: os dois pés contam a mesma cena</figcaption></figure>
@@ -274,6 +276,7 @@ figure{margin:0}
 .d-topo{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:80px;align-items:center}
 .d-txt h2{font-size:104px}
 .d-est{font:italic 400 44px/1.1 var(--serif);margin:14px 0 26px}
+.nota-v{color:#C8321F;font-size:17px;line-height:1.5;margin-top:20px;padding-left:14px;border-left:2px solid currentColor;max-width:44ch}
 .d-cor{display:flex;gap:22px;align-items:center;margin-top:36px;padding-top:30px;border-top:1px solid rgba(42,26,23,.2)}
 .d-cor img{width:96px;height:96px;border-radius:50%;object-fit:cover}
 .d-cor p{font:italic 400 24px/1.25 var(--serif)}

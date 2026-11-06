@@ -17,6 +17,8 @@ OUT = os.path.join(P, '07-apresentacao', 'pdf')
 IMG = os.path.join(OUT, '_img')
 os.makedirs(IMG, exist_ok=True)
 POR = {s['uf']: s for s in data}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from notas_estado import NOTA, VERMELHO  # noqa: E402
 CREME = (244, 237, 227)
 
 
@@ -132,7 +134,7 @@ for n, uf in zip(range(8, 12), ['mg', 'pa', 'ms', 'sc']):
     paginas.append(pg(n, f'''
 <div class="estado">
   <div class="e-txt"><p class="eb">{data.index(s) + 1:02d} / 14 · {REGIAO[uf]}</p><h2 class="e-nome">{e(s["nome"])}</h2><p class="e-est">{e(t["nome"])}</p>
-    <p class="txt">{e(t["conceito"])}</p>
+    <p class="txt">{e(t["conceito"])}</p>{f'<p class="nota-v">{e(NOTA[uf])}</p>' if uf in NOTA else ''}
     <div class="e-cor"><img src="{jpg(s["coracao"], 300)}" alt=""><p><b>onde está o coração</b>{e(s["coracao_texto"])}</p></div></div>
   <div class="e-arte"><div class="arco grande"><img src="{jpg(s["ilu"], 1100)}" alt=""></div><img class="flutua" src="{par(uf, alfa=True, lado=520)}" alt=""></div>
   <div class="e-fotos"><figure><img src="{jpg(s["campanha"], 800)}" alt=""><figcaption>o par no lugar · campanha</figcaption></figure>
@@ -179,6 +181,7 @@ h2{font:400 96px/.95 var(--serif);letter-spacing:-.02em;margin:16px 0 44px;max-w
 h2 em,.manif em{color:var(--vinho)}
 h3{font:400 40px/1.05 var(--serif);margin:14px 0 8px}
 .txt{max-width:40ch;color:#3E2F29;margin:0 0 30px}
+.nota-v{max-width:44ch;color:#C8321F;font-size:17px;line-height:1.5;margin:-10px 0 28px;padding-left:14px;border-left:2px solid currentColor}
 .rod{position:absolute;left:110px;right:110px;bottom:44px;display:flex;justify-content:space-between;align-items:center;font:500 14px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
 .rod span:first-child{display:flex;align-items:center;gap:10px;font:italic 400 24px/1 var(--serif);letter-spacing:0;text-transform:none;color:var(--tinta)}
 .arco{border-radius:999px 999px 0 0;overflow:hidden;background:var(--creme2);aspect-ratio:3/4}

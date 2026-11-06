@@ -168,6 +168,7 @@ def figura_campo(s, k, f, link=False, r=''):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tipografia import sem_viuvas  # noqa: E402
+from notas_estado import NOTA  # noqa: E402
 
 
 def escrever(nome, conteudo):
@@ -453,7 +454,7 @@ for i, s in enumerate(data):
       <a class="e-volta" href="{R}colecao.html">← coleção</a>
       <h1>{e(s["nome"])}</h1>
       <p class="est">{e(t["nome"])}</p>
-      <p class="conc">{e(t["conceito"])}</p>
+      <p class="conc">{e(t["conceito"])}</p>{f'<p class="nota-v">{e(NOTA[uf])}</p>' if uf in NOTA else ''}
       <p class="num"><b>{i + 1:02d}</b> / 14 · {REGIAO[uf]}</p>
     </div>
     <div class="cena-arte">
