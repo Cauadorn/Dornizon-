@@ -217,7 +217,8 @@ corpo = f'''
 </section>
 <section class="roda" aria-label="A coleção: os quatorze pares">
   <div class="roda-palco">
-    <div class="roda-topo"><p class="eb">a coleção</p><h2>Quatorze pares,<br><em>um em cada estado</em></h2></div>
+    <div class="roda-topo"><div><p class="eb">a coleção</p><h2>Quatorze pares,<br><em>um em cada estado</em></h2></div><p class="eb dica-r">arraste para o lado ou toque num par</p></div>
+    <div class="roda-arena" tabindex="0" aria-label="Roda dos pares: arraste para o lado, toque num par ou use as setas do teclado">
     <div class="cupula" aria-hidden="true">
       <svg class="anel" viewBox="0 0 1000 1000"><defs><path id="circ" d="M500,500 m-430,0 a430,430 0 1,1 860,0 a430,430 0 1,1 -860,0"/></defs>
         <text><textPath href="#circ" textLength="2690" lengthAdjust="spacing">bem-querer · do Rio para o Brasil · quatorze estados · quatorze pares · bem-querer · do Rio para o Brasil · quatorze estados ·</textPath></text></svg>
@@ -225,9 +226,9 @@ corpo = f'''
     <div class="aro">{roda}</div>
     <div class="roda-info" aria-live="polite"><span class="n">01</span><strong>{e(data[0]["nome"])}</strong><em>{e(data[0]["est"])}</em>
       <div class="roda-bts"><button type="button" class="r-ant" aria-label="Par anterior">‹</button><a class="r-ver" href="{data[0]["url"]}">ver o estado</a><button type="button" class="r-prox" aria-label="Próximo par">›</button></div></div>
+    </div>
   </div>
 </section>
-<section class="faixa-pal" aria-label="Palavras ouvidas na rua"><div class="fp-in"><span>{todas_palavras} <i>♥</i></span><span aria-hidden="true">{todas_palavras} <i>♥</i></span></div></section>
 <section class="indice">
   <p class="eb">o site</p>
   <h2>Por onde <em>começar</em></h2>
@@ -448,7 +449,6 @@ for i, s in enumerate(data):
     </div>
   </div>
 </section>
-<section class="faixa-pal" aria-label="Palavras ouvidas na rua"><div class="fp-in"><span>{pal_estado} <i>♥</i></span><span aria-hidden="true">{pal_estado} <i>♥</i></span></div></section>
 <section class="busca" id="coracao" aria-labelledby="busca-t">
   <div class="busca-in">
     <div>
