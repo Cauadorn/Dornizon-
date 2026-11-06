@@ -411,12 +411,13 @@ corpo = pg_hero('créditos', 'Ficha <em>técnica</em>', 'Quem fez o quê, sem es
 <div class="tres feito">
   <div><p class="eb">Emilly Silva</p><h3>Pensamento e direção</h3><p>A ideia de uma V2 da collab, a escolha dos quatorze estados e da cena de cada um, a regra do coração formado pelos próprios elementos, a paleta de cada par, a direção de arte de cada imagem e a curadoria do que ficou e do que foi refeito.</p></div>
   <div><p class="eb">IA generativa</p><h3>Imagem e movimento</h3><p>As ilustrações, as estampas dos chinelos, os mockups e as fotos de campanha foram gerados com IA de imagem (Nano Banana, via Freepik). Os motions saíram das próprias ilustrações, com IA de vídeo (Kling, via Higgsfield). Nada foi gerado sem um pedido dela, e nada entrou sem a aprovação dela.</p></div>
-  <div><p class="eb">fotos reais</p><h3>Pesquisa de campo</h3><p>As fotos de campo não são IA: são de 139 fotógrafos, creditados abaixo. A pesquisa e os textos foram organizados por ela com apoio de um assistente de IA (Claude), que ajudou a reunir as fontes e a redigir.</p></div>
+  <div><p class="eb">fotos reais + apoio de IA</p><h3>Pesquisa, texto e código</h3><p>As fotos de campo não são IA: são de 139 fotógrafos, creditados abaixo. A pesquisa, os textos e este site foram construídos por ela com apoio de um assistente de IA (Claude), que ajudou a reunir as fontes, a redigir e a programar.</p></div>
 </div>
 <section class="miolo" style="padding-bottom:10svh">
   <dl class="ficha">
     <dt>Conceito, direção de arte e curadoria</dt><dd>Emilly Silva</dd>
     <dt>Pesquisa e textos</dt><dd>Emilly Silva, com apoio de IA (Claude)</dd>
+    <dt>Site e animações</dt><dd>programados com apoio de IA (Claude), sob direção de Emilly Silva</dd>
     <dt>Ilustrações, estampas, chinelos e campanha</dt><dd>geradas com IA (Nano Banana, via Freepik), sob direção de arte de Emilly Silva</dd>
     <dt>Motions</dt><dd>gerados com IA (Kling, via Higgsfield) a partir das ilustrações</dd>
     <dt>Fotos de campo</dt><dd>139 fotógrafos, creditados abaixo, sob licenças Creative Commons</dd>

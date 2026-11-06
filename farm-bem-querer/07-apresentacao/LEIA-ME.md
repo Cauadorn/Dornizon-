@@ -36,6 +36,9 @@ cd /tmp && python3 -I /home/user/Dornizon-/farm-bem-querer/_ferramentas/gerar_be
 cd /home/user/Dornizon-/farm-bem-querer/_ferramentas && node behance_render.js
 node motion_camadas.js ../07-apresentacao/behance/behance.html .mod ../07-apresentacao/behance/_camadas 1 6 7 8 9 10
 python3 -I motion_compor.py ../07-apresentacao/behance/_camadas ../07-apresentacao/behance/videos modulo 3 1280
+cd /tmp && python3 -I /home/user/Dornizon-/farm-bem-querer/_ferramentas/gerar_filmes.py   # filmes/abertura.html e filmes/colecao.html
+cd /home/user/Dornizon-/farm-bem-querer/_ferramentas && node filme_render.js abertura && node filme_render.js colecao
 python3 -I behance_pacote.py      # behance/pacote/ (capa, módulos em ordem, textos) + ZIP
 ```
+Os dois filmes (abertura e "a coleção em movimento") são animados em HTML com GSAP e renderizados quadro a quadro; os motions entram como sequência de quadros.
 Os vídeos juntam o módulo parado, o motion de `site/video/<uf>.mp4` recortado no arco e os chinelos por cima.
