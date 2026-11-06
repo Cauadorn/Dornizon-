@@ -154,15 +154,59 @@ document.addEventListener('DOMContentLoaded', function () {
       if (kk !== atual) { atual = kk; var it = itens[kk]; nEl.textContent = it.dataset.n; nmEl.textContent = it.dataset.nome; esEl.textContent = it.dataset.est; ver.href = it.getAttribute('href'); }
     };
     gira(0);
-    if (G) {
-      var o = { phi: 0 };
-      var tw = G.to(o, { phi: (N - 1) * passo, ease: 'none', onUpdate: function () { gira(o.phi); },
-        scrollTrigger: { trigger: roda, start: 'top top', end: function () { return '+=' + innerHeight * 3.4; }, pin: true, scrub: .9, invalidateOnRefresh: true } });
-      irPara = function (n) { n = Math.max(0, Math.min(N - 1, n)); var st = tw.scrollTrigger, y = st.start + (st.end - st.start) * n / (N - 1); if (lenis) lenis.scrollTo(y, { duration: 1 }); else scrollTo(0, y); };
-    } else {
-      roda.classList.add('sem-g');
-      irPara = function (n) { gira(n * passo); };
-    }
+    /* a roda gira arrastando para o lado, tocando num par vizinho ou nas setas; a página não prende a rolagem */
+    var arena = $('.roda-arena', roda), phi = 0, alvo = 0, raf = null;
+    var anima = function () {
+      phi += (alvo - phi) * (reduz ? 1 : .16);
+      if (Math.abs(alvo - phi) < .03) phi = alvo;
+      gira(phi);
+      raf = phi === alvo ? null : requestAnimationFrame(anima);
+    };
+    var animaPara = function (p) { alvo = p; if (!raf) raf = requestAnimationFrame(anima); };
+    irPara = function (n) {
+      var base = Math.round(alvo / passo), d = (((n - base) % N) + N) % N;
+      if (d > N / 2) d -= N;
+      animaPara((base + d) * passo);
+    };
+    var ativo = false, arrastou = false, x0 = 0, p0 = 0, grausPorPx = .2, ux = 0, ut = 0, vel = 0;
+    arena.addEventListener('pointerdown', function (e) {
+      if (e.button) return;
+      var a = aro.getBoundingClientRect(), r = itens[0].getBoundingClientRect();
+      var R = Math.hypot(r.left + r.width / 2 - a.left, r.top + r.height / 2 - a.top) || 300;
+      grausPorPx = 180 / (Math.PI * R);
+      ativo = true; arrastou = false; x0 = ux = e.clientX; ut = performance.now(); vel = 0; p0 = phi;
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      alvo = phi;
+    });
+    addEventListener('pointermove', function (e) {
+      if (!ativo) return;
+      var dx = e.clientX - x0;
+      if (!arrastou && Math.abs(dx) > 6) { arrastou = true; arena.classList.add('arrastando'); }
+      if (!arrastou) return;
+      var t = performance.now();
+      vel = (e.clientX - ux) / Math.max(1, t - ut); ux = e.clientX; ut = t;
+      phi = alvo = p0 - dx * grausPorPx;
+      gira(phi);
+    });
+    addEventListener('pointerup', function () {
+      if (!ativo) return;
+      ativo = false; arena.classList.remove('arrastando');
+      if (arrastou) { var proj = phi - vel * 160 * grausPorPx; animaPara(Math.round(proj / passo) * passo); }
+    });
+    addEventListener('pointercancel', function () { if (ativo) { ativo = false; arena.classList.remove('arrastando'); animaPara(Math.round(phi / passo) * passo); } });
+    itens.forEach(function (it, i) {
+      it.addEventListener('click', function (e) {
+        if (arrastou) { e.preventDefault(); e.stopPropagation(); arrastou = false; return; }
+        if (i !== atual) { e.preventDefault(); e.stopPropagation(); irPara(i); }
+      }, true);
+      $('img', it).setAttribute('draggable', 'false');
+      it.setAttribute('draggable', 'false');   /* link arrastável cancelaria o gesto no computador */
+    });
+    arena.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    arena.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); irPara(atual + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); irPara(atual - 1); }
+    });
     $('.r-prox', roda).addEventListener('click', function () { irPara(atual + 1); });
     $('.r-ant', roda).addEventListener('click', function () { irPara(atual - 1); });
   }
