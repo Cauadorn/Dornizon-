@@ -306,13 +306,17 @@ escrever('pesquisa.html', casca('pesquisa', 'Pesquisa · Bem-Querer', 'Antes do 
 # ---------------- coleção ----------------
 REG = ['Sudeste', 'Nordeste', 'Norte', 'Centro-Oeste', 'Sul']
 blocos = ''
-for rg in REG:
+for i_rg, rg in enumerate(REG, 1):
+    da_reg = [s for s in data if REGIAO[s['uf']] == rg]
+    lista = ' · '.join(e(s['nome']).replace(' ', '&nbsp;') for s in da_reg)
     cartas = ''.join(
         f'<a class="carta-e" href="{s["url"]}" style="--ac:{acento(s["uf"])}"><span class="arte-c"><span class="arco"><span class="n">{data.index(s) + 1:02d}</span>'
         f'{midia(s, auto=True)}</span>'
         f'<img class="par" src="img/{s["uf"]}-par.webp" alt="" loading="lazy"></span><strong>{e(s["nome"])}</strong><em>{e(s["est"])}</em></a>'
-        for s in data if REGIAO[s['uf']] == rg)
-    blocos += f'<section class="regiao"><p class="eb">{rg}</p><div class="arcos">{cartas}</div></section>'
+        for s in da_reg)
+    blocos += (f'<section class="regiao" aria-labelledby="reg-{i_rg}"><header class="reg-h">'
+               f'<p class="eb">região {i_rg:02d} · {len(da_reg)} pares</p><h2 id="reg-{i_rg}">{rg}</h2><p class="reg-l">{lista}</p></header>'
+               f'<div class="arcos">{cartas}</div></section>')
 cors = ''.join(f'<a href="{s["url"]}#coracao"><img src="img/{e(s["coracao"])}" alt="Coração de {e(s["nome"])}" loading="lazy"><b>{e(s["nome"])}</b><span>{e(s["coracao_texto"])}</span></a>' for s in data)
 corpo = pg_hero('a coleção', 'Quatorze <em>pares</em>', 'Um par por estado, com a ilustração do lugar inteiro. Passe o mouse para ver o chinelo; clique para abrir o estado.') + blocos + f'''
 <section class="secao-t" style="padding-top:20svh"><p class="eb">o fio da coleção</p><h2>Onde o coração mora</h2></section>
