@@ -1,7 +1,6 @@
 /* Bem-Querer · comportamento comum a todas as páginas. Cada parte só roda se o elemento existir. */
 document.addEventListener('DOMContentLoaded', function () {
   var reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fino = matchMedia('(hover: hover) and (pointer: fine)').matches;
   var celular = matchMedia('(max-width: 900px)').matches;
   var G = window.gsap && !reduz ? window.gsap : null, lenis = null;
   var $ = function (s, r) { return (r || document).querySelector(s); };
