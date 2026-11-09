@@ -63,7 +63,7 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 .carrega .pct{position:absolute;left:clamp(16px,2.4vw,32px);bottom:clamp(10px,2vw,24px);font:400 clamp(80px,14vw,220px)/.8 var(--serif);font-variant-numeric:tabular-nums}
 
 /* início: o nome à esquerda, o arco à direita passando pelos 14 estados */
-.hero{position:relative;min-height:max(100svh,640px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:4vw;padding:120px var(--mx) 64px;overflow:hidden}
+.hero{position:relative;min-height:max(100svh,640px);display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;column-gap:clamp(64px,7vw,150px);padding:120px var(--mx) 64px;overflow:hidden}
 .hero-txt{position:relative;z-index:2;max-width:680px}
 .titulo-h{margin:16px 0 22px;font:400 clamp(84px,10.2vw,196px)/.8 var(--serif);letter-spacing:-.035em}
 .titulo-h .palavra{display:block}
@@ -106,10 +106,10 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 /* a roda */
 .roda-palco{position:relative;height:100svh;min-height:640px;display:flex;flex-direction:column;overflow:hidden}
 /* a roda vive na própria área, abaixo do título: as medidas usam a altura e a largura dessa área (cqh, cqw) */
-.roda-arena{position:relative;flex:1;min-height:420px;container-type:size;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;--R:min(70cqh,60cqw);--cy:calc(100cqh + .18 * var(--R));--w:min(15cqw,26cqh)}
+.roda-arena{position:relative;flex:1;min-height:420px;container-type:size;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none;--R:min(76cqh,58cqw);--cy:calc(100cqh + .04 * var(--R));--w:min(17cqw,30cqh)}
 .roda-arena.arrastando{cursor:grabbing}
 .roda-arena:focus-visible{outline:2px solid var(--laranja);outline-offset:-6px}
-.roda-topo{position:relative;z-index:3;padding:96px var(--mx) 0;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.roda-topo{position:relative;z-index:3;padding:88px var(--mx) 0;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
 .roda-topo .dica-r{color:var(--suave)}
 .roda-topo h2{font-size:clamp(46px,5.6vw,96px);line-height:.95;letter-spacing:-.02em;margin-top:12px}
 .cupula{position:absolute;left:50%;top:var(--cy);width:calc(var(--R) * 1.64);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--vinho);z-index:0}

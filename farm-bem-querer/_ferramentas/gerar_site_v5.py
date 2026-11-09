@@ -133,7 +133,6 @@ def casca(pid, titulo, descricao, corpo, r='', estilo_body='', carregador=False)
     <div><p class="eb" style="margin-bottom:12px">aviso</p><p>Bem-Querer é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a ideia.</p></div>
   </div>
 </footer>
-<img class="foto-mouse" alt="" aria-hidden="true">
 <script src="{r}js/gsap.min.js" defer></script>
 <script src="{r}js/ScrollTrigger.min.js" defer></script>
 <script src="{r}js/lenis.min.js" defer></script>
@@ -211,7 +210,7 @@ roda = ''.join(f'<a class="item" href="{s["url"]}" style="--i:{i}" data-n="{i + 
                f'<img src="img/{s["uf"]}-par.webp" alt="Par de {e(s["nome"])}" loading="lazy"></a>' for i, s in enumerate(data))
 IMG_PAG = {'projeto': POR['rj']['ilu'], 'pesquisa': POR['mg']['campo'][0]['img'], 'colecao': POR['ms']['estudio'], 'processo': POR['mg']['palmilha'],
            'campanha': POR['ce']['campanha'], 'identidade': POR['pa']['coracao'], 'creditos': POR['ba']['campo'][0]['img']}
-indice = ''.join(f'<li data-img="img/{e(IMG_PAG[p])}"><a href="{p}.html"><span>{k:02d}</span><h3>{n}</h3><p>{d}</p></a></li>'
+indice = ''.join(f'<li><a href="{p}.html"><span>{k:02d}</span><h3>{n}</h3><p>{d}</p></a></li>'
                  for k, (p, n, d) in enumerate(PAGINAS[1:], 1))
 corpo = f'''
 <section class="hero" id="topo">
@@ -344,11 +343,11 @@ cenas_regras = ''.join(f'<a class="carta-e" href="{POR[u]["url"]}"><span class="
 corpo = pg_hero('o processo', 'Como cada par <em>nasce</em>', 'Cinco passos, sempre na mesma ordem, do campo ao chinelo.') + f'''
 <section class="indice" style="padding-top:4svh">
   <ol class="linhas">
-    <li data-img="img/mg-campo-1.jpg"><div class="ln"><span>01</span><h3>Campo</h3><p>Fotos reais do lugar, com autor e licença, e o local de cada uma conferido antes de entrar.</p></div></li>
-    <li data-img="img/mg-coracao.jpg"><div class="ln"><span>02</span><h3>Âncora</h3><p>Um elemento que é daquele estado e de nenhum outro. Sem âncora, o chinelo fica só bonito.</p></div></li>
-    <li data-img="img/mg-palmilha.jpg"><div class="ln"><span>03</span><h3>Chinelo</h3><p>Díptico: o pé esquerdo e o direito contam metades da mesma história. Só elementos.</p></div></li>
-    <li data-img="img/mg-ilustracao.jpg"><div class="ln"><span>04</span><h3>Ilustração</h3><p>O lugar inteiro, centralizado, feito com os mesmos elementos do chinelo.</p></div></li>
-    <li data-img="img/mg-estudio.jpg"><div class="ln"><span>05</span><h3>O par</h3><p>A tira repete uma cor da estampa e a assinatura da collab fica no calcanhar, sem mudança.</p></div></li>
+    <li><div class="ln"><span>01</span><h3>Campo</h3><p>Fotos reais do lugar, com autor e licença, e o local de cada uma conferido antes de entrar.</p></div></li>
+    <li><div class="ln"><span>02</span><h3>Âncora</h3><p>Um elemento que é daquele estado e de nenhum outro. Sem âncora, o chinelo fica só bonito.</p></div></li>
+    <li><div class="ln"><span>03</span><h3>Chinelo</h3><p>Díptico: o pé esquerdo e o direito contam metades da mesma história. Só elementos.</p></div></li>
+    <li><div class="ln"><span>04</span><h3>Ilustração</h3><p>O lugar inteiro, centralizado, feito com os mesmos elementos do chinelo.</p></div></li>
+    <li><div class="ln"><span>05</span><h3>O par</h3><p>A tira repete uma cor da estampa e a assinatura da collab fica no calcanhar, sem mudança.</p></div></li>
   </ol>
 </section>
 <section class="secao-t"><p class="eb">as regras da coleção</p><h2>Uma cena <em>para cada lugar</em></h2></section>
