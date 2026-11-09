@@ -180,7 +180,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if (anel) anel.style.transform = 'rotate(' + (phi * .5) + 'deg)';
       itens.forEach(function (it, i) {
         var d = ((i * passo - phi) % 360 + 540) % 360 - 180;
-        it.style.setProperty('--s', (1 + .24 * Math.max(0, 1 - Math.abs(d) / (passo * 1.1))).toFixed(3));
+        // o par escolhido cresce e fica por cima; os vizinhos ficam por baixo, um pouco menores
+        var perto = Math.max(0, 1 - Math.abs(d) / (passo * 1.1));
+        it.style.setProperty('--s', (.92 + .4 * perto).toFixed(3));
+        it.style.zIndex = 200 - Math.round(Math.abs(d));
       });
       var kk = ((Math.round(phi / passo) % N) + N) % N;
       if (kk !== atual) { atual = kk; var it = itens[kk]; nEl.textContent = it.dataset.n; nmEl.textContent = it.dataset.nome; esEl.textContent = it.dataset.est; ver.href = it.getAttribute('href'); }
