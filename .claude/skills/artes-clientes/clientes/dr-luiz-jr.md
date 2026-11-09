@@ -19,5 +19,5 @@
 ## Referências recentes
 
 - #6976 Reposição hormonal na menopausa (feed, story, WhatsApp, bege e escuro) · Figma `19795:84` (WhatsApp Bege) e `19799:88` (WhatsApp Escuro). @ adicionado em 09/11/2026 embaixo da coluna de texto da direita (x 720, y 628).
-- #6591 Novembro Azul (nov/2026): os frames da Emilly estão com nome errado "#6595 - ..." no Figma (WhatsApp bege `18733:303`; a versão escura antiga, um dos frames "#6595 - Story escuro" de 1080x1350, `19071:197`, já tinha o @). A cópia com fundo ajustado é "#6591 - Whatsapp escuro (fundo ajustado)" `19061:92`. @ incluído em 09/11/2026 na bege e na escura com fundo ajustado, alinhado à direita do card de vidro, 17 px abaixo dele.
 - #6592 Dia do Médico (out/2026): WhatsApp com @ acima do logo, na coluna de texto.
+- #6975 Por que você não está ganhando músculos? (carrossel nov/2026, versão v4 no Figma): @ incluído em 09/11/2026 nos WhatsApp BEGE `19814:123` e ESCURO `19816:126`, logo abaixo do "CRM-SP 172383" no cabeçalho, alinhado à direita, na mesma fonte e cor do CRM (Outfit Regular 17, espaçamento 4,08 px), com o ícone do Instagram em 17 px.
