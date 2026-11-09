@@ -183,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // o par escolhido cresce e fica por cima; os vizinhos ficam por baixo, um pouco menores
         var perto = Math.max(0, 1 - Math.abs(d) / (passo * 1.1));
         it.style.setProperty('--s', (.92 + .4 * perto).toFixed(3));
+        it.style.setProperty('--l', (9 * perto).toFixed(2));
         it.style.zIndex = 200 - Math.round(Math.abs(d));
       });
       var kk = ((Math.round(phi / passo) % N) + N) % N;
