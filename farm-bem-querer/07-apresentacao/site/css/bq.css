@@ -75,6 +75,9 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
 .janela-leg b{font-weight:500;color:var(--vinho)}
 .hero .rodape-h{position:absolute;z-index:2;left:clamp(16px,2.4vw,32px);right:clamp(16px,2.4vw,32px);bottom:22px;display:flex;justify-content:space-between;gap:20px}
 .hero .rodape-h .eb{color:var(--tinta)}
+/* aviso na primeira tela: projeto de portfólio, sem vínculo com as marcas */
+.aviso-h{position:absolute;z-index:2;left:0;right:0;top:calc(64px + 1.6svh);margin:0;text-align:center;font:500 11px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+.aviso-h i{font-style:normal;margin:0 .5em}
 
 /* manifesto */
 .manif{padding:24svh var(--mx) 22svh;text-align:center}
@@ -328,11 +331,14 @@ p,li,dd,figcaption,blockquote{text-wrap:pretty}
   .m-col small{font-size:8px;letter-spacing:.18em;margin-bottom:3px}
   .hero{--jh:min(62svh,calc(84vw * 4 / 3))}
   .janela{top:auto;bottom:64px;transform:translateX(-50%)}
-  .titulo-h{position:absolute;z-index:2;left:0;right:0;top:calc((72px + 100svh - 64px - var(--jh)) / 2);transform:translateY(-50%);text-align:center;white-space:nowrap;font:400 min(15vw,8.4svh)/1 var(--serif);letter-spacing:-.035em}
+  .titulo-h{position:absolute;z-index:2;left:0;right:0;top:calc((112px + 100svh - 64px - var(--jh)) / 2);transform:translateY(-50%);text-align:center;white-space:nowrap;font:400 min(15vw,8.4svh)/1 var(--serif);letter-spacing:-.035em}
   .titulo-h .palavra{position:static;display:inline-block;margin:0;font:inherit;letter-spacing:inherit}
   .titulo-h .p-querer{font-style:italic}
   .janela-leg{font-size:10px;bottom:24px}
   .hero .rodape-h{display:none}
+  .aviso-h{top:72px;font-size:9.5px;letter-spacing:.14em;line-height:1.55}
+  .aviso-h i{display:none}
+  .aviso-h span{display:block}
   .roda-arena{--R:88cqw;--cy:calc(100cqh + .12 * var(--R));--w:30cqw}
   .roda-topo{padding-top:84px;display:block}
   .roda-topo h2{font-size:clamp(40px,11vw,56px)}

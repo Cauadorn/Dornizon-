@@ -96,6 +96,7 @@ pagina('abertura', """
 .titulo .ch{display:inline-block}
 .titulo .q{font-style:italic;color:var(--vinho)}
 .frase{position:absolute;left:0;right:0;top:654px;margin:0;text-align:center;font:italic 400 30px/1.3 var(--serif);color:var(--suave)}
+.legal{position:absolute;left:0;right:0;bottom:56px;margin:0;text-align:center;font:500 13px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--suave)}
 .veu{background:var(--creme)}
 """, f"""<div id="palco">
 <div id="assin"><img src="../_img/assinatura-topo.svg" alt=""><p class="eb">uma V2 conceitual da collab</p></div>
@@ -104,6 +105,7 @@ pagina('abertura', """
 <h1 class="titulo">{letras("Bem-", "")}<span class="q">{letras("Querer", "")}</span></h1>
 <div id="simb"><svg class="fe" viewBox="-6 6 212 196">{FOLHA_E[FOLHA_E.index('>') + 1:-6]}</svg><svg class="fd" viewBox="-6 6 212 196">{FOLHA_D[FOLHA_D.index('>') + 1:-6]}</svg></div>
 <p class="frase">quatorze estados, quatorze pares, um coração escondido em cada estampa</p>
+<p class="legal">projeto conceitual de portfólio · sem vínculo com FARM&nbsp;Rio e havaianas</p>
 <div class="veu"></div></div>""", """
 const DUR = 11.2;
 const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
@@ -130,6 +132,7 @@ function monta() {
     .to('.ch', { opacity: 1, y: 0, duration: 1, stagger: .055 }, 5.55)
     .fromTo('.col-eb', { opacity: 0, letterSpacing: '.6em' }, { opacity: 1, letterSpacing: '.22em', duration: 1.1 }, 6.6)
     .fromTo('.frase', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1 }, 7.0)
+    .fromTo('.legal', { opacity: 0 }, { opacity: 1, duration: 1 }, 7.6)
   // 4. some no creme para o loop recomeçar limpo
     .to('.veu', { opacity: 1, duration: .6, ease: 'power1.inOut' }, DUR - .6);
 }
@@ -269,7 +272,7 @@ pagina('linkedin', f"""
   {focos}
 </div>
 <div class="fim"><svg viewBox="-6 6 212 196"><g stroke-linecap="round">{"".join(caminhos)}</g></svg><h2>E aí,<em>achou todos os corações?</em></h2>
-<p class="pe">Bem-Querer · Emilly Silva</p></div>
+<p class="pe">Bem-Querer · Emilly Silva<br>projeto conceitual de portfólio · sem vínculo com FARM&nbsp;Rio e havaianas</p></div>
 <div class="veu"></div></div>""", """
 const DUR = 26.0;
 const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });

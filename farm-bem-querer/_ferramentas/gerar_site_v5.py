@@ -213,6 +213,7 @@ corpo = f'''
 <section class="hero" id="topo">
   <div class="janela" aria-hidden="true">{janela}</div>
   <h1 class="titulo-h"><span class="palavra p-bem">Bem-</span><span class="palavra p-querer">Querer</span></h1>
+  <p class="aviso-h">projeto conceitual de portfólio <i aria-hidden="true">·</i> <span>sem vínculo com FARM&nbsp;Rio e havaianas</span></p>
   <div class="rodape-h"><p class="eb">coleção Bem-Querer · 14 estados</p><p class="eb">role para descobrir</p></div>
   <p class="eb janela-leg" aria-live="polite"></p>
 </section>

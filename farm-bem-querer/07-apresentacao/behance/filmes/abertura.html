@@ -23,6 +23,7 @@ html,body{margin:0;background:#000}
 .titulo .ch{display:inline-block}
 .titulo .q{font-style:italic;color:var(--vinho)}
 .frase{position:absolute;left:0;right:0;top:654px;margin:0;text-align:center;font:italic 400 30px/1.3 var(--serif);color:var(--suave)}
+.legal{position:absolute;left:0;right:0;bottom:56px;margin:0;text-align:center;font:500 13px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--suave)}
 .veu{background:var(--creme)}
 </style></head><body><div id="palco">
 <div id="assin"><img src="../_img/assinatura-topo.svg" alt=""><p class="eb">uma V2 conceitual da collab</p></div>
@@ -31,6 +32,7 @@ html,body{margin:0;background:#000}
 <h1 class="titulo"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="q"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></span></h1>
 <div id="simb"><svg class="fe" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg><svg class="fd" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div>
 <p class="frase">quatorze estados, quatorze pares, um coração escondido em cada estampa</p>
+<p class="legal">projeto conceitual de portfólio · sem vínculo com FARM&nbsp;Rio e havaianas</p>
 <div class="veu"></div></div>
 <script src="../../site/js/gsap.min.js"></script><script>
 const FPS = 24, NQ = {"mg": 103, "rj": 103, "ba": 103, "pe": 103, "ce": 103, "ma": 103, "am": 103, "pa": 103, "to": 103, "ms": 103, "go": 103, "pr": 103, "sc": 103, "rs": 103}, QD = '../_quadros/';
@@ -70,6 +72,7 @@ function monta() {
     .to('.ch', { opacity: 1, y: 0, duration: 1, stagger: .055 }, 5.55)
     .fromTo('.col-eb', { opacity: 0, letterSpacing: '.6em' }, { opacity: 1, letterSpacing: '.22em', duration: 1.1 }, 6.6)
     .fromTo('.frase', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1 }, 7.0)
+    .fromTo('.legal', { opacity: 0 }, { opacity: 1, duration: 1 }, 7.6)
   // 4. some no creme para o loop recomeçar limpo
     .to('.veu', { opacity: 1, duration: .6, ease: 'power1.inOut' }, DUR - .6);
 }
