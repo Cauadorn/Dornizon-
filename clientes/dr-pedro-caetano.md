@@ -30,5 +30,5 @@ Cardiologista, intensivista e cardiologista do esporte. Assinatura: **Dr. Pedro 
 
 ## Histórico
 
-- **#6898 Frequência cardíaca de repouso**: o slide 5 aprovado é a **v6**, frame `19880:2`. A imagem veio do Space "#6898 Dr Pedro · lâmina 5 CTA", em duas passadas: a primeira tirou o tablet e virou o olhar para a câmera, a segunda corrigiu as mãos, a pele com aspecto de cera, a sombra solta e as listras na borda.
-- **#6898 (tentativa anterior, descartada)**: o slide 5 passou para a v5, com o retrato de estúdio recortado e tratado em tons quentes e vinho. O fundo da parede foi recomposto a partir da própria parede da v4 (script em `dr-pedro-caetano/6898-frequencia-cardiaca-repouso/projeto/`). O frame v5 é o `19874:71`, abaixo da fileira v4.
+- **#6898 Frequência cardíaca de repouso**: o slide 5 aprovado foi aplicado direto no frame oficial `19782:58` (lâmina 5 v4) e no "CARROSSEL INTEIRO", e as cópias de trabalho foram apagadas. No slide 4 os três checks que estavam escondidos atrás das bolinhas foram trazidos para a frente. A imagem veio do Space "#6898 Dr Pedro · lâmina 5 CTA", em duas passadas: a primeira tirou o tablet e virou o olhar para a câmera, a segunda corrigiu as mãos, a pele com aspecto de cera, a sombra solta e as listras na borda.
+- **#6898 (tentativa anterior, descartada)**: o slide 5 passou para a v5, com o retrato de estúdio recortado e tratado em tons quentes e vinho. O fundo da parede foi recomposto a partir da própria parede da v4 (script em `dr-pedro-caetano/6898-frequencia-cardiaca-repouso/projeto/`).
