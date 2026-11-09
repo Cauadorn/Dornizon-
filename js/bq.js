@@ -130,9 +130,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- vídeos fora da abertura: tocam só quando aparecem ---- */
   var vids = $$('video[data-auto]');
+  // quando o celular bloqueia o play automático (economia de bateria), aparece um botão para tocar o motion
+  function botaoPlay(v) {
+    if (v.dataset.bt) return;
+    v.dataset.bt = 1;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'play-v'; b.setAttribute('aria-label', 'Ver o motion'); b.innerHTML = '<span>▶</span>';
+    v.parentNode.appendChild(b);
+    b.addEventListener('click', function (ev) {
+      ev.preventDefault(); ev.stopPropagation();
+      var pr = v.play(); if (pr && pr.then) pr.then(function () { b.remove(); }).catch(function () {}); else b.remove();
+    });
+  }
   if (vids.length && !reduz && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting) { var pr = x.target.play(); if (pr && pr.catch) pr.catch(function () {}); } else x.target.pause(); });
+      en.forEach(function (x) { if (x.isIntersecting) { var pr = x.target.play(); if (pr && pr.catch) pr.catch(function () { botaoPlay(x.target); }); } else x.target.pause(); });
     }, { threshold: .25 });
     vids.forEach(function (v) { io.observe(v); });
   }
