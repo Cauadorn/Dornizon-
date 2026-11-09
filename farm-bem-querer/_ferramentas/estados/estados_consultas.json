@@ -1,0 +1,383 @@
+{
+ "RJ": {
+  "locais": [
+   "Rio de Janeiro",
+   "Copacabana",
+   "Ipanema",
+   "Leblon",
+   "Lapa",
+   "Santa Teresa",
+   "Sapucai",
+   "Sambodromo",
+   "Madureira",
+   "Urca",
+   "Arpoador",
+   "Jardim Botanico",
+   "Pedra do Sal",
+   "Gamboa",
+   "Niteroi",
+   "Saara",
+   "Tijuca",
+   "Silva Jardim",
+   "Poço das Antas",
+   "Poco das Antas",
+   "Casimiro de Abreu",
+   "Sugarloaf",
+   "Ipanema"
+  ],
+  "buscas": {
+   "calcadao": "Calçadão de Copacabana",
+   "arcos-lapa": "Arcos da Lapa bonde",
+   "bonde-santa-teresa": "Bonde de Santa Teresa",
+   "obj-biscoito-globo": "Biscoito Globo",
+   "jardim-botanico": "Jardim Botânico Rio de Janeiro palmeiras imperiais",
+   "pedra-do-sal": "Pedra do Sal samba",
+   "sapucai": "Sapucaí desfile escola de samba",
+   "madureira": "Mercadão de Madureira",
+   "botequim": "botequim Rio de Janeiro",
+   "alt-sugarloaf": "Sugarloaf Mountain Rio de Janeiro",
+   "alt-beach-umbrella": "Ipanema beach umbrellas",
+   "alt-mate": "mate leao seller beach Rio",
+   "alt-copacabana-sidewalk": "Copacabana sidewalk mosaic"
+  }
+ },
+ "BA": {
+  "locais": [
+   "Salvador",
+   "Bahia",
+   "Pelourinho",
+   "Bonfim",
+   "Itapua",
+   "Rio Vermelho",
+   "Ilheus",
+   "Porto Seguro",
+   "Trancoso",
+   "Itaparica",
+   "Santo Amaro",
+   "Una",
+   "Ilheus",
+   "Itacare",
+   "Canavieiras"
+  ],
+  "buscas": {
+   "pelourinho": "Pelourinho Salvador casario",
+   "baiana-acaraje": "baiana de acarajé Salvador",
+   "fitas-bonfim": "fitas do Bonfim Salvador",
+   "lavagem-bonfim": "Lavagem do Bonfim",
+   "elevador-lacerda": "Elevador Lacerda",
+   "acaraje": "acarajé tabuleiro Salvador",
+   "capoeira": "capoeira Salvador berimbau",
+   "olodum": "Olodum Pelourinho tambor",
+   "cacau": "cacau Ilhéus Bahia",
+   "feira-sao-joaquim": "Feira de São Joaquim Salvador"
+  }
+ },
+ "PE": {
+  "locais": [
+   "Pernambuco",
+   "Recife",
+   "Olinda",
+   "Nazare da Mata",
+   "Bezerros",
+   "Caruaru",
+   "Porto de Galinhas",
+   "Fernando de Noronha",
+   "Goiana",
+   "Garanhuns",
+   "Igarassu",
+   "Manguezal"
+  ],
+  "buscas": {
+   "frevo": "frevo sombrinha Recife",
+   "frevo-olinda": "frevo Olinda carnaval",
+   "galo-madrugada": "Galo da Madrugada Recife",
+   "bonecos-olinda": "bonecos gigantes Olinda",
+   "olinda-casario": "Olinda casario igreja",
+   "maracatu-nacao": "maracatu nação Recife",
+   "caboclo-lanca": "caboclo de lança maracatu rural",
+   "xilogravura": "xilogravura Bezerros",
+   "obj-bolo-de-rolo": "bolo de rolo",
+   "caruaru-barro": "Caruaru Alto do Moura barro"
+  }
+ },
+ "CE": {
+  "locais": [
+   "Ceara",
+   "Fortaleza",
+   "Aquiraz",
+   "Canoa Quebrada",
+   "Beberibe",
+   "Morro Branco",
+   "Jericoacoara",
+   "Mucuripe",
+   "Juazeiro do Norte",
+   "Aracati",
+   "Cumbuco",
+   "Prainha",
+   "Iracema",
+   "Cariri",
+   "Araripe",
+   "Crato",
+   "Nova Olinda",
+   "Barbalha"
+  ],
+  "buscas": {
+   "renda-bilro": "renda de bilro Ceará",
+   "rendeiras": "rendeira Aquiraz",
+   "jangada": "jangada Fortaleza Mucuripe",
+   "jangada-praia": "jangada praia Ceará",
+   "canoa-quebrada": "Canoa Quebrada falésias",
+   "areia-colorida": "garrafa areia colorida Ceará",
+   "caju": "caju cajueiro Ceará",
+   "carnauba": "carnaúba Ceará",
+   "jericoacoara": "Jericoacoara duna"
+  }
+ },
+ "MA": {
+  "locais": [
+   "Maranhao",
+   "Sao Luis",
+   "Lencois Maranhenses",
+   "Barreirinhas",
+   "Alcantara",
+   "Atins",
+   "Santo Amaro do Maranhao"
+  ],
+  "buscas": {
+   "bumba-boi": "bumba meu boi São Luís",
+   "boi-bordado": "bumba meu boi Maranhão boi bordado",
+   "azulejos": "azulejos São Luís Maranhão",
+   "centro-historico": "Centro Histórico São Luís casarão",
+   "lencois": "Lençóis Maranhenses lagoa",
+   "lencois-dunas": "Lençóis Maranhenses dunas",
+   "guara": "guará Maranhão",
+   "tambor-crioula": "tambor de crioula",
+   "barreirinhas": "Barreirinhas Rio Preguiças",
+   "juçara": "juçara São Luís",
+   "bicho-guara-2": "guará Alcântara Maranhão"
+  }
+ },
+ "AM": {
+  "locais": [
+   "Amazonas",
+   "Manaus",
+   "Parintins",
+   "Rio Negro",
+   "Solimoes",
+   "Anavilhanas",
+   "Tefe",
+   "Presidente Figueiredo",
+   "Novo Airao",
+   "Mamiraua",
+   "Itacoatiara"
+  ],
+  "buscas": {
+   "teatro-amazonas": "Teatro Amazonas Manaus",
+   "encontro-aguas": "Encontro das Águas Manaus",
+   "parintins-garantido": "Parintins Garantido boi",
+   "parintins-caprichoso": "Parintins Caprichoso boi",
+   "vitoria-regia": "vitória-régia Amazonas",
+   "boto": "boto-cor-de-rosa Amazonas",
+   "mercado-adolpho": "Mercado Adolpho Lisboa Manaus",
+   "barco-recreio": "barco recreio redes Manaus",
+   "anavilhanas": "Anavilhanas Rio Negro",
+   "bicho-boto-2": "boto Rio Negro Amazonas"
+  }
+ },
+ "PA": {
+  "locais": [
+   "Belem",
+   "Marajo",
+   "Soure",
+   "Abaetetuba",
+   "Icoaraci",
+   "Santarem",
+   "Alter do Chao",
+   "Salvaterra",
+   "Bragança",
+   "Estado do Para",
+   "Para state",
+   "Para, Brazil",
+   "(PA)"
+  ],
+  "buscas": {
+   "ver-o-peso": "Ver-o-Peso Belém",
+   "ver-o-peso-feira": "Ver-o-Peso feira barracas",
+   "cirio": "Círio de Nazaré Belém",
+   "cirio-corda": "Círio de Nazaré corda",
+   "miriti": "brinquedo de miriti Abaetetuba",
+   "icoaraci": "cerâmica Icoaraci",
+   "acai-belem": "açaí Belém",
+   "bufalo-marajo": "búfalo Marajó Soure",
+   "mangueiras": "mangueiras Belém avenida"
+  }
+ },
+ "TO": {
+  "locais": [
+   "Tocantins",
+   "Jalapao",
+   "Mateiros",
+   "Palmas",
+   "Ponte Alta",
+   "Bananal",
+   "Mumbuca",
+   "Sao Felix do Tocantins",
+   "Taquarucu"
+  ],
+  "buscas": {
+   "capim-dourado": "capim dourado artesanato Tocantins",
+   "capim-dourado-2": "capim dourado Jalapão",
+   "dunas-jalapao": "dunas Jalapão",
+   "fervedouro": "fervedouro Jalapão",
+   "cachoeira-velha": "Cachoeira da Velha Jalapão",
+   "pedra-furada": "Pedra Furada Jalapão",
+   "serra-espirito-santo": "Serra do Espírito Santo Jalapão",
+   "buriti-vereda": "buriti vereda Tocantins"
+  }
+ },
+ "MS": {
+  "locais": [
+   "Mato Grosso do Sul",
+   "Bonito",
+   "Campo Grande",
+   "Corumba",
+   "Aquidauana",
+   "Miranda",
+   "Nhecolandia",
+   "Estrada Parque",
+   "Coxim",
+   "Ponta Pora",
+   "Dourados",
+   "Pantanal Sul"
+  ],
+  "buscas": {
+   "tuiuiu": "tuiuiú jabiru Mato Grosso do Sul",
+   "tuiuiu-2": "tuiuiú Pantanal Miranda",
+   "arara-azul": "arara-azul Pantanal Mato Grosso do Sul",
+   "bonito-rio": "Bonito Mato Grosso do Sul rio flutuação",
+   "lago-azul": "Gruta do Lago Azul Bonito",
+   "feira-central": "Feira Central Campo Grande",
+   "sobá": "sobá Campo Grande",
+   "jacare": "jacaré Pantanal Corumbá",
+   "onca": "onça-pintada Pantanal Mato Grosso do Sul",
+   "obj-terere": "tereré",
+   "bicho-onca-2": "onça Pantanal Miranda"
+  }
+ },
+ "GO": {
+  "locais": [
+   "Goias",
+   "Pirenopolis",
+   "Goiania",
+   "Chapada dos Veadeiros",
+   "Alto Paraiso",
+   "Cavalcante",
+   "Cidade de Goias",
+   "Goias Velho",
+   "Caldas Novas"
+  ],
+  "buscas": {
+   "cavalhadas": "Cavalhadas Pirenópolis",
+   "mascarados": "mascarados Pirenópolis",
+   "festa-divino": "Festa do Divino Pirenópolis",
+   "pirenopolis-rua": "Pirenópolis rua igreja",
+   "cidade-goias": "Cidade de Goiás casario",
+   "cora-coralina": "Casa de Cora Coralina",
+   "pequi": "pequi Goiás",
+   "veadeiros": "Chapada dos Veadeiros cachoeira",
+   "veadeiros-campo": "Chapada dos Veadeiros cerrado",
+   "bicho-cavalo": "cavalo Cavalhadas Pirenópolis enfeitado",
+   "bicho-cavalo-2": "cavaleiros Cavalhadas Pirenópolis"
+  }
+ },
+ "PR": {
+  "locais": [
+   "Parana",
+   "Curitiba",
+   "Foz do Iguacu",
+   "Iguacu",
+   "Morretes",
+   "Prudentopolis",
+   "Ponta Grossa",
+   "Paranagua",
+   "Antonina",
+   "Ilha do Mel",
+   "Londrina"
+  ],
+  "buscas": {
+   "araucaria": "araucária Paraná",
+   "araucaria-campo": "araucárias campo Paraná",
+   "obj-pinhao": "pinhão",
+   "gralha-azul": "gralha-azul Paraná",
+   "cataratas": "Cataratas do Iguaçu Foz",
+   "jardim-botanico-cwb": "Jardim Botânico de Curitiba estufa",
+   "opera-arame": "Ópera de Arame Curitiba",
+   "ucranianos": "Prudentópolis igreja ucraniana",
+   "pessanka": "pessanka Prudentópolis",
+   "trem-serra": "trem Serra do Mar Curitiba Morretes",
+   "bicho-gralha-2": "gralha-azul Curitiba"
+  }
+ },
+ "SC": {
+  "locais": [
+   "Santa Catarina",
+   "Florianopolis",
+   "Blumenau",
+   "Pomerode",
+   "Imbituba",
+   "Garopaba",
+   "Joinville",
+   "Laguna",
+   "Urubici",
+   "Sao Joaquim",
+   "Ribeirao da Ilha",
+   "Santo Antonio de Lisboa",
+   "Lagoa da Conceicao",
+   "Sambaqui",
+   "Balneario Camboriu"
+  ],
+  "buscas": {
+   "renda-bilro": "renda de bilro Florianópolis",
+   "rendeira": "rendeira Florianópolis Lagoa da Conceição",
+   "hercilio-luz": "Ponte Hercílio Luz",
+   "santo-antonio": "Santo Antônio de Lisboa Florianópolis casario",
+   "ribeirao": "Ribeirão da Ilha casario açoriano",
+   "boi-de-mamao": "boi de mamão Santa Catarina",
+   "baleia-franca": "baleia-franca Santa Catarina",
+   "ostras": "ostras Florianópolis",
+   "lagoa-conceicao": "Lagoa da Conceição Florianópolis",
+   "bicho-baleia-2": "baleia-franca Imbituba"
+  }
+ },
+ "RS": {
+  "locais": [
+   "Rio Grande do Sul",
+   "Porto Alegre",
+   "Gramado",
+   "Canela",
+   "Bento Goncalves",
+   "Caxias do Sul",
+   "Missoes",
+   "Pelotas",
+   "Cambara do Sul",
+   "Santana do Livramento",
+   "Bage",
+   "Uruguaiana",
+   "Guaiba",
+   "Sao Miguel das Missoes",
+   "Itaimbezinho"
+  ],
+  "buscas": {
+   "chimarrao": "chimarrão cuia Rio Grande do Sul",
+   "gaucho": "gaúcho cavalo Rio Grande do Sul",
+   "farroupilha": "Desfile Farroupilha Porto Alegre",
+   "ctg": "CTG dança gaúcha prenda",
+   "missoes": "São Miguel das Missões ruínas",
+   "itaimbezinho": "Itaimbezinho cânion",
+   "gasometro": "Usina do Gasômetro Porto Alegre pôr do sol",
+   "pampa": "pampa Rio Grande do Sul campo",
+   "churrasco": "churrasco fogo de chão Rio Grande do Sul",
+   "bicho-quero-quero": "quero-quero Rio Grande do Sul"
+  }
+ }
+}

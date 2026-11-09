@@ -1,0 +1,78 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>abertura</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&display=block">
+<style>
+*{box-sizing:border-box}
+:root{--creme:#F4EDE3;--creme2:#EBE2D5;--tinta:#2A1A17;--vinho:#6A1B29;--suave:#857568;--serif:"Instrument Serif",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
+html,body{margin:0;background:#000}
+#palco{position:relative;overflow:hidden;color:var(--tinta);font:400 21px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+.eb{font:500 14px/1.3 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--suave);margin:0}
+.arco{position:absolute;overflow:hidden;border-radius:999px 999px 0 0;background:var(--creme2)}
+.arco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%;opacity:0}
+.par{position:absolute;opacity:0;filter:drop-shadow(0 22px 20px rgba(40,10,10,.3));transform-origin:50% 50%}
+.veu{position:absolute;inset:0;opacity:0;pointer-events:none}
+
+#palco{width:1400px;height:900px;background:var(--creme)}
+#assin{position:absolute;left:50%;top:360px;width:600px;margin-left:-300px;transform-origin:50% 0}
+#assin img{width:100%;display:block}
+#assin .eb{text-align:center;margin-top:26px}
+.topo-eb{position:absolute;left:0;right:0;top:118px;text-align:center}
+#simb{position:absolute;left:590px;top:330px;width:220px;height:203px}
+#simb svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform-origin:50% 87.8%}
+.col-eb{position:absolute;left:0;right:0;top:300px;text-align:center;color:var(--tinta)}
+.titulo{position:absolute;left:0;right:0;top:350px;margin:0;text-align:center;font:400 190px/.8 var(--serif);letter-spacing:-.035em;white-space:nowrap}
+.titulo .ch{display:inline-block}
+.titulo .q{font-style:italic;color:var(--vinho)}
+.frase{position:absolute;left:0;right:0;top:654px;margin:0;text-align:center;font:italic 400 30px/1.3 var(--serif);color:var(--suave)}
+.veu{background:var(--creme)}
+</style></head><body><div id="palco">
+<div id="assin"><img src="../_img/assinatura-topo.svg" alt=""><p class="eb">uma V2 conceitual da collab</p></div>
+<p class="eb topo-eb">uma V2 conceitual da collab</p>
+<p class="eb col-eb">coleção</p>
+<h1 class="titulo"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="q"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></span></h1>
+<div id="simb"><svg class="fe" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg><svg class="fd" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div>
+<p class="frase">quatorze estados, quatorze pares, um coração escondido em cada estampa</p>
+<div class="veu"></div></div>
+<script src="../../site/js/gsap.min.js"></script><script>
+const FPS = 24, NQ = {"mg": 103, "rj": 103, "ba": 103, "pe": 103, "ce": 103, "ma": 103, "am": 103, "pa": 103, "to": 103, "ms": 103, "go": 103, "pr": 103, "sc": 103, "rs": 103}, QD = '../_quadros/';
+const quadro = (uf, t) => QD + uf + '/' + String((Math.floor(Math.max(0, t) * FPS) % NQ[uf]) + 1).padStart(4, '0') + '.jpg';
+async function trocaQuadros(t) {
+  const espera = [];
+  document.querySelectorAll('img[data-uf][data-t0]').forEach(im => {
+    if (+gsap.getProperty(im, 'opacity') <= 0.001 && im.dataset.ja) return;
+    const src = quadro(im.dataset.uf, t - +im.dataset.t0);
+    if (im.getAttribute('src') !== src) { im.setAttribute('src', src); im.dataset.ja = 1; espera.push(im.decode().catch(() => {})); }
+  });
+  await Promise.all(espera);
+}
+
+const DUR = 11.2;
+const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+function monta() {
+  gsap.set('.ch', { opacity: 0, y: 70 });
+  gsap.set('#assin img', { clipPath: 'inset(0% 100% 0% 0%)' });
+  gsap.set('#assin .eb, .topo-eb, .col-eb, .frase', { opacity: 0 });
+  gsap.set('.fe', { x: -430, y: -620, rotation: -75, opacity: 0 });
+  gsap.set('.fd', { x: 430, y: -660, rotation: 80, opacity: 0 });
+  // 1. a assinatura da collab
+  tl.to('#assin img', { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut' }, 0.3)
+    .fromTo('#assin', { y: 14 }, { y: 0, duration: 1.4 }, 0.3)
+    .fromTo('#assin .eb', { opacity: 0, letterSpacing: '.5em' }, { opacity: 1, letterSpacing: '.22em', duration: 1 }, 1.0)
+    .to('#assin .eb', { opacity: 0, duration: .35, ease: 'power1.in' }, 2.2)
+    .to('#assin', { y: -296, scale: .5, duration: 1.1, ease: 'power3.inOut' }, 2.3)
+    .to('.topo-eb', { opacity: 1, duration: .8 }, 3.1)
+  // 2. as duas folhas de amendoeira caem juntas e formam o coração
+    .to('.fe', { keyframes: { x: [-430, -170, -250, -60, 0], y: [-620, -430, -250, -90, 0], rotation: [-75, -20, -48, -8, 0], easeEach: 'sine.inOut' }, opacity: 1, duration: 2.0, ease: 'none' }, 2.4)
+    .to('.fd', { keyframes: { x: [430, 180, 240, 50, 0], y: [-660, -460, -270, -100, 0], rotation: [80, 25, 50, 10, 0], easeEach: 'sine.inOut' }, opacity: 1, duration: 2.0, ease: 'none' }, 2.55)
+    .to('#simb', { scale: 1.09, duration: .22, ease: 'power2.out' }, 4.55)
+    .to('#simb', { scale: 1, duration: .5, ease: 'back.out(3)' }, 4.77)
+  // 3. o coração desce e fica embaixo do nome; Bem-Querer sobe letra a letra
+    .to('#simb', { y: 152, scale: .3, duration: .8, ease: 'power3.inOut' }, 5.05)
+    .to('.ch', { opacity: 1, y: 0, duration: 1, stagger: .055 }, 5.55)
+    .fromTo('.col-eb', { opacity: 0, letterSpacing: '.6em' }, { opacity: 1, letterSpacing: '.22em', duration: 1.1 }, 6.6)
+    .fromTo('.frase', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1 }, 7.0)
+  // 4. some no creme para o loop recomeçar limpo
+    .to('.veu', { opacity: 1, duration: .6, ease: 'power1.inOut' }, DUR - .6);
+}
+window.FILME = { dur: DUR, seek: async t => { tl.seek(t, false); await trocaQuadros(t); } };
+window.PRONTO = document.fonts.ready.then(() => new Promise(r => setTimeout(r, 300))).then(monta);
+</script></body></html>

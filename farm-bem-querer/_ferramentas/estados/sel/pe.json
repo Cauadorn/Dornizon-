@@ -1,0 +1,31 @@
+{
+ "hero": "frevo-olinda-1.jpg", "hero_pos": "47% 50%", "hero_legenda": "Passista de frevo em desfile, Olinda",
+ "paleta": [
+  {"nome": "amarelo da sombrinha", "foto": "#B7891E", "estampa": "#F2B705"},
+  {"nome": "vermelho da sombrinha", "foto": "#B41609", "estampa": "#D7262E"},
+  {"nome": "azul da sombrinha", "foto": "#02477C", "estampa": "#1F4FA0"},
+  {"nome": "verde do caboclo", "foto": "#607661", "estampa": "#1E8A4C"},
+  {"nome": "telha de Olinda", "foto": "#98502D", "estampa": "#B5562F"},
+  {"nome": "barro dos bonecos", "foto": "#DEA272", "estampa": "#E3A46F"}],
+ "painel": [
+  ["bonecos-olinda-0.jpg", "rua", "Encontro dos Bonecos Gigantes, Olinda", "w2 h2"],
+  ["caboclo-lanca-0.jpg", "festa", "Caboclos de lança em Olinda", "h2"],
+  ["frevo-0.jpg", "rua", "Orelhão em forma de sombrinha de frevo, Recife", ""],
+  ["frevo-1.jpg", "feira", "Sombrinhas à venda, Recife", ""],
+  ["frevo-2.jpg", "rua", "Orelhão-sombrinha à noite, Recife", ""],
+  ["obj-bolo-de-rolo-0.jpg", "mesa", "Bolo de rolo com café", ""],
+  ["bonecos-olinda-2.jpg", "festa", "Bonecos gigantes, Olinda", ""],
+  ["galo-madrugada-2.jpg", "festa", "Bonecos no carnaval do Recife", ""],
+  ["frevo-olinda-0.jpg", "festa", "Passistas e sombrinhas, Olinda", "w2 h2"],
+  ["caboclo-lanca-1.jpg", "festa", "Caboclos de lança, Recife", "h2"],
+  ["frevo-olinda-2.jpg", "festa", "Desfile em Olinda", "w2"],
+  ["bonecos-olinda-1.jpg", "fé", "Igreja do Carmo à noite, Olinda", "w2"],
+  ["olinda-casario-0.jpg", "rua", "Casario do Recife Antigo", "w2"]],
+ "motivos": [
+  ["frevo-0.jpg", "Sombrinha de frevo", "gomos amarelo, vermelho, verde e azul: a forma e a paleta da estampa."],
+  ["caboclo-lanca-0.jpg", "Cabeleira do caboclo", "as tiras de celofane colorido viram os raios que explodem atrás."],
+  ["bonecos-olinda-0.jpg", "Ladeira de Olinda", "o casario colorido entra como silhueta na base."],
+  ["frevo-olinda-1.jpg", "Passista", "o gesto do passo dá a inclinação da sombrinha."],
+  ["obj-bolo-de-rolo-0.jpg", "Bolo de rolo", "a espiral fina vira ornamento suave na barra."],
+  ["bonecos-olinda-2.jpg", "Bonecos gigantes", "cor e escala de festa; ficam no painel como clima."]]
+}

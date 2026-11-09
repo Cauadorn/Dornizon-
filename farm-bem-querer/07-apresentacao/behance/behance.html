@@ -1,0 +1,183 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Bem-Querer · Behance</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&display=block">
+<style>
+*{box-sizing:border-box}
+:root{--creme:#F4EDE3;--creme2:#EBE2D5;--tinta:#2A1A17;--vinho:#6A1B29;--laranja:#E07A2E;--suave:#857568;--serif:"Instrument Serif",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
+body{margin:0;background:#cfc6ba;-webkit-font-smoothing:antialiased}
+.mod{position:relative;width:1400px;overflow:hidden;background:var(--creme);color:var(--tinta);font:400 21px/1.55 var(--sans);padding:130px 120px}
+.eb{font:500 14px/1.3 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--suave);margin:0 0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
+h2{font-size:96px;line-height:.95;letter-spacing:-.02em;max-width:1000px}
+h2 em{color:var(--vinho)}
+h3{font-size:36px;line-height:1.1;margin:8px 0 10px}
+p{margin:0}
+figure{margin:0}
+.txt{color:#4C3C35}
+.lead{max-width:760px;margin-top:28px}
+.arco{position:relative;border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:3/4;background:var(--creme2)}
+.arco img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.flutua{position:absolute;z-index:2;transform:rotate(-12deg);filter:drop-shadow(0 26px 22px rgba(40,10,10,.3))}
+.c2{background:var(--creme2)}
+.vinho{background:var(--vinho);color:#FFF3E6}
+.vinho .eb{color:rgba(255,243,230,.62)}
+.vinho h2 em{color:#F2B98A}
+.centro{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:920px}
+/* capa */
+.capa{height:1130px;padding:0}
+.topo-c{position:absolute;top:84px;left:0;right:0;text-align:center;color:var(--tinta)}
+.c-arte{position:absolute;left:450px;top:200px;width:500px}
+.c-arte .flutua{width:160px;left:-74px;top:-34px}
+.w-bem,.w-que{position:absolute;top:470px;font:400 160px/.8 var(--serif);letter-spacing:-.035em;white-space:nowrap}
+.w-bem{right:986px}
+.w-que{left:986px;font-style:italic;color:var(--vinho)}
+.c-pe{position:absolute;left:120px;right:120px;bottom:72px;display:flex;justify-content:space-between;align-items:end;gap:80px}
+.c-pe p{max-width:470px;font:italic 400 30px/1.25 var(--serif)}
+.c-pe .aviso{font:400 16px/1.5 var(--sans);color:var(--suave);text-align:right;max-width:380px}
+/* manifesto */
+.manif{font:400 72px/1.1 var(--serif);letter-spacing:-.015em;max-width:1080px;margin:14px 0 56px}
+.manif em{color:#F2B98A}
+.aviso-i{position:absolute;left:0;right:0;bottom:54px;text-align:center;font:400 15px/1.4 var(--sans);color:rgba(255,243,230,.6)}
+/* desafio */
+.h-larga{max-width:1160px}
+.duas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:60px;margin-top:56px}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:80px;border-top:1px solid rgba(42,26,23,.25);padding-top:34px}
+.numeros b{display:block;font:400 92px/.9 var(--serif);color:var(--vinho)}
+.numeros span{display:block;margin-top:10px;color:#4C3C35;font-size:18px;line-height:1.4}
+/* pesquisa */
+.fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 26px;margin-top:60px}
+.fotos img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.fotos figcaption{font-size:16px;line-height:1.4;margin-top:12px;color:#4C3C35}
+.fotos figcaption b{font-weight:500;color:var(--tinta)}
+.fotos figcaption span{display:block;font-size:12.5px;color:var(--suave);margin-top:4px}
+.nota{margin-top:50px;font:italic 400 28px/1.3 var(--serif);max-width:900px}
+/* método */
+.cinco{display:grid;grid-template-columns:repeat(5,1fr);gap:26px;margin-top:64px}
+.m-img{aspect-ratio:4/5;overflow:hidden;background:var(--creme2)}
+.m-img img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block}
+.cinco span{display:block;margin-top:20px;font:500 14px/1 var(--sans);letter-spacing:.18em;color:var(--vinho)}
+.cinco .txt{font-size:17px;line-height:1.5}
+/* 14 ilustrações */
+.grade14{display:flex;flex-wrap:wrap;justify-content:center;gap:44px 30px;margin-top:64px}
+.grade14 figure{width:208px}
+.grade14 figcaption{margin-top:12px;text-align:center;font-size:15px;line-height:1.3}
+.grade14 figcaption b{display:block;font-weight:500}
+.grade14 figcaption i{display:block;font:italic 400 18px/1.2 var(--serif);color:var(--suave)}
+/* destaque */
+.d-topo{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:80px;align-items:center}
+.d-txt h2{font-size:104px}
+.d-est{font:italic 400 44px/1.1 var(--serif);margin:14px 0 26px}
+.nota-c{color:#6A1B29 !important}
+.nota-v{color:#C8321F;font-size:17px;line-height:1.5;margin-top:20px;padding-left:14px;border-left:2px solid currentColor;max-width:44ch}
+.d-cor{display:flex;gap:22px;align-items:center;margin-top:36px;padding-top:30px;border-top:1px solid rgba(42,26,23,.2)}
+.d-cor img{width:96px;height:96px;border-radius:50%;object-fit:cover}
+.d-cor p{font:italic 400 24px/1.25 var(--serif)}
+.d-cor b{display:block;font:500 13px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;font-style:normal;color:var(--vinho);margin-bottom:8px}
+.d-arte{position:relative;width:560px}
+.d-arte .flutua{width:180px;left:-96px;top:-34px}
+.d-tres{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:100px}
+.d-tres img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.d-tres figcaption{margin-top:12px;font-size:15px;color:var(--suave);letter-spacing:.02em}
+/* pares */
+.pares{display:grid;grid-template-columns:repeat(7,1fr);gap:40px 22px;margin-top:64px}
+.pares img{width:100%;display:block;filter:drop-shadow(0 18px 16px rgba(40,10,10,.22))}
+.pares figcaption{text-align:center;font-size:14px;margin-top:10px;color:#4C3C35}
+/* corações */
+.cors{display:grid;grid-template-columns:repeat(7,1fr);gap:40px 22px;margin-top:64px}
+.cors img{width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;display:block}
+.cors figcaption{text-align:center;font-size:13px;line-height:1.35;color:var(--suave);margin-top:12px}
+.cors b{display:block;font:400 21px/1.15 var(--serif);color:var(--tinta);margin-bottom:4px}
+/* campanha */
+.camp{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px}
+.camp img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.camp figcaption{margin-top:10px;font-size:15px;color:var(--suave)}
+/* site */
+.navegador{margin-top:60px;border-radius:14px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(40,10,10,.45);background:#fff}
+.barra{display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;background:#E4DACC}
+.barra i{width:12px;height:12px;border-radius:50%;background:#CDBFAE}
+.barra b{margin:0 auto;font:400 14px/1 var(--sans);color:var(--suave);background:#F4EDE3;padding:7px 40px;border-radius:20px}
+.navegador img{width:100%;display:block}
+.fones{display:flex;justify-content:center;gap:56px;margin-top:70px}
+.fones img{width:300px;border-radius:38px;border:10px solid #1E1412;box-shadow:0 40px 70px -36px rgba(40,10,10,.5);display:block}
+/* identidade */
+.lockup{display:flex;align-items:center;gap:34px;margin-top:70px;padding:56px 0;border-top:1px solid rgba(42,26,23,.2);border-bottom:1px solid rgba(42,26,23,.2)}
+.lockup img{height:62px}
+.lockup .sep{width:1.5px;height:92px;background:rgba(42,26,23,.3)}
+.lockup .col{display:grid;font:italic 400 70px/1 var(--serif)}
+.lockup small{font:500 17px/1 var(--sans);font-style:normal;letter-spacing:.24em;text-transform:uppercase;color:var(--suave);margin-bottom:10px}
+.id-grade{display:grid;grid-template-columns:240px minmax(0,1.45fr) minmax(0,1fr);gap:60px;margin-top:64px;align-items:start}
+.simb{display:grid;justify-items:start;gap:24px}
+.t-serif{font:400 92px/.9 var(--serif);letter-spacing:-.03em;white-space:nowrap}
+.t-serif em{color:var(--vinho)}
+.t-sans{font:500 28px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;margin-top:44px;white-space:nowrap}
+.tipos .eb{margin-top:14px}
+.paleta{display:grid;gap:14px}
+.paleta div{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center}
+.paleta span{width:64px;height:64px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(42,26,23,.15)}
+.paleta b{font-weight:500}
+.paleta i{font-style:normal;color:var(--suave);font-size:16px}
+/* ficha técnica */
+.ficha-b{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:18px 56px;margin:70px 0 0;font-size:19px;line-height:1.45}
+.ficha-b dt{color:rgba(255,243,230,.6)}
+.ficha-b dd{margin:0;color:#FFF3E6}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:70px}
+.tres > div{border-top:1px solid rgba(255,243,230,.35);padding-top:22px}
+.tres h3{font-size:38px}
+.tres p:not(.eb){color:rgba(255,243,230,.86);font-size:18px;line-height:1.55}
+.rodape-f{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:90px;padding-top:30px;border-top:1px solid rgba(255,243,230,.35);align-items:end}
+.rodape-f p{font:italic 400 40px/1.1 var(--serif);color:#F2B98A}
+.rodape-f p b{display:block;font:500 13px/1 var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,243,230,.62);margin-bottom:12px}
+.rodape-f .aviso{font:400 15px/1.55 var(--sans);color:rgba(255,243,230,.7);font-style:normal}
+/* capa do Behance (808 x 632, sem texto) */
+.capa-b{position:relative;width:808px;height:632px;overflow:hidden;background:var(--creme)}
+.cb-arte{position:absolute;left:50%;bottom:0;width:400px;transform:translateX(-50%)}
+.cb-arte .flutua{width:132px;left:-70px;top:-24px}
+h1,h2,h3{text-wrap:balance}p,li,dd,figcaption,blockquote{text-wrap:pretty}.nw{white-space:nowrap}</style></head><body><section class="mod capa" id="capa"><p class="eb topo-c">havaianas ♥ FARM Rio · uma V2 conceitual da&nbsp;collab</p>
+<div class="c-arte"><div class="arco"><img data-uf="ms" src="_img/ms-ilu.jpg" alt=""></div><img class="flutua" src="_img/ms-par.png" alt=""></div>
+<h1 class="w-bem">Bem-</h1><h1 class="w-que">Querer</h1>
+<div class="c-pe"><p>Uma cápsula de quatorze pares, um por estado, com um coração escondido em cada&nbsp;estampa.</p>
+<p class="aviso">Projeto fictício de portfólio de Emilly Silva. Sem vínculo com a FARM Rio ou a&nbsp;havaianas.</p></div></section><section class="mod vinho centro" id="ideia"><p class="eb">a ideia</p><p class="manif">A gente saiu do Rio e foi até <em>quatorze estados</em>. Em cada um, um par de chinelos feito com os elementos de lá, e um coração que só aparece na segunda&nbsp;olhada.</p><svg viewBox="-6 6 212 196" width="92" aria-hidden="true"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#FFF3E6"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#FFF3E6" stroke="#6A1B29" stroke-width="4.5" paint-order="stroke"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#6A1B29" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#6A1B29" stroke-width="3.4"/></g></svg>
+<p class="aviso-i">Projeto fictício de portfólio de Emilly Silva. Sem vínculo com a FARM Rio ou a&nbsp;havaianas.</p></section><section class="mod " id="desafio"><p class="eb">o desafio</p><h2 class="h-larga">Levar o Rio para conhecer o Brasil, <em>sem&nbsp;virar&nbsp;cartão-&#8288;&#8288;postal</em></h2>
+<div class="duas"><p class="txt">A collab havaianas ♥ FARM Rio já existe, e a FARM é carioca até no nome. A V2 imagina uma cápsula dentro dela: quatorze estados, um par por estado e a mesma assinatura no&nbsp;calcanhar.</p>
+<p class="txt">O risco era cair no clichê de cada lugar. A resposta foi começar pela rua: cada estado foi lido por fotos reais antes de virar desenho, e cada par ganhou uma âncora, um elemento que é daquele lugar e de nenhum&nbsp;outro.</p></div>
+<div class="numeros"><div><b>14</b><span>estados, das cinco&nbsp;regiões</span></div><div><b>14</b><span>pares, cada um em&nbsp;díptico</span></div><div><b>312</b><span>fotos de campo, de 139&nbsp;fotógrafos</span></div><div><b>1</b><span>coração escondido em cada&nbsp;estampa</span></div></div></section><section class="mod c2" id="pesquisa"><p class="eb">processo · pesquisa de&nbsp;campo</p><h2>Antes do desenho, <em>a&nbsp;rua</em></h2>
+<div class="fotos"><figure><img src="_img/mg-campo-1.jpg" alt=""><figcaption><b>Minas Gerais</b> · Igreja das Mercês entre os casarões, Ouro&nbsp;Preto<span>foto: Lídia Andrade · CC BY-&#8288;SA&nbsp;4.0</span></figcaption></figure><figure><img src="_img/ba-campo-1.jpg" alt=""><figcaption><b>Bahia</b> · Largo do Pelourinho,&nbsp;Salvador<span>foto: José e Marina · CC BY-&#8288;NC-&#8288;SA&nbsp;2.0</span></figcaption></figure><figure><img src="_img/pa-campo-1.jpg" alt=""><figcaption><b>Pará</b> · Mercado do Ver-&#8288;o-&#8288;Peso,&nbsp;Belém<span>foto: marcusrg · CC BY&nbsp;2.0</span></figcaption></figure><figure><img src="_img/ms-campo-1.jpg" alt=""><figcaption><b>Mato Grosso do&nbsp;Sul</b> · Rio cristalino em&nbsp;Bonito<span>foto: Fernando Stankuns · CC BY-&#8288;NC-&#8288;SA&nbsp;2.0</span></figcaption></figure><figure><img src="_img/sc-campo-1.jpg" alt=""><figcaption><b>Santa Catarina</b> · APA da Baleia Franca, litoral&nbsp;sul<span>foto: Ctseelig · CC BY-&#8288;SA&nbsp;4.0</span></figcaption></figure><figure><img src="_img/ce-campo-1.jpg" alt=""><figcaption><b>Ceará</b> · Jangadas na&nbsp;areia<span>foto: Ric e Ette · CC BY-&#8288;NC-&#8288;SA&nbsp;2.0</span></figcaption></figure></div>
+<p class="nota">312 fotos de 139 fotógrafos, com autor, licença e local&nbsp;conferidos.</p></section><section class="mod " id="metodo"><p class="eb">processo · o método, com Minas Gerais de&nbsp;exemplo</p><h2>Cinco passos, <em>sempre na&nbsp;mesma&nbsp;ordem</em></h2><div class="cinco"><div><div class="m-img"><img src="_img/mg-campo-1.jpg" alt=""></div><span>01</span><h3>Campo</h3><p class="txt">Fotos reais do lugar, com autor e licença, e o local&nbsp;conferido.</p></div><div><div class="m-img"><img src="_img/mg-coracao.jpg" alt=""></div><span>02</span><h3>Âncora</h3><p class="txt">Um elemento que é daquele estado e de nenhum&nbsp;outro.</p></div><div><div class="m-img"><img src="_img/mg-palmilha.jpg" alt=""></div><span>03</span><h3>Chinelo</h3><p class="txt">Díptico: o pé esquerdo e o direito contam metades da mesma&nbsp;cena.</p></div><div><div class="m-img"><img src="_img/mg-ilu.jpg" alt=""></div><span>04</span><h3>Ilustração</h3><p class="txt">O lugar inteiro, centralizado, com os mesmos elementos do&nbsp;chinelo.</p></div><div><div class="m-img"><img src="_img/mg-estudio.jpg" alt=""></div><span>05</span><h3>O par</h3><p class="txt">A tira repete uma cor da estampa; a assinatura vai no&nbsp;calcanhar.</p></div></div></section><section class="mod " id="ilustracoes"><p class="eb">a coleção</p><h2>Uma cena <em>para&nbsp;cada&nbsp;lugar</em></h2>
+<p class="txt lead">Rio, mercado, duna, pampa, mata, janela, largo: cada estado tem uma cena própria, escolhida pelo que é dele e de nenhum&nbsp;outro.</p>
+<div class="grade14"><figure><div class="arco"><img data-uf="mg" src="_img/mg-ilu.jpg" alt=""></div><figcaption><b>Minas Gerais</b><i>Barroco de&nbsp;Minas</i></figcaption></figure><figure><div class="arco"><img data-uf="rj" src="_img/rj-ilu.jpg" alt=""></div><figcaption><b>Rio de&nbsp;Janeiro</b><i>Bonde de Santa&nbsp;Teresa</i></figcaption></figure><figure><div class="arco"><img data-uf="ba" src="_img/ba-ilu.jpg" alt=""></div><figcaption><b>Bahia</b><i>Cacau e&nbsp;Fita</i></figcaption></figure><figure><div class="arco"><img data-uf="pe" src="_img/pe-ilu.jpg" alt=""></div><figcaption><b>Pernambuco</b><i>Passo de&nbsp;Frevo</i></figcaption></figure><figure><div class="arco"><img data-uf="ce" src="_img/ce-ilu.jpg" alt=""></div><figcaption><b>Ceará</b><i>Renda ao&nbsp;Vento</i></figcaption></figure><figure><div class="arco"><img data-uf="ma" src="_img/ma-ilu.jpg" alt=""></div><figcaption><b>Maranhão</b><i>Couro de&nbsp;Boi</i></figcaption></figure><figure><div class="arco"><img data-uf="am" src="_img/am-ilu.jpg" alt=""></div><figcaption><b>Amazonas</b><i>Encontro das&nbsp;Águas</i></figcaption></figure><figure><div class="arco"><img data-uf="pa" src="_img/pa-ilu.jpg" alt=""></div><figcaption><b>Pará</b><i>Revoada de&nbsp;Miriti</i></figcaption></figure><figure><div class="arco"><img data-uf="to" src="_img/to-ilu.jpg" alt=""></div><figcaption><b>Tocantins</b><i>Ouro do&nbsp;Jalapão</i></figcaption></figure><figure><div class="arco"><img data-uf="ms" src="_img/ms-ilu.jpg" alt=""></div><figcaption><b>Mato Grosso do&nbsp;Sul</b><i>Onça de&nbsp;Bonito</i></figcaption></figure><figure><div class="arco"><img data-uf="go" src="_img/go-ilu.jpg" alt=""></div><figcaption><b>Goiás</b><i>Cavalhada</i></figcaption></figure><figure><div class="arco"><img data-uf="pr" src="_img/pr-ilu.jpg" alt=""></div><figcaption><b>Paraná</b><i>Gralha e&nbsp;Pinhão</i></figcaption></figure><figure><div class="arco"><img data-uf="sc" src="_img/sc-ilu.jpg" alt=""></div><figcaption><b>Santa Catarina</b><i>Baleia e&nbsp;Ostra</i></figcaption></figure><figure><div class="arco"><img data-uf="rs" src="_img/rs-ilu.jpg" alt=""></div><figcaption><b>Rio Grande do&nbsp;Sul</b><i>Roda de&nbsp;Chimarrão</i></figcaption></figure></div></section><section class="mod dest" id="estado-mg"><div class="d-topo"><div class="d-txt"><p class="eb">01 / 14 ·&nbsp;Sudeste</p><h2>Minas Gerais</h2>
+<p class="d-est" style="color:#6A1B29">Barroco de&nbsp;Minas</p><p class="txt">O ouro das igrejas de Ouro Preto, mas visto de perto: a talha que sobe pelos altares e as rosas que o Mestre Ataíde pintou no forro da São Francisco de&nbsp;Assis.</p>
+<div class="d-cor"><img src="_img/mg-coracao.jpg" alt=""><p><b>onde está o&nbsp;coração</b>a sombra da veneziana aberta na parede&nbsp;caiada</p></div></div>
+<div class="d-arte"><div class="arco"><img data-uf="mg" src="_img/mg-ilu.jpg" alt=""></div><img class="flutua" src="_img/mg-par.png" alt=""></div></div>
+<div class="d-tres"><figure><img src="_img/mg-palmilha.jpg" alt=""><figcaption>o díptico: os dois pés contam a mesma&nbsp;cena</figcaption></figure>
+<figure><img src="_img/mg-estudio.jpg" alt=""><figcaption>o par</figcaption></figure>
+<figure><img src="_img/mg-campanha.jpg" alt=""><figcaption>no lugar ·&nbsp;campanha</figcaption></figure></div></section><section class="mod dest" id="estado-pa"><div class="d-topo"><div class="d-txt"><p class="eb">08 / 14 ·&nbsp;Norte</p><h2>Pará</h2>
+<p class="d-est" style="color:#6A1B29">Revoada de&nbsp;Miriti</p><p class="txt">Os brinquedos de miriti de Abaetetuba em revoada sobre o roxo do açaí que chega de barco ao&nbsp;Ver-&#8288;o-&#8288;Peso.</p><p class="nota-v nota-c">Os brinquedos de miriti são dos artesãos de Abaetetuba. Numa coleção de verdade, eles entrariam em parceria, com crédito no nome. O Círio fica de fora: é&nbsp;devoção.</p>
+<div class="d-cor"><img src="_img/pa-coracao.jpg" alt=""><p><b>onde está o&nbsp;coração</b>dois pássaros de miriti que voam um para o&nbsp;outro</p></div></div>
+<div class="d-arte"><div class="arco"><img data-uf="pa" src="_img/pa-ilu.jpg" alt=""></div><img class="flutua" src="_img/pa-par.png" alt=""></div></div>
+<div class="d-tres"><figure><img src="_img/pa-palmilha.jpg" alt=""><figcaption>o díptico: os dois pés contam a mesma&nbsp;cena</figcaption></figure>
+<figure><img src="_img/pa-estudio.jpg" alt=""><figcaption>o par</figcaption></figure>
+<figure><img src="_img/pa-campanha.jpg" alt=""><figcaption>no lugar ·&nbsp;campanha</figcaption></figure></div></section><section class="mod dest" id="estado-ms"><div class="d-topo"><div class="d-txt"><p class="eb">10 / 14 ·&nbsp;Centro-&#8288;Oeste</p><h2>Mato Grosso do&nbsp;Sul</h2>
+<p class="d-est" style="color:#6A1B29">Onça de&nbsp;Bonito</p><p class="txt">A onça-pintada e o tuiuiú do Pantanal sul, sobre a água transparente dos rios de&nbsp;Bonito.</p>
+<div class="d-cor"><img src="_img/ms-coracao.jpg" alt=""><p><b>onde está o&nbsp;coração</b>uma folha de aguapé na beira do rio de&nbsp;Bonito</p></div></div>
+<div class="d-arte"><div class="arco"><img data-uf="ms" src="_img/ms-ilu.jpg" alt=""></div><img class="flutua" src="_img/ms-par.png" alt=""></div></div>
+<div class="d-tres"><figure><img src="_img/ms-palmilha.jpg" alt=""><figcaption>o díptico: os dois pés contam a mesma&nbsp;cena</figcaption></figure>
+<figure><img src="_img/ms-estudio.jpg" alt=""><figcaption>o par</figcaption></figure>
+<figure><img src="_img/ms-campanha.jpg" alt=""><figcaption>no lugar ·&nbsp;campanha</figcaption></figure></div></section><section class="mod dest" id="estado-sc"><div class="d-topo"><div class="d-txt"><p class="eb">13 / 14 ·&nbsp;Sul</p><h2>Santa Catarina</h2>
+<p class="d-est" style="color:#6A1B29">Baleia e&nbsp;Ostra</p><p class="txt">Todo inverno a baleia-franca volta para ter filhote no litoral de Santa Catarina; na ilha, as ostras crescem em fileiras no&nbsp;mar.</p><p class="nota-v">Garopaba já foi armação baleeira. Desde 1987 a caça é proibida no Brasil, e hoje a baleia-franca volta todo inverno para ter filhote, vista da areia. A tarrafa secando na praia é a da pesca&nbsp;artesanal.</p>
+<div class="d-cor"><img src="_img/sc-coracao.jpg" alt=""><p><b>onde está o&nbsp;coração</b>a cauda da baleia-franca na enseada de&nbsp;Garopaba</p></div></div>
+<div class="d-arte"><div class="arco"><img data-uf="sc" src="_img/sc-ilu.jpg" alt=""></div><img class="flutua" src="_img/sc-par.png" alt=""></div></div>
+<div class="d-tres"><figure><img src="_img/sc-palmilha.jpg" alt=""><figcaption>o díptico: os dois pés contam a mesma&nbsp;cena</figcaption></figure>
+<figure><img src="_img/sc-estudio.jpg" alt=""><figcaption>o par</figcaption></figure>
+<figure><img src="_img/sc-campanha.jpg" alt=""><figcaption>no lugar ·&nbsp;campanha</figcaption></figure></div></section><section class="mod c2" id="pares"><p class="eb">a coleção</p><h2>Quatorze <em>pares</em></h2><div class="pares"><figure><img src="_img/mg-par.png" alt=""><figcaption>Minas Gerais</figcaption></figure><figure><img src="_img/rj-par.png" alt=""><figcaption>Rio de&nbsp;Janeiro</figcaption></figure><figure><img src="_img/ba-par.png" alt=""><figcaption>Bahia</figcaption></figure><figure><img src="_img/pe-par.png" alt=""><figcaption>Pernambuco</figcaption></figure><figure><img src="_img/ce-par.png" alt=""><figcaption>Ceará</figcaption></figure><figure><img src="_img/ma-par.png" alt=""><figcaption>Maranhão</figcaption></figure><figure><img src="_img/am-par.png" alt=""><figcaption>Amazonas</figcaption></figure><figure><img src="_img/pa-par.png" alt=""><figcaption>Pará</figcaption></figure><figure><img src="_img/to-par.png" alt=""><figcaption>Tocantins</figcaption></figure><figure><img src="_img/ms-par.png" alt=""><figcaption>Mato Grosso do&nbsp;Sul</figcaption></figure><figure><img src="_img/go-par.png" alt=""><figcaption>Goiás</figcaption></figure><figure><img src="_img/pr-par.png" alt=""><figcaption>Paraná</figcaption></figure><figure><img src="_img/sc-par.png" alt=""><figcaption>Santa Catarina</figcaption></figure><figure><img src="_img/rs-par.png" alt=""><figcaption>Rio Grande do&nbsp;Sul</figcaption></figure></div></section><section class="mod " id="coracoes"><p class="eb">o fio da&nbsp;coleção</p><h2>O coração é formado, <em>nunca&nbsp;desenhado</em></h2>
+<p class="txt lead">Em cada estampa tem um, escondido nos próprios elementos: a franja da sombrinha de frevo, a cauda da baleia, duas folhas caindo&nbsp;juntas.</p>
+<div class="cors"><figure><img src="_img/mg-coracao.jpg" alt=""><figcaption><b>Minas Gerais</b>a sombra da veneziana aberta na parede&nbsp;caiada</figcaption></figure><figure><img src="_img/rj-coracao.jpg" alt=""><figcaption><b>Rio de&nbsp;Janeiro</b>duas folhas de amendoeira caindo juntas, ao lado do&nbsp;bonde</figcaption></figure><figure><img src="_img/ba-coracao.jpg" alt=""><figcaption><b>Bahia</b>dois cacaus, um amarelo e um vinho, de pontas&nbsp;encostadas</figcaption></figure><figure><img src="_img/pe-coracao.jpg" alt=""><figcaption><b>Pernambuco</b>as pontinhas da franja da sombrinha de&nbsp;frevo</figcaption></figure><figure><img src="_img/ce-coracao.jpg" alt=""><figcaption><b>Ceará</b>um ponto da renda de bilro, na&nbsp;barra</figcaption></figure><figure><img src="_img/ma-coracao.jpg" alt=""><figcaption><b>Maranhão</b>uma florzinha de miçanga no bordado do&nbsp;boi</figcaption></figure><figure><img src="_img/am-coracao.jpg" alt=""><figcaption><b>Amazonas</b>os anéis de água em volta do&nbsp;boto</figcaption></figure><figure><img src="_img/pa-coracao.jpg" alt=""><figcaption><b>Pará</b>dois pássaros de miriti que voam um para o&nbsp;outro</figcaption></figure><figure><img src="_img/to-coracao.jpg" alt=""><figcaption><b>Tocantins</b>duas hastes de capim dourado que se&nbsp;cruzam</figcaption></figure><figure><img src="_img/ms-coracao.jpg" alt=""><figcaption><b>Mato Grosso do&nbsp;Sul</b>uma folha de aguapé na beira do rio de&nbsp;Bonito</figcaption></figure><figure><img src="_img/go-coracao.jpg" alt=""><figcaption><b>Goiás</b>duas folhas de pequi que se encontram sob o peito do&nbsp;cavalo</figcaption></figure><figure><img src="_img/pr-coracao.jpg" alt=""><figcaption><b>Paraná</b>dois pinhões encostados na&nbsp;grama</figcaption></figure><figure><img src="_img/sc-coracao.jpg" alt=""><figcaption><b>Santa Catarina</b>a cauda da baleia-franca na enseada de&nbsp;Garopaba</figcaption></figure><figure><img src="_img/rs-coracao.jpg" alt=""><figcaption><b>Rio Grande do&nbsp;Sul</b>duas folhas de erva-mate ao pé do&nbsp;mourão</figcaption></figure></div></section><section class="mod " id="campanha"><p class="eb">a campanha</p><h2>O par <em>no&nbsp;lugar</em></h2>
+<p class="txt lead">Cada par foi fotografado onde a arte acontece: na areia do Ceará, no Pelourinho, no frevo do&nbsp;Recife.</p><div class="camp"><figure><img src="_img/ce-campanha.jpg" alt=""><figcaption>Ceará</figcaption></figure><figure><img src="_img/ba-campanha.jpg" alt=""><figcaption>Bahia</figcaption></figure><figure><img src="_img/pe-campanha.jpg" alt=""><figcaption>Pernambuco</figcaption></figure><figure><img src="_img/rj-campanha.jpg" alt=""><figcaption>Rio de&nbsp;Janeiro</figcaption></figure><figure><img src="_img/am-campanha.jpg" alt=""><figcaption>Amazonas</figcaption></figure><figure><img src="_img/rs-campanha.jpg" alt=""><figcaption>Rio Grande do&nbsp;Sul</figcaption></figure></div></section><section class="mod c2" id="site"><p class="eb">o site</p><h2>Um estado <em>por&nbsp;página</em></h2>
+<p class="txt lead">Oito páginas e quatorze estados, com o motion de cada ilustração, a busca pelo coração e a roda dos pares para arrastar com o&nbsp;dedo.</p>
+<div class="navegador"><span class="barra"><i></i><i></i><i></i><b>cauadorn.github.io/Dornizon-</b></span><img src="_img/tela-desk-home.png" alt=""></div>
+<div class="fones"><img src="_img/tela-mob-estado.png" alt=""><img src="_img/tela-mob-roda.png" alt=""><img src="_img/tela-mob-colecao.png" alt=""></div></section><section class="mod " id="identidade"><p class="eb">identidade</p><h2>A assinatura <em>não&nbsp;muda</em></h2>
+<p class="txt lead">O logo da collab vai no calcanhar, centralizado, tom sobre tom. A cápsula só ganha um nome, <span class="nw">Bem-Querer</span>, e um símbolo: duas folhas de amendoeira que caem juntas e formam um&nbsp;coração.</p>
+<div class="lockup"><img src="_img/assinatura-topo.svg" alt=""><span class="sep"></span><span class="col"><small>coleção</small><span class="nw">Bem-Querer</span></span></div>
+<div class="id-grade"><div class="simb"><svg viewBox="-6 6 212 196" width="230" aria-hidden="true"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg><p class="eb">símbolo</p></div>
+<div class="tipos"><p class="t-serif">Bem-<em>Querer</em></p><p class="eb">Instrument Serif ·&nbsp;títulos</p><p class="t-sans">quatorze estados</p><p class="eb">Jost · texto e&nbsp;etiqueta</p></div>
+<div class="paleta"><div><span style="background:#F4EDE3"></span><b>creme</b><i>#F4EDE3</i></div><div><span style="background:#EBE2D5"></span><b>creme 2</b><i>#EBE2D5</i></div><div><span style="background:#2A1A17"></span><b>tinta</b><i>#2A1A17</i></div><div><span style="background:#6A1B29"></span><b>vinho</b><i>#6A1B29</i></div><div><span style="background:#E07A2E"></span><b>laranja</b><i>#E07A2E</i></div></div></div></section><section class="mod vinho" id="ficha"><p class="eb">ficha técnica</p><h2>Obrigada por <em>chegar&nbsp;até&nbsp;aqui</em></h2>
+<dl class="ficha-b"><dt>Conceito, pesquisa, textos e direção de&nbsp;arte</dt><dd>Emilly Silva</dd><dt>Imagens e&nbsp;motions</dt><dd>gerados com IA, sob a minha direção de&nbsp;arte</dd><dt>Fotos de&nbsp;campo</dt><dd>139 fotógrafos, sob licenças Creative Commons, com crédito completo no&nbsp;site</dd><dt>Assinatura</dt><dd>a da collab havaianas ♥ FARM Rio, sem&nbsp;alteração</dd></dl>
+<div class="rodape-f"><p><b>o projeto&nbsp;inteiro</b>cauadorn.github.io/Dornizon-</p><p class="aviso"><span class="nw">Bem-Querer</span> é um projeto fictício de portfólio de Emilly Silva. Não é uma coleção oficial e não tem vínculo com a FARM Rio nem com a havaianas; as marcas aparecem só para contar a&nbsp;ideia.</p></div></section><section class="capa-b" id="capa-behance"><div class="cb-arte"><div class="arco"><img data-uf="ms" src="_img/ms-ilu.jpg" alt=""></div><img class="flutua" src="_img/ms-par.png" alt=""></div></section></body></html>

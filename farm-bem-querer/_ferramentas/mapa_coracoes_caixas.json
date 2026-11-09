@@ -1,0 +1,156 @@
+[
+ {
+  "estado": "Minas Gerais",
+  "arte": "geradas/mg-hero-centro.png",
+  "caixa": [
+   1130,
+   1560,
+   1690,
+   2080
+  ],
+  "texto": "a sombra da veneziana aberta na parede caiada"
+ },
+ {
+  "estado": "Rio de Janeiro",
+  "arte": "geradas/rj-hero.png",
+  "caixa": [
+   240,
+   820,
+   380,
+   940
+  ],
+  "texto": "duas folhas de amendoeira caindo juntas, ao lado do bonde"
+ },
+ {
+  "estado": "Bahia",
+  "arte": "geradas/ba-hero-uniao-v2.png",
+  "caixa": [
+   240,
+   150,
+   700,
+   520
+  ],
+  "texto": "dois cacaus, um amarelo e um vinho, de pontas encostadas"
+ },
+ {
+  "estado": "Pernambuco",
+  "arte": "geradas/pe-hero-uniao.png",
+  "caixa": [
+   690,
+   880,
+   1050,
+   1040
+  ],
+  "texto": "as pontinhas da franja da sombrinha de frevo"
+ },
+ {
+  "estado": "Ceará",
+  "arte": "geradas/ce-hero.png",
+  "caixa": [
+   790,
+   1985,
+   955,
+   2065
+  ],
+  "texto": "um ponto da renda de bilro, na barra"
+ },
+ {
+  "estado": "Maranhão",
+  "arte": "geradas/ma-hero.png",
+  "caixa": [
+   800,
+   1360,
+   950,
+   1470
+  ],
+  "texto": "uma florzinha de miçanga no bordado do boi"
+ },
+ {
+  "estado": "Amazonas",
+  "arte": "geradas/am-hero.png",
+  "caixa": [
+   450,
+   1000,
+   1300,
+   1520
+  ],
+  "texto": "os anéis de água em volta do boto"
+ },
+ {
+  "estado": "Pará",
+  "arte": "geradas/pa-hero.png",
+  "caixa": [
+   1100,
+   600,
+   1520,
+   820
+  ],
+  "texto": "dois pássaros de miriti que voam um para o outro"
+ },
+ {
+  "estado": "Tocantins",
+  "arte": "geradas/to-hero.png",
+  "caixa": [
+   150,
+   1480,
+   540,
+   1790
+  ],
+  "texto": "duas hastes de capim dourado que se cruzam"
+ },
+ {
+  "estado": "Mato Grosso do Sul",
+  "arte": "geradas/ms-hero.png",
+  "caixa": [
+   310,
+   1050,
+   460,
+   1215
+  ],
+  "texto": "uma folha de aguapé na beira do rio de Bonito"
+ },
+ {
+  "estado": "Goiás",
+  "arte": "geradas/go-hero-uniao.png",
+  "caixa": [
+   600,
+   1650,
+   1140,
+   1890
+  ],
+  "texto": "duas folhas de pequi que se encontram sob o peito do cavalo"
+ },
+ {
+  "estado": "Paraná",
+  "arte": "geradas/pr-hero.png",
+  "caixa": [
+   740,
+   1800,
+   1000,
+   1960
+  ],
+  "texto": "dois pinhões encostados na grama"
+ },
+ {
+  "estado": "Santa Catarina",
+  "arte": "geradas/sc-hero.png",
+  "caixa": [
+   540,
+   360,
+   1200,
+   870
+  ],
+  "texto": "a cauda da baleia-franca na enseada de Garopaba"
+ },
+ {
+  "estado": "Rio Grande do Sul",
+  "arte": "geradas/rs-hero.png",
+  "caixa": [
+   540,
+   1800,
+   1000,
+   2040
+  ],
+  "texto": "duas folhas de erva-mate ao pé do mourão"
+ }
+]

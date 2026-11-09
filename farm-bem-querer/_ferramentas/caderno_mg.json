@@ -1,0 +1,202 @@
+{
+ "nome": "Minas Gerais",
+ "numero": "01",
+ "regiao": "Sudeste",
+ "hero": "tiradentes-4.jpg",
+ "hero_pos": "88% 50%",
+ "hero_legenda": "Beco no centro histórico de Tiradentes",
+ "cronica": "Minas não se mostra de uma vez. Vai aparecendo devagar: na ladeira de pedra que obriga a andar mais lento, na parede caiada com janela azul, vermelho sangue-de-boi e barrado ocre, no ouro que escorre por dentro das igrejas. Em Minas se recebe na cozinha: café passado no pano, queijo curando na tábua, pão de queijo saindo do forno e um _“cê aceita mais um?”_ que não espera resposta. E tem a festa: o Congado desce a rua com fita, tambor e coroa, e a pedra-sabão do Largo de Coimbra vira panela, santo e profeta.",
+ "palavras": [
+  "uai",
+  "trem",
+  "sô",
+  "nó!",
+  "cê",
+  "quitanda",
+  "causo",
+  "ô trem bão"
+ ],
+ "trilha": "_Clube da Esquina_ (Milton Nascimento e Lô Borges, 1972) · as caixas do Congado na rua · o apito da Maria-Fumaça entre São João del-Rei e Tiradentes",
+ "paleta": [
+  {
+   "nome": "cal da parede",
+   "foto": "#BABFC5",
+   "estampa": "#F2ECE0"
+  },
+  {
+   "nome": "azul colonial",
+   "foto": "#274864",
+   "estampa": "#2D5686"
+  },
+  {
+   "nome": "sangue-de-boi",
+   "foto": "#411F1F",
+   "estampa": "#7C2420"
+  },
+  {
+   "nome": "ocre do barrado",
+   "foto": "#886639",
+   "estampa": "#D6A13D"
+  },
+  {
+   "nome": "pedra da ladeira",
+   "foto": "#7A6755",
+   "estampa": "#8B7763"
+  },
+  {
+   "nome": "casca de jabuticaba",
+   "foto": "#443636",
+   "estampa": "#36202A"
+  }
+ ],
+ "paleta_nomes": [],
+ "painel_titulo": "Ladeira, cozinha, fé e mão de artesão",
+ "painel": [
+  [
+   "tiradentes-1.jpg",
+   "rua",
+   "Casario da Rua Geraldo Resende, Tiradentes",
+   "w2 h2"
+  ],
+  [
+   "congado-5.jpg",
+   "festa",
+   "Congado em Oliveira",
+   "h2",
+   "50% 30%"
+  ],
+  [
+   "queijo-0.jpg",
+   "mesa",
+   "Queijo canastra",
+   ""
+  ],
+  [
+   "pao-de-queijo-3.jpg",
+   "mesa",
+   "Pão de queijo na cesta",
+   ""
+  ],
+  [
+   "jabuticaba-0.jpg",
+   "quintal",
+   "Jabuticaba",
+   ""
+  ],
+  [
+   "pedra-sabao-0.jpg",
+   "mãos",
+   "Feira de pedra-sabão, Largo de Coimbra, Ouro Preto",
+   ""
+  ],
+  [
+   "mercado-central-5.jpg",
+   "feira",
+   "Mercado Central, Belo Horizonte",
+   ""
+  ],
+  [
+   "jabuticaba-1.jpg",
+   "quintal",
+   "O tronco tomado de fruta",
+   ""
+  ],
+  [
+   "ouro-preto-0.jpg",
+   "fé",
+   "Igreja das Mercês entre as fachadas, Ouro Preto",
+   "w2 h2"
+  ],
+  [
+   "mercado-central-4.jpg",
+   "feira",
+   "Corredor do Mercado Central",
+   "h2"
+  ],
+  [
+   "maria-fumaca-1.jpg",
+   "rua",
+   "Maria-Fumaça na estação de Tiradentes",
+   "w2"
+  ],
+  [
+   "canastra-5.jpg",
+   "serra",
+   "Chapadão da Serra da Canastra",
+   ""
+  ],
+  [
+   "pedra-sabao-3.jpg",
+   "mãos",
+   "Pedra-sabão diante de São Francisco de Assis",
+   ""
+  ],
+  [
+   "tiradentes-0.jpg",
+   "rua",
+   "Janelas azuis e pé de moleque, Tiradentes",
+   ""
+  ],
+  [
+   "queijo-2.jpg",
+   "mesa",
+   "Queijo Minas da Serra da Canastra",
+   ""
+  ]
+ ],
+ "motivos": [
+  [
+   "tiradentes-4.jpg",
+   "Janela e barrado",
+   "molduras azul-colonial e sangue-de-boi sobre a cal, com barrado ocre: o ritmo e a paleta da estampa."
+  ],
+  [
+   "queijo-0.jpg",
+   "Queijo canastra",
+   "rodas chapadas, casca amarela como contorno; as olhaduras viram corações."
+  ],
+  [
+   "pao-de-queijo-3.jpg",
+   "Pão de queijo",
+   "a cesta de palha como forma redonda e a crosta dourada em dois tons."
+  ],
+  [
+   "jabuticaba-0.jpg",
+   "Jabuticaba",
+   "fruta que nasce no tronco: brilho que vira coração, roxo quase preto da paleta."
+  ],
+  [
+   "tiradentes-0.jpg",
+   "Pé de moleque",
+   "as pedras irregulares da ladeira viram o rapport, com algumas pedras-coração."
+  ],
+  [
+   "pedra-sabao-0.jpg",
+   "Pedra-sabão",
+   "panelas e pratos esculpidos no Largo de Coimbra: o cinza-esverdeado e o relevo entram como textura."
+  ]
+ ],
+ "evitar": [
+  "**Lobo-guará e ipê sozinhos:** são do Cerrado e do país inteiro, não gritam Minas.",
+  "**Escrever “uai” ou “trem” na estampa:** vira souvenir de rodoviária.",
+  "**O caipira de chapéu de palha:** caricatura; o mineiro de verdade está na cozinha e na festa.",
+  "**Paisagem de cartão-postal pintada realista:** a cidade entra como cor e ritmo, não como foto.",
+  "**Coroa e estandarte do Congado como enfeite:** são objetos de devoção."
+ ],
+ "estampa": {
+  "nome": "Janela de Minas",
+  "conceito": "Uma janela de casario aberta de par em par: na moldura, a cor das ruas de Tiradentes e Ouro Preto; no peitoril, a cozinha mineira; lá fora, as torres e o mar de morros. Uma imagem que qualquer mineiro reconhece sem precisar de legenda.",
+  "protagonista": "a janela colonial de madeira (folhas azul-colonial, moldura sangue-de-boi) sobre a parede caiada.",
+  "coadjuvantes": "no peitoril, queijo canastra cortado, cesta de pão de queijo e jabuticabas; atrás, as duas torres de São Francisco de Assis e os morros em faixas azuladas.",
+  "fundo": "cal quente da parede, chapado, com o barrado ocre na base (respiro para a assinatura).",
+  "coracoes": [
+   "o vão das duas folhas abertas, com o arco da bandeira da janela, desenha um coração. É a forma da composição inteira.",
+   "as olhaduras do queijo e o brilho das jabuticabas viram corações pequenos, cada um com a cor do próprio elemento.",
+   "o espelho da fechadura da janela é um coração de ferro, para quem chegar perto."
+  ],
+  "pecas": "Vestido longo com a janela posicionada na saia e lenço com o rapport **Pé de Moleque** (as pedras da ladeira, com algumas em forma de coração). Havaianas: palmilha com a janela e tira azul-colonial.",
+  "cuidado": "Congado é devoção afro-mineira a Nossa Senhora do Rosário e São Benedito: fica na pesquisa e não entra como enfeite na estampa; uma futura peça sobre a festa só com parceria de uma guarda de Congado. Se a cerâmica do Jequitinhonha entrar numa próxima estampa, o nome das artesãs vai junto.",
+  "fontes": "Fotos: Wikimedia Commons, licenças CC indicadas em cada imagem. Ouro Preto: Patrimônio Mundial UNESCO (1980). Santuário de Bom Jesus de Matosinhos, Congonhas: UNESCO (1985). Cada legenda foi conferida; uma foto que parecia Ouro Preto era Paraty (RJ) e foi descartada.",
+  "decoracao": "ramos de sempre-viva e pontinhos dourados, como os da talha das igrejas."
+ }
+}

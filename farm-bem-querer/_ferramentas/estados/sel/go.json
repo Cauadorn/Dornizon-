@@ -1,0 +1,32 @@
+{
+ "hero": "pirenopolis-rua-0.jpg", "hero_pos": "50% 40%", "hero_legenda": "Cavaleiro cristão nas Cavalhadas, Pirenópolis",
+ "paleta": [
+  {"nome": "vermelho mouro", "foto": "#AA2F48", "estampa": "#B8283C"},
+  {"nome": "azul cristão", "foto": "#273B87", "estampa": "#2B3F8F"},
+  {"nome": "rosa do mascarado", "foto": "#E87EA6", "estampa": "#E2729C"},
+  {"nome": "amarelo do pequi", "foto": "#DABE60", "estampa": "#EDC64A"},
+  {"nome": "terra do cerrado", "foto": "#786644", "estampa": "#8A6A3E"},
+  {"nome": "céu do cerrado", "foto": "#59A1C8", "estampa": "#5FA3CF"}],
+ "painel": [
+  ["cavalhadas-0.jpg", "festa", "Cavaleiros diante da Matriz, Pirenópolis", "w2 h2"],
+  ["cavalhadas-1.jpg", "festa", "Mascarado, Pirenópolis", "h2"],
+  ["pequi-0.jpg", "mesa", "Pequi aberto", ""],
+  ["festa-divino-0.jpg", "festa", "Mouros de vermelho, Festa do Divino", ""],
+  ["mascarados-1.jpg", "rua", "Mascarados a cavalo na rua", ""],
+  ["cora-coralina-0.jpg", "casa", "Casa de Cora Coralina, Cidade de Goiás", ""],
+  ["festa-divino-2.jpg", "festa", "Campo das Cavalhadas", ""],
+  ["veadeiros-campo-0.jpg", "cerrado", "Flor do cerrado", ""],
+  ["mascarados-2.jpg", "festa", "Mascarados na Festa do Divino", "w2 h2"],
+  ["bicho-cavalo-2-0.jpg", "festa", "Cavaleiro vermelho, Pirenópolis", "h2"],
+  ["festa-divino-1.jpg", "festa", "Apresentação na Festa do Divino", "w2"],
+  ["veadeiros-0.jpg", "cerrado", "Cachoeira, Chapada dos Veadeiros", "w2"],
+  ["veadeiros-campo-2.jpg", "cerrado", "Cerrado aberto, Goiás", ""],
+  ["veadeiros-campo-1.jpg", "cerrado", "Pedra e rio, Goiás", ""]],
+ "motivos": [
+  ["cavalhadas-1.jpg", "Máscara do mascarado", "flores de papel, franjas e brilho: a forma mais festiva do estado."],
+  ["mascarados-2.jpg", "Cavalo enfeitado", "o cavalo coberto de fitas e flores é parte da festa; o coração mora no peitoral."],
+  ["festa-divino-0.jpg", "Mouros e cristãos", "vermelho contra azul: as duas fitas que se cruzam na estampa."],
+  ["pequi-0.jpg", "Pequi", "o amarelo mais goiano que existe, aberto em gomos."],
+  ["cora-coralina-0.jpg", "Casario de Goiás", "janelas verdes sobre a cal, como faixa de base."],
+  ["veadeiros-campo-0.jpg", "Flor do cerrado", "as flores miúdas viram a decoração suave em volta."]]
+}
