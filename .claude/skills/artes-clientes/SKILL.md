@@ -11,6 +11,14 @@ Regra do Cauã, vale para **todos os clientes**:
 2. **Depois de criar**, subir a arte final no asset store do Design System do cliente (Artifact publish com `url` do DS, `asset: true`), para o motor sempre ter as artes mais novas como referência. Se o Cauã pedir, subir também no Drive.
 3. Registrar o que foi aprendido no arquivo do cliente em `clientes/<cliente>.md` e fazer commit.
 
+## Autonomia (regra do Cauã)
+
+**Não pedir permissão nem confirmação para nada. Decidir e fazer.**
+- Escolha de foto, enquadramento, tratamento, posição de elemento, qual arquivo usar: decidir sozinho e explicar a escolha no relatório final.
+- Abrir conversas novas (uma por card), mexer no Figma, subir arquivos no Design System e no Drive: fazer direto.
+- Quando faltar uma informação, procurar em todas as fontes (Runrun.it, Figma, Design System, Drive, repositório) antes de qualquer pergunta. Só perguntar se for impossível seguir (ex.: arquivo que não existe em lugar nenhum) e, nesse caso, já mandar o que foi feito até ali.
+- Entregar sempre com antes/depois e um resumo curto do que foi decidido.
+
 ## Design Systems (motor) por cliente
 
 | Cliente | Design System |
@@ -28,7 +36,8 @@ Há outros artifacts chamados só "Design System" (sem cliente no título): ler 
 
 1. **Card**: pegar o ID e o título no Runrun.it (`search_tasks` com o ID). O conector só devolve título, projeto e etapa. Briefing, tipo, alocados e prazo ficam na descrição do card:
    - Se existirem `RUNRUNIT_APP_KEY` e `RUNRUNIT_USER_TOKEN` no ambiente, ler pela API: `GET https://runrun.it/api/v1.0/tasks/<id>` com os headers `App-Key` e `User-Token` (a descrição vem em `/tasks/<id>/description`).
-   - Se não, pedir ao Cauã o texto do briefing. **Nunca inventar copy**: sem briefing, não há arte.
+   - Ferramentas do Runrun.it: `runrunit_get_task`, `runrunit_get_task_description`, `runrunit_list_task_comments` trazem briefing, alocados, prazo e comentários de ajuste.
+   - **Nunca inventar copy**: o texto vem do briefing ou do comentário de ajuste.
 2. **Cliente**: abrir `clientes/<cliente>.md`. Se o arquivo não existir, achar no Drive (`search_files`, `title contains '<cliente>'`) a pasta do cliente, o manual/brandbook, os logos e a pasta de publicações do ano, e criar o arquivo seguindo o modelo de `clientes/idex.md`.
 3. **Referências**: listar as 3 a 5 pastas de card mais recentes do mês (`parentId = '<pasta do mês>'`) e ler as artes (`read_file_content` em PNG devolve o texto da peça; `download_file_content` traz a imagem). Seguir grid, hierarquia, tom e assinatura dessas peças.
 4. **Produção**: montar em HTML/CSS e exportar com o Chromium do Playwright (ver `Emi/badaue-teste-vitoria-regia/projeto/render.mjs`). Formatos padrão: feed 1080x1350, story 1080x1920, carrossel 1080x1350 por lâmina. Projeto em `<cliente>/<id>-<slug>/` no repositório, com `projeto/` e `entrega/`.
@@ -38,7 +47,7 @@ Há outros artifacts chamados só "Design System" (sem cliente no título): ler 
    - se não, criar a pasta com o título exato do card.
    - Nome do arquivo: `#<id> - <título curto> [<CLIENTE>] - feed 1080x1350.png` (ou `story 1080x1920`, `slide-01`...).
    - Subir com `create_file` (`base64Content`, `contentMimeType: image/png`, `disableConversionToGoogleType: true`, `parentId` da pasta).
-7. **Runrun.it**: não mover, não comentar e não editar o card sem autorização explícita do Cauã naquele pedido. Só reportar o link da pasta.
+7. **Runrun.it**: agir sem pedir permissão no que a tarefa exigir. Não reescrever o briefing de ninguém.
 
 ## Clientes cadastrados
 
