@@ -47,18 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   addEventListener('pageshow', function (e) { if (e.persisted && cortina) cortina.classList.remove('cobre'); });
 
-  /* ---- foto que acompanha o mouse nas listas ---- */
-  var fm = $('.foto-mouse');
-  if (fm && fino) {
-    var fx = G ? G.quickTo(fm, 'left', { duration: .5, ease: 'power3' }) : function (v) { fm.style.left = v + 'px'; };
-    var fy = G ? G.quickTo(fm, 'top', { duration: .5, ease: 'power3' }) : function (v) { fm.style.top = v + 'px'; };
-    $$('[data-img]').forEach(function (li) {
-      li.addEventListener('pointerenter', function () { fm.src = li.dataset.img; fm.classList.add('on'); });
-      li.addEventListener('pointerleave', function () { fm.classList.remove('on'); });
-    });
-    addEventListener('pointermove', function (e) { fx(e.clientX + 150); fy(e.clientY); });
-  }
-
   /* ---- encontre o coração ---- */
   var busca = $('.busca');
   if (busca) {
