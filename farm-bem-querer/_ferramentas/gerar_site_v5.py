@@ -196,6 +196,10 @@ def midia(s, r='', classe='', auto=False, extra=''):
 ordem_janela = data[data.index(POR['ms']):] + data[:data.index(POR['ms'])]   # abre com a onça
 janela = ''.join(midia(s, classe=' class="on"' if k == 0 else '', extra=f' data-n="{data.index(s) + 1:02d}" data-nome="{e(s["nome"])}" data-est="{e(s["est"])}"')
                  .replace('loading="lazy"', 'loading="eager"') for k, s in enumerate(ordem_janela))
+LIGA = ' class="on"'
+pares_h = ''.join(f'<img src="img/{s["uf"]}-par.webp" alt=""{LIGA if k == 0 else ""}>' for k, s in enumerate(ordem_janela))
+ticks_h = ''.join(f'<button type="button" aria-label="{e(s["nome"])}"{LIGA if k == 0 else ""}></button>' for k, s in enumerate(ordem_janela))
+s0 = ordem_janela[0]
 trilho = ''.join(f'<a href="{s["url"]}"><div class="arco">{midia(s, auto=True)}</div><strong>{e(s["nome"])}</strong><em>{e(s["est"])}</em></a>' for s in data)
 _vistas = []
 for _s in data:
@@ -211,28 +215,32 @@ indice = ''.join(f'<li data-img="img/{e(IMG_PAG[p])}"><a href="{p}.html"><span>{
                  for k, (p, n, d) in enumerate(PAGINAS[1:], 1))
 corpo = f'''
 <section class="hero" id="topo">
-  <div class="janela" aria-hidden="true">{janela}</div>
-  <h1 class="titulo-h"><span class="palavra p-bem">Bem-</span><span class="palavra p-querer">Querer</span></h1>
   <p class="aviso-h">projeto conceitual de portfólio <i aria-hidden="true">·</i> <span>sem vínculo com FARM&nbsp;Rio e havaianas</span></p>
-  <div class="rodape-h"><p class="eb">coleção Bem-Querer · 14 estados</p><p class="eb">role para descobrir</p></div>
-  <p class="eb janela-leg" aria-live="polite"></p>
+  <div class="hero-txt">
+    <p class="eb hero-eb">coleção · 14 estados · 14 pares</p>
+    <h1 class="titulo-h"><span class="palavra p-bem">Bem-</span><span class="palavra p-querer">Querer</span></h1>
+    <p class="hero-sub">uma V2 conceitual da collab havaianas ♥ FARM&nbsp;Rio</p>
+    <div class="agora" aria-live="polite"><span class="ag-n">{data.index(s0) + 1:02d}</span><span class="ag-de">/ 14</span><strong class="ag-nome">{e(s0["nome"])}</strong><em class="ag-est">{e(s0["est"])}</em></div>
+    <div class="ticks">{ticks_h}</div>
+  </div>
+  <div class="hero-arte"><div class="hero-arte-in">
+    <div class="janela" aria-hidden="true">{janela}</div>
+    <div class="pares-h" aria-hidden="true">{pares_h}</div>
+  </div></div>
+  <a class="eb rola" href="#manifesto">role para descobrir ↓</a>
 </section>
-<section class="manif">
+<section class="manif" id="manifesto">
   <p class="m-txt">A gente saiu do Rio <span class="pil"><img src="img/{e(POR['rj']['campo'][0]['img'])}" alt=""></span> e foi até quatorze estados. Em cada um, um par de chinelos <span class="pil"><img src="img/ms-par.webp" alt="" style="object-fit:contain"></span> feito com os elementos de lá, e um coração <span class="pil redonda"><img src="img/{e(POR['sc']['coracao'])}" alt=""></span> que só aparece <em>na segunda olhada</em>.</p>
   <p class="eb m-assina">projeto de portfólio de Emilly Silva · fictício, sem vínculo com as marcas</p>
 </section>
 <section class="estados-h">
-  <div class="secao-t"><div><p class="eb">os quatorze estados</p><h2>Um lugar <em>em cada arte</em></h2></div><p class="eb">arraste para o lado →</p></div>
+  <div class="secao-t"><div><p class="eb">os quatorze estados</p><h2>Um lugar <em>em cada arte</em></h2></div><div class="setas"><button type="button" class="s-ant" aria-label="Voltar">‹</button><button type="button" class="s-prox" aria-label="Avançar">›</button></div></div>
   <div class="trilho">{trilho}</div>
 </section>
 <section class="roda" aria-label="A coleção: os quatorze pares">
   <div class="roda-palco">
     <div class="roda-topo"><div><p class="eb">a coleção</p><h2>Quatorze pares,<br><em>um em cada estado</em></h2></div><p class="eb dica-r">arraste para o lado ou toque num par</p></div>
     <div class="roda-arena" tabindex="0" aria-label="Roda dos pares: arraste para o lado, toque num par ou use as setas do teclado">
-    <div class="cupula" aria-hidden="true">
-      <svg class="anel" viewBox="0 0 1000 1000"><defs><path id="circ" d="M500,500 m-430,0 a430,430 0 1,1 860,0 a430,430 0 1,1 -860,0"/></defs>
-        <text><textPath href="#circ" textLength="2690" lengthAdjust="spacing">bem-querer · do Rio para o Brasil · quatorze estados · quatorze pares · bem-querer · do Rio para o Brasil · quatorze estados ·</textPath></text></svg>
-    </div>
     <div class="aro">{roda}</div>
     <div class="roda-info" aria-live="polite"><span class="n">01</span><strong>{e(data[0]["nome"])}</strong><em>{e(data[0]["est"])}</em>
       <div class="roda-bts"><button type="button" class="r-ant" aria-label="Par anterior">‹</button><a class="r-ver" href="{data[0]["url"]}">ver o estado</a><button type="button" class="r-prox" aria-label="Próximo par">›</button></div></div>

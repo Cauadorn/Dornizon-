@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- topo, menu e transição entre páginas ---- */
   var topo = $('.topo'), hero = $('.hero');
-  function fundoTopo() { topo.classList.toggle('solido', scrollY > (hero ? innerHeight * 1.6 : 40)); }
+  function fundoTopo() { topo.classList.toggle('solido', scrollY > 40); }
   addEventListener('scroll', fundoTopo, { passive: true }); fundoTopo();
   var bt = $('.topo .pilula'), menu = $('#menu');
   function abre(sim) { menu.classList.toggle('aberto', sim); bt.setAttribute('aria-expanded', sim); if (lenis) { sim ? lenis.stop() : lenis.start(); } }
@@ -70,30 +70,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- início: carregador e a janela com as ilustrações inteiras (vídeo quando houver) ---- */
   if (hero) {
-    var ims = $$('.janela > *'), k = 0, leg = $('.janela-leg'), troca = null;
-    var legenda = function (m) { if (leg) leg.innerHTML = '<b>' + m.dataset.n + '</b> · ' + m.dataset.nome + ' · ' + m.dataset.est; };
+    // a janela passa pelos 14 estados por tempo (não depende do fim do vídeo), com o par e o contador junto
+    var ims = $$('.janela > *'), pares = $$('.pares-h img'), ticks = $$('.ticks button'), barra = $('.ticks');
+    var agN = $('.ag-n'), agNome = $('.ag-nome'), agEst = $('.ag-est'), k = -1, troca = null, DUR = 4600;
+    if (barra) barra.style.setProperty('--dur', DUR / 1000 + 's');
     var mostraMidia = function (i) {
-      var velho = ims[k]; velho.classList.remove('on'); if (velho.pause) velho.pause();
-      k = (i + ims.length) % ims.length;
+      var novo = (i + ims.length) % ims.length;
+      if (k >= 0 && k !== novo) {
+        var v = ims[k]; v.classList.remove('on');
+        if (pares[k]) pares[k].classList.remove('on');
+        if (ticks[k]) ticks[k].classList.remove('on');
+        if (v.pause) setTimeout(function () { v.pause(); }, 1100);
+      }
+      k = novo;
       var m = ims[k];
-      m.classList.add('on'); legenda(m);
+      m.classList.add('on');
+      if (pares[k]) pares[k].classList.add('on');
+      if (ticks[k]) { ticks[k].classList.remove('on'); void ticks[k].offsetWidth; ticks[k].classList.add('on'); }
+      if (agN) { agN.textContent = m.dataset.n; agNome.textContent = m.dataset.nome; agEst.textContent = m.dataset.est; }
+      var prox = ims[(k + 1) % ims.length]; if (prox.tagName === 'VIDEO') prox.preload = 'auto';
       clearTimeout(troca);
-      if (reduz) return;
-      if (m.tagName === 'VIDEO') {
-        m.currentTime = 0;
-        m.onended = function () { mostraMidia(k + 1); };
-        var pr = m.play(); if (pr && pr.catch) pr.catch(function () { troca = setTimeout(function () { mostraMidia(k + 1); }, 3200); });
-      } else troca = setTimeout(function () { mostraMidia(k + 1); }, 3200);
+      if (m.tagName === 'VIDEO') { try { m.currentTime = 0; } catch (e) {} var pr = m.play(); if (pr && pr.catch) pr.catch(function () {}); }
+      if (reduz) { if (barra) barra.classList.add('parado'); return; }
+      troca = setTimeout(function () { mostraMidia(k + 1); }, DUR);
     };
-    legenda(ims[0]);
+    ticks.forEach(function (t, i) { t.addEventListener('click', function () { mostraMidia(i); }); });
+    // aba escondida: para; voltou: segue de onde estava
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) clearTimeout(troca); else if (k >= 0) mostraMidia(k);
+    });
     var entrada = function () {
       mostraMidia(0);
       if (!G) return;
-      G.from('.p-bem', { xPercent: -14, opacity: 0, duration: 1.4, ease: 'expo.out' });
-      G.from('.p-querer', { xPercent: 14, opacity: 0, duration: 1.4, ease: 'expo.out' });
+      G.from('.titulo-h .palavra', { yPercent: 35, opacity: 0, duration: 1.3, stagger: .12, ease: 'expo.out' });
+      G.from('.hero-eb, .hero-sub, .agora, .ticks', { y: 22, opacity: 0, duration: 1, stagger: .08, delay: .35, ease: 'power3.out' });
       G.fromTo('.janela', { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 0px 0px)', duration: 1.6, ease: 'expo.out', clearProps: 'clipPath' });
-      G.from('.hero .rodape-h', { opacity: 0, y: 20, duration: 1, delay: .5 });
-      G.from('.janela-leg', { opacity: 0, duration: 1, delay: .7 });
+      G.from('.pares-h', { opacity: 0, y: -30, duration: 1, delay: .9, ease: 'back.out(1.6)' });
+      G.from('.rola', { opacity: 0, duration: 1, delay: 1 });
     };
     var cl = $('.carrega'), visto = false;
     try { visto = sessionStorage.getItem('bq-visto') === '1'; sessionStorage.setItem('bq-visto', '1'); } catch (e) {}
@@ -119,10 +132,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (G) {
       var tl = G.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .8 } });
-      tl.to('.p-bem', { xPercent: -40, opacity: 0, ease: 'none' }, 0)
-        .to('.p-querer', { xPercent: 40, opacity: 0, ease: 'none' }, 0)
-        .to('.janela > *', { scale: 1.1, transformOrigin: '50% 100%', ease: 'none' }, 0)
-        .to('.hero .rodape-h, .janela-leg', { opacity: 0, ease: 'none', duration: .3 }, 0);
+      tl.to('.hero-txt', { y: -70, opacity: 0, ease: 'none' }, 0)
+        .to('.janela > *', { scale: 1.08, transformOrigin: '50% 100%', ease: 'none' }, 0)
+        .to('.rola, .aviso-h', { opacity: 0, ease: 'none', duration: .3 }, 0);
     }
   } else {
     var cl2 = $('.carrega'); if (cl2) cl2.remove();
@@ -149,6 +161,26 @@ document.addEventListener('DOMContentLoaded', function () {
     vids.forEach(function (v) { io.observe(v); });
   }
 
+  /* ---- trilho dos estados: setas e arrastar com o mouse ---- */
+  $$('.estados-h').forEach(function (sec) {
+    var tr = $('.trilho', sec); if (!tr) return;
+    var passo = function () { var a = $('a', tr); return a ? (a.getBoundingClientRect().width + 24) * 2 : 600; };
+    var ant = $('.s-ant', sec), prox = $('.s-prox', sec);
+    if (ant) ant.addEventListener('click', function () { tr.scrollBy({ left: -passo(), behavior: 'smooth' }); });
+    if (prox) prox.addEventListener('click', function () { tr.scrollBy({ left: passo(), behavior: 'smooth' }); });
+    var x0 = 0, s0 = 0, ativo = false, moveu = false;
+    tr.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse' || ev.button !== 0) return; ativo = true; moveu = false; x0 = ev.clientX; s0 = tr.scrollLeft; });
+    window.addEventListener('pointermove', function (ev) {
+      if (!ativo) return;
+      var dx = ev.clientX - x0;
+      if (!moveu && Math.abs(dx) > 5) { moveu = true; tr.classList.add('arrastando'); }
+      if (moveu) tr.scrollLeft = s0 - dx;
+    });
+    window.addEventListener('pointerup', function () { if (!ativo) return; ativo = false; setTimeout(function () { tr.classList.remove('arrastando'); moveu = false; }, 0); });
+    tr.addEventListener('click', function (ev) { if (moveu) { ev.preventDefault(); ev.stopPropagation(); } }, true);
+    tr.addEventListener('dragstart', function (ev) { ev.preventDefault(); });
+  });
+
   /* ---- a roda dos pares ---- */
   var roda = $('.roda');
   if (roda) {
@@ -157,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var nEl = $('.n', info), nmEl = $('strong', info), esEl = $('em', info), ver = $('.r-ver', info), atual = -1;
     var gira = function (phi) {
       aro.style.transform = 'rotate(' + (-phi) + 'deg)';
-      anel.style.transform = 'rotate(' + (phi * .5) + 'deg)';
+      if (anel) anel.style.transform = 'rotate(' + (phi * .5) + 'deg)';
       itens.forEach(function (it, i) {
         var d = ((i * passo - phi) % 360 + 540) % 360 - 180;
         it.style.setProperty('--s', (1 + .24 * Math.max(0, 1 - Math.abs(d) / (passo * 1.1))).toFixed(3));
