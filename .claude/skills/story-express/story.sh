@@ -9,22 +9,23 @@
 #   -s 5           segundos por clipe
 #   -f 0.35        força do flash (0 = só dissolve, 1 = branco total)
 #   -m musica.mp3  outra trilha
-#   -F             primeiro clipe vira abertura travada: 1º quadro + aproximação lenta (fachada/letreiro)
+#   -F             primeiro clipe vira abertura travada: 1º quadro + aproximação lenta (fachada/letreiro), ~2.5s
+#   -a 3           duração da abertura travada (com a transição; padrão 3 = ~2.5s na tela)
 #   -c W:H:X:Y     recorte (em pixels do original) da abertura travada, ex. 769:1367:445:205
 #   -b             abertura travada com fundo preto limpo (tira parede/telhado escuro em volta do letreiro)
 #   -n             sem estabilização (mais rápido ainda)
 set -euo pipefail
 
-SEG=5; T=0.5; OUT="$PWD/story.mp4"; STAB=1; FIXA=0; MUSIC=""; FLASH=0.35; CROPF=""; LIMPO=0
-while getopts "o:s:m:f:c:nFbh" opt; do
+SEG=5; T=0.5; OUT="$PWD/story.mp4"; STAB=1; FIXA=0; MUSIC=""; FLASH=0.35; CROPF=""; LIMPO=0; ABRE=3
+while getopts "o:s:m:f:c:a:nFbh" opt; do
   case $opt in
     o) OUT=$OPTARG ;; s) SEG=$OPTARG ;; m) MUSIC=$OPTARG ;; f) FLASH=$OPTARG ;;
-    c) CROPF=$OPTARG ;; n) STAB=0 ;; F) FIXA=1 ;; b) LIMPO=1 ;;
-    *) sed -n '2,17p' "$0"; exit 1 ;;
+    c) CROPF=$OPTARG ;; a) ABRE=$OPTARG ;; n) STAB=0 ;; F) FIXA=1 ;; b) LIMPO=1 ;;
+    *) sed -n '2,18p' "$0"; exit 1 ;;
   esac
 done
 shift $((OPTIND-1))
-[ $# -ge 1 ] || { sed -n '2,17p' "$0"; exit 1; }
+[ $# -ge 1 ] || { sed -n '2,18p' "$0"; exit 1; }
 
 T0=$(date +%s)
 W=$(mktemp -d); trap 'rm -rf "$W"' EXIT
@@ -64,6 +65,13 @@ for spec in "$@"; do
   i=$((i+1))
 done
 N=$i
+[ "$FIXA" -eq 1 ] && LEN[0]=$ABRE
+DIR=$(cd "$(dirname "$0")" && pwd)
+OPENCV=0
+if [ "$STAB" -eq 1 ]; then
+  python3 -c "import cv2, scipy" 2>/dev/null || pip install -q opencv-python-headless scipy >/dev/null 2>&1 || true
+  python3 -c "import cv2, scipy" 2>/dev/null && OPENCV=1
+fi
 
 prep(){ # $1 = índice
   local k=$1 f=${FILE[$1]} st=${START[$1]} len=${LEN[$1]} ar=${AR[$1]}
@@ -71,7 +79,10 @@ prep(){ # $1 = índice
     local nf; nf=$(awk -v l="$len" -v r="$FPS" 'BEGIN{printf "%d", l*r+0.5}')
     local pre="$B"; [ -n "$CROPF" ] && pre="crop=$CROPF,$B"
     [ "$LIMPO" -eq 1 ] && pre="$pre,curves=all='0/0 0.30/0 0.55/0.5 1/1'"
-    ffmpeg -v error -y $ar -ss "$st" -i "$f" -vf "select=eq(n\,0),$pre,scale=3240:5760:flags=lanczos,zoompan=z='1.02+0.07*on/$nf':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=$nf:s=1080x1920:fps=$FPS,setsar=1,$G" -frames:v "$nf" "${ENC[@]}" "$W/$k.mp4"
+    ffmpeg -v error -y $ar -ss "$st" -i "$f" -vf "select=eq(n\,0),$pre,scale=3240:5760:flags=lanczos,zoompan=z='1.03+0.035*on/$nf':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=$nf:s=1080x1920:fps=$FPS,setsar=1,$G" -frames:v "$nf" "${ENC[@]}" "$W/$k.mp4"
+  elif [ "$STAB" -eq 1 ] && [ "$OPENCV" -eq 1 ]; then
+    python3 "$DIR/estab.py" "$f" "$W/$k.mp4" --ss "$st" --t "$len" --fps "$FPS" ${ar:+--noautorotate} \
+      --vf "unsharp=5:5:0.4:3:3:0,$G" 2>/dev/null
   elif [ "$STAB" -eq 1 ]; then
     ffmpeg -v error -y $ar -ss "$st" -t "$len" -i "$f" -vf "$B,fps=$FPS,vidstabdetect=shakiness=8:accuracy=15:result=$W/$k.trf" -f null -
     ffmpeg -v error -y $ar -ss "$st" -t "$len" -i "$f" -vf "$B,fps=$FPS,vidstabtransform=input=$W/$k.trf:smoothing=40:optzoom=1:interpol=bicubic,unsharp=5:5:0.4:3:3:0,$G" "${ENC[@]}" "$W/$k.mp4"

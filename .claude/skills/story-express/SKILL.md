@@ -23,7 +23,9 @@ não faça contact sheet, não pergunte nada antes. Rode o script e entregue.
 O script já resolve sozinho:
 - orientação (câmera grava em pé com tag de rotação errada → ignora a tag);
 - corte de ~5s por clipe (pula o 0.4s inicial, onde a câmera treme);
-- estabilização máxima (vidstab em 2 passes, suavização 40, zoom automático sem borda);
+- estabilização máxima (`estab.py`: rastreia a câmera e troca o trajeto por uma curva lisa, tipo
+  trilho; tira tremor e os "trancos" de velocidade da panorâmica; zoom mínimo sem borda.
+  Instala OpenCV sozinho; se não der, cai no vidstab);
 - flash delicado (dissolve de 0.5s + clarão branco a 35%);
 - trilha "Bossa Antigua" (Kevin MacLeod, CC BY 4.0), normalizada, com fade;
 - 1080x1920, H.264/AAC, faststart.
@@ -33,7 +35,8 @@ O script já resolve sozinho:
 | flag | uso |
 |---|---|
 | `clipe@2.3` | começa aquele clipe em 2.3s (quando a melhor parte não é o início) |
-| `-F` | abertura travada: 1º quadro do 1º clipe + aproximação lenta. Use quando o take da fachada treme ou sai do letreiro |
+| `-F` | abertura travada: 1º quadro do 1º clipe + aproximação lenta, ~2.5s. Use quando o take da fachada treme ou sai do letreiro |
+| `-a 3` | duração da abertura travada (3 = ~2.5s na tela; o cliente achou 5s longo demais) |
 | `-c W:H:X:Y` | recorte da abertura travada em pixels do original (só a fachada) |
 | `-b` | fundo preto limpo na abertura travada (tira telhado/parede escura em volta do letreiro) |
 | `-f 0.2` | flash mais sutil (`0` = só dissolve) |
@@ -47,7 +50,9 @@ O script já resolve sozinho:
 - A fachada não pode tremer nem mostrar além dela → `-F -b -c` com recorte no letreiro
   (no take A001_11101913_C008: `-c 769:1367:445:205`).
 - Flash **bem delicado**, nunca clarão branco total.
-- **Estabilização máxima em tudo.**
+- **Estabilização máxima em tudo.** vidstab com suavização 40 NÃO bastou (mesa e taças ainda
+  "desestabilizados"); o `estab.py` resolveu.
+- Abertura da fachada **curta (~2.5s)**; 5s ficou longo.
 - Crédito da trilha, se usar a do script: "Música: Kevin MacLeod (incompetech.com)".
 - Sugestões chiques para o adesivo de música: "Estate" (Bruno Martino), "Via con me"
   (Paolo Conte), "The Girl from Ipanema" (Getz/Gilberto), "Corcovado", "Fly Me to the Moon".
