@@ -7,6 +7,7 @@
 ## Regras fixas
 
 - **Margem de 90px em todos os lados** (Emi, 12/11/2026): texto, @, marca d'água, selo e qualquer elemento de conteúdo ficam a pelo menos 90px da borda (em cima, embaixo, esquerda e direita). Só sangram o fundo, formas grandes cortadas pela borda e o objeto que atravessa o corte do carrossel. No Design System: token `space-4` = 90px. Para conferir: `node Emi/ems-so-um-ajustezinho/projeto/conferir-margens.js <arquivo.html>` (mede cada texto e assinatura das lâminas `.lamina`).
+- **Emoji do iPhone** (Emi, 12/11/2026): a Emi usa iPhone, e o desenho dos emojis do Android/Google é outro. Em arte, nunca deixar o emoji na fonte do sistema (aqui é a Noto, estilo Android): incluir `.claude/skills/artes-clientes/scripts/emoji-iphone.js` e esperar `await window.emojiIphone` antes do `window.READY`. Na legenda não precisa de nada: ela posta do iPhone.
 
 ## Aprendizados (o que já custou refação)
 
