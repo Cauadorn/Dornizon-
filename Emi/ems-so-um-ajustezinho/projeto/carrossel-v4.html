@@ -98,6 +98,8 @@ body{background:#140a19;display:flex;width:max-content}
 .duo-v{filter:url(#duo-violeta) drop-shadow(0 18px 28px rgba(20,8,25,.5))}
 .duo-a{filter:url(#duo-ameixa) drop-shadow(0 18px 28px rgba(10,4,14,.55))}
 .rabiscos{left:0;top:0;width:1080px;height:1350px;z-index:25;pointer-events:none;overflow:visible}
+/* fio contínuo: o rastro do cursor "emi" atravessando o carrossel */
+.trilha{left:0;top:0;width:1080px;height:1350px;pointer-events:none;filter:drop-shadow(2px 4px 0 rgba(42,20,51,.22))}
 
 /* ---------- 01 capa ---------- */
 #l1 .lead{left:84px;top:178px;color:var(--ivory)}
@@ -266,6 +268,7 @@ body{background:#140a19;display:flex;width:max-content}
 
 <!-- 01 CAPA (tecido violeta) -->
 <section class="lamina tecido" id="l1" style="--c:var(--violeta)">
+  <svg class="trilha" data-trilha="l1"></svg>
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">“é só um</p>
   <h1 class="serif t1 impresso">ajuste</h1>
@@ -280,6 +283,7 @@ body{background:#140a19;display:flex;width:max-content}
 
 <!-- 02 O LOOP (página) -->
 <section class="lamina mesa" id="l2" style="--c:var(--lavanda)">
+  <svg class="trilha" data-trilha="l2"></svg>
   <div class="abas"><span class="aba a1">briefing</span><span class="aba a2">versões</span><span class="aba a3 on">ajustes</span><span class="aba a4">entrega</span></div>
   <div class="pagina">
     <span class="cab e">projeto: marca nova · pág. 02</span><span class="cab d">terça, 23h40</span>
@@ -294,6 +298,7 @@ body{background:#140a19;display:flex;width:max-content}
     <p class="nota">faltou combinar o destino antes de sair.</p>
     <div class="agua-pag"><span>@itsemsdesign</span><span>@itsemsdesign</span><span>@itsemsdesign</span></div>
   </div>
+  <img class="duo-v" src="recortes/papel.png" alt="" style="left:-650px;top:800px;width:780px">
   <svg class="espiral"></svg>
   <svg class="rabiscos" data-desenho="l2"></svg>
   <span class="handle" style="right:150px;bottom:44px">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
@@ -302,6 +307,7 @@ body{background:#140a19;display:flex;width:max-content}
 
 <!-- 03 A PASTA (janela retrô sobre xadrez) -->
 <section class="lamina xadrez" id="l3">
+  <svg class="trilha" data-trilha="l3"></svg>
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <div class="janela">
     <div class="jbarra"><div class="bolas"><i style="background:var(--pink)"></i><i style="background:var(--manteiga)"></i><i style="background:var(--lavanda)"></i></div><span>marca-cliente / entregas</span></div>
@@ -328,6 +334,7 @@ body{background:#140a19;display:flex;width:max-content}
 
 <!-- 04 SEM NORTE (tecido ameixa) -->
 <section class="lamina tecido" id="l4" style="--c:var(--ameixa)">
+  <svg class="trilha" data-trilha="l4"></svg>
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">calma: ajuste faz parte.</p>
   <h2 class="serif t1 impresso">o que cansa é<br>ajuste sem</h2>
@@ -342,9 +349,11 @@ body{background:#140a19;display:flex;width:max-content}
 
 <!-- 05 PERGUNTA (conversa no celular, linho claro) -->
 <section class="lamina linho" id="l5">
+  <svg class="trilha" data-trilha="l5"></svg>
   <div class="agua" style="color:var(--tinta)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">a primeira pergunta do meu briefing:</p>
   <h2 class="serif titulo impresso">como é a sua marca<br>em <em>três</em> palavras?</h2>
+  <img class="duo-a" src="recortes/bussola.png" alt="" style="left:-560px;top:600px;width:640px;transform:rotate(-8deg);z-index:2">
   <img class="estrela-g" src="assets/icones/i-estrela-violeta-grande.png" alt="">
   <div class="cel"><div class="tela">
     <span class="ilha"></span>
@@ -364,6 +373,7 @@ body{background:#140a19;display:flex;width:max-content}
 
 <!-- 06 CHAMADA (tecido violeta) -->
 <section class="lamina tecido" id="l6" style="--c:var(--violeta)">
+  <svg class="trilha" data-trilha="l6"></svg>
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">quer as outras perguntas do meu</p>
   <h2 class="serif t1 impresso">brie<em>f</em>ing?</h2>
@@ -469,6 +479,36 @@ const desenhos = {
   l5: () => '',
   l6: () => '',
 };
+
+
+// ---------- fio contínuo (coordenadas locais de cada lâmina; as pontas batem no corte) ----------
+function enrolado(x0, y0, x1, y1, voltas, r) {
+  // trocoide: avança de (x0,y0) a (x1,y1) dando "voltas" laçadas de raio r
+  const L = Math.hypot(x1 - x0, y1 - y0), ux = (x1 - x0) / L, uy = (y1 - y0) / L, px = -uy, py = ux;
+  const a = L / (2 * Math.PI * voltas); let d = '';
+  for (let i = 0; i <= 240; i++) {
+    const th = (i / 240) * 2 * Math.PI * voltas;
+    const al = a * th - r * Math.sin(th), pe = r * (1 - Math.cos(th)) * .8 - r * .8;
+    d += ` L${f(x0 + ux * al + px * pe)} ${f(y0 + uy * al + py * pe)}`;
+  }
+  return d;
+}
+const trilhas = {
+  l1: 'M318 214 C 520 150, 860 112, 980 250 C 1070 350, 1050 560, 960 650 C 860 760, 700 820, 690 1000 C 680 1160, 760 1300, 900 1305 C 980 1308, 1040 1300, 1080 1300',
+  l2: () => 'M0 1300 C 30 1300, 50 1290, 52 1250' + enrolado(52, 1250, 52, 170, 7, 40) + ' C 52 70, 140 34, 300 34 L 900 34 C 1046 34, 1048 110, 1048 200 L 1048 900 C 1048 960, 1060 990, 1080 990',
+  l3: 'M0 990 C 30 990, 36 960, 36 900 C 34 600, 38 300, 36 160 C 36 110, 80 96, 160 96 C 400 94, 700 98, 920 96 C 1000 96, 1044 120, 1044 200 C 1046 400, 1042 560, 1044 640 C 1044 700, 1060 724, 1080 724',
+  l4: 'M0 724 L 1080 1060',
+  l5: 'M0 1060 C 300 1076, 480 1128, 700 1130 L 1080 1130',
+  l6: 'M0 1130 C 140 1130, 250 1062, 420 1042 C 560 1026, 690 1000, 733 936',
+};
+document.querySelectorAll('[data-trilha]').forEach(svg => {
+  const t = trilhas[svg.dataset.trilha], d = typeof t === 'function' ? t() : t;
+  svg.setAttribute('viewBox', '0 0 1080 1350');
+  let h = `<path d="${d}" fill="none" stroke="#fffbde" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>` +
+          `<path d="${d}" fill="none" stroke="#dd34a8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
+  if (svg.dataset.trilha === 'l1') h += '<circle cx="318" cy="214" r="12" fill="#dd34a8" stroke="#fffbde" stroke-width="4"/>';
+  svg.innerHTML = h;
+});
 
 Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => {
   document.querySelectorAll('[data-desenho]').forEach(svg => {

@@ -28,6 +28,11 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 | 5 · pergunta | A primeira pergunta do briefing numa conversa no celular (avatar = mascote da EMS), com a estrela da EMS grande atrás, sobre linho claro | @rafaelalimadesigner_ |
 | 6 · chamada | "brie*f*ing?" impresso + pílula com cursor "emi", selo e xoxo | sistema EMS |
 
+**Conectividade (o carrossel é uma faixa contínua):**
+- Um fio rosa com contorno marfim (o rastro do cursor "emi", nas cores do cursor) começa num ponto ao lado de "é só um" e atravessa as 6 lâminas, sempre por baixo dos objetos. As pontas de cada lâmina batem no corte com a da vizinha. Ele dá laçadas na margem do slide do **loop**, contorna a janela na **pasta**, fica **reto** a partir do **norte** e termina embaixo do cursor que clica em "comenta BRIEFING".
+- Objetos que vazam: a bolinha de papel da capa fica metade no slide 1 e metade no 2; a bússola do slide 4 aparece na borda esquerda do 5.
+- Para mexer no fio: `trilhas` no `<script>` de `carrossel-v4.html` (coordenadas locais de cada lâmina; a ponta que sai em x=1080 precisa ter o mesmo y da que entra em x=0 na lâmina seguinte).
+
 Grafismos: só os do design system (brilho, espiral, coração, estrela, seta, xoxo), um ou dois por slide e com motivo, tingidos na cor da paleta. Os únicos traços à mão são funcionais: setas do loop e os sublinhados.
 
 As v2 e v3 foram descartadas: a v2 repetia a folha de caderno em 3 slides e trazia brilhos que não são da EMS; a v3 voltou demais para a v1.
