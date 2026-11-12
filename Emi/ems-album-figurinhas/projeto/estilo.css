@@ -5,6 +5,7 @@
 @font-face { font-family: "Poppins"; src: url(fonts/Poppins-Regular.ttf); font-weight: 400; }
 @font-face { font-family: "Poppins"; src: url(fonts/Poppins-Medium.ttf); font-weight: 500; }
 @font-face { font-family: "Poppins"; src: url(fonts/Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: "Anton"; src: url(fonts/Anton-Regular.ttf); font-weight: 400; }
 
 :root {
   --ivory: #fffbde; --ivory-2: #f4edcb; --tinta: #2a1433; --ameixa: #3d1c46;
