@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- Prancha da identidade MIAU.LAB para a Emi aprovar: logo, variações, avatar, paleta, letras e os dois rótulos (rotulo-v2.html). -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-400.woff2); font-weight: 400; }
+html, body { margin: 0; }
+body { width: 1080px; background: #EDEAE4; font-family: Mono; color: #141418; }
+.p { padding: 40px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.c { position: relative; overflow: hidden; border-radius: 18px; }
+.t { position: absolute; left: 22px; top: 18px; font: 400 15px/1 Mono; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.chip { height: 150px; padding: 18px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; font: 700 17px/1.3 Mono; }
+.chip span { font-weight: 400; opacity: .8; }
+img { display: block; width: 100%; }
+</style><script src="logo.js"></script></head><body><div class="p">
+  <div class="c" style="grid-column: span 6; height: 600px; background:#2F55F2"><div class="logo" id="l1"></div><div class="t" style="color:#fff">miau.lab · suplemento para gatos</div></div>
+  <div class="c" style="grid-column: span 2; height: 300px; background:#FF9FD2"><div class="logo" id="l2"></div></div>
+  <div class="c" style="grid-column: span 2; height: 300px; background:#F5F7F6"><div class="logo" id="l3"></div></div>
+  <div class="c" style="grid-column: span 2; height: 300px; background:#EDEAE4; display:grid; place-items:center">
+    <div style="position:relative; width:250px; height:250px; border-radius:50%; overflow:hidden; background:#2F55F2">
+      <div style="position:absolute; left:0; right:0; bottom:0; height:78px; background:#FF9FD2"></div>
+      <div class="logo" id="l4"></div></div>
+    <div class="t">avatar</div></div>
+  <div class="c chip" style="grid-column: span 2; background:#2F55F2; color:#fff">azul laboratório<span>#2F55F2</span></div>
+  <div class="c chip" style="grid-column: span 2; background:#FF9FD2">rosa cápsula<span>#FF9FD2</span></div>
+  <div class="c chip" style="grid-column: span 1; background:#141418; color:#fff">nanquim<span>#141418</span></div>
+  <div class="c chip" style="grid-column: span 1; background:#F5F7F6">jaleco<span>#F5F7F6</span></div>
+  <div class="c" style="grid-column: span 3; height: 190px; background:#F5F7F6; padding: 22px; box-sizing: border-box">
+    <div style="font:900 120px/0.9 Archivo; font-stretch:62%">MIAU Aa</div><div style="font:400 15px/1 Mono; margin-top:14px">archivo extra condensed black · nome e títulos</div></div>
+  <div class="c" style="grid-column: span 3; height: 190px; background:#F5F7F6; padding: 22px; box-sizing: border-box">
+    <div style="font:700 50px/1.1 Mono">.lab nº07</div><div style="font:400 22px/1.4 Mono">fórmula · 60 petiscos</div><div style="font:400 15px/1 Mono; margin-top:14px">space mono · etiquetas e bula</div></div>
+  <div class="c" style="grid-column: span 3"><img src="rotulo-07.png"></div>
+  <div class="c" style="grid-column: span 3"><img src="rotulo-12.png"></div>
+</div>
+<script>
+const poe = (id, k, x, y, o) => { const el = document.getElementById(id); el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.transform = `scale(${k})`; miauLogo(el, o); };
+poe('l1', .62, (1000 - 899 * .62) / 2, 60, { cor: '#FF9FD2', id: 'a' });
+poe('l2', .3, (322 - 899 * .3) / 2, 40, { cor: '#2F55F2', id: 'b' });
+poe('l3', .3, (322 - 899 * .3) / 2, 40, { cor: '#141418', olho: '#FF9FD2', id: 'c' });
+// avatar: só o gato, espiando por cima da faixa rosa (o nome some na cor do fundo)
+poe('l4', .62, 125 - 560 * .62, 172 - 260 * .62, { cor: 'transparent', olho: '#FF9FD2', lab: false, id: 'd' });
+</script></body></html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- MIAU.LAB v2: mistura das referências que a Emi escolheu (quadro de pesquisa, nº 13, 15 e 16):
+     ONCE  → o pote inteiro numa cor só e uma forma grande na segunda cor;
+     wllab → a forma é uma "molécula" orgânica (bolhas ligadas) e as etiquetas pretas com a fórmula;
+     CURAME → o nome gigante e condensado, e palavrinhas em caixa alta rodando o topo.
+     O logo (logo.js) entra embaixo: o gato preto espiando por trás do A, ".lab" embaixo do nome.
+     Arte = meia volta do pote, de borda a borda (1400 x 972). Nas laterais o pote comprime a arte: o miolo útil é x 250-1150.
+     ?v=07 (azul, pelo & pele) | ?v=12 (rosa, digestão leve) -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-400.woff2); font-weight: 400; }
+html, body { margin: 0; }
+.r { position: relative; width: 1400px; height: 972px; overflow: hidden; background: var(--fundo); color: var(--forma); }
+.anel { position: absolute; left: -40px; right: -40px; top: 34px; display: flex; justify-content: space-between; font: 700 25px/1 Mono; letter-spacing: .14em; color: var(--forma); }
+svg.mol { position: absolute; left: 0; top: 0; }
+.etq { position: absolute; background: #141418; color: #fff; font: 700 70px/1 Archivo; font-stretch: 88%; padding: 14px 24px 18px; letter-spacing: -.01em; }
+.etq.pq { background: var(--forma); color: var(--fundo); font: 700 26px/1 Mono; padding: 11px 15px; letter-spacing: .04em; }
+.info { position: absolute; font: 400 24px/1.45 Mono; color: var(--forma); }
+.logo { position: absolute; left: 280px; top: 270px; width: 899px; height: 700px; transform-origin: 0 0; transform: scale(.934); }
+</style><script src="logo.js"></script></head><body>
+<div class="r">
+  <div class="anel"></div>
+  <svg class="mol" width="1400" height="972" viewBox="0 0 1400 972">
+    <defs><filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="22" result="b"/>
+      <feColorMatrix in="b" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 36 -16" result="a"/>
+      <feFlood id="cor" flood-color="#000"/><feComposite in2="a" operator="in"/>
+    </filter></defs>
+    <!-- a molécula da primeira versão (a que a Emi gostou), menor, atrás do gato -->
+    <g filter="url(#goo)" transform="translate(830 300) scale(.74) translate(-770 -365)">
+      <g stroke="#000" stroke-width="64" stroke-linecap="round">
+        <line x1="770" y1="360" x2="560" y2="200"/><line x1="770" y1="360" x2="1010" y2="190"/>
+        <line x1="770" y1="360" x2="1080" y2="520"/><line x1="770" y1="360" x2="600" y2="560"/>
+      </g>
+      <circle cx="770" cy="365" r="168"/>
+      <circle cx="555" cy="195" r="78"/><circle cx="1015" cy="185" r="92"/>
+      <circle cx="1090" cy="525" r="104"/><circle cx="595" cy="575" r="66"/>
+      <circle cx="1185" cy="330" r="34"/><circle cx="430" cy="380" r="26"/>
+    </g>
+  </svg>
+  <div class="etq pq" style="left:300px;top:150px"></div>
+  <div class="etq" style="left:330px;top:198px"></div>
+  <div class="info" style="left:330px;top:318px">suplemento<br>p/ gatos<br>60 petiscos</div>
+  <div class="logo"></div>
+</div>
+<script>
+const v = new URLSearchParams(location.search).get('v') || '07', s = document.documentElement.style;
+const AZUL = '#2F55F2', ROSA = '#FF9FD2';
+const V = { '07': { fundo: AZUL, forma: ROSA, n: '07', p: 'pelo &amp; pele', anel: ['PELO', 'PELE', 'BRILHO'] },
+            '12': { fundo: ROSA, forma: AZUL, n: '12', p: 'digestão leve', anel: ['BARRIGA', 'LEVE', 'PROBIÓTICO'] } }[v];
+s.setProperty('--fundo', V.fundo); s.setProperty('--forma', V.forma);
+document.getElementById('cor').setAttribute('flood-color', V.forma);
+document.querySelector('.etq.pq').textContent = 'FÓRMULA Nº' + V.n;
+document.querySelector('.etq:not(.pq)').innerHTML = V.p;
+const a = V.anel; document.querySelector('.anel').innerHTML = [a[0], a[1], a[2], 'FÓRMULA ' + V.n, a[0], a[1]].map(t => `<span>${t}</span>`).join('<span>·</span>');
+miauLogo(document.querySelector('.logo'), { cor: V.forma, id: 'r' });
+</script></body></html>

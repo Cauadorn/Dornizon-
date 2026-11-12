@@ -1,0 +1,17 @@
+<!doctype html>
+<!-- Logo MIAU.LAB (o desenho está em logo.js). Uso: logo.html | ?fundo=#FF9FD2&cor=#2F55F2 | ?fundo=#F5F7F6&cor=#141418&olho=#FF9FD2 | ?w=&h=&escala= -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+html, body { margin: 0; }
+.palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; background: var(--fundo); }
+.logo { position: absolute; left: 50%; top: 50%; width: 899px; height: 700px; transform: translate(-50%, -50%) scale(var(--escala, .9)); }
+</style><script src="logo.js"></script></head><body>
+<div class="palco"><div class="logo"></div></div>
+<script>
+const q = new URLSearchParams(location.search), s = document.documentElement.style;
+s.setProperty('--fundo', q.get('fundo') || '#2F55F2');
+miauLogo(document.querySelector('.logo'), { cor: q.get('cor') || '#FF9FD2', gato: q.get('gato') || '#141418', olho: q.get('olho') || q.get('cor') || '#FF9FD2' });
+if (q.get('escala')) s.setProperty('--escala', q.get('escala'));
+if (q.get('w')) { const pc = document.querySelector('.palco'); pc.style.width = q.get('w') + 'px'; pc.style.height = q.get('h') + 'px'; }
+</script></body></html>
