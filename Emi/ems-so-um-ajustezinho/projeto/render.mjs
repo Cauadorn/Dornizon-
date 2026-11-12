@@ -1,5 +1,7 @@
 // Exporta as lâminas com o Chromium do Playwright.
-// uso: node render.mjs   -> ../entrega/lamina-01..06.png + ../entrega/visao-geral.jpg
+// uso: node render.mjs                         -> carrossel.html    em ../entrega/v1/
+//      node render.mjs carrossel-v2.html v2    -> carrossel-v2.html em ../entrega/v2/
+// Cada pasta recebe lamina-01..06.png + visao-geral.jpg.
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
@@ -9,13 +11,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const dir = path.dirname(fileURLToPath(import.meta.url));
-const saida = path.join(dir, '..', 'entrega');
+const [arquivo = 'carrossel.html', versao = 'v1'] = process.argv.slice(2);
+const saida = path.join(dir, '..', 'entrega', versao);
 fs.mkdirSync(saida, { recursive: true });
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1080 * 6, height: 1350 }, deviceScaleFactor: 1 });
 page.on('pageerror', (e) => console.error('erro na página:', e.message));
-await page.goto(pathToFileURL(path.join(dir, 'carrossel.html')).href);
+await page.goto(pathToFileURL(path.join(dir, arquivo)).href);
 await page.waitForFunction(() => window.READY === true, null, { timeout: 60000 });
 
 const laminas = page.locator('.lamina');
@@ -32,4 +35,4 @@ await new Promise((ok, falha) => {
   p.on('close', (c) => (c === 0 ? ok() : falha(new Error('ffmpeg ' + c))));
 });
 fs.rmSync(faixa);
-console.log('ok', n, 'lâminas');
+console.log('ok', n, 'lâminas em', path.relative(path.join(dir, '..'), saida));

@@ -14,6 +14,18 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 | "DESIGN DE POST" nos cantos | Marca d'água @ITSEMSDESIGN 3x no topo + `HandleTag` com cursor |
 | Chamada "comenta DESTRAVA" | Pergunta aberta (lâmina 5, a primeira pergunta do briefing da Emi) + "comenta BRIEFING que eu te mando na dm" (lâmina 6), com o selo original |
 
+## Versões
+
+- **v1** (`entrega/v1/`, `projeto/carrossel.html`): digital e chapado, quadros de Figma, janela de pasta e campos de formulário.
+- **v2** (`entrega/v2/`, `projeto/carrossel-v2.html`): **caderno físico**. Mesma copy, com as refs da @carolrech (`referencias/carolrech/`) aplicadas por princípio, sem copiar elemento:
+
+| Ref | O que veio | Como entrou na EMS |
+| --- | --- | --- |
+| Página de agenda (argolas, divisórias, etiqueta presa, papel com textura) | A peça vira objeto físico | Páginas internas num caderno **pontilhado com espiral** (o "caderno de designer" do README da EMS); **divisórias** na lateral marcam a fase do projeto (briefing, versões, ajustes, entrega) e a ativa muda por lâmina; post-its e bilhete presos com **fita crepe** |
+| Jantar com as amigas (tecido, letra com cara de impressa, títulos que se atropelam, foto monocromática, brilhos rabiscados) | Textura e tipografia com matéria | Capas em **tecido** nas cores da marca; títulos em Instrument Serif com **falha de impressão**; "zinho" atropelando "ajuste" e "norte." atropelando a bússola; objetos em **duotone** da paleta (papel em tinta → violeta-2 → marfim, bússola em tinta → plum → manteiga); **brilhos de 4 pontas rabiscados** com hachura (versão à mão do ícone brilho) |
+
+Na v2, a lâmina 3 trocou a janela de arquivos por uma lista na página: tudo riscado à caneta (`wine`) e a v1 circulada em rosa, com "spoiler: aprovaram essa."
+
 ## Lâminas
 
 1. **Capa** (`violeta`): "“é só um / ajuste*z*inho”" + pilha de papel amassado (v3_ajuste.png, v_final.png, v27_ok.png). "e foi assim que a gente chegou na versão 27."
@@ -55,6 +67,6 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html`: as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera `entrega/lamina-01..06.png` e `entrega/visao-geral.jpg`.
-- `entrega/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1) e `projeto/carrossel-v2.html` (v2): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v2.html v2` gera a v2 em `entrega/v2/` (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v1/` e `entrega/v2/`: PNGs finais 1080 × 1350 para subir no Instagram.
