@@ -94,8 +94,8 @@ body{background:#555}
   <div class="cont" style="left:4320px;color:var(--ivory)">
   
   
-  <div class="abs lead" style="left:0;right:0;top:118px;text-align:center;font-size:48px">quer um feed assim?</div>
-  <div class="abs" style="left:0;right:0;top:150px;display:flex;justify-content:center;align-items:baseline;gap:24px;white-space:nowrap;z-index:3"><span class="lead" style="font-size:62px">me chama na</span><span class="gig" style="font-size:330px;color:var(--manteiga)">dm</span></div>
+  <div id="qfa" class="abs lead" style="left:0;top:0;font-size:34px;font-weight:500;white-space:nowrap;z-index:3">quer um feed assim?</div>
+  <div class="abs" style="left:0;right:0;top:138px;display:flex;justify-content:center;align-items:baseline;gap:22px;white-space:nowrap;z-index:3"><span id="mcn" class="lead" style="font-size:64px">me chama na</span><span id="dm" class="gig" style="font-size:330px;color:var(--manteiga)">dm</span></div>
   <!-- ingresso -->
   <div class="abs" style="left:96px;top:448px;width:888px;height:430px;transform:rotate(-4deg);z-index:2;filter:drop-shadow(8px 10px 0 #2a1433) drop-shadow(0 30px 40px rgba(20,8,26,.35))">
     <div style="position:absolute;inset:0;-webkit-mask:radial-gradient(circle 32px at 650px 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 32px at 650px 100%,#0000 97%,#000) bottom/100% 51% no-repeat">
@@ -132,7 +132,7 @@ body{background:#555}
       <path d="M100 66l9 20 22 2-16 15 5 21-20-11-20 11 5-21-16-15 22-2z" fill="#dd34a8"/>
     </svg>
   </div>
-  <div class="abs" style="left:0;right:0;top:960px;text-align:center;font:500 36px/1.3 Poppins;letter-spacing:-.015em">me conta da <span style="color:var(--manteiga)">sua marca</span><br>que eu te explico como funciona</div>
+  <div class="abs" style="left:0;right:0;top:930px;text-align:center;font:500 36px/1.22 Poppins;letter-spacing:-.015em">me conta da <span style="color:var(--manteiga)">sua marca</span><br>que eu te explico como funciona</div>
   <img class="abs" src="img/selo-ems.png" style="right:96px;top:1086px;width:120px;filter:drop-shadow(0 10px 14px rgba(42,20,51,.45))">
   <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
 </div>
@@ -185,6 +185,13 @@ function encaixar() {
 function barras() { const b = document.getElementById('barras'); let y = 0, seed = 11; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
   while (y < 300) { const h = 2 + Math.floor(rnd() * 4) * 2, gap = 2 + Math.floor(rnd() * 3) * 2; if (y + h > 300) break;
     const r = document.createElementNS(NS, 'rect'); r.setAttribute('x', 0); r.setAttribute('y', y); r.setAttribute('width', 70); r.setAttribute('height', h); r.setAttribute('fill', '#fffbde'); b.appendChild(r); y += h + gap; } }
+function encaixarDm() {
+  const mcn = document.getElementById('mcn'), q = document.getElementById('qfa'), cont = mcn.closest('.cont').getBoundingClientRect();
+  const y = el => { const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0'; el.appendChild(m); const v = m.getBoundingClientRect().top; m.remove(); return v; };
+  const base = y(mcn), cap = 64 * .70, r = mcn.getBoundingClientRect();
+  q.style.left = (r.left - cont.left + 2) + 'px';
+  const qb = y(q); q.style.top = (parseFloat(q.style.top) + (base - cap - 14 - qb)) + 'px';
+}
 function encaixarChamada() {
   const pac = document.getElementById('pac'), prox = document.getElementById('prox'), marca = document.getElementById('marca');
   const marcaY = s => { const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0'; s.appendChild(m); const y = m.getBoundingClientRect().top; m.remove(); return y; };
@@ -200,7 +207,7 @@ function encaixarChamada() {
   const mb = marcaY(marca), cap = ctx.measureText ? 0 : 0;
   marca.style.top = (parseFloat(marca.style.top) + (base + 54 - mb)) + 'px';
 }
-document.fonts.ready.then(() => { encaixar(); barras();
+document.fonts.ready.then(() => { encaixar(); barras(); encaixarDm();
   Promise.all([...document.images].map(i => i.decode().catch(() => 0))).then(() => window.READY = true); });
 </script>
 </body></html>
