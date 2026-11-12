@@ -137,7 +137,13 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
       - a cartela de comprimidos, recortada com BiRefNet, volta por cima.
     - **Lição:** etiqueta pequena em vidro curvo fica com cara de colada. Caixa e faces planas aceitam a arte muito melhor. Em frasco, só com arte grande e simples. Antes de pintar, olhar onde o bicho encosta: uma máscara do gato por luminância pegava a borda escura do pote e deixava uma faixa branca.
   - **Exportar logo com letras giradas:** fotografar o palco inteiro e aparar pelo alfa (`marcas/toto/exporta-logo.mjs`). Recortar pela caixa do elemento corta o que passa dela. Para aplicar num pacote, recortar o pacote com BiRefNet (`marcas/aplica_pacote.py`); a máscara por cor falha na parte em sombra. Composição em `projeto/marcas/aplica.py`, que deforma a arte em perspectiva e herda a luz da foto; a lateral usa a luz da frente.
-- **Logo no quadro da marca: centralizar pela tinta, na área visível.** O quadro tem sangria de 30 px em cima e à direita (a imagem é 452 x 430, mas aparece só x 0-422 e y 30-430). Medir a caixa dos pixels escuros nessa área e mover até o centro dela ficar em (211, 200). Centralizar pelo elemento do logo deixa a marca torta, porque o cachorro e o nome não têm o mesmo centro (a Emi: "não tá centralizado", no TOTÓ e na MATILHA). Também tem que **cada peça do logo estar no mesmo eixo**. Na MATILHA o cachorro estava 17 px à direita do nome e, mesmo com o conjunto centralizado, ela disse "ainda tá sem equilíbrio". Medir o centro de cada bloco (cachorro, nome, linha de baixo) e alinhar todos.
+- **Logo no quadro da marca: centralizar pela tinta, dentro da moldura de seleção roxa.**
+  - O olho lê a moldura (x 651-1067, y 12-406 da lâmina) como a caixa. A borda verde, com a sangria, não conta.
+  - Medir a caixa dos pixels da cor do logo e igualar as folgas esquerda/direita e cima/baixo até a moldura.
+  - Cada peça do logo (bicho, nome, linha de baixo) também fica no mesmo eixo.
+  - Histórico da Emi: "não tá centralizado" (TOTÓ), "ainda tá sem equilíbrio" (MATILHA com o cachorro 17 px fora do eixo) e "claramente ainda não tá centralizado" (eu centralizava pela área verde, 9 px fora da moldura).
+  - Na MIAU.LAB estava 10 px fora.
+  - O dx positivo leva a tinta para a direita: para tirar folga da esquerda, dx diminui.
 - **Run club (direção 04): virou MATILHA running club.**
   - A identidade "AU" (número de peito na Graduate) foi reprovada: "feia, xoxa".
   - Pesquisa: `referencias/au-running-club/identidade`. Ela escolheu misturar 1 (RUN CLUB), 7 (TRC) e 18 (Wild Pup), lembrando que é corrida **com** cachorro.
