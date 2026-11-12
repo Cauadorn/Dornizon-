@@ -2,7 +2,7 @@
 
 Post da @itsemsdesign no pilar **bastidor e processo**: dez sites que entram no processo da Emi, dois por etapa (pesquisa, letra, cor, textura, entrega). Fecha com "qual figurinha tá *faltando* no meu álbum?", que puxa as indicações nos comentários.
 
-**Status:** v4 aprovada em 12/11/2026. Lâminas finais em `entrega/` (7 × 1080 × 1350 + visão geral + legenda) e no Drive: [EMS · @itsemsdesign / 2026-11 · figurinhas raras](https://drive.google.com/drive/folders/1mXRfDny9CFU0yEo95pAPOt0JccynZHJV). As versões reprovadas (v1 a v3 e a página 4 com post-its) estão em `v1-descartada/`; as prévias de trabalho em `previa-v4/`.
+**Status:** v4 aprovada em 12/11/2026. Lâminas finais em `entrega/` (7 × 1080 × 1350 + visão geral + legenda) e no Drive: [Pessoal (Drive da Emi) / 2026-11 · figurinhas raras](https://drive.google.com/drive/folders/1mXRfDny9CFU0yEo95pAPOt0JccynZHJV). As versões reprovadas (v1 a v3 e a página 4 com post-its) estão em `v1-descartada/`; as prévias de trabalho em `previa-v4/`.
 
 ## v4: uma referência de diagramação por página
 
