@@ -193,29 +193,24 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
   let nc = 0;
   const clipe = (x, y, r) => { const id = 'clp4' + (nc++); return `<svg class="abs" style="left:${x}px;top:${y}px;width:34px;transform:rotate(${r}deg);filter:drop-shadow(1px 4px 3px rgba(42,20,51,.35));z-index:3" viewBox="0 0 46 130"><defs><linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="#8f8a97"/><stop offset=".45" stop-color="#f4f1f7"/><stop offset="1" stop-color="#7f7987"/></linearGradient></defs>
     <path d="M14 34 V104 a9 9 0 0 0 18 0 V18 a14 14 0 0 0 -28 0 V108 a19 19 0 0 0 38 0 V34" fill="none" stroke="url(#${id})" stroke-width="4.4" stroke-linecap="round"/></svg>`; };
-  const postit = (x, y, w, r, cor, s) => `<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;padding:38px 34px 34px;background:${cor};transform:rotate(${r}deg);box-shadow:0 14px 26px rgba(42,20,51,.28);text-align:center">
+  const postit = (x, y, w, r, cor, s) => `<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;padding:56px 44px 50px;background:${cor};transform:rotate(${r}deg);box-shadow:0 18px 34px rgba(42,20,51,.28);text-align:center">
       <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.35"></div>
-      <div style="position:relative;font-family:var(--sans);font-weight:600;font-size:34px;line-height:1.1;color:var(--tinta);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px">${s.nome}</div>
-      <div style="position:relative;font-family:var(--sans);font-size:26px;line-height:1.25;color:var(--tinta);margin-top:12px">${s.pra}</div></div>`;
+      <div style="position:relative;font-family:var(--sans);font-weight:600;font-size:42px;line-height:1.1;color:var(--tinta);text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:3px">${s.nome}</div>
+      <div style="position:relative;font-family:var(--sans);font-size:31px;line-height:1.28;color:var(--tinta);margin-top:16px">${s.pra}</div></div>`;
   const tarja = (txt, tam, bg, cor, r = 0) => `<span style="display:inline-block;font-family:var(--sans);font-weight:600;font-size:${tam}px;line-height:1;letter-spacing:-.02em;padding:.1em .3em .14em;background:${bg};color:${cor};transform:rotate(${r}deg)">${txt}</span>`;
   lamina(3, `
     <div class="abs" style="left:0;right:0;top:92px;text-align:center;font-family:var(--sans);font-weight:500;font-size:22px;color:rgba(42,20,51,.7)">@itsemsdesign</div>
-    <div class="abs" style="left:0;right:0;top:150px;text-align:center">
+    <div class="abs" style="left:0;right:0;top:122px;text-align:center">
       <div style="font-family:var(--sans);font-weight:400;font-size:66px;line-height:1;color:var(--tinta);letter-spacing:-.02em">nem toda</div>
       <div style="margin-top:14px">${tarja('paleta bonita', 82, 'var(--pink)', 'var(--ivory)', -1.5)}</div>
       <div style="margin-top:-6px;font-family:var(--serif);font-style:italic;font-size:226px;line-height:.9;color:var(--violeta)">funciona</div></div>
-    <img class="abs" src="emoji/2728.png" style="left:170px;top:236px;width:74px;transform:rotate(-10deg)">
-    <img class="abs" src="emoji/2728.png" style="left:850px;top:400px;width:52px;transform:rotate(12deg)">
-    ${objeto({ x: 230, y: 560, w: 620, r: 0, src: 'leque' })}
-    ${postit(96, 800, 400, -6, 'var(--manteiga)', s1)}${clipe(100, 742, -14)}
-    ${postit(586, 830, 400, 5, 'var(--lavanda)', s2)}${clipe(944, 770, 12)}
-    <div class="abs" style="left:0;right:0;top:1112px;text-align:center">
+    ${postit(100, 562, 500, -5, 'var(--manteiga)', s1)}${clipe(118, 510, -16)}
+    ${postit(500, 816, 490, 4, 'var(--ivory)', s2)}${clipe(934, 768, 14)}
+    <div class="abs" style="left:0;right:0;top:1124px;text-align:center">
       <div style="font-family:var(--sans);font-weight:600;font-size:46px;line-height:1;color:var(--tinta);letter-spacing:-.02em">é por isso que eu testo</div>
       <div style="margin-top:10px">${tarja('antes de mostrar.', 46, 'var(--violeta)', 'var(--ivory)', -1)}</div></div>
-    <img class="abs" src="emoji/1f3a8.png" style="left:816px;top:1150px;width:62px;transform:rotate(10deg)">
-  `, `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
-      <div class="abs" style="inset:-40px;background:url(texturas/pinceladas.png) center/cover;opacity:.5;transform:scaleX(-1) rotate(4deg)"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.45"></div>
+  `, `<div class="abs" style="inset:0;background:var(--lavanda-2)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.3"></div>
       <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao');
 })();
 
