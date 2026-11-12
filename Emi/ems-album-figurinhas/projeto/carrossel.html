@@ -230,6 +230,20 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
   if (N >= 4) pt.insertAdjacentHTML('beforeend', `<img class="abs" src="${estrelaReticula(700, css('pink'))}" style="left:${3 * W - 350}px;top:930px;width:700px;opacity:.3;transform:rotate(-16deg)">`);
 })();
 
+/* acabamento por cima de TUDO (fundo, objetos, cartões e texto), contínuo na faixa inteira:
+   grão de impressão com contraste (some menos na compressão do Instagram) + relevo de papel */
+(() => {
+  const grao = (tam, freq, seed) => `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='${tam}' height='${tam}'><filter id='g' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='${freq}' numOctaves='2' seed='${seed}' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='2.6' intercept='-.8'/><feFuncG type='linear' slope='2.6' intercept='-.8'/><feFuncB type='linear' slope='2.6' intercept='-.8'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`;
+  const tg = grao(360, .82, 21);
+  /* luz a 30° deixa o plano em cinza médio: no soft-light só o relevo aparece, sem clarear a cor */
+  const papel = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><filter id='p' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.028' numOctaves='5' seed='31' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='3.2'><feDistantLight azimuth='225' elevation='30'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")`;
+  const raiz = document.documentElement.style;
+  raiz.setProperty('--tx-acab-papel', papel); raiz.setProperty('--tx-acab-grao', tg);
+  camada('graos').insertAdjacentHTML('beforeend', `
+    <div class="abs" style="left:0;top:0;width:${N * W}px;height:${H}px;background-image:var(--tx-acab-papel);background-size:800px;mix-blend-mode:soft-light;opacity:.75"></div>
+    <div class="abs" style="left:0;top:0;width:${N * W}px;height:${H}px;background-image:var(--tx-acab-grao);background-size:540px;mix-blend-mode:overlay;opacity:.42"></div>`);
+})();
+
 function caber(el, largura) { let s = parseFloat(getComputedStyle(el).fontSize); while (el.scrollWidth > largura && s > 20) { s -= 2; el.style.fontSize = s + 'px'; } }
 document.fonts.ready.then(() => {
   const a = document.getElementById('alg'); if (a) caber(a, 800);
