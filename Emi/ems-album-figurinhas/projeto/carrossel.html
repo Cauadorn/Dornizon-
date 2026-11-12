@@ -65,25 +65,24 @@ function lamina(k, html, fundo, grao = 'grao') {
   camada('graos').insertAdjacentHTML('beforeend', `<div class="lamina" style="left:${k * W}px"><div class="${grao}"></div>${params.has('guia') ? '<div class="guia"></div>' : ''}</div>`);
 }
 
-/* ================= 1 · capa — diagramação da ref 3 (@delfy) ================= */
+/* ================= 1 · capa — diagramação da ref 2 (palavras encaixadas lado a lado, objeto na frente) ================= */
 (() => {
-  const micro = (x, y, w, cor) => `<div class="micro" style="left:${x}px;top:${y}px;width:${w}px;color:${cor}" data-sem-cola>10 sites que salvam meu processo e quase ninguém tem no álbum. 10 sites que salvam meu processo e quase ninguém tem no álbum.</div>`;
   lamina(0, `
-    ${micro(90, 96, 220, 'rgba(255,251,222,.5)')}
-    ${micro(90, 980, 220, 'rgba(255,251,222,.5)')}
-    <div class="abs" style="left:0;right:0;top:170px;display:flex;flex-direction:column;align-items:center;gap:6px">
-      <span class="pilula-ref" style="font-size:64px;background:var(--ivory);color:var(--violeta)">10 sites no</span>
-      <span class="pilula-ref" style="font-size:64px;background:var(--ivory);color:var(--violeta)">pacotinho das</span></div>
-    ${estrela({ x: 772, y: 232, tam: 92, r: 12 })}
-    <div class="g" id="capa-g1" style="left:90px;width:900px;top:330px;text-align:center;font-size:310px;color:var(--manteiga)">figurinhas</div>
-    ${objeto({ x: 470, y: 520, w: 540, r: -7, src: 'pacotinho' })}
-    <div class="g i" style="left:110px;top:640px;font-size:360px;color:var(--ivory)">raras</div>
-    <div class="abs" style="left:0;right:0;top:1112px;text-align:center">
-      <img src="assets/selo-ems.png" style="width:74px;vertical-align:middle;margin-right:14px">
-      <span style="font-family:var(--sans);font-weight:500;font-size:26px;color:var(--ivory);vertical-align:middle">sites de designer que ninguém te conta</span></div>
-    <div class="handle" style="left:96px;top:1212px;--bg:var(--pink)">@itsemsdesign${CURSOR}</div>
+    <div class="abs" style="left:90px;top:150px;font-family:var(--sans);font-weight:600;font-size:76px;line-height:1;letter-spacing:-.03em;color:var(--ivory)">o pacotinho</div>
+    ${estrela({ x: 560, y: 128, tam: 92, r: 14 })}
+    <div class="abs" id="capa-l2" style="left:90px;top:250px;display:flex;align-items:baseline;gap:22px;white-space:nowrap">
+      <span style="font-family:var(--sans);font-weight:600;font-size:76px;letter-spacing:-.03em;color:var(--ivory)">das</span>
+      <span class="g" style="position:static;font-size:282px;color:var(--manteiga)">figurinhas</span></div>
+    <div class="abs" style="left:92px;top:548px;width:300px;font-family:var(--sans);font-weight:500;font-size:29px;line-height:1.22;color:var(--ivory)">
+      <b style="font-weight:600;color:var(--manteiga)">10 sites</b> que salvam meu processo e quase ninguém tem no álbum.</div>
+    <div class="g i" style="right:96px;top:470px;font-size:330px;color:var(--ivory)">raras</div>
+    ${objeto({ x: 310, y: 680, w: 540, r: -6, src: 'pacotinho' })}
+    ${estrela({ x: 862, y: 860, tam: 72, r: -12 })}
+    <div class="abs" style="left:90px;top:1222px;font-family:var(--sans);font-weight:500;font-size:22px;color:rgba(255,251,222,.85)">@itsemsdesign</div>
   `, `<div class="abs" style="inset:0;background:var(--violeta)"></div>
-      <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 55%, rgba(123,77,242,.6), transparent 72%)"></div>`, 'grao-luz');
+      <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 55%, rgba(123,77,242,.6), transparent 72%)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:700px;mix-blend-mode:multiply;opacity:.5"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:500px;mix-blend-mode:multiply;opacity:.35"></div>`, 'grao-luz');
 })();
 
 /* ================= 2 · pesquisa — diagramação da ref 8 (agenda) ================= */
@@ -138,7 +137,7 @@ document.fonts.ready.then(() => {
     document.getElementById('brilho-lente').style.background =
       `radial-gradient(circle at ${cx - rl * .35}px ${cy - rl * .4}px, rgba(255,255,255,.5), rgba(255,255,255,0) ${rl * .55}px),
        radial-gradient(circle at ${cx}px ${cy}px, transparent ${rl * .78}px, rgba(91,33,108,.18) ${rl}px)`;
-  } const g1 = document.getElementById('capa-g1'); if (g1) caber(g1, 900);
+  } const l2 = document.getElementById('capa-l2'); if (l2) { let f = 282; while (l2.scrollWidth > 900 && f > 150) { f -= 4; l2.lastElementChild.style.fontSize = f + 'px'; } }
   return Promise.all([...document.images].map((im) => im.complete ? 1 : new Promise((r) => { im.onload = im.onerror = r; })));
 }).then(() => { window.READY = true; });
 </script>
