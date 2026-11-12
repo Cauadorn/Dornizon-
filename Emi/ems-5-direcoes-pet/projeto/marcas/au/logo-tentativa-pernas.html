@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Logo AU RUNNING CLUB (direção "modo atleta"), a partir das referências que a Emi escolheu (referencias/au-running-club/identidade: 1, 7 e 18):
+     1 RUN CLUB → letra pesada, arredondada e inclinada para frente, preto sobre verde-limão, azul elétrico de destaque;
+     7 TRC      → o próprio nome corre: as letras ganham pernas;
+     18 Wild Pup → cachorro em salto, coleira na cor de destaque, fundo chapado com grão.
+     A marca é de corrida COM cachorro: o "A" é a pessoa (tênis nos pés) e o "U" é o cachorro (pula com as patas esticadas,
+     rabo atrás, orelha e coleira azul na haste da frente). A guia azul liga a pessoa ao cachorro.
+     Letra: Rubik Black Italic, 500px. Coordenadas do logo: o "A" começa em x=0, topo das letras y=100, base do A y=449.
+     A (sozinho): pé de trás 0-124, pé da frente 259-381, ponta 181-334. U: tirado do chão 70px, começa em x=470,
+     hastes 523-638 e 722-837 no topo (y=30), fundo da curva y=384. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: RubikI; src: url(../../fonts/Rubik-italic-var-latin.woff2); font-weight: 300 900; }
+html, body { margin: 0; }
+.palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; background: var(--fundo); }
+.logo { position: absolute; left: 50%; top: 50%; width: 940px; height: 620px; transform: translate(-50%, -50%) scale(var(--escala, .95)); }
+.l { position: absolute; font: 900 500px/1 RubikI; color: var(--tinta); }
+svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.nome { position: absolute; left: 0; width: 940px; top: 530px; text-align: center; font: 900 84px/1 RubikI; letter-spacing: .04em; color: var(--tinta); white-space: nowrap; }
+</style></head><body>
+<div class="palco"><div class="logo">
+  <svg width="900" height="620" viewBox="0 0 900 620">
+        <g transform="translate(40 0)" fill="var(--tinta)">
+      <!-- rabo: sai de trás da haste de trás do U, sobe e curva -->
+      <path d="M532 92 C 498 70, 470 20, 482 -30 C 487 -50, 508 -46, 505 -28 C 498 6, 516 44, 548 64 Z"/>
+      <!-- orelha: no alto da haste da frente, caindo para frente -->
+      <path d="M800 34 C 820 10, 846 -8, 872 -12 C 884 -13, 886 0, 878 8 C 862 26, 846 42, 832 52 Z"/>
+    </g>
+  </svg>
+  <!-- os pés do A viram tênis (bico, sola e cadarço desenhados por cima) -->
+  <span class="l" style="left:-29px;top:29px">A</span>
+  <span class="l" style="left:493px;top:-41px">U</span>
+  <svg width="900" height="620" viewBox="0 0 900 620">
+    <g fill="var(--tinta)">
+      <g transform="translate(40 0)">
+        <!-- patas da frente do cachorro, esticadas para frente; patas de trás, empurrando para trás -->
+        <path d="M700 300 C 740 330, 790 356, 836 370 C 852 375, 858 395, 840 398 C 790 396, 730 372, 680 336 Z"/>
+        <ellipse cx="846" cy="388" rx="24" ry="15" transform="rotate(18 846 388)"/>
+        <path d="M676 330 C 712 362, 752 392, 790 410 C 804 417, 804 436, 786 435 C 744 426, 700 398, 660 362 Z"/>
+        <ellipse cx="796" cy="428" rx="22" ry="14" transform="rotate(22 796 428)"/>
+        <path d="M496 312 C 476 346, 462 372, 452 398 C 446 414, 460 422, 470 410 C 486 386, 506 360, 528 336 Z"/>
+        <ellipse cx="456" cy="414" rx="22" ry="14" transform="rotate(-36 456 414)"/>
+      </g>
+      <!-- tênis: os pés do A ganham bico arredondado para frente (o A está "calçado") -->
+      <path d="M100 405 L150 405 Q166 410 176 424 Q190 446 170 449 L100 449 Z"/>
+      <path d="M356 405 L404 405 Q420 410 430 424 Q444 446 424 449 L356 449 Z"/>
+    </g>
+    <g stroke="var(--fundo)" stroke-width="5" stroke-linecap="round" fill="none">
+      <line x1="2" y1="438" x2="170" y2="438"/><line x1="262" y1="438" x2="424" y2="438"/>
+      <line x1="118" y1="412" x2="126" y2="424"/><line x1="134" y1="412" x2="142" y2="424"/>
+      <line x1="374" y1="412" x2="382" y2="424"/><line x1="390" y1="412" x2="398" y2="424"/>
+    </g>
+    <!-- cinto de canicross na cintura do A, coleira no pescoço do U, e a guia azul ligando os dois -->
+    <path d="M118 318 L364 318 L367 342 L106 342 Z" fill="var(--destaque)"/>
+    <g transform="translate(40 0)">
+      <path d="M712 58 L833 58 L828 84 L707 84 Z" fill="var(--destaque)"/>
+      <circle cx="704" cy="72" r="10" fill="none" stroke="var(--destaque)" stroke-width="6"/>
+    </g>
+    <path d="M364 330 C 480 330, 630 220, 744 74" fill="none" stroke="var(--destaque)" stroke-width="14" stroke-linecap="round"/>
+  </svg>
+  <div class="nome">RUNNING CLUB</div>
+</div></div>
+<script>
+const q = new URLSearchParams(location.search), s = document.documentElement.style;
+s.setProperty('--fundo', q.get('fundo') || '#CCFF3E'); s.setProperty('--tinta', q.get('tinta') || '#121212'); s.setProperty('--destaque', q.get('destaque') || '#4342FF');
+if (q.get('escala')) s.setProperty('--escala', q.get('escala'));
+</script></body></html>

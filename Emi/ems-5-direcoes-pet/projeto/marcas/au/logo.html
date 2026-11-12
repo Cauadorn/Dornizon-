@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Logo AU RUNNING CLUB (direção "modo atleta"). Referências que a Emi escolheu (referencias/au-running-club/identidade):
+     1 RUN CLUB  → letra pesada, arredondada e inclinada, com um balanço líquido; verde-limão, preto e azul elétrico;
+     7 TRC       → o nome tem movimento (aqui, o cachorro salta por cima dele);
+     18 Wild Pup → silhueta de cachorro em salto com o vão da coleira, fundo chapado com grão, letrinhas correndo nas bordas.
+     A marca é de corrida COM cachorro: o cachorro salta por cima do "AU" e a coleira fica na cor do fundo.
+     A tentativa de dar pernas e tênis às letras desenhando à mão ficou feia (logo-tentativa-pernas.html): a Emi reprovou.
+     A silhueta foi gerada (gpt-image no Figma) e limpa em limpa_silhueta.py.
+     Uso: logo.html | ?fundo=#4342FF&tinta=#CCFF3E | ?bordas=0 -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: RubikI; src: url(../../fonts/Rubik-italic-var-latin.woff2); font-weight: 300 900; }
+@font-face { font-family: Rubik; src: url(../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
+html, body { margin: 0; }
+.palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; background: var(--fundo); }
+.grao { position: absolute; inset: 0; opacity: .28; mix-blend-mode: multiply; pointer-events: none; }
+.borda { position: absolute; left: 44px; right: 44px; display: flex; justify-content: space-between; font: 700 19px/1 Rubik; letter-spacing: .12em; color: var(--tinta); text-transform: uppercase; }
+.logo { position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); width: 640px; }
+.cao { display: block; width: 560px; height: 331px; margin: 0 0 -40px 80px; position: relative; z-index: 2; overflow: visible; }
+.nome { filter: url(#liquido); color: var(--tinta); }
+.au { font: 900 400px/.78 RubikI; letter-spacing: -.02em; white-space: nowrap; }
+.rc { font: 900 72px/1 RubikI; white-space: nowrap; margin-top: 6px; letter-spacing: .005em; }
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="liquido" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency=".0045 .007" numOctaves="1" seed="4" result="r"/>
+  <feDisplacementMap in="SourceGraphic" in2="r" scale="22" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <!-- borda lisa depois da deformação: desfoca e endurece o alfa de novo -->
+  <feGaussianBlur in="d" stdDeviation="1.6" result="b"/>
+  <feComponentTransfer in="b" result="a"><feFuncA type="linear" slope="6" intercept="-2.4"/></feComponentTransfer>
+  <feFlood class="cor-tinta" flood-color="#121212"/><feComposite in2="a" operator="in"/>
+</filter>
+<filter id="tinge"><feFlood class="cor-tinta" flood-color="#121212"/><feComposite in2="SourceAlpha" operator="in"/></filter>
+<filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.4 -.35"/></filter></svg>
+<div class="palco">
+  <svg class="grao" width="1080" height="1080"><rect width="1080" height="1080" filter="url(#ruido)"/></svg>
+  <div class="borda" style="top:40px"><span>AU running club</span><span>—</span><span>corre com ele</span><span>AU running club</span><span>—</span><span>corre com ele</span></div>
+  <div class="logo">
+    <svg class="cao" viewBox="0 0 2172 1285"><image href="cao-salto.png" width="2172" height="1285" filter="url(#tinge)"/></svg>
+    <div class="nome"><div class="au">AU</div><div class="rc">RUNNING CLUB</div></div>
+  </div>
+  <div class="borda" style="bottom:40px"><span>5K todo domingo</span><span>—</span><span>todo cachorro corre</span><span>—</span><span>5K todo domingo</span></div>
+</div>
+<script>
+const q = new URLSearchParams(location.search), s = document.documentElement.style;
+s.setProperty('--fundo', q.get('fundo') || '#CCFF3E'); s.setProperty('--tinta', q.get('tinta') || '#121212'); s.setProperty('--destaque', q.get('destaque') || '#4342FF');
+document.querySelectorAll('.cor-tinta').forEach(e => e.setAttribute('flood-color', q.get('tinta') || '#121212'));
+if (q.get('bordas') === '0') document.querySelectorAll('.borda,.grao').forEach(e => e.remove());
+// "RUNNING CLUB" com a mesma largura do "AU"
+document.fonts.ready.then(() => { const au = document.querySelector('.au'), rc = document.querySelector('.rc');
+  const w = au.getBoundingClientRect().width; rc.style.fontSize = (72 * w / rc.getBoundingClientRect().width) + 'px'; });
+</script></body></html>
