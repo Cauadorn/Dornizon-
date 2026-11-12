@@ -2,28 +2,38 @@
 
 Post da @itsemsdesign no pilar **bastidor e processo**: dez sites que entram no processo da Emi, dois por etapa (pesquisa, letra, cor, textura, entrega). Fecha com "qual figurinha tá *faltando* no meu álbum?", que puxa as indicações nos comentários.
 
-**Status:** v2 em prévia (`previa/`), esperando o retorno da Emi. A v1 foi reprovada ("tá horrível… coisa marrom, fora da minha paleta"; "mesma textura, mesma diagramação, mesma receita de bolo"). Ela está em `v1-descartada/` só como registro do que não fazer.
+**Status:** v4 aprovada em 12/11/2026. Lâminas finais em `entrega/` (7 × 1080 × 1350 + visão geral + legenda) e no Drive: [EMS · @itsemsdesign / 2026-11 · figurinhas raras](https://drive.google.com/drive/folders/1mXRfDny9CFU0yEo95pAPOt0JccynZHJV). As versões reprovadas (v1 a v3 e a página 4 com post-its) estão em `v1-descartada/`; as prévias de trabalho em `previa-v4/`.
 
-## O que mudou da v1 para a v2
+## v4: uma referência de diagramação por página
 
-| v1 (reprovada) | v2 |
-| --- | --- |
-| Uma receita só em todas as lâminas: título no alto à esquerda, cartões, bilhete e @ | **Cada lâmina tem composição própria** (refs da Nicole Holz e da LilyConts), amarradas pelo cabeçalho e rodapé de álbum, pela paleta e pela dupla Instrument Serif + itálico |
-| Uma textura só (grão e papel) e objetos gerados sem cor (lupa de madeira, tachinha vermelha) | **Uma matéria por lâmina** (ref. "mil texturas" da @escolacanvadesigner): linho, caderno pautado, meio-tom, papel, retalhos, pincelada, renda. **Objetos fotografados já na paleta** (hex no prompt) |
-| Figurinhas com cara de interface (número, preço, URL, chips miúdos) | Os sites viram tipografia grande (o nome em serifa) e o "pra quê" vai em balão ou cartão |
-| Técnica: cartão chapado + objeto 3D | **Técnica: colagem editorial com foto recortada.** O post anterior (ajustezinho v8) foi 3D sobre papel amassado; este não repete nem o 3D nem o papel amassado |
+O que destravou a v4: **cada página segue de perto a diagramação de uma referência que a Emi mandou** (sem as fotos de pessoas), numa família de cor só (violeta + marfim, rosa e manteiga de acento), com textura visível e as estrelas em retícula da marca em opacidades diferentes.
 
-## Lâminas (v2)
+| Página | Referência (diagramação) | O que tem |
+| --- | --- | --- |
+| 1 · capa | Pinterest ref 6 (cartão de Notas sobre fundo rico) | Notas com "FIGURINHAS / RARAS" em Anton, *do meu pacotinho*, pacotinho de papel impresso passando de leve sobre as palavras, @ fora do cartão, mouse clicando dentro das notas |
+| 2 · pesquisa | Pinterest ref 8 (agenda) | folha de agenda, "pra achar referência sem depender do *algoritmo*", lupa de acrílico ampliando a palavra de verdade (na cor da folha), cosmos.so e logosystem.co em blocos |
+| 3 · letra | Pinterest ref 7 (papel com clipe sobre fundo escuro) | folha com "ACHAR A FONTE *sem chorar*", fontsinuse.com e fontshare.com, letras gigantes no fundo, ✨ 🥲 ⭐ |
+| 4 · cor | Pinterest refs 4 e 5 | "nem toda *paleta bonita* funciona" gigante, conta-gotas pingando na palavra, barrinha de interface com os hex, bilhetes com clipe de realtimecolors.com e whocanuse.com |
+| 5 · textura | Nicole Holz, ref 3 lâmina 5 | violeta-2 com linho, "pra marca não ficar *lisa.*" (só a "lisa" com textura de carimbo gasto), pincel de acrílico pintando a pincelada de verdade, fffuel.co e haikei.app, bloco miúdo de nomes de textura |
+| 6 · entrega | LilyConts, ref 2 lâmina 9 | "ANTES / DE MANDAR / pro *cliente:*", cartão com shots.so e squoosh.app e o desenho do que cada um faz (celular com a capa deste carrossel; capa.png 2,8 MB → capa.webp 164 KB, números reais) |
+| 7 · chamada | página de álbum "PROCURA-SE" (Pinterest) | cartaz de procurado colado no violeta da capa: "PROCURA-SE a figurinha *nº 11*", espaço vazio no lugar da foto, ficha (visto por último, características, recompensa: eu testo e conto aqui), "viu ela? me indica nos comentários ↓" |
 
-1. **Capa** (linho violeta): "o pacotinho das / figurinhas / *raras*". O pacotinho fotografado fica entre as duas palavras, na frente de "figurinhas" e atrás de "raras". Pílula "10 sites que salvam meu processo e quase ninguém tem no álbum", sem spoiler.
-2. **Pesquisa** (caderno pautado com margem rosa): "referência / sem *algoritmo*". A lupa de acrílico rosa **amplia de verdade** a palavra embaixo da lente. Os sites são cosmos.so e logosystem.co, em verbete zigue-zague.
-3. **Letra** (ameixa com meio-tom): "achar a fonte / sem *chorar*", com o "Aa" gigante como folha de amostra e o alfabeto no pé. Os sites são fontsinuse.com e fontshare.com.
-4. **Cor** (lavanda-2): "paleta que sai / do *papel*", com leque de cartelas usando a própria paleta da EMS (ameixa, violeta, rosa, manteiga). Os sites são realtimecolors.com e whocanuse.com.
-5. **Textura** (marfim): à esquerda, uma tira de retalhos (linho, pincel, meio-tom, renda); à direita, "pra marca / não ficar / *lisa*". Os sites são fffuel.co e haikei.app.
-6. **Entrega** (plum com pincelada tom sobre tom): "a hora de / *mostrar*", com a caixa de presente lilás e laço rosa. Os sites são shots.so e squoosh.app, em balões de fala.
-7. **Chamada** (vinho com renda marfim no topo): "qual figurinha / tá *faltando* no / meu álbum?", o espaço nº 11 vazio, "me indica nos comentários o site que você não vive sem. eu testo e conto." e o selo.
+**Ligações entre as páginas (metade de cada lado do corte):** estrela em retícula rosa 1|2; "&" em contorno 2|3; "g" cheio na 3 e em contorno na 4, mais estrela rosa 3|4; estrela em retícula que troca de cor no corte 4|5 (violeta no marfim, marfim no violeta); seta desenhada 5|6; "?" gigante 6|7. Por cima de tudo, uma camada contínua de relevo de papel e grão de impressão.
 
-**Conectividade (objetos que atravessam o corte):** coração 1|2, brilho 2|3, brilho 3|4, cartela lavanda 4|5, coração 5|6, brilho 6|7. Nenhum fio.
+**Variantes guardadas da página 7:** `?p7=atual` (álbum escuro com seleção do Figma, reprovada) e `?p7=b` (álbum quase completo, as 10 figurinhas). Renderizar com `node projeto/render.mjs --q p7=b`.
+
+### O que a Emi reprovou no caminho (e virou regra)
+
+- Fundo de cada página numa cor diferente ("eu tô parecendo uma palhaça"): uma família de cor só.
+- Foto gerada de cena ou de pessoa: foto real, só dela.
+- Mesma textura e mesma receita em todas: cada página com a sua matéria e a sua referência.
+- Título em bloco e diagramação básica: seguir a referência de perto.
+- Emoji em todas as páginas: só onde agrega.
+- Muito objeto 3D: lupa, conta-gotas e pincel bastam; entrega e chamada são flat.
+- Pacotinho quadrado de laminado rosa ("parece camisinha"): envelope de papel impresso, vertical.
+- Pincelada atravessando para a página vizinha: a ponte 4|5 virou estrela.
+- Página que não se entende (checklist com itens genéricos): só os dois sites, cada um com o desenho do que faz.
+- Conteúdo fora do centro: conferir a centralização do conteúdo dentro do cartão e do conjunto na página.
 
 ## Sites (conferidos em 12/11/2026)
 
@@ -60,24 +70,33 @@ Ficaram de fora: Vectorizer.ai (só baixa pagando), Huemint (termos de uso comer
 ## Produção
 
 - `projeto/carrossel.html` + `estilo.css` + `textos.js`: a faixa inteira (7560 × 1350).
-  - `node projeto/render.mjs --saida previa` exporta as lâminas e a visão geral.
+  - `node projeto/render.mjs` exporta as 7 lâminas e a visão geral em `entrega/`; `--n 4 --saida previa-v4` exporta só as primeiras.
   - `--guia` desenha a margem de 90px.
-- **Imagens geradas no gerador do Figma** (`gpt-image-2.5-sunburst`), com as cores do objeto em hex no prompt e fundo #E9E9E9. Ficam em `projeto/geradas/`; os recortes (`projeto/recortar.py`, rembg BiRefNet) ficam em `projeto/recortes/`.
-  - **Fotos de objeto:** pacotinho de laminado rosa com figurinhas lilás, violeta e marfim; lupa de acrílico rosa e lilás; caixa de presente lilás com laço rosa.
-  - **Matérias:** linho violeta (`texturas/linho-violeta.png`), renda marfim (recorte) e pinceladas violeta (`texturas/pinceladas.png`, com o alfa tirado da cor).
-  - `pacotinho-3d` e `lupa-3d` são as versões em render 3D. Ficaram de fora para não repetir a técnica do ajustezinho v8.
-- No Figma da EMS ficaram os quadros das gerações 38:2 e 38:3 (pacotinho e lupa em foto) e 39:2 a 39:5 (linho, renda, presente, pinceladas).
+- **Imagens geradas no gerador do Figma** (`gpt-image-2.5-sunburst`), com as cores do objeto em hex no prompt e fundo #E9E9E9. Ficam em `projeto/geradas/`; os recortes (`projeto/recortar.py`, rembg BiRefNet, uma imagem por vez) em `projeto/recortes/`.
+  - **Usados na v4:** `pacotinho` (envelope de papel impresso, vertical), `lupa` (acrílico rosa e lilás), `conta-gotas` (acrílico violeta), `pincel-pintando` (pincel de acrílico lilás já no fim da pincelada de tinta #3A1A8F; recorte = rembg no pincel + chave de cor contra o #E9E9E9 na tinta, sombra cinza convertida em sombra escura transparente, tinta escurecida para casar com as outras pinceladas).
+  - **Matérias:** linho violeta (`texturas/linho-violeta.png`, página 5), pinceladas separadas de `texturas/pinceladas.png` em `pincelada-1..3.png`, tingidas com o mesmo filtro (`PINC`).
+  - **Feitas no código:** estrela em retícula (`estrelaReticula`), relevo e fibra de papel (feTurbulence + feDiffuseLighting), carimbo gasto da "lisa" (máscara de ruído), relevo seco dos espaços de álbum (variante `atual` da 7), celular e etiqueta de arquivo (página 6), cartaz (página 7).
+  - `recortes/capa-mini.jpg` é a página 1 reduzida, usada dentro do celular da página 6: refazer se a capa mudar.
+  - Fora da v4: `presente`, `renda`, `leque`, `figurinha-lupa`, `pincel` (sem pintar), `pacotinho-3d`, `lupa-3d` e as versões antigas do pacotinho.
+- **Duas armadilhas do SVG no HTML:** textura em `url("data:…")` não pode ir direto no atributo `style` (as aspas fecham o atributo; passar por variável CSS), e filtro de luz/ruído precisa de `color-interpolation-filters='sRGB'`, senão o cinza médio vira claro e a textura lava a cor.
+- No Figma da EMS ficaram os quadros das gerações (38:x, 39:x, 48:2 pincel, 49:2 e 49:3 pincel pintando).
 
-## Legenda (rascunho, fechar depois da aprovação)
+## Legenda (final, também em `entrega/legenda.txt` e no Drive)
 
 ```
-abri o pacotinho e saiu figurinha rara.
+o pacotinho das figurinhas raras chegou, e é tudo site que salva o meu processo.
 
-todo designer tem um álbum de sites salvos nos favoritos. esses são os dez que aparecem em quase todo projeto meu, separados por etapa, do jeito que eu uso de verdade: pesquisa, letra, cor, textura e a hora de mostrar pro cliente.
+todo designer tem um álbum de favoritos. esses são os dez que aparecem em quase todo projeto meu, separados por etapa, do jeito que eu uso de verdade:
+
+pesquisa: cosmos.so e logosystem.co
+letra: fontsinuse.com e fontshare.com
+cor: realtimecolors.com e whocanuse.com
+textura: fffuel.co e haikei.app
+entrega: shots.so e squoosh.app
 
 nenhum deles faz a marca por você. mas cada um tira um pedaço do trabalho chato do caminho, e sobra tempo pra parte que importa: pensar.
 
-agora me ajuda a completar o álbum: qual site você usa e acha que pouca gente conhece?
+procura-se a figurinha nº 11: qual site você usa e acha que quase ninguém conhece?
 
 ↳ identidade visual, social media e site: dm aberta
 
