@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Maison Caramelo · selo oval de borda recortada (ref. 15) com o caramelo dentro. Sai como mapa de altura em tons de cinza
+     (placa = cinza, fio interno e cachorro = preto) para o relevo.py prensar tom sobre tom; ?chapado=1 sai em cor (carimbo, etiqueta).
+     ?cao=empinado|saltando · ?fundo=&tinta= · ?w=&h= -->
+<html><head><meta charset="utf-8"><style>html, body { margin: 0; } .palco { position: relative; overflow: hidden; }</style></head><body>
+<div class="palco"><svg id="s"></svg></div>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +(q.get('w') || 1080), H = +(q.get('h') || 1350), chap = q.get('chapado') === '1';
+const fundo = chap ? (q.get('fundo') || '#EDE8DD') : '#FFFFFF', placa = chap ? 'none' : '#A8A8A8', tinta = chap ? (q.get('tinta') || '#2B1416') : '#000000';
+const cao = q.get('cao') || 'empinado', T = { empinado: [796.8, 713], saltando: [756.8, 562.8] }[cao];
+const cx = W / 2, cy = H / 2, rx = W * .27, ry = rx * 1.32, N = 46, amp = rx * .045;
+// borda recortada: oval com 46 "ondinhas" (meias-luas) em volta
+let d = '';
+for (let i = 0; i <= N; i++) {
+  const a = i / N * 2 * Math.PI, am = (i + .5) / N * 2 * Math.PI;
+  const p = (ang, k) => `${(cx + (rx + k) * Math.sin(ang)).toFixed(2)} ${(cy - (ry + k * ry / rx) * Math.cos(ang)).toFixed(2)}`;
+  d += i === 0 ? `M${p(a, 0)} ` : '';
+  if (i < N) d += `Q${p(am, amp * 2.1)} ${p((i + 1) / N * 2 * Math.PI, 0)} `;
+}
+d += 'Z';
+const rin = .86, ri = rx * rin, rj = ry * rin, lw = rx * .012;
+const cw = rx * 1.36, ch = cw * T[1] / T[0];
+const svg = document.getElementById('s'); svg.setAttribute('width', W); svg.setAttribute('height', H);
+svg.innerHTML = `<rect width="${W}" height="${H}" fill="${fundo}"/>
+  <path d="${d}" fill="${placa}" stroke="${tinta}" stroke-width="${chap ? lw * 1.2 : 0}"/>
+  <ellipse cx="${cx}" cy="${cy}" rx="${ri}" ry="${rj}" fill="none" stroke="${tinta}" stroke-width="${lw}"/>
+  <image href="caramelo-${cao}.svg" x="${cx - cw / 2}" y="${cy - ch / 2 + ry * .02}" width="${cw}" height="${ch}" ${chap ? `style="filter:url(#tinta)"` : ''}/>
+  <defs><filter id="tinta"><feFlood flood-color="${tinta}"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs>`;
+document.querySelector('.palco').style.cssText = `width:${W}px;height:${H}px`;
+</script></body></html>
