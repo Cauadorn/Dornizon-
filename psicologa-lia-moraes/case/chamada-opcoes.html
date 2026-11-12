@@ -79,6 +79,62 @@ body{background:#555}
   <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
 </div>
 
+<!-- B2 · COMENTA FEED, ingresso caprichado: moldura dupla, canhoto violeta com código de barras, carimbo rosa -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="tinta-carimbo" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="1.8" numOctaves="1" seed="2" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.6" result="furos"/>
+    <feComposite in="d" in2="furos" operator="in"/>
+  </filter>
+</svg>
+<div class="art" id="opB2" style="background:var(--violeta);color:var(--ivory)">
+  <img class="bg mat" src="texturas/m-grao.png" style="mix-blend-mode:overlay;opacity:.6">
+  <svg class="abs" width="1080" height="1350" style="left:0;top:0" id="estB2"></svg>
+  <div class="abs lead" style="left:0;right:0;top:118px;text-align:center;font-size:48px">quer um feed assim?</div>
+  <div class="abs gig" style="left:0;right:0;top:172px;text-align:center;font-size:300px;color:var(--manteiga);z-index:3">comenta</div>
+  <!-- ingresso -->
+  <div class="abs" style="left:96px;top:448px;width:888px;height:430px;transform:rotate(-4deg);z-index:2;filter:drop-shadow(8px 10px 0 #2a1433) drop-shadow(0 30px 40px rgba(20,8,26,.35))">
+    <div style="position:absolute;inset:0;-webkit-mask:radial-gradient(circle 32px at 650px 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 32px at 650px 100%,#0000 97%,#000) bottom/100% 51% no-repeat">
+      <!-- corpo marfim -->
+      <div style="position:absolute;left:0;top:0;bottom:0;width:650px;background:var(--ivory)"></div>
+      <img src="texturas/m-papel-amassado.png" style="position:absolute;left:0;top:0;width:650px;height:430px;object-fit:cover;mix-blend-mode:multiply;opacity:.28">
+      <!-- canhoto violeta -->
+      <div style="position:absolute;left:650px;right:0;top:0;bottom:0;background:#4b1fb0"></div>
+      <img src="texturas/m-grao.png" style="position:absolute;left:650px;top:0;width:238px;height:430px;object-fit:cover;mix-blend-mode:overlay;opacity:.5">
+    </div>
+    <!-- moldura dupla com cantos recortados -->
+    <svg style="position:absolute;left:0;top:0" width="650" height="430">
+      <path d="M44 22 H606 a22 22 0 0 0 22 22 V386 a22 22 0 0 0 -22 22 H44 a22 22 0 0 0 -22 -22 V44 a22 22 0 0 0 22 -22 Z" fill="none" stroke="#2a1433" stroke-width="2.5"/>
+      <path d="M50 32 H600 a18 18 0 0 0 18 18 V380 a18 18 0 0 0 -18 18 H50 a18 18 0 0 0 -18 -18 V50 a18 18 0 0 0 18 -18 Z" fill="none" stroke="#2a1433" stroke-width="1" opacity=".6"/>
+    </svg>
+    <div style="position:absolute;left:650px;top:46px;bottom:46px;border-left:3px dashed rgba(255,251,222,.55)"></div>
+    <!-- conteúdo do corpo -->
+    <div style="position:absolute;left:62px;width:526px;top:58px;display:flex;justify-content:space-between;font:600 19px/1 Poppins;letter-spacing:.22em;color:var(--tinta)"><span>ENTRADA ÚNICA</span><span style="color:var(--violeta)">Nº 0001</span></div>
+    <div style="position:absolute;left:0;width:650px;top:104px;text-align:center;font:500 24px/1 Poppins;letter-spacing:.06em;color:var(--violeta)">palavra-chave</div>
+    <div style="position:absolute;left:0;width:650px;top:128px;text-align:center;font-family:'Instrument Serif';font-size:224px;line-height:.9;letter-spacing:-.02em;color:var(--tinta)">feed<span style="color:var(--pink)">.</span></div>
+    <div style="position:absolute;left:62px;width:526px;bottom:56px;display:flex;justify-content:space-between;font:400 21px/1 Poppins;color:var(--tinta)"><span>válido pra: <b style="font-weight:600">sua marca</b></span><span>local: <b style="font-weight:600">comentários</b></span></div>
+    <!-- canhoto: código de barras + @ -->
+    <div style="position:absolute;left:650px;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:16px">
+      <div style="writing-mode:vertical-rl;transform:rotate(180deg);font:600 22px/1 Poppins;letter-spacing:.2em;color:var(--manteiga)">AGENDA ABERTA</div>
+      <svg id="barras" width="70" height="300"></svg>
+      <div style="writing-mode:vertical-rl;font:500 17px/1 Poppins;letter-spacing:.08em;color:var(--ivory);opacity:.85">@itsemsdesign</div>
+    </div>
+    <!-- carimbo rosa entre o corpo e o canhoto -->
+    <svg style="position:absolute;left:452px;top:150px;transform:rotate(-12deg);mix-blend-mode:multiply;opacity:.9;filter:url(#tinta-carimbo)" width="180" height="180" viewBox="0 0 200 200">
+      <defs><path id="giroC" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/></defs>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="#dd34a8" stroke-width="5"/>
+      <circle cx="100" cy="100" r="50" fill="none" stroke="#dd34a8" stroke-width="2.5"/>
+      <text font-family="Poppins" font-weight="600" font-size="19" letter-spacing="3" fill="#dd34a8" textLength="430" lengthAdjust="spacing"><textPath href="#giroC">AGENDA ABERTA · AGENDA ABERTA ·</textPath></text>
+      <path d="M100 66l9 20 22 2-16 15 5 21-20-11-20 11 5-21-16-15 22-2z" fill="#dd34a8"/>
+    </svg>
+  </div>
+  <div class="abs" style="left:0;right:0;top:960px;text-align:center;font:500 36px/1.3 Poppins;letter-spacing:-.015em">que eu te chamo na dm pra<br>conversar sobre a <span style="color:var(--manteiga)">sua marca</span></div>
+  <img class="abs" src="img/selo-ems.png" style="right:96px;top:1086px;width:120px;filter:drop-shadow(0 10px 14px rgba(42,20,51,.45))">
+  <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
+</div>
+
 <script>
 const NS = 'http://www.w3.org/2000/svg';
 function estrela(svg, cx, cy, R, passo, rot, cor, op) {
@@ -92,6 +148,11 @@ estrela(document.getElementById('estA'), 1080, 470, 230, 15, 10, '#7b4df2', .7);
 estrela(document.getElementById('estA'), 0, 1300, 180, 14, -8, '#7b4df2', .5);
 estrela(document.getElementById('estB'), 0, 330, 260, 16, 14, '#7b4df2', .9);
 estrela(document.getElementById('estB'), 1080, 1240, 300, 17, -10, '#7b4df2', .9);
+estrela(document.getElementById('estB2'), 0, 300, 250, 16, 14, '#7b4df2', .9);
+estrela(document.getElementById('estB2'), 1080, 1250, 300, 17, -10, '#7b4df2', .9);
+{ const b = document.getElementById('barras'); let y = 0, seed = 11; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  while (y < 300) { const h = 2 + Math.floor(rnd() * 4) * 2, gap = 2 + Math.floor(rnd() * 3) * 2; if (y + h > 300) break;
+    const r = document.createElementNS(NS, 'rect'); r.setAttribute('x', 0); r.setAttribute('y', y); r.setAttribute('width', 70); r.setAttribute('height', h); r.setAttribute('fill', '#fffbde'); b.appendChild(r); y += h + gap; } }
 document.fonts.ready.then(() => Promise.all([...document.images].map(i => i.decode().catch(() => 0))).then(() => window.READY = true));
 </script>
 </body></html>

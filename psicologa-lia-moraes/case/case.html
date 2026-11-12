@@ -30,6 +30,15 @@ body{background:#555}
 .linha-ficha span:first-child{font:400 25px Poppins;color:rgba(42,20,51,.7);white-space:nowrap}
 .linha-ficha span:last-child{font-family:'Instrument Serif';font-style:italic;font-size:60px;line-height:1;color:var(--violeta);white-space:nowrap}
 </style></head><body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="tinta-carimbo" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="1.8" numOctaves="1" seed="2" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.6" result="furos"/>
+    <feComposite in="d" in2="furos" operator="in"/>
+  </filter>
+</svg>
 <div class="faixa" id="faixa">
 
   <!-- ===== FUNDOS ===== -->
@@ -81,30 +90,52 @@ body{background:#555}
     <div class="abs" style="left:0;right:0;top:1150px;text-align:center"><span class="pil" style="background:var(--ivory);color:var(--tinta)">6 posts, cada um com a sua ideia</span></div>
   </div>
 
-  <!-- ===== 5 · CHAMADA: "a próxima paciente pode ser a sua marca" + cartão de consulta ===== -->
+  <!-- ===== 5 · CHAMADA: "quer um feed assim? comenta" + ingresso com a palavra-chave ===== -->
   <div class="cont" style="left:4320px;color:var(--ivory)">
-    <div id="prox" class="abs lead" style="left:92px;top:150px;font-size:48px;white-space:nowrap">a próxima</div>
-    <div class="abs" style="left:84px;top:190px;white-space:nowrap"><span id="pac" class="gig" style="font-size:270px;color:var(--manteiga)">paciente</span></div>
-    <div id="marca" class="abs lead" style="left:96px;top:440px;font-size:46px;white-space:nowrap">pode ser a sua marca</div>
-    <div class="abs" style="left:150px;top:590px;width:700px;height:478px;background:var(--ivory);transform:rotate(-4deg);box-shadow:8px 10px 0 var(--tinta);padding:56px 60px 0;color:var(--tinta)">
-      <img src="texturas/m-papel-amassado.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.25">
-      <div style="position:relative">
-        <div style="display:flex;justify-content:space-between;align-items:center;font:600 21px/1 Poppins;letter-spacing:.16em;color:var(--violeta)"><span>CARTÃO DE CONSULTA</span></div>
-        <div style="margin-top:20px;border-top:2px solid var(--tinta)"></div>
-        <div class="linha-ficha" style="margin-top:22px"><span>paciente:</span><span>sua marca</span></div>
-        <div class="linha-ficha"><span>dia:</span><span>hoje</span></div>
-        <div class="linha-ficha"><span>horário:</span><span>quando quiser</span></div>
-        <div class="linha-ficha" style="border:0"><span>onde:</span><span>na minha dm</span></div>
-      </div>
+  
+  
+  <div class="abs lead" style="left:0;right:0;top:118px;text-align:center;font-size:48px">quer um feed assim?</div>
+  <div class="abs gig" style="left:0;right:0;top:172px;text-align:center;font-size:300px;color:var(--manteiga);z-index:3">comenta</div>
+  <!-- ingresso -->
+  <div class="abs" style="left:96px;top:448px;width:888px;height:430px;transform:rotate(-4deg);z-index:2;filter:drop-shadow(8px 10px 0 #2a1433) drop-shadow(0 30px 40px rgba(20,8,26,.35))">
+    <div style="position:absolute;inset:0;-webkit-mask:radial-gradient(circle 32px at 650px 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 32px at 650px 100%,#0000 97%,#000) bottom/100% 51% no-repeat">
+      <!-- corpo marfim -->
+      <div style="position:absolute;left:0;top:0;bottom:0;width:650px;background:var(--ivory)"></div>
+      <img src="texturas/m-papel-amassado.png" style="position:absolute;left:0;top:0;width:650px;height:430px;object-fit:cover;mix-blend-mode:multiply;opacity:.28">
+      <!-- canhoto violeta -->
+      <div style="position:absolute;left:650px;right:0;top:0;bottom:0;background:#4b1fb0"></div>
+      <img src="texturas/m-grao.png" style="position:absolute;left:650px;top:0;width:238px;height:430px;object-fit:cover;mix-blend-mode:overlay;opacity:.5">
     </div>
-    <svg class="abs" width="90" height="190" viewBox="0 0 90 190" style="left:560px;top:516px;z-index:4;transform:rotate(-6deg);filter:drop-shadow(3px 6px 4px rgba(20,8,26,.45))">
-      <path d="M58 150 V40 a22 22 0 0 0 -44 0 V160 a30 30 0 0 0 60 0 V30 a14 14 0 0 0 -28 0 V140" fill="none" stroke="#4b4258" stroke-width="10" stroke-linecap="round"/>
-      <path d="M58 150 V40 a22 22 0 0 0 -44 0 V160 a30 30 0 0 0 60 0 V30 a14 14 0 0 0 -28 0 V140" fill="none" stroke="#e9e4f0" stroke-width="5.5" stroke-linecap="round"/>
-      <path d="M58 150 V40 a22 22 0 0 0 -44 0 V160 a30 30 0 0 0 60 0 V30 a14 14 0 0 0 -28 0 V140" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity=".8" transform="translate(-1.5 -1)"/>
+    <!-- moldura dupla com cantos recortados -->
+    <svg style="position:absolute;left:0;top:0" width="650" height="430">
+      <path d="M44 22 H606 a22 22 0 0 0 22 22 V386 a22 22 0 0 0 -22 22 H44 a22 22 0 0 0 -22 -22 V44 a22 22 0 0 0 22 -22 Z" fill="none" stroke="#2a1433" stroke-width="2.5"/>
+      <path d="M50 32 H600 a18 18 0 0 0 18 18 V380 a18 18 0 0 0 -18 18 H50 a18 18 0 0 0 -18 -18 V50 a18 18 0 0 0 18 -18 Z" fill="none" stroke="#2a1433" stroke-width="1" opacity=".6"/>
     </svg>
-    <img class="abs" src="img/selo-ems.png" style="left:770px;top:500px;width:190px;z-index:3;filter:drop-shadow(0 14px 18px rgba(42,20,51,.45))">
-    <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
+    <div style="position:absolute;left:650px;top:46px;bottom:46px;border-left:3px dashed rgba(255,251,222,.55)"></div>
+    <!-- conteúdo do corpo -->
+    <div style="position:absolute;left:62px;width:526px;top:58px;display:flex;justify-content:space-between;font:600 19px/1 Poppins;letter-spacing:.22em;color:var(--tinta)"><span>ENTRADA ÚNICA</span><span style="color:var(--violeta)">Nº 0001</span></div>
+    <div style="position:absolute;left:0;width:650px;top:104px;text-align:center;font:500 24px/1 Poppins;letter-spacing:.06em;color:var(--violeta)">palavra-chave</div>
+    <div style="position:absolute;left:0;width:650px;top:128px;text-align:center;font-family:'Instrument Serif';font-size:224px;line-height:.9;letter-spacing:-.02em;color:var(--tinta)">feed<span style="color:var(--pink)">.</span></div>
+    <div style="position:absolute;left:62px;width:526px;bottom:56px;display:flex;justify-content:space-between;font:400 21px/1 Poppins;color:var(--tinta)"><span>válido pra: <b style="font-weight:600">sua marca</b></span><span>local: <b style="font-weight:600">comentários</b></span></div>
+    <!-- canhoto: código de barras + @ -->
+    <div style="position:absolute;left:650px;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:16px">
+      <div style="writing-mode:vertical-rl;transform:rotate(180deg);font:600 22px/1 Poppins;letter-spacing:.2em;color:var(--manteiga)">AGENDA ABERTA</div>
+      <svg id="barras" width="70" height="300"></svg>
+      <div style="writing-mode:vertical-rl;font:500 17px/1 Poppins;letter-spacing:.08em;color:var(--ivory);opacity:.85">@itsemsdesign</div>
+    </div>
+    <!-- carimbo rosa entre o corpo e o canhoto -->
+    <svg style="position:absolute;left:452px;top:150px;transform:rotate(-12deg);mix-blend-mode:multiply;opacity:.9;filter:url(#tinta-carimbo)" width="180" height="180" viewBox="0 0 200 200">
+      <defs><path id="giroC" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/></defs>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="#dd34a8" stroke-width="5"/>
+      <circle cx="100" cy="100" r="50" fill="none" stroke="#dd34a8" stroke-width="2.5"/>
+      <text font-family="Poppins" font-weight="600" font-size="19" letter-spacing="3" fill="#dd34a8" textLength="430" lengthAdjust="spacing"><textPath href="#giroC">AGENDA ABERTA · AGENDA ABERTA ·</textPath></text>
+      <path d="M100 66l9 20 22 2-16 15 5 21-20-11-20 11 5-21-16-15 22-2z" fill="#dd34a8"/>
+    </svg>
   </div>
+  <div class="abs" style="left:0;right:0;top:960px;text-align:center;font:500 36px/1.3 Poppins;letter-spacing:-.015em">que eu te chamo na dm pra<br>conversar sobre a <span style="color:var(--manteiga)">sua marca</span></div>
+  <img class="abs" src="img/selo-ems.png" style="right:96px;top:1086px;width:120px;filter:drop-shadow(0 10px 14px rgba(42,20,51,.45))">
+  <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
+</div>
 </div>
 
 <script>
@@ -125,7 +156,7 @@ estrela(1080, 96, 150, 13, 8, [[0, '#c0a5c4', .7], [1, '#7b4df2', .7]]);        
 estrela(2160, 1215, 210, 15, -12, [[1, '#7b4df2', .7], [2, '#7b4df2', .35]]);    // 2|3
 estrela(3240, 170, 180, 14, 16, [[2, '#7b4df2', .35], [3, '#7b4df2', .7]]);      // 3|4
 estrela(4320, 1190, 220, 15, -6, [[3, '#7b4df2', .7], [4, '#7b4df2', .9]]);      // 4|5
-estrela(5400, 300, 260, 16, 12, [[4, '#7b4df2', .9]]);                           // chamada, cortada na borda
+estrela(5400, 260, 260, 16, 12, [[4, '#7b4df2', .9]]);                           // chamada, cortada na borda
 
 document.getElementById('paleta').innerHTML = ['#2742C2', '#F3C6A8', '#F5EEE3', '#1C1D3A', '#B8553A'].map(c => `<span style="width:58px;height:58px;border-radius:50%;background:${c};box-shadow:0 0 0 2px rgba(42,20,51,.12)"></span>`).join('');
 { const g = document.getElementById('grade-carrossel'), w = 216, h = 270, gap = 12, x0 = 90, y0 = 410;
@@ -151,6 +182,9 @@ function encaixar() {
   lead.style.top = (parseFloat(lead.style.top) + (alvo - leadBase)) + 'px';
   let fs = 44; while (lead.getBoundingClientRect().right > lEsq - 18 && fs > 30) { fs -= 1; lead.style.fontSize = fs + 'px'; }
 }
+function barras() { const b = document.getElementById('barras'); let y = 0, seed = 11; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  while (y < 300) { const h = 2 + Math.floor(rnd() * 4) * 2, gap = 2 + Math.floor(rnd() * 3) * 2; if (y + h > 300) break;
+    const r = document.createElementNS(NS, 'rect'); r.setAttribute('x', 0); r.setAttribute('y', y); r.setAttribute('width', 70); r.setAttribute('height', h); r.setAttribute('fill', '#fffbde'); b.appendChild(r); y += h + gap; } }
 function encaixarChamada() {
   const pac = document.getElementById('pac'), prox = document.getElementById('prox'), marca = document.getElementById('marca');
   const marcaY = s => { const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0'; s.appendChild(m); const y = m.getBoundingClientRect().top; m.remove(); return y; };
@@ -166,7 +200,7 @@ function encaixarChamada() {
   const mb = marcaY(marca), cap = ctx.measureText ? 0 : 0;
   marca.style.top = (parseFloat(marca.style.top) + (base + 54 - mb)) + 'px';
 }
-document.fonts.ready.then(() => { encaixar(); encaixarChamada();
+document.fonts.ready.then(() => { encaixar(); barras();
   Promise.all([...document.images].map(i => i.decode().catch(() => 0))).then(() => window.READY = true); });
 </script>
 </body></html>
