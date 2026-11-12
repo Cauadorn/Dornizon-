@@ -90,15 +90,6 @@ const MARCA = {
     <div style="position:absolute;left:44px;top:322px;font:400 24px/1 'Shrikhand';color:#6B3A1F">banho &amp; tosa</div>
     <div style="position:absolute;left:46px;top:354px;font:500 12px/1 var(--sans);letter-spacing:.3em;color:#6B3A1F">DESDE 1974</div>`,
   // 04 · número de peito preso com alfinetes
-  atleta: centro(300, 272, `
-    <div style="position:absolute;left:10px;top:14px;width:280px;height:236px;transform:rotate(-4deg);background:#F7F8FA;border-radius:6px;
-      box-shadow:7px 9px 0 rgba(10,20,70,.35);overflow:hidden;color:#1E1E24">
-      <div style="position:absolute;left:0;right:0;top:0;height:46px;background:#1E1E24"></div>
-      <div style="position:absolute;left:0;right:0;top:15px;text-align:center;font:400 17px/1 'Graduate';color:#C7F23E;letter-spacing:.16em;padding-left:.16em">AU RUNNING CLUB</div>
-      <div style="position:absolute;left:0;right:0;top:56px;text-align:center;font:400 128px/1 'Graduate';color:#1F3FBF;letter-spacing:-.02em">026</div>
-      <div style="position:absolute;left:0;right:0;bottom:0;height:34px;background:#C7F23E"></div>
-      <div style="position:absolute;left:0;right:0;bottom:11px;text-align:center;font:400 13px/1 'Graduate';letter-spacing:.24em;padding-left:.24em">5K · CORRE COM ELE</div>
-      ${ALFINETE(10, 54, -30)}${ALFINETE(236, 52, 28)}${ALFINETE(10, 170, 20)}${ALFINETE(236, 172, -24)}</div>`),
 };
 
 const DIRECOES = [
@@ -140,13 +131,16 @@ const DIRECOES = [
   // ---------------- 04 · modo atleta ----------------
   {
     titulo: 'modo <em>atleta</em>', pra: 'passeio e adestramento', card: 'var(--creative-purple)',
-    texto: 'azul royal, verde-limão, cara de uniforme e foto em movimento. pra passeio, coleira e adestramento que vendem energia.',
-    heroi: { bg: '#8EC9F2', cheia: { src: 'd4pet-2', px: .5, py: .4 } },
-    marca: { bg: '#1F3FBF', html: MARCA.atleta, cursor: [326, 316] },
+    texto: 'verde-limão, preto e azul elétrico, letra pesada inclinada e a matilha correndo junto. pra passeio, coleira e adestramento que vendem energia.',
+    // MATILHA running club (aprovada em 12/11): o nome "AU" virou MATILHA. Pesquisa em referencias/au-running-club,
+    // logo em marcas/au/logo.html e estampa em marcas/au/estampa. O destaque é o mockup aprovado: Grandorf + Juicy Kibbles,
+    // gerado no Canva com o logo e a estampa de referência, na rua e só com a guia (marcas/au/mockup).
+    heroi: { bg: '#8EC9F2', cheia: { src: 'matilha-corrida', px: .5, py: .2 } },   // a imagem ganhou 110 px de céu em cima (espelhado) para o logo do canto não cair na sangria
+    marca: { bg: '#CCFF3E', cheia: { src: 'matilha-marca', px: .5, py: .5 }, cursor: [326, 338] },
     quadrado: { bg: '#B8502E', cheia: { src: 'd4prod-2', px: .5, py: .5 } },
-    alto: { bg: '#1E1E24', cheia: { src: 'd4extra', px: .42, py: .6 } },
-    paleta: [['azul royal', '#1F3FBF', '#FFFBDE'], ['verde-limão', '#C7F23E', '#1E1E24'], ['branco quadra', '#EEF1F4', '#1E1E24'], ['asfalto', '#1E1E24', '#FFFBDE']],
-    tipo: { bg: '#1E1E24', aa: "400 108px 'Graduate'", aaCor: '#C7F23E', amostra: 'bora correr?', amostraCss: "400 22px 'Graduate'", cor: '#FFFBDE', nome: 'graduate' },
+    alto: { bg: '#8EC9F2', cheia: { src: 'd4pet-2', px: .5, py: .4 } },
+    paleta: [['verde-limão', '#CCFF3E', '#121212'], ['azul elétrico', '#4342FF', '#FFFBDE'], ['branco faixa', '#F1F1EC', '#121212'], ['preto pista', '#121212', '#CCFF3E']],
+    tipo: { bg: '#121212', aa: "italic 900 112px 'Rubik'", aaCor: '#CCFF3E', amostra: 'corre com ele', amostraCss: "italic 600 22px 'Rubik'", cor: '#FFFBDE', nome: 'rubik black italic' },
   },
   // ---------------- 05 · ciência fofa ----------------
   {

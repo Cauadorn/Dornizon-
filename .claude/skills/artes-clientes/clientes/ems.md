@@ -137,6 +137,20 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
       - a cartela de comprimidos, recortada com BiRefNet, volta por cima.
     - **Lição:** etiqueta pequena em vidro curvo fica com cara de colada. Caixa e faces planas aceitam a arte muito melhor. Em frasco, só com arte grande e simples. Antes de pintar, olhar onde o bicho encosta: uma máscara do gato por luminância pegava a borda escura do pote e deixava uma faixa branca.
   - **Exportar logo com letras giradas:** fotografar o palco inteiro e aparar pelo alfa (`marcas/toto/exporta-logo.mjs`). Recortar pela caixa do elemento corta o que passa dela. Para aplicar num pacote, recortar o pacote com BiRefNet (`marcas/aplica_pacote.py`); a máscara por cor falha na parte em sombra. Composição em `projeto/marcas/aplica.py`, que deforma a arte em perspectiva e herda a luz da foto; a lateral usa a luz da frente.
+- **Run club (direção 04): virou MATILHA running club.**
+  - A identidade "AU" (número de peito na Graduate) foi reprovada: "feia, xoxa".
+  - Pesquisa: `referencias/au-running-club/identidade`. Ela escolheu misturar 1 (RUN CLUB), 7 (TRC) e 18 (Wild Pup), lembrando que é corrida **com** cachorro.
+  - Letras com pernas e tênis desenhadas à mão: "q porra feia eh essa". Desenhar figura à mão em SVG não funciona. Para silhueta de bicho, gerar (gpt-image) e limpar a borda (`marcas/au/limpa_silhueta.py`).
+  - Ficou assim:
+    - o cachorro gerado salta solto acima do nome;
+    - MATILHA em Rubik Black Italic com balanço líquido;
+    - RUNNING CLUB leve, espaçado e numa curva suave;
+    - o vão entre o cachorro e o nome é igual ao vão entre o nome e o RUNNING CLUB (24 px, medido em pixel).
+  - O nome "AU" era "feio". Ela pediu o cachorro desgrudado do nome, a curva "com menos curva e mais delicada" e depois "aproxima só um pouquinho, os dois na mesma distância".
+  - Mockup:
+    - a Grandorf (câmera baixa) + a Juicy Kibbles (roupa combinando), gerado no Canva com o logo de referência;
+    - na rua, mangas lisas e só a guia na mão (a garrafinha "parece que ele tá segurando");
+    - estampa de cachorros de corrida em raias, em `marcas/au/estampa`.
 - **Logo do petisco: o que a Emi aprovou como caminho.** Foi a referência NOSY (`referencias/logo-petisco/12-nosy.jpg`): letra desenhada, gordinha e orgânica, com um detalhe só (a pata no lugar do "O"), em creme chapado sobre uma foto de textura com marcas de pata. Ela liberou mudar o nome, e a marca virou **TOTÓ**. A pata entra no **primeiro "O"**, na altura exata das maiúsculas, e o "Ó" final mantém o acento. A pata no fim lia "TOT" e quebrava a simetria ("não sei se parece totó").
 - **Logo de letra desenhada precisa de assimetria**: as letras dançam, cada uma numa altura e num ângulo (como no NOSY, Puff Paw, Sandy Paws). Uma versão toda reta, alinhada e com o mesmo espaço ficou "muito estranha". Atenção: no recado "n tem aimetria" ela quis dizer *assimetria*; eu li "simetria" e endureci o logo.
 - **Símbolo dentro da letra tem que manter a forma da letra**: a pata no lugar do "O" precisa de almofada redonda (o próprio O da fonte, maciço ou com o furo) e dedos por cima. A almofada em sino (triângulo) lia "A". Referências em `referencias/logo-petisco/pinterest-pata-no-o-*.jpg`.
