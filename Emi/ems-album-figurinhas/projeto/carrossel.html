@@ -39,6 +39,9 @@ function ruido(tam, freq, oct, seed) {
 }
 document.documentElement.style.setProperty('--tx-grao', ruido(300, 0.95, 3, 11));
 document.documentElement.style.setProperty('--tx-papel', ruido(520, '0.012 0.35', 4, 5));
+const relevo = (tam, freq, oct, seed, alt) => `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='${tam}' height='${tam}'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='${freq}' numOctaves='${oct}' seed='${seed}' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='${alt}'><feDistantLight azimuth='225' elevation='55'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")`;
+document.documentElement.style.setProperty('--tx-relevo', relevo(700, 0.035, 5, 3, 2.2));
+document.documentElement.style.setProperty('--tx-fibras', relevo(500, '0.6 0.05', 2, 8, 1.2));
 
 /* estrela da marca (i-estrela, chapada, com brilho) no lugar do emoji de estrela das refs */
 const ESTRELA = 'M0,-1 L0.24,-0.33 L0.95,-0.31 L0.39,0.13 L0.59,0.81 L0,0.41 L-0.59,0.81 L-0.39,0.13 L-0.95,-0.31 L-0.24,-0.33Z';
@@ -85,6 +88,12 @@ function lamina(k, html, fundo, grao = 'grao') {
 
 /* ================= 2 · pesquisa — diagramação da ref 8 (agenda) ================= */
 const PAUTA0 = 150, PASSO = 108;
+const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:700px;mix-blend-mode:multiply;opacity:.32"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:500px;mix-blend-mode:multiply;opacity:.22"></div>
+      <div class="abs" style="left:176px;top:0;bottom:0;width:2px;background:rgba(91,33,108,.28)"></div>
+      <div class="abs" style="inset:0;background:repeating-linear-gradient(to bottom, rgba(91,33,108,.24) 0 2px, transparent 2px ${PASSO}px);background-position:0 ${PAUTA0}px"></div>
+      <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(91,33,108,.10))"></div>`;
 (() => {
   const p = A.paginas[0], [s1, s2] = p.sites;
   const horas = ['9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h'];
@@ -96,8 +105,6 @@ const PAUTA0 = 150, PASSO = 108;
     ${cursor(316, 398, 52)}
     <div class="abs" style="right:90px;top:404px;text-align:left;font-family:var(--sans);font-weight:500;font-size:46px;line-height:1.02;color:var(--tinta);letter-spacing:-.015em">pra achar referência<br>sem depender do</div>
     <div class="g" id="alg" style="left:196px;top:548px;font-size:236px;color:var(--violeta)">algoritmo</div>
-    <img class="objeto" id="lupa" src="recortes/lupa.png" style="left:0;top:0;width:470px">
-    <div class="abs" id="lente" style="inset:0;mix-blend-mode:multiply"><div class="abs" id="lente-in" style="inset:0"></div></div>
     ${estrela({ x: 920, y: 520, tam: 84, r: 14 })}
     ${estrela({ x: 186, y: 740, tam: 70, r: -10 })}
     <div class="barra" style="left:360px;right:0;top:850px;background:var(--lavanda-2)">
@@ -108,10 +115,10 @@ const PAUTA0 = 150, PASSO = 108;
       <div><span class="nome" style="color:var(--tinta)">${s2.nome}</span><span class="pra" style="color:var(--tinta)">${s2.pra}</span></div></div>
     ${pasta(880, 1118, 140, 8, css('violeta'))}
     ${cursor(974, 1182, 50)}
-  `, `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
-      <div class="abs" style="left:176px;top:0;bottom:0;width:2px;background:rgba(91,33,108,.28)"></div>
-      <div class="abs" style="inset:0;background:repeating-linear-gradient(to bottom, rgba(91,33,108,.24) 0 2px, transparent 2px ${PASSO}px);background-position:0 ${PAUTA0}px"></div>
-      <div class="fibra"></div>`);
+    <img class="objeto" id="lupa" src="recortes/lupa.png" style="left:0;top:0;width:470px">
+    <div class="abs" id="lente" style="inset:0"><div class="abs" id="lente-in" style="inset:0">${FOLHA}</div>
+      <div class="abs" id="brilho-lente" style="inset:0"></div></div>
+  `, FOLHA);
 })();
 
 /* lupa de acrílico em cima de "algoritmo", ampliando a palavra (posição medida depois das fontes) */
@@ -128,6 +135,9 @@ document.fonts.ready.then(() => {
     lente.style.clipPath = `circle(${rl}px at ${cx}px ${cy}px)`;
     dentro.appendChild(a.cloneNode(true)).removeAttribute('id');
     dentro.style.transformOrigin = `${cx}px ${cy}px`; dentro.style.transform = 'scale(1.42)';
+    document.getElementById('brilho-lente').style.background =
+      `radial-gradient(circle at ${cx - rl * .35}px ${cy - rl * .4}px, rgba(255,255,255,.5), rgba(255,255,255,0) ${rl * .55}px),
+       radial-gradient(circle at ${cx}px ${cy}px, transparent ${rl * .78}px, rgba(91,33,108,.18) ${rl}px)`;
   } const g1 = document.getElementById('capa-g1'); if (g1) caber(g1, 900);
   return Promise.all([...document.images].map((im) => im.complete ? 1 : new Promise((r) => { im.onload = im.onerror = r; })));
 }).then(() => { window.READY = true; });
