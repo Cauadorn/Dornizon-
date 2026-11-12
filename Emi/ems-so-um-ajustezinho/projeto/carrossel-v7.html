@@ -149,21 +149,26 @@ body{background:#140a19;width:max-content}
 #l5 .lead{left:80px;top:140px;font-size:34px;color:var(--wine);z-index:5}
 #l5 .t1{left:76px;top:200px;font-size:122px;color:var(--tinta);white-space:nowrap;z-index:5}
 #l5 .t1 em{color:var(--pink)}
-.tablet{left:214px;top:590px;width:800px;height:560px;background:var(--tinta);border-radius:44px;padding:24px;transform:rotate(-4deg);z-index:4;
-  box-shadow:inset 0 0 0 4px #4a2a55,0 30px 60px rgba(42,20,51,.35)}
-.tela-tab{width:100%;height:100%;border-radius:24px;background:var(--violeta);overflow:hidden;position:relative;padding:30px 34px;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-.tela-tab .topo{display:flex;align-items:center;gap:14px;color:var(--ivory);font:600 22px/1.1 var(--sans)}
-.tela-tab .topo img{width:56px;height:56px;border-radius:50%;border:2px solid var(--ivory)}
-.tela-tab .topo small{display:block;font:400 15px/1 var(--sans);opacity:.75;margin-top:4px}
-.bolha{position:relative;background:var(--ivory);color:var(--tinta);border-radius:26px 26px 26px 8px;padding:20px 28px 26px;font:400 30px/1.25 var(--sans);max-width:560px}
-.bolha.forte{font:600 36px/1.15 var(--sans)}
-.bolha time{position:absolute;right:16px;bottom:8px;font:400 14px/1 var(--sans);opacity:.5}
-.digitando{align-self:flex-end;background:var(--ivory);opacity:.85;border-radius:26px 26px 8px 26px;padding:18px 24px;display:flex;gap:8px}
-.digitando i{width:12px;height:12px;border-radius:50%;background:var(--tinta)}
-.digitando i:nth-child(2){opacity:.6}.digitando i:nth-child(3){opacity:.3}
-#l5 .resp{left:300px;top:1188px;width:500px;font:400 26px/1.3 var(--sans);color:var(--tinta);z-index:5}
+.cel{left:462px;top:486px;width:640px;height:1320px;background:var(--tinta);border-radius:96px;padding:20px;transform:rotate(-6deg);z-index:4;
+  box-shadow:inset 0 0 0 4px #4a2a55,0 40px 70px rgba(42,20,51,.35)}
+.cel::before{content:"";position:absolute;right:-7px;top:260px;width:8px;height:120px;border-radius:4px;background:#4a2a55}
+.tela-cel{width:100%;height:100%;border-radius:78px;background:var(--lavanda-2);overflow:hidden;position:relative;color:var(--tinta)}
+.tela-cel .ilha{position:absolute;left:50%;top:22px;transform:translateX(-50%);width:170px;height:46px;background:var(--tinta);border-radius:24px}
+.tela-cel .status{display:flex;justify-content:space-between;padding:32px 56px 0;font:600 24px/1 var(--sans)}
+.tela-cel .topo{display:flex;align-items:center;gap:18px;padding:34px 34px 24px;margin-top:18px;border-bottom:2px solid rgba(42,20,51,.12);background:var(--ivory)}
+.tela-cel .topo img{width:78px;height:78px;border-radius:50%;border:3px solid var(--violeta)}
+.tela-cel .topo b{display:block;font:600 30px/1.1 var(--sans)}
+.tela-cel .topo small{font:400 20px/1 var(--sans);opacity:.6}
+.tela-cel .msgs{display:flex;flex-direction:column;gap:18px;padding:34px 28px}
+.bolha{position:relative;background:var(--ivory);border-radius:30px 30px 30px 8px;padding:24px 30px 34px;font:400 33px/1.28 var(--sans);max-width:520px;box-shadow:0 2px 0 rgba(42,20,51,.08)}
+.bolha.forte{font:600 40px/1.15 var(--sans)}
+.bolha time{position:absolute;right:20px;bottom:10px;font:400 16px/1 var(--sans);opacity:.5}
+.digitando{align-self:flex-end;background:var(--violeta);border-radius:30px 30px 8px 30px;padding:24px 30px;display:flex;gap:10px}
+.digitando i{width:14px;height:14px;border-radius:50%;background:var(--ivory)}
+.digitando i:nth-child(2){opacity:.65}.digitando i:nth-child(3){opacity:.35}
+#l5 .resp{left:80px;top:500px;width:300px;font:400 27px/1.32 var(--sans);color:var(--tinta);z-index:5}
 #l5 .resp b{font-weight:700}
-#l5 .handle{right:80px;bottom:56px}
+#l5 .handle{left:250px;bottom:56px}
 
 /* ---------- 06 chamada (etiqueta) ---------- */
 .etiqueta{left:120px;top:170px;width:840px;background:var(--ivory);border-radius:48px;transform:rotate(-2deg);z-index:4;
@@ -296,11 +301,15 @@ body{background:#140a19;width:max-content}
   <div class="agua" style="color:var(--tinta)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">a primeira pergunta do meu briefing:</p>
   <h2 class="serif t1 impresso">como é a sua marca<br>em <em>três</em> palavras?</h2>
-  <div class="tablet"><div class="tela-tab">
-    <div class="topo"><img src="assets/ems-mascote-ivory.png" alt=""><div>emi · ems design<small>online agora</small></div></div>
-    <div class="bolha">oii! antes de qualquer rabisco, me conta uma coisa:<time>23:41</time></div>
-    <div class="bolha forte">como é a sua marca em três palavras?<time>23:41</time></div>
-    <div class="digitando"><i></i><i></i><i></i></div>
+  <div class="cel"><div class="tela-cel">
+    <span class="ilha"></span>
+    <div class="status"><span>23:41</span><span>●●● 5G</span></div>
+    <div class="topo"><img src="assets/ems-mascote-ivory.png" alt=""><div><b>emi · ems design</b><small>online agora</small></div></div>
+    <div class="msgs">
+      <div class="bolha">oii! antes de qualquer rabisco, me conta uma coisa:<time>23:41</time></div>
+      <div class="bolha forte">como é a sua marca em três palavras?<time>23:41</time></div>
+      <div class="digitando"><i></i><i></i><i></i></div>
+    </div>
   </div></div>
   <p class="resp">responde aqui embaixo. a primeira que vier na cabeça <b>costuma ser a mais verdadeira.</b></p>
   <!-- atravessa o corte 5|6 -->

@@ -25,7 +25,7 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 | 2 · loop | papel pontilhado; **o círculo é o loop**: as 4 etapas em pílulas sobre o anel (setas no sentido horário), "o loop da *refação*" no meio; a etapa 03 ("tá quase…") é a única em rosa | @studioemi.design |
 | 3 · pasta | xadrez **tom sobre tom** e janela **monocromática** (ícones da EMS em tinta, miniaturas lavanda); rosa só no "*final*" e no aviso "spoiler: aprovaram a v1" | @danibloom.design |
 | 4 · norte | a da v2, aprovada | — |
-| 5 · pergunta | linho; "como é a sua marca em *três* palavras?"; a pergunta numa conversa no tablet | @rafaelalimadesigner_ |
+| 5 · pergunta | linho; "como é a sua marca em *três* palavras?"; a conversa num **celular em close** (grande, saindo pela borda de baixo), com o texto de resposta na coluna da esquerda | @rafaelalimadesigner_ |
 | 6 · chamada | a chamada vira etiqueta, com "brie*f*ing?" e "comenta BRIEFING" | @studioemi.design, @amanda.rfernandes |
 
 **Conectividade:** um objeto ou forma atravessa cada corte: papel (1|2), brilho violeta (2|3), brilho manteiga (3|4), bússola (4|5), brilho manteiga (5|6). Nada de fio.
@@ -40,7 +40,7 @@ Referências em `referencias/outras/`.
 2. **Tensão** (papel pontilhado, o loop como círculo): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
 3. **Piada** (janela retrô sobre xadrez): "teste rápido: / ache o arquivo *final*". "sem briefing, cada versão é um chute. e chute cansa os dois lados."
 4. **Virada** (tecido ameixa): "calma: ajuste faz parte. / o que cansa é ajuste sem *norte.*" + bússola. "briefing bem feito é o norte do projeto: todo mundo sabe pra onde vai, e o ajuste vira refinamento, não recomeço."
-5. **Pergunta aberta** (linho claro): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" A pergunta aparece numa conversa no tablet; a resposta vai nos comentários.
+5. **Pergunta aberta** (linho claro): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" A pergunta aparece numa conversa no celular, em close; a resposta vai nos comentários.
 6. **Chamada** (etiqueta sobre tecido violeta): "quer as outras perguntas do meu / brie*f*ing?" + "comenta “BRIEFING” que eu te mando na dm" + selo + emsdesign.com.br.
 
 > ⚠️ **Antes de postar:** a chamada promete mandar por dm as perguntas do briefing da Emi. Elas precisam estar prontas num formato fácil de mandar (PDF, nota ou link), e alguém precisa responder quem comentar "BRIEFING". A lâmina 5 diz que "como é a sua marca em três palavras?" é a primeira pergunta do briefing: se no briefing dela a primeira for outra, troque o texto da lâmina ou a ordem do briefing.
