@@ -180,7 +180,6 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
     <img class="abs" src="emoji/2b50.png" style="left:826px;top:142px;width:92px;transform:rotate(14deg);filter:drop-shadow(0 6px 6px rgba(20,8,26,.35))">
   `, `<div class="abs" style="inset:0;background:var(--ameixa)"></div>
       <div class="abs" style="left:-150px;top:-250px;font-family:var(--serif);font-size:900px;line-height:.8;color:#62287a">A</div>
-      <div class="abs" style="left:720px;top:180px;font-family:var(--serif);font-style:italic;font-size:1050px;line-height:.8;color:#5a2470">g</div>
       <div class="abs" style="left:640px;top:930px;font-family:var(--serif);font-size:640px;line-height:.8;color:transparent;-webkit-text-stroke:3px rgba(221,52,168,.55)">R</div>
       <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(20,8,26,.22))"></div>
       <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao-forte');
@@ -223,6 +222,11 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
   const pt = document.getElementById('pontes');
   if (N >= 2) pt.insertAdjacentHTML('beforeend', `<img class="abs" src="${estrelaReticula(820, css('pink'))}" style="left:${W - 410}px;top:930px;width:820px;opacity:.32;transform:rotate(17deg)">`);
   if (N >= 3) pt.insertAdjacentHTML('beforeend', `<div class="abs" style="left:${2 * W - 330}px;top:800px;font-family:var(--serif);font-size:740px;line-height:.8;color:transparent;-webkit-text-stroke:3px rgba(123,77,242,.22)">&amp;</div>`);
+  if (N >= 4) {
+    const g = (estilo) => `<div class="abs" style="left:${2 * W + 760}px;top:180px;font-family:var(--serif);font-style:italic;font-size:1050px;line-height:.8;${estilo}">g</div>`;
+    pt.insertAdjacentHTML('beforeend', `<div class="abs" style="left:0;top:0;width:${3 * W}px;height:${H}px;overflow:hidden">${g('color:#5a2470')}</div>
+      <div class="abs" style="left:${3 * W}px;top:0;width:${W}px;height:${H}px;overflow:hidden"><div class="abs" style="left:${-3 * W}px;top:0">${g('color:transparent;-webkit-text-stroke:3px rgba(91,33,108,.45)')}</div></div>`);
+  }
   if (N >= 4) pt.insertAdjacentHTML('beforeend', `<img class="abs" src="${estrelaReticula(700, css('pink'))}" style="left:${3 * W - 350}px;top:930px;width:700px;opacity:.3;transform:rotate(-16deg)">`);
 })();
 
