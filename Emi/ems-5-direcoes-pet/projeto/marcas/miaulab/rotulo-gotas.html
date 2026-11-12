@@ -1,6 +1,7 @@
 <!doctype html>
-<!-- MIAU.LAB · rótulo dos frascos de gotas (conta-gotas), mesma família do rótulo dos potes (rotulo-v2.html):
-     fundo numa cor, molécula na outra, etiquetas pretas, palavrinhas rodando o topo e o logo (logo.js) com o gato no U.
+<!-- MIAU.LAB · rótulo dos frascos de gotas (conta-gotas), mesma família do rótulo dos potes (rotulo-v2.html).
+     O frasco é pequeno: só o essencial e grande. Fundo numa cor, molécula na outra, uma etiqueta preta com o produto e o logo (logo.js).
+     (A 1ª versão tinha anel de palavrinhas, etiqueta pequena e texto de bula: no frasco viraram borrão.)
      Arte = meia volta do frasco, de borda a borda. Nas laterais o vidro comprime a arte: o conteúdo fica no miolo (~60% do meio).
      ?v=03 (rosa, calma) | ?v=05 (azul, imunidade) · &w=&h= (tamanho da arte, segue a proporção da etiqueta da foto) -->
 <html><head><meta charset="utf-8"><style>
@@ -12,13 +13,12 @@ html, body { margin: 0; }
 .anel { position: absolute; left: -30px; right: -30px; top: 30px; display: flex; justify-content: space-between; font: 700 26px/1 Mono; letter-spacing: .14em; color: var(--forma); }
 svg.mol { position: absolute; left: 0; top: 0; }
 .meio { position: absolute; left: 50%; top: 0; width: 760px; height: 100%; transform: translateX(-50%); }
-.etq { position: absolute; background: #141418; color: #fff; font: 700 84px/1 Archivo; font-stretch: 88%; padding: 14px 26px 20px; letter-spacing: -.01em; }
+.etq { position: absolute; background: #141418; color: #fff; font: 700 120px/1 Archivo; font-stretch: 88%; padding: 14px 26px 20px; letter-spacing: -.01em; }
 .etq.pq { background: var(--forma); color: var(--fundo); font: 700 28px/1 Mono; padding: 11px 15px; letter-spacing: .04em; }
 .info { position: absolute; font: 400 27px/1.45 Mono; color: var(--forma); }
 .logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
 </style><script src="logo.js"></script></head><body>
 <div class="r">
-  <div class="anel"></div>
   <div class="meio">
     <svg class="mol" width="760" height="1000" viewBox="0 0 760 1000" style="overflow:visible">
       <defs><filter id="goo" x="-30%" y="-30%" width="160%" height="160%">
@@ -27,7 +27,7 @@ svg.mol { position: absolute; left: 0; top: 0; }
         <feFlood id="cor" flood-color="#000"/><feComposite in2="a" operator="in"/>
       </filter></defs>
       <!-- a mesma molécula dos potes, menor, saindo por trás do gato -->
-      <g filter="url(#goo)" transform="translate(560 330) scale(.56) translate(-770 -365)">
+      <g filter="url(#goo)" transform="translate(560 250) scale(.62) translate(-770 -365)">
         <g stroke="#000" stroke-width="64" stroke-linecap="round">
           <line x1="770" y1="360" x2="560" y2="200"/><line x1="770" y1="360" x2="1010" y2="190"/>
           <line x1="770" y1="360" x2="1080" y2="520"/><line x1="770" y1="360" x2="600" y2="560"/>
@@ -36,9 +36,7 @@ svg.mol { position: absolute; left: 0; top: 0; }
         <circle cx="1090" cy="525" r="104"/><circle cx="595" cy="575" r="66"/><circle cx="1185" cy="330" r="34"/><circle cx="430" cy="380" r="26"/>
       </g>
     </svg>
-    <div class="etq pq" style="left:20px;top:140px"></div>
-    <div class="etq" style="left:44px;top:192px"></div>
-    <div class="info" style="left:46px;top:326px">gotas p/ gatos<br>30 ml · 4 gotas/dia</div>
+    <div class="etq" style="left:10px;top:150px"></div>
     <div class="logo"></div>
   </div>
 </div>
@@ -51,11 +49,9 @@ const V = { '03': { fundo: ROSA, forma: AZUL, n: '03', p: 'calma', anel: ['GOTAS
             '05': { fundo: AZUL, forma: ROSA, n: '05', p: 'imunidade', anel: ['GOTAS', 'IMUNIDADE', 'DEFESA'] } }[v];
 s.setProperty('--fundo', V.fundo); s.setProperty('--forma', V.forma);
 document.getElementById('cor').setAttribute('flood-color', V.forma);
-document.querySelector('.etq.pq').textContent = 'FÓRMULA Nº' + V.n;
 document.querySelector('.etq:not(.pq)').textContent = V.p;
-const a = V.anel; document.querySelector('.anel').innerHTML = [a[0], a[1], a[2], 'FÓRMULA ' + V.n, a[0], a[1]].map(t => `<span>${t}</span>`).join('<span>·</span>');
 // logo embaixo, ocupando a largura do miolo
-const lg = document.querySelector('.logo'), k = 760 / 899;
-lg.style.left = '0px'; lg.style.top = (H - 30 - 700 * k) + 'px'; lg.style.transform = `scale(${k})`;
+const lg = document.querySelector('.logo'), k = 860 / 899;
+lg.style.left = '-50px'; lg.style.top = (H - 40 - 700 * k) + 'px'; lg.style.transform = `scale(${k})`;
 miauLogo(lg, { cor: V.forma, fundo: V.fundo, olho: v === '03' ? AZUL : ROSA, id: 'g' });
 </script></body></html>
