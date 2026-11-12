@@ -2,9 +2,9 @@
 # correndo com o cachorro, o rosto fora do quadro) com a roupa combinando do Juicy Kibbles (jaqueta verde-limão de listras
 # pretas na pessoa e no vizsla; o short já veio com a estampa de cachorrinhos correndo).
 # Aqui entra a marca de verdade:
-#   1) garrafinha: rótulo branco enrolado no cilindro (homografia + u = asin), a mão fica na frente (máscara pelo branco do rótulo);
-#   2) peito: logo bordado em preto, pequeno, com sombra de relevo e a luz das dobras do tecido;
-#   3) jaqueta do cachorro: só o cachorro do logo, bordado.
+#   1) garrafinha toda verde: o rótulo branco vira o verde da garrafa, com o logo preto, enrolado no cilindro (homografia + u = asin), a mão fica na frente (máscara pelo branco do rótulo);
+#   2) peito: logo bordado em preto, pequeno (44 px), com sombra de relevo e a luz das dobras do tecido;
+#   3) jaqueta do cachorro: só o cachorro do logo, bordado na barriga.
 import numpy as np, cv2
 from PIL import Image
 
@@ -20,12 +20,13 @@ cao = np.asarray(Image.open('../cao-salto.png').convert('RGBA')).astype(np.float
 # ---------- 1) garrafinha ----------
 Q = np.array([(403.5, 273), (470.5, 283.5), (447.5, 378), (384.5, 362)], np.float32)   # cantos do rótulo branco
 AW, AH = 1100, 1000                                          # arte = meia volta do rótulo (pi*r x altura)
-arte = np.ones((AH, AW, 3), np.float32)
+# a garrafa inteira verde (a Emi: "a garrafa tem que ser toda verde com logo preto"): o rótulo vira o verde da própria garrafa
+gar = foto[195:262, 440:478].reshape(-1, 3); gar = gar[(gar[:, 1] > gar[:, 0] + .08) & (gar[:, 1] > .55)]
+verde = np.percentile(gar, 85, axis=0).astype(np.float32)
+arte = np.ones((AH, AW, 3), np.float32) * verde
 lg = cv2.resize(logo, (int(AW * .62), int(AW * .62 * logo.shape[0] / logo.shape[1])), interpolation=cv2.INTER_AREA)
 y0, x0 = (AH - lg.shape[0]) // 2 + 20, (AW - lg.shape[1]) // 2
 a = lg[..., 3:4]; arte[y0:y0 + lg.shape[0], x0:x0 + lg.shape[1]] = arte[y0:y0 + lg.shape[0], x0:x0 + lg.shape[1]] * (1 - a) + lg[..., :3] * a
-cv2.rectangle(arte, (0, 60), (AW, 84), (0.263, 0.259, 1.0), -1)            # filete azul elétrico em cima
-cv2.rectangle(arte, (0, AH - 84), (AW, AH - 60), (0.263, 0.259, 1.0), -1)  # e embaixo
 M = cv2.getPerspectiveTransform(np.float32([[0, 0], [1, 0], [1, 1], [0, 1]]), Q)
 Mi = np.linalg.inv(M)
 S = 4
@@ -34,19 +35,25 @@ ys, xs = np.mgrid[0:(by1 - by0) * S, 0:(bx1 - bx0) * S].astype(np.float32)
 px = bx0 + (xs + .5) / S - .5; py = by0 + (ys + .5) / S - .5
 den = Mi[2, 0] * px + Mi[2, 1] * py + Mi[2, 2]
 s = (Mi[0, 0] * px + Mi[0, 1] * py + Mi[0, 2]) / den; t = (Mi[1, 0] * px + Mi[1, 1] * py + Mi[1, 2]) / den
-dentro = ((s >= 0) & (s <= 1) & (t >= 0) & (t <= 1)).astype(np.float32)
+dentro = ((s >= -.04) & (s <= 1.04) & (t >= -.03) & (t <= 1.03)).astype(np.float32)
 u = (np.arcsin(np.clip(2 * s - 1, -.999, .999)) / np.pi + .5) * (AW - 1)
 v = np.clip(t, 0, 1) * (AH - 1)
 amostra = cv2.remap(arte, u.astype(np.float32), v.astype(np.float32), cv2.INTER_LINEAR)
 sub = foto[by0:by1, bx0:bx1]; sl = sub.mean(2); sat = sub.max(2) - sub.min(2)
-branco = ((sl > 0.45) & (sat < 0.13)).astype(np.float32)
-branco = cv2.morphologyEx(branco, cv2.MORPH_OPEN, np.ones((2, 2), np.uint8))
+branco = ((sl > 0.45) & (sat < 0.13)).astype(np.float32)          # só para a referência de luz
+# máscara: o rótulo inteiro (o quadrilátero alargado 2,5 px, para não sobrar filete branco) menos os dedos (pele)
+pele = np.clip((sub[..., 0] - sub[..., 1] - .07) * 14, 0, 1)        # só pele de verdade (a franja clara em volta dos dedos vira verde)
+pele = cv2.erode(pele, np.ones((2, 2), np.uint8))
+Qg = Q + np.float32([(-2.5, -2.5), (2.5, -2.5), (2.5, 2.5), (-2.5, 2.5)])
+grande = np.zeros(((by1 - by0) * S, (bx1 - bx0) * S), np.uint8)
+cv2.fillPoly(grande, [np.round((Qg - [bx0, by0]) * S).astype(np.int32)], 255, lineType=cv2.LINE_AA)
+quad = cv2.resize(grande, (bx1 - bx0, by1 - by0), interpolation=cv2.INTER_AREA).astype(np.float32) / 255
 ref = np.percentile(sl[branco > 0], 97)
 luz = np.clip(cv2.resize(np.clip(sl / ref, 0, 1.02), ((bx1 - bx0) * S, (by1 - by0) * S), interpolation=cv2.INTER_CUBIC), 0, 1.02)[..., None] ** 2.2
 pint = srgb(lin(amostra) * luz) * dentro[..., None]
 pm = cv2.resize(pint, (bx1 - bx0, by1 - by0), interpolation=cv2.INTER_AREA)
 mq = cv2.resize(dentro, (bx1 - bx0, by1 - by0), interpolation=cv2.INTER_AREA)
-m = (cv2.GaussianBlur(branco, (0, 0), .6) * mq)[..., None]
+m = (quad * (1 - pele))[..., None]
 cor = pm / np.maximum(mq[..., None], 1e-3)
 out[by0:by1, bx0:bx1] = out[by0:by1, bx0:bx1] * (1 - m) + cor * m
 
@@ -67,8 +74,8 @@ def borda(img, cx, cy, largura, giro):
     grao = (np.random.default_rng(3).random(a.shape)[..., None] - .5) * .05
     out[Y0:Y0 + h, X0:X0 + largura] = reg * (1 - a[..., None]) + np.clip(fio + grao, 0, 1) * a[..., None]
 
-borda(logo, 607, 172, 66, 3)       # peito esquerdo da pessoa (lado direito da foto)
-borda(cao, 238, 742, 40, 4)        # jaqueta do vizsla, entre as listras
+borda(logo, 606, 168, 44, 3)       # peito esquerdo da pessoa, pequeno (a Emi: "menor")
+borda(cao, 309, 748, 36, 2)        # barriga da jaqueta do vizsla (a Emi: "na barriga")
 
 Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8)).save('mockup-corrida-matilha.jpg', quality=94)
 print('ok')
