@@ -24,6 +24,10 @@ Referências de diagramação (Pinterest, `referencias/pinterest/`): foto inteir
 
 Gostou da ideia da lua ("achei incrível"), mas: "muitos vetores", "mais do mesmo", "queria mais elementos reais e que seguisse mais as referências que você busca". E: não é copia e cola, não é colagem. Quando viu as luas reais tratadas: "gosto muito das da lua real, tá linda". Não quis cena gerada no Canva.
 
+## Ajustes da v3 (12/11/2026)
+
+Emi: "último slide o dm tá desalinhado, sinto que falta textura e grafismo também". Entrou em todos os stories: relevo de papel + grão de impressão por cima de tudo, uma matéria por story (grão forte, fibras, retícula, linhas, linho), estrela em retícula cortada pela borda, brilhos da marca como estrelas do céu e xoxo no fecho. O "dm" do bilhete ficou centrado, com a seta embaixo.
+
 ## O que a Emi reprovou na v1 (12/11/2026)
 
 - "Você tá literalmente copiando": a v1 repetia a estrutura da referência (faixa de pergunta em cima, carimbo de estrela, "te indico" + lista + botão) e a foto da capa imitava a dela. Referência é a ideia, nunca a estrutura.

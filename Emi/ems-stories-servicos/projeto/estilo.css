@@ -122,13 +122,29 @@ h1 em, h2 em { display: block; font-style: italic; color: var(--destaque); }
 .s7 h2 span { font-size: 250px; }
 .s7 .fila { left: 70px; top: 1010px; width: 940px; display: flex; justify-content: space-between; }
 .s7 .fila .lua { position: relative; width: 176px; height: 176px; }
+.s7 .fila .lua:first-child::after { content: ""; position: absolute; inset: 3.4%; border-radius: 50%; border: 3px dashed rgba(255, 251, 222, .55); }
 .s7 .bilhete { left: 90px; top: 1260px; width: 900px; min-height: 250px; background: var(--ivory); color: var(--tinta); border-radius: 22px; display: flex; transform: rotate(-2deg); filter: drop-shadow(10px 12px 0 var(--tinta)); }
 .s7 .bilhete div { flex: 1; padding: 42px 44px; border-right: 4px dashed var(--ameixa); }
 .s7 .bilhete p { font-family: var(--serif); font-size: 78px; line-height: .95; letter-spacing: -.02em; }
 .s7 .bilhete small { display: block; font-size: 30px; line-height: 1.3; margin-top: 18px; }
-.s7 .bilhete b { width: 208px; display: grid; place-items: center; text-align: center; font-family: Anton; font-weight: 400; font-size: 84px; line-height: 1; text-transform: uppercase; color: var(--violeta); }
+.s7 .bilhete b { width: 208px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--violeta); }
+.s7 .bilhete b span { font-family: Anton; font-weight: 400; font-size: 100px; line-height: 1; text-transform: uppercase; }
+.s7 .bilhete b i { font-style: normal; font-weight: 600; font-size: 64px; line-height: .7; }
 .s7 .site { left: 90px; top: 1600px; font-size: 28px; font-weight: 500; letter-spacing: .08em; }
 .s7 .arroba { top: 1596px; }
 
-#grao { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: overlay; opacity: .34; pointer-events: none; }
+#acab-papel, #acab-grao { position: absolute; inset: 0; pointer-events: none; }
+#acab-papel { background: var(--tx-papel) 0 0 / 800px; mix-blend-mode: soft-light; opacity: .5; }
+#acab-grao { background: var(--tx-grao) 0 0 / 540px; mix-blend-mode: overlay; opacity: .3; }
+.ic.brilho { --m: url(assets/i-brilho.png); } .ic.xoxo { --m: url(assets/i-xoxo.png); }
+.g { position: absolute; }
+/* matéria de cada story */
+.materia { inset: 0; pointer-events: none; }
+.s1 .materia { background: var(--tx-grao) 0 0 / 300px; mix-blend-mode: overlay; opacity: .3; }
+.s2 .materia { background: var(--tx-fibras) 0 0 / 520px; mix-blend-mode: soft-light; opacity: .8; }
+.s3 .materia { background: radial-gradient(circle, rgba(192, 165, 196, .5) 2.2px, transparent 2.8px) 0 0 / 16px 16px; -webkit-mask: linear-gradient(200deg, #000 0, transparent 46%); mask: linear-gradient(200deg, #000 0, transparent 46%); }
+.s4 .materia { background: repeating-linear-gradient(0deg, rgba(255, 251, 222, .09) 0 2px, transparent 2px 7px); -webkit-mask: linear-gradient(90deg, transparent 30%, #000); mask: linear-gradient(90deg, transparent 30%, #000); }
+.s5 .materia { mix-blend-mode: soft-light; opacity: .7; background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .6) 0 2px, rgba(0, 0, 0, .5) 2px 4px, transparent 4px 8px), repeating-linear-gradient(90deg, rgba(255, 255, 255, .6) 0 2px, rgba(0, 0, 0, .5) 2px 4px, transparent 4px 8px); }
+.s6 .materia { background: radial-gradient(circle, rgba(242, 207, 122, .4) 2.2px, transparent 2.8px) 0 0 / 16px 16px; -webkit-mask: radial-gradient(circle at 50% 49.5%, transparent 0 510px, #000 520px, transparent 760px); mask: radial-gradient(circle at 50% 49.5%, transparent 0 510px, #000 520px, transparent 760px); }
+.s7 .materia { background: var(--tx-fibras) 0 0 / 460px; mix-blend-mode: soft-light; opacity: .9; }
 .guia .story::after { content: ""; position: absolute; left: 90px; right: 90px; top: 250px; bottom: 250px; border: 2px dashed #0f0; z-index: 99; }
