@@ -111,14 +111,32 @@ def colar(foto, png, quad, rot=0, sombra=0.35):
     return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
 
 
+def imprimir(foto, png_branco, quad, cor=(58, 42, 32), opacidade=0.92, rot=0, forca=0.25):
+    """Imprime um desenho preto-no-branco na foto, como tinta de gráfica no papel (o branco some)."""
+    base = foto if isinstance(foto, Image.Image) else Image.open(foto).convert("RGB")
+    W, H = base.size
+    g = Image.open(png_branco).convert("L")
+    a0 = 255 - np.asarray(g, np.float32)
+    st = Image.fromarray(a0.astype(np.uint8)).rotate(rot, resample=Image.BICUBIC, expand=True)
+    alpha = gasta(np.asarray(st), forca) if forca else np.asarray(st, np.float32) / 255
+    sw, sh = st.size
+    c = coeficientes([(0, 0), (sw, 0), (sw, sh), (0, sh)], quad)
+    a_warp = Image.fromarray((alpha * 255).astype(np.uint8)).transform((W, H), Image.PERSPECTIVE, tuple(c), Image.BICUBIC)
+    a = np.asarray(a_warp.filter(ImageFilter.GaussianBlur(0.55)), np.float32) / 255 * opacidade
+    px = np.asarray(base, np.float32)
+    tinta = np.array(cor, np.float32) / 255
+    out = px * (1 - a[..., None]) + px * tinta * a[..., None]
+    return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
+
+
 if __name__ == "__main__":
     pasta = RAIZ / "03-mockups"
     pasta.mkdir(exist_ok=True)
     fotos = RAIZ / "fotos-geradas"
     cam = pasta / "_camadas"
-    img = colar(fotos / "saco3.png", cam / "adesivo-doughgirl.png", [(408, 196), (704, 198), (706, 500), (410, 504)], rot=-5)
-    img = carimbar(img, cam / "recado-original.png", [(440, 516), (690, 511), (691, 572), (441, 578)],
-                   cor=(30, 48, 120), opacidade=0.9, rot=2, forca=0, desfoque=0.7)
-    img.save(pasta / "saco-doughgirl.png")
-    recorte_4x5(img, 560, 0, pasta / "saco-doughgirl-4x5.jpg")
+    # saco3: frente do saco vai de x 388 a 722, y 188 a 600
+    img = imprimir(fotos / "saco3.png", cam / "impressao-assinatura.png", [(430, 218), (680, 216), (681, 292), (431, 295)], cor=(40, 30, 24))
+    img = imprimir(img, cam / "impressao-betty.png", [(420, 318), (690, 316), (692, 552), (422, 556)], cor=(40, 30, 24), forca=0.18)
+    img.save(pasta / "saco-betty.png")
+    recorte_4x5(img, 560, 0, pasta / "saco-betty-4x5.jpg")
     print("ok")

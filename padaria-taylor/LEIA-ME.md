@@ -2,25 +2,34 @@
 
 Projeto conceitual de fã para o portfólio, no formato "E se a Taylor Swift me contratasse…". Não tem vínculo com a Taylor Swift, a gravadora ou qualquer marca dela.
 
-## Marca: Loaf Story, era Doughgirl (versão atual)
+## Marca: Loaf Story, era folklore/evermore (versão atual)
 
-Direção escolhida: Showgirl. As referências que definiram o caminho (Don Rollos, The Little Oven e o café "mode", da @sairadesignss e da @designcloud__) têm em comum uma ilustração feita à mão no centro da marca. Por isso a marca é guiada por uma mascote.
+Segue o estilo das referências (Don Rollos, The Little Oven e o café "mode"): mascote, rabiscos de traço único, letra gorda e simpática, poucas cores com nome e as peças aplicadas.
 
-- **Mascote, a Doughgirl.** Um pão de fermentação natural vestido de showgirl: cocar de plumas, cílio de palco, luva, meia e salto, chutando no cancã. O nome vem da etiqueta que a Taylor escreveu no pão do Jimmy Fallon: "The Loaf of a Doughgirl".
-- **Logo.** "Loaf Story" em Shrikhand, em arco sobre a mascote, com sombra chocolate. Embaixo, "a small, free business" em Yellowtail.
+- **Mascote, a betty.** Uma gata em posição de pão (na internet, *cat loaf*), Scottish Fold de orelha dobrada como as gatas da Taylor, vestindo o cardigã de tricô com estrela bordada. O nome vem de uma personagem do *folklore*.
+- **Assinatura.** "loaf story" em minúsculas, como os títulos de *folklore* e *evermore*, em Fraunces Black macia. Embaixo, "a small, free business" em IM Fell DW Pica itálico, a mesma família de serifa antiga dos dois discos.
+- **Rabiscos:** pão, pote de fermento, cabana, pinheiro, caneca, cesta, rolo e colher, biscoito, estrela e raminho. Viram padronagem e cena.
 - **Cores:**
-  - Portofino `#F26B21`
-  - Menta `#A8E0CF`
-  - Creme `#FFF4E3`
-  - Casca `#E9A85E`
-  - Chocolate `#3B1F14` (o traço)
-- **Peças até agora:**
-  - adesivos: mascote, selo redondo, "Original Sourdough!", "free!" e "baked at 4am, for you";
-  - saco de papel com o adesivo e um recado à mão (foto);
-  - cartão fidelidade: "Collect 13 stamps & get a free loaf. (they're all free.)".
+  - cardigã `#F2EADB`
+  - neblina `#D9DCD3`
+  - musgo `#6E7A55`
+  - ferrugem `#B5582D` (o casaco xadrez do *evermore*)
+  - lenha `#3A2A20` (o traço)
+- **Peças:**
+  - saco de papel impresso (foto);
+  - cardápio em que tudo custa "free";
+  - selo sobre a padronagem;
+  - a cena da mesa da cabana.
 
 | Pasta | O que tem |
 |---|---|
+| `01-marca/ilustracao/` | `betty.svg` (colorida), `betty-impressao.svg` (a uma cor), `cena.svg`, `padrao-*.svg` e `rabiscos/` (um SVG por desenho). |
+| `02-apresentacao/` | 7 lâminas (HTML e PNG 1080 x 1350). |
+| `03-mockups/` | Saco impresso (foto e recorte 4:5). |
+| `fotos-geradas/` | Fotos-base dos sacos (ElevenLabs). |
+| `_ferramentas/` | Scripts: `betty.py`, `rabiscos.py`, `cena.py`, `camadas.js`, `mockup.py` e `render.js`. |
+
+---|---|
 | `01-marca/ilustracao/` | A Doughgirl em SVG, com uma versão para fundo menta. |
 | `02-apresentacao/` | As lâminas (HTML e PNG 1080 x 1350). |
 | `03-mockups/` | Saco com o adesivo (foto e recorte 4:5). |

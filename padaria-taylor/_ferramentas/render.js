@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
 const raiz = path.resolve(__dirname, '..');
 const html = path.join(raiz, '02-apresentacao', 'apresentacao.html');
 const saida = path.join(raiz, '02-apresentacao', 'png');
-const nomes = ['01-logo', '02-doughgirl', '03-cores', '04-adesivos', '05-saco', '06-cartao-fidelidade'];
+const nomes = ['01-logo', '02-betty', '03-cabana', '04-cores', '05-padronagem', '06-saco', '07-cardapio'];
 
 (async () => {
   fs.rmSync(saida, { recursive: true, force: true });
