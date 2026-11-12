@@ -147,10 +147,10 @@ reel = f'''
 <ol class="passos">
   <li>Suba o vídeo como Reel. Ele já vem com a trilha: um samba instrumental original, com os cortes do vídeo caindo na batida.</li>
   <li>Não coloque música da biblioteca por cima; deixe o áudio original do vídeo.</li>
-  <li>Em <b>Editar capa</b>, use a capa abaixo (adicionar da galeria). Ela não entrega a resposta: só o Pará e o "pausa e procura".</li>
+  <li>Em <b>Editar capa</b>, use a capa abaixo (adicionar da galeria).</li>
   <li>Cole a legenda. Não marque a FARM nem a havaianas: é um projeto não oficial.</li>
 </ol>
-<div class="duas"><div class="grade um">{midia(vid_rl, 'reel · 33 s · 9:16', capa_rl)}{midia(capa_rl, 'capa do reel')}</div>
+<div class="duas"><div class="grade um">{midia(vid_rl, 'reel · 41 s · 9:16', capa_rl)}{midia(capa_rl, 'capa do reel')}</div>
 <div class="textos">{texto('Legenda do reel', leg_rl)}</div></div>
 </section>'''
 

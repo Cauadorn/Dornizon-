@@ -7,170 +7,222 @@ html,body{margin:0;background:#000}
 #palco{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--creme);color:var(--tinta);font-family:var(--sans);-webkit-font-smoothing:antialiased}
 .cena{position:absolute;inset:0;visibility:hidden;overflow:hidden}
 .centro{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-#L0,#L1,#L2,[id^=R],[id^=Q],#GRADE{background:var(--creme)}
-#TRAP,#TRES,#PLACAR{background:none}
-/* títulos no topo */
-.topo{position:absolute;left:60px;right:60px;top:166px;text-align:center}
-.topo p{margin:0;font:400 104px/.98 var(--serif);letter-spacing:-.025em;white-space:nowrap}
-.topo .t2,.topo em{font-style:italic;color:var(--vinho)}
-.topo .so{font-size:128px;padding-top:44px}
-.topo .m{font-size:92px}
-/* o arco */
-.arco-w{position:absolute;left:145px;top:384px;width:790px;height:1058px}
-.arco{position:absolute;inset:0;overflow:hidden;border-radius:999px 999px 0 0;background:var(--creme2);box-shadow:0 50px 90px -50px rgba(40,10,10,.45)}
-.zoom{position:absolute;inset:0}
-.zoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.veu-c{position:absolute;inset:0;background:rgba(30,16,13,.8);opacity:0}
-.anel{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.anel circle{fill:none;stroke:#FFF3E6;stroke-width:5;filter:drop-shadow(0 0 10px rgba(255,220,180,.55))}
-/* embaixo do arco */
-.baixo{position:absolute;left:70px;right:70px;top:1470px;height:150px;text-align:center}
-.procura,.achou{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center}
-.procura{opacity:0}
-.procura b{display:flex;align-items:center;gap:14px;font:500 24px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--suave)}
-.pausa{display:inline-block;width:18px;height:22px;border-left:6px solid var(--vinho);border-right:6px solid var(--vinho)}
-.barra{display:block;position:relative;width:420px;height:4px;margin-top:22px;background:rgba(42,26,23,.14);border-radius:4px;overflow:hidden}
-.barra i{position:absolute;inset:0;background:var(--vinho);transform-origin:left;transform:scaleX(0)}
-.achou{opacity:0}
-.achou.mostra{opacity:1}
-.achou b{font:500 24px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--vinho)}
-.achou em{margin-top:14px;font:italic 400 50px/1.12 var(--serif);color:var(--tinta);max-width:900px;text-wrap:balance}
-.achou em.nome-r{margin-top:0;font:400 72px/1 var(--serif);font-style:normal}
-.achou.mostra em.nome-r{margin-top:16px}
-/* produto */
-#PROD{background:#d9c6ad}
-.foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
-.veu-topo{position:absolute;left:0;right:0;top:0;height:640px;background:linear-gradient(180deg,rgba(244,237,227,.92) 0%,rgba(244,237,227,.6) 45%,rgba(244,237,227,0) 100%)}
-/* grade */
-.gp{position:absolute;width:210px;filter:drop-shadow(0 3px 3px rgba(40,10,10,.22)) drop-shadow(0 18px 22px rgba(40,10,10,.22))}
-/* achou todos? */
-#ACHOU{background:var(--vinho);color:#FFF3E6}
-.ac1,.ac2{margin:0;font:400 250px/.9 var(--serif);letter-spacing:-.035em}
-.ac2{font-style:italic;color:var(--claro)}
-/* fim */
-#FIM{background:var(--tinta);color:#FFF3E6;justify-content:flex-start;padding-top:420px}
-#simb{position:relative;width:240px;height:222px}
-#simb svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.f-nome{margin:44px 0 0;font:400 196px/.9 var(--serif);letter-spacing:-.035em;white-space:nowrap}
-.f-nome .ch{display:inline-block}
-.f-nome .q{font-style:italic;color:var(--claro)}
-.f-sub{margin:26px 0 44px;font:italic 400 46px/1.2 var(--serif);color:rgba(255,243,230,.82)}
-.f-assin{width:470px;filter:brightness(0) invert(1);opacity:.92}
-.f-cta{margin:58px 0 0;font:500 24px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--claro)}
-.f-legal{position:absolute;left:80px;right:80px;top:1470px;margin:0;text-align:center;font:500 19px/1.7 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,243,230,.5)}
-/* placar */
-.placar{position:absolute;left:0;right:0;margin:0 auto;width:fit-content;top:76px;display:flex;align-items:center;gap:16px;padding:14px 30px 14px 22px;border-radius:50px;background:rgba(244,237,227,.94);border:1.5px solid rgba(42,26,23,.16);white-space:nowrap}
-.placar .mini{width:42px;height:39px;display:block}
-.placar .mini svg{width:100%;height:100%;display:block}
-.placar b{font:500 23px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--suave);margin-right:6px}
-.num{position:relative;display:inline-block;width:52px;height:42px;text-align:right}
-.num span{position:absolute;right:0;top:0;font:500 42px/1 var(--sans);font-variant-numeric:tabular-nums;color:var(--vinho);opacity:0}
-.num .n0{opacity:1}
-.de{font:500 42px/1 var(--sans);color:var(--tinta)}
+.ch{display:inline-block;white-space:pre}
+.q{font-style:italic}
+/* A */
+#A{background:var(--creme)}
+.a1{font:400 66px/1.2 var(--sans);letter-spacing:.01em;color:var(--tinta)}
+.a2{font:italic 400 190px/.95 var(--serif);color:var(--vinho);letter-spacing:-.03em;margin-top:18px}
+#a-simb{width:120px;margin-top:40px}
+/* B */
+#B{background:var(--creme)}
+.b-zoom{position:absolute;inset:0;transform-origin:68% 50%}
+.guia{position:absolute;background:none;border-color:rgba(200,50,31,.55);border-style:dashed;border-width:0}
+.gh{left:0;right:0;border-top-width:2px;transform-origin:left}
+.gv{top:0;bottom:0;border-left-width:2px;transform-origin:top}
+.b-tit{position:absolute;left:0;right:0;top:860px;margin:0;text-align:center;font:400 214px/1 var(--serif);letter-spacing:-.035em;white-space:nowrap}
+.b-tit .q{color:var(--vinho)}
+#swoosh{position:absolute;inset:0;width:100%;height:100%}
+/* C */
+.palavra-c{font:500 112px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+#C1{background:var(--creme)}
+.c-barra{position:relative;display:inline-block;padding:22px 34px;background:var(--laranja);color:#FFF3E6;transform-origin:left}
+#C2{background:var(--vinho);color:#FFF3E6}
+#C3{background:#0CA5AE;color:#FFF3E6}
+#C4{background:var(--urucum);color:#FFF3E6}
+#C5{background:var(--tinta)}
+/* D */
+#D{background:var(--tinta)}
+.listras{position:absolute;inset:0;display:flex;flex-direction:column}
+.lis{flex:1;display:flex;align-items:center;justify-content:center;font:500 30px/1 var(--sans);letter-spacing:.3em}
+.lis span{opacity:0}
+#bola{position:absolute;left:540px;top:960px;width:2400px;height:2400px;margin:-1200px 0 0 -1200px;border-radius:50%;background:var(--laranja);transform:scale(0)}
+/* E */
+.logo-g{font:400 236px/.9 var(--serif);letter-spacing:-.035em;margin:0}
+.logo-g .q{display:block}
+#E1{background:var(--laranja);color:#FFF3E6}
+#E2{background:var(--creme)}
+#E3{background:var(--vinho);color:var(--claro)}
+#E4{background:var(--urucum)}
+#E5{background:var(--tinta);color:#FFF3E6}
+.e-simb{width:190px;margin-bottom:64px}
+.e-simb-g{width:520px}
+.assin-claro{width:640px;filter:brightness(0) invert(1)}
+.lockup{display:flex;flex-direction:column;align-items:center;gap:34px}
+.lockup .col{font:italic 400 110px/1 var(--serif);color:var(--claro)}
+.lockup small{display:block;font:500 24px/1 var(--sans);font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,243,230,.7);margin-bottom:18px}
+/* F */
+#F{background:var(--creme)}
+.f-arte{position:absolute;left:150px;top:300px;width:780px;height:1045px}
+.arco{position:absolute;inset:0;overflow:hidden;border-radius:999px 999px 0 0;background:var(--creme2);box-shadow:0 60px 110px -60px rgba(40,10,10,.5)}
+.arco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.f-par{position:absolute;left:28px;top:220px;width:250px;transform:rotate(-12deg);filter:drop-shadow(0 4px 4px rgba(40,10,10,.25)) drop-shadow(0 26px 30px rgba(40,10,10,.28))}
+.f-leg{position:absolute;left:0;right:0;top:1440px;text-align:center}
+.f-leg b{display:block;font:500 26px/1 var(--sans);letter-spacing:.3em;color:var(--vinho)}
+.f-leg strong{display:block;font:400 92px/1 var(--serif);margin-top:20px}
+.f-leg em{display:block;font:italic 400 44px/1.2 var(--serif);color:var(--suave);margin-top:10px}
+.f-leg{visibility:hidden}
+.f-leg.l0{visibility:visible}
+.arco img.fl{visibility:hidden}
+/* G */
+#G{background:var(--vinho);color:#FFF3E6}
+.g1{font:400 62px/1.2 var(--sans);letter-spacing:.02em;color:rgba(255,243,230,.85)}
+.g2{font:italic 400 172px/.95 var(--serif);color:var(--claro);letter-spacing:-.025em;margin-top:26px}
+/* H */
+#H{background:#222}
+.h-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.h-veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,8,0) 38%,rgba(20,10,8,.72) 88%)}
+.h-nome{position:absolute;left:0;right:0;bottom:250px;text-align:center;font:400 170px/.9 var(--serif);letter-spacing:-.035em;color:#FFF3E6;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.h-nome .q{color:var(--claro)}
+.h-leg{position:absolute;left:0;right:0;bottom:170px;text-align:center;font:500 24px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,243,230,.85)}
+/* I */
+#I{background:#F1DCC6}
+.card{position:absolute;width:390px;height:488px;border-radius:22px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(60,20,10,.55);background:#fff}
+.card img{width:100%;height:100%;object-fit:cover}
+.c0{left:120px;top:330px;transform:rotate(-4deg)}
+.c1{left:560px;top:300px;transform:rotate(3deg)}
+.c2{left:110px;top:870px;transform:rotate(2deg)}
+.c3{left:550px;top:850px;transform:rotate(-3deg)}
+.fone{position:absolute;width:390px;height:844px;border-radius:58px;border:14px solid #1B1210;background:#1B1210;overflow:hidden;box-shadow:0 60px 90px -40px rgba(30,10,5,.6)}
+.fone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:44px}
+.fone::after{content:"";position:absolute;left:50%;top:14px;width:110px;height:30px;margin-left:-55px;border-radius:20px;background:#1B1210}
+.i-fone{left:590px;top:1010px;transform:rotate(8deg)}
+/* J */
+#J{background:var(--laranja)}
+.j1{left:120px;top:420px;transform:rotate(-6deg)}
+.j2{left:570px;top:560px;transform:rotate(5deg)}
+.j-leg{position:absolute;left:0;right:0;top:250px;text-align:center;font:500 26px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:#FFF3E6}
+.j-leg em{display:block;font:italic 400 76px/1 var(--serif);letter-spacing:-.01em;text-transform:none;margin-top:16px}
+/* K */
+#K{background:var(--tinta);color:#FFF3E6}
+.k-folha{position:absolute;width:760px}
+.k1{left:-220px;top:-300px;transform:rotate(160deg)}
+.k2{right:-240px;bottom:-280px;transform:rotate(-20deg)}
+.k-nome{font:400 210px/.9 var(--serif);letter-spacing:-.035em;margin:0}
+.k-nome .q{display:block;color:var(--claro)}
+.k-sub{font:italic 400 44px/1.2 var(--serif);color:rgba(255,243,230,.8);margin:34px 0 46px}
+.k-assin{width:520px;filter:brightness(0) invert(1);opacity:.92}
+.k-legal{position:absolute;left:80px;right:80px;bottom:120px;text-align:center;font:500 20px/1.6 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,243,230,.55)}
 </style></head><body><div id="palco">
-<section class="cena" id="L0"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:593.4px 321.6px"><img data-uf="pa720" data-t0="-0.2917" data-t1="4.0000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 118px at 593.4px 321.6px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 118px at 593.4px 321.6px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="593.4" cy="321.6" r="118" transform="rotate(-90 593.4 321.6)" stroke-dasharray="741.1" stroke-dashoffset="741.1"/></svg></div></div></div><div class="topo"><p class="t1">tem um coração</p><p class="t2">escondido aqui.</p></div><div class="baixo"><div class="procura"><b><span class="pausa"></span>pausa e procura</b><i class="barra"><i></i></i></div><div class="achou"><b>Pará</b><em>dois pássaros de miriti que voam um para o&nbsp;outro</em></div></div></section>
-<section class="cena" id="L1"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:394.1px 278.5px"><img data-uf="sc720" data-t0="3.7083" data-t1="8.0000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 185px at 394.1px 278.5px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 185px at 394.1px 278.5px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="394.1" cy="278.5" r="185" transform="rotate(-90 394.1 278.5)" stroke-dasharray="1164.7" stroke-dashoffset="1164.7"/></svg></div></div></div><div class="topo"><p class="t1 so">e <em>aqui?</em></p></div><div class="baixo"><div class="procura"><b>procura</b><i class="barra"><i></i></i></div><div class="achou"><b>Santa Catarina</b><em>a cauda da baleia-franca na enseada de&nbsp;Garopaba</em></div></div></section>
-<section class="cena" id="L2"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:140.4px 398.6px"><img data-uf="rj720" data-t0="7.2083" data-t1="11.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 52px at 140.4px 398.6px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 52px at 140.4px 398.6px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="140.4" cy="398.6" r="52" transform="rotate(-90 140.4 398.6)" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg></div></div></div><div class="topo"><p class="t1 so">e no <em>Rio?</em></p></div><div class="baixo"><div class="procura"><b>procura</b><i class="barra"><i></i></i></div><div class="achou"><b>Rio de Janeiro</b><em>duas folhas de amendoeira caindo juntas, ao lado do&nbsp;bonde</em></div></div></section>
-<section class="cena" id="PROD"><img class="foto" src="../_img/reel-ipanema.jpg" alt=""><div class="veu-topo"></div><div class="topo"><p class="t1">e cada estampa</p><p class="t2">vira um par.</p></div></section>
-<section class="cena" id="R0"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:212.9px 151.7px"><img data-uf="ba720" data-t0="12.2083" data-t1="16.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 129px at 212.9px 151.7px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 129px at 212.9px 151.7px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="212.9" cy="151.7" r="129" transform="rotate(-90 212.9 151.7)" stroke-dasharray="811.7" stroke-dashoffset="811.7"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Bahia</em></div></div></section>
-<section class="cena" id="R1"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:174.4px 512.9px"><img data-uf="ms720" data-t0="13.2083" data-t1="17.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 52px at 174.4px 512.9px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 52px at 174.4px 512.9px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="174.4" cy="512.9" r="52" transform="rotate(-90 174.4 512.9)" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Mato Grosso do Sul</em></div></div></section>
-<section class="cena" id="R2"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:394.1px 851.5px"><img data-uf="pr720" data-t0="14.2083" data-t1="18.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 73px at 394.1px 851.5px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 73px at 394.1px 851.5px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="394.1" cy="851.5" r="73" transform="rotate(-90 394.1 851.5)" stroke-dasharray="458.8" stroke-dashoffset="458.8"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Paraná</em></div></div></section>
-<section class="cena" id="R3"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:394.1px 801.7px"><img data-uf="go720" data-t0="15.2083" data-t1="19.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 152px at 394.1px 801.7px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 152px at 394.1px 801.7px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="394.1" cy="801.7" r="152" transform="rotate(-90 394.1 801.7)" stroke-dasharray="952.9" stroke-dashoffset="952.9"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Goiás</em></div></div></section>
-<section class="cena" id="R4"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:348.8px 869.6px"><img data-uf="rs720" data-t0="16.2083" data-t1="20.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 129px at 348.8px 869.6px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 129px at 348.8px 869.6px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="348.8" cy="869.6" r="129" transform="rotate(-90 348.8 869.6)" stroke-dasharray="811.7" stroke-dashoffset="811.7"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Rio Grande do Sul</em></div></div></section>
-<section class="cena" id="R5"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:395.2px 917.1px"><img data-uf="ce720" data-t0="17.2083" data-t1="21.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 52px at 395.2px 917.1px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 52px at 395.2px 917.1px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="395.2" cy="917.1" r="52" transform="rotate(-90 395.2 917.1)" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Ceará</em></div></div></section>
-<section class="cena" id="R6"><div class="arco-w"><div class="arco"><div class="zoom" style="transform-origin:396.4px 640.9px"><img data-uf="ma720" data-t0="18.2083" data-t1="22.5000" alt=""><div class="veu-c" style="-webkit-mask-image:radial-gradient(circle 52px at 396.4px 640.9px,transparent 96%,#000 100%);mask-image:radial-gradient(circle 52px at 396.4px 640.9px,transparent 96%,#000 100%)"></div><svg class="anel" viewBox="0 0 790 1058"><circle cx="396.4" cy="640.9" r="52" transform="rotate(-90 396.4 640.9)" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg></div></div></div><div class="baixo"><div class="achou"><em class="nome-r">Maranhão</em></div></div></section>
-<section class="cena" id="Q0"><div class="arco-w"><div class="arco"><div class="zoom"><img data-uf="mg720" data-t0="21.7000" alt=""></div></div></div><div class="baixo"><div class="achou mostra"><b>onde está?</b><em class="nome-r">Minas Gerais</em></div></div></section>
-<section class="cena" id="Q1"><div class="arco-w"><div class="arco"><div class="zoom"><img data-uf="pe720" data-t0="22.2000" alt=""></div></div></div><div class="baixo"><div class="achou mostra"><b>onde está?</b><em class="nome-r">Pernambuco</em></div></div></section>
-<section class="cena" id="Q2"><div class="arco-w"><div class="arco"><div class="zoom"><img data-uf="am720" data-t0="22.7000" alt=""></div></div></div><div class="baixo"><div class="achou mostra"><b>onde está?</b><em class="nome-r">Amazonas</em></div></div></section>
-<section class="cena" id="Q3"><div class="arco-w"><div class="arco"><div class="zoom"><img data-uf="to720" data-t0="23.2000" alt=""></div></div></div><div class="baixo"><div class="achou mostra"><b>onde está?</b><em class="nome-r">Tocantins</em></div></div></section>
-<section class="cena" id="GRADE"><img class="gp" src="../../site/img/mg-par.webp" style="left:82px;top:430px;transform:rotate(-6deg)" alt=""><img class="gp" src="../../site/img/rj-par.webp" style="left:318px;top:430px;transform:rotate(6deg)" alt=""><img class="gp" src="../../site/img/ba-par.webp" style="left:552px;top:430px;transform:rotate(-4deg)" alt=""><img class="gp" src="../../site/img/pe-par.webp" style="left:788px;top:430px;transform:rotate(-3deg)" alt=""><img class="gp" src="../../site/img/ce-par.webp" style="left:200px;top:692px;transform:rotate(3deg)" alt=""><img class="gp" src="../../site/img/ma-par.webp" style="left:435px;top:692px;transform:rotate(4deg)" alt=""><img class="gp" src="../../site/img/am-par.webp" style="left:670px;top:692px;transform:rotate(-5deg)" alt=""><img class="gp" src="../../site/img/pa-par.webp" style="left:82px;top:954px;transform:rotate(-6deg)" alt=""><img class="gp" src="../../site/img/to-par.webp" style="left:318px;top:954px;transform:rotate(6deg)" alt=""><img class="gp" src="../../site/img/ms-par.webp" style="left:552px;top:954px;transform:rotate(-4deg)" alt=""><img class="gp" src="../../site/img/go-par.webp" style="left:788px;top:954px;transform:rotate(-3deg)" alt=""><img class="gp" src="../../site/img/pr-par.webp" style="left:200px;top:1216px;transform:rotate(3deg)" alt=""><img class="gp" src="../../site/img/sc-par.webp" style="left:435px;top:1216px;transform:rotate(4deg)" alt=""><img class="gp" src="../../site/img/rs-par.webp" style="left:670px;top:1216px;transform:rotate(-5deg)" alt=""><div class="topo"><p class="t1 m">14 estados, 14 pares,</p><p class="t2 m">14 corações.</p></div></section>
-<section class="cena centro" id="ACHOU"><p class="ac1">achou</p><p class="ac2">todos?</p></section>
-<section class="cena centro" id="FIM"><div id="simb"><svg class="fe" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg><svg class="fd" viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div><p class="f-nome"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="ch q">Q</span><span class="ch q">u</span><span class="ch q">e</span><span class="ch q">r</span><span class="ch q">e</span><span class="ch q">r</span></p><p class="f-sub">uma V2 conceitual da collab</p><img class="f-assin" src="../_img/assinatura-topo.svg" alt=""><p class="f-cta">o projeto inteiro está no link da bio</p><p class="f-legal">projeto conceitual de portfólio de Emilly Silva<br>sem vínculo com FARM&nbsp;Rio e havaianas</p></section>
-<section class="cena" id="TRAP"><div class="topo"><p class="t1">agora,</p><p class="t2">mais rápido.</p></div></section>
-<section class="cena" id="TRES"><div class="topo"><p class="t1">esses 4</p><p class="t2">ficam com você.</p></div></section>
-<section class="cena" id="PLACAR"><div class="placar"><span class="mini"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></span><b>corações achados</b><span class="num"><span class="n0">0</span><span class="n1">1</span><span class="n2">2</span><span class="n3">3</span><span class="n4">4</span><span class="n5">5</span><span class="n6">6</span><span class="n7">7</span><span class="n8">8</span><span class="n9">9</span><span class="n10">10</span></span><span class="de">/14</span></div></section>
-</div><script src="../../site/js/gsap.min.js"></script><script>
-const FPS = 24, NQ = {"mg720": 103, "rj720": 103, "ba720": 103, "pe720": 103, "ce720": 103, "ma720": 103, "am720": 103, "pa720": 103, "to720": 103, "ms720": 103, "go720": 103, "pr720": 103, "sc720": 103, "rs720": 103}, QD = '../_quadros/', RODADAS = [{"id": "L0", "tipo": "lenta", "ts": 0.0, "tr": 4.0, "te": 6.0, "z": 1.674, "dx": -132.5, "dy": 165.1, "n": 1, "bar": 1.5}, {"id": "L1", "tipo": "lenta", "ts": 6.0, "tr": 8.0, "te": 10.0, "z": 1.35, "dx": 0.9, "dy": 97.5, "n": 2, "bar": 6.3}, {"id": "L2", "tipo": "lenta", "ts": 10.0, "tr": 11.5, "te": 13.5, "z": 2.0, "dx": 140.4, "dy": 88.1, "n": 3, "bar": 10.3}, {"id": "R0", "tipo": "rapida", "ts": 16.0, "tr": 16.5, "te": 17.0, "n": 4}, {"id": "R1", "tipo": "rapida", "ts": 17.0, "tr": 17.5, "te": 18.0, "n": 5}, {"id": "R2", "tipo": "rapida", "ts": 18.0, "tr": 18.5, "te": 19.0, "n": 6}, {"id": "R3", "tipo": "rapida", "ts": 19.0, "tr": 19.5, "te": 20.0, "n": 7}, {"id": "R4", "tipo": "rapida", "ts": 20.0, "tr": 20.5, "te": 21.0, "n": 8}, {"id": "R5", "tipo": "rapida", "ts": 21.0, "tr": 21.5, "te": 22.0, "n": 9}, {"id": "R6", "tipo": "rapida", "ts": 22.0, "tr": 22.5, "te": 23.0, "n": 10}, {"id": "Q0", "tipo": "resta", "ts": 23.0, "te": 23.5}, {"id": "Q1", "tipo": "resta", "ts": 23.5, "te": 24.0}, {"id": "Q2", "tipo": "resta", "ts": 24.0, "te": 24.5}, {"id": "Q3", "tipo": "resta", "ts": 24.5, "te": 25.0}], DUR = 33.5;
-const quadro = (uf, t) => QD + uf + '/' + String((Math.floor(Math.max(0, t) * FPS + 1e-6) % NQ[uf]) + 1).padStart(4, '0') + '.jpg';
-// só troca os quadros das cenas que estão na tela
+<section class="cena centro" id="A"><p class="a1"><span class="ch">U</span><span class="ch">m</span><span class="ch">a</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">o</span><span class="ch">l</span><span class="ch">l</span><span class="ch">a</span><span class="ch">b</span><span class="ch">&nbsp;</span><span class="ch">f</span><span class="ch">e</span><span class="ch">i</span><span class="ch">t</span><span class="ch">a</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">o</span><span class="ch">m</span></p><p class="a2"><span class="ch">b</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="ch">q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></p><div id="a-simb"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div></section>
+<section class="cena" id="B"><div class="b-zoom">
+  <i class="guia gh" style="top:880px"></i><i class="guia gh" style="top:1052px"></i><i class="guia gh" style="top:968px;border-color:rgba(200,50,31,.3)"></i>
+  <i class="guia gv" style="left:96px"></i><i class="guia gv" style="left:540px;border-color:rgba(200,50,31,.3)"></i><i class="guia gv" style="left:984px"></i>
+  <p class="b-tit"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="q"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></span></p></div>
+  <svg id="swoosh" viewBox="0 0 1080 1920"><path id="sw" d="M-120,1500 C 260,1160 520,1700 760,1260 S 1060,700 1240,860" fill="none" stroke="#E07A2E" stroke-width="150" stroke-linecap="round"/></svg></section>
+<section class="cena centro" id="C1"><div class="c-barra palavra-c"><span class="ch">s</span><span class="ch">o</span><span class="ch">l</span><span class="ch">a</span><span class="ch">r</span></div></section>
+<section class="cena centro" id="C2"><p class="palavra-c"><span class="ch">a</span><span class="ch">f</span><span class="ch">e</span><span class="ch">t</span><span class="ch">i</span><span class="ch">v</span><span class="ch">a</span></p></section>
+<section class="cena centro" id="C3"><p class="palavra-c"><span class="ch">d</span><span class="ch">e</span><span class="ch">&nbsp;</span><span class="ch">r</span><span class="ch">u</span><span class="ch">a</span></p></section>
+<section class="cena centro" id="C4"><p class="palavra-c"><span class="ch">b</span><span class="ch">r</span><span class="ch">a</span><span class="ch">s</span><span class="ch">i</span><span class="ch">l</span><span class="ch">e</span><span class="ch">i</span><span class="ch">r</span><span class="ch">a</span></p></section>
+<section class="cena" id="D"><div class="listras"><div class="lis" style="background:#F4EDE3;color:#2A1A17"><span>AREIA</span></div><div class="lis" style="background:#EBE2D5;color:#2A1A17"><span>RENDA</span></div><div class="lis" style="background:#E07A2E;color:#FFF3E6"><span>CAJU</span></div><div class="lis" style="background:#C8321F;color:#FFF3E6"><span>URUCUM</span></div><div class="lis" style="background:#6A1B29;color:#FFF3E6"><span>AÇAÍ</span></div><div class="lis" style="background:#857568;color:#FFF3E6"><span>BARRO</span></div><div class="lis" style="background:#2A1A17;color:#F4EDE3"><span>CAFÉ</span></div></div><div id="bola"></div></section>
+<section class="cena centro" id="E1"><div class="e-simb"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#FFF3E6"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#FFF3E6" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#E07A2E" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#E07A2E" stroke-width="3.4"/></g></svg></div><p class="logo-g"><span style="color:#FFF3E6">Bem-</span><span class="q" style="color:#FFF3E6">Querer</span></p></section>
+<section class="cena centro" id="E2"><div class="e-simb"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div><p class="logo-g"><span style="color:var(--tinta)">Bem-</span><span class="q" style="color:var(--vinho)">Querer</span></p></section>
+<section class="cena centro" id="E3"><div class="lockup"><img class="assin-claro" src="../_img/assinatura-topo.svg" alt=""><div class="col"><small>coleção</small>Bem-Querer</div></div></section>
+<section class="cena centro" id="E4"><div class="e-simb-g"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#FFF3E6"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#FFF3E6" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#C8321F" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#C8321F" stroke-width="3.4"/></g></svg></div></section>
+<section class="cena centro" id="E5"><p class="logo-g"><span style="color:#FFF3E6">Bem-</span><span class="q" style="color:#F2B98A">Querer</span></p></section>
+<section class="cena" id="F"><div class="f-arte"><div class="arco"><img data-uf="ms720" data-t0="21.0" alt=""><img class="fl" src="../../site/img/pa-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/ba-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/sc-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/ma-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/mg-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/pe-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/rs-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/am-ilustracao.jpg" alt=""></div></div>
+  <img class="f-par" src="../../site/img/ms-par.webp" alt="">
+  <div class="f-leg l0"><b>10 / 14 · CENTRO-OESTE</b><strong>Mato Grosso do Sul</strong><em>Onça de Bonito</em></div><div class="f-leg l1"><b>08 / 14 · NORTE</b><strong>Pará</strong><em>Revoada de Miriti</em></div><div class="f-leg l2"><b>03 / 14 · NORDESTE</b><strong>Bahia</strong><em>Cacau e Fita</em></div><div class="f-leg l3"><b>13 / 14 · SUL</b><strong>Santa Catarina</strong><em>Baleia e Ostra</em></div><div class="f-leg l4"><b>06 / 14 · NORDESTE</b><strong>Maranhão</strong><em>Couro de Boi</em></div><div class="f-leg l5"><b>01 / 14 · SUDESTE</b><strong>Minas Gerais</strong><em>Barroco de Minas</em></div><div class="f-leg l6"><b>04 / 14 · NORDESTE</b><strong>Pernambuco</strong><em>Passo de Frevo</em></div><div class="f-leg l7"><b>14 / 14 · SUL</b><strong>Rio Grande do Sul</strong><em>Roda de Chimarrão</em></div><div class="f-leg l8"><b>07 / 14 · NORTE</b><strong>Amazonas</strong><em>Encontro das Águas</em></div></section>
+<section class="cena centro" id="G"><p class="g1"><span class="ch">e</span><span class="ch">m</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">a</span><span class="ch">d</span><span class="ch">a</span><span class="ch">&nbsp;</span><span class="ch">e</span><span class="ch">s</span><span class="ch">t</span><span class="ch">a</span><span class="ch">m</span><span class="ch">p</span><span class="ch">a</span><span class="ch">,</span></p><p class="g2"><span class="ch">u</span><span class="ch">m</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">o</span><span class="ch">r</span><span class="ch">a</span><span class="ch">ç</span><span class="ch">ã</span><span class="ch">o</span><br><span class="ch">e</span><span class="ch">s</span><span class="ch">c</span><span class="ch">o</span><span class="ch">n</span><span class="ch">d</span><span class="ch">i</span><span class="ch">d</span><span class="ch">o</span></p></section>
+<section class="cena" id="H"><img class="h-foto" src="../_img/reel-campanha-ce.jpg" alt=""><div class="h-veu"></div>
+  <p class="h-nome"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="q"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></span></p><p class="h-leg">Ceará · Renda ao Vento</p></section>
+<section class="cena" id="I"><div class="card c0"><img src="../_img/reel-estudio-mg.jpg" alt=""></div><div class="card c1"><img src="../_img/reel-estudio-pa.jpg" alt=""></div><div class="card c2"><img src="../_img/reel-estudio-ba.jpg" alt=""></div><div class="card c3"><img src="../_img/reel-estudio-rs.jpg" alt=""></div><div class="fone i-fone"><img src="../_img/reel-tela-estado.png" alt=""></div></section>
+<section class="cena" id="J"><p class="j-leg">o site<em>14 estados, um por página</em></p>
+  <div class="fone j1"><img src="../_img/reel-tela-home.png" alt=""></div><div class="fone j2"><img src="../_img/reel-tela-roda.png" alt=""></div></section>
+<section class="cena centro" id="K"><div class="k-folha k1"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#E07A2E" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E07A2E" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#E07A2E"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E07A2E" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/></g></svg></div><div class="k-folha k2"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#C8321F" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/></g></svg></div>
+  <p class="k-nome">Bem-<span class="q">Querer</span></p><p class="k-sub">uma V2 conceitual da collab</p><img class="k-assin" src="../_img/assinatura-topo.svg" alt="">
+  <p class="k-legal">projeto conceitual de portfólio de Emilly Silva<br>sem vínculo com FARM&nbsp;Rio e havaianas</p></section>
+</div>
+<script src="../../site/js/gsap.min.js"></script><script>
+const FPS = 24, NQ = {"ms720": 103}, QD = '../_quadros/';
+const quadro = (uf, t) => QD + uf + '/' + String((Math.floor(Math.max(0, t) * FPS) % NQ[uf]) + 1).padStart(4, '0') + '.jpg';
 async function trocaQuadros(t) {
   const espera = [];
-  document.querySelectorAll('img[data-uf]').forEach(im => {
-    if (getComputedStyle(im.closest('.cena')).visibility !== 'visible') return;
-    const tt = im.dataset.t1 ? Math.min(t, +im.dataset.t1) : t;
-    const src = quadro(im.dataset.uf, tt - +im.dataset.t0);
+  document.querySelectorAll('img[data-uf][data-t0]').forEach(im => {
+    const src = quadro(im.dataset.uf, t - +im.dataset.t0);
     if (im.getAttribute('src') !== src) { im.setAttribute('src', src); espera.push(im.decode().catch(() => {})); }
   });
   await Promise.all(espera);
 }
+const DUR = 41.5;
 const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+// cada cena entra e sai em cortes secos, sempre na batida do samba (0,5 s)
 const corte = (id, de, ate) => { tl.set('#' + id, { visibility: 'visible' }, de); if (ate) tl.set('#' + id, { visibility: 'hidden' }, ate); };
-const IR = { immediateRender: false };
-function placar(n, t) {
-  tl.set('.num span', { opacity: 0 }, t).set('.num .n' + n, { opacity: 1 }, t)
-    .fromTo('.placar', { scale: 1.16 }, Object.assign({ scale: 1, duration: .4, ease: 'back.out(3)' }, IR), t);
-}
-function revela(id, t, rapido) {
-  const c = document.querySelector('#' + id + ' .anel circle');
-  tl.fromTo('#' + id + ' .veu-c', { opacity: 0 }, Object.assign({ opacity: 1, duration: rapido ? .12 : .3, ease: 'power2.out' }, IR), t)
-    .to(c, { strokeDashoffset: 0, duration: rapido ? .25 : .45, ease: 'power2.inOut' }, t + .04)
-    .fromTo('#' + id + ' .achou', { opacity: 0, y: 18 }, Object.assign({ opacity: 1, y: 0, duration: .35 }, IR), t + .08);
-}
 function monta() {
-  // tudo que entra com fromTo começa escondido (sem isso aparece no primeiro quadro da cena)
-  gsap.set('.topo p, #ACHOU p, .f-sub, .f-assin, .f-cta, .f-legal', { opacity: 0 });
-  // o primeiro quadro já mostra o arco e o placar (um set no tempo 0 não dispara no seek(0))
-  gsap.set('#L0, #PLACAR', { visibility: 'visible' });
-  RODADAS.forEach(r => {
-    corte(r.id, r.ts, r.te);
-    const s = '#' + r.id;
-    if (r.ts > 0) tl.fromTo(s + ' .arco-w', { scale: .93 }, Object.assign({ scale: 1, duration: .3 }, IR), r.ts);
-    if (r.tipo === 'lenta') {
-      tl.fromTo(s + ' .topo p', { opacity: 0, y: 34 }, Object.assign({ opacity: 1, y: 0, duration: .45, stagger: .5 }, IR), r.ts + .02)
-        .fromTo(s + ' .procura', { opacity: 0 }, Object.assign({ opacity: 1, duration: .3 }, IR), r.bar - .1)
-        .fromTo(s + ' .barra i', { scaleX: 0 }, Object.assign({ scaleX: 1, duration: r.tr - r.bar, ease: 'none' }, IR), r.bar)
-        .to(s + ' .procura', { opacity: 0, duration: .15 }, r.tr);
-      revela(r.id, r.tr, false);
-      placar(r.n, r.tr + .1);
-      // a câmera entra no coração
-      tl.to(s + ' .zoom', { scale: r.z, x: r.dx, y: r.dy, duration: r.te - r.tr - .5, ease: 'power2.inOut' }, r.tr + .5)
-        .to(s + ' .anel circle', { attr: { 'stroke-width': 7 / r.z }, duration: r.te - r.tr - .5, ease: 'power2.inOut' }, r.tr + .5);
-    } else if (r.tipo === 'rapida') {
-      revela(r.id, r.tr, true);
-      placar(r.n, r.tr + .05);
-    }
+  gsap.set('.ch', { opacity: 0 });
+  // A. frase digitada (0 a 4)
+  corte('A', 0, 4.0);
+  tl.to('.a1 .ch', { opacity: 1, duration: .01, stagger: .055 }, .25)
+    .fromTo('.a2 .ch', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: .5, stagger: .07 }, 1.5)
+    .from('#a-simb', { scale: 0, opacity: 0, duration: .6, ease: 'back.out(2.4)' }, 2.5)
+    .to('#A > *', { opacity: 0, filter: 'blur(14px)', y: -20, duration: .5, ease: 'power2.in' }, 3.5);
+  // B. o nome montado sobre as guias, zoom, e o traço laranja varre (4 a 8,5)
+  corte('B', 4.0, 8.5);
+  tl.from('.gh', { scaleX: 0, duration: .6, stagger: .08, ease: 'power2.out' }, 4.0)
+    .from('.gv', { scaleY: 0, duration: .6, stagger: .08, ease: 'power2.out' }, 4.1)
+    .fromTo('.b-tit .ch', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .35, stagger: .1 }, 4.25)
+    .to('.b-zoom', { scale: 2.4, x: -240, duration: 1.5, ease: 'power2.inOut' }, 6.0);
+  const sw = document.getElementById('sw'), L = sw.getTotalLength();
+  gsap.set(sw, { strokeDasharray: L, strokeDashoffset: L });
+  tl.to(sw, { strokeDashoffset: 0, duration: .65, ease: 'power2.in' }, 7.5)
+    .to(sw, { attr: { 'stroke-width': 1900 }, duration: .35, ease: 'power2.in' }, 8.15);
+  // C. palavras em cor chapada, uma por compasso (8,5 a 13)
+  corte('C1', 8.5, 9.5);
+  tl.from('.c-barra', { scaleX: 0, duration: .45, ease: 'power3.out' }, 8.5)
+    .to('#C1 .ch', { opacity: 1, duration: .01, stagger: .05 }, 8.75);
+  corte('C2', 9.5, 10.5); tl.fromTo('#C2 .ch', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, stagger: .035 }, 9.5);
+  corte('C3', 10.5, 11.5); tl.fromTo('#C3 .ch', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, stagger: .035 }, 10.5);
+  corte('C4', 11.5, 13.0); tl.fromTo('#C4 .ch', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, stagger: .03 }, 11.5);
+  corte('C5', 12.5, 13.0); tl.fromTo('#C5', { yPercent: 100 }, { yPercent: 0, duration: .5, ease: 'power3.inOut' }, 12.5);
+  // D. a paleta e a bola laranja que leva para o logo (13 a 17)
+  corte('D', 13.0, 17.0);
+  tl.from('.lis', { xPercent: -100, duration: .5, stagger: { each: .1, from: 'end' }, ease: 'power3.out' }, 13.0)
+    .to('.lis span', { opacity: 1, duration: .3, stagger: .07 }, 14.0)
+    .to('#bola', { scale: 1, duration: .75, ease: 'power2.in' }, 16.25);
+  // E. variações do logo (17 a 21): as que pedem leitura ficam 1 s, as outras meio
+  [['E1', 17.0], ['E2', 18.0], ['E3', 18.5], ['E4', 19.5], ['E5', 20.0]].forEach(([id, t], k, a) => {
+    corte(id, t, k < a.length - 1 ? a[k + 1][1] : 21.0);
+    tl.from('#' + id + ' > *', { opacity: 0, y: 24, scale: .96, duration: .35, stagger: .06 }, t);
   });
-  // títulos que atravessam várias cenas
-  corte('TRAP', 16.0, 23.0);
-  tl.fromTo('#TRAP .topo p', { opacity: 0, y: 34 }, Object.assign({ opacity: 1, y: 0, duration: .45, stagger: .5 }, IR), 16.0 + .02);
-  corte('TRES', 23.0, 25.0);
-  tl.fromTo('#TRES .topo p', { opacity: 0, y: 34 }, Object.assign({ opacity: 1, y: 0, duration: .4, stagger: .25 }, IR), 23.0 + .02);
-  // o par na areia de Ipanema
-  corte('PROD', 13.5, 16.0);
-  tl.fromTo('#PROD .foto', { scale: 1.12 }, Object.assign({ scale: 1, duration: 16.0 - 13.5, ease: 'none' }, IR), 13.5)
-    .fromTo('#PROD .topo p', { opacity: 0, y: 34 }, Object.assign({ opacity: 1, y: 0, duration: .45, stagger: .5 }, IR), 13.5 + .05);
-  // placar: some no produto e no fim
-  tl.set('#PLACAR', { visibility: 'hidden' }, 13.5);
-  corte('PLACAR', 16.0, 25.0);
-  // os 14 pares
-  corte('GRADE', 25.0, 27.0);
-  tl.from('.gp', { y: -260, opacity: 0, duration: .45, stagger: .045, ease: 'back.out(1.4)' }, 25.0 - .15)
-    .fromTo('#GRADE .topo p', { opacity: 0, y: 34 }, Object.assign({ opacity: 1, y: 0, duration: .45, stagger: .5 }, IR), 25.0 - .12);
-  // achou todos?
-  corte('ACHOU', 27.0, 28.5);
-  tl.fromTo('#ACHOU p', { opacity: 0, y: 50 }, Object.assign({ opacity: 1, y: 0, duration: .4, stagger: .5 }, IR), 27.0 + .02);
-  // fim: as duas folhas caem juntas e formam o coração; o nome sobe letra a letra
-  const F = 28.5;
-  corte('FIM', F, null);
-  gsap.set('.fe', { x: -430, y: -620, rotation: -75, opacity: 0 });
-  gsap.set('.fd', { x: 430, y: -660, rotation: 80, opacity: 0 });
-  gsap.set('.f-nome .ch', { opacity: 0, y: 60 });
-  tl.to('.fe', { keyframes: { x: [-430, -170, -250, -60, 0], y: [-620, -430, -250, -90, 0], rotation: [-75, -20, -48, -8, 0], easeEach: 'sine.inOut' }, opacity: 1, duration: 1.5, ease: 'none' }, F)
-    .to('.fd', { keyframes: { x: [430, 180, 240, 50, 0], y: [-660, -460, -270, -100, 0], rotation: [80, 25, 50, 10, 0], easeEach: 'sine.inOut' }, opacity: 1, duration: 1.5, ease: 'none' }, F + .1)
-    .to('#simb', { scale: 1.09, duration: .2, ease: 'power2.out' }, F + 1.6)
-    .to('#simb', { scale: 1, duration: .45, ease: 'back.out(3)' }, F + 1.8)
-    .to('.f-nome .ch', { opacity: 1, y: 0, duration: .8, stagger: .05 }, F + 1.7)
-    .fromTo('.f-sub, .f-assin, .f-cta, .f-legal', { opacity: 0, y: 22 }, Object.assign({ opacity: 1, y: 0, duration: .6, stagger: .2 }, IR), F + 2.3);
+  // F. o motion da onça no arco, o par cai, e oito estados passam a cada colcheia (21 a 25)
+  corte('F', 21.0, 25.0);
+  tl.fromTo('.f-arte', { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 0px 0px)', duration: .8, ease: 'power3.inOut' }, 21.0)
+    .from('.f-par', { opacity: 0, y: -120, rotation: -40, duration: .7, ease: 'back.out(1.6)' }, 21.5)
+    .from('.f-leg.l0 > *', { opacity: 0, y: 26, duration: .5, stagger: .08 }, 21.75)
+    .to('.f-par', { opacity: 0, duration: .15 }, 22.85);
+  document.querySelectorAll('.arco img.fl').forEach(function (im, k) {
+    const t = 23.0 + k * .25;
+    tl.set(im, { visibility: 'visible' }, t).set('.f-leg', { visibility: 'hidden' }, t).set('.f-leg.l' + (k + 1), { visibility: 'visible' }, t);
+    if (k > 0) tl.set(document.querySelectorAll('.arco img.fl')[k - 1], { visibility: 'hidden' }, t);
+  });
+  // G. a frase (25 a 27,5)
+  corte('G', 25.0, 27.5);
+  tl.to('#G .g1 .ch', { opacity: 1, duration: .01, stagger: .045 }, 25.1)
+    .fromTo('#G .g2 .ch', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, stagger: .045 }, 26.0);
+  // H. campanha em tela cheia, o nome entra (27,5 a 31)
+  corte('H', 27.5, 31.0);
+  tl.fromTo('.h-foto', { scale: 1.14 }, { scale: 1, duration: 3.5, ease: 'none' }, 27.5)
+    .fromTo('.h-nome .ch', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, stagger: .07 }, 28.0)
+    .from('.h-leg', { opacity: 0, duration: .5 }, 29.0);
+  // I. quatro pares e o site no celular (31 a 34)
+  corte('I', 31.0, 34.0);
+  tl.from('.card', { opacity: 0, y: 220, rotation: 0, duration: .7, stagger: .1, ease: 'power3.out' }, 31.0)
+    .from('.i-fone', { x: 600, rotation: 20, duration: .8, ease: 'power3.out' }, 31.5)
+    .to('.i-fone', { y: -26, duration: 1.7, ease: 'sine.inOut' }, 32.3);
+  // J. o site no celular (34 a 37)
+  corte('J', 34.0, 37.0);
+  tl.from('.j-leg', { opacity: 0, y: 20, duration: .5 }, 34.0)
+    .from('.j1', { y: 1300, rotation: -16, duration: .8, ease: 'power3.out' }, 34.0)
+    .from('.j2', { y: 1300, rotation: 14, duration: .8, ease: 'power3.out' }, 34.15)
+    .to('.j1', { y: -30, duration: 2.1, ease: 'sine.inOut' }, 34.85)
+    .to('.j2', { y: 24, duration: 2.1, ease: 'sine.inOut' }, 34.9);
+  // K. cartão final (37 a 41,5); o nome pulsa no golpe final da música, em 40
+  corte('K', 37.0, null);
+  tl.from('.k1', { x: -300, y: -300, rotation: 120, opacity: 0, duration: 1.1, ease: 'power3.out' }, 37.0)
+    .from('.k2', { x: 300, y: 300, rotation: -70, opacity: 0, duration: 1.1, ease: 'power3.out' }, 37.1)
+    .from('.k-nome, .k-sub, .k-assin, .k-legal', { opacity: 0, y: 26, duration: .7, stagger: .12 }, 37.5)
+    .to('.k-nome', { scale: 1.045, duration: .1, ease: 'power2.out' }, 40.0)
+    .to('.k-nome', { scale: 1, duration: .55, ease: 'back.out(3)' }, 40.1);
 }
 window.FILME = { dur: DUR, seek: async t => { tl.seek(t, false); await trocaQuadros(t); } };
 window.PRONTO = document.fonts.ready.then(() => new Promise(r => setTimeout(r, 300))).then(monta);
