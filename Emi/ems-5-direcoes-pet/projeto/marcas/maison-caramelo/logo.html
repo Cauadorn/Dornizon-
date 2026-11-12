@@ -1,0 +1,22 @@
+<!doctype html>
+<!-- Maison Caramelo · logo (direção 02, clube de grife). Referência que a Emi escolheu: 3 do quadro (referencias/maison-caramelo),
+     o galgo gravado num medalhão oval em relevo, tom sobre tom no vinho. Aqui o retrato é de um vira-lata caramelo
+     (dá sentido ao nome: o caramelo como brasão de família), gerado na IA (gerados/3-relevo-simples.png) e vetorizado (emblema.svg).
+     Nome em Cormorant Garamond, caixa alta espaçada, centrado no eixo do medalhão.
+     ?fundo=&tinta= (chapado) · ?w=&h=&escala=&dx=&dy= · servidor http (mask-image) -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Cormorant; src: url(../../fonts/CormorantGaramond-var.woff2); font-weight: 300 700; }
+html, body { margin: 0; }
+.palco { position: relative; overflow: hidden; background: var(--fundo); }
+.logo { position: absolute; left: 50%; top: 50%; width: 520px; height: 790px; transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) scale(var(--escala, 1)); }
+.emb { position: absolute; left: 50%; top: 0; width: 520px; height: 714px; margin-left: -260px; background: var(--tinta);
+  -webkit-mask: url(emblema.svg) center / contain no-repeat; mask: url(emblema.svg) center / contain no-repeat; }
+.nome { position: absolute; left: 50%; top: 756px; transform: translateX(-50%); font: 600 34px/1 Cormorant; letter-spacing: .3em; padding-left: .3em; color: var(--tinta); white-space: nowrap; }
+</style></head><body>
+<div class="palco"><div class="logo"><div class="emb"></div><div class="nome">MAISON CARAMELO</div></div></div>
+<script>
+const q = new URLSearchParams(location.search), s = document.documentElement.style;
+s.setProperty('--fundo', q.get('fundo') || '#4A1D22'); s.setProperty('--tinta', q.get('tinta') || '#E7CFA8');
+const W = +(q.get('w') || 1080), H = +(q.get('h') || 1350), pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px';
+for (const k of ['escala', 'dx', 'dy']) if (q.get(k)) s.setProperty('--' + k, q.get(k) + (k === 'escala' ? '' : 'px'));
+</script></body></html>
