@@ -89,8 +89,8 @@ function lamina(k, html, fundo, grao = 'grao') {
 /* ================= 2 · pesquisa — diagramação da ref 8 (agenda) ================= */
 const PAUTA0 = 150, PASSO = 108;
 const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:700px;mix-blend-mode:multiply;opacity:.32"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:500px;mix-blend-mode:multiply;opacity:.22"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:700px;mix-blend-mode:multiply;opacity:.6"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:500px;mix-blend-mode:multiply;opacity:.4"></div>
       <div class="abs" style="left:176px;top:0;bottom:0;width:2px;background:rgba(91,33,108,.28)"></div>
       <div class="abs" style="inset:0;background:repeating-linear-gradient(to bottom, rgba(91,33,108,.24) 0 2px, transparent 2px ${PASSO}px);background-position:0 ${PAUTA0}px"></div>
       <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(91,33,108,.10))"></div>`;
@@ -101,12 +101,12 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
   lamina(1, `
     <div class="abs" style="left:0;right:0;top:92px;text-align:center;font-family:var(--sans);font-size:24px;color:var(--tinta)">itsemsdesign <b style="font-weight:600">| álbum de figurinhas</b></div>
     ${linhas}
-    ${pasta(206, 330, 150, -6, css('violeta'))}
-    ${cursor(316, 398, 52)}
-    <div class="abs" style="right:90px;top:404px;text-align:left;font-family:var(--sans);font-weight:500;font-size:46px;line-height:1.02;color:var(--tinta);letter-spacing:-.015em">pra achar referência<br>sem depender do</div>
-    <div class="g" id="alg" style="left:196px;top:548px;font-size:236px;color:var(--violeta)">algoritmo</div>
-    ${estrela({ x: 920, y: 520, tam: 84, r: 14 })}
-    ${estrela({ x: 186, y: 740, tam: 70, r: -10 })}
+    ${pasta(206, 236, 150, -6, css('violeta'))}
+    ${cursor(316, 304, 52)}
+    <div class="abs" style="right:90px;top:326px;text-align:left;font-family:var(--sans);font-weight:500;font-size:46px;line-height:1.02;color:var(--tinta);letter-spacing:-.015em">pra achar referência<br>sem depender do</div>
+    <div class="g" id="alg" style="left:196px;top:470px;font-size:236px;color:var(--violeta)">algoritmo</div>
+    ${estrela({ x: 920, y: 442, tam: 84, r: 14 })}
+    ${estrela({ x: 186, y: 662, tam: 70, r: -10 })}
     <div class="barra" style="left:360px;right:0;top:850px;background:var(--lavanda-2)">
       <div class="fio" style="background:var(--violeta)"></div>
       <div><span class="nome" style="color:var(--violeta)">${s1.nome}</span><span class="pra" style="color:var(--tinta)">${s1.pra}</span></div></div>
