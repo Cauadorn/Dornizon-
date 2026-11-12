@@ -1,72 +1,81 @@
 <!doctype html>
-<!-- pelo solto · logo v2 (a v1 de papel recortado foi reprovada: "quero mais refinado e arredondado, bem vintage, siga as
-     referências; o banho e tosa embaixo totalmente desalinhado, péssimo").
-     Referências (referencias/pelo-solto): 2 Haley Sue (serifa anos 70 macia, paleta), 3 Moon Gazer (duas cores, contorno e
-     sombra café, brilhos, subtítulo espaçado embaixo), 20 The Barking Barber (o bicho ao lado do nome, letras dançando de leve).
-     Tudo num eixo só: Pelo, Solto e BANHO & TOSA centralizados na mesma linha vertical; o subtítulo tem exatamente a largura
-     de "Solto" (textLength), e o poodle fica centrado na altura do bloco.
-     ?letra=fraunces (serifa macia, padrão) | ?letra=leckerli (script, Moon Gazer) · ?fundo=&pelo=&solto=&tinta= · ?w=&h=&escala= -->
+<!-- pelo solto · logo v3. Histórico:
+     - v1, papel recortado, reprovada: "quero mais refinado e arredondado, bem vintage; o banho e tosa desalinhado";
+     - v2, A: serifa macia com o poodle ao lado (logo-v2-poodle.html): "a A tá melhor, mas ainda tá com cara de IA".
+       O que dava cara de IA: o poodle de clip-art gerado, os brilhos genéricos e tudo em bloco centralizado.
+     Na v3 sai o clip-art e a marca vira lettering de verdade, como o Haley Sue (2):
+       - "Pelo" e "Solto" escalonados e encaixados (Solto entra por baixo, deslocado para a direita);
+       - o "o" de "Pelo" vira um pompom de poodle tosado (borda fofinha em ondas, miolo redondo): o cachorro está na letra;
+       - flores de seis pétalas do Haley Sue no lugar dos brilhos;
+       - contorno e sombra café do Moon Gazer (3), mantidos porque ela gostou;
+       - BANHO & TOSA pequeno embaixo de "Solto", com a largura exata dele (a regra que resolveu o desalinhamento da v1).
+     ?fundo=&pelo=&solto=&tinta=&sub= · ?w=&h=&escala=&dx=&dy= -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: Fraunces; src: url(../../fonts/Fraunces.woff2); font-weight: 100 900; }
-@font-face { font-family: Leckerli; src: url(../../fonts/LeckerliOne.woff2); }
 @font-face { font-family: Rubik; src: url(../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
 html, body { margin: 0; }
 .palco { position: relative; width: 1200px; height: 760px; overflow: hidden; background: var(--fundo); }
 svg { position: absolute; left: 0; top: 0; }
-.fraunces .n { font-family: Fraunces; font-weight: 900; font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144; }
-.leckerli .n { font-family: Leckerli; }
+.n { font-family: Fraunces; font-weight: 900; font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144; }
 .sub { font-family: Rubik; font-weight: 600; }
 </style></head><body>
 <div class="palco"><svg id="s" width="1200" height="760" viewBox="0 0 1200 760">
-  <defs><filter id="tinge"><feFlood id="cor-cao" flood-color="#4A3115"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs>
   <g id="logo">
-    <image id="cao" href="poodle-liso.png" filter="url(#tinge)"/>
-    <g id="nome" text-anchor="middle">
-      <!-- sombra (contorno grosso deslocado) e frente (cor + contorno fino) -->
-      <text class="n sh" id="p0" stroke-linejoin="round">Pelo</text>
-      <text class="n" id="p1" stroke-linejoin="round" paint-order="stroke">Pelo</text>
-      <text class="n sh" id="s0" stroke-linejoin="round">Solto</text>
-      <text class="n" id="s1" stroke-linejoin="round" paint-order="stroke">Solto</text>
-      <text class="sub" id="sub" lengthAdjust="spacing">BANHO &amp; TOSA</text>
-    </g>
-    <g id="brilhos"></g>
+    <g id="sombras"></g>
+    <g id="frente"></g>
+    <text class="n" id="medida" font-size="230" fill="none" visibility="hidden">o</text>
   </g>
 </svg></div>
 <script>
-const q = new URLSearchParams(location.search), $ = (i) => document.getElementById(i);
-const C = { fundo: q.get('fundo') || '#F3E2C3', pelo: q.get('pelo') || '#C8472B', solto: q.get('solto') || '#E39B2D', tinta: q.get('tinta') || '#3A2410', cao: q.get('cao') || '#4A3115' };
+const q = new URLSearchParams(location.search), $ = (i) => document.getElementById(i), NS = 'http://www.w3.org/2000/svg';
+const C = { fundo: q.get('fundo') || '#F3E2C3', pelo: q.get('pelo') || '#C8472B', solto: q.get('solto') || '#E39B2D', tinta: q.get('tinta') || '#3A2410', sub: q.get('sub') || q.get('tinta') || '#3A2410', flor: q.get('flor') || '#E39B2D', flor2: q.get('flor2') || q.get('pelo') || '#C8472B' };
 document.querySelector('.palco').style.setProperty('--fundo', C.fundo);
-const letra = q.get('letra') || 'fraunces'; document.body.className = letra;
-$('cor-cao').setAttribute('flood-color', C.cao);
-const T = letra === 'leckerli' ? { fs: 190, l1: 0, l2: 170, sub: 150, sw: 9, sh: 18, dx: 7, dy: 9, ls: 0 } : { fs: 200, l1: 0, l2: 175, sub: 150, sw: 9, sh: 18, dx: 7, dy: 9, ls: -4 };
-const CX = 0;   // eixo do bloco do nome
-for (const [id, y, cor] of [['p', T.l1, C.pelo], ['s', T.l2, C.solto]]) {
-  const sh = $(id + '0'), fr = $(id + '1');
-  for (const e of [sh, fr]) { e.setAttribute('x', CX); e.setAttribute('y', y); e.setAttribute('font-size', T.fs); e.setAttribute('letter-spacing', T.ls); }
-  sh.setAttribute('transform', `translate(${T.dx} ${T.dy})`); sh.setAttribute('fill', C.tinta); sh.setAttribute('stroke', C.tinta); sh.setAttribute('stroke-width', T.sh);
-  fr.setAttribute('fill', cor); fr.setAttribute('stroke', C.tinta); fr.setAttribute('stroke-width', T.sw);
+const FS = 230, SW = 9, SH = 18, DX = 7, DY = 9;
+const el = (tag, at, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (pai || $('frente')).appendChild(e); return e; };
+// pompom: círculo com a borda em ondas (pelo tosado), miolo redondo
+function pompom(cx, cy, R, ondas) {
+  let d = '';
+  for (let i = 0; i <= ondas; i++) {
+    const a0 = (i / ondas) * 2 * Math.PI, a1 = ((i + .5) / ondas) * 2 * Math.PI, a2 = ((i + 1) / ondas) * 2 * Math.PI;
+    const p = (a, r) => `${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
+    if (i === 0) d += `M${p(a0, R * .9)} `;
+    if (i < ondas) d += `Q${p(a1, R * 1.1)} ${p(a2, R * .9)} `;
+  }
+  return d + 'Z';
 }
 document.fonts.ready.then(() => {
-  // subtítulo: exatamente a largura de "Solto", no mesmo eixo
-  const bs = $('s1').getBBox(), sub = $('sub');
-  sub.setAttribute('x', CX); sub.setAttribute('text-anchor', 'middle'); sub.setAttribute('font-size', 30); sub.setAttribute('fill', C.tinta);
-  sub.setAttribute('y', T.l2 + 70); sub.setAttribute('textLength', Math.round(bs.width - 16));
-  // com textLength, posiciona pela esquerda (largura exata de "Solto", 8 px para dentro de cada lado)
-  sub.setAttribute('text-anchor', 'start'); sub.setAttribute('x', bs.x + 8);   // 'start' explícito: o grupo herda 'middle'
-  // poodle: altura do bloco Pelo+Solto, à esquerda, centrado na vertical do bloco
-  const bp = $('p1').getBBox(), topo = bp.y, base = bs.y + bs.height, alt = (base - topo) * 1.02;
-  const cao = $('cao'), ar = 1406 / 1730, cw = alt * ar;
-  cao.setAttribute('height', alt); cao.setAttribute('width', cw);
-  const larguraNome = Math.max(bp.width, bs.width), esq = CX - larguraNome / 2;
-  cao.setAttribute('x', esq - cw - 46); cao.setAttribute('y', topo + (base - topo - alt) / 2);
-  // brilhos de quatro pontas (Moon Gazer): um par em cima à esquerda do "Pelo", um à direita do "Solto"
-  const b = (x, y, r, cor) => `<path d="M${x} ${y - r} Q${x + r * .18} ${y - r * .18} ${x + r} ${y} Q${x + r * .18} ${y + r * .18} ${x} ${y + r} Q${x - r * .18} ${y + r * .18} ${x - r} ${y} Q${x - r * .18} ${y - r * .18} ${x} ${y - r}Z" fill="${cor}"/>`;
-  $('brilhos').innerHTML = b(bp.x - 14, bp.y + 18, 24, C.solto) + b(bp.x + 20, bp.y - 16, 13, C.solto) + b(bs.x + bs.width + 30, bs.y + 22, 20, C.pelo);
-  // centraliza o logo inteiro no palco pela caixa real
+  const X0 = 300, Y0 = 330, DESL = 150, ENTRE = 172;
+  // "Pel" + pompom no lugar do "o"
+  const tPel = (cls) => el('text', { class: 'n', x: X0, y: Y0, 'font-size': FS, 'letter-spacing': -4 }, cls);
+  const tSol = (cls) => el('text', { class: 'n', x: X0 + DESL, y: Y0 + ENTRE, 'font-size': FS, 'letter-spacing': -4 }, cls);
+  const pf = tPel(); pf.textContent = 'Pel';
+  const bPel = pf.getBBox(); $('medida').remove();
+  // o "o" da Fraunces 900 tem ~0,53 do corpo de altura: o pompom fica um pouco maior (fofo)
+  const R = FS * .29, cx = bPel.x + bPel.width + R * .92, cy = Y0 - FS * .255;
+  const dPom = pompom(cx, cy, R, 13), rMiolo = R * .36;
+  const sf = tSol(); sf.textContent = 'Solto';
+  const bSol = sf.getBBox();
+  pf.remove(); sf.remove();
+  // sombras (contorno grosso deslocado), depois a frente
+  const sombra = $('sombras'); sombra.setAttribute('transform', `translate(${DX} ${DY})`);
+  for (const pai of [sombra, $('frente')]) {
+    const eh = pai === sombra, est = eh ? { fill: C.tinta, stroke: C.tinta, 'stroke-width': SH } : { stroke: C.tinta, 'stroke-width': SW, 'paint-order': 'stroke' };
+    const sol = el('text', { class: 'n', x: X0 + DESL, y: Y0 + ENTRE, 'font-size': FS, 'letter-spacing': -4, 'stroke-linejoin': 'round', ...est, ...(eh ? {} : { fill: C.solto }) }, pai); sol.textContent = 'Solto';
+    const pel = el('text', { class: 'n', x: X0, y: Y0, 'font-size': FS, 'letter-spacing': -4, 'stroke-linejoin': 'round', ...est, ...(eh ? {} : { fill: C.pelo }) }, pai); pel.textContent = 'Pel';
+    el('path', { d: dPom + ` M${cx + rMiolo} ${cy} A${rMiolo} ${rMiolo} 0 1 0 ${cx - rMiolo} ${cy} A${rMiolo} ${rMiolo} 0 1 0 ${cx + rMiolo} ${cy}Z`, 'fill-rule': 'evenodd', 'stroke-linejoin': 'round', ...est, ...(eh ? {} : { fill: C.pelo }) }, pai);
+  }
+  // BANHO & TOSA: embaixo de "Solto", com exatamente a largura dele (8 px para dentro de cada lado)
+  el('text', { class: 'sub', x: bSol.x + 8, y: Y0 + ENTRE + 58, 'font-size': 28, fill: C.sub, textLength: Math.round(bSol.width - 16), lengthAdjust: 'spacing' }).textContent = 'BANHO & TOSA';
+  // flores de seis pétalas (Haley Sue)
+  const flor = (x, y, r, cor) => { const g = el('g', { transform: `translate(${x} ${y})` });
+    for (let i = 0; i < 6; i++) el('ellipse', { cx: 0, cy: -r * .55, rx: r * .3, ry: r * .5, fill: cor, transform: `rotate(${i * 60})` }, g);
+    el('circle', { cx: 0, cy: 0, r: r * .22, fill: C.fundo }, g); };
+  flor(cx + R * 1.55, cy - R * 1.25, 30, C.flor);
+  flor(bPel.x + 62, Y0 + ENTRE - 34, 24, C.flor2);   // embaixo do "P", no vão à esquerda de "Solto" (equilibra o escalonado)
+  // centraliza pela caixa real
   const L = $('logo'), bb = L.getBBox(), W = +(q.get('w') || 1200), H = +(q.get('h') || 760), k = +(q.get('escala') || 1);
   const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px';
   $('s').setAttribute('width', W); $('s').setAttribute('height', H); $('s').setAttribute('viewBox', `0 0 ${W} ${H}`);
   L.setAttribute('transform', `translate(${W / 2 + (+(q.get('dx') || 0))} ${H / 2 + (+(q.get('dy') || 0))}) scale(${k}) translate(${-(bb.x + bb.width / 2)} ${-(bb.y + bb.height / 2)})`);
-  document.body.dataset.pronto = 1;
 });
 </script></body></html>

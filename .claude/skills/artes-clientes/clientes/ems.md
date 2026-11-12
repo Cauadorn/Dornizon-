@@ -145,6 +145,18 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - Na MIAU.LAB estava 10 px fora.
   - O dx positivo leva a tinta para a direita: para tirar folga da esquerda, dx diminui.
   - Depois, centralizado na moldura, ela achou que "foi demais" e pediu "um pouquinho de nada de volta". Ficou 3 px para a direita e para cima. O ponto certo, para o olho dela, fica entre a moldura e a área verde, um pouco mais perto da moldura.
+- **Banho e tosa (direção 03): pelo solto.**
+  - Pesquisa: `referencias/pelo-solto`. Ela escolheu 2 Haley Sue, 3 Moon Gazer e "principalmente" 20 Barking Barber.
+  - v1, papel recortado (approxPolyDP): "quero mais refinado e arredondado, bem vintage". O BANHO & TOSA estava desalinhado: "péssimo".
+  - v2, serifa macia com o poodle gerado ao lado: "a A tá melhor, mas tá com cara de IA". A cara de IA vem de:
+    - **o bicho de clip-art gerado ao lado do nome;**
+    - os brilhos genéricos;
+    - o bloco todo centralizado.
+  - v3 tira o clip-art e vira lettering:
+    - "Pelo" e "Solto" escalonados e encaixados;
+    - o "o" vira um pompom de poodle tosado (o bicho fica dentro da letra, como a pata no "O" do TOTÓ);
+    - flores do Haley Sue;
+    - o subtítulo com a largura exata de "Solto" (`textLength`).
 - **Run club (direção 04): virou MATILHA running club.**
   - A identidade "AU" (número de peito na Graduate) foi reprovada: "feia, xoxa".
   - Pesquisa: `referencias/au-running-club/identidade`. Ela escolheu misturar 1 (RUN CLUB), 7 (TRC) e 18 (Wild Pup), lembrando que é corrida **com** cachorro.
