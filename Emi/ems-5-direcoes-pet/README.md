@@ -43,7 +43,7 @@ Respiro `ivory` de 18px, raio 22, sangria de 30px em quem encosta na borda. Coor
 | 4 | 03 retrô *setentinha* | `wine` | lhasa no tapete · pote e margarida · poodle no secador | pelo solto · Shrikhand |
 | 5 | 04 modo *atleta* | `creative-purple` | border collie e frisbee · peitoral na pista · corredor e vizsla | AU running club · Graduate |
 | 6 | 05 ciência *fofa* | `ameixa` | gato tigrado · frascos e ração · filhote no veterinário | miau.lab · Space Mono |
-| 7 | Chamada em enquete: "qual delas tem a cara da sua *marca*?" centralizado, cartão de enquete à esquerda com o gato apertando uma opção com a pata (recorte por cima do cartão), "comenta o número da sua favorita" e dm à direita, assinatura embaixo | fundo ameixa da foto | cham-2 (+ recorte) | — |
+| 7 | Chamada em enquete: "qual delas tem a cara da sua *marca*?" centralizado, cartão de enquete à esquerda com o gato apertando uma opção com a pata (recorte por cima do cartão), "comenta o número da sua favorita" e dm à direita (a orelha do gato encosta na pílula), assinatura embaixo; textura de estrelas em retícula na parede, como na capa, e grão mais forte | fundo ameixa da foto | cham-2 (+ recorte) | — |
 
 Legenda pronta em `legenda.md`.
 

@@ -118,4 +118,12 @@ const DIRECOES = [
 const CAPA = { foto: { src: 'capa-2', px: .5, py: .5 }, recorte: 'capa-2-gato' };
 
 // Chamada: enquete; o gato (fundo ameixa) levanta a pata até a opção marcada.
-const CHAMADA = { foto: { src: 'cham-2', px: .85, py: .95, zoom: 1.25 }, recorte: 'cham-2-gato', marcada: 1 };
+const CHAMADA = {
+  foto: { src: 'cham-2', px: .85, py: .95, zoom: 1.25 }, recorte: 'cham-2-gato', marcada: 1,
+  // estrelas em retícula na parede (textura), mesmo grafismo das estrelas da parede da capa
+  estrelas: [
+    { cx: 960, cy: 720, R: 270, passo: 12, rmax: 3.6, uniforme: true, opacidade: .55, rot: -14 },
+    { cx: 120, cy: 160, R: 190, passo: 12, rmax: 3.6, uniforme: true, opacidade: .5, rot: 10 },
+    { cx: 150, cy: 1010, R: 210, passo: 12, rmax: 3.6, uniforme: true, opacidade: .45, rot: -24 },
+  ],
+};

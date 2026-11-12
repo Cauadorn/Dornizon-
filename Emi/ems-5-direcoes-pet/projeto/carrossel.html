@@ -48,7 +48,7 @@ function selecionar(slide, x, y, w, h, kx, ky) {
 }
 
 // Estrela de 5 pontas em retícula (HalftoneStar): pontos que diminuem do centro para a borda.
-function estrela({ cx, cy, R, passo = 15, cor, opacidade = .45, rot = -18, rmax = 6.2 }) {
+function estrela({ cx, cy, R, passo = 15, cor, opacidade = .45, rot = -18, rmax = 6.2, uniforme = false }) {
   const pts = [];
   for (let i = 0; i < 10; i++) {
     const a = (rot - 90 + i * 36) * Math.PI / 180, r = i % 2 ? R * .45 : R;
@@ -60,7 +60,7 @@ function estrela({ cx, cy, R, passo = 15, cor, opacidade = .45, rot = -18, rmax 
   let dots = '';
   for (let y = -R; y <= R; y += passo) for (let x = -R; x <= R; x += passo) {
     if (!dentro(x, y)) continue;
-    const d = Math.hypot(x, y) / R, r = Math.max(.6, rmax * (1 - d * .95));
+    const d = Math.hypot(x, y) / R, r = uniforme ? rmax : Math.max(.6, rmax * (1 - d * .95));
     dots += `<circle cx="${(x + R).toFixed(1)}" cy="${(y + R).toFixed(1)}" r="${r.toFixed(2)}"/>`;
   }
   const s = el('div', 'estrela');
@@ -162,6 +162,10 @@ function capa() {
 function chamada() {
   const s = el('section', 'slide chamada'); s.dataset.nome = 'lamina-07';
   cheia(s, CHAMADA.foto, W, H);
+  // textura: estrelas em retícula "pintadas" na parede (como as da capa), por trás do gato e da enquete
+  const parede = el('div', 'parede');
+  for (const e of CHAMADA.estrelas) parede.appendChild(estrela({ cor: 'var(--lavanda)', ...e }));
+  s.appendChild(parede);
   s.insertAdjacentHTML('beforeend', `
     <div class="grande">qual delas tem a<br>cara da sua <em>marca</em>?</div>
     <div class="enquete">
@@ -175,7 +179,7 @@ function chamada() {
       <div class="dm">ou me chama na dm${CURSOR}</div></div>
     <img class="selo" src="img/selo-ems.png" alt="selo ems">
     <div class="assina">@itsemsdesign<br><span>emsdesign.com.br</span></div>`);
-  s.appendChild(el('div', 'grain claro'));
+  s.appendChild(el('div', 'grain claro forte'));
   return s;
 }
 

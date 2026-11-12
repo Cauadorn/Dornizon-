@@ -38,6 +38,8 @@
   - "qual delas tem a cara da sua *marca*?" e cartão de enquete com as 5 opções.
   - O gato levanta a pata e "aperta" uma opção (recorte por cima do cartão).
   - **Composição equilibrada**: título centralizado em cima, cartão à esquerda, "comenta o número da sua favorita" e a dm à direita acima do gato, assinatura embaixo à esquerda. A Emi reprovou "texto empilhado de um lado só".
+  - Textura: estrelas em retícula de pontos iguais "pintadas" na parede (o mesmo grafismo da parede da capa), por trás do gato e da enquete, e grão mais forte. A Emi achou que faltava textura no fundo liso.
+  - A orelha do gato encostando na pílula da dm ficou "mais bonito": deixar elementos se tocarem dá vida à composição.
   - A v4, com texto + gato + pílula, foi reprovada: "muito xoxo, sem graça".
 - **Regra da Emi: "os posts precisam ser diferentes, senão eu postava a mesma coisa todo dia".**
   - Cada post do Instagram da EMS tem diagramação própria.

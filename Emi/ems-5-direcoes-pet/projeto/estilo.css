@@ -140,6 +140,8 @@ img.foto { position: absolute; display: block; }
 /* ---------- chamada: enquete ---------- */
 .chamada { background: var(--plum); }
 .chamada img.recorte { z-index: 9; }
+.chamada .parede { position: absolute; inset: 0; z-index: 3; mix-blend-mode: screen; }
+.grain.claro.forte { opacity: .16; }
 .chamada .grande { position: absolute; left: 0; right: 0; top: 70px; z-index: 8; text-align: center; font: 400 112px/.92 var(--serif); letter-spacing: -.02em; color: var(--ivory); }
 .chamada .grande em { color: var(--manteiga); }
 .chamada .enquete { position: absolute; left: 56px; top: 452px; width: 430px; z-index: 8; background: var(--ivory); border-radius: 28px;
@@ -155,7 +157,7 @@ img.foto { position: absolute; display: block; }
 .chamada .enquete .op.marcada { background: var(--pink); color: var(--ivory); }
 .chamada .enquete .op.marcada .n { background: var(--ivory); color: var(--pink); }
 .chamada .enquete .op.marcada .pts i { border-color: var(--pink); }
-.chamada .direita { position: absolute; right: 56px; top: 300px; z-index: 8; display: flex; flex-direction: column; align-items: flex-end; gap: 18px; text-align: right; }
+.chamada .direita { position: absolute; right: 56px; top: 330px; z-index: 8; display: flex; flex-direction: column; align-items: flex-end; gap: 22px; text-align: right; }
 .chamada .comenta { font: 600 34px/1.12 var(--sans); color: var(--ivory); }
 .chamada .dm { position: relative; z-index: 8; font: 500 30px/1 var(--sans); padding: 15px 24px 16px; border-radius: 999px;
   background: var(--pink); color: var(--ivory); box-shadow: var(--shadow-sticker); }
