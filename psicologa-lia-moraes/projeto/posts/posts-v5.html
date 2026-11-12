@@ -1,5 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Anton&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Nothing+You+Could+Do&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fraunces:opsz,wght,SOFT@9..144,100..900,0..100&family=Instrument+Serif:ital@0;1&family=Anton&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=Nothing+You+Could+Do&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=block" rel="stylesheet">
 <style>
 :root{--c:#2742C2;--creme:#F5EEE3;--p:#F3C6A8;--tinta:#1C1D3A}
 *{margin:0;box-sizing:border-box}
@@ -57,6 +57,29 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
 /* ---------- rabiscos ---------- */
 .rab{position:absolute;inset:0;width:1080px;height:1350px;z-index:5}
 </style></head><body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="adesivo" x="-8%" y="-25%" width="116%" height="150%">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="15" result="d"/>
+    <feGaussianBlur in="d" stdDeviation="5" result="b"/>
+    <feComponentTransfer in="b" result="t"><feFuncA type="linear" slope="9" intercept="-3.6"/></feComponentTransfer>
+    <feFlood flood-color="#F3C6A8"/><feComposite in2="t" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</svg>
+<style>
+.pf{font-family:'Playfair Display';font-weight:900;letter-spacing:-.035em}
+.fr{font-family:Fraunces;font-weight:900;font-variation-settings:"SOFT" 100,"opsz" 144;letter-spacing:-.03em}
+.riscos{position:absolute;inset:0;width:1080px;height:1350px;z-index:55;pointer-events:none}
+.bilhete-recortado{position:relative;background:#2742C2 url(../fotos-pinterest/colagem/papel-fibra.jpg) center/700px;background-blend-mode:multiply;color:#F5EEE3;
+ -webkit-mask:radial-gradient(circle 19px at 0 50%,#0000 96%,#000) 0 0/51% 100% no-repeat,radial-gradient(circle 19px at 100% 50%,#0000 96%,#000) 100% 0/51% 100% no-repeat}
+.sublinha{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:10px}
+.rasc{display:inline-block;white-space:nowrap;position:relative;background:#FBF7F0;color:#1C1D3A;font:500 30px/1 Poppins;letter-spacing:-.01em;padding:12px 22px 14px;border-radius:14px;box-shadow:0 6px 14px rgba(40,30,20,.12)}
+.rasc::after{content:"";position:absolute;left:10px;right:10px;top:46%;height:16px;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10C40 5 75 12 118 8S196 4 237 9' fill='none' stroke='%23B8553A' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.balao-fala{position:relative;background:#B8553A;color:#F5EEE3;border-radius:34px}
+.balao-fala::after{content:"";position:absolute;left:46px;bottom:-30px;width:44px;height:38px;background:#B8553A;clip-path:polygon(0 0,100% 0,8% 100%)}
+.caixa-tracejada{position:relative;background:#B8553A;color:#F5EEE3;outline:2.5px dashed rgba(245,238,227,.85);outline-offset:-11px}
+</style>
 
 <!-- ===== NOVOS (refs: linho, tipo condensado com tinta, objetos, lacre) ===== -->
 <svg width="0" height="0" style="position:absolute">
@@ -79,16 +102,34 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   clip-path:polygon(50% 0%,61% 7%,75% 3%,81% 16%,95% 19%,93% 33%,100% 44%,93% 56%,97% 70%,84% 75%,79% 89%,65% 88%,55% 99%,45% 91%,31% 97%,24% 84%,10% 82%,11% 67%,1% 56%,7% 44%,2% 30%,15% 24%,19% 10%,33% 11%,42% 1%)}
 </style>
 
-<!-- N1 · APRESENTAÇÃO (foto da Lia, nome grande na parede terracota) -->
-<div class="art" id="p1" style="color:#F5EEE3">
-  <img class="f" src="../ia/lia-p1.jpg">
-  <div class="cab topo" style="color:#F5EEE3"><span>@psi.liamoraes</span><span>CRP 00/00000</span></div>
-  <div class="abs" style="left:0;right:0;top:150px;text-align:center">
-    <div style="font:500 22px/1 Poppins;letter-spacing:.42em;margin-right:-.42em">PSICÓLOGA CLÍNICA</div>
-    <div class="is" style="font-size:172px;line-height:.9;margin-top:18px;letter-spacing:-.02em">Lia <i>Moraes</i></div>
-    <div class="js" style="font-size:29px;line-height:1.32;margin-top:26px">Escuto adultos que cansaram<br>de <b>dar conta de tudo sozinhos.</b></div>
+<!-- N1 · APRESENTAÇÃO (nome gigante atrás da cabeça, bilhete recortado, selo girando) -->
+<div class="art" id="p1" style="color:#F5EEE3;background:#9a8679">
+  <img class="abs" src="../ia/filme-lia/poltrona-a.jpg" style="left:-171px;top:0;width:1386px">
+  <div class="cab topo"><span>@psi.liamoraes</span><span></span></div>
+  <div class="abs" style="left:0;right:0;top:96px;text-align:center;z-index:2">
+    <div class="is" style="display:inline-block;font-size:66px;line-height:1;transform:translateX(118px)"><i>muito prazer, eu sou a</i></div>
+    <div class="pf" style="font-size:470px;line-height:.86;margin-top:-6px;text-shadow:0 4px 40px rgba(40,25,15,.10)">Lia</div>
   </div>
-  <div class="grao" style="opacity:.1"></div>
+  <!-- a cabeça da Lia passa na frente do nome -->
+  <img class="abs" src="../ia/filme-lia/poltrona-a-recorte.png" style="left:-171px;top:0;width:1386px;z-index:3">
+  <div class="abs" style="left:574px;top:776px;z-index:6;transform:rotate(-5deg);filter:drop-shadow(0 10px 14px rgba(20,15,40,.28)) drop-shadow(0 2px 3px rgba(20,15,40,.2))">
+    <div class="bilhete-recortado" style="padding:20px 54px 24px;text-align:center">
+      <div class="js" style="font-size:31px;font-weight:300;line-height:1.1">Lia Moraes,</div>
+      <div class="js" style="font-size:38px;font-weight:600;line-height:1.1">psicóloga clínica.</div>
+    </div>
+  </div>
+  <div class="abs" style="left:62px;top:905px;width:236px;height:236px;z-index:6;transform:rotate(-14deg);filter:drop-shadow(0 8px 12px rgba(20,15,40,.25))">
+    <svg viewBox="0 0 236 236" width="236" height="236" style="position:absolute;inset:0">
+      <defs><path id="giro1" d="M118,118 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
+      <circle cx="118" cy="118" r="117" fill="#F3C6A8"/>
+      <circle cx="118" cy="118" r="62" fill="none" stroke="#2742C2" stroke-width="1.6"/>
+      <text font-family="Poppins" font-weight="500" font-size="17" fill="#2742C2" textLength="548" lengthAdjust="spacing"><textPath href="#giro1">TERAPIA PARA ADULTOS • ONLINE E PRESENCIAL •</textPath></text>
+    </svg>
+    <img src="../logo/final/lia-moraes-monograma.svg" style="position:absolute;left:83px;top:85px;width:70px">
+  </div>
+  <div class="abs js" style="right:46px;top:112px;writing-mode:vertical-rl;font-size:20px;line-height:1;z-index:6">Escuto adultos que cansaram de <b>dar conta de tudo sozinhos.</b></div>
+  <img class="riscos" src="../texturas/riscos-p1.png" style="opacity:.75">
+  <div class="grao" style="opacity:.12"></div>
 </div>
 
 
@@ -174,19 +215,27 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <div class="grao" style="opacity:.12"></div>
 </div>
 
-<!-- N5 · PRIMEIRA SESSÃO (foto da Lia na mesa; título na parede clara) -->
-<div class="art" id="p5" style="color:#1C1D3A">
-  <img class="f" src="../ia/lia-p5.jpg">
-  <div class="cab topo" style="color:#1C1D3A"><span><b>Lia Moraes</b> // Psicóloga</span><span></span></div>
-  <div class="abs" style="left:64px;top:150px;width:860px">
-    <div class="js" style="font-size:36px;line-height:1.22">você não precisa chegar<br>na primeira sessão</div>
-    <div class="is" style="font-size:140px;line-height:.9;margin-top:14px;color:#B8553A">já sabendo<br>o que <i>dizer.</i></div>
+<!-- N5 · PRIMEIRA SESSÃO (rascunhos riscados + título adesivo) -->
+<div class="art" id="p5" style="color:#1C1D3A;background:#d8cbbd">
+  <img class="abs" src="../ia/filme-lia/mesa-a.jpg" style="left:-10px;top:-10px;width:1100px">
+  <div class="abs" style="left:64px;top:118px;width:470px;z-index:4">
+    <div class="mao" style="font-size:36px;line-height:1;color:#1C1D3A;margin-left:6px">ensaiando o que dizer...</div>
+    <div style="margin-top:30px"><span class="rasc" style="transform:rotate(-2deg)">então… é que…</span></div>
+    <div style="margin-top:16px;margin-left:34px"><span class="rasc" style="transform:rotate(1.5deg)">acho que é bobagem, mas</span></div>
+    <div style="margin-top:16px;margin-left:8px"><span class="rasc" style="transform:rotate(-1deg)">nem sei por onde começar</span></div>
   </div>
-  <div class="abs js" style="left:64px;top:620px;width:330px;font-size:27px;line-height:1.38">Muita gente trava pensando por onde começar. Não precisa de roteiro: <b>a gente começa pelo que está aí.</b></div>
-  <div class="abs js" style="left:64px;top:860px;width:330px;font-size:27px;line-height:1.38">Organizar o resto <b style="color:#B8553A">é trabalho meu.</b></div>
-  <div class="abs" style="left:64px;top:990px;background:#B8553A;color:#F5EEE3;border-radius:999px;padding:16px 28px 18px;font:500 24px/1 Poppins;box-shadow:0 6px 10px rgba(60,20,10,.18)">agende pelo link da bio</div>
-  <div class="cab rodape" style="color:#1C1D3A"><span>@psi.liamoraes · CRP 00/00000</span><span></span></div>
-  <div class="grao" style="opacity:.1"></div>
+  <div class="abs" style="left:0;right:0;top:690px;text-align:center;z-index:5">
+    <div style="display:inline-block;background:#2742C2;color:#F5EEE3;font:400 34px/1 Poppins;letter-spacing:-.01em;padding:12px 24px 15px;transform:rotate(-1.5deg)">na primeira sessão, você <b style="font-weight:600">não precisa</b></div>
+    <div class="fr" style="font-size:136px;line-height:.9;color:#2742C2;margin-top:18px;filter:url(#adesivo) drop-shadow(0 8px 12px rgba(40,30,20,.18))">chegar sabendo<br>o que dizer.</div>
+    <div style="display:inline-block;margin-top:-6px;transform:rotate(-2.5deg) translateX(120px);filter:drop-shadow(0 8px 12px rgba(60,25,10,.2))">
+      <div class="balao-fala" style="padding:24px 36px 27px;text-align:left">
+        <div class="js" style="font-size:29px;line-height:1.3">Não precisa de roteiro:<br><b>a gente começa pelo que estiver aí.</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="abs js" style="left:0;right:0;bottom:46px;text-align:center;font-size:22px;z-index:6"><b>@psi.liamoraes</b> | psicóloga clínica</div>
+  <img class="riscos" src="../texturas/riscos-p5.png" style="opacity:.6">
+  <div class="grao" style="opacity:.12"></div>
 </div>
 
 
