@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- pelo solto · logo v2 (a v1 de papel recortado foi reprovada: "quero mais refinado e arredondado, bem vintage, siga as
+     referências; o banho e tosa embaixo totalmente desalinhado, péssimo").
+     Referências (referencias/pelo-solto): 2 Haley Sue (serifa anos 70 macia, paleta), 3 Moon Gazer (duas cores, contorno e
+     sombra café, brilhos, subtítulo espaçado embaixo), 20 The Barking Barber (o bicho ao lado do nome, letras dançando de leve).
+     Tudo num eixo só: Pelo, Solto e BANHO & TOSA centralizados na mesma linha vertical; o subtítulo tem exatamente a largura
+     de "Solto" (textLength), e o poodle fica centrado na altura do bloco.
+     ?letra=fraunces (serifa macia, padrão) | ?letra=leckerli (script, Moon Gazer) · ?fundo=&pelo=&solto=&tinta= · ?w=&h=&escala= -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Fraunces; src: url(../../fonts/Fraunces.woff2); font-weight: 100 900; }
+@font-face { font-family: Leckerli; src: url(../../fonts/LeckerliOne.woff2); }
+@font-face { font-family: Rubik; src: url(../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
+html, body { margin: 0; }
+.palco { position: relative; width: 1200px; height: 760px; overflow: hidden; background: var(--fundo); }
+svg { position: absolute; left: 0; top: 0; }
+.fraunces .n { font-family: Fraunces; font-weight: 900; font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144; }
+.leckerli .n { font-family: Leckerli; }
+.sub { font-family: Rubik; font-weight: 600; }
+</style></head><body>
+<div class="palco"><svg id="s" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs><filter id="tinge"><feFlood id="cor-cao" flood-color="#4A3115"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs>
+  <g id="logo">
+    <image id="cao" href="poodle-liso.png" filter="url(#tinge)"/>
+    <g id="nome" text-anchor="middle">
+      <!-- sombra (contorno grosso deslocado) e frente (cor + contorno fino) -->
+      <text class="n sh" id="p0" stroke-linejoin="round">Pelo</text>
+      <text class="n" id="p1" stroke-linejoin="round" paint-order="stroke">Pelo</text>
+      <text class="n sh" id="s0" stroke-linejoin="round">Solto</text>
+      <text class="n" id="s1" stroke-linejoin="round" paint-order="stroke">Solto</text>
+      <text class="sub" id="sub" lengthAdjust="spacing">BANHO &amp; TOSA</text>
+    </g>
+    <g id="brilhos"></g>
+  </g>
+</svg></div>
+<script>
+const q = new URLSearchParams(location.search), $ = (i) => document.getElementById(i);
+const C = { fundo: q.get('fundo') || '#F3E2C3', pelo: q.get('pelo') || '#C8472B', solto: q.get('solto') || '#E39B2D', tinta: q.get('tinta') || '#3A2410', cao: q.get('cao') || '#4A3115' };
+document.querySelector('.palco').style.setProperty('--fundo', C.fundo);
+const letra = q.get('letra') || 'fraunces'; document.body.className = letra;
+$('cor-cao').setAttribute('flood-color', C.cao);
+const T = letra === 'leckerli' ? { fs: 190, l1: 0, l2: 170, sub: 150, sw: 9, sh: 18, dx: 7, dy: 9, ls: 0 } : { fs: 200, l1: 0, l2: 175, sub: 150, sw: 9, sh: 18, dx: 7, dy: 9, ls: -4 };
+const CX = 0;   // eixo do bloco do nome
+for (const [id, y, cor] of [['p', T.l1, C.pelo], ['s', T.l2, C.solto]]) {
+  const sh = $(id + '0'), fr = $(id + '1');
+  for (const e of [sh, fr]) { e.setAttribute('x', CX); e.setAttribute('y', y); e.setAttribute('font-size', T.fs); e.setAttribute('letter-spacing', T.ls); }
+  sh.setAttribute('transform', `translate(${T.dx} ${T.dy})`); sh.setAttribute('fill', C.tinta); sh.setAttribute('stroke', C.tinta); sh.setAttribute('stroke-width', T.sh);
+  fr.setAttribute('fill', cor); fr.setAttribute('stroke', C.tinta); fr.setAttribute('stroke-width', T.sw);
+}
+document.fonts.ready.then(() => {
+  // subtítulo: exatamente a largura de "Solto", no mesmo eixo
+  const bs = $('s1').getBBox(), sub = $('sub');
+  sub.setAttribute('x', CX); sub.setAttribute('text-anchor', 'middle'); sub.setAttribute('font-size', 30); sub.setAttribute('fill', C.tinta);
+  sub.setAttribute('y', T.l2 + 70); sub.setAttribute('textLength', Math.round(bs.width - 16));
+  // com textLength, posiciona pela esquerda (largura exata de "Solto", 8 px para dentro de cada lado)
+  sub.setAttribute('text-anchor', 'start'); sub.setAttribute('x', bs.x + 8);   // 'start' explícito: o grupo herda 'middle'
+  // poodle: altura do bloco Pelo+Solto, à esquerda, centrado na vertical do bloco
+  const bp = $('p1').getBBox(), topo = bp.y, base = bs.y + bs.height, alt = (base - topo) * 1.02;
+  const cao = $('cao'), ar = 1406 / 1730, cw = alt * ar;
+  cao.setAttribute('height', alt); cao.setAttribute('width', cw);
+  const larguraNome = Math.max(bp.width, bs.width), esq = CX - larguraNome / 2;
+  cao.setAttribute('x', esq - cw - 46); cao.setAttribute('y', topo + (base - topo - alt) / 2);
+  // brilhos de quatro pontas (Moon Gazer): um par em cima à esquerda do "Pelo", um à direita do "Solto"
+  const b = (x, y, r, cor) => `<path d="M${x} ${y - r} Q${x + r * .18} ${y - r * .18} ${x + r} ${y} Q${x + r * .18} ${y + r * .18} ${x} ${y + r} Q${x - r * .18} ${y + r * .18} ${x - r} ${y} Q${x - r * .18} ${y - r * .18} ${x} ${y - r}Z" fill="${cor}"/>`;
+  $('brilhos').innerHTML = b(bp.x - 14, bp.y + 18, 24, C.solto) + b(bp.x + 20, bp.y - 16, 13, C.solto) + b(bs.x + bs.width + 30, bs.y + 22, 20, C.pelo);
+  // centraliza o logo inteiro no palco pela caixa real
+  const L = $('logo'), bb = L.getBBox(), W = +(q.get('w') || 1200), H = +(q.get('h') || 760), k = +(q.get('escala') || 1);
+  const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px';
+  $('s').setAttribute('width', W); $('s').setAttribute('height', H); $('s').setAttribute('viewBox', `0 0 ${W} ${H}`);
+  L.setAttribute('transform', `translate(${W / 2 + (+(q.get('dx') || 0))} ${H / 2 + (+(q.get('dy') || 0))}) scale(${k}) translate(${-(bb.x + bb.width / 2)} ${-(bb.y + bb.height / 2)})`);
+  document.body.dataset.pronto = 1;
+});
+</script></body></html>
