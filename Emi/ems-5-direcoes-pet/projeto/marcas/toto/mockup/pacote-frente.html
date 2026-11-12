@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Frente do pacote TOTÓ (660 x 1000), a partir da referência Pikku que a Emi mandou, na identidade do TOTÓ:
+     duas cores (vermelho + creme), nome grande, nome do produto, ilustração chapada de cachorro pegando o biscoito
+     com os farelos em retícula de gibi, etiqueta creme com borda de selo. Topo (0-150) = fecho do pacote. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Bungee; src: url(../../../fonts/Bungee-Regular.ttf); }
+@font-face { font-family: Poppins; src: url(../../../fonts/Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: Poppins; src: url(../../../fonts/Poppins-Medium.ttf); font-weight: 500; }
+html, body { margin: 0; }
+.frente { position: relative; width: 660px; height: 1000px; overflow: hidden; background: #F2542D; color: #FFF1D6; }
+.logo { position: absolute; left: 62px; top: 190px; width: 470px; }
+.produto { position: absolute; left: 66px; top: 392px; font: 400 37px/1.02 Bungee; letter-spacing: .01em; }
+.sub { position: absolute; left: 68px; top: 486px; font: 500 21px/1.25 Poppins; }
+.cao { position: absolute; left: 318px; top: 360px; width: 300px; }
+.farelos { position: absolute; left: 196px; top: 560px; width: 190px; height: 150px; }
+.etiqueta { position: absolute; left: 46px; top: 742px; width: 568px; height: 210px; padding: 7px; background: #FFF1D6; color: #E0451F;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 5px, transparent 96%, #000) -7px -7px / 14px 14px round;
+          mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 5px, transparent 96%, #000) -7px -7px / 14px 14px round; }
+.etiqueta .m { position: absolute; inset: 20px; border: 2px solid #E0451F; display: grid; grid-template-rows: 70px 1fr; }
+.etiqueta .topo { padding: 11px 16px 0; border-bottom: 2px solid #E0451F; }
+.etiqueta .topo b { display: block; font: 400 26px/1 Bungee; }
+.etiqueta .topo span { display: block; font: 500 15px/1 Poppins; margin-top: 6px; }
+.etiqueta .base { display: grid; grid-template-columns: 1fr 112px; }
+.etiqueta .txt { padding: 12px 16px; font: 600 14px/1.38 Poppins; }
+.etiqueta .col { border-left: 2px solid #E0451F; display: grid; grid-template-rows: 1fr 1fr 1fr; text-align: center; font: 600 14px/1 Poppins; letter-spacing: .06em; }
+.etiqueta .col > div { display: grid; place-items: center; }
+.etiqueta .col > div + div { border-top: 2px solid #E0451F; }
+</style></head><body>
+<div class="frente">
+  <img class="logo" src="../logo-toto-creme.png" alt="TOTÓ">
+  <div class="produto">PETISCO<br>DE FORNO</div>
+  <div class="sub">pra cachorro<br>que sempre pede bis</div>
+  <svg class="farelos" viewBox="0 0 190 150" fill="#FFF1D6"></svg>
+  <img class="cao" src="ilustra-cao-creme.png" alt="">
+  <div class="etiqueta"><div class="m">
+    <div class="topo"><b>FRANGO &amp; BATATA-DOCE</b><span>petisco crocante assado</span></div>
+    <div class="base">
+      <div class="txt">assado no forno, sem corante.<br>crocante por fora, macio por dentro.<br>para cães de todos os tamanhos.</div>
+      <div class="col">
+        <div><svg width="40" height="22" viewBox="0 0 60 30" fill="#E0451F"><path d="M10 4a7 7 0 0 1 9 5h22a7 7 0 1 1 9 8 7 7 0 1 1-9 8H19a7 7 0 1 1-9-8 7 7 0 0 1 0-13z"/></svg></div>
+        <div>ADULTO</div><div>200 g</div>
+      </div>
+    </div>
+  </div></div>
+</div>
+<script>
+// farelos em retícula de gibi: pontos que diminuem para a esquerda (como os da direção)
+const f = document.querySelector('.farelos'); let h = '';
+for (let y = 6; y < 150; y += 13) for (let x = 6; x < 190; x += 13) {
+  const t = x / 190, dy = Math.abs(y - 75) / 75; const r = 4.6 * t * (1 - dy * .8);
+  if (r > .9 && (x * 7 + y * 3) % 5 !== 0) h += `<circle cx="${x + (y % 26 ? 6 : 0)}" cy="${y}" r="${r.toFixed(2)}"/>`;
+}
+f.innerHTML = h;
+</script>
+</body></html>
