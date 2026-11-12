@@ -36,8 +36,8 @@ img { display: block; width: 100%; }
 <script>
 const poe = (id, k, x, y, o) => { const el = document.getElementById(id); el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.transform = `scale(${k})`; miauLogo(el, o); };
 poe('l1', .62, (1000 - 899 * .62) / 2, 60, { cor: '#FF9FD2', id: 'a' });
-poe('l2', .3, (322 - 899 * .3) / 2, 40, { cor: '#2F55F2', id: 'b' });
-poe('l3', .3, (322 - 899 * .3) / 2, 40, { cor: '#141418', olho: '#FF9FD2', id: 'c' });
+poe('l2', .3, (322 - 899 * .3) / 2, 40, { cor: '#2F55F2', olho: '#2F55F2', fundo: '#FF9FD2', id: 'b' });
+poe('l3', .3, (322 - 899 * .3) / 2, 40, { cor: '#141418', olho: '#FF9FD2', contorno: '#F5F7F6', fundo: '#F5F7F6', id: 'c' });
 // avatar: só o gato, espiando por cima da faixa rosa (o nome some na cor do fundo)
-poe('l4', .62, 125 - 560 * .62, 172 - 260 * .62, { cor: 'transparent', olho: '#FF9FD2', lab: false, id: 'd' });
+poe('l4', .62, 125 - 560 * .62, 172 - 260 * .62, { cor: 'transparent', olho: '#FF9FD2', unhas: false, lab: false, id: 'd' });
 </script></body></html>

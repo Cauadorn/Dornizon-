@@ -17,6 +17,6 @@ html, body { margin: 0; } body { width: 1080px; background: #EDEAE4; font-family
 <script>
 const poe = (id, o) => { const el = document.getElementById(id), k = .5; el.style.left = (510 - 899 * k) / 2 + 'px'; el.style.top = '80px'; el.style.transform = `scale(${k})`; miauLogo(el, { id, ...o }); };
 poe('a', {}); { const el = document.getElementById('b'), k = 1.7; el.style.left = (255 - 798 * k) + 'px'; el.style.top = (300 - 260 * k) + 'px'; el.style.transform = `scale(${k})`; miauLogo(el, { id: 'b' }); }
-poe('c', { cor: '#141418', olho: '#FF9FD2', contorno: '#F5F7F6' });
-poe('d', { cor: '#2F55F2', olho: '#2F55F2' });
+poe('c', { cor: '#141418', olho: '#FF9FD2', contorno: '#F5F7F6', fundo: '#F5F7F6' });
+poe('d', { cor: '#2F55F2', olho: '#2F55F2', fundo: '#FF9FD2' });
 </script></body></html>

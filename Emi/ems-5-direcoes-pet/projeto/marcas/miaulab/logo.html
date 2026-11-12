@@ -11,7 +11,7 @@ html, body { margin: 0; }
 <script>
 const q = new URLSearchParams(location.search), s = document.documentElement.style;
 s.setProperty('--fundo', q.get('fundo') || '#2F55F2');
-miauLogo(document.querySelector('.logo'), { cor: q.get('cor') || '#FF9FD2', gato: q.get('gato') || '#141418', olho: q.get('olho') || q.get('cor') || '#FF9FD2' });
+miauLogo(document.querySelector('.logo'), { fundo: q.get('fundo') || '#2F55F2', contorno: q.get('contorno') || undefined, cor: q.get('cor') || '#FF9FD2', gato: q.get('gato') || '#141418', olho: q.get('olho') || q.get('cor') || '#FF9FD2' });
 if (q.get('escala')) s.setProperty('--escala', q.get('escala'));
 if (q.get('w')) { const pc = document.querySelector('.palco'); pc.style.width = q.get('w') + 'px'; pc.style.height = q.get('h') + 'px'; }
 </script></body></html>

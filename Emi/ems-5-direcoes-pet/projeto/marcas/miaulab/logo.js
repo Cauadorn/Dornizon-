@@ -9,8 +9,10 @@
 //   - contorno: respiro na cor do fundo entre o gato e as letras (versão negativa, tudo preto);
 //   - pelo: borda irregular de tinta, para quem quiser menos "vetor".
 // Topo das letras (Archivo 900, largura 62%, 470px): M 0-118 e 178-293 · I 331-416 · A 500-620 · U 697-782 e 814-899.
+// Unhas brancas e arranhões finos descendo nas hastes do U (o.fundo = cor do fundo, para o recorte; o.unhas=false tira).
 // A v1 (gato grande atrás do A) está em logo-v1-grande.js.
 function miauLogo(el, o = {}) {
+  const fundo = o.fundo || '#2F55F2';
   const cor = o.cor || '#FF9FD2', gato = o.gato || '#141418', olho = o.olho || '#FF9FD2', olho2 = o.olho2 || '#FFFFFF';
   const id = o.id || 'l', k = o.k || 0.56, cx = o.cx || 798, parede = 260, folga = o.contorno ? 6 : 0;
   // cabeça desenhada para 280 de largura; k escala; leve inclinação e orelha direita um pouco mais baixa e aberta
@@ -32,6 +34,18 @@ function miauLogo(el, o = {}) {
     + `<path d="${PATA}" fill="${f}" ${s ? `stroke="${s}" stroke-width="${9 / k}" stroke-linejoin="round"` : ''}/>`
     + (s ? '' : `<path d="${RISCO}" fill="${o.contorno || cor}"/><path d="${RISCO}" transform="scale(-1 1)" fill="${o.contorno || cor}"/>`) + '</g>';
   const patas = (f, s) => pata(-106, 1, f, s) + pata(106, -1, f, s);
+  // unhas (a Emi: "rola de fazer as unhas do gatinho e um rastrinho delicado"): ganchinho branco na ponta de cada dedo
+  // e, descendo da unha, um arranhão fino e afinado recortado na letra (na cor do fundo), cada um de um tamanho.
+  const DEDOS = [[-27, 31], [0, 38], [27, 31]], UNHA = 'M-2.8 -3 C-3 5 -1 11 2.6 14.5 C0.8 9 1.6 3 2.6 -3 Z';
+  const unhas = (x, lado) => `<g transform="translate(${x} 3) rotate(${lado * 7})">`
+    + DEDOS.map(([dx, dy]) => `<path d="${UNHA}" transform="translate(${dx} ${dy - 3})" fill="${o.unha || '#FFFFFF'}"/>`).join('') + '</g>';
+  const pontas = (x, lado) => DEDOS.map(([dx, dy]) => { const t = lado * 7 * Math.PI / 180, py = dy + 13;
+    return [cx + k * (x + dx * Math.cos(t) - py * Math.sin(t)), parede + k * (3 + dx * Math.sin(t) + py * Math.cos(t))]; });
+  const TAM = [[44, 60, 34], [38, 54, 28]];
+  const rastros = [[-106, 1], [106, -1]].map(([x, lado], i) => pontas(x, lado).map(([sx, sy], j) => {
+    const L = TAM[i][j], w = 1.25, d = (j - 1) * 1.6 + lado * -1.2;
+    return `<path d="M${sx - w} ${sy} Q${sx - w * .6 + d * .4} ${sy + L * .55} ${sx + d} ${sy + L} Q${sx + w * .6 + d * .4} ${sy + L * .55} ${sx + w} ${sy} Z" fill="${fundo}"/>`; }).join('')).join('');
+
   el.style.position = el.style.position || 'absolute';
   el.innerHTML = `
   <svg width="899" height="700" viewBox="0 0 899 700" style="position:absolute;left:0;top:0;overflow:visible">
@@ -43,7 +57,8 @@ function miauLogo(el, o = {}) {
   </svg>
   <div style="position:absolute;left:-19px;top:191px;font:900 470px/1 Archivo;font-stretch:62%;color:${cor};white-space:nowrap">MIAU</div>
   <svg width="899" height="700" viewBox="0 0 899 700" style="position:absolute;left:0;top:0;overflow:visible">
-    <g transform="translate(${cx} ${parede}) scale(${k})">${o.contorno ? patas(o.contorno, o.contorno) : ''}${patas(gato)}</g>
+    ${o.unhas === false ? '' : rastros}
+    <g transform="translate(${cx} ${parede}) scale(${k})">${o.contorno ? patas(o.contorno, o.contorno) : ''}${patas(gato)}${o.unhas === false ? '' : unhas(-106, 1) + unhas(106, -1)}</g>
   </svg>
   ${o.lab === false ? '' : `<div style="position:absolute;right:0;top:610px;background:${o.labFundo || '#141418'};color:${o.labCor || '#fff'};font:700 64px/1 Mono;padding:10px 20px 16px;letter-spacing:.02em">.lab</div>`}`;
 }
