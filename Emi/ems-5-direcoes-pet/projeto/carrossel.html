@@ -102,7 +102,7 @@ function cartao(slide, d, i) {
   const dentro = el('div', 'dentro'); dentro.style.cssText = `left:${bl}px;top:${bt}px;width:${w}px;height:${h}px`;
   const cab = `<div class="num"><span class="sel-inline">${SEL}direção ${num(i + 1)} / 05</span></div>`;
   const t = `<h2 style="font-size:${tam}px">${d.titulo}</h2>`;
-  const p = `<p${txt ? ` style="font-size:${txt}px"` : ''}>${d.texto}</p><div class="letra">letra: ${d.letra}</div>`;
+  const p = `<p${txt ? ` style="font-size:${txt}px"` : ''}>${d.texto}</p>${d.letra ? `<div class="letra">letra: ${d.letra}</div>` : ''}`;
   const ch = chips ? `<div class="chips">${chips.map(([n, hex]) => `<div><span style="background:${hex}"></span><b>${n}</b><small>${hex}</small></div>`).join('')}</div>` : '';
   dentro.innerHTML = modo === 'h'
     ? `<div class="col1">${cab}${t}</div><div class="col2">${p}</div><span class="tag">@itsemsdesign${CURSOR}</span>`
@@ -111,58 +111,62 @@ function cartao(slide, d, i) {
   slide.appendChild(c);
 }
 
+// ---------- lâmina de direção: a mesma estrutura nas 5 ----------
+// pet em destaque à esquerda; marca + foto quadrada à direita; embaixo cartão, foto alta e paleta + letra.
+const GRADE = {
+  heroi:    [0, 0, 640, 860],
+  marca:    [658, 0, 422, 400],
+  quadrado: [658, 418, 422, 442],
+  cartao:   [0, 878, 520, 472],
+  alto:     [538, 878, 260, 472],
+  paleta:   [816, 878, 264, 227],
+  tipo:     [816, 1123, 264, 227],
+};
+
 function laminaDirecao(d, i) {
-  const s = el('section', 'slide dir ' + d.layout); s.dataset.nome = `lamina-${num(i + 2)}`;
-  // a ordem importa: o que flutua (patch) entra por último, por cima da foto
-  d.blocos.filter((b) => b.flutua == null).forEach((b) => bloco(s, b));
-  cartao(s, d, i);
-  d.blocos.filter((b) => b.flutua != null).forEach((b) => bloco(s, b));
+  const s = el('section', 'slide dir'); s.dataset.nome = `lamina-${num(i + 2)}`;
+  bloco(s, { r: GRADE.heroi, ...d.heroi });
+  bloco(s, { r: GRADE.marca, bg: d.marca.bg, padrao: d.marca.padrao, html: d.marca.html, escolhido: d.marca.cursor });
+  bloco(s, { r: GRADE.quadrado, ...d.quadrado });
+  bloco(s, { r: GRADE.alto, ...d.alto });
+  bloco(s, { r: GRADE.paleta, bg: '#fff', html: paleta(d.paleta) });
+  bloco(s, { r: GRADE.tipo, bg: d.tipo.bg, html: tipo(d.tipo) });
+  cartao(s, { ...d, cartao: { r: GRADE.cartao, tam: 96, txt: 23 } }, i);
   s.appendChild(el('div', 'grain'));
   return s;
 }
 
-// ---------- capa ----------
+// ---------- capa (v2) ----------
 function capa() {
   const s = el('section', 'slide capa'); s.dataset.nome = 'lamina-01';
-  marcaDagua(s, 50, 'var(--ameixa)');
+  cheia(s, CAPA.cheia, 1080, 1350);
+  marcaDagua(s, 54);
   s.insertAdjacentHTML('beforeend', `
-    <div class="kicker"><span class="sel-inline">${SEL}5 direções criativas · branding pet</span></div>
-    <h1>marca pet<br>sem <em>patinha</em></h1>
-    <p class="sub">5 jeitos de fugir do clichê<br>(e do osso) com direção de arte</p>`);
-  const q = bloco(s, { r: [400, 650, 680, 700], bg: '#6225D8', cheia: CAPA.cheia });
-  q.classList.add('foto-capa');
-  const idx = el('div', 'indice');
-  idx.innerHTML = '<div class="rot">nesse carrossel</div>' + DIRECOES.map((d, i) =>
-    `<div class="item"><span class="n">${num(i + 1)}</span><span class="nm">${d.titulo.replace(/<\/?em>/g, '')}</span><span class="pts">${d.cores.slice(0, 3).map((c) => `<i style="background:${c}"></i>`).join('')}</span></div>`).join('');
-  s.appendChild(idx);
-  selecionar(s, 584, 728, 324, 236, 290, 214);
-  s.insertAdjacentHTML('beforeend', `<span class="tag capa-tag">arrasta pro lado${CURSOR}</span>`);
-  s.appendChild(el('div', 'grain'));
+    <div class="rotulo">ems &nbsp;•&nbsp; identidade visual & direção de arte</div>
+    <div class="cinco">5</div>
+    <div class="titulo"><div class="l1">direções<br>criativas</div><div class="l2">pra marcas <em>pet</em></div></div>
+    <div class="adesivo">fora da casinha${CURSOR}</div>`);
+  const n = CAPA.nota;
+  s.insertAdjacentHTML('beforeend', `<div class="nota" style="left:${n.x}px;top:${n.y}px">${n.texto}</div>
+    <svg class="nota-linha" style="left:${n.lx}px;top:${n.ly}px" width="${n.lw}" height="${n.lh}"><path d="${n.path}"/></svg>`);
+  const sb = el('div', 'sel', SEL); sb.style.cssText = CAPA.selecao + ';--sel:var(--ivory);--sel-fill:var(--violeta)'; s.appendChild(sb);
+  s.appendChild(el('div', 'grain claro'));
   return s;
 }
 
-// ---------- chamada ----------
+// ---------- chamada (v2) ----------
 function chamada() {
   const s = el('section', 'slide chamada'); s.dataset.nome = 'lamina-07';
+  cheia(s, CHAMADA.cheia, 1080, 1350);
   marcaDagua(s, 1296);
-  s.appendChild(estrela({ cx: 880, cy: 1110, R: 190, cor: 'var(--lavanda)', opacidade: .35, rot: -12 }));
   s.insertAdjacentHTML('beforeend', `
-    <div class="kicker"><span class="sel-inline">${SEL}e aí?</span></div>
-    <div class="grande">qual das 5<br>é a <em>sua</em>?</div>`);
-  const fila = el('div', 'fila');
-  DIRECOES.forEach((d, i) => {
-    const f = el('div', 'ficha');
-    f.innerHTML = `<div class="faixas">${d.cores.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
-      <div class="rodape"><span class="n">${num(i + 1)}</span><span class="nm">${d.titulo.replace(/<\/?em>/g, '')}</span></div>`;
-    fila.appendChild(f);
-  });
-  s.appendChild(fila);
-  selecionar(s, 54 + 2 * (180 + 18), 560, 180, 300, 158, 250);
-  s.insertAdjacentHTML('beforeend', `
-    <div class="lead">comenta o número aqui embaixo ↓</div>
-    <div class="dm">ou me chama na dm${CURSOR}</div>
-    <img class="selo" src="img/selo-ems.png" alt="selo ems">
-    <div class="assina">@itsemsdesign<br><span>identidade visual, social media e site</span></div>`);
+    <div class="pergunta"><span class="sel-inline">${SEL}e aí, qual das 5 tem a cara da sua marca?</span></div>
+    <div class="lead" style="top:262px">quer uma marca pet que</div>
+    <div class="grande" style="top:338px">dá pra<br><em>reconhecer</em></div>
+    <div class="lead" style="top:640px">até sem o nome?</div>
+    <div class="dm" style="left:80px;top:760px">me chama na dm${CURSOR}</div>
+    <img class="selo" src="img/selo-ems.png" alt="selo ems" style="left:80px;top:960px;width:150px">
+    <div class="assina" style="left:254px;top:1058px">@itsemsdesign<br><span style="opacity:.75">emsdesign.com.br</span></div>`);
   s.appendChild(el('div', 'grain claro'));
   return s;
 }

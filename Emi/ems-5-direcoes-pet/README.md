@@ -2,32 +2,49 @@
 
 Carrossel 1080 × 1350 (7 lâminas) para o @itsemsdesign, no formato `PostCuradoria` do design system EMS.
 
-**Referência:** post da @pivocriativo "5 direções criativas para marcas de beleza fora do padrão" (11/11/2026). Dele fica só a **ideia**: 5 universos visuais para um nicho, cada um com cor, letra, foto e marca. A **estrutura** não se copia (v3, 12/11). A referência repete a mesma grade 3 × 3 com cartão no meio em todas as lâminas, e a capa tem "5" gigante + pílula. Aqui cada lâmina tem um layout próprio, e capa e chamada são outras.
+**Referência:** post da @pivocriativo "5 direções criativas para marcas de beleza fora do padrão" (11/11/2026). Dele fica a ideia: 5 universos visuais para um nicho, cada um com cor, letra, foto e marca. A estrutura das lâminas de direção não vem de lá: a referência usa uma grade 3 × 3 com cartão escuro no meio.
 
-**Por que pet:** mercado enorme de marca pequena (petshop, petisco, banho e tosa, acessório), conversa com o lado cpf da Emi e rende o gancho da capa: "marca pet sem *patinha*".
+**Por que pet:** mercado enorme de marca pequena (petshop, petisco, banho e tosa, acessório), conversa com o lado cpf da Emi (os gatos são a "diretoria criativa") e rende o trocadilho do adesivo, "fora da casinha".
 
 ## Versões
 
-1. **v1:** fotos recortadas pousadas em cor chapada. Reprovada: "os recortes não se encaixam, parece copia e cola".
-2. **v2:** fotos inteiras na cena. A Emi amou, mas apontou dois problemas: "as imagens se repetem" (5 variações da mesma cena por lâmina, e uma foto literalmente duas vezes) e "queria que fosse menos cópia da ref" (grade 3 × 3 idêntica em todas, capa e chamada iguais às da referência).
-3. **v3 (atual):** mesmo vocabulário visual da v2, com estas mudanças:
-   - Um layout por direção.
-   - Cada foto aparece uma vez só no carrossel.
-   - Uma cena nova por direção, gerada para dar variedade.
-   - Capa com índice.
-   - Chamada que pede o número nos comentários.
+1. **v1:** fotos recortadas pousadas em cor chapada. Reprovada: "parece copia e cola".
+2. **v2:** fotos inteiras na grade 3 × 3 da referência. "Amei, mas as imagens se repetem e queria menos cópia da ref."
+3. **v3:** um layout diferente por direção, capa marfim com índice e chamada com paletas. Reprovada: a Emi quer uma estrutura só nas 5 lâminas, e "a capa anterior mil x melhor".
+4. **v4 (atual):**
+   - Capa e chamada da v2.
+   - As 5 direções numa estrutura própria da EMS, igual em todas e diferente da referência.
+   - 3 cenas diferentes por direção.
+   - Nenhuma foto repetida.
+
+## Estrutura das lâminas de direção (igual nas 5)
+
+```
+┌──────────────────┬───────────┐
+│                  │  marca    │  marca fictícia (SelectionBox + cursor "emi")
+│   pet em         ├───────────┤
+│   destaque       │  foto     │  quadrada
+│   640 × 860      │  quadrada │
+├─────────┬────────┼─────┬─────┤
+│ cartão  │ foto   │paleta     │  cartão na cor da série: direção nn/05, título com itálico, texto
+│ 520×472 │ alta   ├───────────┤
+│         │260×472 │ letra (Aa)│
+└─────────┴────────┴───────────┘
+```
+
+Respiro `ivory` de 18px, raio 22, sangria de 30px em quem encosta na borda. Coordenadas em `GRADE` (`carrossel.html`).
 
 ## Lâminas
 
-| # | Lâmina | Layout | Cor do cartão | Fotos | Marca fictícia · fonte |
-|---|---|---|---|---|---|
-| 1 | Capa: "marca pet sem *patinha*" | título em serifa no topo, índice das 5 direções à esquerda, gato preto em quadro à direita | marfim | capa-2 | — |
-| 2 | 01 pop de *gibi* | **tirinha**: 3 faixas com quadros de larguras diferentes | `violeta` | vira-lata pulando, osso e pote, corgi e petisco | AU! petiscaria · Bagel Fat One |
-| 3 | 02 clube de *grife* | **revista**: uma foto gigante, coluna lateral e faixa de baixo | `plum` | whippet de suéter, bolsa de couro, tricô com plaquinha MC | Maison Caramelo · Bodoni Moda |
-| 4 | 03 retrô *setentinha* | **arcos**: quadros com topo em arco, anos 70 | `wine` | lhasa no tapete, pote e margarida, poodle no secador | pelo solto · Shrikhand |
-| 5 | 04 modo *atleta* | **ação**: foto de ponta a ponta com o patch do clube por cima; paleta em chips no cartão | `creative-purple` | border collie e frisbee, peitoral na pista, corredor e vizsla | AU running club · Graduate |
-| 6 | 05 ciência *fofa* | **ficha**: cartão em faixa no topo, foto em cápsula, grade de prontuário | `ameixa` | gato tigrado, frascos e ração, filhote no veterinário | miau.lab · Space Mono |
-| 7 | Chamada: "qual das 5 é a *sua*?" | as 5 paletas em fichas numeradas, "comenta o número", dm, selo | `plum` | — | — |
+| # | Lâmina | Cor do cartão | Fotos (destaque · quadrada · alta) | Marca fictícia · fonte |
+|---|---|---|---|---|
+| 1 | Capa: gato preto, "5 direções criativas pra marcas *pet*", adesivo "fora da casinha" | `violeta` | capa-2 | — |
+| 2 | 01 pop de *gibi* | `violeta` | vira-lata pulando · corgi e petisco · osso, bola e pote | AU! petiscaria · Bagel Fat One |
+| 3 | 02 clube de *grife* | `plum` | whippet de suéter · bolsa de couro · tricô com plaquinha MC | Maison Caramelo · Bodoni Moda |
+| 4 | 03 retrô *setentinha* | `wine` | lhasa no tapete · pote e margarida · poodle no secador | pelo solto · Shrikhand |
+| 5 | 04 modo *atleta* | `creative-purple` | border collie e frisbee · peitoral na pista · corredor e vizsla | AU running club · Graduate |
+| 6 | 05 ciência *fofa* | `ameixa` | gato tigrado · frascos e ração · filhote no veterinário | miau.lab · Space Mono |
+| 7 | Chamada: "quer uma marca pet que dá pra *reconhecer* até sem o nome?" + me chama na dm + selo | `plum` | cham-1 | — |
 
 Legenda pronta em `legenda.md`.
 
@@ -36,9 +53,9 @@ Legenda pronta em `legenda.md`.
 ## Arquivos
 
 - `entrega/lamina-01..07.png` e `entrega/visao-geral.jpg`: arte final.
-- `projeto/carrossel.html` + `estilo.css` + `direcoes.js`: a peça em código. `direcoes.js` concentra o conteúdo e o layout de cada lâmina: retângulos `[x, y, w, h]`, forma (`arco`, `capsula`), patch flutuante e seleção.
+- `projeto/carrossel.html` + `estilo.css` + `direcoes.js`: a peça em código. `direcoes.js` concentra o conteúdo de cada direção: fotos, marca, paleta e letra.
 - `projeto/render.mjs`: `node render.mjs` exporta para `entrega/`; `node render.mjs --previa` exporta para `previa/` (fora do git).
-- `projeto/img/`: só as 16 fotos usadas e o selo original.
+- `projeto/img/`: só as 17 fotos usadas e o selo original.
 - `projeto/figma/`: `exporta.mjs` (HTML → cena de camadas), `montador.js` (monta no Figma com `use_figma`), `sobe.sh` (envia as imagens para os nós). `figma/saida/` é gerada e fica fora do git.
 - `projeto/fonts/`: Poppins e Instrument Serif (EMS) + as cinco fontes das direções (Google Fonts, licença OFL).
 

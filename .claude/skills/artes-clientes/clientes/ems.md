@@ -15,28 +15,22 @@
 
 ## Formatos já feitos (referência)
 
-### `PostCuradoria` · "5 direções criativas pra marcas pet" (12/11/2026, v3)
+### `PostCuradoria` · "5 direções criativas pra marcas pet" (12/11/2026, v4)
 - Pedido: "um post assim [carrossel da @pivocriativo de direções criativas para marcas de beleza] mas em outra área, com a ID visual da EMS".
-- Histórico de aprovação:
-  - v1, recortes pousados em cor chapada: reprovada ("parece copia e cola").
+- Histórico de aprovação (leia antes de mexer):
+  - v1, recortes em cor chapada: reprovada, "parece copia e cola".
   - v2, fotos inteiras na grade 3 × 3 da referência: "amei, mas as imagens se repetem e queria menos cópia da ref".
-  - v3, um layout por direção e nenhuma foto repetida: atual.
-- **Da referência só se pega a ideia** (5 universos por nicho), nunca a estrutura. Não repetir:
-  - a mesma grade em todas as lâminas;
-  - o cartão no meio de uma 3 × 3;
-  - o "5" gigante com pílula na capa;
-  - o fecho "quer uma marca…?".
-- **"Os posts têm que ser diferentes":** cada lâmina de direção tem estrutura própria, que conversa com o universo dela:
-  - tirinha de gibi;
-  - página de revista;
-  - arcos anos 70;
-  - foto de ação com patch;
-  - ficha de laboratório com cápsula.
-- O vocabulário é o mesmo nas 5 lâminas: marfim entre quadros de raio 22, cartão na cor da série (`violeta` → `plum` → `wine` → `creative-purple` → `ameixa`), paleta com nome e hex, letra da direção, marca fictícia desenhada, `SelectionBox` + cursor "emi".
-- **Foto não se repete no carrossel**, e variações da mesma cena contam como repetição. Por direção, 3 cenas diferentes: o bicho, o produto e uma cena extra (outro bicho, detalhe de material ou bastidor). O resto dos quadros é gráfico: marca, paleta, letra.
-- **Capa:** fundo marfim, gancho em serifa ("marca pet sem *patinha*"), índice das 5 direções com bolinhas de cor e foto em quadro.
-- **Chamada:** "qual das 5 é a *sua*?" com as 5 paletas em fichas numeradas, "comenta o número", dm e selo.
-- Código reaproveitável: `Emi/ems-5-direcoes-pet/projeto/` (`direcoes.js` tem conteúdo e layout; trocar o nicho = trocar esse arquivo e as fotos).
+  - v3, um layout diferente por lâmina, capa marfim com índice e chamada com paletas: reprovada. A Emi **não quer layout diferente em cada lâmina**, e "a capa anterior mil x melhor".
+  - v4: a atual.
+- **Estrutura das lâminas de direção: uma só, repetida nas 5, própria da EMS** (não a grade 3 × 3 com cartão no meio da referência):
+  - pet em destaque 640 × 860 em cima à esquerda;
+  - coluna direita com a marca fictícia (com `SelectionBox` + cursor "emi") e uma foto quadrada;
+  - faixa de baixo com o cartão na cor da série (`violeta` → `plum` → `wine` → `creative-purple` → `ameixa`), uma foto alta e a coluna paleta + letra ("Aa").
+  - Respiro `ivory` de 18px, raio 22.
+- **Foto não se repete no carrossel**, e variações da mesma cena contam como repetição. Por direção, 3 cenas diferentes: o bicho, o produto e uma cena extra (outro bicho, detalhe de material ou bastidor).
+- **Capa** (aprovada): foto inteira do gato preto na parede violeta com estrelas, "5" gigante, "direções criativas pra marcas *pet*", adesivo "fora da casinha".
+- **Chamada:** gato acenando em `plum`, "quer uma marca pet que dá pra *reconhecer* até sem o nome?", dm, selo.
+- Código reaproveitável: `Emi/ems-5-direcoes-pet/projeto/` (`direcoes.js` tem o conteúdo, `GRADE` em `carrossel.html` tem a estrutura; trocar o nicho = trocar `direcoes.js` e as fotos).
 - Figma editável: https://www.figma.com/design/elmpB2QlAid4OFWruJL31H (time 4D) · Drive: pasta `EMS · @itsemsdesign` → `2026-11 · 5 direções criativas pra marcas pet` (`1BihRkZXTpaY704VBm0gmCygNapc3i9SP`), com os 7 PNGs, a visão geral e a legenda em Doc.
 - Próximos nichos sugeridos no DS: cafeterias, confeitarias, estúdio de tatuagem, academia e luta, moda autoral, clínica de estética.
 
