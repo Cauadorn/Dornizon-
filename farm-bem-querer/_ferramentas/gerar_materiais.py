@@ -147,10 +147,10 @@ reel = f'''
 <ol class="passos">
   <li>Suba o vídeo como Reel. Ele está sem som, de propósito.</li>
   <li>Escolha uma música da biblioteca do Instagram com batida por volta de 120 bpm: os cortes do vídeo seguem esse ritmo.</li>
-  <li>Em <b>Editar capa</b>, use a capa abaixo (adicionar da galeria).</li>
+  <li>Em <b>Editar capa</b>, use a capa abaixo (adicionar da galeria). Ela não entrega a resposta: só o Pará e o "pausa e procura".</li>
   <li>Cole a legenda. Não marque a FARM nem a havaianas: é um projeto não oficial.</li>
 </ol>
-<div class="duas"><div class="grade um">{midia(vid_rl, 'reel · 44 s · 9:16', capa_rl)}{midia(capa_rl, 'capa do reel')}</div>
+<div class="duas"><div class="grade um">{midia(vid_rl, 'reel · 33 s · 9:16', capa_rl)}{midia(capa_rl, 'capa do reel')}</div>
 <div class="textos">{texto('Legenda do reel', leg_rl)}</div></div>
 </section>'''
 
