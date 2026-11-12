@@ -20,18 +20,21 @@ Carrossel 1080 × 1350 (7 lâminas) para o @itsemsdesign, no formato novo `PostC
 
 Legenda pronta em `legenda.md`.
 
+**Onde está:** Figma editável https://www.figma.com/design/elmpB2QlAid4OFWruJL31H · Drive https://drive.google.com/drive/folders/1BihRkZXTpaY704VBm0gmCygNapc3i9SP · Design System EMS (grupo Posts e componente `PostCuradoria`) https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa
+
 ## Arquivos
 
 - `entrega/lamina-01..07.png` e `entrega/visao-geral.jpg`: arte final.
 - `projeto/carrossel.html` + `estilo.css` + `direcoes.js`: a peça em código. Todo o conteúdo das direções (cores, quadros, posição de cada foto) fica em `direcoes.js`.
 - `projeto/render.mjs`: `node render.mjs` exporta para `entrega/`; `node render.mjs --previa` exporta para `previa/` (fora do git).
 - `projeto/img/`: fotos recortadas (fundo transparente) e o selo original.
+- `projeto/figma/`: `exporta.mjs` (HTML → cena de camadas), `montador.js` (monta no Figma com `use_figma`), `sobe.sh` (envia as imagens para os nós). `figma/saida/` é gerada e fica fora do git.
 - `projeto/fonts/`: Poppins e Instrument Serif (EMS) + as cinco fontes das direções (Google Fonts, licença OFL).
 
 ## Como as fotos foram feitas
 
 - **Nano Banana Pro** (`gemini-3-pro-image` no ElevenLabs, porque o Magnific estava sem créditos), prompt em português, fundo liso **#E9E9E9** e "sem texto" em todos, como pede o DS. 11 prompts × 4 variações (gato da capa e, por direção, um prompt do bicho e um do produto). Fluxo no ElevenLabs: "EMS · 5 direções criativas pra marcas pet".
-- Saída 1376 × 768 (16:9, 1K). Para capa, se der, gerar em 2K: o gato foi ampliado ~1,5×.
+- Saída 1376 × 768 (16:9, 1K). Os dois gatos (capa e chamada) passaram por upscale 2x no Topaz (ElevenLabs) antes do recorte; o resto dos quadros usa a foto no tamanho original.
 - **Recorte local** com `rembg`: ISNet (`isnet-general-use`, rápido) para a maioria e BiRefNet (`birefnet-general`) para o que tem branco perto do cinza do fundo (rótulos, tênis, suéter, tigela, gatos). O BiRefNet estoura a memória se processar várias imagens no mesmo processo: rodar uma imagem por processo.
 - Montagem: cada recorte pousa na cor da direção, com sombra suave em `tinta` e, às vezes, um padrão (retícula de gibi, grade de laboratório, faixa de pista).
 
