@@ -69,6 +69,12 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
 - Logo de marca fictícia: gerar com modelo de imagem que escreve bem (pelo Figma, `gpt-image-2.5-flare` ou `-sunburst`; o Gemini também acerta) e mostrar 3 ou 4 caminhos diferentes para ela escolher. Conferir a grafia.
 - Aplicação (mockup): seguir as referências dela em `Emi/ems-5-direcoes-pet/referencias/mockups-da-emi/`. A marca fica numa cena real, o bicho é o protagonista, o rosto da pessoa é cortado e o material aparece (bordado, outdoor, jaleco, embalagem em set).
 - **Mandar para aprovação antes de colocar no post.**
+- **Logo do petisco: o que a Emi aprovou como caminho.** Foi a referência NOSY (`referencias/logo-petisco/12-nosy.jpg`): letra desenhada, gordinha e orgânica, com um detalhe só (a pata no lugar do "O"), em creme chapado sobre uma foto de textura com marcas de pata. Ela liberou mudar o nome, e a marca virou **TOTÓ**: a pata é o último "Ó" e os dedinhos fazem o acento.
+- O que ela reprovou no caminho:
+  - fonte técnica e reta (Nunito: "a fonte não tem nada a ver, a outra é desenhadinha, linda"); a escolhida foi a Cherry Bomb One, com cada letra levemente girada;
+  - traços de "farejar" ao lado da pata ("esses bigodes nada a ver");
+  - logos gerados por IA ("cara de IA horrível");
+  - wordmark montado em código sem acabamento ("vetorizado assim não dá"). Vetor pode, mas com letra desenhada e bem resolvida.
 
 ## Frases da Emi (para lembrar o gosto)
 
