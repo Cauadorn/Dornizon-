@@ -1,32 +1,37 @@
 <!doctype html>
 <!-- Logo TOTÓ (direção "pop de gibi"), a partir da referência NOSY que a Emi escolheu:
      letra desenhada, gordinha e orgânica (Cherry Bomb One, com cada letra levemente girada),
-     o último "Ó" é uma pata (os dedinhos fazem o acento). Sem traços de "farejar" (a Emi: "bigodes nada a ver"). Uso: logo.html?fundo=textura | logo.html?cor=#FFD23F&fundo=#2B59C3 -->
+     a pata é o primeiro "O", na altura exata das maiúsculas; o "Ó" final mantém o acento (lê TOTÓ). Sem traços de "farejar" (a Emi: "bigodes nada a ver"). Uso: logo.html?fundo=textura | logo.html?cor=#FFD23F&fundo=#2B59C3 -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: Cherry; src: url(../../fonts/CherryBombOne-Regular.ttf); }
 html, body { margin: 0; }
 .palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; display: grid; place-items: center; background: var(--fundo); background-size: cover; background-position: center; }
 .logo { position: relative; display: flex; align-items: flex-end; color: var(--cor); filter: var(--sombra); }
-.letras { font: 400 280px/0.8 Cherry; letter-spacing: -0.01em; display: flex; }
-.letras span { display: inline-block; }
-.pata { width: 246px; height: 271px; margin-left: 0; margin-bottom: -6px; transform: rotate(5deg); }
+.letras { font: 400 280px/0.8 Cherry; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 10px; }
+.letras .l, .letras .pata { width: 184px; height: 195px; margin: 0 16px; position: relative; top: 2px; }
+.pata { width: 184px; height: 195px; margin: 0 0; position: relative; top: 2px; }
 </style></head><body>
 <div class="palco"><div class="logo">
-  <span class="letras"><span style="transform:rotate(-4deg) translateY(4px)">T</span><span style="transform:rotate(3deg) translateY(-6px)">O</span><span style="transform:rotate(-2deg) translateY(2px)">T</span></span>
-  <svg class="pata" viewBox="0 0 100 110" fill="currentColor">
-    <!-- almofada em sino (como a do NOSY) -->
-    <path d="M50 44 C63 44 73 57 81 70 C89 83 93 94 88 101 C83 109 73 108 65 104 C59 101 55 100 50 100 C45 100 41 101 35 104 C27 108 17 109 12 101 C7 94 11 83 19 70 C27 57 37 44 50 44 Z"/>
-    <!-- quatro dedos separados: os de dentro mais altos; sobem acima da linha das maiúsculas e fazem o acento -->
-    <ellipse cx="11" cy="45" rx="9" ry="12" transform="rotate(-32 11 45)"/>
-    <ellipse cx="32" cy="20" rx="10.5" ry="14" transform="rotate(-12 32 20)"/>
-    <ellipse cx="64" cy="19" rx="10.5" ry="14" transform="rotate(12 64 19)"/>
-    <ellipse cx="88" cy="43" rx="9" ry="12" transform="rotate(32 88 43)"/>
-  </svg>
+  <span class="letras">
+    <span class="l" style="--r:var(--g1)">T</span>
+    <svg class="pata" viewBox="0 0 100 106" fill="currentColor" style="--r:var(--g2)">
+      <!-- a pata é o primeiro "O": mesma altura das maiúsculas (dedos no topo, almofada na linha de base) -->
+      <path d="M50 44 C66 44 78 58 86 72 C94 86 96 96 90 102 C84 108 72 106 64 102 C58 99 54 98 50 98 C46 98 42 99 36 102 C28 106 16 108 10 102 C4 96 6 86 14 72 C22 58 34 44 50 44 Z"/>
+      <ellipse cx="13" cy="37" rx="8" ry="10.5" transform="rotate(-30 13 37)"/>
+      <ellipse cx="35" cy="15" rx="9.5" ry="12.5" transform="rotate(-12 35 15)"/>
+      <ellipse cx="65" cy="15" rx="9.5" ry="12.5" transform="rotate(12 65 15)"/>
+      <ellipse cx="87" cy="37" rx="8" ry="10.5" transform="rotate(30 87 37)"/>
+    </svg>
+    <span class="l" style="--r:var(--g3)">T</span>
+    <span class="l" style="--r:var(--g4)">Ó</span>
+  </span>
 </div></div>
 <script>
 const q = new URLSearchParams(location.search), raiz = document.documentElement.style;
 const fundo = q.get('fundo') || 'textura';
 raiz.setProperty('--fundo', fundo === 'textura' ? 'url(textura-massa.png)' : fundo);
 raiz.setProperty('--cor', q.get('cor') || '#FFF1D6');
+const gira = q.get('gira') === '1';  // giro leve, de letra desenhada; sem o parâmetro fica reto e simétrico
+['-3deg', '2deg', '-2deg', '3deg'].forEach((g, i) => raiz.setProperty('--g' + (i + 1), gira ? g : '0deg'));
 raiz.setProperty('--sombra', fundo === 'textura' ? 'drop-shadow(0 6px 6px rgba(90,20,5,.45)) drop-shadow(0 1px 1px rgba(90,20,5,.5))' : 'none');
 </script></body></html>
