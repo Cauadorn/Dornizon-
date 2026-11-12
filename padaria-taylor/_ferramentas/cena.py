@@ -9,7 +9,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from rabiscos import TREMIDO, grupo  # noqa: E402
-from betty import betty  # noqa: E402
 
 SAIDA = Path(__file__).resolve().parents[1] / "01-marca" / "ilustracao"
 
@@ -40,8 +39,7 @@ def cena(cor="#F2EADB", esp=5.5):
         grupo("estrela", 210, 220, 0.3, cor=cor, esp=esp),
         grupo("estrela", 880, 300, 0.22, cor=cor, esp=esp),
     ]
-    gata = betty().split(">", 1)[1].rsplit("</svg>", 1)[0]
-    partes.append(f'<g transform="translate(538 505) scale(0.55)">{gata}</g>')
+    # a betty (ilustração) entra por cima, na lâmina
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1080 960" width="1080" height="960">'
             f'<defs>{TREMIDO}</defs>{"".join(partes)}</svg>\n')
 

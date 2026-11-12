@@ -136,7 +136,7 @@ if __name__ == "__main__":
     cam = pasta / "_camadas"
     # saco3: frente do saco vai de x 388 a 722, y 188 a 600
     img = imprimir(fotos / "saco3.png", cam / "impressao-assinatura.png", [(430, 218), (680, 216), (681, 292), (431, 295)], cor=(40, 30, 24))
-    img = imprimir(img, cam / "impressao-betty.png", [(420, 318), (690, 316), (692, 552), (422, 556)], cor=(40, 30, 24), forca=0.18)
+    img = imprimir(img, RAIZ / "01-marca" / "ilustracao" / "ia" / "betty-ia-traco.png", [(410, 326), (700, 324), (701, 546), (411, 550)], cor=(40, 30, 24), forca=0.12)
     img.save(pasta / "saco-betty.png")
     recorte_4x5(img, 560, 0, pasta / "saco-betty-4x5.jpg")
     print("ok")

@@ -1,4 +1,4 @@
-// Camadas de impressão (preto no branco) para aplicar nas fotos: a betty a uma cor e a assinatura.
+// Camada de impressão (preto no branco) da assinatura, para aplicar nas fotos. O traço da betty sai de 01-marca/ilustracao/ia/betty-ia-traco.png.
 // Uso: node padaria-taylor/_ferramentas/camadas.js
 const path = require('path');
 const fs = require('fs');
@@ -9,7 +9,6 @@ const saida = path.join(raiz, '03-mockups', '_camadas');
 const f = n => fs.readFileSync(path.join(raiz, '_fontes', n)).toString('base64');
 
 const camadas = {
-  'impressao-betty': fs.readFileSync(path.join(raiz, '01-marca', 'ilustracao', 'betty-impressao.svg'), 'utf8'),
   'impressao-assinatura': `<div style="text-align:center;padding:10px 30px">
      <div style="font:900 190px/1 Fr;letter-spacing:-.03em">loaf story</div>
      <div style="font:italic 60px/1.2 Fell;margin-top:6px">a small, free business</div></div>`,

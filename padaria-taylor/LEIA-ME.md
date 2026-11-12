@@ -6,7 +6,10 @@ Projeto conceitual de fã para o portfólio, no formato "E se a Taylor Swift me 
 
 Segue o estilo das referências (Don Rollos, The Little Oven e o café "mode"): mascote, rabiscos de traço único, letra gorda e simpática, poucas cores com nome e as peças aplicadas.
 
-- **Mascote, a betty.** Uma gata em posição de pão (na internet, *cat loaf*), Scottish Fold de orelha dobrada como as gatas da Taylor, vestindo o cardigã de tricô com estrela bordada. O nome vem de uma personagem do *folklore*.
+- **Mascote, a betty.** Uma gata gordinha de pelo fofo, de cardigã de tricô com estrela bordada, ao lado do pão de fermentação. O nome vem de uma personagem do *folklore*.
+  - A ilustração foi gerada na ElevenLabs (modelo Recraft) e depois retocada: o pão veio cinza e foi recolorido para dourado.
+  - Os arquivos estão em `01-marca/ilustracao/ia/`: original, recorte sem fundo e versão só do traço, para impressão.
+  - A orelha não veio dobrada. Na próxima geração, pedir "Scottish Fold, ears folded flat forward".
 - **Assinatura.** "loaf story" em minúsculas, como os títulos de *folklore* e *evermore*, em Fraunces Black macia. Embaixo, "a small, free business" em IM Fell DW Pica itálico, a mesma família de serifa antiga dos dois discos.
 - **Rabiscos:** pão, pote de fermento, cabana, pinheiro, caneca, cesta, rolo e colher, biscoito, estrela e raminho. Viram padronagem e cena.
 - **Cores:**
@@ -21,13 +24,23 @@ Segue o estilo das referências (Don Rollos, The Little Oven e o café "mode"): 
   - selo sobre a padronagem;
   - a cena da mesa da cabana.
 
+### O que a pesquisa sobre percepção diz (e como entrou na mascote)
+
+- **Fofura tem regra.** O *Kindchenschema* (Konrad Lorenz) diz que cabeça grande, rosto redondo, olho grande e nariz e boca pequenos disparam a reação de "que fofo" e de cuidado. Isso vale também para bichos e para produtos. Por isso a betty tem cabeça grande, olho grande e aberto e boca pequena. ([IJDesign](https://ijdesign.org/index.php/IJDesign/article/view/1023/363), [Discover](https://discovermagazine.com/mind/why-babies-are-so-cute-and-why-we-react-the-way-we-do))
+- **Formato conta personalidade.** Círculos e ovais leem como amigáveis e seguros. Quadrados leem como estáveis, e triângulos como perigo. A betty é feita de formas redondas: cabeça, corpo, pão e botões. ([guia de shape language da Disney](https://waltdisney.org/sites/default/files/2020-04/T&T_ShapeLang_v9.pdf))
+- **O traço imperfeito parece feito por gente, e gente confia mais.** Marcas imperfeitas são lidas como sinal de esforço humano. Quanto mais a IA deixa tudo perfeito, mais o imperfeito se destaca. Num café ou padaria de bairro, o público prefere o estilo casual e humano. O traço tremido e o tricô desenhado vêm daí. ([Creative Bloq](https://www.creativebloq.com/art/illustration/messy-meaningful-and-made-by-humans-the-biggest-illustration-trends-for-2026), [Clutch](https://clutch.co/resources/human-centered-branding))
+- **Processo de designer:** primeiro pesquisa e estratégia, depois muitos esboços, depois escolher poucos e refinar. ([Fabrik](https://fabrikbrands.com/insights/visual-identity/brand-identity-process))
+
+Prompt da betty, para gerar novas poses no Space (ajustar a pose no fim):
+*Hand-drawn mascot illustration for a cozy home bakery brand. A chubby grey Scottish Fold cat with ears folded flat forward, wearing an oversized cream cable-knit cardigan with wooden buttons and a small embroidered rust-orange star on the sleeve. Big round head, big round shiny dark eyes, tiny pink nose, small happy mouth, soft pink blush. Golden-brown sourdough loaf with a leaf-shaped score. Warm children's-book style, imperfect hand-inked dark brown outline, flat colour fills, palette cream, misty grey-green, moss green, rust orange, dark brown. Plain cream background, no text. Pose: [ex.: sleeping curled in a bread basket].*
+
 | Pasta | O que tem |
 |---|---|
-| `01-marca/ilustracao/` | `betty.svg` (colorida), `betty-impressao.svg` (a uma cor), `cena.svg`, `padrao-*.svg` e `rabiscos/` (um SVG por desenho). |
+| `01-marca/ilustracao/` | `ia/` (a betty ilustrada: original, recorte e traço), `cena.svg`, `padrao-*.svg` e `rabiscos/` (um SVG por desenho). |
 | `02-apresentacao/` | 7 lâminas (HTML e PNG 1080 x 1350). |
 | `03-mockups/` | Saco impresso (foto e recorte 4:5). |
 | `fotos-geradas/` | Fotos-base dos sacos (ElevenLabs). |
-| `_ferramentas/` | Scripts: `betty.py`, `rabiscos.py`, `cena.py`, `camadas.js`, `mockup.py` e `render.js`. |
+| `_ferramentas/` | Scripts: `rabiscos.py`, `cena.py`, `camadas.js`, `mockup.py` e `render.js`. |
 
 ---|---|
 | `01-marca/ilustracao/` | A Doughgirl em SVG, com uma versão para fundo menta. |
