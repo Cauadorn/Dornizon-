@@ -217,7 +217,8 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
 
 /* ================= 5 · textura — ref 3 da Nicole Holz, lâmina 5 (título forte, pinceladas tom sobre tom saindo da borda,
    objeto por cima do fim do título, texto em coluna à direita e bloco miúdo de texto-textura à esquerda) ================= */
-const PINC = 'filter:brightness(.4) saturate(1.35) contrast(1.1)';
+/* mesma tinta do pincel-pintando (#371D6C), pra parecer que todas as pinceladas saíram do mesmo pincel */
+const PINC = 'filter:brightness(.46) saturate(1.3) contrast(1.05)';
 (() => {
   const p = A.paginas[3], [s1, s2] = p.sites;
   /* carimbo gasto: furinhos de ruído na palavra "lisa" (a única palavra com textura é justamente a "lisa") */
@@ -225,15 +226,16 @@ const PINC = 'filter:brightness(.4) saturate(1.35) contrast(1.1)';
   const miudo = Array(14).fill(p.miudo).join(' ');
   const par = (s) => `<p style="margin:0 0 30px"><b style="font-weight:600;color:var(--manteiga)">${s.nome}</b> ${s.pra}</p>`;
   lamina(4, `
-    <img class="abs" src="texturas/pincelada-1.png" style="left:500px;top:-150px;width:780px;transform:scaleX(-1) rotate(10deg);${PINC}">
     <img class="abs" src="texturas/pincelada-2.png" style="left:860px;top:640px;width:330px;transform:rotate(8deg);${PINC};opacity:.9">
     <img class="abs" src="${estrelaReticula(340, css('ivory'))}" style="left:-120px;top:110px;width:340px;opacity:.16;transform:rotate(-14deg)">
-    ${[150, 470, 790].map((x) => `<div class="abs" style="left:${x}px;top:78px;width:200px;text-align:center;font-family:var(--sans);font-weight:500;font-size:21px;color:rgba(255,251,222,.82)">@itsemsdesign</div>`).join('')}
     <div class="abs" id="tit5" style="left:146px;top:236px;font-family:var(--sans);font-weight:600;font-size:124px;line-height:.9;letter-spacing:-.05em;color:var(--ivory);white-space:nowrap">pra marca<br>não ficar<br><i id="lisa" style="display:inline-block;font-family:var(--serif);font-weight:400;font-size:236px;line-height:.78;letter-spacing:-.03em;margin-top:6px;-webkit-mask-image:var(--mk-gasto);-webkit-mask-size:260px;mask-image:var(--mk-gasto);mask-size:260px">lisa.</i></div>
     <div class="abs" style="left:150px;top:700px;width:340px;height:300px;overflow:hidden;font-family:var(--sans);font-weight:500;font-size:11.5px;line-height:1.32;letter-spacing:.05em;text-transform:uppercase;text-align:justify;color:rgba(255,251,222,.34)" data-sem-cola>${miudo}</div>
     <div class="abs" style="left:540px;top:690px;width:420px;font-family:var(--sans);font-size:33px;line-height:1.24;color:var(--ivory)">${par(s1)}${par(s2)}</div>
-    <div class="abs" style="left:150px;top:1060px;width:780px;text-align:center;font-family:var(--sans);font-size:35px;line-height:1.22;color:var(--ivory)">${p.fecho}</div>
-    <img class="objeto" id="pincel" src="recortes/pincel.png" style="left:560px;top:250px;width:420px">
+    <div class="abs" style="left:150px;top:1074px;width:800px;font-family:var(--sans);font-size:35px;line-height:1.22;color:var(--ivory)">${p.fecho}</div>
+    <!-- pincel pintando: a pincelada vem do canto de cima e termina embaixo das cerdas (ponto 570,420 da foto) -->
+    <img class="abs" id="pincel" src="recortes/pincel-pintando.png" style="left:528px;top:33px;width:614px;transform-origin:342px 252px;transform:rotate(-15deg);filter:drop-shadow(0 3px 4px rgba(42,20,51,.22))">
+    ${[150, 470, 790].map((x) => `<div class="abs" style="left:${x}px;top:78px;width:200px;text-align:center;font-family:var(--sans);font-weight:500;font-size:21px;color:rgba(255,251,222,.86)">@itsemsdesign</div>`).join('')}
+
   `, `<div class="abs" style="inset:0;background:var(--violeta-2)"></div>
       <img class="abs" src="texturas/linho-violeta.png" style="left:-40px;top:-50px;width:1160px;height:1450px;object-fit:cover;filter:grayscale(1) contrast(1.5);mix-blend-mode:soft-light;opacity:.7">
       <div class="abs" style="inset:0;background:radial-gradient(120% 90% at 20% 30%, rgba(255,251,222,.10), transparent 60%), radial-gradient(90% 80% at 90% 100%, rgba(42,20,51,.28), transparent 70%)"></div>`, 'grao-forte');
