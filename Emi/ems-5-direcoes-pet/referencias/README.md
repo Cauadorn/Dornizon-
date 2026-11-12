@@ -81,3 +81,12 @@ O que elas têm em comum:
 - o material aparece (bordado, papel de outdoor, tecido, embalagem brilhante).
 
 **Nunca** "produto em cima da mesa" sem graça, nem a pessoa posando para a câmera. Na corrida, foco no cachorro e só a camiseta da pessoa.
+
+- `adopt-perfil-instagram.jpg` (mandada depois): mockup de perfil do Instagram (adopt.ua). Tem:
+  - destaques com ícones de traço contínuo na cor da marca;
+  - feed 3 × 3 que alterna foto de bicho e post gráfico;
+  - selo redondo recorrente sobre as fotos;
+  - recortes em forma orgânica;
+  - duas cores só.
+
+  É a "marca viva" nas redes, o serviço de social media da EMS.
