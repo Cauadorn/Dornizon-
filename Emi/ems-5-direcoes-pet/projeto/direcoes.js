@@ -19,7 +19,7 @@ const tipo = ({ aa, aaCor, sombra = 'none', amostra, amostraCss, cor, nome, img,
   `<div class="tipo" style="color:${cor}">
      ${img ? `<img src="img/${img}" alt="" style="display:block;height:${imgAlt}px;margin:0 auto 6px">` : `<div class="aa" style="font:${aa};line-height:.86;color:${aaCor};text-shadow:${sombra}">Aa</div>`}
      <div class="amostra" style="font:${amostraCss};line-height:1.1">${amostra}</div>
-     <div class="nome">${nome}</div></div>`;
+     ${nome ? `<div class="nome">${nome}</div>` : ''}</div>`;
 
 // conteúdo de tamanho fixo centralizado no quadro
 const centro = (w, h, html) => `<div class="centro" style="width:${w}px;height:${h}px;margin:${-h / 2}px 0 0 ${-w / 2}px">${html}</div>`;
@@ -91,7 +91,7 @@ const DIRECOES = [
     quadrado: { bg: '#23392E', cheia: { src: 'd2pet-aberto', px: .5, py: .5 } },   // o whippet de suéter no sofá verde, com menos zoom (a cena foi expandida no Canva a partir da d2pet-2)
     alto: { bg: '#EEE8D8', cheia: { src: 'maison-selo', px: .5, py: .5 } },   // o selo oval prensado no papel creme (selo.html?w=2080&h=3776&rx=.34 + relevo.py, subido 64 px para centrar no quadro visível)
     paleta: [['vinho', '#4A1D22', '#EDE8DD'], ['caramelo', '#B9793F', '#2B1416'], ['creme', '#EDE8DD', '#4A1D22'], ['nanquim', '#2B1416', '#EDE8DD']],
-    tipo: { bg: '#4A1D22', aa: "500 118px 'Cormorant'", aaCor: '#EDE3CC', amostra: 'tricô · couro · alfaiataria', amostraCss: "500 17px 'Cormorant';letter-spacing:.06em", cor: '#EDE3CC', nome: 'cormorant garamond' },
+    tipo: { bg: '#4A1D22', aa: "500 118px 'Cormorant'", aaCor: '#EDE3CC', amostra: 'tricô · couro · alfaiataria', amostraCss: "500 17px 'Cormorant';letter-spacing:.06em", cor: '#EDE3CC', nome: '' },   // sem o nome da fonte (pedido da Emi)
   },
   // ---------------- 03 · retrô setentinha ----------------
   {
