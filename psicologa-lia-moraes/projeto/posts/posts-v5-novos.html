@@ -1,0 +1,115 @@
+<!-- ===== NOVOS (refs: linho, tipo condensado com tinta, objetos, lacre) ===== -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="tinta-tipo" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="9" result="n2"/>
+    <feColorMatrix in="n2" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 1.75" result="furos"/>
+    <feComposite in="d" in2="furos" operator="in"/>
+  </filter>
+</svg>
+<style>
+.an{font-family:Anton;font-weight:400;letter-spacing:-.012em;text-transform:uppercase;filter:url(#tinta-tipo)}
+.linho{position:absolute;inset:0;background:url(../fotos-pinterest/colagem/linho-textura.png) center/cover}
+.sombra{filter:drop-shadow(0 22px 26px rgba(10,15,50,.38)) drop-shadow(0 4px 6px rgba(10,15,50,.25))}
+.selo-borda{background:radial-gradient(circle at 12px 12px,transparent 7px,var(--bg) 7.6px) -12px -12px/24px 24px;padding:18px}
+.selo-borda>div{background:var(--bg)}
+.etq{display:inline-block;background:var(--p);color:var(--c);font:500 38px/1 Poppins;letter-spacing:-.01em;padding:12px 20px 14px;margin:8px 6px;box-shadow:3px 4px 0 rgba(0,0,30,.25)}
+.flor-escalope{position:absolute;display:grid;place-items:center;text-align:center;background:var(--creme);color:var(--c);
+  clip-path:polygon(50% 0%,61% 7%,75% 3%,81% 16%,95% 19%,93% 33%,100% 44%,93% 56%,97% 70%,84% 75%,79% 89%,65% 88%,55% 99%,45% 91%,31% 97%,24% 84%,10% 82%,11% 67%,1% 56%,7% 44%,2% 30%,15% 24%,19% 10%,33% 11%,42% 1%)}
+</style>
+
+<!-- N1 · COMO FUNCIONA (prancheta + foto da Lia + lacre) -->
+<div class="art" id="p1" style="background:#2742C2;color:var(--creme)">
+  <div class="linho" style="mix-blend-mode:soft-light;opacity:1"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(90% 70% at 55% 45%,rgba(255,255,255,.07),rgba(0,0,40,.35))"></div>
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <!-- foto da Lia por trás da prancheta -->
+  <div class="abs sombra" style="left:612px;top:250px;width:390px;height:500px;transform:rotate(5deg);background:#fff;padding:16px">
+    <img src="../ia/lia-janela-v1.png" style="width:100%;height:100%;object-fit:cover;object-position:62% 30%">
+  </div>
+  <!-- prancheta -->
+  <div class="abs sombra" style="left:96px;top:150px;width:640px;transform:rotate(-3.5deg)">
+    <img src="../fotos-pinterest/colagem/prancheta-recorte.png" style="width:640px;display:block">
+    <div class="abs" style="left:58px;right:52px;top:176px;color:var(--c);text-align:center">
+      <div class="is" style="font-size:44px;line-height:1"><i>[como]</i></div>
+      <div class="an" style="font-size:166px;line-height:.9;margin-top:4px">funciona</div>
+      <div class="is" style="font-size:60px;line-height:.98;margin-top:6px;color:var(--tinta)">a terapia <i>comigo?</i></div>
+      <div style="margin:34px auto 0;width:400px;border-top:2.5px solid var(--c);border-bottom:2.5px solid var(--c);padding:16px 0 18px">
+        <div class="js" style="font-size:28px;line-height:1.3;color:var(--tinta)">da <b style="color:var(--c)">primeira conversa</b><br>ao que acontece<br><b style="color:var(--c)">entre as sessões.</b></div>
+      </div>
+      <div class="js" style="font-size:22px;margin-top:40px;color:var(--tinta);opacity:.8;letter-spacing:.06em">Lia Moraes</div>
+    </div>
+  </div>
+  <img class="abs sombra" src="../fotos-pinterest/colagem/lacre-pessego.png" style="left:560px;top:860px;width:210px;transform:rotate(-12deg)">
+  <img class="abs" src="../fotos-pinterest/colagem/lirio-recorte.png" style="left:640px;top:820px;width:470px;transform:rotate(-18deg);filter:drop-shadow(0 18px 24px rgba(0,0,40,.4))">
+  <div class="abs js" style="left:96px;top:1150px;font-size:30px;line-height:1.25">Sem fórmula pronta.<br><b>No seu tempo.</b></div>
+  <div class="cab rodape"><span></span><span>arrasta pro lado →</span></div>
+  <div class="grao" style="opacity:.16"></div>
+</div>
+
+<!-- N3 · ANTES DA CRISE (tipo condensado gigante + telefone pendurado) -->
+<div class="art" id="p3" style="background:#2742C2;color:var(--creme)">
+  <div class="linho" style="mix-blend-mode:soft-light"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(90% 70% at 50% 40%,rgba(255,255,255,.06),rgba(0,0,40,.35))"></div>
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs" style="left:0;right:0;top:150px;text-align:center">
+    <div class="js" style="font-size:40px">você não precisa esperar</div>
+    <div class="an" style="font-size:330px;line-height:.86;margin-top:14px" data-fit="960">desmoronar</div>
+    <div class="an" style="font-size:330px;line-height:.86" data-fit="760">pra ligar.</div>
+  </div>
+  <img class="abs" src="../fotos-pinterest/colagem/fone-recorte.png" style="left:640px;top:-260px;height:1160px;filter:drop-shadow(14px 22px 18px rgba(0,0,30,.45));z-index:5">
+  <div class="abs" style="left:96px;top:930px;width:400px">
+    <div class="is" style="font-size:66px;line-height:.95;color:var(--p)"><i>Terapia também é pra antes.</i></div>
+  </div>
+  <div class="abs js" style="left:96px;top:1120px;width:400px;font-size:28px;line-height:1.3">Pra quando algo começa a pesar e você ainda <b>nem sabe dar nome.</b></div>
+  <div class="abs" style="left:560px;top:1120px;width:66px;height:66px;border:2.5px solid var(--creme);border-radius:50%;display:grid;place-items:center"><svg width="30" height="22" viewBox="0 0 30 22" fill="none" stroke="#F5EEE3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11h25M18 2l9 9-9 9"/></svg></div>
+  <div class="abs js" style="left:660px;top:1120px;width:340px;font-size:28px;line-height:1.3">Agende sua primeira conversa: <b>link na bio.</b></div>
+  <div class="cab rodape"><span>@psi.liamoraes</span><span>psicologia clínica</span></div>
+  <div class="grao" style="opacity:.16"></div>
+</div>
+
+<!-- N5 · FICHÁRIO (cartão cobalto + página de argolas + lacre) -->
+<div class="art" id="p5" style="background:#EDB592;color:var(--c)">
+  <div class="linho" style="mix-blend-mode:multiply;opacity:.55"></div>
+  <div class="linho" style="mix-blend-mode:soft-light;opacity:.8"></div>
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs sombra" style="left:110px;right:110px;top:140px;height:390px;background:#2742C2;color:var(--creme);text-align:center;padding-top:62px">
+    <div class="linho" style="mix-blend-mode:soft-light;opacity:.7"></div>
+    <div class="js" style="position:relative;font-size:32px">Você não precisa chegar na primeira sessão</div>
+    <div class="is" style="position:relative;font-size:118px;line-height:.92;margin-top:16px"><i>já sabendo<br>o que dizer.</i></div>
+  </div>
+  <div class="abs sombra" style="left:95px;top:478px;width:890px">
+    <img src="../fotos-pinterest/colagem/fichario-h.png" style="width:890px;display:block">
+    <div class="abs" style="left:80px;right:80px;top:170px;text-align:center;color:var(--tinta)">
+      <div class="js" style="font-size:31px;line-height:1.36">Muita gente trava pensando por onde começar.<br>Não precisa de roteiro: <b style="color:var(--c)">a gente começa pelo que está aí,</b> do jeito que estiver.</div>
+      <div class="js" style="font-size:31px;line-height:1.36;margin-top:26px">Organizar o resto <b style="color:var(--c)">é trabalho meu.</b></div>
+    </div>
+  </div>
+  <img class="abs" src="../fotos-pinterest/colagem/lacre-cobalto.png" style="left:110px;top:1065px;width:190px;transform:rotate(-10deg);filter:drop-shadow(0 12px 14px rgba(10,15,50,.35))">
+  <div class="abs js" style="left:330px;top:1092px;width:560px;font-size:28px;line-height:1.3;color:var(--tinta)">Quer saber se a terapia faz sentido pra você? <b style="color:var(--c);text-decoration:underline;text-underline-offset:5px">Me chama pelo link da bio.</b></div>
+  <div class="cab rodape"><span>@psi.liamoraes</span><span>psicologia clínica</span></div>
+  <div class="grao" style="opacity:.14"></div>
+</div>
+
+<!-- N6 · ETIQUETAS (o que a gente escuta desde cedo) -->
+<div class="art" id="p6" style="background:#1D3398;color:var(--creme)">
+  <div class="linho" style="mix-blend-mode:soft-light"></div>
+  <div class="abs" style="inset:0;background:radial-gradient(90% 70% at 50% 40%,rgba(255,255,255,.05),rgba(0,0,30,.35))"></div>
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs is" style="left:70px;right:70px;top:150px;text-align:center;font-size:108px;line-height:.94">Desde cedo, a gente aprende a <i style="color:var(--p)">engolir o choro.</i></div>
+  <div class="abs" style="left:60px;right:60px;top:520px;text-align:center">
+    <span class="etq" style="transform:rotate(-2deg)">“Para de drama.”</span><span class="etq" style="transform:rotate(1.5deg)">“Tem gente pior.”</span><br>
+    <span class="etq" style="transform:rotate(1deg)">“Isso passa.”</span><span class="etq" style="transform:rotate(-1.5deg)">“Seja forte.”</span><span class="etq" style="transform:rotate(2deg)">“Não é nada.”</span>
+  </div>
+  <div class="flor-escalope sombra" style="left:700px;top:700px;width:300px;height:300px;transform:rotate(10deg)"><div class="js" style="font-size:30px;line-height:1.15;padding:0 40px"><b>e depois chama isso de força.</b></div></div>
+  <div class="abs selo-borda sombra" style="left:80px;top:860px;width:620px;--bg:#F5EEE3;transform:rotate(-2deg)">
+    <div style="padding:40px 44px 44px;color:var(--c)">
+      <div class="is" style="font-size:70px;line-height:.95">Sentir não é <i>fraqueza.</i></div>
+      <div class="js" style="font-size:29px;line-height:1.3;margin-top:18px;color:var(--tinta)">É informação sobre o que você precisa. Na terapia, <b style="color:var(--c)">a gente aprende a escutar isso.</b></div>
+    </div>
+  </div>
+  <img class="abs" src="../fotos-pinterest/colagem/lacre-pessego.png" style="left:600px;top:1150px;width:160px;transform:rotate(14deg);filter:drop-shadow(0 10px 12px rgba(0,0,30,.4))">
+  <div class="cab rodape"><span>@psi.liamoraes</span><span>psicologia clínica</span></div>
+  <div class="grao" style="opacity:.16"></div>
+</div>
