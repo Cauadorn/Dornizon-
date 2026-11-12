@@ -187,31 +187,31 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
       <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao-forte');
 })();
 
-/* ================= 4 · cor — diagramação da ref 1 (@nikaellydesign: degraus de título com tarja, post-its com clipe) ================= */
+/* ================= 4 · cor — refs 4 (palavra gigante com textura + barrinha de interface) e 5 (bilhetes com clipe) ================= */
 (() => {
   const p = A.paginas[2], [s1, s2] = p.sites;
   let nc = 0;
   const clipe = (x, y, r) => { const id = 'clp4' + (nc++); return `<svg class="abs" style="left:${x}px;top:${y}px;width:34px;transform:rotate(${r}deg);filter:drop-shadow(1px 4px 3px rgba(42,20,51,.35));z-index:3" viewBox="0 0 46 130"><defs><linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="#8f8a97"/><stop offset=".45" stop-color="#f4f1f7"/><stop offset="1" stop-color="#7f7987"/></linearGradient></defs>
     <path d="M14 34 V104 a9 9 0 0 0 18 0 V18 a14 14 0 0 0 -28 0 V108 a19 19 0 0 0 38 0 V34" fill="none" stroke="url(#${id})" stroke-width="4.4" stroke-linecap="round"/></svg>`; };
-  const postit = (x, y, w, r, cor, s) => `<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;padding:56px 44px 50px;background:${cor};transform:rotate(${r}deg);box-shadow:0 18px 34px rgba(42,20,51,.28);text-align:center">
-      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.35"></div>
-      <div style="position:relative;font-family:var(--sans);font-weight:600;font-size:42px;line-height:1.1;color:var(--tinta);text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:3px">${s.nome}</div>
-      <div style="position:relative;font-family:var(--sans);font-size:31px;line-height:1.28;color:var(--tinta);margin-top:16px">${s.pra}</div></div>`;
-  const tarja = (txt, tam, bg, cor, r = 0) => `<span style="display:inline-block;font-family:var(--sans);font-weight:600;font-size:${tam}px;line-height:1;letter-spacing:-.02em;padding:.1em .3em .14em;background:${bg};color:${cor};transform:rotate(${r}deg)">${txt}</span>`;
+  const bilhete = (x, y, w, r, bg, cor, s) => `<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;padding:40px 36px 36px;background:${bg};transform:rotate(${r}deg);box-shadow:0 16px 30px rgba(42,20,51,.3)">
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.3"></div>
+      <div style="position:relative;font-family:var(--sans);font-weight:600;font-size:34px;line-height:1.1;color:${cor};text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:2px">${s.nome}</div>
+      <div style="position:relative;font-family:var(--sans);font-size:26px;line-height:1.28;color:${cor};margin-top:12px">${s.pra}</div></div>`;
+  const amostra = (cor, hex) => `<span style="display:inline-flex;align-items:center;gap:12px;padding:0 22px"><i style="width:26px;height:26px;border-radius:6px;background:${cor};box-shadow:inset 0 0 0 2px rgba(255,251,222,.5)"></i>${hex}</span>`;
   lamina(3, `
-    <div class="abs" style="left:90px;top:92px;font-family:var(--sans);font-weight:500;font-size:22px;color:rgba(42,20,51,.7)">@itsemsdesign</div>
-    <div class="abs" style="left:0;right:0;top:122px;text-align:center">
-      <div style="font-family:var(--sans);font-weight:400;font-size:66px;line-height:1;color:var(--tinta);letter-spacing:-.02em">nem toda</div>
-      <div style="margin-top:14px">${tarja('paleta bonita', 82, 'var(--pink)', 'var(--ivory)', -1.5)}</div>
-      <div style="margin-top:-6px;font-family:var(--serif);font-style:italic;font-size:226px;line-height:.9;color:var(--violeta)">funciona</div></div>
-    ${postit(100, 562, 500, -5, 'var(--manteiga)', s1)}${clipe(118, 510, -16)}
-    ${postit(500, 816, 490, 4, 'var(--ivory)', s2)}${clipe(934, 768, 14)}
-    <div class="abs" style="left:0;right:0;top:1124px;text-align:center">
-      <div style="font-family:var(--sans);font-weight:600;font-size:46px;line-height:1;color:var(--tinta);letter-spacing:-.02em">é por isso que eu testo</div>
-      <div style="margin-top:10px">${tarja('antes de mostrar.', 46, 'var(--violeta)', 'var(--ivory)', -1)}</div></div>
-  `, `<div class="abs" style="inset:0;background:var(--lavanda-2)"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.3"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao');
+    <div class="abs" style="left:92px;top:92px;font-family:var(--sans);font-weight:500;font-size:22px;color:rgba(42,20,51,.7)">@itsemsdesign</div>
+    <div class="abs" style="left:92px;top:146px;font-family:var(--sans);font-weight:600;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--tinta)">nem toda</div>
+    <div class="abs" id="pal" style="left:70px;top:196px;font-family:var(--serif);font-size:430px;line-height:.78;letter-spacing:-.04em;color:var(--violeta)">paleta</div>
+    <div class="abs" style="right:84px;top:520px;font-family:var(--serif);font-style:italic;font-size:390px;line-height:.78;letter-spacing:-.02em;color:var(--pink)">bonita</div>
+    <div class="abs" style="left:92px;top:862px;font-family:var(--sans);font-weight:500;font-size:34px;letter-spacing:.42em;color:var(--tinta);text-decoration:underline;text-underline-offset:10px;text-decoration-thickness:2px">funciona.</div>
+    <div class="abs" style="right:90px;top:846px;display:flex;align-items:center;height:72px;border-radius:18px;background:var(--tinta);color:var(--ivory);font-family:var(--sans);font-weight:500;font-size:22px;box-shadow:0 10px 22px rgba(42,20,51,.3)">
+      ${amostra('var(--violeta)', '#6225D8')}<b style="width:1px;align-self:stretch;background:rgba(255,251,222,.25)"></b>${amostra('var(--pink)', '#DD34A8')}<b style="width:1px;align-self:stretch;background:rgba(255,251,222,.25)"></b><span style="padding:0 20px 0 16px">▶</span></div>
+    ${bilhete(96, 974, 440, -4, 'var(--manteiga)', 'var(--tinta)', s1)}${clipe(112, 930, -14)}
+    ${bilhete(548, 990, 440, 3.5, 'var(--ameixa)', 'var(--ivory)', s2)}${clipe(942, 950, 14)}
+    <img class="objeto" id="gotas" src="recortes/conta-gotas.png" style="left:0;top:0;width:380px">
+  `, `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.45"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao-forte');
 })();
 
 /* lupa de acrílico em cima de "algoritmo", ampliando a palavra (posição medida depois das fontes) */
@@ -219,6 +219,12 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
 function caber(el, largura) { let s = parseFloat(getComputedStyle(el).fontSize); while (el.scrollWidth > largura && s > 20) { s -= 2; el.style.fontSize = s + 'px'; } }
 document.fonts.ready.then(() => {
   const a = document.getElementById('alg'); if (a) caber(a, 800);
+  const pal = document.getElementById('pal'), gotas = document.getElementById('gotas');
+  if (pal && gotas) {
+    const lam = pal.closest('.lamina').getBoundingClientRect(), r = pal.getBoundingClientRect();
+    const k = 380 / 773, tx = r.right - lam.left - 70, ty = r.top - lam.top + r.height * .34;
+    gotas.style.left = (tx - 21 * k) + 'px'; gotas.style.top = (ty - 834 * k) + 'px';
+  }
   const rr = document.getElementById('capa-raras'), pc = document.getElementById('capa-pac');
   if (rr && pc) { const alvo = rr.getBoundingClientRect().width; let f = 80; pc.style.fontSize = f + 'px';
     f = f * alvo / pc.getBoundingClientRect().width; pc.style.fontSize = f + 'px'; }
