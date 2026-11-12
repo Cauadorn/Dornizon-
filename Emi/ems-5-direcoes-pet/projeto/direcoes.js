@@ -88,8 +88,8 @@ const DIRECOES = [
     // a partir das refs 14 Eros & Co. e 15 oval em relevo (referencias/maison-caramelo/brasao). Marca em marcas/maison-caramelo.
     heroi: { bg: '#4A1D22', cheia: { src: 'maison-outdoor', px: .5, py: .5 } },   // mockup aprovado: outdoor na parede de tijolo (PATTU)
     marca: { bg: '#EDE8DD', cheia: { src: 'maison-marca', px: .5, py: .5 }, cursor: [326, 338] },   // logo.html?w=452&h=430&escala=.54&dx=-21.5&dy=23
-    quadrado: { bg: '#EEE8D8', cheia: { src: 'maison-selo', px: .5, py: .5 } },   // o selo oval prensado no papel creme
-    alto: { bg: '#23392E', cheia: { src: 'd2extra', px: .6, py: .55 } },
+    quadrado: { bg: '#23392E', cheia: { src: 'd2pet-2', px: .5, py: .45 } },   // o whippet de suéter no sofá verde (a Emi pediu de volta)
+    alto: { bg: '#EEE8D8', cheia: { src: 'maison-selo', px: .5, py: .5 } },   // o selo oval prensado no papel creme (selo.html?w=2080&h=3776&rx=.34 + relevo.py, subido 64 px para centrar no quadro visível)
     paleta: [['vinho', '#4A1D22', '#EDE8DD'], ['caramelo', '#B9793F', '#2B1416'], ['creme', '#EDE8DD', '#4A1D22'], ['nanquim', '#2B1416', '#EDE8DD']],
     tipo: { bg: '#4A1D22', aa: "500 118px 'Cormorant'", aaCor: '#EDE3CC', amostra: 'tricô · couro · alfaiataria', amostraCss: "500 17px 'Cormorant';letter-spacing:.06em", cor: '#EDE3CC', nome: 'cormorant garamond' },
   },

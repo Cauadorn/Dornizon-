@@ -9,7 +9,8 @@ const q = new URLSearchParams(location.search);
 const W = +(q.get('w') || 1080), H = +(q.get('h') || 1350), chap = q.get('chapado') === '1';
 const fundo = chap ? (q.get('fundo') || '#EDE8DD') : '#FFFFFF', placa = chap ? 'none' : '#A8A8A8', tinta = chap ? (q.get('tinta') || '#2B1416') : '#000000';
 const cao = q.get('cao') || 'empinado', T = { empinado: [796.8, 713], saltando: [756.8, 562.8] }[cao];
-const cx = W / 2, cy = H / 2, rx = W * .27, ry = rx * 1.32, N = 46, amp = rx * .045;
+const cx = W / 2, cy = H / 2, rx = W * +(q.get('rx') || .27),   // ?rx= tamanho do oval (fração da largura)
+      ry = rx * 1.32, N = 46, amp = rx * .045;
 // borda recortada: oval com 46 "ondinhas" (meias-luas) em volta
 let d = '';
 for (let i = 0; i <= N; i++) {
