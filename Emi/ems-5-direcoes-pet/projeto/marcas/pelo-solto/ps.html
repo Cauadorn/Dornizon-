@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- pelo solto · versões para estampar ("uma versão PS pra estampar algumas coisas").
      A Emi vai usar os dois (o logo completo e o ps) e pediu o ps "mais junto"; o selo ela não gostou.
-     ?ps=encaixado (o "s" sobe até 8 px do "p") | ?ps=sobreposto (o "s" entra no pé do "p", com um filete na cor do fundo)
+     ?ps=encaixado (o "s" sobe até 8 px do "p") | ?ps=sobreposto (o "s" entra no pé e encosta na barriga do "p", com um filete na cor do fundo; "mais sobreposto", ps.py folga -30)
      ?tipo=mono → só o monograma "ps" (o "p" e o "s" do próprio logo; ps.py gera os .svg);
      ?tipo=selo → selo redondo: o "ps" no centro e PELO SOLTO · BANHO & TOSA · em volta, em Poppins Light espaçada,
                   distribuído exatamente na volta (textLength = circunferência). Bom para bordado na manga e etiqueta.
@@ -23,7 +23,7 @@ const fundo = q.get('fundo') || '#FDF6E5', tinta = q.get('tinta') || '#5A2E17', 
 st.setProperty('--fundo', fundo);
 const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px';
 const s = document.getElementById('s'); s.setAttribute('width', W); s.setAttribute('height', H);
-const arq = q.get('ps') || 'sobreposto'   // a Emi escolheu o B (sobreposto), TAM = { encaixado: [195, 402.25], sobreposto: [203, 382.75] }[arq];
+const arq = q.get('ps') || 'sobreposto'   // a Emi escolheu o B (sobreposto), TAM = { encaixado: [195, 402.25], sobreposto: [197.00, 366.75] }[arq];
 st.setProperty('--arq', `url(ps-${arq}.svg)`);
 const ps = document.querySelector('.ps'), PSW = TAM[0], PSH = TAM[1];
 if (tipo === 'mono') {

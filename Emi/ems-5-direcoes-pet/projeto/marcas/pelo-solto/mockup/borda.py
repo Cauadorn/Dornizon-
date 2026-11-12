@@ -7,7 +7,7 @@ from PIL import Image
 mask_p, saida = sys.argv[1], sys.argv[2]
 cx, cy, alt, giro = [float(v) for v in (sys.argv[3:7] if len(sys.argv) > 6 else (548, 668, 215, -4))]
 cor = sys.argv[7] if len(sys.argv) > 7 else '#5A2E17'
-foto = np.asarray(Image.open('base-manga.png').convert('RGB')).astype(np.float32) / 255
+foto = np.asarray(Image.open(sys.argv[8] if len(sys.argv) > 8 else 'base-manga-clara.png').convert('RGB')).astype(np.float32) / 255
 H, W = foto.shape[:2]
 # máscara do ps (preto no branco), recortada e escalada para 'alt' px × K (supersampling)
 K = 4
