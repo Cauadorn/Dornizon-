@@ -9,5 +9,5 @@ while [ $# -ge 2 ]; do
     *'#flip') base="${src%#flip}"; arq="$TMP/$base"; [ -f "$arq" ] || python3 -I -c "import sys;from PIL import Image,ImageOps;ImageOps.mirror(Image.open(sys.argv[1])).save(sys.argv[2])" "$IMG/$base" "$arq" ;;
     *) arq="$IMG/$src" ;;
   esac
-  printf '%s -> ' "$src"; curl -sS -X POST -F "file=@$arq;type=image/png" "$url" | head -c 160; echo
+  case "$arq" in *.jpg) mt=image/jpeg;; *) mt=image/png;; esac; printf "%s -> " "$src"; curl -sS -X POST -F "file=@$arq;type=$mt" "$url" | head -c 160; echo
 done

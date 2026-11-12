@@ -8,7 +8,7 @@ const BL={multiply:'MULTIPLY',screen:'SCREEN'};const imgs=[];
 const pos=(o,n)=>{if(n.m){const[a,b,c,d]=n.m,cx=n.x+n.w/2,cy=n.y+n.h/2;o.relativeTransform=[[a,c,cx-(a*n.w/2+c*n.h/2)],[b,d,cy-(b*n.w/2+d*n.h/2)]]}else{o.x=n.x;o.y=n.y}};
 const com=(o,n)=>{if(n.op!=null)o.opacity=n.op;if(n.bl&&BL[n.bl])o.blendMode=BL[n.bl];if(n.sh)o.effects=ef(n.sh)};
 function b(n,p){let o;
-if(n.k==='f'){o=figma.createFrame();o.name=NM[n.n]||n.n;o.resize(Math.max(.01,n.w),Math.max(.01,n.h));o.fills=n.fill?[so(n.fill)]:[];o.clipsContent=!!n.clip;if(n.r)o.cornerRadius=n.r;if(n.st){o.strokes=[so(n.st.c)];o.strokeWeight=n.st.w;o.strokeAlign='INSIDE'}com(o,n);p.appendChild(o);pos(o,n);(n.kids||[]).forEach(k=>b(k,o))}
+if(n.k==='f'){o=figma.createFrame();o.name=NM[n.n]||n.n;o.resize(Math.max(.01,n.w),Math.max(.01,n.h));o.fills=n.fill?[so(n.fill)]:[];o.clipsContent=!!n.clip;if(n.r)o.cornerRadius=n.r;if(n.rr){o.topLeftRadius=n.rr[0];o.topRightRadius=n.rr[1];o.bottomRightRadius=n.rr[2];o.bottomLeftRadius=n.rr[3]}if(n.st){o.strokes=[so(n.st.c)];o.strokeWeight=n.st.w;o.strokeAlign='INSIDE'}com(o,n);p.appendChild(o);pos(o,n);(n.kids||[]).forEach(k=>b(k,o))}
 else if(n.k==='i'){o=figma.createRectangle();o.name=n.n;o.resize(n.w,n.h);o.fills=[{type:'SOLID',color:{r:.85,g:.85,b:.85}}];com(o,n);p.appendChild(o);pos(o,n);imgs.push([o.id,n.src+(n.flip?'#flip':'')])}
 else if(n.k==='s'){o=figma.createNodeFromSvg(n.svg);o.name='vetor';o.fills=[];p.appendChild(o);pos(o,n)}
 else if(n.k==='t'){o=figma.createText();const ch=n.runs.map(r=>r.s).join('');const f0=n.runs.find(r=>r.ff);o.fontName=fn(f0);o.fontSize=f0.fs;o.characters=ch;let i=0;

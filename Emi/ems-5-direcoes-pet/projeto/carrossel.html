@@ -12,7 +12,40 @@
 // ---------- utilidades ----------
 const CURSOR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z"/></svg>';
 const SEL = '<i></i><i></i><i></i><i></i>';
+const W = 1080, H = 1350, SANGRIA = 30;
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const num = (i) => String(i).padStart(2, '0');
+let pendentes = 0;
+
+function marcaDagua(slide, y, tom = 'var(--ivory)') {
+  const m = el('div', 'marcadagua', '<span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span>');
+  m.style.top = y + 'px'; m.style.color = tom; slide.appendChild(m);
+}
+
+// Foto inteira (cenário já fotografado, sem recorte) cobrindo a caixa: como object-fit: cover,
+// com posição px/py (0 a 1, como object-position) e zoom opcional. Tamanho explícito para o export do Figma.
+function cheia(caixa, c, Wc, Hc) {
+  const img = el('img', 'foto'); img.src = 'img/' + c.src + '.jpg'; img.alt = c.src;
+  img.onload = () => {
+    const s = Math.max(Wc / img.naturalWidth, Hc / img.naturalHeight) * (c.zoom || 1);
+    const w = img.naturalWidth * s, h = img.naturalHeight * s;
+    img.style.cssText = `width:${w}px;height:${h}px;left:${(Wc - w) * (c.px ?? .5)}px;top:${(Hc - h) * (c.py ?? .5)}px`;
+    pendentes--; };
+  img.onerror = () => { img.remove(); pendentes--; };
+  pendentes++;
+  caixa.appendChild(img);
+}
+
+// SelectionBox do Figma + cursor multiplayer "emi" em volta de um retângulo do slide
+function selecionar(slide, x, y, w, h, kx, ky) {
+  const s = el('div', 'sel', SEL);
+  const x0 = Math.max(x - 7, 12), y0 = Math.max(y - 7, 12), x1 = Math.min(x + w + 7, W - 12), y1 = Math.min(y + h + 7, H - 12);
+  s.style.cssText = `left:${x0}px;top:${y0}px;width:${x1 - x0}px;height:${y1 - y0}px`;
+  slide.appendChild(s);
+  const k = el('div', 'cursor-emi', CURSOR + '<span>emi</span>');
+  k.style.cssText = `left:${x + kx}px;top:${y + ky}px`;
+  slide.appendChild(k);
+}
 
 // Estrela de 5 pontas em retícula (HalftoneStar): pontos que diminuem do centro para a borda.
 function estrela({ cx, cy, R, passo = 15, cor, opacidade = .45, rot = -18, rmax = 6.2 }) {
@@ -36,66 +69,54 @@ function estrela({ cx, cy, R, passo = 15, cor, opacidade = .45, rot = -18, rmax 
   return s;
 }
 
-function marcaDagua(slide, y, tom = 'var(--ivory)') {
-  const m = el('div', 'marcadagua', '<span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span>');
-  m.style.top = y + 'px'; m.style.color = tom; slide.appendChild(m);
-}
-
-// Foto recortada posicionada por âncora: o ponto (ax, ay) da imagem cai em (x, y) do quadro; h = altura da imagem.
-function foto(q, f) {
-  const img = el('img', 'foto'); img.src = 'img/' + f.src + '.png';
-  if (f.flip) img.style.transform = 'scaleX(-1)';
-  if (f.sombra === false) img.style.filter = 'none';
-  img.onload = () => {
-    const h = f.h, w = h * img.naturalWidth / img.naturalHeight;
-    img.style.height = h + 'px'; img.style.width = w + 'px';
-    img.style.left = (f.x - f.ax * w) + 'px'; img.style.top = (f.y - f.ay * h) + 'px';
-    pendentes--; };
-  pendentes++;
-  return img;
-}
-let pendentes = 0;
-
-// ---------- grade 3 x 3 ----------
-const SANGRIA = 30;
-const COL = { L: [0, 308], C: [326, 428], R: [772, 308] };
-const LIN = { T: [0, 408], M: [422, 506], B: [942, 408] };
-
-function quadro(slide, pos, conteudo) {
-  const [c, l] = [pos[1], pos[0]];               // pos = 'TL', 'MC'...
-  const cc = { L: 'L', C: 'C', R: 'R' }[c], ll = l;
-  let [x, w] = COL[cc], [y, h] = LIN[ll];
-  const bx = cc === 'L' ? SANGRIA : 0, by = ll === 'T' ? SANGRIA : 0;
-  const q = el('div', 'q');
-  q.style.cssText = `left:${x - bx}px;top:${y - by}px;width:${w + bx + (cc === 'R' ? SANGRIA : 0)}px;height:${h + by + (ll === 'B' ? SANGRIA : 0)}px;--bg:${conteudo.bg}`;
-  if (conteudo.padrao) { const p = el('div', 'padrao'); p.style.background = conteudo.padrao; q.appendChild(p); }
-  const pad = el('div', 'pad'); pad.style.cssText = `left:${bx}px;top:${by}px;width:${w}px;height:${h}px`;
-  q.appendChild(pad);
-  if (conteudo.foto) pad.appendChild(foto(pad, conteudo.foto));
-  if (conteudo.html) pad.insertAdjacentHTML('beforeend', conteudo.html);
-  slide.appendChild(q);
-  if (conteudo.escolhido) {           // moldura de seleção do Figma + cursor "emi"
-    const s = el('div', 'sel', SEL);
-    s.style.cssText = `left:${x - 7}px;top:${y - 7}px;width:${w + 14}px;height:${h + 14}px`;
-    slide.appendChild(s);
-    const k = el('div', 'cursor-emi', CURSOR + '<span>emi</span>');
-    const [kx, ky] = conteudo.escolhido;
-    k.style.cssText = `left:${x + kx}px;top:${y + ky}px`;
-    slide.appendChild(k);
+// ---------- quadro (bloco) ----------
+// Quem encosta na borda do canvas ganha sangria; arco e cápsula ficam inteiros (sem sangria lateral).
+function bloco(slide, b) {
+  const [x, y, w, h] = b.r;
+  const lateral = b.forma ? 0 : SANGRIA;
+  const bl = x <= 0 ? lateral : 0, br = x + w >= W ? lateral : 0;
+  const bt = y <= 0 ? SANGRIA : 0, bb = y + h >= H ? SANGRIA : 0;
+  const qw = w + bl + br, qh = h + bt + bb;
+  const q = el('div', 'q' + (b.forma ? ' ' + b.forma : '') + (b.flutua != null ? ' flutua' : ''));
+  q.style.cssText = `left:${x - bl}px;top:${y - bt}px;width:${qw}px;height:${qh}px;--bg:${b.bg}`;
+  if (b.forma === 'arco') q.style.borderRadius = `${w / 2}px ${w / 2}px 22px 22px`;
+  if (b.flutua != null) q.style.transform = `rotate(${b.flutua}deg)`;
+  if (b.cheia) cheia(q, b.cheia, qw, qh);
+  if (b.padrao) { const p = el('div', 'padrao'); p.style.background = b.padrao; q.appendChild(p); }
+  if (b.html) {
+    const pad = el('div', 'pad'); pad.style.cssText = `left:${bl}px;top:${bt}px;width:${w}px;height:${h}px`;
+    pad.insertAdjacentHTML('beforeend', b.html); q.appendChild(pad);
   }
+  slide.appendChild(q);
+  if (b.escolhido) selecionar(slide, x, y, w, h, ...b.escolhido);
   return q;
 }
 
+// ---------- cartão da direção ----------
+function cartao(slide, d, i) {
+  const { r, modo = 'v', tam = 100, txt, chips } = d.cartao;
+  const [x, y, w, h] = r;
+  const bl = x <= 0 ? SANGRIA : 0, br = x + w >= W ? SANGRIA : 0, bt = y <= 0 ? SANGRIA : 0, bb = y + h >= H ? SANGRIA : 0;
+  const c = el('div', 'cartao ' + modo + (bb && modo === 'v' ? ' baixo' : ''));
+  c.style.cssText = `left:${x - bl}px;top:${y - bt}px;width:${w + bl + br}px;height:${h + bt + bb}px;--card:${d.card}`;
+  const dentro = el('div', 'dentro'); dentro.style.cssText = `left:${bl}px;top:${bt}px;width:${w}px;height:${h}px`;
+  const cab = `<div class="num"><span class="sel-inline">${SEL}direção ${num(i + 1)} / 05</span></div>`;
+  const t = `<h2 style="font-size:${tam}px">${d.titulo}</h2>`;
+  const p = `<p${txt ? ` style="font-size:${txt}px"` : ''}>${d.texto}</p><div class="letra">letra: ${d.letra}</div>`;
+  const ch = chips ? `<div class="chips">${chips.map(([n, hex]) => `<div><span style="background:${hex}"></span><b>${n}</b><small>${hex}</small></div>`).join('')}</div>` : '';
+  dentro.innerHTML = modo === 'h'
+    ? `<div class="col1">${cab}${t}</div><div class="col2">${p}</div><span class="tag">@itsemsdesign${CURSOR}</span>`
+    : `${cab}${t}${p}${ch}<span class="tag">@itsemsdesign${CURSOR}</span>`;
+  c.appendChild(dentro);
+  slide.appendChild(c);
+}
+
 function laminaDirecao(d, i) {
-  const s = el('section', 'slide dir'); s.dataset.nome = `lamina-${String(i + 2).padStart(2, '0')}`;
-  for (const [pos, q] of Object.entries(d.quadros)) quadro(s, pos, q);
-  const c = el('div', 'cartao');
-  c.style.setProperty('--card', d.card);
-  c.innerHTML = `<div class="num"><span class="sel-inline">${SEL}direção ${String(i + 1).padStart(2, '0')} / 05</span></div>
-    <h2>${d.titulo}</h2><p>${d.texto}</p>
-    <span class="tag">@itsemsdesign${CURSOR}</span>`;
-  if (d.tituloTam) c.querySelector('h2').style.fontSize = d.tituloTam + 'px';
-  s.appendChild(c);
+  const s = el('section', 'slide dir ' + d.layout); s.dataset.nome = `lamina-${num(i + 2)}`;
+  // a ordem importa: o que flutua (patch) entra por último, por cima da foto
+  d.blocos.filter((b) => b.flutua == null).forEach((b) => bloco(s, b));
+  cartao(s, d, i);
+  d.blocos.filter((b) => b.flutua != null).forEach((b) => bloco(s, b));
   s.appendChild(el('div', 'grain'));
   return s;
 }
@@ -103,40 +124,45 @@ function laminaDirecao(d, i) {
 // ---------- capa ----------
 function capa() {
   const s = el('section', 'slide capa'); s.dataset.nome = 'lamina-01';
-  s.appendChild(estrela({ cx: 930, cy: 300, R: 470, cor: '#c0a5c4', opacidade: .42 }));
-  s.appendChild(estrela({ cx: 40, cy: 640, R: 300, cor: '#c0a5c4', opacidade: .3, rot: 8 }));
-  marcaDagua(s, 54);
-  const g = el('div', 'gato'); g.style.cssText = 'left:0;top:0;width:1080px;height:1350px;';
-  g.appendChild(foto(g, CAPA.gato)); s.appendChild(g);
+  marcaDagua(s, 50, 'var(--ameixa)');
   s.insertAdjacentHTML('beforeend', `
-    <div class="rotulo">ems &nbsp;•&nbsp; identidade visual & direção de arte</div>
-    <div class="cinco">5</div>
-    <div class="titulo"><div class="l1">direções<br>criativas</div><div class="l2">pra marcas <em>pet</em></div></div>
-    <div class="adesivo">fora da casinha${CURSOR}</div>`);
-  const n = CAPA.nota;
-  s.insertAdjacentHTML('beforeend', `<div class="nota" style="left:${n.x}px;top:${n.y}px">${n.texto}</div>
-    <svg class="nota-linha" style="left:${n.lx}px;top:${n.ly}px" width="${n.lw}" height="${n.lh}"><path d="${n.path}"/></svg>`);
-  const sb = el('div', 'sel', SEL); sb.style.cssText = CAPA.selecao + ';--sel:var(--ivory);--sel-fill:var(--violeta)'; s.appendChild(sb);
-  s.appendChild(el('div', 'grain claro'));
+    <div class="kicker"><span class="sel-inline">${SEL}5 direções criativas · branding pet</span></div>
+    <h1>marca pet<br>sem <em>patinha</em></h1>
+    <p class="sub">5 jeitos de fugir do clichê<br>(e do osso) com direção de arte</p>`);
+  const q = bloco(s, { r: [400, 650, 680, 700], bg: '#6225D8', cheia: CAPA.cheia });
+  q.classList.add('foto-capa');
+  const idx = el('div', 'indice');
+  idx.innerHTML = '<div class="rot">nesse carrossel</div>' + DIRECOES.map((d, i) =>
+    `<div class="item"><span class="n">${num(i + 1)}</span><span class="nm">${d.titulo.replace(/<\/?em>/g, '')}</span><span class="pts">${d.cores.slice(0, 3).map((c) => `<i style="background:${c}"></i>`).join('')}</span></div>`).join('');
+  s.appendChild(idx);
+  selecionar(s, 584, 728, 324, 236, 290, 214);
+  s.insertAdjacentHTML('beforeend', `<span class="tag capa-tag">arrasta pro lado${CURSOR}</span>`);
+  s.appendChild(el('div', 'grain'));
   return s;
 }
 
 // ---------- chamada ----------
 function chamada() {
   const s = el('section', 'slide chamada'); s.dataset.nome = 'lamina-07';
-  s.appendChild(estrela({ cx: 1000, cy: 360, R: 420, cor: '#dd34a8', opacidade: .45, rot: 12 }));
-  s.appendChild(estrela({ cx: -20, cy: 1300, R: 260, cor: '#dd34a8', opacidade: .35, rot: -4 }));
   marcaDagua(s, 1296);
-  const g = el('div', 'gato'); g.style.cssText = 'left:0;top:0;width:1080px;height:1350px;';
-  g.appendChild(foto(g, CHAMADA.gato)); s.appendChild(g);
+  s.appendChild(estrela({ cx: 880, cy: 1110, R: 190, cor: 'var(--lavanda)', opacidade: .35, rot: -12 }));
   s.insertAdjacentHTML('beforeend', `
-    <div class="pergunta"><span class="sel-inline">${SEL}e aí, qual das 5 tem a cara da sua marca?</span></div>
-    <div class="lead" style="top:262px">quer uma marca pet que</div>
-    <div class="grande" style="top:338px">dá pra<br><em>reconhecer</em></div>
-    <div class="lead" style="top:640px">até sem o nome?</div>
-    <div class="dm" style="left:80px;top:760px">me chama na dm${CURSOR}</div>
-    <img class="selo" src="img/selo-ems.png" alt="selo ems" style="left:80px;top:960px;width:150px">
-    <div class="assina" style="left:254px;top:1058px">@itsemsdesign<br><span style="opacity:.75">emsdesign.com.br</span></div>`);
+    <div class="kicker"><span class="sel-inline">${SEL}e aí?</span></div>
+    <div class="grande">qual das 5<br>é a <em>sua</em>?</div>`);
+  const fila = el('div', 'fila');
+  DIRECOES.forEach((d, i) => {
+    const f = el('div', 'ficha');
+    f.innerHTML = `<div class="faixas">${d.cores.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
+      <div class="rodape"><span class="n">${num(i + 1)}</span><span class="nm">${d.titulo.replace(/<\/?em>/g, '')}</span></div>`;
+    fila.appendChild(f);
+  });
+  s.appendChild(fila);
+  selecionar(s, 54 + 2 * (180 + 18), 560, 180, 300, 158, 250);
+  s.insertAdjacentHTML('beforeend', `
+    <div class="lead">comenta o número aqui embaixo ↓</div>
+    <div class="dm">ou me chama na dm${CURSOR}</div>
+    <img class="selo" src="img/selo-ems.png" alt="selo ems">
+    <div class="assina">@itsemsdesign<br><span>identidade visual, social media e site</span></div>`);
   s.appendChild(el('div', 'grain claro'));
   return s;
 }

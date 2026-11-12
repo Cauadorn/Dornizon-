@@ -1,22 +1,33 @@
 # EMS · "5 direções criativas pra marcas pet"
 
-Carrossel 1080 × 1350 (7 lâminas) para o @itsemsdesign, no formato novo `PostCuradoria` do design system EMS.
+Carrossel 1080 × 1350 (7 lâminas) para o @itsemsdesign, no formato `PostCuradoria` do design system EMS.
 
-**Referência:** post da @pivocriativo "5 direções criativas para marcas de beleza fora do padrão" (11/11/2026). O que veio de lá: a capa com número gigante + título + adesivo, as lâminas em grade 3 × 3 com um cartão escuro no meio (número, nome da direção, descrição "pra marcas que...") e a chamada final com pergunta. O que mudou: outro nicho (pet), identidade EMS no lugar da do Pivô, e o moodboard é **criado** (fotos geradas + marcas fictícias desenhadas), não curadoria de marcas reais.
+**Referência:** post da @pivocriativo "5 direções criativas para marcas de beleza fora do padrão" (11/11/2026). Dele fica só a **ideia**: 5 universos visuais para um nicho, cada um com cor, letra, foto e marca. A **estrutura** não se copia (v3, 12/11). A referência repete a mesma grade 3 × 3 com cartão no meio em todas as lâminas, e a capa tem "5" gigante + pílula. Aqui cada lâmina tem um layout próprio, e capa e chamada são outras.
 
-**Por que pet:** mercado enorme de marca pequena (petshop, petisco, banho e tosa, acessório), conversa com o lado cpf da Emi (os gatos são a "diretoria criativa") e rende o trocadilho do adesivo, "fora da casinha".
+**Por que pet:** mercado enorme de marca pequena (petshop, petisco, banho e tosa, acessório), conversa com o lado cpf da Emi e rende o gancho da capa: "marca pet sem *patinha*".
+
+## Versões
+
+1. **v1:** fotos recortadas pousadas em cor chapada. Reprovada: "os recortes não se encaixam, parece copia e cola".
+2. **v2:** fotos inteiras na cena. A Emi amou, mas apontou dois problemas: "as imagens se repetem" (5 variações da mesma cena por lâmina, e uma foto literalmente duas vezes) e "queria que fosse menos cópia da ref" (grade 3 × 3 idêntica em todas, capa e chamada iguais às da referência).
+3. **v3 (atual):** mesmo vocabulário visual da v2, com estas mudanças:
+   - Um layout por direção.
+   - Cada foto aparece uma vez só no carrossel.
+   - Uma cena nova por direção, gerada para dar variedade.
+   - Capa com índice.
+   - Chamada que pede o número nos comentários.
 
 ## Lâminas
 
-| # | Lâmina | Cartão (cor da série) | Marca fictícia no quadro selecionado | Fonte da direção |
-|---|---|---|---|---|
-| 1 | Capa: gato preto, "5 direções criativas pra marcas *pet*", adesivo "fora da casinha" | `violeta` | — | — |
-| 2 | 01 pop de *gibi* | `violeta` | AU! petiscaria (balão de gibi) | Bagel Fat One |
-| 3 | 02 clube de *grife* | `plum` | Maison Caramelo, pet couture | Bodoni Moda |
-| 4 | 03 retrô *setentinha* | `wine` | pelo solto, banho & tosa | Shrikhand |
-| 5 | 04 modo *atleta* | `creative-purple` | AU running club | Graduate |
-| 6 | 05 ciência *fofa* | `ameixa` | miau.lab, fórmula nº 07 | Space Mono |
-| 7 | Chamada: "quer uma marca pet que dá pra *reconhecer* até sem o nome?" + me chama na dm + selo | `plum` | — | — |
+| # | Lâmina | Layout | Cor do cartão | Fotos | Marca fictícia · fonte |
+|---|---|---|---|---|---|
+| 1 | Capa: "marca pet sem *patinha*" | título em serifa no topo, índice das 5 direções à esquerda, gato preto em quadro à direita | marfim | capa-2 | — |
+| 2 | 01 pop de *gibi* | **tirinha**: 3 faixas com quadros de larguras diferentes | `violeta` | vira-lata pulando, osso e pote, corgi e petisco | AU! petiscaria · Bagel Fat One |
+| 3 | 02 clube de *grife* | **revista**: uma foto gigante, coluna lateral e faixa de baixo | `plum` | whippet de suéter, bolsa de couro, tricô com plaquinha MC | Maison Caramelo · Bodoni Moda |
+| 4 | 03 retrô *setentinha* | **arcos**: quadros com topo em arco, anos 70 | `wine` | lhasa no tapete, pote e margarida, poodle no secador | pelo solto · Shrikhand |
+| 5 | 04 modo *atleta* | **ação**: foto de ponta a ponta com o patch do clube por cima; paleta em chips no cartão | `creative-purple` | border collie e frisbee, peitoral na pista, corredor e vizsla | AU running club · Graduate |
+| 6 | 05 ciência *fofa* | **ficha**: cartão em faixa no topo, foto em cápsula, grade de prontuário | `ameixa` | gato tigrado, frascos e ração, filhote no veterinário | miau.lab · Space Mono |
+| 7 | Chamada: "qual das 5 é a *sua*?" | as 5 paletas em fichas numeradas, "comenta o número", dm, selo | `plum` | — | — |
 
 Legenda pronta em `legenda.md`.
 
@@ -25,29 +36,19 @@ Legenda pronta em `legenda.md`.
 ## Arquivos
 
 - `entrega/lamina-01..07.png` e `entrega/visao-geral.jpg`: arte final.
-- `projeto/carrossel.html` + `estilo.css` + `direcoes.js`: a peça em código. Todo o conteúdo das direções (cores, quadros, posição de cada foto) fica em `direcoes.js`.
+- `projeto/carrossel.html` + `estilo.css` + `direcoes.js`: a peça em código. `direcoes.js` concentra o conteúdo e o layout de cada lâmina: retângulos `[x, y, w, h]`, forma (`arco`, `capsula`), patch flutuante e seleção.
 - `projeto/render.mjs`: `node render.mjs` exporta para `entrega/`; `node render.mjs --previa` exporta para `previa/` (fora do git).
-- `projeto/img/`: fotos recortadas (fundo transparente) e o selo original.
+- `projeto/img/`: só as 16 fotos usadas e o selo original.
 - `projeto/figma/`: `exporta.mjs` (HTML → cena de camadas), `montador.js` (monta no Figma com `use_figma`), `sobe.sh` (envia as imagens para os nós). `figma/saida/` é gerada e fica fora do git.
 - `projeto/fonts/`: Poppins e Instrument Serif (EMS) + as cinco fontes das direções (Google Fonts, licença OFL).
 
 ## Como as fotos foram feitas
 
-- **Nano Banana Pro** (`gemini-3-pro-image` no ElevenLabs, porque o Magnific estava sem créditos), prompt em português, fundo liso **#E9E9E9** e "sem texto" em todos, como pede o DS. 11 prompts × 4 variações (gato da capa e, por direção, um prompt do bicho e um do produto). Fluxo no ElevenLabs: "EMS · 5 direções criativas pra marcas pet".
-- Saída 1376 × 768 (16:9, 1K). Os dois gatos (capa e chamada) passaram por upscale 2x no Topaz (ElevenLabs) antes do recorte; o resto dos quadros usa a foto no tamanho original.
-- **Recorte local** com `rembg`: ISNet (`isnet-general-use`, rápido) para a maioria e BiRefNet (`birefnet-general`) para o que tem branco perto do cinza do fundo (rótulos, tênis, suéter, tigela, gatos). O BiRefNet estoura a memória se processar várias imagens no mesmo processo: rodar uma imagem por processo.
-- Montagem: cada recorte pousa na cor da direção, com sombra suave em `tinta` e, às vezes, um padrão (retícula de gibi, grade de laboratório, faixa de pista).
-
-### Prompts usados
-
-1. Capa/chamada: "Fotografia de estúdio de um gato preto de pelo curto e brilhante, sentado, olhando para cima e para o lado com uma expressão travessa e divertida, bochechas cheias, uma pata levantada perto do rosto, olhos amarelos grandes, bigodes nítidos, luz de estúdio suave vinda da esquerda, textura realista do pelo, leve grão de filme, enquadramento da cabeça até o peito com respiro nas bordas, fundo liso #E9E9E9, sem sombra projetada, sem texto, sem outros objetos."
-2. 01 bicho: vira-lata caramelo sorrindo, bandana vermelha #F2542D com bolinhas, pulando, luz dura e alegre, fundo #E9E9E9.
-3. 01 produto: osso amarelo #FFD23F, bola azul #2B59C3 e pote vermelho #F2542D de borracha fosca, três quartos, fundo #E9E9E9.
-4. 02 bicho: whippet com suéter de tricô trançado creme #F3E9D7 e coleira caramelo com fivela dourada, campanha de luxo, fundo #E9E9E9.
-5. 02 produto: bolsa de transporte de couro caramelo #C08A4F, coleira café #4A2E21 e pote de cerâmica creme, natureza-morta de grife, fundo #E9E9E9.
-6. 03 bicho: lhasa apso caramelo com lenço de seda laranja #E2701E e mostarda #E9B03B, "estrela de cinema dos anos 70", grão de filme, fundo #E9E9E9.
-7. 03 produto: pote de cerâmica mostarda com ondas laranja e marrom #6B3A1F + margarida de crochê, fundo #E9E9E9.
-8. 04 bicho: border collie saltando para pegar frisbee azul royal #1F3FBF, peitoral verde-limão #C7F23E, fundo #E9E9E9.
-9. 04 produto: peitoral azul royal com verde-limão, guia de corda trançada e tênis de corrida, sem logotipo, fundo #E9E9E9.
-10. 05 bicho: gato tigrado cinza sentado de frente, coleira azul clínico #2F6BFF com pingente, luz branca de laboratório, fundo #E9E9E9.
-11. 05 produto: ração em placa de petri, frascos âmbar com tampa azul clínico e conta-gotas, rótulos em branco, fundo #E9E9E9.
+- **Fotos da v2** (pet e produto de cada direção, capa): Nano Banana Pro (`gemini-3-pro-image` no ElevenLabs), 3:4, 2K. Cena inteira no cenário e na cor da direção, nada de recorte. Prompt em português, "sem texto".
+- **Cenas novas da v3** (`d1extra` a `d5extra`): gerador de imagem do Figma (`gemini-3.1-flash-image`). A ElevenLabs ficou sem crédito, e o Freepik recusa geração pelo conector ("limite de uso"), mesmo com plano ilimitado no site. Os 5 prompts estão no Space "EMS · carrossel pet v3 · fotos novas" do Freepik, prontos para rodar no Nano Banana Pro 2K pelo site, se quiser trocar por versões em 2K.
+  - `d1extra` (16:9): corgi pulando para pegar um biscoito em formato de osso, fundo vermelho-tomate com retícula amarela, flash duro.
+  - `d2extra` (9:16): suéter creme de tricô trançado dobrado em prateleira de nogueira, plaquinha de latão "MC", guia de couro conhaque, parede verde-garrafa.
+  - `d3extra` (3:4): poodle branco sob secador de capacete cromado, salão de banho e tosa anos 70, azulejos laranja e mostarda, grão de filme.
+  - `d4extra` (9:16): pernas de corredor (short azul royal, tênis verde-limão) e vizsla de peitoral azul na rua ao nascer do sol.
+  - `d5extra` (9:16): filhote de golden na mesa de exame, mãos de luva menta com estetoscópio, parede menta.
+- Regra para não repetir: variações da mesma cena (mesmo bicho, mesmo cenário) contam como a mesma foto. Por direção, uma foto de cada cena.

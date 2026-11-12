@@ -150,7 +150,10 @@ const { cenas, rasters } = await page.evaluate(() => {
     if (caixa) {
       const f = { k: 'f', n: nome(e), x: R(r.left - base.left), y: R(r.top - base.top), w: R(r.width), h: R(r.height), kids: [] };
       if (fundo) f.fill = fundo;
-      const rad = parseFloat(cs.borderTopLeftRadius); if (rad) f.r = Math.min(rad, r.height / 2, r.width / 2);
+      const lim = (v) => Math.min(parseFloat(v) || 0, r.height / 2, r.width / 2);
+      const cantos = [cs.borderTopLeftRadius, cs.borderTopRightRadius, cs.borderBottomRightRadius, cs.borderBottomLeftRadius].map(lim);
+      if (cantos.every((c) => c === cantos[0])) { if (cantos[0]) f.r = R(cantos[0]); }
+      else f.rr = cantos.map(R);          // arco: topo redondo, base 22
       if (cs.overflow === 'hidden') f.clip = 1;
       if (borda && borda.c) f.st = borda;
       if (sombra) f.sh = sombra;
