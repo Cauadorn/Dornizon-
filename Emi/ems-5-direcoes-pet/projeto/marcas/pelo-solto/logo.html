@@ -3,12 +3,14 @@
      - "esses brilhinhos tão 100% vetor": saem as estrelas de quatro pontas e as gotas lisas; entram três respingos de pincel,
        cada um de uma largura, com a borda tremida (feTurbulence + feDisplacementMap) e um grão de tinta leve em tudo;
      - "precisa ter mais movimento nessa fonte": cada letra dança (ângulo, subida e tamanho próprios), como no TOTÓ;
-     - "o banho e tosa tá igual o título, pode ser mais delicado": vira Fraunces itálico leve, entre dois fios finos que vão
-       da margem do texto até o fim de "solto" (assim continua alinhado dos dois lados).
+     - "o banho e tosa tá igual o título, pode ser mais delicado": "letra de forma, tipo uma Poppins ou mais delicada ainda,
+       espaçada" → Poppins Light em caixa alta bem espaçada, entre dois fios finos de margem a margem (o itálico não era isso);
+     - "o p e o s estão se encostando": mais entrelinha entre "pelo" e "solto".
      O poodle continua o que ela aprovou (poodle-sentado.png), sem mexer. A v4 fica em logo-v4.html.
      ?fundo=&tinta= · ?w=&h=&escala=&dx=&dy= · ?grao=0 -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: Gluten; src: url(../../fonts/Gluten.woff2); font-weight: 100 900; }
+@font-face { font-family: PoppinsL; src: url(../../fonts/Poppins-300.woff2); font-weight: 300; }
 @font-face { font-family: FrauncesI; src: url(../../fonts/FrauncesItalic.woff2); font-weight: 100 900; font-style: italic; }
 html, body { margin: 0; }
 .palco { position: relative; overflow: hidden; background: var(--fundo); }
@@ -60,18 +62,17 @@ function palavra(txt, fs, x0, base) {
 document.fonts.load('900 100px Gluten').then(() => document.fonts.load('italic 400 100px FrauncesI')).then(() => {
   const FS = 220, X = 0;
   const t1 = mede('pelo', G(FS)), t2 = mede('solto', G(FS));
-  const y1 = 0, y2 = y1 + t1.desce * .25 + 22 + t2.sobe;
+  const y1 = 0, y2 = y1 + t1.desce * .5 + 30 + t2.sobe;   // o "p" (desce 6) não pode encostar no "s" (sobe 4)
   const g1 = palavra('pelo', FS, X + t1.esq, y1), g2 = palavra('solto', FS, X + t2.esq, y2);
   // margens reais pela caixa das palavras já dançando
   const b1 = g1.getBBox(), b2 = g2.getBBox(), esq = Math.min(b1.x, b2.x), dir = b2.x + b2.width;
-  // banho & tosa: itálico leve entre dois fios finos, da margem esquerda até o fim de "solto"
-  const FS3 = 58, F3 = `italic 400 ${FS3}px FrauncesI`, t3 = mede('banho & tosa', F3);
-  const larg3 = t3.esq + t3.dir, meio = (esq + dir) / 2, y3 = b2.y + b2.height - 6 + t3.sobe;
-  el('text', { x: meio - larg3 / 2 + t3.esq, y: y3, 'font-family': 'FrauncesI', 'font-style': 'italic', 'font-weight': 400, 'font-size': FS3, fill: C.tinta,
-    style: "font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 72" }).textContent = 'banho & tosa';
-  const yf = y3 - t3.sobe * .38, folga = 22;
-  el('line', { x1: esq + 4, y1: yf, x2: meio - larg3 / 2 - folga, y2: yf, stroke: C.tinta, 'stroke-width': 3, 'stroke-linecap': 'round' });
-  el('line', { x1: meio + larg3 / 2 + folga, y1: yf, x2: dir - 4, y2: yf, stroke: C.tinta, 'stroke-width': 3, 'stroke-linecap': 'round' });
+  // BANHO & TOSA: letra de forma fina (Poppins Light), caixa alta bem espaçada, entre dois fios finos de margem a margem
+  const FS3 = 30, LS3 = FS3 * .42, F3 = `300 ${FS3}px PoppinsL`, t3 = mede('BANHO & TOSA', F3, LS3);
+  const larg3 = t3.esq + t3.dir, meio = (esq + dir) / 2, y3 = b2.y + b2.height + 14 + t3.sobe;
+  el('text', { x: meio - larg3 / 2 + t3.esq, y: y3, 'font-family': 'PoppinsL', 'font-weight': 300, 'font-size': FS3, 'letter-spacing': LS3, fill: C.tinta }).textContent = 'BANHO & TOSA';
+  const yf = y3 - t3.sobe * .5, folga = 26;
+  el('line', { x1: esq + 4, y1: yf, x2: meio - larg3 / 2 - folga, y2: yf, stroke: C.tinta, 'stroke-width': 2, 'stroke-linecap': 'round' });
+  el('line', { x1: meio + larg3 / 2 + folga, y1: yf, x2: dir - 4, y2: yf, stroke: C.tinta, 'stroke-width': 2, 'stroke-linecap': 'round' });
   // poodle: do topo das letras até a base do subtítulo
   const topo = Math.min(b1.y, b2.y), base = y3 + t3.desce, alt = base - topo, ar = 964 / 1368, larg = alt * ar;
   el('image', { href: 'poodle-sentado.png', x: esq - larg - FS * .08, y: topo, width: larg, height: alt, filter: 'url(#tinge)' });
