@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>MOÁ – Direção Criativa com IA</title>
+<style>
+  @font-face { font-family: "Instrument Serif"; font-style: italic; src: url("fontes/InstrumentSerif-Italic.ttf"); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1b1b1b; display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; }
+  .slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #f3e6d6; flex: none; }
+  .slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .marca { position: absolute; top: 86px; left: 104px; color: #fff; font: 800 27px/0.92 "Inter Display", "Inter", sans-serif;
+           letter-spacing: -0.02em; text-transform: uppercase; text-shadow: 0 1px 14px rgba(0,0,0,.18); }
+  .sombra { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(150,70,20,0) 42%, rgba(150,70,20,.42) 100%); }
+  .titulo { position: absolute; left: 0; right: 0; top: 760px; text-align: center; color: #fff;
+            text-shadow: 0 4px 40px rgba(120,40,20,.28); }
+  .titulo b { display: block; font: 600 186px/0.9 "Inter Display", "Inter", sans-serif; letter-spacing: -0.055em; }
+  .titulo i { display: block; margin-top: 34px; font: italic 400 78px/1 "Instrument Serif", serif; }
+</style>
+</head>
+<body>
+  <section class="slide" id="s1">
+    <img src="cenas/01-capa.png" alt="">
+    <div class="sombra"></div>
+    <div class="marca">Dornizon<br>Estúdio</div>
+    <div class="titulo"><b>Direção</b><b>Criativa</b><i>com IA</i></div>
+  </section>
+  <section class="slide" id="s2"><img src="cenas/02-gelo.png" alt=""><div class="marca">Dornizon<br>Estúdio</div></section>
+  <section class="slide" id="s3"><img src="cenas/03-vidro-molhado.png" alt=""><div class="marca">Dornizon<br>Estúdio</div></section>
+  <section class="slide" id="s4"><img src="cenas/04-flatlay.png" alt=""><div class="marca">Dornizon<br>Estúdio</div></section>
+  <section class="slide" id="s5"><img src="cenas/05-espiral.png" alt=""><div class="marca">Dornizon<br>Estúdio</div></section>
+</body>
+</html>
