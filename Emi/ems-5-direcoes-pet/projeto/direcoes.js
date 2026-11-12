@@ -63,22 +63,6 @@ const MARCA = {
       <div style="position:absolute;left:0;right:0;top:266px;text-align:center;font:600 11px/1 var(--sans);color:#fff;letter-spacing:.2em;padding-left:.2em">PETISCO CROCANTE P/ CÃES</div>
       <div style="position:absolute;left:22px;right:22px;top:290px;display:flex;justify-content:space-between;font:500 11px/1 var(--sans);color:#fff;opacity:.9">
         <span>sabor frango</span><span>80 g</span></div></div>`),
-  // 02 · etiqueta de couro pendurada, dourado em relevo
-  grife: centro(300, 380, `
-    <svg viewBox="0 0 300 380" width="300" height="380" style="position:absolute;inset:0">
-      <path d="M150 -40 C150 10 120 30 150 78" fill="none" stroke="#C08A4F" stroke-width="3"/></svg>
-    <div style="position:absolute;left:44px;top:58px;width:212px;height:300px;transform:rotate(-5deg)">
-      <svg viewBox="0 0 212 300" width="212" height="300" style="position:absolute;inset:0">
-        <path d="M40 0 H172 L212 40 V288 Q212 300 200 300 H12 Q0 300 0 288 V40 Z" transform="translate(6 8)" fill="rgba(42,26,18,.45)"/>
-        <path d="M40 0 H172 L212 40 V288 Q212 300 200 300 H12 Q0 300 0 288 V40 Z" fill="#4A2E21"/>
-        <path d="M44 9 H168 L203 44 V284 Q203 291 196 291 H16 Q9 291 9 284 V44 Z" fill="none" stroke="#C08A4F" stroke-width="1.4" stroke-dasharray="5 4" opacity=".8"/>
-        <circle cx="106" cy="30" r="11" fill="#F3E9D7"/><circle cx="106" cy="30" r="11" fill="none" stroke="#B8975A" stroke-width="4"/></svg>
-      <div style="position:absolute;left:0;right:0;top:78px;text-align:center;color:#D8BC7E;text-shadow:0 1px 0 rgba(0,0,0,.45)">
-        <div style="font:500 13px/1 'Bodoni Moda';letter-spacing:.42em;padding-left:.42em">MAISON</div>
-        <div style="font:italic 500 43px/1 'Bodoni Moda';margin-top:12px;letter-spacing:-.01em">Caramelo</div>
-        <div style="width:58px;height:1px;background:#B8975A;margin:16px auto 12px"></div>
-        <div style="font:500 10px/1 'Bodoni Moda';letter-spacing:.38em;padding-left:.38em">PET COUTURE</div>
-        <div style="font:italic 500 13px/1 'Bodoni Moda';margin-top:58px;opacity:.85">nº 001 · coleção inverno</div></div></div>`),
   // 03 · letra groovy com sombras empilhadas e faixa arco-íris que dobra a curva
 };
 
@@ -99,13 +83,15 @@ const DIRECOES = [
   // ---------------- 02 · clube de grife ----------------
   {
     titulo: 'clube de <em>grife</em>', pra: 'marca premium', card: 'var(--plum)',
-    texto: 'creme, caramelo e café, serifa clássica, monograma, tricô e couro. pra marca premium que quer ser grife, não petshop.',
-    heroi: { bg: '#23392E', cheia: { src: 'd2pet-2', px: .55, py: .5 } },
-    marca: { bg: '#F3E9D7', html: MARCA.grife, cursor: [300, 340] },
-    quadrado: { bg: '#F3E9D7', cheia: { src: 'd2prod-2', px: .62, py: .6 } },
+    texto: 'vinho, caramelo e creme, serifa clássica, relevo seco e tricô. pra marca premium que quer ser grife, não petshop.',
+    // Maison Caramelo (aprovada em 12/11): o caramelo empinado com a flor (silhueta de vaso grego) sobre o nome em Cormorant,
+    // a partir das refs 14 Eros & Co. e 15 oval em relevo (referencias/maison-caramelo/brasao). Marca em marcas/maison-caramelo.
+    heroi: { bg: '#4A1D22', cheia: { src: 'maison-outdoor', px: .5, py: .5 } },   // mockup aprovado: outdoor na parede de tijolo (PATTU)
+    marca: { bg: '#EDE8DD', cheia: { src: 'maison-marca', px: .5, py: .5 }, cursor: [326, 338] },   // logo.html?w=452&h=430&escala=.54&dx=-21.5&dy=23
+    quadrado: { bg: '#EEE8D8', cheia: { src: 'maison-selo', px: .5, py: .5 } },   // o selo oval prensado no papel creme
     alto: { bg: '#23392E', cheia: { src: 'd2extra', px: .6, py: .55 } },
-    paleta: [['creme', '#F3E9D7', '#4A2E21'], ['caramelo', '#C08A4F', '#2A1A12'], ['café', '#4A2E21', '#F3E9D7'], ['verde-garrafa', '#23392E', '#F3E9D7']],
-    tipo: { bg: '#EADBC2', aa: "italic 500 120px 'Bodoni Moda'", aaCor: '#4A2E21', amostra: 'coleção inverno', amostraCss: "500 22px 'Bodoni Moda'", cor: '#4A2E21', nome: 'bodoni moda' },
+    paleta: [['vinho', '#4A1D22', '#EDE8DD'], ['caramelo', '#B9793F', '#2B1416'], ['creme', '#EDE8DD', '#4A1D22'], ['nanquim', '#2B1416', '#EDE8DD']],
+    tipo: { bg: '#4A1D22', aa: "500 118px 'Cormorant'", aaCor: '#EDE3CC', amostra: 'tricô · couro · alfaiataria', amostraCss: "500 17px 'Cormorant';letter-spacing:.06em", cor: '#EDE3CC', nome: 'cormorant garamond' },
   },
   // ---------------- 03 · retrô setentinha ----------------
   {
