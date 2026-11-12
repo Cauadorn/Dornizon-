@@ -47,7 +47,7 @@ Respiro `ivory` de 18px, raio 22, sangria de 30px em quem encosta na borda. Coor
 
 Legenda pronta em `legenda.md`.
 
-**Onde está:** Figma editável https://www.figma.com/design/elmpB2QlAid4OFWruJL31H · Drive https://drive.google.com/drive/folders/1BihRkZXTpaY704VBm0gmCygNapc3i9SP · Design System EMS (grupo Posts e componente `PostCuradoria`) https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa
+**Onde está:** Figma editável https://www.figma.com/design/elmpB2QlAid4OFWruJL31H (página "carrossel final · 12/11") · Drive https://drive.google.com/drive/folders/1BihRkZXTpaY704VBm0gmCygNapc3i9SP · Design System EMS (grupo Posts e componente `PostCuradoria`) https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa
 
 ## Arquivos
 

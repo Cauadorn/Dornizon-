@@ -1,6 +1,6 @@
 # EMS (@itsemsdesign · Emilly Silva)
 
-- **Motor (Design System no Claude):** https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa (versão 12 em 12/11/2026)
+- **Motor (Design System no Claude):** https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa (versão 17 em 12/11/2026)
   - Ler sempre: `project/README.md` (voz, cor, tipografia, grafismos, selo), `project/conteudo.md` (pilares, estruturas de carrossel, banco de ideias, legenda), `project/geracao-de-imagem.md` (prompts) e o componente do formato pedido em `project/components/<Nome>/README.md`.
   - Artes finais mais novas: grupo de assets **Posts** do DS (subir lá toda arte nova, com registro no índice `assetGroups.Posts`).
 - **Skill própria:** `marca-ems` (abre o DS). Este arquivo guarda o que foi aprendido fazendo as peças.
@@ -108,7 +108,8 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
   - Antes de diagramar capa e chamada, procurar referências de diagramação (Pinterest, capas de revista, adesivos de story) e escolher um conceito que caiba no tema.
 - **Recorte "na frente do texto":** rembg (`birefnet-general`) salvando a máscara no tamanho da foto (sem cortar), borda endurecida (alfa < 70 vira 0, > 190 vira 255) para o texto de trás não vazar pelo pelo. Posicionar com os mesmos parâmetros da foto.
 - Código reaproveitável: `Emi/ems-5-direcoes-pet/projeto/` (`direcoes.js` tem o conteúdo, `GRADE` em `carrossel.html` tem a estrutura; trocar o nicho = trocar `direcoes.js` e as fotos).
-- Figma editável: https://www.figma.com/design/elmpB2QlAid4OFWruJL31H (time 4D) · Drive: pasta `EMS · @itsemsdesign` → `2026-11 · 5 direções criativas pra marcas pet` (`1BihRkZXTpaY704VBm0gmCygNapc3i9SP`), com os 7 PNGs, a visão geral e a legenda em Doc.
+- Figma editável: https://www.figma.com/design/elmpB2QlAid4OFWruJL31H (time 4D). A versão aprovada fica na página **"carrossel final · 12/11"**; a página antiga tem as versões anteriores e os quadros das imagens geradas no Figma.
+- Drive: pasta `EMS · @itsemsdesign` → `2026-11 · 5 direções criativas pra marcas pet` (`1BihRkZXTpaY704VBm0gmCygNapc3i9SP`), com os 7 PNGs finais, a visão geral e a legenda em Doc. A primeira versão está na subpasta "versão antiga (recortes, reprovada)".
 - Próximos nichos sugeridos no DS: cafeterias, confeitarias, estúdio de tatuagem, academia e luta, moda autoral, clínica de estética.
 
 ## Aprendizados de produção
@@ -121,6 +122,11 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
 - Fundo **#E9E9E9** só para objeto isolado que vai ser recortado (montagem 3D). Para moodboard e posts: **foto inteira na cena**, com o cenário na cor da direção. Recorte colado em cor chapada foi reprovado. Sempre "sem texto"; para tênis e afins, "sem logotipo".
 - **Recorte local** com `rembg` (venv no scratchpad): `isnet-general-use` faz 44 fotos em 1 minuto; `birefnet-general` é melhor para branco perto do cinza (rótulo, tênis, tricô, tigela) mas estoura a memória se processar várias no mesmo processo: um processo por imagem.
 - Instagram: as lâminas de um carrossel saem carregando `instagram.com/p/<id>/?img_index=N` no Chromium headless e lendo as `<img>` de 1080px (o embed não traz as imagens).
+- **Exportar para o Figma, detalhes que já quebraram:**
+  - cor por variável CSS (`fill="var(--lavanda)"`) some na imagem gerada, e as estrelas da chamada ficaram invisíveis: o exportador troca a variável pela cor calculada;
+  - raio em % virava canto de 50px: o exportador converte para px;
+  - arco (cantos diferentes) vai em `rr`;
+  - para não mexer no que existe, `compacta.py "<página>"` monta numa página nova.
 - **Figma editável a partir do HTML:** `projeto/figma/exporta.mjs` mede o carrossel no Chromium e gera uma cena por lâmina (quadros, textos com fontes reais, fotos, SVGs; padrões e retículas viram PNG); `montador.js` monta no Figma via `use_figma` (uma chamada por lâmina, ~11 KB) e `sobe.sh` envia as imagens para os IDs devolvidos (`upload_assets` com `nodeIds`). Saiu idêntico ao PNG. Não existe importador HTML→camadas nativo nesta sessão.
 - **Foto pequena para capa:** ampliar 2x com Topaz (`topaz-image-upscale-v2` no ElevenLabs, ~US$ 0,09) antes de recortar.
 - Drive: a EMS não tinha pasta; criada `EMS · @itsemsdesign` no Meu Drive do Cauã, uma subpasta por post (`AAAA-MM · título`). Runrun.it: não há card da EMS (marca pessoal da Emi).

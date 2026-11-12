@@ -101,7 +101,9 @@ const { cenas, rasters } = await page.evaluate(() => {
     const r = rect.get(e);
     const formas = e.querySelectorAll('*');
     if (formas.length > 150) {   // retícula: vira imagem
-      const id = novoRaster(r.width, r.height, e.outerHTML);
+      // cor por variável CSS (fill="var(--x)") não existe na página do raster: troca pela cor calculada
+      const html = e.outerHTML.replace(/var\(--[\w-]+\)/g, getComputedStyle(e).fill);
+      const id = novoRaster(r.width, r.height, html);
       return { k: 'i', src: 'raster:' + id, x: R(r.left - base.left), y: R(r.top - base.top), w: R(r.width), h: R(r.height), n: 'retícula' };
     }
     const cl = e.cloneNode(true);
@@ -150,7 +152,7 @@ const { cenas, rasters } = await page.evaluate(() => {
     if (caixa) {
       const f = { k: 'f', n: nome(e), x: R(r.left - base.left), y: R(r.top - base.top), w: R(r.width), h: R(r.height), kids: [] };
       if (fundo) f.fill = fundo;
-      const lim = (v) => Math.min(parseFloat(v) || 0, r.height / 2, r.width / 2);
+      const lim = (v) => { const n = parseFloat(v) || 0; const px = String(v).trim().endsWith('%') ? n / 100 * Math.min(r.width, r.height) : n; return Math.min(px, r.height / 2, r.width / 2); };
       const cantos = [cs.borderTopLeftRadius, cs.borderTopRightRadius, cs.borderBottomRightRadius, cs.borderBottomLeftRadius].map(lim);
       if (cantos.every((c) => c === cantos[0])) { if (cantos[0]) f.r = R(cantos[0]); }
       else f.rr = cantos.map(R);          // arco: topo redondo, base 22
