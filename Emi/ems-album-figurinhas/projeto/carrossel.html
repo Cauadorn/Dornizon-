@@ -240,8 +240,8 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
   const raiz = document.documentElement.style;
   raiz.setProperty('--tx-acab-papel', papel); raiz.setProperty('--tx-acab-grao', tg);
   camada('graos').insertAdjacentHTML('beforeend', `
-    <div class="abs" style="left:0;top:0;width:${N * W}px;height:${H}px;background-image:var(--tx-acab-papel);background-size:800px;mix-blend-mode:soft-light;opacity:.75"></div>
-    <div class="abs" style="left:0;top:0;width:${N * W}px;height:${H}px;background-image:var(--tx-acab-grao);background-size:540px;mix-blend-mode:overlay;opacity:.42"></div>`);
+    <div class="abs" style="left:0;top:0;width:${N * W}px;height:${H}px;background-image:var(--tx-acab-papel);background-size:800px;mix-blend-mode:soft-light;opacity:.45"></div>
+    <div class="abs" style="left:0;top:0;width:${N * W}px;height:${H}px;background-image:var(--tx-acab-grao);background-size:540px;mix-blend-mode:overlay;opacity:.28"></div>`);
 })();
 
 function caber(el, largura) { let s = parseFloat(getComputedStyle(el).fontSize); while (el.scrollWidth > largura && s > 20) { s -= 2; el.style.fontSize = s + 'px'; } }
