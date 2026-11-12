@@ -1,0 +1,97 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Case "minha cliente queria um feed que acolhe" · @itsemsdesign (design system EMS) · v4, 5 lâminas
+     Texturas como matéria de verdade (ref @escolacanvadesigner "Textura é o verdadeiro tchan"):
+     grão na capa, papel amassado, meio-tom, linho e grão na chamada. Mapas em cinza neutro (texturas/preparar.py)
+     usados em overlay: marcam a matéria sem lavar a cor. Fundos em roxo profundo (ameixa, creative-purple) + lavanda.
+     Faixa de 5400 x 1350 cortada em 1080 x 1350 (cortar.cjs); estrelas em retícula atravessam os cortes. -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;500;600&display=block" rel="stylesheet">
+<style>
+:root{--violeta:#6225d8;--violeta2:#7b4df2;--lavanda:#c0a5c4;--lavanda2:#e4d6e6;--ameixa:#3d1c46;--cpurple:#482952;--plum:#5b216c;--ivory:#fffbde;--tinta:#2a1433;--pink:#dd34a8;--manteiga:#f2cf7a}
+*{margin:0;box-sizing:border-box}
+body{background:#555}
+.faixa{position:relative;width:5400px;height:1350px;overflow:hidden}
+.fundo{position:absolute;top:0;width:1080px;height:1350px;overflow:hidden}
+.fundo>*{position:absolute;inset:0;width:1080px;height:1350px}
+.mat{mix-blend-mode:overlay}
+.cont{position:absolute;top:0;width:1080px;height:1350px;z-index:10}
+.abs{position:absolute}
+.lead{font:600 44px/1.05 Poppins;letter-spacing:-.02em}
+.gig{font-family:'Instrument Serif';font-weight:400;font-style:italic;letter-spacing:-.025em;line-height:.8}
+.titulo{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:baseline;gap:16px;white-space:nowrap}
+.pil{display:inline-block;font:500 28px/1.15 Poppins;letter-spacing:-.01em;padding:14px 28px 16px;border-radius:999px;box-shadow:3px 3px 0 var(--tinta);white-space:nowrap}
+.q{position:absolute;box-shadow:0 18px 36px -8px rgba(20,8,26,.45),0 2px 6px rgba(20,8,26,.2)}
+.q img{display:block;width:100%;height:100%}
+.tag{position:absolute;font:500 22px/1 Poppins;padding:.3em .7em .3em .45em;border-radius:4px;color:var(--ivory);z-index:20}
+.tag svg{position:absolute;left:-18px;bottom:-18px}
+.balao{position:absolute;display:flex;gap:8px;background:var(--ivory);border-radius:999px;padding:12px 20px;box-shadow:4px 5px 0 rgba(42,20,51,.35);z-index:20}
+.balao img{width:50px;height:50px}
+.balao::after{content:"";position:absolute;left:30px;bottom:-14px;width:26px;height:20px;background:var(--ivory);clip-path:polygon(0 0,100% 0,10% 100%)}
+.linha-ficha{display:flex;align-items:baseline;gap:14px;border-bottom:2px dotted rgba(42,20,51,.35);padding:6px 0 10px}
+.linha-ficha span:first-child{font:400 25px Poppins;color:rgba(42,20,51,.7);white-space:nowrap}
+.linha-ficha span:last-child{font-family:'Instrument Serif';font-style:italic;font-size:60px;line-height:1;color:var(--violeta);white-space:nowrap}
+</style></head><body style="display:flex;gap:20px;padding:20px">
+<style>
+.art{position:relative;overflow:hidden;width:1080px;height:1350px;flex:none}
+.art>.bg{position:absolute;inset:0;width:1080px;height:1350px}
+.bolha{position:absolute;font:500 40px/1.25 Poppins;letter-spacing:-.015em;padding:30px 38px 32px;border-radius:44px;max-width:720px}
+.bolha.in{background:var(--ivory);color:var(--tinta);border-bottom-left-radius:10px}
+.bolha.out{background:var(--violeta);color:var(--ivory);border-bottom-right-radius:10px}
+.quem{position:absolute;font:500 22px/1 Poppins;letter-spacing:.02em;color:var(--lavanda)}
+</style>
+
+<!-- A · AGENDA ABERTA: conversa de dm como objeto da chamada -->
+<div class="art" id="opA" style="background:var(--ameixa);color:var(--ivory)">
+  <img class="bg mat" src="texturas/m-papel-amassado.png" style="mix-blend-mode:overlay;opacity:.85">
+  <svg class="abs" width="1080" height="1350" style="left:0;top:0" id="estA"></svg>
+  <div class="abs" style="left:92px;top:118px;display:flex;align-items:baseline;gap:22px;white-space:nowrap">
+    <span class="lead" style="font-size:52px">agenda</span><span class="gig" style="font-size:250px;color:var(--manteiga)">aberta</span></div>
+  <div class="abs" style="left:96px;top:384px;font:400 32px/1.3 Poppins;opacity:.9">pra feed, identidade visual e social media</div>
+  <div class="quem" style="left:92px;top:520px">sua marca · agora</div>
+  <div class="bolha in" style="left:92px;top:560px;box-shadow:6px 8px 0 rgba(20,8,26,.45)">oi! vi o feed da Lia.<br>faz um assim pra mim?</div>
+  <div class="quem" style="right:92px;top:792px;text-align:right">@itsemsdesign · agora</div>
+  <div class="bolha out" style="right:200px;top:832px;box-shadow:6px 8px 0 rgba(20,8,26,.45)">faço! me conta da sua<br>marca que eu te explico</div>
+  <img class="abs" src="img/selo-ems.png" style="right:86px;top:900px;width:100px">
+  <div class="bolha in" style="left:92px;top:1086px;padding:26px 34px;display:flex;gap:12px;box-shadow:6px 8px 0 rgba(20,8,26,.45)">
+    <span style="width:18px;height:18px;border-radius:50%;background:var(--tinta);opacity:.35"></span><span style="width:18px;height:18px;border-radius:50%;background:var(--tinta);opacity:.55"></span><span style="width:18px;height:18px;border-radius:50%;background:var(--tinta);opacity:.8"></span></div>
+  <span class="tag" style="right:96px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
+</div>
+
+<!-- B · COMENTA FEED: ingresso grande com a palavra-chave -->
+<div class="art" id="opB" style="background:var(--violeta);color:var(--ivory)">
+  <img class="bg mat" src="texturas/m-grao.png" style="mix-blend-mode:overlay;opacity:.6">
+  <svg class="abs" width="1080" height="1350" style="left:0;top:0" id="estB"></svg>
+  <div class="abs lead" style="left:0;right:0;top:128px;text-align:center;font-size:48px">quer um feed assim?</div>
+  <div class="abs gig" style="left:0;right:0;top:186px;text-align:center;font-size:300px;color:var(--manteiga)">comenta</div>
+  <div class="abs" style="left:110px;top:530px;width:860px;height:400px;transform:rotate(-4deg);filter:drop-shadow(8px 10px 0 #2a1433)">
+    <div style="position:absolute;inset:0;background:var(--ivory);-webkit-mask:radial-gradient(circle 30px at 640px 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 30px at 640px 100%,#0000 98%,#000) bottom/100% 51% no-repeat"></div>
+    <img src="texturas/m-papel-amassado.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.22;-webkit-mask:radial-gradient(circle 30px at 640px 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 30px at 640px 100%,#0000 98%,#000) bottom/100% 51% no-repeat">
+    <div style="position:absolute;left:640px;top:40px;bottom:40px;border-left:3px dashed rgba(42,20,51,.4)"></div>
+    <div style="position:absolute;left:0;width:640px;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--tinta)">
+      <div style="font:600 22px/1 Poppins;letter-spacing:.2em;color:var(--violeta)">PALAVRA-CHAVE</div>
+      <div style="font-family:'Instrument Serif';font-size:230px;line-height:.85;letter-spacing:-.02em;margin-top:6px">feed<span style="color:var(--pink)">.</span></div>
+    </div>
+    <div style="position:absolute;left:640px;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center">
+      <div style="writing-mode:vertical-rl;transform:rotate(180deg);font:500 24px/1.4 Poppins;letter-spacing:.12em;color:var(--tinta);text-align:center">Nº 001<br><span style="color:var(--violeta);font-weight:600">AGENDA ABERTA</span></div>
+    </div>
+  </div>
+  <img class="abs" src="img/selo-ems.png" style="left:92px;top:420px;width:160px;filter:drop-shadow(0 14px 18px rgba(42,20,51,.45))">
+  <div class="abs" style="left:0;right:0;top:1010px;text-align:center;font:500 36px/1.3 Poppins;letter-spacing:-.015em">que eu te chamo na dm pra<br>conversar sobre a <span style="color:var(--manteiga)">sua marca</span></div>
+  <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+function estrela(svg, cx, cy, R, passo, rot, cor, op) {
+  const pts = []; for (let k = 0; k < 10; k++) { const a = (rot - 90 + k * 36) * Math.PI / 180, rr = k % 2 ? R * .5 : R; pts.push([cx + rr * Math.cos(a), cy + rr * Math.sin(a)]); }
+  const dentro = (x, y) => { let d = false; for (let i = 0, j = 9; i < 10; j = i++) { const [xi, yi] = pts[i], [xj, yj] = pts[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) d = !d; } return d; };
+  const g = document.createElementNS(NS, 'g'); g.setAttribute('fill', cor); g.setAttribute('opacity', op);
+  for (let y = cy - R; y <= cy + R; y += passo) for (let x = cx - R; x <= cx + R; x += passo) { if (!dentro(x, y)) continue;
+    const r = passo * .47 * (1 - .78 * Math.hypot(x - cx, y - cy) / R); if (r < .8) continue; const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', r); g.appendChild(c); }
+  svg.appendChild(g); }
+estrela(document.getElementById('estA'), 1080, 470, 230, 15, 10, '#7b4df2', .7);
+estrela(document.getElementById('estA'), 0, 1300, 180, 14, -8, '#7b4df2', .5);
+estrela(document.getElementById('estB'), 0, 330, 260, 16, 14, '#7b4df2', .9);
+estrela(document.getElementById('estB'), 1080, 1240, 300, 17, -10, '#7b4df2', .9);
+document.fonts.ready.then(() => Promise.all([...document.images].map(i => i.decode().catch(() => 0))).then(() => window.READY = true));
+</script>
+</body></html>
