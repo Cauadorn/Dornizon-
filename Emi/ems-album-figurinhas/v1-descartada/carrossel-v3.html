@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · figurinhas raras</title>
+<link rel="stylesheet" href="estilo.css">
+<script src="textos.js"></script>
+<style>
+  /* título de peso modular: palavra pequena em Poppins forte ao lado da serifa gigante, na mesma linha de base */
+  .mod { position: absolute; white-space: nowrap; }
+  .mod .ln { display: block; line-height: .86; }
+  .mod .p { font-family: var(--sans); font-weight: 600; letter-spacing: -.01em; }
+  .mod .s { font-family: var(--serif); font-weight: 400; letter-spacing: -.03em; }
+  .mod .i { font-family: var(--serif); font-style: italic; letter-spacing: -.02em; }
+  .pauta { line-height: 58px; }
+</style>
+</head>
+<body>
+<div class="faixa" id="faixa">
+  <div class="camada" id="fundos"></div>
+  <div class="camada" id="ponte-tras"></div>
+  <div class="camada" id="conteudos"></div>
+  <div class="camada" id="ponte-frente"></div>
+  <div class="camada" id="graos"></div>
+</div>
+<script>
+const W = 1080, H = 1350;
+const params = new URLSearchParams(location.search);
+const N = +(params.get('n') || 7);
+document.getElementById('faixa').style.width = (N * W) + 'px';
+document.body.style.width = (N * W) + 'px';
+const css = (k) => getComputedStyle(document.documentElement).getPropertyValue('--' + k).trim();
+const A = window.ALBUM;
+
+function ruido(tam, freq, oct, seed) {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${tam}' height='${tam}'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='${freq}' numOctaves='${oct}' seed='${seed}' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>`;
+  return `url("data:image/svg+xml;utf8,${svg}")`;
+}
+document.documentElement.style.setProperty('--tx-grao', ruido(300, 0.95, 3, 11));
+document.documentElement.style.setProperty('--tx-papel', ruido(520, '0.012 0.35', 4, 5));
+
+/* ---------- peças ---------- */
+const BRILHO = 'M0,-1 C0.07,-0.27 0.27,-0.07 1,0 C0.27,0.07 0.07,0.27 0,1 C-0.07,0.27 -0.27,0.07 -1,0 C-0.27,-0.07 -0.07,-0.27 0,-1Z';
+const BRILHO_MINI = (cor) => `<svg viewBox="-1 -1 2 2"><path d="${BRILHO}" fill="${cor}"/></svg>`;
+function brilho({ x, y, tam, r = 0, cor }) {
+  return `<svg class="adesivo" style="left:${x}px;top:${y}px;width:${tam}px;height:${tam}px;transform:rotate(${r}deg);overflow:visible" viewBox="-1.25 -1.25 2.5 2.5">
+    <path d="${BRILHO}" fill="${css('ivory')}" stroke="${css('ivory')}" stroke-width=".32" stroke-linejoin="round"/><path d="${BRILHO}" fill="${cor}"/></svg>`;
+}
+const CURSOR = `<svg viewBox="0 0 24 24"><path d="M3 2 L20 11 L12 13 L8 21 Z" fill="${css('tinta')}" stroke="${css('ivory')}" stroke-width="2" stroke-linejoin="round"/></svg>`;
+const handle = (x, y, bg = 'var(--pink)') => `<div class="handle" style="left:${x}px;top:${y}px;--bg:${bg}">@itsemsdesign${CURSOR}</div>`;
+const cab = (esq, dir, cor, br) => `<div class="cab" style="--cor-cab:${cor}"><span>${esq}</span>${BRILHO_MINI(br || cor)}<span>${dir}</span></div>`;
+const rodape = (bg, texto, cor) => `${handle(96, 1212, bg)}<div class="abs rotulo" style="right:90px;top:1222px;color:${cor};font-weight:500;letter-spacing:.06em;font-size:19px">${texto}</div>`;
+const objeto = ({ x, y, w, r = 0, src, id = '', z = '' }) => `<img class="objeto" ${id ? `id="${id}"` : ''} src="recortes/${src}.png" style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${r}deg);${z}">`;
+function rnd(seed) { let s = seed * 9301 + 49297; return () => ((s = (s * 9301 + 49297) % 233280) / 233280); }
+function rasgoHorizontal(w, h, seed, amp = 10) {
+  const r = rnd(seed), pts = [];
+  for (let x = 0; x <= w; x += 10) pts.push(`${x}px ${(r() * amp).toFixed(1)}px`);
+  for (let x = w; x >= 0; x -= 10) pts.push(`${x}px ${(h - r() * amp).toFixed(1)}px`);
+  return `polygon(${pts.join(',')})`;
+}
+function estrelaReticula(tam, cor, passo = 16) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = tam; const ctx = cv.getContext('2d');
+  const c = tam / 2, R = tam / 2, m = document.createElement('canvas').getContext('2d'); m.canvas.width = m.canvas.height = tam;
+  m.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? R * .45 : R * .95; m.lineTo(c + rr * Math.cos(a), c + rr * Math.sin(a)); } m.closePath();
+  ctx.fillStyle = cor;
+  for (let y = passo / 2; y < tam; y += passo) for (let x = passo / 2; x < tam; x += passo) {
+    if (!m.isPointInPath(x, y)) continue;
+    const d = Math.hypot(x - c, y - c) / R; ctx.beginPath(); ctx.arc(x, y, passo * .46 * Math.max(.12, 1 - d * .95), 0, 7); ctx.fill();
+  }
+  return cv.toDataURL();
+}
+/* uma linha do título modular: [['p', 'achar a', 48], ['s', 'fonte', 210], ['i', 'chorar', 210, cor]] */
+const ln = (partes, extra = '') => `<span class="ln" style="${extra}">${partes.map(([t, txt, tam, cor]) =>
+  `<span class="${t}" style="font-size:${tam}px;${cor ? `color:${cor};` : ''}${t === 'p' ? 'margin:0 .32em;' : ''}">${txt}</span>`).join('')}</span>`;
+
+const camada = (id) => document.getElementById(id);
+function lamina(k, html, fundo, grao = 'grao') {
+  if (k >= N) return;
+  camada('fundos').insertAdjacentHTML('beforeend', `<div class="lamina" style="left:${k * W}px">${fundo}</div>`);
+  camada('conteudos').insertAdjacentHTML('beforeend', `<div class="lamina" id="l${k}" style="left:${k * W}px">${html}</div>`);
+  camada('graos').insertAdjacentHTML('beforeend', `<div class="lamina" style="left:${k * W}px"><div class="${grao}"></div>${params.has('guia') ? '<div class="guia"></div>' : ''}</div>`);
+}
+
+/* ================= 1 · capa: o pacotinho (violeta + estrela em retícula) ================= */
+lamina(0, `
+  ${cab('álbum de figurinhas', 'edição 2026', 'rgba(255,251,222,.85)', css('manteiga'))}
+  <div class="mod" style="left:90px;width:900px;top:190px;text-align:center;color:var(--ivory)">
+    ${ln([['p', 'o pacotinho das', 46]])}
+    <span class="ln s" id="capa-l1" style="font-size:300px;margin-top:6px">${A.capa.linha1}</span></div>
+  <div class="pilula corpo" style="left:90px;top:1016px;width:600px;--bg:var(--ivory);--tx:var(--tinta);font-size:27px;padding:20px 28px 22px;border-radius:24px">
+    <span style="font-family:var(--sans);font-weight:600;font-size:46px;line-height:1;display:block;margin-bottom:6px">10 sites</span>que salvam meu processo <b>e quase ninguém tem no álbum.</b></div>
+  ${objeto({ x: 330, y: 440, w: 580, r: -5, src: 'pacotinho' })}
+  <div class="mod" style="left:170px;width:820px;top:740px;text-align:center"><span class="ln i" style="font-size:330px;color:var(--manteiga)">${A.capa.linha2}</span></div>
+  ${brilho({ x: 846, y: 742, tam: 116, r: 10, cor: css('manteiga') })}
+  ${handle(96, 1212, 'var(--pink)')}
+  <div class="abs rotulo" style="right:90px;top:1222px;color:rgba(255,251,222,.9);font-weight:500;letter-spacing:.06em;font-size:19px">abre o pacotinho →</div>
+`, `<div class="abs" style="inset:0;background:var(--violeta)"></div>
+    <img class="abs" src="${estrelaReticula(1240, css('violeta-2'))}" style="left:-80px;top:120px;width:1240px;opacity:.6">`, 'grao-luz');
+
+/* ================= 2 · pesquisa: caderno pautado, tudo em cima da linha ================= */
+const PAUTA0 = 86, PASSO = 58, MARGEM = 168;
+(() => {
+  const p = A.paginas[0], [s1, s2] = p.sites;
+  const titulo = (dono) => `<div class="mod" data-linha="5" style="left:${MARGEM + 22}px;top:150px;color:var(--tinta)">${ln([['s', 'referência', 206]])}</div>
+    <div class="mod" data-linha="8" ${dono ? 'id="alg-linha"' : ''} style="left:${MARGEM + 22}px;top:330px;color:var(--tinta)">${ln([['p', 'sem', 50], ['i', `<span ${dono ? 'id="alg"' : ''}>algoritmo</span>`, 186, css('pink')]]).replace('margin:0 .32em;', 'margin:0 .28em 0 0;')}</div>`;
+  const verbete = (n, s, linha, extra = '') => `
+    <div class="mod" data-linha="${linha}" style="left:${MARGEM + 22}px;top:0;color:var(--tinta);${extra}">${ln([['p', n, 28, css('pink')], ['s', s.nome, 104]]).replace('margin:0 .32em;', 'margin:0 .5em 0 0;')}</div>
+    <div class="abs corpo pauta" data-linha="${linha + 1}" style="left:${MARGEM + 22}px;top:0;width:640px;color:var(--tinta);font-size:29px;${extra}">${s.pra}</div>`;
+  lamina(1, `
+    ${cab('álbum de figurinhas', p.etapa, 'rgba(42,20,51,.7)', css('pink'))}
+    ${titulo(true)}
+    ${objeto({ x: 600, y: 330, w: 500, src: 'lupa', id: 'lupa' })}
+    <div class="abs" id="lente" style="inset:0;mix-blend-mode:multiply"><div class="abs" id="lente-in" style="inset:0">${titulo(false)}</div></div>
+    ${verbete('01', s1, 11)}
+    ${verbete('02', s2, 15)}
+    ${rodape('var(--violeta)', 'pág. 01', 'rgba(42,20,51,.7)')}
+  `, `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
+      <div class="abs" style="inset:0;background:repeating-linear-gradient(to bottom, transparent 0 ${PASSO - 2}px, rgba(123,77,242,.24) ${PASSO - 2}px ${PASSO}px);background-position:0 ${PAUTA0 - PASSO + 2}px"></div>
+      <div class="abs" style="left:${MARGEM}px;top:0;bottom:0;width:3px;background:rgba(221,52,168,.5)"></div>
+      <div class="fibra"></div>`);
+})();
+
+/* ================= 3 · letra: folha de amostra em meio-tom ================= */
+(() => {
+  const p = A.paginas[1], [s1, s2] = p.sites;
+  lamina(2, `
+    ${cab('álbum de figurinhas', p.etapa, 'rgba(255,251,222,.75)', css('manteiga'))}
+    <div class="mod" style="right:90px;top:150px;text-align:right;color:var(--ivory)">
+      ${ln([['p', 'achar a', 48], ['s', 'fonte', 200]])}
+      ${ln([['p', 'sem', 48], ['i', 'chorar', 210, css('manteiga')]])}</div>
+    <div class="abs serif" style="left:-34px;top:400px;font-size:740px;line-height:1;color:var(--ivory)">A<i style="color:var(--manteiga)">a</i></div>
+    <div class="pilula" style="left:600px;top:600px;width:390px;--bg:var(--lavanda);--tx:var(--tinta)"><span class="nome">${s1.nome}</span><span class="corpo" style="font-size:26px">${s1.pra}</span></div>
+    <div class="pilula" style="left:560px;top:868px;width:410px;--bg:var(--ivory);--tx:var(--tinta)"><span class="nome">${s2.nome}</span><span class="corpo" style="font-size:26px">${s2.pra}</span></div>
+    <div class="abs serif" id="alfabeto" style="left:90px;top:1132px;width:900px;font-size:48px;color:rgba(255,251,222,.55);letter-spacing:.02em">abcdefghijklmnopqrstuvwxyz <i style="color:rgba(242,207,122,.75)">0123456789</i></div>
+    ${rodape('var(--pink)', 'pág. 02', 'rgba(255,251,222,.75)')}
+  `, `<div class="abs" style="inset:0;background:var(--ameixa)"></div>
+      <div class="abs" style="inset:0;background-image:radial-gradient(circle, rgba(123,77,242,.55) 3px, transparent 3.6px);background-size:16px 16px;
+        -webkit-mask-image:linear-gradient(200deg, #000 0%, transparent 55%);mask-image:linear-gradient(200deg, #000 0%, transparent 55%)"></div>`, 'grao-luz');
+})();
+
+/* ================= 4 · cor: cartelas com a paleta da EMS (por cima dos cartões) ================= */
+const cartela = (x, y, cor, nome, hex, r, origem = '50% 120%') => `<div class="abs" style="left:${x}px;top:${y}px;width:300px;height:430px;transform-origin:${origem};transform:rotate(${r}deg);
+    background:var(--ivory);border-radius:6px;box-shadow:0 14px 24px rgba(42,20,51,.24);overflow:hidden">
+    <div style="height:300px;background:${cor}"></div>
+    <div style="padding:16px 20px"><div class="rotulo" style="font-size:16px;color:rgba(42,20,51,.6)">ems · paleta</div>
+    <div class="serif" style="font-size:46px;color:var(--tinta);margin-top:6px">${nome}</div>
+    <div class="rotulo" style="font-size:16px;color:var(--tinta);margin-top:4px">#${hex}</div></div></div>`;
+(() => {
+  const p = A.paginas[2], [s1, s2] = p.sites;
+  lamina(3, `
+    ${cab('álbum de figurinhas', p.etapa, 'rgba(42,20,51,.7)', css('wine'))}
+    <div class="mod" style="left:90px;width:900px;top:150px;text-align:center;color:var(--tinta)">
+      ${ln([['s', 'paleta', 200], ['p', 'que sai', 46]])}
+      ${ln([['p', 'do', 46], ['i', 'papel', 210, css('wine')]])}</div>
+    <div class="pilula" style="left:90px;top:952px;width:440px;padding-top:52px;padding-bottom:22px;--bg:var(--tinta);--tx:var(--ivory)"><span class="nome" style="font-size:54px">${s1.nome}</span><span class="corpo" style="font-size:25px">${s1.pra}</span></div>
+    <div class="pilula" style="left:550px;top:970px;width:440px;padding-top:52px;padding-bottom:22px;--bg:var(--violeta);--tx:var(--ivory)"><span class="nome" style="font-size:54px">${s2.nome}</span><span class="corpo" style="font-size:25px">${s2.pra}</span></div>
+    ${cartela(330, 512, 'var(--ameixa)', 'ameixa', '3D1C46', -18)}
+    ${cartela(370, 512, 'var(--violeta)', 'violeta', '6225D8', -6)}
+    ${cartela(410, 512, 'var(--pink)', 'rosa', 'DD34A8', 6)}
+    ${cartela(450, 512, 'var(--manteiga)', 'manteiga', 'F2CF7A', 18)}
+    ${rodape('var(--violeta)', 'pág. 03', 'rgba(42,20,51,.7)')}
+  `, `<div class="abs" style="inset:0;background:var(--lavanda-2)"></div><div class="fibra"></div>`);
+})();
+
+/* ================= 5 · textura: tira de retalhos + título em coluna ================= */
+(() => {
+  const p = A.paginas[3], [s1, s2] = p.sites;
+  const ret = (i, fundo, rot) => `<div class="abs" style="left:0;top:${i * 337 - 8}px;width:430px;height:354px;clip-path:${rasgoHorizontal(430, 354, 40 + i, 12)};${fundo}">
+      <div class="abs rotulo" style="left:250px;top:${i === 0 ? 120 : 112}px;padding:8px 16px;border-radius:999px;background:var(--ivory);color:var(--tinta);font-size:18px">${rot}</div></div>`;
+  lamina(4, `
+    ${ret(0, 'background:url(texturas/linho-violeta.png) center/cover', 'linho')}
+    ${ret(1, 'background:var(--lavanda-2) url(texturas/pinceladas.png) 30% 40%/700px', 'pincel')}
+    ${ret(2, 'background:var(--ivory-2);background-image:radial-gradient(circle, var(--pink) 4px, transparent 4.6px);background-size:18px 18px', 'meio-tom')}
+    ${ret(3, 'background:var(--plum) url(recortes/renda.png) 0 0/900px no-repeat', 'renda')}
+    ${cab('', p.etapa, 'rgba(42,20,51,.7)', css('pink'))}
+    <div class="mod" style="left:486px;top:170px;color:var(--tinta)">
+      ${ln([['p', 'pra marca', 46]], 'margin-left:-.32em;margin-bottom:10px')}
+      ${ln([['s', 'não ficar', 160]])}
+      ${ln([['i', 'lisa', 330, css('pink')]], 'line-height:.78')}</div>
+    <div class="abs" style="left:494px;top:742px;width:496px">
+      <div class="serif" style="font-size:84px;color:var(--tinta)">${s1.nome}</div>
+      <div class="corpo" style="margin-top:12px;color:var(--tinta);font-size:26px">${s1.pra}</div>
+      <div class="serif" style="font-size:84px;color:var(--tinta);margin-top:38px">${s2.nome}</div>
+      <div class="corpo" style="margin-top:12px;color:var(--tinta);font-size:26px">${s2.pra}</div></div>
+    <div class="abs rotulo" style="right:90px;top:1222px;color:rgba(42,20,51,.7);font-weight:500;letter-spacing:.06em;font-size:19px">pág. 04</div>
+    ${handle(494, 1212, 'var(--pink)')}
+  `, `<div class="abs" style="inset:0;background:var(--ivory)"></div><div class="fibra"></div>`);
+})();
+
+/* ================= 6 · entrega: pincelada tom sobre tom + presente por cima dos balões ================= */
+(() => {
+  const p = A.paginas[4], [s1, s2] = p.sites;
+  const balao = (x, y, w, s, bg, tx, lado) => `<div class="pilula" style="left:${x}px;top:${y}px;width:${w}px;--bg:var(--${bg});--tx:${tx}">
+      <span class="nome" style="font-size:58px">${s.nome}</span><span class="corpo" style="font-size:25px">${s.pra}</span>
+      <svg class="abs" style="${lado}:46px;bottom:-26px;width:44px;height:30px" viewBox="0 0 44 30"><path d="M0 0 H44 L${lado === 'left' ? 6 : 38} 30 Z" fill="${css(bg)}"/></svg></div>`;
+  lamina(5, `
+    ${cab('álbum de figurinhas', p.etapa, 'rgba(255,251,222,.75)', css('manteiga'))}
+    <div class="mod" style="left:90px;top:160px;color:var(--ivory)">
+      ${ln([['s', 'a hora', 170], ['p', 'de', 50]])}
+      ${ln([['i', 'mostrar', 300, css('manteiga')]], 'margin-left:-12px')}</div>
+    ${balao(90, 650, 420, s1, 'ivory', 'var(--tinta)', 'left')}
+    ${balao(90, 920, 420, s2, 'lavanda', 'var(--tinta)', 'right')}
+    ${objeto({ x: 440, y: 590, w: 540, r: 4, src: 'presente' })}
+    ${rodape('var(--pink)', 'pág. 05', 'rgba(255,251,222,.75)')}
+  `, `<div class="abs" style="inset:0;background:var(--plum)"></div>
+      <div class="abs" style="inset:0;background:url(texturas/pinceladas.png) center/cover;opacity:.55;mix-blend-mode:screen"></div>`, 'grao-luz');
+})();
+
+/* ================= 7 · chamada: renda + o espaço vazio (creative-purple) ================= */
+(() => {
+  const c = A.chamada;
+  lamina(6, `
+    <img class="abs" src="recortes/renda.png" style="left:-40px;top:-60px;width:1160px;filter:drop-shadow(0 6px 8px rgba(42,20,51,.35))">
+    <div class="mod" id="chamada-titulo" style="left:90px;width:900px;top:262px;text-align:center;color:var(--ivory)">
+      ${ln([['p', 'qual', 50], ['s', 'figurinha', 176]])}
+      ${ln([['p', 'tá', 50], ['i', 'faltando', 210, css('manteiga')]])}
+      ${ln([['p', 'no meu', 50], ['s', 'álbum?', 176]])}</div>
+    <div class="abs" style="left:116px;top:790px;width:310px;height:400px;border-radius:22px;border:5px dashed rgba(255,251,222,.7);transform:rotate(-5deg);background:rgba(42,20,51,.22)">
+      <div class="abs serif" style="inset:0;display:grid;place-items:center;font-size:250px;color:rgba(255,251,222,.3);padding-bottom:40px"><i>?</i></div>
+      <div class="abs rotulo" style="left:0;right:0;bottom:24px;text-align:center;color:rgba(255,251,222,.75)">nº 11</div></div>
+    <div class="pilula corpo" style="left:370px;top:800px;width:500px;--bg:var(--ivory);--tx:var(--tinta);transform:rotate(1.5deg)">${c.comenta}</div>
+    <div class="mod" style="left:470px;top:1004px;color:var(--ivory)">
+      <span class="ln" style="font-family:var(--sans);font-weight:500;font-size:24px;line-height:1.2;color:var(--lavanda)">salva pra completar o seu</span>
+      ${ln([['i', 'álbum também', 84, css('manteiga')], ['p', '↓', 34, css('manteiga')]])}</div>
+    <img class="abs" src="assets/selo-ems.png" style="left:886px;top:1112px;width:100px">
+    ${handle(96, 1212, 'var(--pink)')}
+  `, `<div class="abs" style="inset:0;background:var(--creative-purple)"></div>
+      <div class="abs" style="inset:0;background-image:radial-gradient(circle, rgba(123,77,242,.45) 3px, transparent 3.6px);background-size:16px 16px;
+        -webkit-mask-image:linear-gradient(20deg, #000 0%, transparent 60%);mask-image:linear-gradient(20deg, #000 0%, transparent 60%)"></div>`, 'grao-luz');
+})();
+
+/* ================= o que atravessa os cortes ================= */
+const frente = camada('ponte-frente');
+if (N >= 2) frente.insertAdjacentHTML('beforeend', objeto({ x: W - 150, y: 560, w: 300, r: 12, src: 'figurinha-lupa' }));
+[{ k: 2, y: 150, tam: 200, r: 8, cor: 'manteiga' }, { k: 3, y: 470, tam: 190, r: -6, cor: 'pink' },
+ { k: 5, y: 1000, tam: 180, r: 10, cor: 'manteiga' }, { k: 6, y: 120, tam: 190, r: -8, cor: 'manteiga' }]
+  .forEach((o) => { if (o.k < N) frente.insertAdjacentHTML('beforeend', brilho({ x: o.k * W - o.tam / 2, y: o.y, tam: o.tam, r: o.r, cor: css(o.cor) })); });
+if (N >= 5) frente.insertAdjacentHTML('beforeend', cartela(4 * W - 150, 430, 'var(--lavanda)', 'lavanda', 'C0A5C4', 12, '50% 50%'));
+
+/* ---------- depois das fontes: medidas ---------- */
+function caber(el, largura) { let s = parseFloat(getComputedStyle(el).fontSize); while (el.scrollWidth > largura && s > 20) { s -= 2; el.style.fontSize = s + 'px'; } }
+function linhaDeBase(el) { // a linha de base da 1ª linha do elemento, em coordenadas da página
+  const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+  const alvo = el.querySelector('.ln') || el; alvo.insertBefore(m, alvo.firstChild);
+  const y = m.getBoundingClientRect().top; m.remove(); return y;
+}
+document.fonts.ready.then(() => {
+  const l1 = document.getElementById('capa-l1'); if (l1) caber(l1, 900);
+  const al = document.getElementById('alfabeto'); if (al) caber(al, 900);
+  // caderno: cada texto com data-linha senta na linha n da pauta
+  const lam = document.getElementById('l1');
+  if (lam) {
+    const topo = lam.getBoundingClientRect().top;
+    lam.querySelectorAll('[data-linha]').forEach((el) => {
+      if (el.closest('#lente-in')) return;
+      const alvo = PAUTA0 + PASSO * +el.dataset.linha - 2;
+      el.style.top = (parseFloat(el.style.top) + alvo - (linhaDeBase(el) - topo)) + 'px';
+    });
+    // a cópia da lente segue o original
+    const orig = [...lam.querySelectorAll('[data-linha]')].filter((e) => !e.closest('#lente-in'));
+    const copia = [...lam.querySelectorAll('#lente-in [data-linha]')];
+    copia.forEach((e, i) => { e.style.top = orig[i].style.top; });
+    // lente em cima do "rit" de algoritmo
+    const alg = document.getElementById('alg'), r = alg.getBoundingClientRect(), b = lam.getBoundingClientRect();
+    const lw = 500, k = lw / 738, cx = r.left - b.left + r.width * .5, cy = r.top - b.top + r.height * .58, rl = 186 * k;
+    const lupa = document.getElementById('lupa'); lupa.style.left = (cx - 233 * k) + 'px'; lupa.style.top = (cy - 227 * k) + 'px';
+    document.getElementById('lente').style.clipPath = `circle(${rl}px at ${cx}px ${cy}px)`;
+    const li = document.getElementById('lente-in'); li.style.transformOrigin = `${cx}px ${cy}px`; li.style.transform = 'scale(1.4)';
+  }
+  return Promise.all([...document.images].map((im) => im.complete ? 1 : new Promise((r) => { im.onload = im.onerror = r; })));
+}).then(() => { window.READY = true; });
+</script>
+<script src="scripts/palavra-curta.js"></script>
+</body>
+</html>

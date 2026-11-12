@@ -8,7 +8,7 @@
 (function () {
   const CURTA_FIM = /(^|[\s ])([\p{L}]{1,2})[ \t\n\r]*$/u;
   const COLA = /(?<=^|[\s (“"‘'])([\p{L}]{1,2})[ \t\n\r]+/gu;
-  const fora = (n) => n.parentElement && n.parentElement.closest('script,style,textarea');
+  const fora = (n) => n.parentElement && n.parentElement.closest('script,style,textarea,[data-sem-cola]');
   // 1) <br> logo depois de palavra curta: a palavra desce
   document.querySelectorAll('br').forEach((br) => {
     let antes = br.previousSibling;
