@@ -291,6 +291,48 @@ const PINC = 'filter:brightness(.46) saturate(1.3) contrast(1.05)';
       <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.28"></div>`, 'grao-forte');
 })();
 
+/* ================= 7 · chamada — ref 3 do Pinterest (pílula no topo + palavra gigante + palavra forte, a "foto" vira o álbum:
+   figurinhas nº 09 e nº 10 coladas e o espaço nº 11 vazio, selecionado como no Figma, com 👀; texto miúdo repetido; marca no pé).
+   Fundo escuro de página de álbum com os espaços em relevo seco. Sem 3D ================= */
+(() => {
+  const c = A.chamada, [s9, s10] = A.paginas[4].sites;
+  /* relevo seco dos espaços de figurinha (página de álbum) */
+  const vaga = (x, y) => `<rect x='${x - 1}' y='${y - 1}' width='226' height='282' rx='16' fill='none' stroke='rgba(0,0,0,.42)' stroke-width='2'/><rect x='${x + 1}' y='${y + 1}' width='226' height='282' rx='16' fill='none' stroke='rgba(255,251,222,.07)' stroke-width='2'/>`;
+  document.documentElement.style.setProperty('--album-vagas', `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='270' height='330'>${vaga(22, 24)}</svg>")`);
+  const figurinha = (n, s, x, y, r, etapa) => `<div class="abs" style="left:${x}px;top:${y}px;width:226px;height:282px;border-radius:16px;background:#fffdf3;padding:10px;transform:rotate(${r}deg);box-shadow:6px 9px 0 rgba(10,4,14,.45)">
+      <div style="position:relative;height:100%;border-radius:9px;background:linear-gradient(160deg,var(--lavanda-2),#efe6f2 55%,var(--ivory));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+        <div class="abs" style="left:12px;top:10px;font-family:var(--sans);font-weight:600;font-size:17px;color:var(--violeta)">nº ${n}</div>
+        <img src="${estrelaReticula(120, css('violeta-2'), 9)}" style="width:62px;opacity:.55;margin-bottom:8px">
+        <div style="font-family:var(--serif);font-size:42px;line-height:1;letter-spacing:-.02em;color:var(--violeta)">${s.nome}</div>
+        <div class="abs" style="left:0;right:0;bottom:12px;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(42,20,51,.55)">${etapa}</div></div></div>`;
+  const alca = (x, y) => `<i class="abs" style="left:${x - 8}px;top:${y - 8}px;width:16px;height:16px;background:#fffdf3;border:2.5px solid var(--violeta-2);border-radius:3px"></i>`;
+  const SX = 610, SY = 660, SW = 280, SH = 350;  // espaço nº 11
+  const micro = Array(9).fill('me indica nos comentários').join(' · ');
+  lamina(6, `
+    <img class="abs" src="${estrelaReticula(560, css('pink'))}" style="left:700px;top:-170px;width:560px;opacity:.2;transform:rotate(16deg)">
+    <img class="abs" src="${estrelaReticula(300, css('lavanda'))}" style="left:-110px;top:980px;width:300px;opacity:.14;transform:rotate(-18deg)">
+    <div class="abs" style="left:0;right:0;top:84px;text-align:center"><span style="display:inline-block;padding:14px 34px 16px;border-radius:999px;background:var(--ivory);font-family:var(--sans);font-weight:600;font-size:44px;line-height:1;color:var(--tinta)">${c.pilula}</span></div>
+    <div class="abs" id="lin2-7" style="left:0;right:0;top:166px;text-align:center;white-space:nowrap;color:var(--ivory)"><span style="font-family:var(--sans);font-weight:600;font-size:96px;letter-spacing:-.03em;vertical-align:42px;margin-right:14px">tá</span><span style="font-family:var(--serif);font-size:300px;line-height:1;letter-spacing:-.03em;color:var(--pink)">${c.linha2.replace(/^tá\s*/, '')}</span></div>
+    <div class="abs" style="left:0;right:0;top:448px;text-align:center;font-family:var(--sans);font-weight:600;font-size:104px;line-height:1;letter-spacing:-.04em;color:var(--ivory)">${c.linha3}</div>
+    <div class="abs" style="left:150px;top:614px;width:250px;height:42px;overflow:hidden;font-family:var(--sans);font-weight:500;font-size:10.5px;line-height:1.35;letter-spacing:.06em;text-transform:uppercase;text-align:left;color:rgba(255,251,222,.26)">${micro}</div>
+    ${figurinha('09', s9, 180, 690, -7, 'entrega')}
+    ${figurinha('10', s10, 350, 730, 5, 'entrega')}
+    <div class="abs" style="left:${SX}px;top:${SY}px;width:${SW}px;height:${SH}px;border-radius:16px;border:3px dashed rgba(192,165,196,.75);background:rgba(255,251,222,.03);display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div class="abs" style="left:16px;top:12px;font-family:var(--sans);font-weight:600;font-size:19px;color:var(--lavanda)">nº 11</div>
+      <div style="font-family:var(--serif);font-style:italic;font-size:210px;line-height:.9;color:var(--pink)">?</div>
+      <div style="font-family:var(--sans);font-weight:500;font-size:20px;color:var(--lavanda);margin-top:6px">a sua indicação</div></div>
+    <div class="abs" style="left:${SX - 14}px;top:${SY - 14}px;width:${SW + 28}px;height:${SH + 28}px;border:2px solid var(--violeta-2)"></div>
+    ${alca(SX - 13, SY - 13)}${alca(SX + SW + 15, SY - 13)}${alca(SX - 13, SY + SH + 15)}${alca(SX + SW + 15, SY + SH + 15)}
+    <div class="abs" style="left:${SX + SW / 2 - 110}px;top:${SY + SH + 34}px;width:220px;text-align:center"><span style="display:inline-block;padding:6px 14px;border-radius:6px;background:var(--violeta-2);font-family:var(--sans);font-weight:600;font-size:17px;color:var(--ivory)">figurinha nº 11 · vazia</span></div>
+    <img class="abs" src="emoji/1f440.png" style="left:${SX + SW - 128}px;top:${SY - 74}px;width:92px;transform:rotate(6deg)">
+    <div class="abs" style="left:110px;top:1112px;width:760px;font-family:var(--sans);font-size:33px;line-height:1.25;color:var(--ivory)">${c.comenta.replace('eu testo e conto.', '<b style="font-weight:600;color:var(--manteiga)">eu testo e conto.</b>')}</div>
+    <div class="abs" style="left:110px;right:110px;top:1262px;display:flex;justify-content:space-between;font-family:var(--sans);font-weight:500;font-size:20px;color:rgba(255,251,222,.7)"><span>${c.salva}</span><span>@itsemsdesign</span></div>
+  `, `<div class="abs" style="inset:0;background:linear-gradient(170deg,#3d1c46,#2a1433 70%)"></div>
+      <div class="abs" style="inset:0;background-image:var(--album-vagas);background-size:270px 330px;background-position:-10px 10px"></div>
+      <div class="abs" style="inset:0;background:radial-gradient(60% 45% at 66% 64%, rgba(123,77,242,.26), transparent 70%)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:soft-light;opacity:.35"></div>`, 'grao-forte');
+})();
+
 /* lupa de acrílico em cima de "algoritmo", ampliando a palavra (posição medida depois das fontes) */
 
 /* ================= o que atravessa os cortes (metade de cada lado) ================= */
@@ -302,6 +344,12 @@ const PINC = 'filter:brightness(.46) saturate(1.3) contrast(1.05)';
     const g = (estilo) => `<div class="abs" style="left:${2 * W + 760}px;top:180px;font-family:var(--serif);font-style:italic;font-size:1050px;line-height:.8;${estilo}">g</div>`;
     pt.insertAdjacentHTML('beforeend', `<div class="abs" style="left:0;top:0;width:${3 * W}px;height:${H}px;overflow:hidden">${g('color:#5a2470;opacity:.45')}</div>
       <div class="abs" style="left:${3 * W}px;top:0;width:${W}px;height:${H}px;overflow:hidden"><div class="abs" style="left:${-3 * W}px;top:0">${g('color:transparent;-webkit-text-stroke:3px rgba(91,33,108,.22)')}</div></div>`);
+  }
+  /* 6|7: "?" gigante atravessando o corte: contorno violeta no lilás da 6, cheio e apagado no escuro da 7 */
+  if (N >= 7) {
+    const q = (estilo) => `<div class="abs" style="left:${6 * W - 250}px;top:330px;font-family:var(--serif);font-style:italic;font-size:1100px;line-height:.8;${estilo}">?</div>`;
+    pt.insertAdjacentHTML('beforeend', `<div class="abs" style="left:0;top:0;width:${6 * W}px;height:${H}px;overflow:hidden">${q('color:transparent;-webkit-text-stroke:3px rgba(98,37,216,.3)')}</div>
+      <div class="abs" style="left:${6 * W}px;top:0;width:${W}px;height:${H}px;overflow:hidden"><div class="abs" style="left:${-6 * W}px;top:0">${q('color:rgba(192,165,196,.15)')}</div></div>`);
   }
   /* 5|6: seta desenhada à mão saindo do fecho da 5 e entrando na 6; troca de cor no corte */
   if (N >= 6) {

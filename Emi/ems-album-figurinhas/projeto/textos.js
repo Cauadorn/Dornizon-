@@ -38,7 +38,10 @@ window.ALBUM = {
       ] },
   ],
   chamada: {
-    titulo: 'qual figurinha<br>tá <i>faltando</i> no<br>meu álbum?',
+    pilula: 'qual figurinha',
+    linha2: 'tá <i>faltando</i>',
+    linha3: 'no meu álbum?',
+    titulo: 'qual figurinha<br>tá <i>faltando</i><br>no meu álbum?',
     comenta: 'me indica nos comentários o site que você não vive sem. eu testo e conto.',
     salva: 'salva pra completar o seu álbum também&nbsp;↓',
   },
