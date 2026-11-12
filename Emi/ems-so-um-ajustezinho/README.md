@@ -18,11 +18,12 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 - **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada.
 - **v7** (`entrega/v7/`, `projeto/carrossel-v7.html`): a disciplina da lâmina aprovada (a da bússola) em todas; capa-pôster; pasta como janela monocromática; celular desenhado em código.
-- **v8** (`entrega/v8/`, `projeto/carrossel-v8.html`): **em teste.** Igual à v7, mas a pasta (lâmina 3) e o celular (lâmina 5) viram **objetos 3D gerados**, recortados e montados sobre os fundos de textura da EMS, como o papel amassado e a bússola:
+- **v8** (`entrega/v8/`, `projeto/carrossel-v8.html`): **em teste.** Igual à v7, mas com **objetos 3D gerados**, recortados e montados sobre os fundos de textura da EMS:
+  - **capa:** o papel amassado (que incomodava a Emi) sai e entra um **painel de Ajustes 3D** (os controles deslizantes do Photoshop/Lightroom, em rosa e violeta), com o cursor "emi" puxando o último controle só um tiquinho; o painel atravessa o corte para a lâmina 2. Foram descartadas antes: teclas (a Emi já fez capa com teclas) e fita métrica (costura não tem a ver com design);
   - **pasta-envelope rosa com coração violeta** (escolhida pela Emi entre a rosa e uma lilás com elástico; a primeira, amarela, foi achada "feinha"), com as fichas das versões saindo de dentro (nomes datilografados já na imagem), `SelectionBox` + cursor "emi" na `logo_v1.png` e o aviso "spoiler: aprovaram a v1" (referência 17 da pesquisa);
   - **celular 3D ameixa** com a conversa na tela ("oii! antes de qualquer rabisco, me conta uma coisa:" + "como é a sua marca em três palavras?" + digitando), como a Emi preferiu; conteúdo encaixado em perspectiva nos 4 cantos da tela, respeitando a ilha (referência 10).
 
-Os dois objetos foram gerados no Figma (gpt-image-2.5-sunburst, fundo #E9E9E9) porque o ElevenLabs, o Freepik e o Higgsfield estavam sem créditos. Foto de cena inteira (celular sobre linho, pasta sobre tecido) foi testada e **descartada**: realista demais, não combina com a EMS. Elemento gerado = objeto recortado no estilo da marca.
+Os objetos foram gerados no Figma (gpt-image-2.5-sunburst, fundo #E9E9E9) porque o ElevenLabs, o Freepik e o Higgsfield estavam sem créditos. Foto de cena inteira (celular sobre linho, pasta sobre tecido) foi testada e **descartada**: realista demais, não combina com a EMS. Elemento gerado = objeto recortado no estilo da marca.
 
 | Lâmina | O que tem | Princípio das refs |
 | --- | --- | --- |
@@ -37,7 +38,7 @@ Os dois objetos foram gerados no Figma (gpt-image-2.5-sunburst, fundo #E9E9E9) p
 
 Descartadas: v2 (caderno repetido), v3 (voltou demais para a v1), v4 (fio), v5 (cara de interface), v6 (fonte pesada e manuscrita em tudo, borracha jogada, xadrez forte com janela colorida). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
 
-Referências em `referencias/outras/` e a pesquisa (25 peças, com o princípio de cada uma) em `referencias/pesquisa/`.
+Referências em `referencias/outras/`, a pesquisa geral (25 peças) em `referencias/pesquisa/` e a de capa (10 peças de vários designers) em `referencias/pesquisa-capa/`.
 
 ## Lâminas
 
