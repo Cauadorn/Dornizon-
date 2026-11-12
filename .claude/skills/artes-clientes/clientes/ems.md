@@ -12,6 +12,14 @@
 - Fontes dos posts: Poppins + Instrument Serif, uma palavra em itálico por título (`manteiga` no escuro, `pink` no claro).
 - Grafismos: `HalftoneStar`, grão, `SelectionBox`, `HandleTag` com cursor, marca d'água @ITSEMSDESIGN x3, selo original (nunca redesenhar).
 - Voz: minúsculas, gen z na forma, profissional no conteúdo; fecha com pergunta aberta.
+- **Encostar e passar um pouco é estilo (pedido da Emi, 12/11):** elementos podem se tocar e invadir um pouco uns aos outros. Exemplos:
+  - a orelha do gato encostando na pílula;
+  - a cabeça do gato na frente do nome da revista;
+  - a pata em cima da enquete;
+  - a etiqueta @ saindo do cartão;
+  - um selo por cima da foto.
+
+  "Fica bonito, fica algo estilizado." Evitar composição em que tudo fica certinho dentro da própria caixa, com respiro de segurança em volta de cada peça. O que não pode é cobrir rosto, olhos ou o texto que precisa ser lido.
 
 ## Formatos já feitos (referência)
 
