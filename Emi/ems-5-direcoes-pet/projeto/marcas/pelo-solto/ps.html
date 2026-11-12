@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- pelo solto · versões para estampar ("uma versão PS pra estampar algumas coisas").
+     ?tipo=mono → só o monograma "ps" (o "p" e o "s" do próprio logo, ps.svg);
+     ?tipo=selo → selo redondo: o "ps" no centro e PELO SOLTO · BANHO & TOSA · em volta, em Poppins Light espaçada,
+                  distribuído exatamente na volta (textLength = circunferência). Bom para bordado na manga e etiqueta.
+     ?fundo=&tinta=&disco= (disco = cor do círculo do selo; vazio = só o contorno) · ?w=&h= · servidor http (mask-image) -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: PoppinsL; src: url(../../fonts/Poppins-300.woff2); font-weight: 300; }
+@font-face { font-family: PoppinsR; src: url(../../fonts/Poppins-Regular.ttf); font-weight: 400; }
+html, body { margin: 0; }
+.palco { position: relative; overflow: hidden; background: var(--fundo); }
+.ps { position: absolute; left: 50%; top: 50%; background: var(--letra);
+  -webkit-mask: url(ps.svg) center / contain no-repeat; mask: url(ps.svg) center / contain no-repeat; transform: translate(-50%, -50%); }
+svg { position: absolute; left: 0; top: 0; }
+</style></head><body>
+<div class="palco"><svg id="s"></svg><div class="ps"></div></div>
+<script>
+const q = new URLSearchParams(location.search), st = document.documentElement.style;
+const tipo = q.get('tipo') || 'mono', W = +(q.get('w') || 800), H = +(q.get('h') || 800);
+const fundo = q.get('fundo') || '#FDF6E5', tinta = q.get('tinta') || '#5A2E17', disco = q.get('disco') ?? (tipo === 'selo' ? tinta : '');
+st.setProperty('--fundo', fundo);
+const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px';
+const s = document.getElementById('s'); s.setAttribute('width', W); s.setAttribute('height', H);
+const ps = document.querySelector('.ps'), PSW = 195, PSH = 414.25;
+if (tipo === 'mono') {
+  const h = H * .62; ps.style.height = h + 'px'; ps.style.width = h * PSW / PSH + 'px'; st.setProperty('--letra', tinta);
+} else {
+  const cx = W / 2, cy = H / 2, R = Math.min(W, H) * .45, rt = R * .8, ch = R * .84;
+  st.setProperty('--letra', disco ? fundo : tinta);
+  ps.style.height = ch + 'px'; ps.style.width = ch * PSW / PSH + 'px';
+  const corTxt = disco ? fundo : tinta, circ = 2 * Math.PI * rt;
+  s.innerHTML = `${disco ? `<circle cx="${cx}" cy="${cy}" r="${R}" fill="${disco}"/>` : `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${tinta}" stroke-width="3"/>`}
+    <circle cx="${cx}" cy="${cy}" r="${R * .64}" fill="none" stroke="${corTxt}" stroke-width="1.6"/>
+    <defs><path id="volta" d="M${cx} ${cy - rt} A${rt} ${rt} 0 1 1 ${cx - .01} ${cy - rt}"/></defs>
+    <text font-family="PoppinsL" font-weight="300" font-size="${R * .1}" fill="${corTxt}" dominant-baseline="middle">
+      <textPath href="#volta" textLength="${circ - R * .1}" lengthAdjust="spacing">PELO SOLTO · BANHO &amp; TOSA · PELO SOLTO · BANHO &amp; TOSA ·</textPath></text>`;
+}
+</script></body></html>

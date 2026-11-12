@@ -23,6 +23,7 @@ keep = np.zeros_like(bm)
 for i in range(1, n):
     x, y, w, h, a = st[i]
     if a > 3000 * S and not (x < 60 * S and w < 80 * S): keep |= lab == i
+np.save('/tmp/claude-0/-home-user-Dornizon-/47af4914-ff43-5d3d-b99e-7bf40ba8c4a4/scratchpad/nome-mask.npy', keep)   # máscara 4x, para o monograma (ps.py)
 bmp = potrace.Bitmap(~keep)   # o potracer trata True como fundo
 plist = bmp.trace(turdsize=40, alphamax=1.15, opticurve=True, opttolerance=0.25)
 def fmt(p): return f'{p.x / S:.2f} {p.y / S:.2f}'
