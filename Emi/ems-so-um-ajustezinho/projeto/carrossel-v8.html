@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · só um ajustezinho (v8)</title>
+<!--
+  v7: a disciplina da lâmina aprovada (a da bússola) em todas: um fundo com matéria, título em Instrument Serif
+  com UMA palavra de destaque em itálico, um elemento principal, um apoio. Fonte diferente só no destaque.
+  Fundo forte => conteúdo calmo. Um objeto ou forma atravessa cada corte (conectividade), nunca fio.
+-->
+<style>
+@font-face{font-family:"Instrument Serif";src:url(assets/fonts/InstrumentSerif-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(assets/fonts/InstrumentSerif-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-SemiBold.ttf);font-weight:600}
+@font-face{font-family:"Poppins";src:url(assets/fonts/poppins-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:"Anton";src:url(assets/fonts/Anton-Regular.ttf)}
+
+:root{
+  --ivory:#fffbde; --ivory-2:#f4edcb; --tinta:#2a1433; --ameixa:#3d1c46; --creative-purple:#482952;
+  --plum:#5b216c; --violeta:#6225d8; --violeta-2:#7b4df2; --lavanda:#c0a5c4; --lavanda-2:#e4d6e6;
+  --wine:#9e122c; --pink:#dd34a8; --manteiga:#f2cf7a;
+  --serif:"Instrument Serif",Georgia,serif; --sans:"Poppins",system-ui,sans-serif;
+  --shadow-dura:6px 6px 0 #2a1433;
+  --ruido:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --fibra:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .09' numOctaves='4' seed='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#140a19;width:max-content}
+.faixa{position:relative;display:flex;width:6480px;height:1350px;overflow:hidden}
+.lamina{position:relative;width:1080px;height:1350px;flex:none;font-family:var(--sans)}
+.lamina > *{position:absolute}
+
+/* ---------- superfícies ---------- */
+.tecido{background-color:var(--c)}
+.tecido::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(20,8,25,.16) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(255,251,222,.07) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(45deg, rgba(20,8,25,.05) 0 2px, transparent 2px 9px)}
+.tecido::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:var(--ruido);opacity:.10;mix-blend-mode:overlay}
+.pontilhado{background-color:var(--ivory)}
+.pontilhado::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(42,20,51,.30) 1.6px,transparent 2px);background-size:30px 30px;background-position:14px 14px}
+.pontilhado::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:var(--fibra);opacity:.16;mix-blend-mode:multiply}
+/* xadrez tom sobre tom: o fundo tem desenho, mas não grita */
+.xadrez{background-color:var(--creative-purple);background-image:
+  repeating-linear-gradient(90deg, transparent 0 52px, rgba(192,165,196,.18) 52px 54px, transparent 54px 62px, rgba(192,165,196,.18) 62px 64px, transparent 64px 180px),
+  repeating-linear-gradient(0deg, transparent 0 52px, rgba(192,165,196,.18) 52px 54px, transparent 54px 62px, rgba(192,165,196,.18) 62px 64px, transparent 64px 180px),
+  repeating-linear-gradient(90deg, rgba(42,20,51,.38) 0 70px, transparent 70px 180px),
+  repeating-linear-gradient(0deg, rgba(42,20,51,.30) 0 70px, transparent 70px 180px)}
+.xadrez::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(20,8,25,.2) 0 1px, transparent 1px 3px),repeating-linear-gradient(90deg, rgba(20,8,25,.12) 0 1px, transparent 1px 3px)}
+.linho{background-color:var(--ivory)}
+.linho::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(42,20,51,.07) 0 1px, transparent 1px 3px),repeating-linear-gradient(90deg, rgba(42,20,51,.06) 0 1px, transparent 1px 3px)}
+.linho::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:var(--fibra);opacity:.16;mix-blend-mode:multiply}
+.tela{inset:0;z-index:60;pointer-events:none;mix-blend-mode:multiply;
+  background:repeating-linear-gradient(0deg, rgba(42,20,51,.08) 0 1px, transparent 1px 3px),repeating-linear-gradient(90deg, rgba(42,20,51,.06) 0 1px, transparent 1px 3px)}
+.grao{inset:0;pointer-events:none;opacity:.10;z-index:61;background-image:var(--ruido);mix-blend-mode:overlay}
+
+/* ---------- tipografia: Instrument Serif + Poppins; destaque = itálico ---------- */
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;line-height:.86}
+.serif em{font-style:italic}
+.impresso{filter:url(#impresso)}
+.lead{font:500 40px/1.1 var(--sans)}
+
+/* ---------- peças ---------- */
+.obj{filter:drop-shadow(0 16px 26px rgba(20,8,25,.45))}
+.duo-v{filter:url(#duo-violeta) drop-shadow(0 18px 28px rgba(20,8,25,.5))}
+.duo-a{filter:url(#duo-ameixa) drop-shadow(0 18px 28px rgba(10,4,14,.55))}
+.forma{pointer-events:none}
+.fita{position:absolute;width:130px;height:36px;background:rgba(242,207,122,.88);z-index:6;
+  clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,16% 8%,20% 0,100% 0,96% 10%,100% 22%,96% 34%,100% 46%,96% 58%,100% 70%,96% 82%,100% 92%,98% 100%,0 100%,4% 88%,0 76%,4% 64%,0 52%,4% 40%,0 28%)}
+.bilhete{background:var(--ivory);color:var(--tinta);padding:34px 36px 30px;box-shadow:0 18px 30px -12px rgba(20,8,25,.6)}
+.bilhete::after{content:"";position:absolute;inset:0;background-image:var(--fibra);opacity:.18;mix-blend-mode:multiply;pointer-events:none}
+.agua{left:80px;right:80px;top:54px;display:flex;justify-content:space-between;font:500 16px/1 var(--sans);letter-spacing:.2em;opacity:.38;z-index:3}
+.agua b{font-weight:600}
+.handle{font:500 21px/1 var(--sans);padding:7px 14px 7px 12px;border-radius:4px;color:var(--ivory);z-index:20;background:var(--pink)}
+.handle svg{position:absolute;left:-17px;bottom:-17px}
+.emi{z-index:30;width:0;height:0}
+.emi svg{position:absolute;left:0;top:0}
+.emi span{position:absolute;left:30px;top:30px;background:var(--pink);color:var(--ivory);font:500 19px/1 var(--sans);padding:6px 11px;border-radius:4px;white-space:nowrap}
+
+/* ---------- 01 capa ---------- */
+/* capa-pôster: UMA palavra gigante em caixa alta condensada (Anton, fonte da EMS) e o objeto na frente dela */
+#l1 .lead{left:84px;top:150px;color:var(--ivory)}
+#l1 .poster{left:78px;top:214px;width:924px;font-family:"Anton",Impact,sans-serif;font-weight:400;line-height:.86;letter-spacing:-.005em;text-transform:uppercase;z-index:2}
+#l1 .poster span{display:block;white-space:nowrap}
+#l1 .poster .p1{color:var(--ivory)}
+#l1 .poster .p2{color:var(--manteiga)}
+#l1 .papel{left:600px;top:660px;width:860px;z-index:3}
+#l1 .frase{left:84px;top:1010px;font-size:60px;line-height:.98;color:var(--ivory);z-index:4}
+#l1 .frase em{color:var(--ivory)}
+#l1 .handle{left:96px;bottom:60px}
+
+/* ---------- 02 loop: o desenho é o próprio loop ---------- */
+#l2 .lead{left:0;right:0;top:132px;text-align:center;font-size:34px;color:var(--wine)}
+#l2 .anel{left:0;top:0;width:1080px;height:1350px;z-index:2}
+#l2 .centro{left:0;right:0;top:626px;text-align:center;color:var(--tinta);z-index:3}
+#l2 .centro .a{font-size:88px}
+#l2 .centro .b{font-size:136px;color:var(--pink);margin-top:-4px}
+.etapa{width:300px;border-radius:36px;padding:22px 28px 26px;font:500 23px/1.3 var(--sans);background:var(--tinta);color:var(--ivory);z-index:4}
+.etapa b{display:block;font:italic 400 42px/1 var(--serif);color:var(--manteiga);margin-bottom:6px}
+.etapa.quente{background:var(--pink)}
+.etapa.quente b{color:var(--tinta)}
+#l2 .fecho{right:80px;top:1110px;text-align:right;font:italic 400 54px/1 var(--serif);color:var(--tinta);z-index:4}
+#l2 .nota{right:80px;top:1180px;text-align:right;font:500 22px/1 var(--sans);letter-spacing:.04em;color:var(--wine);z-index:4}
+#l2 .handle{right:80px;bottom:40px}
+
+/* ---------- 03 pasta: objeto 3D gerado (pasta-envelope rosa com coração, com as versões) sobre tecido ---------- */
+#l3 .lead{left:84px;top:150px;color:var(--lavanda);z-index:5}
+#l3 .t1{left:76px;top:206px;font-size:128px;line-height:.9;color:var(--ivory);z-index:5}
+#l3 .t1 em{color:var(--manteiga)}
+#l3 .apoio{left:84px;top:368px;width:560px;font:400 29px/1.3 var(--sans);color:var(--ivory);z-index:5}
+#l3 .apoio b{font-weight:700;color:var(--manteiga)}
+#l3 .pastawrap{left:150px;top:478px;width:830px;transform:rotate(-3deg);z-index:4}
+#l3 .pastawrap img{display:block;width:100%;filter:drop-shadow(0 22px 34px rgba(20,8,25,.5))}
+#l3 .selv1{position:absolute;left:106px;top:8px;width:168px;height:48px;outline:2px solid var(--violeta)}
+#l3 .selv1 i{position:absolute;width:12px;height:12px;background:var(--ivory);border:2px solid var(--violeta)}
+#l3 .selv1 i:nth-of-type(1){left:-7px;top:-7px}#l3 .selv1 i:nth-of-type(2){right:-7px;top:-7px}#l3 .selv1 i:nth-of-type(3){left:-7px;bottom:-7px}#l3 .selv1 i:nth-of-type(4){right:-7px;bottom:-7px}
+#l3 .pastawrap .emi{position:absolute;left:280px;top:-10px}
+#l3 .aviso{left:700px;top:430px;background:var(--pink);color:var(--ivory);font:500 24px/1 var(--sans);padding:14px 24px;border-radius:999px;transform:rotate(-4deg);z-index:12}
+#l3 .handle{left:96px;bottom:40px}
+
+/* ---------- 04 norte (a da v2, aprovada) ---------- */
+#l4 .lead{left:84px;top:160px;color:var(--lavanda)}
+#l4 .t1{left:76px;top:220px;font-size:132px;line-height:.9;color:var(--ivory)}
+#l4 .t2{left:70px;top:420px;font-size:300px;line-height:.8;color:var(--manteiga);z-index:4}
+#l4 .bussola{left:600px;top:600px;width:660px;transform:rotate(-8deg);z-index:6}
+#l4 .bilhete{left:80px;top:820px;width:440px;transform:rotate(-2.5deg);z-index:7}
+#l4 .bilhete p{font:400 27px/1.32 var(--sans);position:relative;z-index:1}
+#l4 .bilhete p b{font-weight:700}
+#l4 .bilhete small{display:block;margin-top:16px;font:400 19px/1.2 var(--sans);letter-spacing:.06em;color:var(--wine);position:relative;z-index:1}
+#l4 .bilhete .fita{left:150px;top:-18px;transform:rotate(3deg)}
+#l4 .handle{left:160px;bottom:72px}
+
+/* ---------- 05 pergunta: celular 3D gerado, a resposta sendo escrita na tela ---------- */
+#l5 .lead{left:80px;top:140px;font-size:34px;color:var(--wine);z-index:5}
+#l5 .t1{left:76px;top:200px;font-size:122px;color:var(--tinta);white-space:nowrap;z-index:5}
+#l5 .t1 em{color:var(--pink)}
+#l5 .resp{left:80px;top:540px;width:300px;font:400 27px/1.32 var(--sans);color:var(--tinta);z-index:5}
+#l5 .resp b{font-weight:700}
+#l5 .cel3d{left:500px;top:460px;width:630px;transform:rotate(-7deg);z-index:4;filter:drop-shadow(-24px 34px 40px rgba(42,20,51,.32))}
+#l5 .handle{left:96px;bottom:56px}
+
+/* ---------- 06 chamada (etiqueta) ---------- */
+.etiqueta{left:120px;top:170px;width:840px;background:var(--ivory);border-radius:48px;transform:rotate(-2deg);z-index:4;
+  box-shadow:0 26px 50px rgba(20,8,25,.45);display:flex;flex-direction:column;align-items:center;padding:150px 70px 80px;text-align:center;color:var(--tinta)}
+.etiqueta::before{content:"";position:absolute;inset:0;border-radius:48px;background-image:var(--fibra);opacity:.14;mix-blend-mode:multiply}
+.etiqueta .furo{position:absolute;left:50%;top:46px;transform:translateX(-50%);width:200px;height:52px;border-radius:26px;background:var(--tinta)}
+.etiqueta .furo::before{content:"";position:absolute;left:50%;top:-24px;transform:translateX(-50%);width:64px;height:40px;border-radius:32px 32px 0 0;background:var(--tinta)}
+.etiqueta .l1{font:500 36px/1.1 var(--sans)}
+.etiqueta .t1{font-size:250px;color:var(--violeta);margin:18px 0 26px}
+.etiqueta .t1 em{color:var(--pink)}
+.etiqueta .c1{font:400 28px/1.32 var(--sans);max-width:660px}
+.etiqueta .c1 b{font-weight:700}
+.etiqueta .cta{margin-top:46px;background:var(--violeta);color:var(--ivory);font:500 29px/1 var(--sans);padding:26px 38px;border-radius:999px;box-shadow:var(--shadow-dura);position:relative;white-space:nowrap}
+.etiqueta .cta b{color:var(--manteiga);font-weight:700}
+.etiqueta .cta .emi{position:absolute;right:70px;bottom:-14px}
+#l6 .selo{left:90px;bottom:62px;width:140px;z-index:6}
+#l6 .site{left:262px;bottom:86px;font:500 22px/1.4 var(--sans);color:var(--ivory);z-index:6}
+#l6 .handle{right:80px;bottom:72px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="impresso" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="3" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.75" result="m"/>
+      <feComposite in="SourceGraphic" in2="m" operator="in" result="t"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="9" result="w"/>
+      <feDisplacementMap in="t" in2="w" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="duo-violeta" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values=".3 .59 .11 0 0  .3 .59 .11 0 0  .3 .59 .11 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues=".165 .482 1"/><feFuncG type="table" tableValues=".078 .302 .984"/><feFuncB type="table" tableValues=".2 .949 .871"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="duo-ameixa" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values=".3 .59 .11 0 0  .3 .59 .11 0 0  .3 .59 .11 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues=".09 .357 .949 1"/><feFuncG type="table" tableValues=".04 .129 .812 .984"/><feFuncB type="table" tableValues=".12 .424 .478 .871"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
+
+<div class="faixa">
+
+<!-- 01 CAPA -->
+<section class="lamina tecido" id="l1" style="--c:var(--violeta)">
+  <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">“é só um</p>
+  <h1 class="poster impresso" id="poster"><span class="p1">ajuste</span><span class="p2">zinho”</span></h1>
+  <!-- na frente da palavra e atravessando o corte 1|2 -->
+  <img class="papel duo-v" src="recortes/papel.png" alt="">
+  <p class="serif frase impresso">e foi assim que a gente<br>chegou na <em>versão 27.</em></p>
+  <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="tela"></div><div class="grao"></div>
+</section>
+
+<!-- 02 LOOP: o círculo É o loop -->
+<section class="lamina pontilhado" id="l2">
+  <div class="agua" style="color:var(--tinta)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">sem briefing, vira isso:</p>
+  <svg class="anel" id="anel"></svg>
+  <div class="centro"><p class="serif a">o loop da</p><p class="serif b impresso"><em>refação</em></p></div>
+  <div class="etapa" data-pos="315"><b>01</b>“algo moderno, mas clássico, que chame atenção sem chamar”</div>
+  <div class="etapa" data-pos="45"><b>02</b>o designer chuta uma direção (ninguém disse qual)</div>
+  <div class="etapa quente" data-pos="135"><b>03</b>“tá quase… mas não é bem isso, sabe?”</div>
+  <div class="etapa" data-pos="225"><b>04</b>volta pro começo, só que todo mundo mais cansado</div>
+  <p class="fecho">ninguém é o vilão dessa história.</p>
+  <p class="nota">faltou combinar o destino antes de sair.</p>
+  <!-- atravessa o corte 2|3 -->
+  <svg class="forma" data-brilho="r:110,cor:#6225d8,rot:8" style="left:960px;top:20px;width:240px;height:240px;z-index:7"></svg>
+  <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="tela"></div><div class="grao"></div>
+</section>
+
+<!-- 03 PASTA: objeto 3D (pasta-envelope com as versões) sobre tecido plum -->
+<section class="lamina tecido" id="l3" style="--c:var(--plum)">
+  <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">teste rápido:</p>
+  <h2 class="serif t1 impresso">ache o arquivo <em>final</em></h2>
+  <p class="apoio">sem briefing, cada versão é um chute.<br><b>e chute cansa os dois lados.</b></p>
+  <div class="pastawrap">
+    <img src="recortes/pasta-rosa.png" alt="">
+    <div class="selv1"><i></i><i></i><i></i><i></i></div>
+    <div class="emi"><svg width="38" height="38" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#dd34a8" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg><span>emi</span></div>
+  </div>
+  <p class="aviso">spoiler: aprovaram a v1</p>
+  <!-- atravessa o corte 3|4 -->
+  <svg class="forma" data-brilho="r:96,cor:#f2cf7a,rot:-10" style="left:980px;top:1150px;width:200px;height:200px;z-index:7"></svg>
+  <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="tela"></div><div class="grao"></div>
+</section>
+
+<!-- 04 NORTE · a lâmina da v2 (aprovada) -->
+<section class="lamina tecido" id="l4" style="--c:var(--ameixa)">
+  <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">calma: ajuste faz parte.</p>
+  <h2 class="serif t1 impresso">o que cansa é<br>ajuste sem</h2>
+  <h2 class="serif t2 impresso"><em>norte.</em></h2>
+  <!-- atravessa o corte 4|5 -->
+  <img class="bussola duo-a" src="recortes/bussola.png" alt="">
+  <div class="bilhete"><span class="fita"></span><p>briefing bem feito é o norte do projeto: todo mundo sabe pra onde vai, e o ajuste vira <b>refinamento, não recomeço.</b></p><small>(sério, ele resolve)</small></div>
+  <svg class="forma" data-brilho="r:46,cor:#f2cf7a,rot:8" style="left:880px;top:500px;width:110px;height:110px;z-index:7"></svg>
+  <svg class="forma" data-brilho="r:24,cor:#f2cf7a,rot:-8" style="left:972px;top:600px;width:60px;height:60px;z-index:7"></svg>
+  <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="tela"></div><div class="grao"></div>
+</section>
+
+<!-- 05 PERGUNTA: celular 3D com a resposta sendo escrita na tela, sobre linho -->
+<section class="lamina linho" id="l5">
+  <div class="agua" style="color:var(--tinta)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">a primeira pergunta do meu briefing:</p>
+  <h2 class="serif t1 impresso">como é a sua marca<br>em <em>três</em> palavras?</h2>
+  <p class="resp">responde aqui embaixo. a primeira que vier na cabeça <b>costuma ser a mais verdadeira.</b></p>
+  <img class="cel3d" src="recortes/celular-3d.png" alt="">
+  <!-- atravessa o corte 5|6 -->
+  <svg class="forma" data-brilho="r:130,cor:#f2cf7a,rot:6" style="left:940px;top:-40px;width:280px;height:280px;z-index:3"></svg>
+  <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="tela"></div><div class="grao"></div>
+</section>
+
+<!-- 06 CHAMADA -->
+<section class="lamina tecido" id="l6" style="--c:var(--violeta)">
+  <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <div class="etiqueta">
+    <span class="furo"></span>
+    <p class="l1">quer as outras perguntas do meu</p>
+    <p class="serif t1 impresso">brie<em>f</em>ing?</p>
+    <p class="c1">são as que eu faço antes de desenhar qualquer marca. dá pra responder num cafezinho e chegar em qualquer designer <b>sabendo o que quer.</b></p>
+    <p class="cta">comenta “<b>BRIEFING</b>” que eu te mando na dm<span class="emi"><svg width="38" height="38" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#dd34a8" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg><span>emi</span></span></p>
+  </div>
+  <img class="selo" src="assets/selo-ems.png" alt="selo ems">
+  <p class="site">identidade visual, social media e site<br><b>emsdesign.com.br</b></p>
+  <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="tela"></div><div class="grao"></div>
+</section>
+</div>
+
+<script>
+const f = (n) => n.toFixed(1);
+// brilho da EMS (4 pontas, lados côncavos)
+document.querySelectorAll('[data-brilho]').forEach(svg => {
+  const o = Object.fromEntries(svg.dataset.brilho.split(',').map(p => p.split(':')));
+  const r = +o.r, w = svg.getBoundingClientRect().width, c = w / 2, k = .2 * r;
+  const d = `M${c} ${c - r} C ${c + k * .35} ${c - k}, ${c + k} ${c - k * .35}, ${c + r} ${c} C ${c + k} ${c + k * .35}, ${c + k * .35} ${c + k}, ${c} ${c + r} C ${c - k * .35} ${c + k}, ${c - k} ${c + k * .35}, ${c - r} ${c} C ${c - k} ${c - k * .35}, ${c - k * .35} ${c - k}, ${c} ${c - r} Z`;
+  svg.setAttribute('viewBox', `0 0 ${w} ${w}`);
+  svg.innerHTML = `<path d="${d}" fill="${o.cor}" transform="rotate(${o.rot || 0} ${c} ${c})"/>`;
+});
+
+// lâmina 2: o anel do loop, com setas no sentido horário, e as etapas sentadas em cima dele
+const CX = 540, CY = 715, R = 330;
+const anel = document.getElementById('anel');
+anel.setAttribute('viewBox', '0 0 1080 1350');
+let s = `<circle cx="${CX}" cy="${CY}" r="${R}" fill="none" stroke="#6225d8" stroke-width="5"/>`;
+for (const a of [0, 90, 180, 270]) {           // pontas de seta entre as etapas (em cima, direita, embaixo, esquerda)
+  const t = (a - 90) * Math.PI / 180, x = CX + R * Math.cos(t), y = CY + R * Math.sin(t);
+  const ang = a;                                  // tangente no sentido horário
+  s += `<g transform="translate(${f(x)} ${f(y)}) rotate(${ang})"><path d="M-16 -14 L4 0 L-16 14" fill="none" stroke="#6225d8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+}
+anel.innerHTML = s;
+function posicionaEtapas() {
+  document.querySelectorAll('.etapa').forEach(el => {
+    const a = +el.dataset.pos, t = (a - 90) * Math.PI / 180;
+    const x = CX + R * Math.cos(t), y = CY + R * Math.sin(t);
+    el.style.left = f(x - el.offsetWidth / 2) + 'px'; el.style.top = f(y - el.offsetHeight / 2) + 'px';
+  });
+}
+function ajustaPoster() {
+  const box = document.getElementById('poster'), W = box.clientWidth;
+  box.querySelectorAll('span').forEach(sp => {
+    sp.style.fontSize = '100px'; sp.style.display = 'inline-block';
+    const w = sp.getBoundingClientRect().width; sp.style.fontSize = (100 * W / w).toFixed(1) + 'px'; sp.style.display = 'block';
+  });
+}
+Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { ajustaPoster(); posicionaEtapas(); window.READY = true; });
+</script>
+</body>
+</html>

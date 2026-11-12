@@ -17,20 +17,25 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 ## Versões
 
 - **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada.
-- **v7** (`entrega/v7/`, `projeto/carrossel-v7.html`): **a atual.** A disciplina da lâmina que a Emi aprovou (a da bússola) em todas: um fundo com matéria, título em Instrument Serif com **uma** palavra de destaque em itálico, um elemento principal, um apoio. Fonte diferente só no destaque.
+- **v7** (`entrega/v7/`, `projeto/carrossel-v7.html`): a disciplina da lâmina aprovada (a da bússola) em todas; capa-pôster; pasta como janela monocromática; celular desenhado em código.
+- **v8** (`entrega/v8/`, `projeto/carrossel-v8.html`): **em teste.** Igual à v7, mas a pasta (lâmina 3) e o celular (lâmina 5) viram **objetos 3D gerados**, recortados e montados sobre os fundos de textura da EMS, como o papel amassado e a bússola:
+  - **pasta-envelope rosa com coração violeta** (escolhida pela Emi entre a rosa e uma lilás com elástico; a primeira, amarela, foi achada "feinha"), com as fichas das versões saindo de dentro (nomes datilografados já na imagem), `SelectionBox` + cursor "emi" na `logo_v1.png` e o aviso "spoiler: aprovaram a v1" (referência 17 da pesquisa);
+  - **celular 3D ameixa** com a conversa na tela ("oii! antes de qualquer rabisco, me conta uma coisa:" + "como é a sua marca em três palavras?" + digitando), como a Emi preferiu; conteúdo encaixado em perspectiva nos 4 cantos da tela, respeitando a ilha (referência 10).
+
+Os dois objetos foram gerados no Figma (gpt-image-2.5-sunburst, fundo #E9E9E9) porque o ElevenLabs, o Freepik e o Higgsfield estavam sem créditos. Foto de cena inteira (celular sobre linho, pasta sobre tecido) foi testada e **descartada**: realista demais, não combina com a EMS. Elemento gerado = objeto recortado no estilo da marca.
 
 | Lâmina | O que tem | Princípio das refs |
 | --- | --- | --- |
 | 1 · capa | **capa-pôster**: "AJUSTE / ZINHO”" em Anton (fonte da EMS) ocupando a largura toda, "zinho”" em manteiga, o papel amassado em duotone **na frente** da palavra e atravessando o corte; apoio em serifa "e foi assim que a gente chegou na *versão 27.*" | pesquisa 01 (@carolrech), 02 (@agrizzart), 06 |
 | 2 · loop | papel pontilhado; **o círculo é o loop**: as 4 etapas em pílulas sobre o anel (setas no sentido horário), "o loop da *refação*" no meio; a etapa 03 ("tá quase…") é a única em rosa | @studioemi.design |
-| 3 · pasta | xadrez **tom sobre tom** e janela **monocromática** (ícones da EMS em tinta, miniaturas lavanda); rosa só no "*final*" e no aviso "spoiler: aprovaram a v1" | @danibloom.design |
+| 3 · pasta | v8: pasta-envelope 3D sobre tecido plum, "ache o arquivo *final*" | pesquisa 17 |
 | 4 · norte | a da v2, aprovada | — |
-| 5 · pergunta | linho; "como é a sua marca em *três* palavras?"; a conversa num **celular em close** (grande, saindo pela borda de baixo), com o texto de resposta na coluna da esquerda | @rafaelalimadesigner_ |
+| 5 · pergunta | v8: celular 3D sobre linho com a resposta sendo escrita | pesquisa 10 |
 | 6 · chamada | a chamada vira etiqueta, com "brie*f*ing?" e "comenta BRIEFING" | @studioemi.design, @amanda.rfernandes |
 
 **Conectividade:** um objeto ou forma atravessa cada corte: papel (1|2), brilho violeta (2|3), brilho manteiga (3|4), bússola (4|5), brilho manteiga (5|6). Nada de fio.
 
-Descartadas: v2 (caderno repetido), v3 (voltou demais para a v1), v4 (fio), v5 (cara de interface), v6 (fonte pesada e manuscrita no título inteiro, borracha jogada no meio do loop, xadrez forte com janela colorida, "socado"). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
+Descartadas: v2 (caderno repetido), v3 (voltou demais para a v1), v4 (fio), v5 (cara de interface), v6 (fonte pesada e manuscrita em tudo, borracha jogada, xadrez forte com janela colorida). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
 
 Referências em `referencias/outras/` e a pesquisa (25 peças, com o princípio de cada uma) em `referencias/pesquisa/`.
 
@@ -75,6 +80,7 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1) e `projeto/carrossel-v7.html` (v7): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v7.html v7` gera a v7 em `entrega/v7/` (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v7/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1), `projeto/carrossel-v7.html` (v7) e `projeto/carrossel-v8.html` (v8): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/tela-celular.html`: o conteúdo da tela do celular 3D (renderizado e encaixado em perspectiva na imagem).
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v7.html v7` e `node render.mjs carrossel-v8.html v8` geram a v7 e a v8 (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v7/` e `entrega/v8/`: PNGs finais 1080 × 1350 para subir no Instagram.

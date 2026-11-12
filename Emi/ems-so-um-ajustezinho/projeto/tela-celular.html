@@ -1,0 +1,31 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-SemiBold.ttf);font-weight:600}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:transparent}
+/* conteúdo da tela do celular 3D (renderizado e encaixado em perspectiva) */
+.tela{position:relative;width:530px;height:1435px;color:#2a1433;font-family:Poppins,sans-serif;background:#e4d6e6}
+.barra{position:absolute;left:0;right:0;top:0;height:112px;background:#f4edcb}
+.status{position:absolute;top:46px;left:40px;right:34px;display:flex;justify-content:space-between;font:600 21px/1 Poppins}
+.topo{position:absolute;top:112px;left:0;right:0;display:flex;align-items:center;gap:16px;padding:22px 28px 24px;background:#fffbde;border-bottom:1.5px solid rgba(42,20,51,.1)}
+.topo img{width:66px;height:66px;border-radius:50%;border:3px solid #6225d8}
+.topo b{display:block;font:600 26px/1.15 Poppins}
+.topo small{font:400 18px/1 Poppins;opacity:.6}
+.msgs{position:absolute;top:262px;left:22px;right:22px;display:flex;flex-direction:column;gap:18px}
+.bolha{position:relative;background:#fffbde;border-radius:28px 28px 28px 8px;padding:24px 28px 32px;font:400 31px/1.28 Poppins;box-shadow:0 2px 0 rgba(42,20,51,.08)}
+.bolha.forte{font:600 36px/1.16 Poppins}
+.bolha time{position:absolute;right:18px;bottom:10px;font:400 15px/1 Poppins;opacity:.5}
+.digitando{align-self:flex-end;background:#6225d8;border-radius:28px 28px 8px 28px;padding:22px 28px;display:flex;gap:10px}
+.digitando i{width:14px;height:14px;border-radius:50%;background:#fffbde}
+.digitando i:nth-child(2){opacity:.65}.digitando i:nth-child(3){opacity:.35}
+</style></head><body><div class="tela">
+<div class="barra"></div>
+<div class="status"><span>23:41</span><span>●●● 5G</span></div>
+<div class="topo"><img src="assets/ems-mascote-ivory.png" alt=""><div><b>emi · ems design</b><small>online agora</small></div></div>
+<div class="msgs">
+  <div class="bolha">oii! antes de qualquer rabisco, me conta uma coisa:<time>23:41</time></div>
+  <div class="bolha forte">como é a sua marca em três palavras?<time>23:41</time></div>
+  <div class="digitando"><i></i><i></i><i></i></div>
+</div>
+</div><script>document.fonts.ready.then(()=>window.READY=true)</script></body></html>
