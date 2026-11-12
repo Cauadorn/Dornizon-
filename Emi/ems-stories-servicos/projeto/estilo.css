@@ -18,7 +18,10 @@ body { width: 7560px; height: 1920px; overflow: hidden; position: relative; font
 .story > * { position: absolute; }
 svg.ht { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 ul { list-style: none; }
-i.lua { display: block; position: absolute; background: center / cover no-repeat; transform: scaleX(-1); }
+/* a foto da lua é quadrada: fica por baixo de tudo, senão o canto dela corta as estrelas em retícula */
+.story { isolation: isolate; }
+i.lua { display: block; position: absolute; background: center / cover no-repeat; transform: scaleX(-1); z-index: -1; }
+i.lua.frente { z-index: auto; }
 
 h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.025em; line-height: .8; }
 h1 em, h2 em { display: block; font-style: italic; color: var(--destaque); }
