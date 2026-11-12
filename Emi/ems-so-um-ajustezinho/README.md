@@ -16,22 +16,23 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 ## Versões
 
-- **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão no sistema EMS.
-- **v3** (`entrega/v3/`, `projeto/carrossel-v3.html`): **a atual.** Mesma base e copy da v1, com três mudanças:
-  1. **Textura visível:** grão e retícula da EMS mais fortes e iguais em todos os slides (antes quase sumiam).
-  2. **Um cenário só, do vocabulário da Emi:** cada slide é um quadro do Figma, com o nome no canto contando a história (`ajuste_v1`, `ajuste_v2`, `ajuste_v8`, `ajuste_v15`, `ajuste_v26`, `ajuste_v27_final`).
-  3. **Ícones do design system, um por slide e com motivo:** brilho na capa, espiral no "loop", coração no "aprovaram a versão 1", estrela no "norte", seta em "responde aqui embaixo" e xoxo na despedida. Os ícones são os PNGs do grupo Ícones, só tingidos na cor da paleta de cada fundo (`projeto/assets/icones/`).
+- **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada, no sistema EMS.
+- **v4** (`entrega/v4/`, `projeto/carrossel-v4.html`): **a atual.** Textura de verdade (tecido, papel, linho, letra com falha de impressão, objetos em duotone da paleta) e **um recurso diferente em cada slide**, tirado do repertório das referências e traduzido para a EMS:
 
-A v2 (caderno com espiral, fita e brilhos desenhados) foi descartada: copiava elementos das referências em vez de traduzir o princípio, e os brilhos não eram da EMS.
+| Slide | Recurso | De onde veio a ideia |
+| --- | --- | --- |
+| 1 · capa | "ajuste" e "zinho”" se atropelando com falha de impressão + papel amassado em duotone (tinta → violeta-2 → marfim) sobre tecido violeta | @carolrech, jantar |
+| 2 · loop | Página de caderno pontilhado com espiral, divisórias por fase do projeto e post-its com fita (**só neste slide**) | @carolrech, agenda |
+| 3 · pasta | Janela de computador retrô sobre xadrez da paleta, com os ícones da EMS (seta, espiral, coração) na barra de ferramentas e a v1 selecionada | @danibloom.design |
+| 4 · norte | "norte." atropelando a bússola em duotone (tinta → plum → manteiga) + bilhete com fita, sobre tecido ameixa | @carolrech, jantar |
+| 5 · pergunta | A primeira pergunta do briefing numa conversa no celular (avatar = mascote da EMS), com a estrela da EMS grande atrás, sobre linho claro | @rafaelalimadesigner_ |
+| 6 · chamada | "brie*f*ing?" impresso + pílula com cursor "emi", selo e xoxo | sistema EMS |
 
-### O que as referências ensinaram (`referencias/outras/`)
+Grafismos: só os do design system (brilho, espiral, coração, estrela, seta, xoxo), um ou dois por slide e com motivo, tingidos na cor da paleta. Os únicos traços à mão são funcionais: setas do loop e os sublinhados.
 
-Leitura das refs da @carolrech como **princípio**, não como elemento a copiar:
+As v2 e v3 foram descartadas: a v2 repetia a folha de caderno em 3 slides e trazia brilhos que não são da EMS; a v3 voltou demais para a v1.
 
-1. **Superfície com matéria:** nenhuma tem fundo chapado. Na EMS isso é o grão e a retícula, com força suficiente para aparecer.
-2. **Um cenário que é o roteiro:** cada post escolhe uma moldura e conta a história dentro dela. Na EMS, a moldura vem do mundo da Emi (Figma, seleção, cursor "emi").
-3. **Uma letra que quebra o padrão:** já é assinatura da EMS (a letra itálica no meio da palavra).
-4. **Contenção:** paleta curta, um gesto forte por slide, respiro. Mais grafismos pode, sem exagero.
+Referências em `referencias/outras/`.
 
 ## Lâminas
 
@@ -74,6 +75,6 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1) e `projeto/carrossel-v3.html` (v3): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v3.html v3` gera a v3 em `entrega/v3/` (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v3/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1) e `projeto/carrossel-v4.html` (v4): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v4.html v4` gera a v4 em `entrega/v4/` (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v4/`: PNGs finais 1080 × 1350 para subir no Instagram.
