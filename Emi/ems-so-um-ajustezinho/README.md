@@ -22,6 +22,7 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
   - lâmina 4, título: "o que cansa é / ajuste sem" virou "o que cansa / é ajuste sem";
   - lâmina 4, bilhete: "vai, e o / ajuste" desceu, e a caixa passou de 440 para 470px para fechar em 4 linhas ("briefing bem feito é o norte / do projeto: todo mundo sabe / pra onde vai, e o ajuste vira / **refinamento, não recomeço.**");
   - lâmina 2, etapa 04: "só" desceu ("volta pro começo, / só que todo mundo / mais cansado").
+  - lâmina 2 (pedido da Emi): "sem briefing, vira isso:" desceu (top 132 → 204px, estava colado na marca d'água) e o loop subiu 54px (centro do círculo em y 661), deixando o mesmo respiro (~75px) entre o texto de cima e o loop e entre o loop e "ninguém é o vilão dessa história.".
 
   As lâminas 1, 3, 5 e 6 são idênticas às da v8. No Drive, slide-02, slide-04 e a visão geral foram trocados (os da v8 foram para a lixeira).
 - **v8** (`entrega/v8/`, `projeto/carrossel-v8.html`): Igual à v7, mas com **objetos 3D gerados**, recortados e montados sobre os fundos de textura da EMS:

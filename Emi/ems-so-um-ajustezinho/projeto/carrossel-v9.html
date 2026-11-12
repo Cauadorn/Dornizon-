@@ -97,9 +97,9 @@ body{background:#140a19;width:max-content}
 #l1 .estrela{left:0;top:0;width:1080px;height:1350px;z-index:1;pointer-events:none}
 
 /* ---------- 02 loop: o desenho é o próprio loop ---------- */
-#l2 .lead{left:0;right:0;top:132px;text-align:center;font-size:34px;color:var(--wine)}
+#l2 .lead{left:0;right:0;top:204px;text-align:center;font-size:34px;color:var(--wine)}
 #l2 .anel{left:0;top:0;width:1080px;height:1350px;z-index:2}
-#l2 .centro{left:0;right:0;top:626px;text-align:center;color:var(--tinta);z-index:3}
+#l2 .centro{left:0;right:0;top:572px;text-align:center;color:var(--tinta);z-index:3}
 #l2 .centro .a{font-size:88px}
 #l2 .centro .b{font-size:136px;color:var(--pink);margin-top:-4px}
 .etapa{width:300px;border-radius:36px;padding:22px 28px 26px;font:500 23px/1.3 var(--sans);background:var(--tinta);color:var(--ivory);z-index:4}
@@ -299,7 +299,7 @@ document.querySelectorAll('[data-brilho]').forEach(svg => {
 });
 
 // lâmina 2: o anel do loop, com setas no sentido horário, e as etapas sentadas em cima dele
-const CX = 540, CY = 715, R = 330;
+const CX = 540, CY = 661, R = 330;
 const anel = document.getElementById('anel');
 anel.setAttribute('viewBox', '0 0 1080 1350');
 let s = `<circle cx="${CX}" cy="${CY}" r="${R}" fill="none" stroke="#6225d8" stroke-width="5"/>`;
