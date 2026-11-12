@@ -14,9 +14,10 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'content-type': tipos[path.extname(p)] || 'application/octet-stream' }); fs.createReadStream(p).pipe(res);
 }).listen(0);
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 2160, height: 1920 }, deviceScaleFactor: 1 });
+const page = await browser.newPage({ viewport: { width: 6480, height: 1920 }, deviceScaleFactor: 1 });
 page.on('pageerror', (e) => console.error('erro na página:', e.message));
 await page.goto(`http://127.0.0.1:${server.address().port}/destaque.html`);
 await page.waitForFunction(() => window.READY === true, null, { timeout: 60000 });
-for (const [k, n] of [[0, 'a'], [1, 'b']]) await page.screenshot({ path: path.join(saida, `destaque-servicos-${n}.png`), clip: { x: k * 1080, y: 0, width: 1080, height: 1920 } });
-await browser.close(); server.close(); console.log('ok');
+const nomes = await page.$$eval('.story', (a) => a.map((s) => s.dataset.nome));
+for (const [k, n] of nomes.entries()) await page.screenshot({ path: path.join(saida, `destaque-${n}.png`), clip: { x: k * 1080, y: 0, width: 1080, height: 1920 } });
+await browser.close(); server.close(); console.log('ok', nomes.join(' '));
