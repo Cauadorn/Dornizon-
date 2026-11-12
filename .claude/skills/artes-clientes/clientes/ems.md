@@ -6,6 +6,55 @@
 - **Skill própria:** `marca-ems` (abre o DS). Este arquivo guarda o que foi aprendido fazendo as peças.
 - **Projetos no repositório:** `reel-ems/` (reel "provas"), `capas/` (capa de reel), `Emi/ems-5-direcoes-pet/` (carrossel de curadoria).
 
+## Processo para errar menos (pedido da Emi, 12/11/2026)
+
+O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo e seguir este processo em todo post:
+
+1. **Pesquisar referência antes de desenhar, sempre.** Nunca diagramar de cabeça.
+   - **Pinterest:** `node .claude/skills/artes-clientes/referencias/pinterest.mjs "<busca>" <pasta> [qtd]` baixa os pins e monta `folha.jpg`. Funciona sem login. Fazer 2 ou 3 buscas por peça, por exemplo "capa revista <tema> tipografia", "instagram carousel cover editorial", "instagram carousel last slide poll design".
+   - **Instagram:** ver o que os designers andam postando. `node .claude/skills/artes-clientes/referencias/instagram.mjs <link-do-post> <pasta>` baixa as lâminas de um carrossel público. Perfis de referência: @pivocriativo (quando a Emi mandar outros, anotar aqui).
+   - **Web:** busca de "como diagramar X", capas de revista, adesivos de story. O Freepik (`stock_search`, `content_type: psd,design`) também mostra diagramação.
+   - Olhar a folha, escolher **um conceito de diagramação que caiba no tema** (capa de revista, enquete, ficha...) e guardar a folha em `<projeto>/referencias/` com o que se pega e o que não se pega.
+2. **Da referência que a Emi manda, pegar a ideia, nunca a estrutura**: grade, posição dos elementos, frases-chave.
+3. **Cada post do Instagram é diferente dos outros**: "senão eu postava a mesma coisa todo dia". Não reaproveitar recursos de outro post da EMS:
+   - anotação à mão com linha curva;
+   - seleção do Figma decorativa;
+   - marca d'água em fila;
+   - colagem em selo do "cpf x cnpj".
+
+   A identidade (cor, fonte, selo, voz) fica; a diagramação muda.
+4. **Dentro de um carrossel**: as lâminas de conteúdo seguem uma estrutura só, e capa e chamada têm diagramação especial. Um layout diferente por lâmina foi reprovado.
+5. **Fotos**:
+   - cena inteira, nada de recorte colado em cor chapada;
+   - nenhuma foto repetida no carrossel, e variações da mesma cena contam como repetição;
+   - por tema, cenas realmente diferentes.
+
+   O recorte só entra para pôr o bicho **na frente** de um texto ou de um cartão, com a mesma foto por baixo.
+6. **Mandar prévia cedo** pelo celular (SendUserFile) e iterar por lâmina; não propagar para Figma, Drive e DS antes da aprovação.
+
+**Checklist antes de mandar:**
+- A capa não dá spoiler do conteúdo.
+- O título é um bloco só, sem espaço grande entre as partes.
+- Nenhuma seleção, cursor ou selo está fora do lugar (seleção em volta do que importa, nunca no vazio).
+- A composição está equilibrada, sem todo o texto empilhado num lado só.
+- Fundo liso ganhou textura (retícula, grão).
+- Os elementos se encostam e se invadem um pouco, sem cobrir rosto nem texto.
+- Nada foi copiado da referência nem de outro post.
+- Nenhuma foto se repete.
+
+## Frases da Emi (para lembrar o gosto)
+
+- "legal a ideia mas a execução não, os recortes não se encaixam, parece literalmente copia e cola"
+- "as imagens se repetem em alguns e eu queria que fosse menos cópia da ref"
+- "eu não quero de jeito nenhum igual ao estilo cpf cnpj"
+- "a capa anterior mil x melhor"
+- "o quadradinho do Figma, a seleção tá fora do rosto do gatinho; aquele diretoria criativa, claramente na cara que você copiou do outro"
+- "muito xoxo, muito sem graça. tem mil formas de fazer isso. pesquisa referência no Pinterest"
+- "não é porque um post ficou bom que você vai fazer todos iguais. os posts precisam ser diferentes"
+- "qual sentido de dar spoiler no que tá vindo?" · "muuuuito espaçamento entre o título" · "texto empilhado de um lado só"
+- "falta uma textura" · "gostava mais quando a orelha do gato encostava na pílula" · "não tem problema encostar, passar um pouquinho, fica estilizado"
+- "sempre pesquisar na internet, no Pinterest, dar uma olhada no Instagram, no que os designers andam postando, pra gente errar menos"
+
 ## Identidade (resumo do DS)
 
 - Cores: `violeta` #6225D8 domina, roxos (`ameixa` #3D1C46, `creative-purple` #482952, `plum` #5B216C), `ivory` #FFFBDE de respiro, `pink` #DD34A8 e `manteiga` #F2CF7A só como acento (1 ou 2 por tela).
@@ -23,13 +72,15 @@
 
 ## Formatos já feitos (referência)
 
-### `PostCuradoria` · "5 direções criativas pra marcas pet" (12/11/2026, v4)
+### `PostCuradoria` · "5 direções criativas pra marcas pet" (12/11/2026, **aprovado**)
 - Pedido: "um post assim [carrossel da @pivocriativo de direções criativas para marcas de beleza] mas em outra área, com a ID visual da EMS".
 - Histórico de aprovação (leia antes de mexer):
   - v1, recortes em cor chapada: reprovada, "parece copia e cola".
   - v2, fotos inteiras na grade 3 × 3 da referência: "amei, mas as imagens se repetem e queria menos cópia da ref".
   - v3, um layout diferente por lâmina, capa marfim com índice e chamada com paletas: reprovada. A Emi **não quer layout diferente em cada lâmina**, e "a capa anterior mil x melhor".
-  - v4: a atual.
+  - v4: as lâminas de direção numa estrutura só, que foram aprovadas. Capa e chamada da v2 reprovadas.
+  - v5 e v6: capa de revista e chamada em enquete, depois os ajustes de spoiler, título, equilíbrio e textura. **Aprovado** ("gostei muito do carrossel").
+  - Referências usadas, com o que se pegou de cada uma: `Emi/ems-5-direcoes-pet/referencias/`.
 - **Estrutura das lâminas de direção: uma só, repetida nas 5, própria da EMS** (não a grade 3 × 3 com cartão no meio da referência):
   - pet em destaque 640 × 860 em cima à esquerda;
   - coluna direita com a marca fictícia (com `SelectionBox` + cursor "emi") e uma foto quadrada;

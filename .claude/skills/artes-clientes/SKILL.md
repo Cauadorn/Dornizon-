@@ -41,6 +41,12 @@ Há outros artifacts chamados só "Design System" (sem cliente no título): ler 
    - **Nunca inventar copy**: o texto vem do briefing ou do comentário de ajuste.
 2. **Cliente**: abrir `clientes/<cliente>.md`. Se o arquivo não existir, achar no Drive (`search_files`, `title contains '<cliente>'`) a pasta do cliente, o manual/brandbook, os logos e a pasta de publicações do ano, e criar o arquivo seguindo o modelo de `clientes/idex.md`.
 3. **Referências**: listar as 3 a 5 pastas de card mais recentes do mês (`parentId = '<pasta do mês>'`) e ler as artes (`read_file_content` em PNG devolve o texto da peça; `download_file_content` traz a imagem). Seguir grid, hierarquia, tom e assinatura dessas peças.
+3b. **Referência de diagramação (sempre, antes de desenhar)**: pesquisar como outros designers resolvem a peça.
+   - Pinterest: `node .claude/skills/artes-clientes/referencias/pinterest.mjs "<busca>" <pasta>`, sem login, monta `folha.jpg`.
+   - Instagram: `node .claude/skills/artes-clientes/referencias/instagram.mjs <link-do-post> <pasta>`, baixa as lâminas de um carrossel público.
+   - Busca na web e Freepik (`stock_search` com `psd,design`).
+
+   Escolher um conceito próprio para a peça e guardar a folha em `<projeto>/referencias/` com o que se pega e o que não se pega. Da referência mandada pelo cliente, pegar a ideia, nunca a estrutura. Cada post é diferente dos outros do mesmo perfil.
 4. **Produção**: montar em HTML/CSS e exportar com o Chromium do Playwright (ver `Emi/badaue-teste-vitoria-regia/projeto/render.mjs`). Formatos padrão: feed 1080x1350, story 1080x1920, carrossel 1080x1350 por lâmina. Projeto em `<cliente>/<id>-<slug>/` no repositório, com `projeto/` e `entrega/`.
 5. **Conferência**: rodar o checklist da skill `avaliacao-de-design` (Modo 2: texto x briefing e padrão visual) antes de entregar.
 6. **Entrega no Drive**: na pasta de publicações do cliente, dentro do mês da publicação:
