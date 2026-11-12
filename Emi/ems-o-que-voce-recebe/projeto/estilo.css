@@ -59,7 +59,8 @@ h1 > span, h2 > span, h2 > em { display: block; }
 .l2 h2 em { font-size: 236px; }
 .l2 .folha ul { margin-top: 22px; padding-top: 32px; border-top: 3px solid var(--tinta); display: grid; grid-template-columns: 1fr 1fr; gap: 52px 36px; text-align: left; }
 .l2 .folha li { white-space: nowrap; font-size: 27px; font-weight: 500; line-height: 1.22; padding-left: 48px; position: relative; }
-.l2 .folha li::before { content: ""; position: absolute; left: 0; top: 4px; width: 34px; height: 34px; background: var(--violeta); -webkit-mask: url(assets/i-brilho.png) center / contain no-repeat; mask: url(assets/i-brilho.png) center / contain no-repeat; }
+.l2 .folha ul { counter-reset: c; }
+.l2 .folha li::before { counter-increment: c; content: counter(c) "."; position: absolute; left: 0; top: -4px; font-family: var(--serif); font-style: italic; font-size: 52px; line-height: 1; color: var(--violeta); }
 .l2 .folha li b { display: block; font-size: 42px; font-weight: 600; line-height: 1.1; }
 .l2 .ass { position: absolute; left: 60px; bottom: 54px; width: 430px; display: flex; gap: 40px; font-size: 20px; font-weight: 600; letter-spacing: .12em; line-height: 1; }
 .l2 .ass span { flex: 1; border-top: 3px solid var(--tinta); padding-top: 12px; text-align: left; }
@@ -116,8 +117,7 @@ h1 > span, h2 > span, h2 > em { display: block; }
 .l5 .tela li.agora { background: var(--violeta); border-color: var(--violeta); color: var(--ivory); }
 .l5 .tela li.agora::before { border-color: var(--ivory); background: var(--manteiga); }
 .l5 .tela li b { font-size: 18px; font-weight: 600; letter-spacing: .08em; background: var(--manteiga); color: var(--tinta); padding: 6px 12px 7px; border-radius: 999px; }
-.l5 .lado { top: 820px; width: 190px; font-size: 28px; font-weight: 500; line-height: 1.2; }
-.l5 .lado::before { content: ""; display: block; width: 34px; height: 34px; margin: 0 auto 12px; background: var(--manteiga); -webkit-mask: url(assets/i-brilho.png) center / contain no-repeat; mask: url(assets/i-brilho.png) center / contain no-repeat; }
+.l5 .lado { top: 850px; width: 190px; font-size: 28px; font-weight: 600; line-height: 1.2; color: var(--manteiga); }
 .l5 .la { left: 90px; } .l5 .lb { right: 90px; }
 
 /* ---------- 6 · chamada ---------- */
@@ -146,3 +146,60 @@ h1 > span, h2 > span, h2 > em { display: block; }
 .l6 .materia { background: var(--tx-fibras) 0 0 / 460px; mix-blend-mode: soft-light; opacity: .9; }
 .guia .l::after { content: ""; position: absolute; inset: 90px; border: 2px dashed #0f0; z-index: 99; }
 .guia .l::before { content: ""; position: absolute; left: 539px; top: 0; width: 2px; height: 100%; background: #0f0; z-index: 99; }
+
+/* ================= alternativas da 3 (briefing) e da 6 (chamada) ================= */
+/* 3A · o ponto de interrogação gigante, as perguntas em linhas */
+.a3 { --fundo: var(--ameixa); }
+.a3 .interrog { left: 0; width: 1080px; top: 40px; font-family: var(--serif); font-style: italic; font-size: 1500px; line-height: .8; color: var(--plum); opacity: .6; }
+.a3 h2 { top: 214px; }
+.a3 h2 .a { font-size: 168px; }
+.a3 h2 .b { margin-top: -14px; }
+.a3 h2 small { font-size: 44px; }
+.a3 h2 em { font-size: 270px; }
+.a3 .lista { left: 90px; width: 900px; top: 640px; }
+.a3 .lista li { font-family: var(--serif); font-size: 70px; line-height: 1; letter-spacing: -.02em; white-space: nowrap; padding: 30px 0 34px; border-top: 3px solid rgba(255, 251, 222, .45); }
+.a3 .lista li:last-child { border-bottom: 3px solid rgba(255, 251, 222, .45); }
+.a3 .lista b { font-weight: 400; font-style: italic; color: var(--manteiga); margin-right: 8px; }
+.a3 .sub { top: 1118px; font-size: 34px; }
+/* 3B · as perguntas em pílulas empilhadas */
+.b3 { --fundo: var(--ameixa); }
+.b3 h2 { top: 214px; }
+.b3 h2 .a { font-size: 168px; }
+.b3 h2 .b { margin-top: -14px; }
+.b3 h2 small { font-size: 44px; }
+.b3 h2 em { font-size: 270px; }
+.b3 .pilhas { left: 0; width: 1080px; top: 626px; display: grid; justify-items: center; gap: 26px; }
+.b3 .pilhas li { background: var(--ivory); color: var(--tinta); font-size: 44px; font-weight: 600; line-height: 1; padding: 34px 48px 36px; border-radius: 999px; white-space: nowrap; box-shadow: 8px 9px 0 var(--tinta); }
+.b3 .pilhas li:nth-child(1) { transform: rotate(-2.5deg); }
+.b3 .pilhas li:nth-child(2) { transform: rotate(1.8deg); background: var(--lavanda-2); }
+.b3 .pilhas li:nth-child(3) { transform: rotate(-1.4deg); }
+.b3 .pilhas li:nth-child(4) { transform: rotate(2.2deg); background: var(--pink); color: var(--ivory); margin-top: 14px; }
+.b3 .sub { top: 1222px; font-size: 30px; opacity: .9; }
+/* 6A · aviso de chegada */
+.a6 { --fundo: var(--tinta); }
+.a6 .lead { top: 176px; }
+.a6 h2 { top: 222px; }
+.a6 h2 .a { font-size: 176px; }
+.a6 h2 em { font-size: 310px; margin-top: -14px; }
+.a6 .aviso { left: 160px; top: 664px; width: 760px; background: var(--manteiga); color: var(--tinta); border-radius: 10px; transform: rotate(-2deg); padding: 34px 44px 38px; text-align: left; }
+.a6 .aviso .topo { display: flex; justify-content: space-between; font-size: 21px; font-weight: 600; letter-spacing: .12em; line-height: 1; padding-bottom: 20px; border-bottom: 3px solid var(--tinta); }
+.a6 .aviso dl { display: grid; grid-template-columns: 170px 1fr; align-items: baseline; row-gap: 12px; margin-top: 24px; }
+.a6 .aviso dt { font-size: 21px; font-weight: 600; letter-spacing: .12em; }
+.a6 .aviso dd { font-family: var(--serif); font-size: 52px; line-height: 1; letter-spacing: -.02em; white-space: nowrap; }
+.a6 .aviso .retirar { margin-top: 26px; padding-top: 22px; border-top: 3px dashed var(--tinta); display: flex; align-items: center; justify-content: space-between; font-size: 30px; font-weight: 600; line-height: 1; }
+.a6 .aviso .retirar b { background: var(--tinta); color: var(--ivory); font-weight: 600; font-size: 34px; padding: 16px 30px 17px; border-radius: 999px; }
+.a6 .aviso .selo { position: absolute; right: -34px; top: -62px; width: 150px; transform: rotate(2deg); }
+.a6 .sub { top: 1196px; font-size: 32px; }
+/* 6B · só letra */
+.b6 { --fundo: var(--violeta); }
+.b6 .lead { top: 196px; font-size: 50px; }
+.b6 h2 { top: 256px; }
+.b6 h2 .a { font-size: 216px; }
+.b6 h2 em { font-size: 400px; margin-top: -30px; }
+.b6 .perg { left: 0; width: 1080px; top: 872px; font-family: var(--serif); font-style: italic; font-size: 68px; line-height: 1; letter-spacing: -.02em; }
+.b6 .etiqueta { left: 50%; top: 1070px; height: 92px; padding: 0 40px 0 78px; display: flex; align-items: center; gap: 16px; font-size: 38px; font-weight: 600; line-height: 1; background: var(--manteiga); color: var(--tinta); border-radius: 10px; clip-path: polygon(34px 0, 100% 0, 100% 100%, 34px 100%, 0 50%); transform: translateX(-50%) rotate(-3deg); white-space: nowrap; }
+.b6 .etiqueta::before { content: ""; position: absolute; left: 36px; top: 50%; width: 20px; height: 20px; margin-top: -10px; border-radius: 50%; background: var(--tinta); }
+.b6 .etiqueta b { font-weight: 500; font-size: 44px; }
+.b6 .arroba { left: 50%; top: 1218px; transform: translateX(-50%); }
+.a3 .materia, .b3 .materia { background: radial-gradient(circle, rgba(192, 165, 196, .45) 2.2px, transparent 2.8px) 0 0 / 16px 16px; -webkit-mask: linear-gradient(180deg, #000 0, transparent 44%); mask: linear-gradient(180deg, #000 0, transparent 44%); }
+.a6 .materia, .b6 .materia { background: var(--tx-fibras) 0 0 / 460px; mix-blend-mode: soft-light; opacity: .9; }

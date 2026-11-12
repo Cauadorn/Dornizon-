@@ -31,6 +31,9 @@ composta com o objeto (o "logo?" entra na caixa de correio; a "marca." sai do en
 - **v2, primeira tentativa** ("a carta parecendo que foi queimada, tudo mal recortado"): os objetos vinham de fotos
   com cenário, com ramos na frente do envelope apagados na mão. Objeto de montagem se gera isolado em fundo liso,
   sem nada na frente, e nunca se remenda.
+- **Depois do recorte limpo**: aprovadas as lâminas 1, 2, 4 e 5; reprovadas a 3 (caderno) e a 6 (envelope), sem motivo dito.
+  Duas alternativas de cada em `entrega/alternativas/` (`projeto/alternativas.html`), esperando a escolha.
+- **Brilhos espalhados** (o ícone de quatro pontas) saíram: "tá parecendo do Gemini". Não usar como enfeite solto.
 - A régua é a qualidade dos stories "toda marca tem fase": **não copiar, chegar no mesmo nível**.
 
 ## Como foi feito

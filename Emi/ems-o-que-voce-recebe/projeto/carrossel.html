@@ -10,9 +10,6 @@
 
 <!-- 1 · capa: a palavra "logo?" entra na caixa de correio -->
 <section class="l l1">
-  <i class="ic brilho g" style="left:150px;top:560px;width:64px;height:64px;color:var(--manteiga)"></i>
-  <i class="ic brilho g" style="left:884px;top:700px;width:36px;height:36px;color:var(--ivory);opacity:.8"></i>
-  <i class="ic brilho g" style="left:236px;top:930px;width:30px;height:30px;color:var(--lavanda);opacity:.8"></i>
   <p class="cab"><span>@itsemsdesign</span><span>bastidor de cliente</span></p>
   <p class="lead">virando cliente da ems:</p>
   <h1><span class="a">o que chega</span><span class="b"><small>antes do</small><em>logo?</em></span></h1>
@@ -23,8 +20,6 @@
 
 <!-- 2 · contrato: só papel e letra, o título é o próprio contrato -->
 <section class="l l2">
-  <i class="ic brilho g" style="left:96px;top:250px;width:44px;height:44px;color:var(--manteiga)"></i>
-  <i class="ic brilho g" style="left:960px;top:1180px;width:34px;height:34px;color:var(--ivory);opacity:.8"></i>
   <p class="cab"><span>@itsemsdesign</span><span>01 de 04</span></p>
   <p class="fase"><b>chega primeiro · o contrato</b></p>
   <div class="folha">
@@ -43,8 +38,6 @@
 
 <!-- 3 · briefing: as perguntas sentadas na pauta do caderno -->
 <section class="l l3">
-  <i class="ic brilho g" style="left:120px;top:330px;width:50px;height:50px;color:var(--manteiga)"></i>
-  <i class="ic brilho g" style="left:930px;top:210px;width:30px;height:30px;color:var(--ivory);opacity:.8"></i>
   <p class="cab"><span>@itsemsdesign</span><span>02 de 04</span></p>
   <p class="fase"><b>depois · o briefing</b></p>
   <h2><span class="a">perguntas que</span><span class="b"><small>ninguém te</small><em>fez.</em></span></h2>
@@ -61,8 +54,6 @@
 
 <!-- 4 · direção criativa: o varal de amostras -->
 <section class="l l4">
-  <i class="ic brilho g" style="left:944px;top:622px;width:52px;height:52px;color:var(--manteiga)"></i>
-  <i class="ic brilho g" style="left:110px;top:250px;width:32px;height:32px;color:var(--ivory);opacity:.8"></i>
   <p class="cab"><span>@itsemsdesign</span><span>03 de 04</span></p>
   <p class="fase"><b>aí · a direção criativa</b></p>
   <h2><span class="a">o rumo antes</span><span class="b"><small>do</small><em>desenho.</em></span></h2>
@@ -77,8 +68,6 @@
 
 <!-- 5 · andamento: as etapas na tela -->
 <section class="l l5">
-  <i class="ic brilho g" style="left:130px;top:560px;width:54px;height:54px;color:var(--manteiga)"></i>
-  <i class="ic brilho g" style="left:912px;top:1150px;width:34px;height:34px;color:var(--ivory);opacity:.8"></i>
   <p class="cab"><span>@itsemsdesign</span><span>04 de 04</span></p>
   <p class="fase"><b>o tempo todo · o andamento</b></p>
   <h2><span class="a">sem sumiço,</span><span class="b"><small>sem</small><em>suspense.</em></span></h2>
@@ -100,8 +89,6 @@
 
 <!-- 6 · chamada: a marca sai do envelope -->
 <section class="l l6">
-  <i class="ic brilho g" style="left:880px;top:300px;width:60px;height:60px;color:var(--manteiga)"></i>
-  <i class="ic brilho g" style="left:120px;top:520px;width:34px;height:34px;color:var(--ivory);opacity:.8"></i>
   <p class="cab"><span>@itsemsdesign</span><span>emsdesign.com.br</span></p>
   <p class="lead">e só então</p>
   <h2><span class="a">chega a</span><em>marca.</em></h2>
@@ -116,51 +103,14 @@
 
 <script src="scripts/palavra-curta.js"></script>
 <script>
-const COR = { ivory: '#fffbde', manteiga: '#f2cf7a', lavanda: '#c0a5c4', violeta2: '#7b4df2', violeta: '#6225d8', plum: '#5b216c' };
-// estrela em retícula (HalftoneStar) atravessando cada corte: x global, y, raio, cor, opacidade, giro
-const ESTRELAS = [
+window.ESTRELAS = [
   [1080, 1010, 430, 'violeta2', .55, -12],
   [2160, 300, 400, 'ivory', .16, 14],
   [3240, 1120, 430, 'violeta2', .6, 8],
   [4320, 330, 380, 'lavanda', .3, -10],
   [5400, 1060, 460, 'violeta2', .7, 16],
 ];
-function estrela(cx, cy, R, cor, op, rot) {
-  const pts = [];
-  for (let i = 0; i < 10; i++) { const a = (Math.PI / 5) * i - Math.PI / 2 + (rot * Math.PI) / 180, r = i % 2 ? R * 0.46 : R; pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); }
-  const dentro = (x, y) => { let d = false; for (let i = 0, j = 9; i < 10; j = i++) { const [xi, yi] = pts[i], [xj, yj] = pts[j]; if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) d = !d; } return d; };
-  const passo = Math.max(9, R / 26); let s = '';
-  for (let y = cy - R, l = 0; y <= cy + R; y += passo, l++) for (let x = cx - R + (l % 2 ? passo / 2 : 0); x <= cx + R; x += passo) {
-    if (!dentro(x, y)) continue;
-    const d = Math.hypot(x - cx, y - cy) / R, r = passo * 0.5 * (1 - d * 0.82);
-    if (r > 0.9) s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`;
-  }
-  return `<svg class="ht"><g fill="${COR[cor]}" opacity="${op}">${s}</g></svg>`;
-}
-const laminas = [...document.querySelectorAll('.l')];
-for (const [gx, y, R, cor, op, rot] of ESTRELAS)
-  for (const k of [gx / 1080 - 1, gx / 1080]) laminas[k].insertAdjacentHTML('afterbegin', estrela(gx - k * 1080, y, R, cor, op, rot));
-// acabamento contínuo: relevo de papel (soft-light) + grão de impressão (overlay); e uma matéria por lâmina
-{
-  const uri = (svg) => `url("data:image/svg+xml;utf8,${svg}")`;
-  const grao = uri(`<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360'><filter id='g' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' seed='21' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='2.6' intercept='-.8'/><feFuncG type='linear' slope='2.6' intercept='-.8'/><feFuncB type='linear' slope='2.6' intercept='-.8'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>`);
-  const papel = uri(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><filter id='p' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.028' numOctaves='5' seed='31' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='3.2'><feDistantLight azimuth='225' elevation='30'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>`);
-  const fibras = uri(`<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'><filter id='f' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.6 0.05' numOctaves='2' seed='8' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='1.6'><feDistantLight azimuth='225' elevation='30'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>`);
-  const r = document.documentElement.style;
-  r.setProperty('--tx-grao', grao); r.setProperty('--tx-papel', papel); r.setProperty('--tx-fibras', fibras);
-  laminas.forEach((l) => l.insertAdjacentHTML('beforeend', '<i class="materia"></i>'));
-}
-if (new URLSearchParams(location.search).has('guia')) document.body.classList.add('guia');
-Promise.all([document.fonts.ready, ...[...document.images].map((i) => i.decode().catch(() => 0))]).then(() => {
-  // texto sentado na pauta: a linha de base de cada [data-base] cai no y pedido
-  for (const el of document.querySelectorAll('[data-base]')) {
-    const m = document.createElement('i'); m.style.cssText = 'display:inline-block;width:0;height:0';
-    el.prepend(m); el.style.top = '0px';
-    const base = m.getBoundingClientRect().top - el.closest('.l').getBoundingClientRect().top;
-    el.style.top = (+el.dataset.base - base) + 'px'; m.remove();
-  }
-  window.READY = true;
-});
 </script>
+<script src="montagem.js"></script>
 </body>
 </html>
