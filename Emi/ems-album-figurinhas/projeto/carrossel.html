@@ -294,7 +294,9 @@ const PINC = 'filter:brightness(.46) saturate(1.3) contrast(1.05)';
 /* ================= 7 · chamada — ref 3 do Pinterest (pílula no topo + palavra gigante + palavra forte, a "foto" vira o álbum:
    figurinhas nº 09 e nº 10 coladas e o espaço nº 11 vazio, selecionado como no Figma, com 👀; texto miúdo repetido; marca no pé).
    Fundo escuro de página de álbum com os espaços em relevo seco. Sem 3D ================= */
+const P7 = params.get('p7') || 'atual';
 (() => {
+  if (P7 !== 'atual') return;
   const c = A.chamada, [s9, s10] = A.paginas[4].sites;
   /* relevo seco dos espaços de figurinha (página de álbum) */
   const vaga = (x, y) => `<rect x='${x - 1}' y='${y - 1}' width='226' height='282' rx='16' fill='none' stroke='rgba(0,0,0,.42)' stroke-width='2'/><rect x='${x + 1}' y='${y + 1}' width='226' height='282' rx='16' fill='none' stroke='rgba(255,251,222,.07)' stroke-width='2'/>`;
@@ -331,6 +333,70 @@ const PINC = 'filter:brightness(.46) saturate(1.3) contrast(1.05)';
       <div class="abs" style="inset:0;background-image:var(--album-vagas);background-size:270px 330px;background-position:-10px 10px"></div>
       <div class="abs" style="inset:0;background:radial-gradient(60% 45% at 66% 64%, rgba(123,77,242,.26), transparent 70%)"></div>
       <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:soft-light;opacity:.35"></div>`, 'grao-forte');
+})();
+
+/* ---------- 7 · variante A: "PROCURA-SE" — ref da página de álbum "procura-se" + cartaz de procurado.
+   Cartaz marfim colado com fita no violeta da capa (fecha o carrossel na cor em que ele abriu). Sem 3D ---------- */
+(() => {
+  if (P7 !== 'a') return;
+  const c = A.chamada;
+  const fita = (x, y, r) => `<div class="abs" style="left:${x}px;top:${y}px;width:150px;height:46px;background:rgba(228,214,230,.62);transform:rotate(${r}deg);box-shadow:0 2px 3px rgba(42,20,51,.12);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6px,#000 calc(100% - 6px),transparent 100%)"></div>`;
+  const dado = (k, v) => `<div style="display:flex;gap:14px;align-items:baseline"><b style="flex:none;width:236px;font-weight:600;font-size:19px;letter-spacing:.1em;text-transform:uppercase;color:var(--violeta)">${k}</b><span>${v}</span></div>`;
+  lamina(6, `
+    <img class="abs" src="${estrelaReticula(700, css('lavanda'))}" style="left:-300px;top:-240px;width:700px;opacity:.3;transform:rotate(-12deg)">
+    <img class="abs" src="${estrelaReticula(420, css('pink'))}" style="left:820px;top:1040px;width:420px;opacity:.26;transform:rotate(18deg)">
+    <div class="abs" id="cartaz7" style="left:112px;top:92px;width:856px;background:#fffbe8;transform:rotate(-1.6deg);box-shadow:0 30px 50px rgba(20,8,40,.38), 0 2px 0 rgba(20,8,40,.1);padding:60px 64px 66px;text-align:center;color:var(--tinta)">
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:600px;mix-blend-mode:multiply;opacity:.4"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:440px;mix-blend-mode:multiply;opacity:.32"></div>
+      <div class="abs" style="inset:18px;border:2px solid rgba(42,20,51,.75)"></div><div class="abs" style="inset:26px;border:1px solid rgba(42,20,51,.5)"></div>
+      <div style="position:relative">
+        <div style="font-family:var(--sans);font-weight:600;font-size:17px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,20,51,.7)">álbum de figurinhas raras · @itsemsdesign</div>
+        <div id="procura" style="font-family:Anton, var(--sans);font-size:178px;line-height:.95;letter-spacing:.02em;margin-top:18px;white-space:nowrap">PROCURA-SE</div>
+        <div style="font-family:var(--serif);font-size:62px;line-height:1;letter-spacing:-.02em;margin-top:4px">a figurinha <i style="color:var(--pink)">nº 11</i></div>
+        <div style="position:relative;width:320px;height:398px;margin:34px auto 0;border:3px dashed rgba(98,37,216,.6);border-radius:14px;background:repeating-linear-gradient(135deg,rgba(192,165,196,.16) 0 14px,transparent 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div class="abs" style="left:14px;top:10px;font-family:var(--sans);font-weight:600;font-size:18px;color:var(--violeta)">nº 11</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:230px;line-height:.85;color:var(--violeta)">?</div>
+          <div style="font-family:var(--sans);font-weight:500;font-size:19px;color:rgba(42,20,51,.6);margin-top:8px">foto não disponível</div></div>
+        <div style="width:660px;margin:38px auto 0;text-align:left;font-family:var(--sans);font-size:28px;line-height:1.3;display:flex;flex-direction:column;gap:12px">
+          ${dado('visto por último', 'nos favoritos de alguém')}${dado('características', 'site útil que quase ninguém conhece')}${dado('recompensa', 'eu testo e conto aqui')}</div>
+      </div></div>
+    <span id="fitas7">${fita(150, 70, -8)}${fita(800, 66, 7)}</span>
+    <div class="abs" id="pilula7" style="left:0;right:0;top:1232px;text-align:center"><span style="display:inline-block;padding:16px 30px 18px;border-radius:999px;background:var(--ivory);font-family:var(--sans);font-weight:600;font-size:30px;color:var(--violeta);box-shadow:0 10px 20px rgba(20,8,40,.25);transform:rotate(-1deg)">viu ela? me indica nos comentários ↓</span></div>
+  `, `<div class="abs" style="inset:0;background:radial-gradient(120% 90% at 30% 10%, #7b4df2, var(--violeta) 45%, #4a17b0)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-papel);background-size:520px;mix-blend-mode:soft-light;opacity:.5"></div>`, 'grao-forte');
+})();
+
+/* ---------- 7 · variante B: "álbum quase completo" — ref da página de álbum lilás (grade de figurinhas).
+   As 10 figurinhas do carrossel coladas e a nº 11 vazia; título em cima, chamada na 12ª casa. Sem 3D ---------- */
+(() => {
+  if (P7 !== 'b') return;
+  const c = A.chamada;
+  const etapas = ['pesquisa', 'letra', 'cor', 'textura', 'entrega'];
+  const todos = A.paginas.flatMap((pg, i) => pg.sites.map((s) => ({ ...s, etapa: etapas[i] })));
+  const cores = [['var(--violeta)', 'var(--ivory)'], ['#fffdf3', 'var(--violeta)'], ['var(--lavanda-2)', 'var(--plum)'], ['var(--ameixa)', 'var(--ivory)']];
+  const CW = 186, CH = 232, GX = 26, GY = 26, X0 = (1080 - (4 * CW + 3 * GX)) / 2, Y0 = 400;
+  const rots = [-2, 1.5, -1, 2.5, 1, -2.5, 2, -1.5, 1.5, -1];
+  const casa = (i) => [X0 + (i % 4) * (CW + GX), Y0 + Math.floor(i / 4) * (CH + GY)];
+  const fig = (s, i) => { const [x, y] = casa(i), [bg, tx] = cores[i % 4];
+    return `<div class="abs" style="left:${x}px;top:${y}px;width:${CW}px;height:${CH}px;border-radius:12px;background:#fffdf3;padding:7px;transform:rotate(${rots[i]}deg);box-shadow:4px 6px 0 rgba(20,8,40,.32)">
+      <div style="position:relative;height:100%;border-radius:7px;background:${bg};color:${tx};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden">
+        <div class="abs" style="left:10px;top:8px;font-family:var(--sans);font-weight:600;font-size:15px;opacity:.85">nº ${String(i + 1).padStart(2, '0')}</div>
+        <div class="nome-fig" style="font-family:var(--serif);font-size:34px;line-height:1;letter-spacing:-.02em;white-space:nowrap">${s.nome}</div>
+        <div class="abs" style="left:0;right:0;bottom:9px;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7">${s.etapa}</div></div></div>`; };
+  const [vx, vy] = casa(10), [cx, cy] = casa(11);
+  lamina(6, `
+    <img class="abs" src="${estrelaReticula(640, css('lavanda'))}" style="left:640px;top:-250px;width:640px;opacity:.28;transform:rotate(14deg)">
+    <div class="abs" style="left:0;right:0;top:88px;text-align:center;font-family:var(--sans);font-weight:500;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,251,222,.75)">álbum de figurinhas raras · 10 de 11</div>
+    <div class="abs" style="left:0;right:0;top:146px;text-align:center;font-family:var(--serif);font-size:104px;line-height:.92;letter-spacing:-.03em;color:var(--ivory)">qual figurinha tá <i style="color:var(--manteiga)">faltando</i><br>no meu álbum?</div>
+    ${todos.map(fig).join('')}
+    <div class="abs" style="left:${vx}px;top:${vy}px;width:${CW}px;height:${CH}px;border-radius:12px;border:3px dashed rgba(255,251,222,.75);background:rgba(255,251,222,.06);display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div class="abs" style="left:12px;top:9px;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ivory)">nº 11</div>
+      <div style="font-family:var(--serif);font-style:italic;font-size:130px;line-height:.85;color:var(--pink)">?</div></div>
+    <img class="abs" src="emoji/1f440.png" style="left:${vx + CW - 50}px;top:${vy - 34}px;width:70px;transform:rotate(8deg)">
+    <div class="abs" style="left:${cx}px;top:${cy}px;width:${CW}px;height:${CH}px;display:flex;flex-direction:column;justify-content:center;font-family:var(--sans);font-size:22px;line-height:1.25;color:var(--ivory)">me indica nos comentários o site que você não vive sem. <b style="font-weight:600;color:var(--manteiga);margin-top:6px">eu testo e conto ↓</b></div>
+    <div class="abs" style="left:${X0}px;right:${X0}px;top:1268px;display:flex;justify-content:space-between;font-family:var(--sans);font-weight:500;font-size:19px;color:rgba(255,251,222,.7)"><span>${c.salva}</span><span>@itsemsdesign</span></div>
+  `, `<div class="abs" style="inset:0;background:linear-gradient(175deg,#6a2fe0,var(--violeta) 40%,#4a17b0)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:soft-light;opacity:.4"></div>`, 'grao-forte');
 })();
 
 /* lupa de acrílico em cima de "algoritmo", ampliando a palavra (posição medida depois das fontes) */
@@ -416,6 +482,14 @@ document.fonts.ready.then(() => {
     const L = Math.min(...rs.map((r) => r.left)) - l6.left, R = Math.max(...rs.map((r) => r.right)) - l6.left;
     c6.style.left = (parseFloat(c6.style.left) + (1080 - L - R) / 2) + 'px';
   }
+  const pc7 = document.getElementById('procura'); if (pc7) caber(pc7, 728);
+  const ct7 = document.getElementById('cartaz7'), pl7 = document.getElementById('pilula7');
+  if (ct7 && pl7) {
+    const hC = ct7.offsetHeight, hP = pl7.offsetHeight, gap = 40, topo = Math.round((1350 - (hC + gap + hP)) / 2);
+    ct7.style.top = topo + 'px'; pl7.style.top = (topo + hC + gap) + 'px';
+    document.getElementById('fitas7').querySelectorAll('div').forEach((f) => { f.style.top = (parseFloat(f.style.top) + topo - 92) + 'px'; });
+  }
+  document.querySelectorAll('.nome-fig').forEach((e) => caber(e, 160));
   const lam = document.getElementById('l1');
   if (a && lam) {
     const r = a.getBoundingClientRect(), b = lam.getBoundingClientRect();

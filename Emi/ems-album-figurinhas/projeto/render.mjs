@@ -2,6 +2,7 @@
 // uso: node render.mjs                 -> ../entrega/lamina-01..07.png + visao-geral.jpg
 //      node render.mjs --n 2 --saida previa   -> só as 2 primeiras lâminas em ../previa/
 //      node render.mjs --guia          -> desenha a margem de 90px (conferência)
+//      node render.mjs --q p7=a        -> repassa parâmetros extras para a página (variantes)
 import { createRequire } from 'node:module';
 import http from 'node:http';
 import path from 'node:path';
@@ -29,7 +30,7 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: N * 1080, height: 1350 }, deviceScaleFactor: 1 });
 page.on('pageerror', (e) => console.error('erro na página:', e.message));
 page.on('requestfailed', (r) => console.error('falhou:', r.url()));
-await page.goto(`${base}/carrossel.html?n=${N}${args.includes('--guia') ? '&guia' : ''}`);
+await page.goto(`${base}/carrossel.html?n=${N}${args.includes('--guia') ? '&guia' : ''}${opt('--q', '') ? '&' + opt('--q', '') : ''}`);
 await page.waitForFunction(() => window.READY === true, null, { timeout: 60000 });
 
 for (let k = 0; k < N; k++) {
