@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Rótulo MIAU.LAB para pote cilíndrico (600 x 340 = meia volta do pote, de borda a borda).
+     O conteúdo fica no miolo (x 120-480): nas laterais a curva do pote comprime a arte.
+     ?v=07 (azul clínico, pelo & pele) | ?v=12 (branco com faixa menta, digestão) -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Mono; src: url(../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: Mono; src: url(../../../fonts/SpaceMono-normal-400.woff2); font-weight: 400; }
+html, body { margin: 0; }
+.r { position: relative; width: 600px; height: 340px; overflow: hidden; font-family: Mono; background: var(--fundo); color: var(--tinta); }
+.faixa { position: absolute; left: 0; right: 0; top: 0; height: 64px; background: var(--faixa); border-bottom: 2px solid var(--tinta); }
+.marca { position: absolute; left: 0; right: 0; top: 14px; text-align: center; font: 700 34px/1 Mono; letter-spacing: .02em; color: var(--marca); }
+.ponto { position: absolute; left: 150px; top: 18px; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--tinta); background: var(--ponto); }
+.form { position: absolute; left: 0; right: 0; top: 82px; text-align: center; font: 400 15px/1 Mono; letter-spacing: .12em; }
+.num { position: absolute; left: 0; right: 0; top: 102px; text-align: center; font: 700 96px/1 Mono; letter-spacing: -.03em; }
+.para { position: absolute; left: 0; right: 0; top: 212px; text-align: center; font: 700 22px/1 Mono; }
+.linha { position: absolute; left: 170px; right: 170px; top: 246px; height: 2px; background: var(--tinta); }
+.info { position: absolute; left: 0; right: 0; top: 260px; text-align: center; font: 400 12.5px/1.5 Mono; }
+.barras { position: absolute; left: 470px; top: 92px; width: 60px; height: 150px;
+  background: repeating-linear-gradient(0deg, var(--tinta) 0 2px, transparent 2px 5px, var(--tinta) 5px 9px, transparent 9px 11px, var(--tinta) 11px 12px, transparent 12px 16px); }
+.lote { position: absolute; left: 76px; top: 168px; font: 400 11px/1 Mono; transform: rotate(-90deg); transform-origin: left top; letter-spacing: .14em; }
+</style></head><body>
+<div class="r">
+  <div class="faixa"></div><div class="ponto"></div>
+  <div class="marca">MIAU.LAB</div>
+  <div class="form">FÓRMULA</div>
+  <div class="num"></div>
+  <div class="para"></div>
+  <div class="linha"></div>
+  <div class="info">suplemento p/ gatos<br>60 cápsulas · uso diário</div>
+  <div class="barras"></div>
+  <div class="lote">LOTE 26.11</div>
+</div>
+<script>
+const v = new URLSearchParams(location.search).get('v') || '07', s = document.documentElement.style;
+const V = { '07': { fundo: '#2F6BFF', faixa: '#2F6BFF', tinta: '#FFFFFF', marca: '#FFFFFF', ponto: '#BDEBD6', num: 'nº07', para: 'pelo & pele' },
+            '12': { fundo: '#F5F7F6', faixa: '#BDEBD6', tinta: '#23262B', marca: '#23262B', ponto: '#2F6BFF', num: 'nº12', para: 'digestão leve' } }[v];
+for (const k of ['fundo', 'faixa', 'tinta', 'marca', 'ponto']) s.setProperty('--' + k, V[k]);
+document.querySelector('.num').textContent = V.num; document.querySelector('.para').textContent = V.para;
+</script></body></html>
