@@ -145,8 +145,8 @@ leg_rl = open(os.path.join(RL, 'legenda-reel.txt'), encoding='utf8').read().spli
 reel = f'''
 <section id="reel"><p class="eb">04 · Reel</p><h2>O reel do <em>Bem-Querer</em></h2>
 <ol class="passos">
-  <li>Suba o vídeo como Reel. Ele está sem som, de propósito.</li>
-  <li>Escolha uma música da biblioteca do Instagram com batida por volta de 120 bpm: os cortes do vídeo seguem esse ritmo.</li>
+  <li>Suba o vídeo como Reel. Ele já vem com a trilha: um samba instrumental original, com os cortes do vídeo caindo na batida.</li>
+  <li>Não coloque música da biblioteca por cima; deixe o áudio original do vídeo.</li>
   <li>Em <b>Editar capa</b>, use a capa abaixo (adicionar da galeria). Ela não entrega a resposta: só o Pará e o "pausa e procura".</li>
   <li>Cole a legenda. Não marque a FARM nem a havaianas: é um projeto não oficial.</li>
 </ol>
