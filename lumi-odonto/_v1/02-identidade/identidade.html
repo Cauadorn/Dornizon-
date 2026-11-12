@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Lumi Odonto · Identidade visual</title>
+<!-- Pranchas 1080 x 1350 (4:5, feed do Instagram). Renderizar com: node lumi-odonto/_ferramentas/render.js -->
+<style>
+@font-face{font-family:IS;src:url(../../_fontes/InstrumentSerif-Regular.ttf);font-style:normal}
+@font-face{font-family:IS;src:url(../../_fontes/InstrumentSerif-Italic.ttf);font-style:italic}
+@font-face{font-family:M;src:url(../../_fontes/Manrope-400.ttf);font-weight:400}
+@font-face{font-family:M;src:url(../../_fontes/Manrope-500.ttf);font-weight:500}
+@font-face{font-family:M;src:url(../../_fontes/Manrope-600.ttf);font-weight:600}
+@font-face{font-family:M;src:url(../../_fontes/Manrope-700.ttf);font-weight:700}
+:root{
+  --areia:#EDE6DA;--leite:#F8F5EF;--salvia:#9BB5A0;--folha:#4F6F5C;--grafite:#2E2E2E;--pessego:#F2B8A0;
+  --m:84px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ccc;font-family:M;color:var(--grafite);-webkit-font-smoothing:antialiased}
+.b{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--areia);margin-bottom:40px}
+.a{position:absolute}
+/* cabeçalho e rodapé de cada prancha */
+.topo{position:absolute;left:var(--m);right:var(--m);top:64px;display:flex;justify-content:space-between;font:600 15px/1 M;letter-spacing:.24em;text-transform:uppercase;opacity:.75}
+.pe{position:absolute;left:var(--m);right:var(--m);bottom:56px;display:flex;justify-content:space-between;font:500 15px/1 M;letter-spacing:.06em;opacity:.6}
+.t{font-family:IS;font-weight:400;font-size:104px;line-height:.95;letter-spacing:-.02em}
+.t em{font-style:italic;color:var(--folha)}
+.rot{font:600 15px/1.2 M;letter-spacing:.22em;text-transform:uppercase}
+.txt{font:400 24px/1.45 M}
+.luz{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--pessego);flex:none}
+.arco{border-radius:999px 999px 0 0}
+
+/* ---------- 01 capa */
+#b1{background:var(--folha);color:var(--leite)}
+#b1 .topo,#b1 .pe{opacity:.8}
+
+/* ---------- 03 versões */
+.cx{position:absolute;border-radius:28px;display:flex;align-items:center;justify-content:center}
+.cx small{position:absolute;left:24px;bottom:20px;font:600 13px/1 M;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+
+/* ---------- 04 cores */
+.sw{position:absolute;bottom:0;width:140px}
+.sw .f{height:100%;border-radius:999px 999px 0 0}
+.nm{position:absolute;width:140px;font:600 20px/1.25 M}
+.nm span{display:block;font:500 15px/1.5 M;letter-spacing:.04em;opacity:.75}
+.uso{position:absolute;width:140px;font:400 15px/1.35 M;opacity:.85}
+
+/* ---------- 06 grafismos */
+.tile{position:absolute;width:444px;height:430px;border-radius:28px;background:var(--leite);overflow:hidden}
+.tile .rot{position:absolute;left:28px;top:28px;opacity:.7}
+.tile p{position:absolute;left:28px;right:28px;bottom:26px;font:400 18px/1.4 M;opacity:.85}
+.chip{display:inline-flex;align-items:center;gap:12px;background:var(--folha);color:var(--leite);font:600 20px/1 M;padding:14px 22px;border-radius:999px}
+.mv{display:flex;gap:10px}
+.mv b{font:600 18px/1 M;padding:14px 20px;border-radius:999px;border:2px solid var(--grafite)}
+.mv b.on{background:var(--grafite);color:var(--leite)}
+
+/* ---------- 07 foto e voz */
+.foto{position:absolute;overflow:hidden;background:
+  linear-gradient(115deg,rgba(255,250,240,.0) 30%,rgba(255,250,240,.55) 46%,rgba(255,250,240,0) 60%),
+  linear-gradient(160deg,#F6D9C8 0%,#E9C2AA 45%,#C99C83 100%)}
+.foto::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 26px,transparent 26px 70px)}
+.foto span{position:absolute;left:0;right:0;bottom:22px;text-align:center;font:600 13px/1.3 M;letter-spacing:.18em;text-transform:uppercase;color:#5a4134;z-index:1}
+.lista{display:flex;flex-direction:column;gap:14px;font:400 21px/1.35 M}
+.lista div{display:flex;gap:14px;align-items:baseline}
+.lista .luz{transform:translateY(-1px)}
+.nao{display:inline-block;width:14px;height:2px;background:var(--grafite);flex:none;transform:translateY(-6px)}
+.frase{font-family:IS;font-size:46px;line-height:1.05;letter-spacing:-.01em}
+.frase em{color:var(--folha)}
+</style></head>
+<body>
+
+<!-- ============ 01 · CAPA ============ -->
+<section class="b" id="b1">
+  <div class="topo"><span>Identidade visual · projeto conceitual</span><span>01 / 07</span></div>
+  <!-- anéis de luz em volta do sol -->
+  <div class="a" style="left:50%;top:1350px;width:680px;height:680px;border-radius:50%;border:1.5px solid rgba(248,245,239,.22);transform:translate(-50%,-50%)"></div>
+  <div class="a" style="left:50%;top:1350px;width:820px;height:820px;border-radius:50%;border:1.5px solid rgba(248,245,239,.14);transform:translate(-50%,-50%)"></div>
+  <!-- sol nascendo saindo da borda de baixo -->
+  <div class="a" style="left:50%;bottom:-260px;width:520px;height:520px;border-radius:50%;background:var(--pessego);transform:translateX(-50%)"></div>
+  <img class="a" src="../01-marca/svg/lumi-vertical-negativo.svg" style="left:50%;top:220px;width:420px;transform:translateX(-50%)">
+  <div class="a" style="left:0;right:0;top:868px;text-align:center;font-family:IS;font-style:italic;font-size:54px;line-height:1">odontologia que acolhe</div>
+</section>
+
+<!-- ============ 02 · SÍMBOLO ============ -->
+<section class="b" id="b2" style="background:var(--leite)">
+  <div class="topo"><span>Lumi Odonto · o símbolo</span><span>02 / 07</span></div>
+  <h1 class="t a" style="left:var(--m);top:150px">Um arco, uma porta<br>e <em>uma luz</em>.</h1>
+  <!-- símbolo grande com as três leituras -->
+  <svg class="a" style="left:var(--m);top:470px" width="420" height="520" viewBox="0 0 84 104">
+    <path fill="#4F6F5C" d="M0 104V42A42 42 0 0 1 84 42V104H64V42A22 22 0 0 0 20 42V104Z"/>
+    <path fill="#F2B8A0" d="M24 104A18 18 0 0 1 60 104Z"/>
+  </svg>
+  <!-- linhas de chamada -->
+  <svg class="a" style="left:0;top:0" width="1080" height="1350">
+    <g stroke="#2E2E2E" stroke-width="1.5" fill="none">
+      <path d="M440 520 H590"/><circle cx="440" cy="520" r="5" fill="#2E2E2E"/>
+      <path d="M394 740 H590"/><circle cx="394" cy="740" r="5" fill="#2E2E2E"/>
+      <path d="M380 950 H590"/><circle cx="380" cy="950" r="5" fill="#2E2E2E"/>
+    </g>
+  </svg>
+  <div class="a" style="left:610px;top:496px;width:390px"><div class="rot" style="color:var(--folha)">A arcada</div><p class="txt" style="font-size:21px;margin-top:10px">O arco repete o desenho dos dentes: a arcada que todo dentista conhece.</p></div>
+  <div class="a" style="left:610px;top:716px;width:390px"><div class="rot" style="color:var(--folha)">A porta</div><p class="txt" style="font-size:21px;margin-top:10px">Uma porta aberta: a clínica recebe, não assusta.</p></div>
+  <div class="a" style="left:610px;top:926px;width:390px"><div class="rot" style="color:var(--folha)">A luz</div><p class="txt" style="font-size:21px;margin-top:10px">O sol nascendo é o “lumi”, de lúmen: luz. O mesmo pêssego vira o pingo do i.</p></div>
+  <img class="a" src="../01-marca/svg/lumi-nome-cor.svg" style="left:610px;top:1070px;width:210px">
+  <div class="pe"><span>Projeto conceitual</span><span>lumi odonto</span></div>
+</section>
+
+<!-- ============ 03 · VERSÕES ============ -->
+<section class="b" id="b3">
+  <div class="topo"><span>Lumi Odonto · versões do logo</span><span>03 / 07</span></div>
+  <h1 class="t a" style="left:var(--m);top:150px">Uma marca,<br><em>várias luzes</em>.</h1>
+  <div class="cx" style="left:84px;top:420px;width:912px;height:300px;background:var(--leite)"><img src="../01-marca/svg/lumi-horizontal-cor.svg" style="width:560px"><small>Principal · horizontal</small></div>
+  <div class="cx" style="left:84px;top:744px;width:444px;height:400px;background:var(--leite)"><img src="../01-marca/svg/lumi-vertical-cor.svg" style="height:290px;margin-top:-20px"><small>Vertical</small></div>
+  <div class="cx" style="left:552px;top:744px;width:444px;height:188px;background:var(--folha);color:var(--leite)"><img src="../01-marca/svg/lumi-horizontal-negativo.svg" style="width:300px;margin-top:-14px"><small>Negativo</small></div>
+  <div class="cx" style="left:552px;top:956px;width:210px;height:188px;background:var(--salvia)"><img src="../01-marca/svg/lumi-simbolo-grafite.svg" style="height:104px;margin-top:-18px"><small>Mono</small></div>
+  <div class="cx" style="left:786px;top:956px;width:210px;height:188px;background:var(--leite)"><img src="../01-marca/svg/lumi-avatar.svg" style="height:116px;border-radius:50%;margin-top:-18px;box-shadow:0 0 0 1px rgba(46,46,46,.12)"><small>Perfil</small></div>
+  <div class="pe"><span>Tamanho mínimo: 120 px de largura (horizontal)</span><span>lumi odonto</span></div>
+</section>
+
+<!-- ============ 04 · CORES ============ -->
+<section class="b" id="b4" style="background:var(--leite)">
+  <div class="topo"><span>Lumi Odonto · cores</span><span>04 / 07</span></div>
+  <h1 class="t a" style="left:var(--m);top:150px">Cor de casa,<br><em>não de hospital</em>.</h1>
+  <p class="txt a" style="left:var(--m);top:390px;width:760px">Nada de azul nem branco puro. A base é areia e sálvia; o pêssego entra pouco, como a luz que bate na janela.</p>
+  <!-- arcos de cor (alturas = peso de uso) -->
+  <div class="a" style="left:84px;right:84px;top:540px;height:430px">
+    <div class="sw" style="left:0;height:430px"><div class="f" style="background:var(--areia);box-shadow:inset 0 0 0 1.5px rgba(46,46,46,.12)"></div></div>
+    <div class="sw" style="left:154px;height:400px"><div class="f" style="background:#fff;box-shadow:inset 0 0 0 1.5px rgba(46,46,46,.12);background:var(--leite)"></div></div>
+    <div class="sw" style="left:308px;height:360px"><div class="f" style="background:var(--salvia)"></div></div>
+    <div class="sw" style="left:462px;height:310px"><div class="f" style="background:var(--folha)"></div></div>
+    <div class="sw" style="left:616px;height:250px"><div class="f" style="background:var(--grafite)"></div></div>
+    <div class="sw" style="left:770px;height:180px"><div class="f" style="background:var(--pessego)"></div></div>
+  </div>
+  <div class="a" style="left:84px;right:84px;top:996px">
+    <div class="nm" style="left:0">Areia<span>#EDE6DA<br>237 230 218</span></div>
+    <div class="nm" style="left:154px">Leite<span>#F8F5EF<br>248 245 239</span></div>
+    <div class="nm" style="left:308px">Sálvia<span>#9BB5A0<br>155 181 160</span></div>
+    <div class="nm" style="left:462px">Folha<span>#4F6F5C<br>79 111 92</span></div>
+    <div class="nm" style="left:616px">Grafite<span>#2E2E2E<br>46 46 46</span></div>
+    <div class="nm" style="left:770px">Pêssego<span>#F2B8A0<br>242 184 160</span></div>
+  </div>
+  <div class="a" style="left:84px;right:84px;top:1110px">
+    <div class="uso" style="left:0">Fundo principal</div>
+    <div class="uso" style="left:154px">Fundo de respiro, cards</div>
+    <div class="uso" style="left:308px">Cor da marca, áreas grandes</div>
+    <div class="uso" style="left:462px">Logo, títulos, botões</div>
+    <div class="uso" style="left:616px">Texto</div>
+    <div class="uso" style="left:770px">A luz: detalhes, nunca texto</div>
+  </div>
+  <div class="pe"><span>Texto sobre sálvia: sempre grafite</span><span>lumi odonto</span></div>
+</section>
+
+<!-- ============ 05 · TIPOGRAFIA ============ -->
+<section class="b" id="b5">
+  <div class="topo"><span>Lumi Odonto · tipografia</span><span>05 / 07</span></div>
+  <div class="a" style="left:84px;top:150px;width:444px;height:420px;border-radius:28px;background:var(--leite);padding:30px">
+    <div class="rot" style="opacity:.7">Títulos</div>
+    <div style="font-family:IS;font-size:220px;line-height:1;margin-top:18px">Aa<em style="color:var(--folha)">a</em></div>
+    <div style="font:600 22px/1.3 M;position:absolute;left:30px;bottom:30px">Instrument Serif<br><span style="font-weight:400;opacity:.75">Regular e itálico</span></div>
+  </div>
+  <div class="a" style="left:552px;top:150px;width:444px;height:420px;border-radius:28px;background:var(--folha);color:var(--leite);padding:30px">
+    <div class="rot" style="opacity:.8">Textos e rótulos</div>
+    <div style="font:500 200px/1 M;letter-spacing:-.04em;margin-top:28px">Aa</div>
+    <div style="font:600 22px/1.3 M;position:absolute;left:30px;bottom:30px">Manrope<br><span style="font-weight:400;opacity:.8">400 · 500 · 600</span></div>
+  </div>
+  <!-- hierarquia em uso -->
+  <div class="a" style="left:84px;top:620px;width:912px">
+    <div class="rot" style="color:var(--folha)">Dica Lumi · nº 03</div>
+    <div class="t" style="font-size:92px;margin-top:22px">Cuidar do sorriso<br><em>não precisa</em> assustar.</div>
+    <p class="txt" style="margin-top:26px;width:760px">Na primeira consulta a gente conversa antes de qualquer coisa. Você entende o que vai ser feito e decide junto.</p>
+  </div>
+  <div class="a" style="left:84px;top:1080px;width:912px;border-top:1.5px solid rgba(46,46,46,.2);padding-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;font:400 16px/1.45 M">
+    <div><b style="font-weight:600">Título</b><br>Instrument Serif<br>80 a 110 px</div>
+    <div><b style="font-weight:600">Ênfase</b><br>Itálico em folha<br>1 palavra por título</div>
+    <div><b style="font-weight:600">Texto</b><br>Manrope 400<br>22 a 28 px</div>
+    <div><b style="font-weight:600">Rótulo</b><br>Manrope 600, caixa-alta<br>espaçado 0,22</div>
+  </div>
+  <div class="pe"><span>As duas são gratuitas (Google Fonts)</span><span>lumi odonto</span></div>
+</section>
+
+<!-- ============ 06 · GRAFISMOS ============ -->
+<section class="b" id="b6" style="background:var(--areia)">
+  <div class="topo"><span>Lumi Odonto · grafismos</span><span>06 / 07</span></div>
+  <h1 class="t a" style="left:var(--m);top:150px">O que se <em>repete</em>.</h1>
+  <!-- moldura em arco -->
+  <div class="tile" style="left:84px;top:330px">
+    <div class="rot">Moldura em arco</div>
+    <div class="a foto arco" style="left:122px;top:80px;width:200px;height:250px"></div>
+    <p>Toda foto entra recortada em arco.</p>
+  </div>
+  <!-- sol nascendo -->
+  <div class="tile" style="left:552px;top:330px;background:var(--folha);color:var(--leite)">
+    <div class="rot">Sol nascendo</div>
+    <div class="a" style="left:50%;bottom:-110px;width:240px;height:240px;border-radius:50%;background:var(--pessego);transform:translateX(-50%)"></div>
+    <div class="a" style="left:50%;bottom:-170px;width:360px;height:360px;border-radius:50%;border:1.5px solid rgba(248,245,239,.25);transform:translateX(-50%)"></div>
+    <div class="a" style="left:50%;bottom:-230px;width:480px;height:480px;border-radius:50%;border:1.5px solid rgba(248,245,239,.18);transform:translateX(-50%)"></div>
+    <p style="bottom:auto;top:66px">Meio círculo pêssego saindo da borda, com arcos finos em volta.</p>
+  </div>
+  <!-- selos -->
+  <div class="tile" style="left:84px;top:784px">
+    <div class="rot">Selos e etiquetas</div>
+    <div class="a" style="left:28px;top:92px"><span class="chip"><i class="luz"></i>Dica Lumi</span></div>
+    <div class="a mv" style="left:28px;top:176px"><b class="on">Mito</b><b>Verdade</b></div>
+    <div class="a" style="left:28px;top:256px;font:600 20px/1 M;color:var(--folha);border-bottom:2px solid var(--folha);padding-bottom:6px">Agende sua avaliação →</div>
+    <p>Pílulas cheias de cantos redondos. Nada de selo estourado.</p>
+  </div>
+  <!-- ponto de luz -->
+  <div class="tile" style="left:552px;top:784px;background:var(--leite)">
+    <div class="rot">Ponto de luz</div>
+    <div class="a lista" style="left:28px;top:96px">
+      <div><i class="luz"></i>Clínico geral</div>
+      <div><i class="luz"></i>Clareamento</div>
+      <div><i class="luz"></i>Alinhadores</div>
+      <div><i class="luz"></i>Implantes</div>
+    </div>
+    <p>O pingo pêssego do i vira marcador de lista e destaque.</p>
+  </div>
+  <div class="pe"><span>Projeto conceitual</span><span>lumi odonto</span></div>
+</section>
+
+<!-- ============ 07 · FOTO E VOZ ============ -->
+<section class="b" id="b7" style="background:var(--leite)">
+  <div class="topo"><span>Lumi Odonto · foto e voz</span><span>07 / 07</span></div>
+  <h1 class="t a" style="left:var(--m);top:150px">Luz de janela,<br><em>gente de verdade</em>.</h1>
+  <div class="a foto arco" style="left:84px;top:420px;width:280px;height:380px"><span>Luz natural</span></div>
+  <div class="a foto arco" style="left:384px;top:500px;width:220px;height:300px;filter:saturate(.85) brightness(1.04)"><span>Pele real</span></div>
+  <div class="a lista" style="left:650px;top:430px;width:350px">
+    <div class="rot" style="color:var(--folha);margin-bottom:6px">Na foto, sim</div>
+    <div><i class="luz"></i>Luz de janela, tons quentes</div>
+    <div><i class="luz"></i>Sorriso no meio da conversa</div>
+    <div><i class="luz"></i>Mãos, cadeira, detalhes da clínica</div>
+    <div class="rot" style="color:var(--folha);margin:18px 0 6px">Na foto, não</div>
+    <div><i class="nao"></i>Dente 3D e “sorriso de banco”</div>
+    <div><i class="nao"></i>Azul gelado, luz de hospital</div>
+  </div>
+  <div class="a" style="left:84px;top:850px;width:912px;border-top:1.5px solid rgba(46,46,46,.2);padding-top:30px">
+    <div class="rot" style="color:var(--folha)">Como a Lumi fala</div>
+    <p class="txt" style="margin-top:12px">Clara, calma e sem jargão. Explica antes de vender.</p>
+    <div style="display:flex;flex-direction:column;gap:18px;margin-top:28px">
+      <div class="frase">“Aqui a primeira consulta <em>começa com uma conversa</em>.”</div>
+      <div class="frase">“Seu sorriso, <em>sob uma luz melhor</em>.”</div>
+    </div>
+    <p style="font:400 18px/1.4 M;margin-top:28px;opacity:.75">Evitar: “sorriso perfeito”, “procedimentos de excelência”, “agende já!!!”.</p>
+  </div>
+  <div class="pe"><span>Projeto conceitual</span><span>lumi odonto</span></div>
+</section>
+
+</body></html>

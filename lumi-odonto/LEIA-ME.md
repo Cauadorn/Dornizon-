@@ -1,18 +1,35 @@
 # Lumi Odonto: identidade visual (projeto conceitual)
 
-Marca inventada para o carrossel de portfólio no formato "E se uma clínica odontológica me contratasse para criar seus posts?". Referência do formato: post de 07/11/2026 da @rafaelalimadesigner_ (pet shop "Mundo Pet"). A Lumi não existe e não tem relação com nenhuma clínica real.
+Marca inventada para o carrossel de portfólio no formato "E se uma clínica odontológica me contratasse para criar seus posts?". A Lumi não existe e não tem relação com nenhuma clínica real.
 
-## Conceito
+Referências:
+- **Formato:** post de 07/11/2026 da @rafaelalimadesigner_ (o pet shop "Mundo Pet").
+- **Nível de acabamento:** Oliva Club, da @sand.design.studio.
 
-**Lumi** vem de lúmen (luz). A ideia é uma clínica que parece casa e não hospital: calma, clara e sem medo.
+## v2: por que mudou
 
-O símbolo é um arco com um sol nascendo dentro, e tem três leituras:
+A v1 (guardada em `_v1/`) tinha cara de template: fonte da moda, um arco genérico, bege com sálvia e pêssego, tudo liso e sem textura. A Oliva Club funciona porque:
 
-- **A arcada:** o arco repete o desenho dos dentes.
-- **A porta:** uma porta aberta, de uma clínica que recebe em vez de assustar.
-- **A luz:** o sol pêssego. O mesmo pêssego vira o pingo do i em "lumi".
+1. **O logo é desenhado a partir da coisa real:** o O é uma azeitona, e o corte da folha passa por todas as letras.
+2. **Tem matéria:** foto de perto, grão, papel.
+3. **Tem mão:** setas e círculos desenhados, e um recado escrito à mão.
+4. **A tipografia é gigante e brinca com o produto.**
+5. **As cores contam história:** cada produto tem a sua.
 
-Slogan: *odontologia que acolhe*.
+A v2 leva essas cinco coisas para a odontologia.
+
+## O lettering
+
+"lumi" foi desenhado do zero, sem fonte pronta. A palavra é uma arcada:
+
+- **o m é um molar:** duas cúspides em cima e três raízes embaixo, e as raízes de fora abrem um pouco;
+- **o l e o i são dentes de uma raiz só:** toda perna termina afinando, como raiz;
+- **o u não tem raiz:** o u é o sorriso;
+- **o pingo do i é cor de gengiva.**
+
+O m sozinho vira o símbolo e a foto de perfil.
+
+Slogan: ***pode vir com medo.*** (a gente cuida.)
 
 ## Briefing fictício (texto do slide "A ideia")
 
@@ -22,75 +39,91 @@ Slogan: *odontologia que acolhe*.
 - Público: adultos de 25 a 45 anos que adiam o dentista por medo ou falta de tempo.
 
 **O que estou procurando**
-Quero uma identidade que tire a cara de consultório frio. Ela precisa passar calma, confiança e modernidade, sem parecer spa nem clínica de estética.
+Quero uma marca que tire o medo do dentista. Calorosa, com humor, com cara de gente e não de hospital. Nada de clínica de estética nem de spa.
 
 **Estilo**
-- Limpo, com bastante respiro.
-- Fotos reais com luz natural.
-- Nada de dente 3D nem de "sorriso de banco de imagem".
+- Feito à mão onde der, com textura e foto de verdade.
+- Nada de dente 3D, nada de sorriso de banco de imagem.
 
 **Cores**
-Verde-sálvia, areia e um toque de pêssego. Não quero azul nem branco puro.
+Quero cores que lembrem a boca e o cuidado: verde de hortelã, um rosado e tons quentes. Não quero azul nem branco de consultório.
 
 **Tipografia**
-Uma serifada elegante para os títulos e uma sem serifa fácil de ler para os textos.
+Um logo com personalidade própria, títulos que falem alto e algo escrito à mão.
 
 ## Sistema
 
-| Cor | Hex | Uso |
+| Cor | Hex | A história |
 |---|---|---|
-| Areia | `#EDE6DA` | fundo principal |
-| Leite | `#F8F5EF` | fundo de respiro e cards |
-| Sálvia | `#9BB5A0` | cor da marca, em áreas grandes |
-| Folha | `#4F6F5C` | logo, títulos e botões |
-| Grafite | `#2E2E2E` | texto |
-| Pêssego | `#F2B8A0` | a luz: só detalhes, nunca texto |
+| Esmalte | `#F6F1E6` | dente de verdade não é branco puro |
+| Hortelã | `#2E8C68` | gosto de boca limpa |
+| Menta | `#CFE8D8` | o frescor, de fundo |
+| Gengiva | `#EE7F73` | a parte que todo mundo esquece de cuidar |
+| Café | `#3B2A22` | a cor que mancha o dente; aqui, só mancha o papel |
 
 - **Contraste:**
-  - Grafite sobre areia dá 11:1.
-  - Leite sobre folha dá 5,1:1.
-  - Sobre sálvia, o texto é sempre grafite, porque leite sobre sálvia dá só 2:1.
-- **Fontes:** Instrument Serif nos títulos (o itálico em folha marca a palavra que importa, uma por título) e Manrope nos textos e rótulos. As duas são gratuitas e estão em `_fontes/`.
+  - Café sobre esmalte dá 12:1, e todo texto corrido vai em café.
+  - Esmalte sobre hortelã dá 3,7:1, então só em título grande.
+  - Gengiva nunca vai como texto sobre hortelã.
+- **Fontes** (todas gratuitas, em `_fontes/`):
+  - **Archivo Expanded ExtraBold:** títulos em caixa-alta, apertados, com ponto final ("ESCOVA. FIO. SORRIA.").
+  - **Archivo:** texto.
+  - **Caveat:** o recado à mão, como o dentista escreve no cartão.
 - **Grafismos:**
-  - Moldura em arco para as fotos.
-  - Sol nascendo (meio círculo pêssego saindo da borda, com anéis finos).
-  - Pílulas de cantos redondos ("Dica Lumi", "Mito / Verdade").
-  - Ponto pêssego como marcador.
-- **Foto:**
-  - Luz de janela, tons quentes, pele real, sorriso no meio da conversa.
-  - Evitar azul gelado e luz de hospital.
+  - Grão de papel em tudo.
+  - Setas e círculos desenhados à mão.
+  - Fita adesiva.
+  - Listras de pasta de dente na apresentação das cores.
+- **Aplicações:**
+  - Cartão de retorno escrito à mão.
+  - Adesivo "vim com medo. saí sorrindo".
+  - Adesivo "hoje eu fui corajoso" (pra adulto também).
 - **Voz:**
-  - Clara, calma e sem jargão. Explica antes de vender.
+  - Fala como gente, explica antes de mexer e nunca dá bronca. Exemplos: "Vai dar uma pressãozinha, não dor. Se doer, levanta a mão." e "Sumiu faz tempo? Tudo bem. Volta que a gente recomeça."
   - Evitar "sorriso perfeito", "procedimentos de excelência" e "agende já!!!".
+
+## Fotos a gerar
+
+O conector do Magnific aqui está com 2 créditos e sem o ilimitado. Por isso, o melhor é rodar no Space, que tem o ilimitado da 4D. Os prompts estão em inglês porque os modelos respondem melhor assim.
+
+1. **Capa do perfil.** *Two bamboo toothbrushes in a small clear glass on a bathroom windowsill, early morning sunlight with soft window shadows, mint green tiles, warm cream tones, shot on 35mm film, visible grain, shallow depth of field, editorial, no text.*
+2. **Fundo de post.** *Extreme close-up of fresh mint leaves with tiny water droplets, soft natural light, deep green and cream tones, 35mm film grain, editorial still life, no text.*
+3. **Dica do dia.** *Macro shot of mint toothpaste being squeezed onto a toothbrush, cream background, soft daylight from the left, film grain, playful editorial still life, no text.*
+4. **Post de agendamento.** *A hand holding a blank cream paper card, sunlit small dental clinic reception out of focus behind, warm tones, 35mm film grain, candid, no text.* Depois, aplicar o verso do cartão de retorno por cima do cartão em branco.
+5. **Post de boas-vindas.** *Candid photo of a Brazilian woman in her 30s laughing mid-conversation, sitting in a mint green dental chair, dentist seen from behind, warm window light, real skin texture, 35mm film grain, documentary style, no text.*
+6. **Bastidor da clínica.** *Empty mint green dental chair in a small cozy clinic, morning sun through a window with plants, cream walls, warm film tones, grain, calm, no people, no text.*
+
+Antes de usar, conferir:
+- mãos com cinco dedos;
+- pele sem cara de cera;
+- uma sombra só, coerente com a janela;
+- nenhum texto inventado na imagem.
 
 ## Arquivos
 
 | Pasta | O que tem |
 |---|---|
-| `01-marca/svg/` | Logo em curvas (não depende de fonte). Versões horizontal, vertical, nome e símbolo, cada uma em `cor`, `negativo` (para fundo folha), `grafite` e `branco`. Tem também o `lumi-avatar.svg` para a foto de perfil. |
-| `01-marca/png/` | Os mesmos logos em PNG com fundo transparente (4x), prontos para o Canva ou Figma. |
-| `02-identidade/identidade.html` | As 7 pranchas da identidade (1080 x 1350). |
-| `02-identidade/png/` | As pranchas em PNG: capa, símbolo, versões, cores, tipografia, grafismos, foto e voz. |
-| `_fontes/` | Instrument Serif e Manrope (licença OFL). |
-| `_ferramentas/` | Scripts que geram os arquivos. Não precisa abrir. |
+| `01-marca/svg/` | Lettering em vetor: `lumi-*` (só a palavra), `lumi-odonto-*` (com ODONTO), `lumi-molar-*` (símbolo) e `lumi-avatar.svg`. Cores: `hortela`, `esmalte` (para fundo escuro), `cafe` e `branco`. |
+| `01-marca/png/` | Os mesmos arquivos em PNG transparente (4x), para Canva ou Figma. |
+| `02-identidade/identidade.html` | As 8 pranchas (1080 x 1350). |
+| `02-identidade/png/` | Capa, lettering, versões, cores, tipografia, aplicações, fotos e voz. |
+| `_v1/` | A primeira versão, descartada. |
+| `_fontes/`, `_ferramentas/` | Fontes (OFL) e os scripts que geram tudo. |
 
 Para gerar tudo de novo:
 
 ```
-python3 lumi-odonto/_ferramentas/marca.py        # logos SVG (precisa de: pip install fonttools)
+pip install shapely fonttools
+python3 lumi-odonto/_ferramentas/marca.py        # lettering SVG
 node lumi-odonto/_ferramentas/logos_png.js       # logos PNG
 node lumi-odonto/_ferramentas/render.js          # pranchas PNG
 ```
 
 ## Próximo passo: os 6 posts do grid
 
-A ideia é alternar post com foto e post de marca, como no carrossel de referência.
-
-1. **Foto:** "Cuidar do sorriso *não precisa* assustar." Paciente sorrindo em moldura de arco.
-2. **Marca:** logo sobre sálvia, com o sol nascendo.
-3. **Mito ou verdade:** "Clareamento enfraquece os dentes?"
-4. **Dica Lumi:** "3 sinais de que está na hora de voltar ao dentista."
-5. **Marca:** frase "Seu sorriso, *sob uma luz melhor*."
-6. **Foto:** "Aqui a primeira consulta *começa com uma conversa*." com o botão "Agende sua avaliação".
-
-Faltam as fotos, que podem ser geradas no Magnific como nos carrosséis do Dr. Pedro. Falta também a moldura do carrossel de portfólio (capa, "A ideia" e "O resultado"), que leva a marca do designer, não a da Lumi.
+1. **Foto 1 (escovas no copo)** com o lettering em esmalte por cima.
+2. **Tipo gigante**, como o "FINISHING / EVERYDAY" da Oliva: "CLAREAMENTO." com a foto 3 atrás.
+3. **"Sumiu faz tempo? Tudo bem."** em café sobre menta, com recado à mão.
+4. **Mito ou verdade** sobre fundo hortelã, com a foto 2.
+5. **Foto 5 (paciente rindo):** "Pode vir com medo."
+6. **Foto 4 (cartão de retorno):** "Seu retorno. Dia 12, às 9h30."
