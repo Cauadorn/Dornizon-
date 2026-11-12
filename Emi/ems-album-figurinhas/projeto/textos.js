@@ -31,10 +31,17 @@ window.ALBUM = {
       ],
       fecho: 'textura é o detalhe que faz a arte parecer <b>feita à mão</b>, e não <b>saída de template.</b>',
       miudo: 'grão ruído papel linho retícula pincelada onda blob camada relevo fibra carimbo xerox riso spray giz' },
-    { etapa: 'pág. 05 · entrega', titulo: 'a hora de<br><i>mostrar</i>', objeto: 'presente',
+    { etapa: 'pág. 05 · entrega', titulo: 'ANTES DE<br>MANDAR', pro: 'pro <i>cliente:</i>', objeto: 'checklist',
       sites: [
         { nome: 'shots.so', pra: 'põe o print do post ou do site num mockup bonito.' },
-        { nome: 'squoosh.app', pra: 'diminui o peso da imagem sem estragar, no navegador.' },
+        { nome: 'squoosh.app', pra: 'diminui o peso da imagem sem estragar, direto no navegador.' },
+      ],
+      lista: [
+        'ler o texto em voz alta (o ouvido pega o erro que o olho pula)',
+        'SITE:0',
+        'SITE:1',
+        'nome de arquivo que o cliente entende (tchau, final_final_v3.png)',
+        'um áudio curtinho explicando as escolhas',
       ] },
   ],
   chamada: {
