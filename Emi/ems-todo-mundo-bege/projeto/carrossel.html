@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · todo mundo virou bege</title>
+<style>
+@font-face{font-family:"Instrument Serif";src:url(assets/fonts/InstrumentSerif-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(assets/fonts/InstrumentSerif-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-SemiBold.ttf);font-weight:600}
+
+/* tokens do design system EMS (tokens.json v3) */
+:root{
+  --ivory:#fffbde; --ivory-2:#f4edcb; --tinta:#2a1433; --ameixa:#3d1c46; --creative-purple:#482952;
+  --plum:#5b216c; --violeta:#6225d8; --violeta-2:#7b4df2; --lavanda:#c0a5c4; --lavanda-2:#e4d6e6;
+  --wine:#9e122c; --pink:#dd34a8; --manteiga:#f2cf7a;
+  --serif:"Instrument Serif",Georgia,serif; --sans:"Poppins",system-ui,sans-serif;
+  --shadow-dura:6px 6px 0 #2a1433; --shadow-sticker:6px 8px 0 rgba(42,20,51,.35);
+  --soft:drop-shadow(0 12px 30px rgba(42,20,51,.35));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#140a19;display:flex;width:max-content}
+.lamina{position:relative;width:1080px;height:1350px;overflow:hidden;flex:none;font-family:var(--sans)}
+.lamina > *{position:absolute}
+
+/* fundos */
+.f-violeta{background:var(--violeta);color:var(--ivory)}
+.f-ivory{background:var(--ivory);color:var(--tinta)}
+.f-ameixa{background:var(--ameixa);color:var(--ivory)}
+.f-lavanda{background:var(--lavanda-2);color:var(--tinta)}
+.f-plum{background:var(--plum);color:var(--ivory)}
+
+/* retícula fina + grão de papel por cima de tudo */
+.reticula{inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,251,222,.09) 1.2px,transparent 1.5px);background-size:7px 7px}
+.f-ivory .reticula,.f-lavanda .reticula{background-image:radial-gradient(rgba(42,20,51,.06) 1.2px,transparent 1.5px)}
+.grao{inset:0;pointer-events:none;opacity:.07;z-index:50;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.estrela{left:0;top:0;width:1080px;height:1350px;pointer-events:none}
+
+/* marca d'água @ITSEMSDESIGN 3x no topo */
+.agua{left:80px;right:80px;top:54px;display:flex;justify-content:space-between;font:500 16px/1 var(--sans);letter-spacing:.2em;opacity:.35}
+.agua b{font-weight:600}
+
+/* HandleTag com cursor */
+.handle{font:500 21px/1 var(--sans);padding:7px 14px 7px 12px;border-radius:4px;color:var(--ivory);z-index:20}
+.handle.pink{background:var(--pink)} .handle.vio{background:var(--violeta)}
+.handle svg{position:absolute;left:-17px;bottom:-17px}
+
+/* cursor "emi" */
+.emi{z-index:30;width:0;height:0}
+.emi svg{position:absolute;left:0;top:0}
+.emi span{position:absolute;left:30px;top:30px;background:var(--pink);color:var(--ivory);font:500 19px/1 var(--sans);padding:6px 11px;border-radius:4px;white-space:nowrap}
+
+/* SelectionBox */
+.sel{border:1.5px solid var(--violeta)}
+.sel i{position:absolute;width:11px;height:11px;background:var(--ivory);border:1.5px solid var(--violeta)}
+.sel i:nth-child(1){left:-6.5px;top:-6.5px}.sel i:nth-child(2){right:-6.5px;top:-6.5px}
+.sel i:nth-child(3){left:-6.5px;bottom:-6.5px}.sel i:nth-child(4){right:-6.5px;bottom:-6.5px}
+.sel.claro{border-color:var(--ivory)} .sel.claro i{border-color:var(--ivory);background:var(--ameixa)}
+
+/* tipografia */
+.lead{font:500 40px/1.1 var(--sans)}
+.hero{font:400 180px/.85 var(--serif);letter-spacing:-.02em}
+.titulo{font:400 96px/.95 var(--serif);letter-spacing:-.01em}
+.titulo em,.hero em{font-style:italic}
+.corpo{font:400 30px/1.3 var(--sans)}
+.corpo b{font-weight:600}
+.label{font:400 22px/1.2 var(--sans);letter-spacing:.08em;z-index:9}
+.anot{fill:none;stroke-width:2;stroke-linecap:round}
+.obj{filter:var(--soft)}
+
+/* ---------- 01 capa ---------- */
+#l1 .lead{left:80px;top:196px}
+#l1 .hero{left:66px;top:300px;font-size:430px;line-height:.8}
+#l1 .hero em{color:var(--manteiga)}
+#l1 .leque{left:250px;top:610px;width:880px;transform:rotate(-9deg);z-index:5}
+#l1 .sub{left:80px;top:1100px;width:620px}
+#l1 .handle{right:80px;bottom:72px}
+
+/* ---------- 02 o loop ---------- */
+#l2 .leadsel{left:80px;top:150px;padding:6px 18px 10px;font:italic 400 46px/1 var(--serif)}
+#l2 .titulo{left:80px;top:232px}
+#l2 .titulo em{color:var(--pink)}
+.frame{width:340px}
+.frame .nome{font:500 18px/1 var(--sans);color:var(--violeta);letter-spacing:.04em;margin-bottom:10px;display:block}
+.frame .card{background:var(--lavanda-2);border:2px solid var(--tinta);box-shadow:var(--shadow-dura);border-radius:20px;padding:22px 26px;font:400 25px/1.25 var(--sans);min-height:150px;display:flex;align-items:center}
+.frame .card b{font-weight:600}
+#l2 .carimbo{left:500px;top:612px;width:290px;transform:rotate(-12deg);z-index:6}
+.impressao{font:400 28px/1 var(--serif);letter-spacing:.32em;color:#b89f7f;border:3px solid #c8b293;padding:14px 8px 12px 20px;opacity:.85;filter:url(#borrao);z-index:3}
+#l2 .quote{left:80px;top:1095px;width:900px;font:italic 400 58px/1.05 var(--serif)}
+#l2 .quem{left:82px;top:1238px;color:var(--wine)}
+#l2 .handle{right:80px;bottom:72px}
+
+/* ---------- 03 ache a sua marca ---------- */
+#l3 .lead{left:80px;top:150px;color:var(--lavanda)}
+#l3 .titulo{left:80px;top:205px}
+#l3 .titulo em{color:var(--manteiga)}
+.grade{left:156px;top:352px;display:grid;grid-template-columns:repeat(3,236px);gap:20px}
+.tile{height:236px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#7a6650}
+.tile .mono{width:46px;height:46px;border:1.5px solid #9c876c;border-radius:50%;display:grid;place-items:center;font:italic 400 26px/1 var(--serif);color:#8a755b}
+.tile b{font:400 34px/1 var(--serif);letter-spacing:.3em;margin-right:-.3em}
+.tile small{font:400 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.8}
+#l3 .selbox{left:656px;top:856px;width:248px;height:248px}
+#l3 .sticker{left:706px;top:300px;background:var(--manteiga);color:var(--tinta);font:500 26px/1.15 var(--sans);padding:16px 22px;border:2.5px solid var(--tinta);box-shadow:var(--shadow-dura);border-radius:16px;transform:rotate(5deg);z-index:12}
+#l3 .corpo{left:80px;top:1160px;width:920px}
+#l3 .handle{right:80px;bottom:60px}
+
+/* ---------- 04 bege é cor ---------- */
+#l4 .lead{left:80px;top:170px}
+#l4 .titulo{left:80px;top:245px;font-size:132px;line-height:.92}
+#l4 .titulo em{color:var(--violeta)}
+#l4 .lata{left:510px;top:690px;width:590px;transform:rotate(6deg);z-index:6}
+#l4 .corpo{left:80px;top:770px;width:400px}
+#l4 .rotulo{left:570px;top:575px;color:var(--wine)}
+#l4 .handle{left:96px;bottom:72px}
+
+/* ---------- 05 pergunta ---------- */
+#l5 .lead{left:80px;top:170px;color:var(--lavanda)}
+#l5 .titulo{left:80px;top:240px;font-size:138px;line-height:.92;width:940px}
+#l5 .titulo em{color:var(--manteiga)}
+.amostras{left:80px;top:720px;display:flex;gap:18px;align-items:flex-start}
+.chip{width:168px;display:flex;flex-direction:column;gap:12px}
+.chip i{display:block;height:300px;border-radius:10px;box-shadow:var(--shadow-sticker)}
+.chip span{font:400 20px/1.2 var(--sans);letter-spacing:.08em;color:var(--lavanda)}
+.xis{left:62px;top:700px;width:740px;height:340px;z-index:5}
+.chip.vazio i{background:transparent;border:3px dashed var(--ivory);box-shadow:none;display:grid;place-items:center;font:500 26px/1 var(--sans);font-style:normal;color:var(--ivory);letter-spacing:.04em}
+.chip.vazio span{color:var(--manteiga)}
+#l5 .corpo{left:80px;top:1112px;width:900px}
+#l5 .handle{right:80px;bottom:72px}
+
+/* ---------- 06 chamada ---------- */
+#l6 .lead{left:80px;top:200px}
+#l6 .hero{left:72px;top:270px;font-size:200px;line-height:.86}
+#l6 .hero em{color:var(--manteiga)}
+#l6 .corpo{left:80px;top:720px;width:820px}
+#l6 .cta{left:80px;top:900px;background:var(--manteiga);color:var(--tinta);font:500 34px/1 var(--sans);padding:26px 40px;border-radius:999px;border:2.5px solid var(--tinta);box-shadow:var(--shadow-dura);z-index:10}
+#l6 .cta b{font-weight:600;color:var(--violeta)}
+#l6 .selo{left:80px;bottom:90px;width:150px}
+#l6 .site{left:262px;bottom:118px;font:500 22px/1.4 var(--sans)}
+#l6 .handle{right:80px;bottom:72px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="borrao"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="5"/></filter>
+</svg>
+
+<!-- 01 CAPA -->
+<section class="lamina f-violeta" id="l1">
+  <div class="reticula"></div>
+  <svg class="estrela" data-estrela="cx:900,cy:330,R:420,cor:#7b4df2"></svg>
+  <div class="agua"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">de repente,<br>todo mundo virou</p>
+  <h1 class="hero">be<em>g</em>e</h1>
+  <img class="leque obj" src="recortes/leque-1.png" alt="">
+  <svg class="anotacoes" style="left:0;top:0;width:1080px;height:1350px;z-index:8" viewBox="0 0 1080 1350">
+    <path class="anot" stroke="#fffbde" d="M330 700 C 300 650, 250 640, 210 655"/>
+    <path class="anot" stroke="#fffbde" d="M712 655 C 706 600, 716 566, 742 550"/>
+  </svg>
+  <span class="label" style="left:80px;top:665px">bege<br>seguro</span>
+  <span class="label" style="left:752px;top:528px">areia “atemporal”</span>
+  <p class="corpo sub">e ninguém lembra mais<br><b>de quem é quem.</b></p>
+  <span class="handle pink">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="grao"></div>
+</section>
+
+<!-- 02 O LOOP -->
+<section class="lamina f-ivory" id="l2">
+  <div class="reticula"></div>
+  <div class="agua"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <span class="sel leadsel"><i></i><i></i><i></i><i></i>funciona assim:</span>
+  <h2 class="titulo">o loop do <em>blanding</em></h2>
+
+  <div class="frame" style="left:80px;top:400px"><span class="nome">01 · inspiração</span><div class="card">você vê uma marca que deu certo</div></div>
+  <div class="frame" style="left:660px;top:400px"><span class="nome">02 · ctrl c</span><div class="card">copia a estética: bege, serifa fininha, foto de mármore</div></div>
+  <div class="frame" style="left:660px;top:860px"><span class="nome">03 · ctrl v</span><div class="card">fica igual a outras 300 do mesmo nicho</div></div>
+  <div class="frame" style="left:80px;top:860px"><span class="nome">04 · e de novo</span><div class="card">ninguém lembra de você. aí vem a próxima tendência…</div></div>
+
+  <span class="impressao" style="left:318px;top:648px;transform:rotate(-7deg)">MARCA</span>
+  <span class="impressao" style="left:336px;top:752px;transform:rotate(5deg);opacity:.55">MARCA</span>
+  <img class="carimbo obj" src="recortes/carimbo-3.png" alt="">
+
+  <svg style="left:0;top:0;width:1080px;height:1350px;z-index:4" viewBox="0 0 1080 1350">
+    <defs><marker id="seta" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#6225d8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+    <g fill="none" stroke="#6225d8" stroke-width="3" stroke-linecap="round" marker-end="url(#seta)">
+      <path d="M440 505 C 510 470, 580 470, 646 505"/>
+      <path d="M880 615 C 925 680, 925 780, 880 845"/>
+      <path d="M646 975 C 580 1010, 510 1010, 440 975"/>
+      <path d="M200 845 C 155 780, 155 680, 200 615"/>
+    </g>
+    <g fill="#6225d8"><circle cx="440" cy="505" r="6"/><circle cx="880" cy="615" r="6"/><circle cx="646" cy="975" r="6"/><circle cx="200" cy="845" r="6"/></g>
+  </svg>
+
+  <p class="quote">“minha marca tá bonita…<br>mas ninguém lembra dela.”</p>
+  <span class="label quem">— todo cliente, em algum momento</span>
+  <span class="handle vio">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="grao"></div>
+</section>
+
+<!-- 03 ACHE A SUA MARCA -->
+<section class="lamina f-ameixa" id="l3">
+  <div class="reticula"></div>
+  <svg class="estrela" data-estrela="cx:120,cy:1180,R:360,cor:#7b4df2,rot:8"></svg>
+  <div class="agua"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">teste rápido:</p>
+  <h2 class="titulo">ache a sua <em>marca</em></h2>
+  <div class="grade" id="grade"></div>
+  <div class="sel claro selbox"><i></i><i></i><i></i><i></i></div>
+  <div class="emi" style="left:888px;top:1088px"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#dd34a8" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg><span>emi</span></div>
+  <div class="sticker">spoiler: nem a<br>dona achou</div>
+  <p class="corpo">se precisou ler o nome pra saber de quem é,<br><b>a marca não fez o trabalho dela.</b></p>
+  <div class="grao"></div>
+</section>
+
+<!-- 04 BEGE É COR -->
+<section class="lamina f-lavanda" id="l4">
+  <div class="reticula"></div>
+  <svg class="estrela" data-estrela="cx:820,cy:930,R:470,cor:#c0a5c4,rot:12"></svg>
+  <div class="agua"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">calma: bege não é crime.</p>
+  <h2 class="titulo">bege é cor.<br>blanding é<br><em>escolha.</em></h2>
+  <img class="lata obj" src="recortes/lata-3.png" alt="">
+  <svg style="left:0;top:0;width:1080px;height:1350px;z-index:8" viewBox="0 0 1080 1350">
+    <path class="anot" stroke="#9e122c" d="M700 622 C 690 690, 710 740, 752 790"/>
+  </svg>
+  <span class="label rotulo">a sua cor (não a da moda)</span>
+  <p class="corpo">marca que a gente lembra tem <b>uma cor que é dela</b>, uma forma que se repete e um jeito de falar.<br><br>o nome vem depois.</p>
+  <span class="handle pink">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="grao"></div>
+</section>
+
+<!-- 05 PERGUNTA -->
+<section class="lamina f-plum" id="l5">
+  <div class="reticula"></div>
+  <div class="agua"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">agora me conta:</p>
+  <h2 class="titulo">qual cor você usaria se ninguém fosse <em>julgar?</em></h2>
+  <div class="amostras">
+    <div class="chip"><i style="background:#e8dcc8"></i><span>bege seguro</span></div>
+    <div class="chip"><i style="background:#e3d2b8"></i><span>areia</span></div>
+    <div class="chip"><i style="background:#efe7da"></i><span>off-white</span></div>
+    <div class="chip"><i style="background:#d9c8b4"></i><span>nude</span></div>
+    <div class="chip vazio"><i>#??????</i><span>a sua</span></div>
+  </div>
+  <svg class="xis" viewBox="0 0 740 340"><g stroke="#dd34a8" stroke-width="16" stroke-linecap="round"><path d="M20 20 L720 320"/><path d="M20 320 L720 20"/></g></svg>
+  <p class="corpo">responde aqui embaixo <b>com o hex.</b> vale cor esquisita, vale cor que a sua tia odeia.</p>
+  <span class="handle pink">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="grao"></div>
+</section>
+
+<!-- 06 CHAMADA -->
+<section class="lamina f-violeta" id="l6">
+  <div class="reticula"></div>
+  <svg class="estrela" data-estrela="cx:900,cy:420,R:400,cor:#7b4df2,rot:-6"></svg>
+  <div class="agua"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
+  <p class="lead">e aí, a sua marca passa no</p>
+  <h2 class="hero">teste do<br><em>nome?</em></h2>
+  <p class="corpo">montei um checklist rapidinho pra você descobrir se a sua marca é reconhecida <b>até sem o nome.</b></p>
+  <div class="cta">comenta “<b>BEGE</b>” que eu te mando na dm</div>
+  <div class="emi" style="left:640px;top:975px"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#dd34a8" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg><span>emi</span></div>
+  <img class="selo" src="assets/selo-ems.png" alt="selo ems">
+  <p class="site">identidade visual, social media e site<br><b>emsdesign.com.br</b></p>
+  <span class="handle pink">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+  <div class="grao"></div>
+</section>
+
+<script>
+// HalftoneStar: pontos que somem do centro para a borda, opacity-star .45
+function estrela(svg){
+  const o = Object.fromEntries(svg.dataset.estrela.split(',').map(p => p.split(':')).map(([k,v]) => [k, isNaN(+v) ? v : +v]));
+  const {cx, cy, R, cor} = o, ri = R * .46, rot = o.rot || 0, passo = 16, max = 7.2;
+  const pts = [];
+  for (let k = 0; k < 10; k++) { const a = (rot - 90 + k * 36) * Math.PI / 180, r = k % 2 ? ri : R; pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); }
+  const dentro = (x, y) => { let c = false; for (let i = 0, j = 9; i < 10; j = i++) { const [xi, yi] = pts[i], [xj, yj] = pts[j]; if ((yi > y) != (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+  const borda = th => { let lo = 0, hi = R * 1.01; for (let n = 0; n < 18; n++) { const m = (lo + hi) / 2; dentro(cx + m * Math.cos(th), cy + m * Math.sin(th)) ? lo = m : hi = m; } return lo; };
+  let s = '';
+  for (let y = cy - R; y <= cy + R; y += passo) for (let x = cx - R; x <= cx + R; x += passo) {
+    if (!dentro(x, y)) continue;
+    const d = Math.hypot(x - cx, y - cy), t = d / Math.max(borda(Math.atan2(y - cy, x - cx)), 1);
+    const r = max * Math.pow(Math.max(0, 1 - t), .55);
+    if (r > .7) s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}"/>`;
+  }
+  svg.setAttribute('viewBox', '0 0 1080 1350');
+  svg.innerHTML = `<g fill="${cor}" opacity=".45">${s}</g>`;
+}
+document.querySelectorAll('[data-estrela]').forEach(estrela);
+
+// grade de marcas "todas iguais" (lâmina 3)
+const nomes = [['l','LUMA'],['a','AURA'],['t','TERRA'],['n','NUDE'],['a','ALMA'],['m','MARÉ'],['s','SÁLVIA'],['o','OLIVA'],['l','LINHO']];
+const beges = ['#e9dfcf','#e6dac6','#ebe1d2','#e7dccb','#e9ddc9','#e5d9c7','#eadfce','#e8dccb','#e6dbc9'];
+document.getElementById('grade').innerHTML = nomes.map(([m, n], i) =>
+  `<div class="tile" style="background:${beges[i]}"><span class="mono">${m}</span><b>${n}</b><small>studio · est. 2024</small></div>`).join('');
+
+Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { window.READY = true; });
+</script>
+</body>
+</html>
