@@ -16,15 +16,22 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 ## Versões
 
-- **v1** (`entrega/v1/`, `projeto/carrossel.html`): digital e chapado, quadros de Figma, janela de pasta e campos de formulário.
-- **v2** (`entrega/v2/`, `projeto/carrossel-v2.html`): **caderno físico**. Mesma copy, com as refs da @carolrech (`referencias/carolrech/`) aplicadas por princípio, sem copiar elemento:
+- **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão no sistema EMS.
+- **v3** (`entrega/v3/`, `projeto/carrossel-v3.html`): **a atual.** Mesma base e copy da v1, com três mudanças:
+  1. **Textura visível:** grão e retícula da EMS mais fortes e iguais em todos os slides (antes quase sumiam).
+  2. **Um cenário só, do vocabulário da Emi:** cada slide é um quadro do Figma, com o nome no canto contando a história (`ajuste_v1`, `ajuste_v2`, `ajuste_v8`, `ajuste_v15`, `ajuste_v26`, `ajuste_v27_final`).
+  3. **Ícones do design system, um por slide e com motivo:** brilho na capa, espiral no "loop", coração no "aprovaram a versão 1", estrela no "norte", seta em "responde aqui embaixo" e xoxo na despedida. Os ícones são os PNGs do grupo Ícones, só tingidos na cor da paleta de cada fundo (`projeto/assets/icones/`).
 
-| Ref | O que veio | Como entrou na EMS |
-| --- | --- | --- |
-| Página de agenda (argolas, divisórias, etiqueta presa, papel com textura) | A peça vira objeto físico | Páginas internas num caderno **pontilhado com espiral** (o "caderno de designer" do README da EMS); **divisórias** na lateral marcam a fase do projeto (briefing, versões, ajustes, entrega) e a ativa muda por lâmina; post-its e bilhete presos com **fita crepe** |
-| Jantar com as amigas (tecido, letra com cara de impressa, títulos que se atropelam, foto monocromática, brilhos rabiscados) | Textura e tipografia com matéria | Capas em **tecido** nas cores da marca; títulos em Instrument Serif com **falha de impressão**; "zinho" atropelando "ajuste" e "norte." atropelando a bússola; objetos em **duotone** da paleta (papel em tinta → violeta-2 → marfim, bússola em tinta → plum → manteiga); **brilhos de 4 pontas rabiscados** com hachura (versão à mão do ícone brilho) |
+A v2 (caderno com espiral, fita e brilhos desenhados) foi descartada: copiava elementos das referências em vez de traduzir o princípio, e os brilhos não eram da EMS.
 
-Na v2, a lâmina 3 trocou a janela de arquivos por uma lista na página: tudo riscado à caneta (`wine`) e a v1 circulada em rosa, com "spoiler: aprovaram essa."
+### O que as referências ensinaram (`referencias/outras/`)
+
+Leitura das quatro refs (@carolrech ×2, @danibloom.design, @rafaelalimadesigner_) como **princípio**, não como elemento a copiar:
+
+1. **Superfície com matéria:** nenhuma tem fundo chapado. Na EMS isso é o grão e a retícula, com força suficiente para aparecer.
+2. **Um cenário que é o roteiro:** cada post escolhe uma moldura e conta a história dentro dela. Na EMS, a moldura vem do mundo da Emi (Figma, seleção, cursor "emi").
+3. **Uma letra que quebra o padrão:** já é assinatura da EMS (a letra itálica no meio da palavra).
+4. **Contenção:** paleta curta, um gesto forte por slide, respiro. Mais grafismos pode, sem exagero.
 
 ## Lâminas
 
@@ -67,6 +74,6 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1) e `projeto/carrossel-v2.html` (v2): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v2.html v2` gera a v2 em `entrega/v2/` (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v1/` e `entrega/v2/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1) e `projeto/carrossel-v3.html` (v3): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v3.html v3` gera a v3 em `entrega/v3/` (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v3/`: PNGs finais 1080 × 1350 para subir no Instagram.
