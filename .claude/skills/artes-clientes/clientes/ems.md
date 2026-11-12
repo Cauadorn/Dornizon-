@@ -32,6 +32,8 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
    O recorte só entra para pôr o bicho **na frente** de um texto ou de um cartão, com a mesma foto por baixo.
 6. **Mandar prévia cedo** pelo celular (SendUserFile) e iterar por lâmina; não propagar para Figma, Drive e DS antes da aprovação.
 
+**Margem: capa e chamada com 90px livres nos quatro lados** (pedido da Emi, 12/11). Todo texto e elemento fica dentro de [90, 990] × [90, 1260]; só a foto e as texturas sangram. Conferir com a guia (`carrossel.html?guia` desenha a margem tracejada).
+
 **Checklist antes de mandar:**
 - A capa não dá spoiler do conteúdo.
 - O título é um bloco só, sem espaço grande entre as partes.
@@ -40,6 +42,8 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
 - Fundo liso ganhou textura (retícula, grão).
 - Os elementos se encostam e se invadem um pouco, sem cobrir rosto nem texto.
 - Nada foi copiado da referência nem de outro post.
+- Capa e chamada respeitam a margem de 90px.
+- Letra que cai atrás do bicho continua legível. O "ç" de "direções" sumia atrás da cabeça do gato e virava "direcões"; a solução foi repetir só o cedilha por cima do recorte.
 - Nenhuma foto se repete.
 
 ## Marca fictícia (logo dentro de post) sem cara de IA
@@ -56,6 +60,8 @@ Só passou a MIAU.LAB, que é um rótulo aplicado. A regra:
 3. **Aplicar num objeto**: adesivo recortado, etiqueta de couro, número de peito, rótulo, embalagem. Nunca logo boiando no meio do quadro.
 4. Detalhe que só marca de verdade tem: ™, "desde 1974", "nº 001", código de barras, costura, alfinete.
 5. Texto centralizado na forma (não na caixa); espaçamento entre letras compensado com recuo igual à esquerda.
+
+6. A primeira versão do AU! (adesivo de explosão com letra bojuda 3D e faixa) ainda tinha "cara de IA": é o "logo de gibi" padrão de gerador. A versão aprovada é um **pacote de petisco** chapado, com quadrinho impresso, "AU!" fora de registro (azul deslocado atrás do preto, como impressão), selo "nº1 do bairro" e textos de embalagem (sabor, peso).
 
 Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marcas/`.
 

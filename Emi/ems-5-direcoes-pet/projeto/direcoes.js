@@ -40,22 +40,26 @@ const ALFINETE = (x, y, r) => `<svg viewBox="0 0 34 12" width="34" height="12" s
 const BRILHO4 = (x, y, w, cor) => `<svg viewBox="0 0 40 40" width="${w}" height="${w}" style="position:absolute;left:${x}px;top:${y}px"><path d="M20 0 C21.5 13 27 18.5 40 20 C27 21.5 21.5 27 20 40 C18.5 27 13 21.5 0 20 C13 18.5 18.5 13 20 0 Z" fill="${cor}"/></svg>`;
 
 const MARCA = {
-  // 01 · adesivo recortado de embalagem de snack: letras que pulam, contorno grosso, volume, explosão e faixa
-  gibi: centro(380, 350, `
-    <svg viewBox="0 0 380 350" width="380" height="350" style="position:absolute;inset:0">
-      <polygon points="${EXPLOSAO}" fill="#fff" stroke="#fff" stroke-width="26" stroke-linejoin="round"/>
-      <polygon points="${EXPLOSAO}" transform="translate(8 8)" fill="#1B1B1B"/>
-      <polygon points="${EXPLOSAO}" fill="#F2542D" stroke="#1B1B1B" stroke-width="6" stroke-linejoin="round"/></svg>
-    <div style="position:absolute;left:0;width:380px;top:46px;text-align:center;font:400 150px/1 'Bagel Fat One';color:#FFD23F;
-      -webkit-text-stroke:9px #1B1B1B;paint-order:stroke fill;text-shadow:7px 7px 0 #1B1B1B;white-space:nowrap">
-      <span style="display:inline-block;position:relative;top:8px;transform:rotate(-9deg)">A</span><span style="display:inline-block;position:relative;top:-10px;transform:rotate(6deg)">U</span><span style="display:inline-block;position:relative;top:2px;transform:rotate(13deg)">!</span></div>
-    <div style="position:absolute;left:330px;top:150px;font:400 20px/1 'Bagel Fat One';color:#1B1B1B">™</div>
-    <div style="position:absolute;left:40px;top:236px;width:300px;height:70px;transform:rotate(-4deg)">
-      <svg viewBox="0 0 300 70" width="300" height="70" style="position:absolute;inset:0">
-        <path d="${FAIXA}" transform="translate(6 6)" fill="#1B1B1B"/>
-        <path d="${FAIXA}" fill="#2B59C3" stroke="#1B1B1B" stroke-width="5" stroke-linejoin="round"/></svg>
-      <div style="position:absolute;left:0;right:0;top:13px;text-align:center;font:400 38px/1 'Bagel Fat One';color:#fff;-webkit-text-stroke:6px #1B1B1B;paint-order:stroke fill">petiscaria</div></div>
-    <div style="position:absolute;left:0;right:0;top:322px;text-align:center;font:400 17px/1 'Bagel Fat One';color:#1B1B1B">crocante desde 2026</div>`),
+  // 01 · pacote de petisco (stand-up pouch) chapado: quadrinho impresso com "AU!" fora de registro, textos de embalagem
+  gibi: centro(300, 360, `
+    <div style="position:absolute;left:24px;top:10px;width:252px;height:338px;transform:rotate(-3deg)">
+      <svg viewBox="0 0 252 338" width="252" height="338" style="position:absolute;inset:0">
+        <path d="M10 0 H242 Q252 0 252 10 V322 Q252 334 238 335 Q126 342 14 335 Q0 334 0 322 V10 Q0 0 10 0 Z" transform="translate(8 9)" fill="rgba(27,27,27,.9)"/>
+        <path d="M10 0 H242 Q252 0 252 10 V322 Q252 334 238 335 Q126 342 14 335 Q0 334 0 322 V10 Q0 0 10 0 Z" fill="#F2542D"/>
+        <path d="M10 0 H242 Q252 0 252 10 V30 H0 V10 Q0 0 10 0 Z" fill="#D9441F"/>
+        <path d="M0 30 H252" stroke="#B8361A" stroke-width="2"/><path d="M8 40 H244" stroke="#1B1B1B" stroke-width="1.6" stroke-dasharray="3 4" opacity=".45"/>
+        <rect x="108" y="10" width="36" height="10" rx="5" fill="#FFD23F"/>
+        <path d="M0 14 L7 18 L0 22 Z" fill="#FFD23F"/><path d="M252 14 L245 18 L252 22 Z" fill="#FFD23F"/></svg>
+      <div style="position:absolute;left:22px;top:56px;width:208px;height:146px;background:#FFD23F;border:4px solid #1B1B1B;transform:rotate(-2deg);overflow:hidden">
+        <div class="padrao" style="position:absolute;left:96px;top:60px;width:130px;height:100px;background:radial-gradient(circle,#F2542D 32%,transparent 35%) 0 0 / 11px 11px;opacity:.9"></div>
+        <div style="position:absolute;left:0;right:0;top:20px;text-align:center;font:400 104px/1 'Bagel Fat One';color:#2B59C3;margin-left:5px;margin-top:4px">AU!</div>
+        <div style="position:absolute;left:0;right:0;top:20px;text-align:center;font:400 104px/1 'Bagel Fat One';color:#1B1B1B">AU!</div></div>
+      <div style="position:absolute;left:186px;top:40px;width:62px;height:62px;border-radius:50%;background:#2B59C3;border:3px solid #1B1B1B;transform:rotate(12deg);
+        display:grid;place-items:center;text-align:center;font:400 12px/1.05 'Bagel Fat One';color:#fff">nº1 do<br>bairro</div>
+      <div style="position:absolute;left:0;right:0;top:218px;text-align:center;font:400 40px/1 'Bagel Fat One';color:#FFD23F;letter-spacing:.01em">petiscaria</div>
+      <div style="position:absolute;left:0;right:0;top:266px;text-align:center;font:600 11px/1 var(--sans);color:#fff;letter-spacing:.2em;padding-left:.2em">PETISCO CROCANTE P/ CÃES</div>
+      <div style="position:absolute;left:22px;right:22px;top:290px;display:flex;justify-content:space-between;font:500 11px/1 var(--sans);color:#fff;opacity:.9">
+        <span>sabor frango</span><span>80 g</span></div></div>`),
   // 02 · etiqueta de couro pendurada, dourado em relevo
   grife: centro(300, 380, `
     <svg viewBox="0 0 300 380" width="300" height="380" style="position:absolute;inset:0">
@@ -115,7 +119,7 @@ const DIRECOES = [
     titulo: 'pop de <em>gibi</em>', pra: 'petisco e brinquedo', card: 'var(--violeta)',
     texto: 'cores primárias chapadas, contorno grosso e retícula de gibi. pra petisco e brinquedo que querem ser a alegria da prateleira.',
     heroi: { bg: '#FFD23F', cheia: { src: 'd1pet-2', px: .5, py: .3 } },
-    marca: { bg: '#FFD23F', padrao: dots('#F2542D', 16, 22), html: MARCA.gibi, cursor: [340, 318] },
+    marca: { bg: '#2B59C3', html: MARCA.gibi, cursor: [318, 338] },
     quadrado: { bg: '#F2542D', cheia: { src: 'd1extra', px: .04, py: .5 } },
     alto: { bg: '#2B59C3', cheia: { src: 'd1prod-1', px: .5, py: .45 } },
     paleta: [['amarelo gema', '#FFD23F', '#1B1B1B'], ['vermelho tomate', '#F2542D', '#1B1B1B'], ['azul gibi', '#2B59C3', '#FFFBDE'], ['preto nanquim', '#1B1B1B', '#FFFBDE']],
@@ -168,7 +172,7 @@ const DIRECOES = [
 ];
 
 // Capa: capa de revista com o gato preto de modelo (fundo violeta com estrelas em retícula, aprovado).
-const CAPA = { foto: { src: 'capa-2', px: .5, py: .5 }, recorte: 'capa-2-gato' };
+const CAPA = { foto: { src: 'capa-2', px: .5, py: .5 }, recorte: 'capa-2-gato', cedilha: [452, 330, 80, 96] };
 
 // Chamada: enquete; o gato (fundo ameixa) levanta a pata até a opção marcada.
 const CHAMADA = {

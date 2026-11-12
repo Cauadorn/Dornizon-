@@ -119,21 +119,22 @@ img.foto { position: absolute; display: block; }
 /* ---------- capa: capa de revista ---------- */
 .capa { background: var(--violeta); }
 .capa img.recorte { z-index: 6; }
+.capa .cedilha { position: absolute; z-index: 7; overflow: hidden; }
 .capa .escurece { position: absolute; inset: 0; z-index: 2;
   background: linear-gradient(90deg, rgba(42, 20, 51, .55) 0, rgba(42, 20, 51, .25) 30%, transparent 48%),
               linear-gradient(0deg, rgba(42, 20, 51, .45) 0, transparent 22%); }
-.capa .meta { position: absolute; left: 56px; right: 56px; top: 30px; z-index: 8; display: flex; justify-content: space-between;
+.capa .meta { position: absolute; left: 90px; right: 90px; top: 90px; z-index: 8; display: flex; justify-content: space-between;
   font: 500 17px/1 var(--sans); letter-spacing: .16em; color: var(--ivory); }
-.capa .masthead { position: absolute; left: 34px; top: 22px; z-index: 4; font: 400 318px/1 var(--serif); letter-spacing: -.045em; color: var(--ivory); }
-.capa .sub { position: absolute; left: 60px; top: 292px; z-index: 8; font: 400 54px/.95 var(--serif); letter-spacing: -.01em; color: var(--ivory); }
+.capa .masthead { position: absolute; left: 84px; top: 84px; z-index: 4; font: 400 318px/1 var(--serif); letter-spacing: -.045em; color: var(--ivory); }
+.capa .sub { position: absolute; left: 92px; top: 354px; z-index: 8; font: 400 54px/.95 var(--serif); letter-spacing: -.01em; color: var(--ivory); }
 .capa .sub em { color: var(--manteiga); }
-.capa .selo-redondo { position: absolute; left: 800px; top: 424px; z-index: 8; width: 224px; height: 224px; border-radius: 50%;
+.capa .selo-redondo { position: absolute; left: 748px; top: 470px; z-index: 8; width: 224px; height: 224px; border-radius: 50%;
   background: var(--pink); display: grid; place-items: center; text-align: center; transform: rotate(9deg); box-shadow: var(--shadow-sticker); }
 .capa .selo-redondo span { font: 600 25px/1.12 var(--sans); color: var(--ivory); }
-.capa .teaser { position: absolute; left: 58px; top: 1046px; z-index: 8; font: 400 64px/.94 var(--serif); letter-spacing: -.015em; color: var(--ivory); }
+.capa .teaser { position: absolute; left: 90px; top: 1036px; z-index: 8; font: 400 64px/.94 var(--serif); letter-spacing: -.015em; color: var(--ivory); }
 .capa .teaser em { color: var(--manteiga); }
-.capa .arrasta { position: absolute; left: 58px; top: 1274px; z-index: 8; font: 500 20px/1 var(--sans); letter-spacing: .04em; color: var(--ivory); }
-.capa .barras { position: absolute; left: 846px; top: 1178px; z-index: 8; width: 180px; height: 120px; background: #fff; padding: 12px 14px 0; }
+.capa .arrasta { position: absolute; left: 90px; top: 1232px; z-index: 8; font: 500 20px/1 var(--sans); letter-spacing: .04em; color: var(--ivory); }
+.capa .barras { position: absolute; left: 810px; top: 1140px; z-index: 8; width: 180px; height: 120px; background: #fff; padding: 12px 14px 0; }
 .capa .barras .b { height: 70px; background: repeating-linear-gradient(90deg, #111 0 3px, transparent 3px 5px, #111 5px 6px, transparent 6px 9px, #111 9px 13px, transparent 13px 15px, #111 15px 16px, transparent 16px 20px); }
 .capa .barras span { display: block; text-align: center; font: 500 15px/1 var(--sans); color: #111; margin-top: 8px; letter-spacing: .02em; }
 
@@ -142,9 +143,9 @@ img.foto { position: absolute; display: block; }
 .chamada img.recorte { z-index: 9; }
 .chamada .parede { position: absolute; inset: 0; z-index: 3; mix-blend-mode: screen; }
 .grain.claro.forte { opacity: .16; }
-.chamada .grande { position: absolute; left: 0; right: 0; top: 70px; z-index: 8; text-align: center; font: 400 112px/.92 var(--serif); letter-spacing: -.02em; color: var(--ivory); }
+.chamada .grande { position: absolute; left: 0; right: 0; top: 90px; z-index: 8; text-align: center; font: 400 112px/.92 var(--serif); letter-spacing: -.02em; color: var(--ivory); }
 .chamada .grande em { color: var(--manteiga); }
-.chamada .enquete { position: absolute; left: 56px; top: 452px; width: 430px; z-index: 8; background: var(--ivory); border-radius: 28px;
+.chamada .enquete { position: absolute; left: 98px; top: 452px; width: 396px; z-index: 8; background: var(--ivory); border-radius: 28px;
   padding: 0 18px 20px; box-shadow: var(--shadow-sticker); transform: rotate(-2deg); overflow: hidden; }
 .chamada .enquete .topo { margin: 0 -18px 16px; padding: 18px 22px 16px; background: var(--violeta); color: var(--ivory); display: flex; flex-direction: column; gap: 6px; }
 .chamada .enquete .topo span { font: 600 13px/1 var(--sans); letter-spacing: .2em; color: var(--manteiga); }
@@ -157,22 +158,26 @@ img.foto { position: absolute; display: block; }
 .chamada .enquete .op.marcada { background: var(--pink); color: var(--ivory); }
 .chamada .enquete .op.marcada .n { background: var(--ivory); color: var(--pink); }
 .chamada .enquete .op.marcada .pts i { border-color: var(--pink); }
-.chamada .direita { position: absolute; right: 56px; top: 330px; z-index: 8; display: flex; flex-direction: column; align-items: flex-end; gap: 22px; text-align: right; }
+.chamada .direita { position: absolute; right: 90px; top: 330px; z-index: 8; display: flex; flex-direction: column; align-items: flex-end; gap: 22px; text-align: right; }
 .chamada .comenta { font: 600 34px/1.12 var(--sans); color: var(--ivory); }
 .chamada .dm { position: relative; z-index: 8; font: 500 30px/1 var(--sans); padding: 15px 24px 16px; border-radius: 999px;
   background: var(--pink); color: var(--ivory); box-shadow: var(--shadow-sticker); }
 .chamada .dm svg { position: absolute; right: -20px; bottom: -22px; width: 34px; height: 34px; }
+.chamada .direita .dm { margin-right: 20px; }
 .chamada .dm svg path { fill: var(--tinta); stroke: var(--ivory); stroke-width: 1.6; stroke-linejoin: round; }
-.chamada .selo { position: absolute; left: 56px; top: 1172px; width: 112px; z-index: 8; }
-.chamada .assina { position: absolute; left: 186px; top: 1202px; z-index: 8; font: 500 22px/1.3 var(--sans); color: var(--ivory); }
+.chamada .selo { position: absolute; left: 90px; top: 1110px; width: 108px; z-index: 8; }
+.chamada .assina { position: absolute; left: 220px; top: 1140px; z-index: 8; font: 500 22px/1.3 var(--sans); color: var(--ivory); }
 .chamada .assina span { font-weight: 400; font-size: 18px; opacity: .75; }
 
 /* ---------- capa B (variação) ---------- */
-.capa-b .kicker-b { position: absolute; left: 58px; right: 56px; top: 34px; z-index: 8; display: flex; justify-content: space-between; align-items: baseline; font: 600 30px/1 var(--sans); color: var(--ivory); }
+.capa-b .kicker-b { position: absolute; left: 90px; right: 90px; top: 90px; z-index: 8; display: flex; justify-content: space-between; align-items: baseline; font: 600 30px/1 var(--sans); color: var(--ivory); }
 .capa-b .kicker-b .ed { font: 500 17px/1 var(--sans); letter-spacing: .16em; }
-.capa-b .masthead-b { position: absolute; left: 34px; top: -42px; z-index: 4; font: italic 400 540px/1 var(--serif); letter-spacing: -.04em; color: var(--manteiga); }
+.capa-b .masthead-b { position: absolute; left: 70px; top: 14px; z-index: 4; font: italic 400 500px/1 var(--serif); letter-spacing: -.04em; color: var(--manteiga); }
 .capa-b .brilho { position: absolute; z-index: 8; display: block; }
 .capa-b .brilho svg { display: block; width: 100%; height: auto; }
-.capa-b .selo-redondo.b { left: 800px; top: 424px; }
-.capa-b .teaser.b { position: absolute; left: 58px; top: 1060px; z-index: 8; font: 400 62px/.94 var(--serif); letter-spacing: -.015em; color: var(--ivory); }
+.capa-b .selo-redondo.b { left: 748px; top: 470px; }
+.capa-b .teaser.b { position: absolute; left: 90px; top: 1036px; z-index: 8; font: 400 62px/.94 var(--serif); letter-spacing: -.015em; color: var(--ivory); }
 .capa-b .teaser.b em { color: var(--manteiga); }
+
+/* guia de margem (só na prévia: carrossel.html?guia) */
+.guia { position: absolute; inset: 90px; border: 2px dashed #00e5ff; z-index: 99; pointer-events: none; }

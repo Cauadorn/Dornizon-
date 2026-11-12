@@ -147,6 +147,9 @@ function capa() {
     <div class="meta"><span>ems design · revista de branding</span><span>edição pet · nov 2026</span></div>
     <div class="masthead">direções</div>`);
   cheia(s, { ...CAPA.foto, src: CAPA.recorte, ext: 'png', classe: 'recorte' }, W, H);
+  // o cedilha do "ç" cai atrás da cabeça do gato: repete só esse pedaço do nome por cima do recorte
+  s.insertAdjacentHTML('beforeend', `<div class="cedilha" style="left:${CAPA.cedilha[0]}px;top:${CAPA.cedilha[1]}px;width:${CAPA.cedilha[2]}px;height:${CAPA.cedilha[3]}px">
+    <div class="masthead" style="left:${84 - CAPA.cedilha[0]}px;top:${84 - CAPA.cedilha[1]}px">direções</div></div>`);
   s.insertAdjacentHTML('beforeend', `
     <div class="sub">criativas<br>pra marcas <em>pet</em></div>
     <div class="selo-redondo"><span>nenhuma<br>é patinha<br>+ osso</span></div>
@@ -170,8 +173,8 @@ function capaB() {
     <div class="masthead-b"><em>pet</em></div>`);
   cheia(s, { ...foto, src: 'capa-2-gato', ext: 'png', classe: 'recorte' }, W, H);
   s.insertAdjacentHTML('beforeend', `
-    <span class="brilho" style="left:930px;top:96px;width:74px">${BRILHO('var(--ivory)')}</span>
-    <span class="brilho" style="left:1000px;top:196px;width:34px">${BRILHO('var(--manteiga)')}</span>
+    <span class="brilho" style="left:900px;top:150px;width:70px">${BRILHO('var(--ivory)')}</span>
+    <span class="brilho" style="left:950px;top:236px;width:34px">${BRILHO('var(--manteiga)')}</span>
     <span class="brilho" style="left:150px;top:600px;width:44px">${BRILHO('var(--ivory)')}</span>
     <div class="selo-redondo b"><span>nenhuma<br>é patinha<br>+ osso</span></div>
     <div class="teaser b">5 universos pra<br>sua marca sair<br>do <em>óbvio</em></div>
@@ -212,6 +215,7 @@ deck.appendChild(capa());
 DIRECOES.forEach((d, i) => deck.appendChild(laminaDirecao(d, i)));
 deck.appendChild(chamada());
 if (location.search.includes('b')) deck.appendChild(capaB());
+if (location.search.includes('guia')) document.querySelectorAll('.capa, .chamada').forEach((x) => x.appendChild(el('div', 'guia')));
 window.pronto = () => pendentes === 0 && document.fonts.status === 'loaded';
 </script>
 </body>
