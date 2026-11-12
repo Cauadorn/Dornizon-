@@ -128,6 +128,17 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - O Canva gera em ~1088 px e o Freepik estava sem crédito. Use o upscaler local `.claude/skills/artes-clientes/ferramentas/upscale.py`, com o modelo 4xNomosWebPhoto (ESRGAN em ONNX, baixado de huggingface.co/nesaorg/4xNomosWebPhoto_esrgan_fp32_opset17).
   - Ele roda na CPU, em blocos: 1088 px viram 2400 px em ~4 min.
   - O tecido e o fio do bordado ficam nítidos, sem inventar coisa.
+- **Upscale + arte com texto: aumentar a foto ANTES de aplicar a arte.** Se o upscaler passa por cima do logo e das letras, elas ficam mastigadas. Aumente a foto base (e o recorte da pessoa, pelo alfa) e só depois aplique a arte, em alta, com o quadrilátero multiplicado pela escala.
+- **Maison Caramelo (direção 02, clube de grife).**
+  - Rodada 1: o medalhão oval com o retrato do caramelo em relevo no vinho (ref. 3) estava "literalmente copiando o outro". A porta em arco com o cachorro sentado também não serviu ("assim não").
+  - O brasão gerado com escudo, cachorros em pé, coroa e louro ficou "horrível".
+  - Na pesquisa de brasão ela escolheu 15 (oval floral em relevo) e 14 (Eros & Co.).
+  - Ficou assim:
+    - um caramelo empinado com uma florzinha na boca, em silhueta de vaso grego, gerado e vetorizado;
+    - o nome em Cormorant espaçada;
+    - o selo oval de borda recortada, prensado tom sobre tom.
+  - A pose saltando foi descartada ("quero o sem ser ele correndo").
+  - Mockup: rua gerada com o outdoor em branco, arte aplicada (painel vinho com o logo + a foto da campanha) e a pessoa recortada por cima.
 - **Bordado:** fazer bordado em código (pontos, relevo, sombra) não convence: "nem parece bordado". Mande a foto com o logo aplicado e a referência de bordado para o Canva refazer só o bordado e, depois, passe pelo upscaler.
 - **Toda etiqueta em branco que aparece na lâmina vira rótulo da marca** (a Emi: "tem um rótulo embaixo do logo que tá sem nada").
   - **Conferir se os objetos da cena fazem sentido entre si.** A foto antiga tinha frasco com tampa de rosca e um conta-gotas solto ao lado. A Emi: "tem que substituir a rosca por uma de conta-gotas".
