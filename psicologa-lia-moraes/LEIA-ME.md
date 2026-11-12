@@ -15,10 +15,10 @@ Projeto conceitual de portfólio: cliente fictícia. Imagens geradas com IA (Nan
    - Regras que o Cauã pediu: tudo reto e centralizado (objetos alinhados ao quadro, conteúdo das artes no eixo).
 5. **Carrossel da cliente (aprovado)**: `projeto/posts/carrossel-v3.html` → `carrossel-v3/s1..s8.png`. Fotos do Pinterest, Instrument Serif, blocos de texto colados.
 6. **6 posts** em `projeto/posts/posts-v5.html` → `posts-v5/p1..p6.png` (`node projeto/ferramentas/artes.cjs projeto/posts/posts-v5.html projeto/posts/posts-v5`).
-   - Aprovados: p2 bilhete, p3 telefone ("desmoronar"), p4 chá de pausa, p6 etiquetas ("engolir o choro").
+   - Aprovados: p2 bilhete, p3 telefone ("desmoronar", fundo laranja texturizado com textos creme), p4 chá de pausa, p6 etiquetas ("engolir o choro").
    - p1 e p5 (refeitos com as refs de `referencias/pinterest-cliente-3/`): fotos da Lia geradas no Canva com o rosto de referência,
-     tratadas com `projeto/ia/filme.py` (menos laranja, fundo mais neutro que a pessoa, pretos levantados, grão) e riscos de filme
-     (`projeto/texturas/riscos.py`). p1: "Lia" gigante em Playfair Display 900 com a cabeça na frente (recorte rembg), bilhete
+     nas cores originais (vivas, parede laranja; o tratamento "filme" de `projeto/ia/filme.py` foi testado e o Cauã pediu de volta o tom vivo)
+     + riscos de filme (`projeto/texturas/riscos.py`). Foto da mesa com menos zoom: `python3 -I projeto/ia/ampliar-mesa.py projeto/ia/lia-canva-mesa.png ...`. p1: "Lia" gigante em Playfair Display 900 com a cabeça na frente (recorte rembg), bilhete
      recortado cobalto, selo girando com o monograma, texto vertical. p5: rascunhos riscados do que dizer, título em Fraunces com
      contorno de adesivo pêssego (filtro SVG `#adesivo`), balão de fala terracota.
 7. Próximo: feed (grade do perfil com destaques, menos azul) e o carrossel do case.
