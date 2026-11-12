@@ -9,7 +9,8 @@
 Registrado também no Design System (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
 
 - **12/11/2026, "é só um ajustezinho"** (carrossel de 6):
-  - **Conectividade é composição contínua, não linha.** Desenhar o carrossel como uma faixa só (6480 × 1350) e cortar depois: em todo corte o fundo continua (troca de cor em diagonal que cruza o corte) e um objeto atravessa de verdade, metade de cada lado (a bússola com o centro no corte foi o exemplo da Emi). Fio ou trilha decorativa ligando as lâminas foi reprovado: nunca usar.
+  - **Seguir a linguagem das referências que a Emi manda**, nas cores da EMS, mesmo saindo um pouco do estilo dela: tipografia gigante e apertada (serifa + sans pesada + uma palavra manuscrita), textura de tela por cima de tudo, formas grandes cortadas pela borda, texto em pílulas de cor, objeto em duotone, chamada como objeto. A v5, "com cara de interface" (muito elemento pequeno), foi reprovada como "horrível".
+  - **Conectividade é composição contínua, não linha.** Desenhar o carrossel como uma faixa só (6480 × 1350) e cortar depois: em todo corte um objeto ou forma atravessa de verdade, metade de cada lado (a bússola com o centro no corte foi o exemplo da Emi). Cada lâmina pode ter o seu fundo. Fio ou trilha decorativa ligando as lâminas foi reprovado: nunca usar.
   - **Um recurso por lâmina.** O caderno repetido em 3 lâminas foi reprovado. Caderno, janela, bilhete e celular: cada um numa lâmina só.
   - **Referência é repertório, não molde.** Tirar o princípio e traduzir com o vocabulário da EMS; não trazer o objeto da ref. Ref mandada "pra entender" não entra no post.
   - **Grafismos só da EMS** (ícones tingidos na paleta, `SelectionBox`, cursor "emi", `HandleTag`), um ou dois por lâmina, com motivo. Brilho desenhado que não é da marca foi reprovado. "Pode usar mais grafismos, sem exagero."

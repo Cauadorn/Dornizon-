@@ -16,44 +16,34 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 ## Versões
 
-- **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada, no sistema EMS.
-- **v5** (`entrega/v5/`, `projeto/carrossel-v5.html`): **a atual.** Desenhada como **uma faixa só** (6480 × 1350) e cortada em 6. Textura de verdade (tecido, papel, linho, xadrez da paleta, letra com falha de impressão, objetos em duotone) e **um recurso diferente em cada lâmina**:
+- **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada.
+- **v6** (`entrega/v6/`, `projeto/carrossel-v6.html`): **a atual.** Na linguagem das referências que a Emi mandou, nas cores da EMS: tipografia gigante e apertada (Instrument Serif + Poppins 900 + uma palavra em Kaushan Script), textura de tela por cima de tudo, formas grandes da EMS cortadas pela borda, texto em pílulas de cor, objetos em duotone. A lâmina 4 é a da bússola da v2 (a que a Emi aprovou).
 
-| Lâmina | Recurso | Princípio de onde veio |
+| Lâmina | Linguagem | Referência (princípio) |
 | --- | --- | --- |
-| 1 · capa | "ajuste" e "zinho”" se atropelando com falha de impressão + papel amassado em duotone (tinta → violeta-2 → marfim) | @carolrech, jantar (matéria, letra impressa) |
-| 2 · loop | Página de caderno pontilhado com espiral, divisórias por fase do projeto, post-its e a borracha reta no meio (**só nesta lâmina**) | @carolrech, agenda (a peça como objeto) |
-| 3 · pasta | Janela de computador retrô com os ícones da EMS na barra e a v1 selecionada pelo cursor "emi" | @danibloom.design (um cenário que é o roteiro) |
-| 4 · norte | "*norte.*" gigante + bilhete com fita + bússola em duotone (tinta → plum → manteiga) | @carolrech, jantar |
-| 5 · pergunta | A primeira pergunta do briefing numa conversa no celular (avatar = mascote da EMS) | @rafaelalimadesigner_ |
-| 6 · chamada | "brie*f*ing?" impresso + pílula com cursor "emi", selo e xoxo | sistema EMS |
+| 1 · capa | tecido violeta, "“é só um" manuscrito + "AJUSTE" pesado + "*zinho*”" serifado se atropelando, papel amassado em duotone, caixa contornada | @carolrech, jantar |
+| 2 · loop | papel pontilhado, "o loop da" pesado + "refação" manuscrito, as 4 etapas em pílulas de cor, borracha no centro, brilho lavanda grande atrás | @studioemi.design |
+| 3 · pasta | xadrez da paleta, janela retrô com ícones da EMS na barra, miniaturas v1/v9/v18/v27 na lateral, "ache o / arquivo / *final*" | @danibloom.design |
+| 4 · norte | a da v2: tecido ameixa, "*norte.*" gigante, bússola em duotone, bilhete com fita | aprovada pela Emi |
+| 5 · pergunta | linho, manuscrito + serifa grande, tablet com a conversa, estrelas da EMS atrás do aparelho | @rafaelalimadesigner_ |
+| 6 · chamada | a chamada vira etiqueta (com furo) sobre tecido violeta | @studioemi.design e @amanda.rfernandes |
 
-**Conectividade (composição contínua, nunca fio):** em todo corte o fundo continua e um objeto atravessa de verdade, metade de cada lado.
+**Conectividade:** um objeto ou forma atravessa cada corte, metade de cada lado: pilha de papel (1|2), brilho violeta (2|3), brilho manteiga (3|4), bússola (4|5), brilho manteiga (5|6). Nada de fio.
 
-| Corte | O que atravessa | Fundo |
-| --- | --- | --- |
-| 1 \| 2 | pilha de papel amassado | tecido violeta contínuo |
-| 2 \| 3 | a janela começa no fim da lâmina 2 (bolinhas da barra) | diagonal violeta → xadrez cruzando o corte |
-| 3 \| 4 | bilhete colado por cima da janela, fita em cima do corte | diagonal xadrez → ameixa |
-| 4 \| 5 | bússola com o centro no corte | diagonal ameixa → linho |
-| 5 \| 6 | estrela da EMS colada por cima do celular | diagonal linho → violeta |
+Fontes novas (em teste, a pedido da Emi para seguir as refs): Poppins 700/800/900 e Kaushan Script (`projeto/assets/fonts/`, @fontsource, licença OFL).
 
-O fundo inteiro está em `.fundo` (coordenadas da faixa); cada lâmina posiciona o que atravessa com coordenadas além de 0–1080 (ex.: bússola em `left:760px; width:640px` = centro em 1080).
-
-Grafismos: só os do design system (brilho, espiral, coração, estrela, xoxo, `SelectionBox`, cursor "emi", `HandleTag`), tingidos na cor da paleta, com motivo. Traço à mão só nas setas do diagrama do loop.
-
-Descartadas: v2 (caderno repetido em 3 lâminas, brilhos que não são da EMS), v3 (voltou demais para a v1) e v4 (tinha um fio atravessando as lâminas como "conexão": reprovado, nunca mais). As regras ficaram registradas no Design System da EMS (README › "Regras de carrossel" e conteúdo › "Carrossel: regras aprendidas").
+Descartadas: v2 (caderno repetido em 3 lâminas), v3 (voltou demais para a v1), v4 (fio atravessando as lâminas) e v5 (cara de interface, sem a linguagem das refs). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
 
 Referências em `referencias/outras/`.
 
 ## Lâminas
 
 1. **Capa** (`violeta`): "“é só um / ajuste*z*inho”" + pilha de papel amassado (v3_ajuste.png, v_final.png, v27_ok.png). "e foi assim que a gente chegou na versão 27."
-2. **Tensão** (caderno sobre tecido violeta): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
+2. **Tensão** (papel pontilhado): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
 3. **Piada** (janela retrô sobre xadrez): "teste rápido: / ache o arquivo *final*". "sem briefing, cada versão é um chute. e chute cansa os dois lados."
 4. **Virada** (tecido ameixa): "calma: ajuste faz parte. / o que cansa é ajuste sem *norte.*" + bússola. "briefing bem feito é o norte do projeto: todo mundo sabe pra onde vai, e o ajuste vira refinamento, não recomeço."
-5. **Pergunta aberta** (linho claro): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" A pergunta aparece numa conversa no celular; a resposta vai nos comentários.
-6. **Chamada** (`violeta`): "quer as outras perguntas do meu / brie*f*ing?" + "comenta “BRIEFING” que eu te mando na dm" + selo + emsdesign.com.br.
+5. **Pergunta aberta** (linho claro): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" A pergunta aparece numa conversa no tablet; a resposta vai nos comentários.
+6. **Chamada** (etiqueta sobre tecido violeta): "quer as outras perguntas do meu / brie*f*ing?" + "comenta “BRIEFING” que eu te mando na dm" + selo + emsdesign.com.br.
 
 > ⚠️ **Antes de postar:** a chamada promete mandar por dm as perguntas do briefing da Emi. Elas precisam estar prontas num formato fácil de mandar (PDF, nota ou link), e alguém precisa responder quem comentar "BRIEFING". A lâmina 5 diz que "como é a sua marca em três palavras?" é a primeira pergunta do briefing: se no briefing dela a primeira for outra, troque o texto da lâmina ou a ordem do briefing.
 
@@ -87,6 +77,6 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1) e `projeto/carrossel-v5.html` (v5): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v5.html v5` gera a v5 em `entrega/v5/` (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v5/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1) e `projeto/carrossel-v6.html` (v6): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v6.html v6` gera a v6 em `entrega/v6/` (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v6/`: PNGs finais 1080 × 1350 para subir no Instagram.
