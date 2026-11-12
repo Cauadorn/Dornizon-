@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- pelo solto · versão "The Tail Club ao pé da letra" (ref. 4 da rodada 2): o poodle aprovado colado no nome empilhado em
+     caixa alta desenhada à mão (Chewy), as duas linhas com a mesma largura e o bloco com a altura do poodle; uma cor só,
+     sem enfeite nenhum. ?fundo=&tinta= -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Chewy; src: url(../../fonts/Chewy.woff2); }
+html, body { margin: 0; }
+.palco { position: relative; width: 1200px; height: 760px; overflow: hidden; background: var(--fundo); }
+svg { position: absolute; left: 0; top: 0; }
+</style></head><body>
+<div class="palco"><svg id="s" width="1200" height="760"><defs><filter id="tinge"><feFlood id="cor" flood-color="#6B2A14"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs><g id="logo"></g></svg></div>
+<script>
+const q = new URLSearchParams(location.search), $ = (i) => document.getElementById(i), NS = 'http://www.w3.org/2000/svg';
+const C = { fundo: q.get('fundo') || '#F5A623', tinta: q.get('tinta') || '#6B2A14' };
+document.querySelector('.palco').style.setProperty('--fundo', C.fundo); $('cor').setAttribute('flood-color', C.tinta);
+const el = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); $('logo').appendChild(e); return e; };
+const ctx = document.createElement('canvas').getContext('2d');
+const mede = (t, fs, ls = 0) => { ctx.font = `${fs}px Chewy`; ctx.letterSpacing = ls + 'px'; const m = ctx.measureText(t); return { esq: m.actualBoundingBoxLeft, dir: m.actualBoundingBoxRight, sobe: m.actualBoundingBoxAscent, desce: m.actualBoundingBoxDescent }; };
+document.fonts.load('100px Chewy').then(() => {
+  // "SOLTO" manda a largura; "PELO" ganha espaço entre letras até ficar com a mesma largura de tinta
+  const FS = 230, s = mede('SOLTO', FS), larg = s.esq + s.dir, p0 = mede('PELO', FS), lsP = (larg - (p0.esq + p0.dir)) / 3, p = mede('PELO', FS, lsP);
+  const y1 = 0, y2 = y1 + p.desce + 16 + s.sobe;
+  el('text', { x: p.esq, y: y1, 'font-family': 'Chewy', 'font-size': FS, 'letter-spacing': lsP, fill: C.tinta }).textContent = 'PELO';
+  el('text', { x: s.esq, y: y2, 'font-family': 'Chewy', 'font-size': FS, fill: C.tinta }).textContent = 'SOLTO';
+  const topo = y1 - p.sobe, base = y2 + s.desce, alt = (base - topo) * 1.04, ar = 964 / 1368, lw = alt * ar;
+  el('image', { href: 'poodle-sentado.png', x: -lw - 18, y: base - alt, width: lw, height: alt, filter: 'url(#tinge)' });
+  const L = $('logo'), bb = L.getBBox();
+  L.setAttribute('transform', `translate(600 380) translate(${-(bb.x + bb.width / 2)} ${-(bb.y + bb.height / 2)})`);
+});
+</script></body></html>
