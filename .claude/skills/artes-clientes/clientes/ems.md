@@ -70,7 +70,8 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
 - Aplicação (mockup): seguir as referências dela em `Emi/ems-5-direcoes-pet/referencias/mockups-da-emi/`. A marca fica numa cena real, o bicho é o protagonista, o rosto da pessoa é cortado e o material aparece (bordado, outdoor, jaleco, embalagem em set).
 - **Mandar para aprovação antes de colocar no post.**
 - **Logo do petisco: o que a Emi aprovou como caminho.** Foi a referência NOSY (`referencias/logo-petisco/12-nosy.jpg`): letra desenhada, gordinha e orgânica, com um detalhe só (a pata no lugar do "O"), em creme chapado sobre uma foto de textura com marcas de pata. Ela liberou mudar o nome, e a marca virou **TOTÓ**. A pata entra no **primeiro "O"**, na altura exata das maiúsculas, e o "Ó" final mantém o acento. A pata no fim lia "TOT" e quebrava a simetria ("não sei se parece totó").
-- **Logo precisa de simetria e espaçamento igual entre as letras**: nada de giro aleatório por letra (deixa desequilibrado), e o símbolo tem o mesmo peso de uma letra.
+- **Logo de letra desenhada precisa de assimetria**: as letras dançam, cada uma numa altura e num ângulo (como no NOSY, Puff Paw, Sandy Paws). Uma versão toda reta, alinhada e com o mesmo espaço ficou "muito estranha". Atenção: no recado "n tem aimetria" ela quis dizer *assimetria*; eu li "simetria" e endureci o logo.
+- **Símbolo dentro da letra tem que manter a forma da letra**: a pata no lugar do "O" precisa de almofada redonda (o próprio O da fonte, maciço ou com o furo) e dedos por cima. A almofada em sino (triângulo) lia "A". Referências em `referencias/logo-petisco/pinterest-pata-no-o-*.jpg`.
 - O que ela reprovou no caminho:
   - fonte técnica e reta (Nunito: "a fonte não tem nada a ver, a outra é desenhadinha, linda"); a escolhida foi a Cherry Bomb One, com cada letra levemente girada;
   - traços de "farejar" ao lado da pata ("esses bigodes nada a ver");
