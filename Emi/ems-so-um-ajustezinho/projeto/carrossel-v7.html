@@ -15,6 +15,7 @@
 @font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-Medium.ttf);font-weight:500}
 @font-face{font-family:"Poppins";src:url(assets/fonts/Poppins-SemiBold.ttf);font-weight:600}
 @font-face{font-family:"Poppins";src:url(assets/fonts/poppins-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:"Anton";src:url(assets/fonts/Anton-Regular.ttf)}
 
 :root{
   --ivory:#fffbde; --ivory-2:#f4edcb; --tinta:#2a1433; --ameixa:#3d1c46; --creative-purple:#482952;
@@ -82,12 +83,15 @@ body{background:#140a19;width:max-content}
 .emi span{position:absolute;left:30px;top:30px;background:var(--pink);color:var(--ivory);font:500 19px/1 var(--sans);padding:6px 11px;border-radius:4px;white-space:nowrap}
 
 /* ---------- 01 capa ---------- */
-#l1 .lead{left:84px;top:178px;color:var(--ivory)}
-#l1 .t1{left:62px;top:250px;font-size:310px;color:var(--ivory)}
-#l1 .t2{left:290px;top:428px;font-size:310px;color:var(--manteiga);z-index:4}
-#l1 .papel{left:540px;top:800px;width:800px;z-index:3}
-#l1 .caixa{left:80px;top:930px;width:420px;border:3px solid var(--ivory);border-radius:40px;padding:30px 34px 34px;font:500 34px/1.2 var(--sans);color:var(--ivory);z-index:4}
-#l1 .caixa b{font-weight:700;color:var(--manteiga)}
+/* capa-pôster: UMA palavra gigante em caixa alta condensada (Anton, fonte da EMS) e o objeto na frente dela */
+#l1 .lead{left:84px;top:150px;color:var(--ivory)}
+#l1 .poster{left:78px;top:214px;width:924px;font-family:"Anton",Impact,sans-serif;font-weight:400;line-height:.86;letter-spacing:-.005em;text-transform:uppercase;z-index:2}
+#l1 .poster span{display:block;white-space:nowrap}
+#l1 .poster .p1{color:var(--ivory)}
+#l1 .poster .p2{color:var(--manteiga)}
+#l1 .papel{left:600px;top:660px;width:860px;z-index:3}
+#l1 .frase{left:84px;top:1010px;font-size:60px;line-height:.98;color:var(--ivory);z-index:4}
+#l1 .frase em{color:var(--ivory)}
 #l1 .handle{left:96px;bottom:60px}
 
 /* ---------- 02 loop: o desenho é o próprio loop ---------- */
@@ -220,12 +224,10 @@ body{background:#140a19;width:max-content}
 <section class="lamina tecido" id="l1" style="--c:var(--violeta)">
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">“é só um</p>
-  <h1 class="serif t1 impresso">ajuste</h1>
-  <h1 class="serif t2 impresso"><em>zinho”</em></h1>
-  <!-- atravessa o corte 1|2 -->
+  <h1 class="poster impresso" id="poster"><span class="p1">ajuste</span><span class="p2">zinho”</span></h1>
+  <!-- na frente da palavra e atravessando o corte 1|2 -->
   <img class="papel duo-v" src="recortes/papel.png" alt="">
-  <p class="caixa">e foi assim que a gente chegou na <b>versão 27.</b></p>
-  <svg class="forma" data-brilho="r:44,cor:#f2cf7a,rot:8" style="left:900px;top:660px;width:110px;height:110px;z-index:6"></svg>
+  <p class="serif frase impresso">e foi assim que a gente<br>chegou na <em>versão 27.</em></p>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
   <div class="tela"></div><div class="grao"></div>
 </section>
@@ -364,7 +366,14 @@ function posicionaEtapas() {
     el.style.left = f(x - el.offsetWidth / 2) + 'px'; el.style.top = f(y - el.offsetHeight / 2) + 'px';
   });
 }
-Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { posicionaEtapas(); window.READY = true; });
+function ajustaPoster() {
+  const box = document.getElementById('poster'), W = box.clientWidth;
+  box.querySelectorAll('span').forEach(sp => {
+    sp.style.fontSize = '100px'; sp.style.display = 'inline-block';
+    const w = sp.getBoundingClientRect().width; sp.style.fontSize = (100 * W / w).toFixed(1) + 'px'; sp.style.display = 'block';
+  });
+}
+Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { ajustaPoster(); posicionaEtapas(); window.READY = true; });
 </script>
 </body>
 </html>

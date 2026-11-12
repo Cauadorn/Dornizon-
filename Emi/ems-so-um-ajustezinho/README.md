@@ -21,7 +21,7 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 | Lâmina | O que tem | Princípio das refs |
 | --- | --- | --- |
-| 1 · capa | tecido violeta; "“é só um / ajuste / *zinho*”"; papel amassado em duotone; caixa contornada com "versão 27." | @carolrech, jantar |
+| 1 · capa | **capa-pôster**: "AJUSTE / ZINHO”" em Anton (fonte da EMS) ocupando a largura toda, "zinho”" em manteiga, o papel amassado em duotone **na frente** da palavra e atravessando o corte; apoio em serifa "e foi assim que a gente chegou na *versão 27.*" | pesquisa 01 (@carolrech), 02 (@agrizzart), 06 |
 | 2 · loop | papel pontilhado; **o círculo é o loop**: as 4 etapas em pílulas sobre o anel (setas no sentido horário), "o loop da *refação*" no meio; a etapa 03 ("tá quase…") é a única em rosa | @studioemi.design |
 | 3 · pasta | xadrez **tom sobre tom** e janela **monocromática** (ícones da EMS em tinta, miniaturas lavanda); rosa só no "*final*" e no aviso "spoiler: aprovaram a v1" | @danibloom.design |
 | 4 · norte | a da v2, aprovada | — |
@@ -32,7 +32,7 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 Descartadas: v2 (caderno repetido), v3 (voltou demais para a v1), v4 (fio), v5 (cara de interface), v6 (fonte pesada e manuscrita no título inteiro, borracha jogada no meio do loop, xadrez forte com janela colorida, "socado"). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
 
-Referências em `referencias/outras/`.
+Referências em `referencias/outras/` e a pesquisa (25 peças, com o princípio de cada uma) em `referencias/pesquisa/`.
 
 ## Lâminas
 
