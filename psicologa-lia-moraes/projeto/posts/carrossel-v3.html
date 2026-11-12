@@ -26,6 +26,8 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
 /* grão de filme por cima de tudo */
 .grao{position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.2;mix-blend-mode:overlay;
  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bloco{position:absolute;left:0;right:0;text-align:center}
+.bloco>*{display:block}
 .papel{background:#F2EADB;box-shadow:0 30px 60px rgba(10,20,60,.35)}
 .papel::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;
  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -36,11 +38,13 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <img class="f" src="../fotos-pinterest/base/cadeira-morro.jpg">
   <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
   <div class="canto tr">@psi.liamoraes</div>
-  <div class="abs cen js" style="top:128px;font-size:40px">Você <span class="sub">não precisa</span></div>
-  <div class="abs cen is" style="top:186px;font-size:172px">chegar no</div>
-  <div class="abs cen is" style="top:296px;font-size:330px" data-fit="930"><i>limite</i></div>
+  <div class="bloco" style="top:150px">
+    <span class="js" style="font-size:40px">Você <span class="sub">não precisa</span></span>
+    <span class="is" style="font-size:172px;margin-top:4px">chegar no</span>
+    <span class="is" id="t1" style="font-size:330px;margin-top:-34px" data-fit="930"><i>limite</i></span>
+  </div>
   <img class="f" src="../fotos-pinterest/base/cadeira-morro-recorte.png" style="z-index:5">
-  <div class="abs cen caps" style="top:1118px;font-size:26px;color:var(--creme);z-index:6">pra começar terapia.</div>
+  <div class="abs cen js" data-abaixo="t1" data-gap="-6" style="font-size:36px;z-index:6"><span class="faixa">pra <b>começar terapia.</b></span></div>
   <div class="canto bl" style="color:var(--creme)">CRP 00/00000</div>
   <div class="canto br" style="color:var(--creme)">arrasta →</div>
   <div class="grao"></div>
@@ -51,9 +55,11 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <img class="f" src="../fotos-pinterest/base/mulher-morro-ceu.jpg">
   <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
   <div class="canto tr">@psi.liamoraes</div>
-  <div class="abs cen js" style="top:190px;font-size:44px;line-height:1.18">A gente costuma <b>procurar ajuda</b><br>só quando tudo</div>
-  <div class="abs cen is" style="top:318px;font-size:250px" data-fit="900">desmo<i>rona.</i></div>
-  <div class="abs cen caps" style="top:536px;font-size:26px;letter-spacing:.5em">mas não precisa ser assim.</div>
+  <div class="bloco" style="top:190px">
+    <span class="js" style="font-size:44px;line-height:1.15">A gente costuma <b>procurar ajuda</b><br>só quando tudo</span>
+    <span class="is" style="font-size:250px;margin-top:-4px" data-fit="900">desmo<i>rona.</i></span>
+    <span class="caps" style="font-size:26px;letter-spacing:.5em;margin-top:6px">mas não precisa ser assim.</span>
+  </div>
   <div class="canto bl" style="color:var(--creme)">CRP 00/00000</div>
   <div class="canto br" style="color:var(--creme)">02/08</div>
   <div class="grao"></div>
@@ -65,8 +71,8 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <div class="abs" style="left:90px;top:140px;width:900px;height:900px;border-radius:50%;background:var(--c)"></div>
   <div class="canto tl" style="color:var(--c)"><b>Lia Moraes</b><br>Psicóloga</div>
   <div class="canto tr" style="color:var(--c)">@psi.liamoraes</div>
-  <div class="abs" style="left:200px;right:200px;top:300px;display:flex;align-items:center;gap:18px;font:400 26px Jost;letter-spacing:.06em">4 <b style="font-weight:600">SINAIS</b> DE QUE<span style="flex:1;height:1.5px;background:var(--creme);opacity:.8"></span></div>
-  <div class="abs cen is" style="top:352px;font-size:168px;line-height:.9">você precisa<br>de uma <i>pausa</i></div>
+  <div class="abs" style="left:200px;right:200px;top:318px;display:flex;align-items:center;gap:18px;font:400 26px Jost;letter-spacing:.06em">4 <b style="font-weight:600">SINAIS</b> DE QUE<span style="flex:1;height:1.5px;background:var(--creme);opacity:.8"></span></div>
+  <div class="abs cen is" style="top:362px;font-size:168px;line-height:.86">você precisa<br>de uma <i>pausa</i></div>
   <img class="f" src="../fotos-pinterest/base/mesinha-caderno-recorte.png" style="z-index:5">
   <div class="abs js" style="left:62px;bottom:150px;width:250px;font-size:24px;line-height:1.3;color:var(--c);border-left:2.5px solid var(--c);padding-left:18px;text-transform:uppercase;letter-spacing:.04em;z-index:6">Arrasta e veja se você <b>se reconhece</b> em algum.</div>
   <div class="canto bl" style="color:var(--c);opacity:0">.</div>
@@ -81,10 +87,12 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <div class="canto tl">@psi.liamoraes</div>
   <div class="canto tr">CRP 00/00000</div>
   <div class="abs vazado" style="left:62px;top:160px">no automático<br>no automático</div>
-  <div class="abs cen caps" style="top:300px;font-size:24px;color:var(--p)">sinal 01</div>
-  <div class="abs cen js" style="top:350px;font-size:58px;font-weight:300">Você vive no</div>
-  <div class="abs cen is" style="top:470px;font-size:300px" data-fit="960"><i><span style="color:var(--p)">a</span>utomático</i></div>
-  <div class="abs cen js" style="top:860px;font-size:38px"><span class="faixa">acorda, cumpre a lista, apaga.</span><br><span class="faixa">e nem lembra quando parou.</span></div>
+  <div class="bloco" style="top:330px">
+    <span class="caps" style="font-size:24px;color:var(--p)">sinal 01</span>
+    <span class="js" style="font-size:58px;margin-top:10px">Você vive no</span>
+    <span class="is" style="font-size:300px;margin-top:-6px" data-fit="960"><i><span style="color:var(--p)">a</span>utomático</i></span>
+    <span class="js" style="font-size:38px;margin-top:6px"><span class="faixa">acorda, cumpre a lista, apaga.</span><br><span class="faixa">e nem lembra quando parou.</span></span>
+  </div>
   <div class="abs vazado" style="right:62px;top:1170px;text-align:right">no automático<br>no automático</div>
   <div class="canto bl">@psi.liamoraes</div>
   <div class="canto br">04/08</div>
@@ -97,11 +105,12 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(12,20,70,.35),rgba(12,20,70,.2) 50%,rgba(12,20,70,.45))"></div>
   <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
   <div class="canto tr">@psi.liamoraes</div>
-  <div class="abs cen caps" style="top:250px;font-size:24px;color:var(--p)">sinal 02</div>
-  <div class="abs cen is" style="top:300px;font-size:250px" data-fit="820">Descansar</div>
-  <div class="abs cen is" style="top:520px;font-size:250px">dá <i style="color:var(--p)">culpa.</i></div>
-  <div class="abs cen js" style="top:790px;font-size:38px">Como se <span class="sub">parar fosse perder tempo.</span></div>
-  <div class="abs cen caps" style="top:860px;font-size:26px;font-weight:600">(não é.)</div>
+  <div class="bloco" style="top:300px">
+    <span class="caps" style="font-size:24px;color:var(--p)">sinal 02</span>
+    <span class="is" style="font-size:250px;margin-top:8px" data-fit="820">Descansar</span>
+    <span class="is" style="font-size:236px;margin-top:-18px">dá <i style="color:var(--p)">culpa.</i></span>
+    <span class="js" style="font-size:38px;margin-top:22px">Como se <span class="sub">parar fosse perder tempo.</span> <b>(Não é.)</b></span>
+  </div>
   <div class="canto bl">CRP 00/00000</div>
   <div class="canto br">05/08</div>
   <div class="grao"></div>
@@ -114,11 +123,11 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <div class="canto tr">CRP 00/00000</div>
   <div class="abs papel" style="left:130px;right:130px;top:140px;bottom:140px;color:var(--c)">
     <div class="abs cen is" style="top:56px;font-size:150px;z-index:2"><i>“As mesmas</i></div>
-    <div class="abs cen is" style="top:180px;font-size:150px;z-index:2">histórias</div>
-    <div class="abs" style="left:230px;right:230px;top:330px;height:470px;border-radius:200px 200px 0 0;overflow:hidden;z-index:1"><img src="../fotos-pinterest/base/mar-mulher-agua.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
+    <div class="abs cen is" style="top:172px;font-size:150px;z-index:2">histórias</div>
+    <div class="abs" style="left:230px;right:230px;top:318px;height:500px;border-radius:200px 200px 0 0;overflow:hidden;z-index:1"><img src="../fotos-pinterest/base/mar-mulher-agua.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
     <div class="abs js" style="left:44px;top:470px;width:170px;font-size:21px;line-height:1.2;z-index:2">(outro emprego,<br>outra relação)</div>
     <div class="abs js" style="right:44px;top:620px;width:170px;text-align:right;font-size:21px;line-height:1.2;z-index:2">a mesma<br>sensação<br>no fim.</div>
-    <div class="abs cen is" style="top:830px;font-size:150px;z-index:2">se repetem.”</div>
+    <div class="abs cen is" style="top:812px;font-size:150px;z-index:2">se repetem.”</div>
     <div class="abs cen caps" style="bottom:36px;font-size:18px;letter-spacing:.4em">sinal 03</div>
   </div>
   <div class="canto bl">@psi.liamoraes</div>
@@ -131,12 +140,14 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <img class="f" src="../fotos-pinterest/base/poltrona-azul-trigo.jpg">
   <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
   <div class="canto tr">@psi.liamoraes</div>
-  <div class="abs cen caps" style="top:135px;font-size:24px">sinal 04</div>
-  <div class="abs cen js" style="top:178px;font-size:44px">Sempre <span class="sub">“bem”,</span></div>
-  <div class="abs cen is" style="top:240px;font-size:195px" data-fit="840">mas sempre</div>
-  <div class="abs cen is" style="top:428px;font-size:195px"><i>cansada.</i></div>
+  <div class="bloco" style="top:150px">
+    <span class="caps" style="font-size:24px">sinal 04</span>
+    <span class="js" style="font-size:44px;margin-top:8px">Sempre <span class="sub">“bem”,</span></span>
+    <span class="is" style="font-size:195px;margin-top:2px" data-fit="840">mas sempre</span>
+    <span class="is" id="t7" style="font-size:195px;margin-top:-10px"><i>cansada.</i></span>
+  </div>
   <img class="f" src="../fotos-pinterest/base/poltrona-azul-trigo-recorte.png" style="z-index:5">
-  <div class="abs cen js" style="top:1060px;font-size:34px;color:var(--creme);z-index:6">Cansaço que o descanso <b>não resolve</b><br>também é um sinal.</div>
+  <div class="abs cen js" data-abaixo="t7" data-gap="4" style="font-size:34px;z-index:6"><span class="faixa">cansaço que o descanso <b>não resolve</b></span><br><span class="faixa">também é um sinal.</span></div>
   <div class="canto bl" style="color:var(--creme)">CRP 00/00000</div>
   <div class="canto br" style="color:var(--creme)">07/08</div>
   <div class="grao"></div>
@@ -147,11 +158,14 @@ body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
   <img class="f" src="../fotos-pinterest/base/lia-sofa-v1-baixo.png">
   <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
   <div class="canto tr">@psi.liamoraes</div>
-  <div class="abs cen js" style="top:122px;font-size:44px">Se você se reconheceu,</div>
-  <div class="abs cen is" style="top:182px;font-size:260px" data-fit="600">vamos</div>
-  <div class="abs cen is" style="top:380px;font-size:260px" data-fit="910"><i>conversar?</i></div>
+  <div class="bloco" style="top:130px">
+    <span class="js" style="font-size:44px">Se você se reconheceu,</span>
+    <span class="is" style="font-size:240px;margin-top:2px" data-fit="520">vamos</span>
+    <span class="is" style="font-size:240px;margin-top:-30px" data-fit="840"><i>conversar?</i></span>
+    <span class="js" style="font-size:34px;margin-top:14px"><span class="faixa"><b>agende sua primeira sessão</b> · link na bio</span></span>
+  </div>
   <img class="f" src="../fotos-pinterest/base/lia-sofa-v1-recorte-baixo.png" style="z-index:5">
-  <div class="abs cen js" style="top:1150px;font-size:34px;z-index:6"><span class="faixa"><b>agende sua primeira sessão</b></span><br><span class="faixa">online e presencial · link na bio</span></div>
+  <div class="abs cen caps" style="bottom:110px;font-size:22px;color:var(--creme);z-index:6;opacity:0">.</div>
   <div class="canto bl" style="color:var(--creme);z-index:7">CRP 00/00000</div>
   <div class="canto br" style="color:var(--creme);z-index:7">08/08</div>
   <div class="grao"></div>
@@ -167,6 +181,11 @@ document.fonts.ready.then(() => {
     el.innerHTML = ''; el.appendChild(s);
     const fs = parseFloat(getComputedStyle(el).fontSize);
     el.style.fontSize = (fs * alvo / s.getBoundingClientRect().width) + 'px';
+  });
+  document.querySelectorAll('[data-abaixo]').forEach(el => {
+    const ref = document.getElementById(el.dataset.abaixo), art = el.closest('.art');
+    const r = ref.getBoundingClientRect(), a = art.getBoundingClientRect();
+    el.style.top = (r.bottom - a.top + (+el.dataset.gap || 0)) + 'px';
   });
   window.READY = true;
 });
