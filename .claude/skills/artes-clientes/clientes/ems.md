@@ -17,3 +17,7 @@ Registrado também no Design System (README › "Regras de carrossel"; conteúdo
   - **Matéria agrada:** tecido, letra com falha de impressão, objetos em duotone da paleta ("a bússola tava linda").
   - **Objeto gerado entra reto:** a borracha com 13° de inclinação + rotação no layout ficou "totalmente torta". Medir e nivelar o recorte antes de compor.
   - **Tema:** *blanding* já tem post no feed da EMS.
+  - **Fonte diferente só no destaque** (uma palavra). Título inteiro em Poppins 900 e manuscrita espalhada (v6) foram reprovados.
+  - **Pouca coisa por lâmina**, na fórmula da lâmina aprovada (fundo com matéria + título com um destaque + um elemento + um apoio). "Socar tudo" foi reprovado.
+  - **Fundo forte, conteúdo calmo:** xadrez chamativo + janela colorida foi reprovado; xadrez tom sobre tom + janela monocromática, rosa só no destaque.
+  - **Objeto tem que ter motivo:** a borracha jogada no meio do loop saiu; o loop virou o próprio círculo.

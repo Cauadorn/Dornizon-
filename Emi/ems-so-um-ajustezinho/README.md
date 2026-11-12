@@ -17,29 +17,27 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 ## Versões
 
 - **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada.
-- **v6** (`entrega/v6/`, `projeto/carrossel-v6.html`): **a atual.** Na linguagem das referências que a Emi mandou, nas cores da EMS: tipografia gigante e apertada (Instrument Serif + Poppins 900 + uma palavra em Kaushan Script), textura de tela por cima de tudo, formas grandes da EMS cortadas pela borda, texto em pílulas de cor, objetos em duotone. A lâmina 4 é a da bússola da v2 (a que a Emi aprovou).
+- **v7** (`entrega/v7/`, `projeto/carrossel-v7.html`): **a atual.** A disciplina da lâmina que a Emi aprovou (a da bússola) em todas: um fundo com matéria, título em Instrument Serif com **uma** palavra de destaque em itálico, um elemento principal, um apoio. Fonte diferente só no destaque.
 
-| Lâmina | Linguagem | Referência (princípio) |
+| Lâmina | O que tem | Princípio das refs |
 | --- | --- | --- |
-| 1 · capa | tecido violeta, "“é só um" manuscrito + "AJUSTE" pesado + "*zinho*”" serifado se atropelando, papel amassado em duotone, caixa contornada | @carolrech, jantar |
-| 2 · loop | papel pontilhado, "o loop da" pesado + "refação" manuscrito, as 4 etapas em pílulas de cor, borracha no centro, brilho lavanda grande atrás | @studioemi.design |
-| 3 · pasta | xadrez da paleta, janela retrô com ícones da EMS na barra, miniaturas v1/v9/v18/v27 na lateral, "ache o / arquivo / *final*" | @danibloom.design |
-| 4 · norte | a da v2: tecido ameixa, "*norte.*" gigante, bússola em duotone, bilhete com fita | aprovada pela Emi |
-| 5 · pergunta | linho, manuscrito + serifa grande, tablet com a conversa, estrelas da EMS atrás do aparelho | @rafaelalimadesigner_ |
-| 6 · chamada | a chamada vira etiqueta (com furo) sobre tecido violeta | @studioemi.design e @amanda.rfernandes |
+| 1 · capa | tecido violeta; "“é só um / ajuste / *zinho*”"; papel amassado em duotone; caixa contornada com "versão 27." | @carolrech, jantar |
+| 2 · loop | papel pontilhado; **o círculo é o loop**: as 4 etapas em pílulas sobre o anel (setas no sentido horário), "o loop da *refação*" no meio; a etapa 03 ("tá quase…") é a única em rosa | @studioemi.design |
+| 3 · pasta | xadrez **tom sobre tom** e janela **monocromática** (ícones da EMS em tinta, miniaturas lavanda); rosa só no "*final*" e no aviso "spoiler: aprovaram a v1" | @danibloom.design |
+| 4 · norte | a da v2, aprovada | — |
+| 5 · pergunta | linho; "como é a sua marca em *três* palavras?"; a pergunta numa conversa no tablet | @rafaelalimadesigner_ |
+| 6 · chamada | a chamada vira etiqueta, com "brie*f*ing?" e "comenta BRIEFING" | @studioemi.design, @amanda.rfernandes |
 
-**Conectividade:** um objeto ou forma atravessa cada corte, metade de cada lado: pilha de papel (1|2), brilho violeta (2|3), brilho manteiga (3|4), bússola (4|5), brilho manteiga (5|6). Nada de fio.
+**Conectividade:** um objeto ou forma atravessa cada corte: papel (1|2), brilho violeta (2|3), brilho manteiga (3|4), bússola (4|5), brilho manteiga (5|6). Nada de fio.
 
-Fontes novas (em teste, a pedido da Emi para seguir as refs): Poppins 700/800/900 e Kaushan Script (`projeto/assets/fonts/`, @fontsource, licença OFL).
-
-Descartadas: v2 (caderno repetido em 3 lâminas), v3 (voltou demais para a v1), v4 (fio atravessando as lâminas) e v5 (cara de interface, sem a linguagem das refs). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
+Descartadas: v2 (caderno repetido), v3 (voltou demais para a v1), v4 (fio), v5 (cara de interface), v6 (fonte pesada e manuscrita no título inteiro, borracha jogada no meio do loop, xadrez forte com janela colorida, "socado"). As lições estão no Design System da EMS (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
 
 Referências em `referencias/outras/`.
 
 ## Lâminas
 
 1. **Capa** (`violeta`): "“é só um / ajuste*z*inho”" + pilha de papel amassado (v3_ajuste.png, v_final.png, v27_ok.png). "e foi assim que a gente chegou na versão 27."
-2. **Tensão** (papel pontilhado): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
+2. **Tensão** (papel pontilhado, o loop como círculo): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
 3. **Piada** (janela retrô sobre xadrez): "teste rápido: / ache o arquivo *final*". "sem briefing, cada versão é um chute. e chute cansa os dois lados."
 4. **Virada** (tecido ameixa): "calma: ajuste faz parte. / o que cansa é ajuste sem *norte.*" + bússola. "briefing bem feito é o norte do projeto: todo mundo sabe pra onde vai, e o ajuste vira refinamento, não recomeço."
 5. **Pergunta aberta** (linho claro): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" A pergunta aparece numa conversa no tablet; a resposta vai nos comentários.
@@ -67,7 +65,7 @@ e me conta: como é a sua marca em três palavras?
 
 ## Elementos gerados
 
-Nano Banana Pro (`gemini-3-pro-image`, pelo ElevenLabs, 4 variações por prompt, 1376 × 768), prompts em português com fundo #E9E9E9, no modelo "Objeto 3D recortado" de `geracao-de-imagem.md`. Recorte com `rembg` BiRefNet (papel e borracha brancos perto do #E9E9E9). Escolhidas: papel-1, bussola-3 e, para a borracha, a variação 3 (`borracha-reta.png`, nivelada pelo eixo do objeto: a 1 estava 13° torta). Originais em `projeto/geradas/`, recortes em `projeto/recortes/`. As outras variações ficaram no flow "EMS — carrossel ajustezinho (objetos)" no ElevenLabs.
+Nano Banana Pro (`gemini-3-pro-image`, pelo ElevenLabs, 4 variações por prompt, 1376 × 768), prompts em português com fundo #E9E9E9, no modelo "Objeto 3D recortado" de `geracao-de-imagem.md`. Recorte com `rembg` BiRefNet (papel e borracha brancos perto do #E9E9E9). Escolhidas: papel-1 e bussola-3 (a borracha saiu na v7: o loop agora é o próprio círculo). Originais em `projeto/geradas/`, recortes em `projeto/recortes/`. As outras variações ficaram no flow "EMS — carrossel ajustezinho (objetos)" no ElevenLabs.
 
 - **Papel amassado (capa):** Fotografia de produto de uma pilha de sete bolas de papel sulfite amassado, papel branco levemente marfim com rabiscos de lápis e traços de caneta violeta #6225D8 aparecendo entre as dobras, amontoadas umas sobre as outras formando um pequeno monte, uma bola rolando um pouco afastada, luz de estúdio suave vinda da esquerda, sombras de contato delicadas entre as bolas, textura realista de papel, foco nítido em toda a peça, enquadramento centralizado com respiro nas bordas, fundo liso #E9E9E9, sem sombra projetada no chão, sem texto legível, sem logotipo, sem outros objetos.
 - **Borracha (lâmina 2):** Fotografia de produto de uma borracha escolar branca com cinta de papel violeta #6225D8 lisa e sem texto, muito gasta de tanto apagar, a ponta exposta desgastada, torta e arredondada, alguns farelos de borracha espalhados bem perto dela, objeto deitado em três quartos, luz de estúdio suave vinda da esquerda, sombras de contato delicadas, textura realista de borracha e papel, foco nítido em toda a peça, enquadramento centralizado com respiro nas bordas, fundo liso #E9E9E9, sem sombra projetada no chão, sem texto, sem logotipo, sem outros objetos.
@@ -77,6 +75,6 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1) e `projeto/carrossel-v6.html` (v6): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v6.html v6` gera a v6 em `entrega/v6/` (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v6/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1) e `projeto/carrossel-v7.html` (v7): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v7.html v7` gera a v7 em `entrega/v7/` (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v7/`: PNGs finais 1080 × 1350 para subir no Instagram.
