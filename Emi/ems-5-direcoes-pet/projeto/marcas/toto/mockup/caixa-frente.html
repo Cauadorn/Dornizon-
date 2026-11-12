@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Frente da caixa TOTÓ (640 x 1000), no esquema do PAWLY (referência da Emi):
+     cor chapada + grafismos grandes da marca (dedinhos da pata) cortados pela borda,
+     nome enorme no topo, linhas com texto, janela em arco com o cachorro, selos, etiqueta de sabor. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Cherry; src: url(../../../fonts/CherryBombOne-Regular.ttf); }
+@font-face { font-family: Poppins; src: url(../../../fonts/Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: Poppins; src: url(../../../fonts/Poppins-Medium.ttf); font-weight: 500; }
+html, body { margin: 0; }
+.frente { position: relative; width: 640px; height: 1000px; overflow: hidden; background: #F2542D; }
+.graf { position: absolute; background: #D9441F; border-radius: 50%; }
+.logo { position: absolute; left: 38px; top: 62px; width: 564px; }
+.linhas { position: absolute; left: 44px; top: 268px; width: 330px; color: #FFF1D6; font: 500 17px/1 Poppins; }
+.linhas div { border-top: 1.5px solid rgba(255,241,214,.75); padding: 11px 0 12px; }
+.linhas div:last-child { border-bottom: 1.5px solid rgba(255,241,214,.75); }
+.janela { position: absolute; left: 168px; top: 396px; width: 304px; height: 440px; border-radius: 152px 152px 0 0; overflow: hidden; background: #FFD23F; }
+.janela img { position: absolute; width: 560px; left: -118px; top: -30px; }
+.selo { position: absolute; width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; }
+.selo.a { left: 44px; top: 468px; background: #FFF1D6; }
+.selo.b { left: 492px; top: 452px; background: #B8361A; border: 2px solid #FFF1D6; }
+.selo.b svg { position: absolute; inset: 0; }
+.etiqueta { position: absolute; left: 132px; top: 784px; width: 376px; height: 116px; padding: 6px; background: #B8361A; color: #FFF1D6;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 4.5px, transparent 96%, #000) -6px -6px / 12px 12px round;
+          mask: linear-gradient(#000 0 0) content-box, radial-gradient(circle 4.5px, transparent 96%, #000) -6px -6px / 12px 12px round; }
+.etiqueta .moldura { position: absolute; inset: 13px; border: 1.5px solid rgba(255,241,214,.85); display: grid; grid-template-columns: 1fr 1.25fr; }
+.etiqueta .moldura > div { padding: 12px 14px 0; }
+.etiqueta .moldura > div + div { border-left: 1.5px solid rgba(255,241,214,.85); }
+.etiqueta b { display: block; font: 600 25px/1.05 Poppins; letter-spacing: .02em; }
+.etiqueta b + b { border-top: 1.5px solid rgba(255,241,214,.85); margin: 6px -14px 0; padding: 5px 14px 0; }
+.etiqueta small { display: block; font: 500 10.5px/1.3 Poppins; margin-top: 6px; opacity: .9; }
+.peso { position: absolute; right: 30px; bottom: 26px; font: 600 15px/1 Poppins; color: #FFF1D6; letter-spacing: .04em; }
+</style></head><body>
+<div class="frente">
+  <!-- grafismos: os dedinhos da pata do logo, gigantes e cortados -->
+  <div class="graf" style="left:388px;top:-120px;width:300px;height:380px;transform:rotate(18deg)"></div>
+  <div class="graf" style="left:-150px;top:300px;width:250px;height:320px;transform:rotate(-22deg)"></div>
+  <div class="graf" style="left:430px;top:610px;width:330px;height:280px;"></div>
+  <div class="graf" style="left:-120px;top:820px;width:300px;height:300px;"></div>
+  <img class="logo" src="../logo-toto-creme.png" alt="TOTÓ">
+  <div class="linhas"><div>feito no brasil</div><div>com ingrediente de verdade</div></div>
+  <div class="janela"><img src="../../../img/d1pet-2.jpg" alt=""></div>
+  <div class="selo a"><svg width="62" height="62" viewBox="0 0 60 60" fill="none" stroke="#F2542D" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 22 a6 6 0 1 1 8-8 L38 30 a6 6 0 1 1 8 8 a6 6 0 1 1-8 8 L22 30 a6 6 0 1 1-8-8 z"/></svg></div>
+  <div class="selo b"><svg viewBox="0 0 104 104"><defs><path id="c" d="M52 52 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1-76 0"/></defs>
+    <text fill="#FFF1D6" font-family="Poppins" font-weight="600" font-size="9.6" letter-spacing="1.6"><textPath href="#c">ASSADO NO FORNO · SEM CORANTE ·</textPath></text></svg>
+    <span style="font:400 40px/1 Cherry;color:#FFF1D6;margin-top:2px">T</span></div>
+  <div class="etiqueta"><div class="moldura">
+    <div><b>FRANGO</b><b>BATATA</b></div>
+    <div><b style="font-size:21px">CROCANTE</b><small>petisco assado para cães de todos os tamanhos</small></div>
+  </div></div>
+  <div class="peso">PESO LÍQ. 200 g</div>
+</div>
+</body></html>
