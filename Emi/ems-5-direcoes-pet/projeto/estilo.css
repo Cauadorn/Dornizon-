@@ -166,3 +166,13 @@ img.foto { position: absolute; display: block; }
 .chamada .selo { position: absolute; left: 56px; top: 1172px; width: 112px; z-index: 8; }
 .chamada .assina { position: absolute; left: 186px; top: 1202px; z-index: 8; font: 500 22px/1.3 var(--sans); color: var(--ivory); }
 .chamada .assina span { font-weight: 400; font-size: 18px; opacity: .75; }
+
+/* ---------- capa B (variação) ---------- */
+.capa-b .kicker-b { position: absolute; left: 58px; right: 56px; top: 34px; z-index: 8; display: flex; justify-content: space-between; align-items: baseline; font: 600 30px/1 var(--sans); color: var(--ivory); }
+.capa-b .kicker-b .ed { font: 500 17px/1 var(--sans); letter-spacing: .16em; }
+.capa-b .masthead-b { position: absolute; left: 34px; top: -42px; z-index: 4; font: italic 400 540px/1 var(--serif); letter-spacing: -.04em; color: var(--manteiga); }
+.capa-b .brilho { position: absolute; z-index: 8; display: block; }
+.capa-b .brilho svg { display: block; width: 100%; height: auto; }
+.capa-b .selo-redondo.b { left: 800px; top: 424px; }
+.capa-b .teaser.b { position: absolute; left: 58px; top: 1060px; z-index: 8; font: 400 62px/.94 var(--serif); letter-spacing: -.015em; color: var(--ivory); }
+.capa-b .teaser.b em { color: var(--manteiga); }

@@ -55,6 +55,15 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
 - "falta uma textura" · "gostava mais quando a orelha do gato encostava na pílula" · "não tem problema encostar, passar um pouquinho, fica estilizado"
 - "sempre pesquisar na internet, no Pinterest, dar uma olhada no Instagram, no que os designers andam postando, pra gente errar menos"
 
+## Referências que a Emi gostou (para calibrar o gosto)
+
+- **Capas de revista com gato** (Pinterest, 12/11), três circuladas por ela, guardadas em `Emi/ems-5-direcoes-pet/referencias/favoritas-da-emi/`:
+  - "Your Cat";
+  - gato preto na frente de um nome condensado gigante;
+  - "MEOW" amarelo com brilhos.
+- O padrão das três: nome **gigante e pesado**, o bicho **na frente** das letras, cor chapada forte, pouco texto, brilho de quatro pontas.
+- Na próxima capa, começar por aí.
+
 ## Identidade (resumo do DS)
 
 - Cores: `violeta` #6225D8 domina, roxos (`ameixa` #3D1C46, `creative-purple` #482952, `plum` #5B216C), `ivory` #FFFBDE de respiro, `pink` #DD34A8 e `manteiga` #F2CF7A só como acento (1 ou 2 por tela).

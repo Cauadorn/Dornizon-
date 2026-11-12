@@ -157,6 +157,30 @@ function capa() {
   return s;
 }
 
+// ---------- capa B (variação, a partir das favoritas da Emi no Pinterest) ----------
+// "Your / Cat": palavra pequena em cima de um nome gigante; o gato na frente das letras; brilhos; pouco texto.
+const BRILHO = (cor) => `<svg viewBox="0 0 40 40"><path d="M20 0 C21.5 13 27 18.5 40 20 C27 21.5 21.5 27 20 40 C18.5 27 13 21.5 0 20 C13 18.5 18.5 13 20 0 Z" fill="${cor}"/></svg>`;
+function capaB() {
+  const s = el('section', 'slide capa capa-b'); s.dataset.nome = 'lamina-01b';
+  const foto = { src: 'capa-2', px: .5, py: .5 };
+  cheia(s, foto, W, H);
+  s.insertAdjacentHTML('beforeend', `
+    <div class="escurece"></div>
+    <div class="kicker-b"><span>5 direções criativas pra marcas</span><span class="ed">edição pet · nov 2026</span></div>
+    <div class="masthead-b"><em>pet</em></div>`);
+  cheia(s, { ...foto, src: 'capa-2-gato', ext: 'png', classe: 'recorte' }, W, H);
+  s.insertAdjacentHTML('beforeend', `
+    <span class="brilho" style="left:930px;top:96px;width:74px">${BRILHO('var(--ivory)')}</span>
+    <span class="brilho" style="left:1000px;top:196px;width:34px">${BRILHO('var(--manteiga)')}</span>
+    <span class="brilho" style="left:150px;top:600px;width:44px">${BRILHO('var(--ivory)')}</span>
+    <div class="selo-redondo b"><span>nenhuma<br>é patinha<br>+ osso</span></div>
+    <div class="teaser b">5 universos pra<br>sua marca sair<br>do <em>óbvio</em></div>
+    <div class="arrasta">↳ arrasta pra folhear</div>
+    <div class="barras"><div class="b"></div><span>@itsemsdesign</span></div>`);
+  s.appendChild(el('div', 'grain claro'));
+  return s;
+}
+
 // ---------- chamada: enquete ----------
 // O gato da chamada levanta a pata e "aperta" uma opção da enquete (recorte por cima do cartão).
 function chamada() {
@@ -187,6 +211,7 @@ const deck = document.getElementById('deck');
 deck.appendChild(capa());
 DIRECOES.forEach((d, i) => deck.appendChild(laminaDirecao(d, i)));
 deck.appendChild(chamada());
+if (location.search.includes('b')) deck.appendChild(capaB());
 window.pronto = () => pendentes === 0 && document.fonts.status === 'loaded';
 </script>
 </body>

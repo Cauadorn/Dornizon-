@@ -29,6 +29,23 @@ Tudo o que serviu de referência, com o que se pegou de cada coisa e o que **nã
   - selo rosa;
   - código de barras com o @.
 
+## `favoritas-da-emi/`: as que a Emi circulou na pesquisa de capa
+
+Ela mandou o print da folha do Pinterest com três capas circuladas ("tantas refs legais"). O print está em `print-com-as-marcacoes.jpg`.
+
+- `your-cat.jpg`: "Your" pequeno em cima de um "Cat" gigante em serifa pesada, o gato logo abaixo encostando no nome, fundo azul chapado e chamadas em faixa na base.
+- `gato-preto-na-frente-do-nome.jpg`: gato preto inteiro na frente de um nome gigante, condensado e preto, em fundo claro, com textos pequenos nas laterais.
+- `meow-amarelo.jpg`: "MEOW" com letras bojudas e divertidas atrás da cara do gato, fundo amarelo e laranja e brilhos de quatro pontas.
+
+O que elas têm em comum, e é o gosto dela:
+- nome gigante e pesado, ocupando a largura;
+- o bicho na frente das letras;
+- fundo de cor chapada forte;
+- pouco texto;
+- brilho de quatro pontas.
+
+Daqui saiu a variação B da capa: "5 direções criativas pra marcas" pequeno no topo, "*pet*" gigante em itálico `manteiga` com o gato na frente e brilhos. Ela é gerada por `carrossel.html?b`.
+
 ## `pinterest-enquete/`: diagramação da chamada
 
 - Busca "instagram carousel last slide poll design" no Pinterest (`folha.jpg`, links em `fontes.txt`).
