@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · álbum de figurinhas</title>
+<link rel="stylesheet" href="estilo.css">
+<script src="textos.js"></script>
+</head>
+<body>
+<!-- filtros: falha de impressão e mapas de gradiente (duotone/tritone da paleta) -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="falha" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -10 7.7" result="manchas"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" seed="2" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -7 5.1" result="poros"/>
+      <feComposite in="manchas" in2="poros" operator="arithmetic" k1="1" result="furos"/>
+      <feComposite in="SourceGraphic" in2="furos" operator="in" result="gasto"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="d"/>
+      <feDisplacementMap in="gasto" in2="d" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+<div class="faixa" id="faixa">
+  <div class="camada" id="fundos"></div>
+  <div class="camada" id="ponte-tras"></div>
+  <div class="camada" id="conteudos"></div>
+  <div class="camada" id="ponte-frente"></div>
+  <div class="camada" id="graos"></div>
+</div>
+<script>
+const W = 1080, H = 1350, N = 7;
+const $ = (h) => { const t = document.createElement('template'); t.innerHTML = h.trim(); return t.content.firstChild; };
+const hex = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16) / 255);
+const C = Object.fromEntries(['ivory','ivory-2','tinta','ameixa','creative-purple','plum','violeta','violeta-2','lavanda','lavanda-2','wine','wine-deep','pink','manteiga']
+  .map((k) => [k, getComputedStyle(document.documentElement).getPropertyValue('--' + k).trim()]));
+
+/* ---------- texturas geradas (papel, linho, grão) ---------- */
+function ruido(tam, freq, oct, seed, cor = 'gray') {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${tam}' height='${tam}'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='${freq}' numOctaves='${oct}' seed='${seed}' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>`;
+  return `url("data:image/svg+xml;utf8,${svg.replace(/"/g, "'").replace(/#/g, '%23')}")`;
+}
+const root = document.documentElement.style;
+root.setProperty('--tx-grao', ruido(300, 0.95, 3, 11));
+root.setProperty('--tx-papel', ruido(520, '0.45 0.38', 4, 5));
+root.setProperty('--tx-linho', ruido(600, '0.9 0.04', 2, 9));
+
+/* mapa de gradiente: escuro → meio → claro (cores da paleta) */
+let nFiltro = 0;
+function mapa(cores) {
+  const id = 'duo' + (nFiltro++);
+  const rgb = cores.map((c) => hex(C[c] || c));
+  const tab = (i) => rgb.map((v) => v[i].toFixed(3)).join(' ');
+  document.querySelector('svg defs').insertAdjacentHTML('beforeend',
+    `<filter id="${id}" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0 0 0 1 0"/>
+     <feComponentTransfer><feFuncR type="table" tableValues="${tab(0)}"/><feFuncG type="table" tableValues="${tab(1)}"/><feFuncB type="table" tableValues="${tab(2)}"/></feComponentTransfer></filter>`);
+  return `url(#${id})`;
+}
+
+/* ---------- grafismos EMS ---------- */
+function estrelaPath(ctx, cx, cy, R, r) {
+  ctx.beginPath();
+  for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r : R; ctx.lineTo(cx + rr * Math.cos(a), cy + rr * Math.sin(a)); }
+  ctx.closePath();
+}
+/* HalftoneStar: pontos que somem do centro para a borda */
+function estrelaReticula(tam, cor, passo = 14) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = tam; const ctx = cv.getContext('2d');
+  const c = tam / 2, R = tam / 2, r = R * 0.48;
+  estrelaPath(ctx, c, c, R * 0.98, r); const p = new Path2D(); // máscara
+  const m = document.createElement('canvas').getContext('2d'); m.canvas.width = m.canvas.height = tam; m.lineJoin = 'round';
+  estrelaPath(m, c, c, R * 0.92, r * 0.95); m.lineWidth = R * 0.12; m.fill(); m.stroke();
+  ctx.fillStyle = cor;
+  for (let y = passo / 2; y < tam; y += passo) for (let x = passo / 2; x < tam; x += passo) {
+    if (!m.isPointInPath(x, y) && !m.isPointInStroke(x, y)) continue;
+    const d = Math.hypot(x - c, y - c) / R, rad = (passo * 0.46) * Math.max(0.12, 1 - d * 0.95);
+    ctx.beginPath(); ctx.arc(x, y, rad, 0, 7); ctx.fill();
+  }
+  return cv.toDataURL();
+}
+const BRILHO = (cor) => `<svg viewBox="-1 -1 2 2" xmlns="http://www.w3.org/2000/svg"><path fill="${cor}" d="M0,-1 C0.07,-0.27 0.27,-0.07 1,0 C0.27,0.07 0.07,0.27 0,1 C-0.07,0.27 -0.27,0.07 -1,0 C-0.27,-0.07 -0.07,-0.27 0,-1Z"/></svg>`;
+
+function handle(x, y, bg = 'var(--pink)') {
+  return `<div class="handle" style="left:${x}px;top:${y}px;--bg:${bg}">@itsemsdesign<img src="assets/i-cursor.png" style="filter:brightness(0) saturate(100%);"></div>`;
+}
+
+/* figurinha frente */
+function figurinha(f, p, x, y, r) {
+  return `<div class="fig" style="left:${x}px;top:${y}px;--r:${r}deg;--painel:${p.painel};--claro:${p.claro};--duo:${p.duo};--tinta-nome:${p.nomeCor || 'var(--ivory)'}">
+    <div class="quadro">
+      <div class="foto"><div class="reticula" style="--c:${p.ponto};--o:.5"></div><img src="objetos/${f.obj}" onerror="this.remove()"></div>
+      <div class="num">${f.n}</div><div class="preco">${f.preco}</div>
+      <div class="nome"><b>${f.nome}</b><span>${f.url}</span></div>
+    </div></div>`;
+}
+function verso(x, y, r, fundo = 'var(--violeta-2)', icone = 'i-espiral.png', z = '') {
+  return `<div class="verso" style="left:${x}px;top:${y}px;--r:${r}deg;--fundo-verso:${fundo};${z}">
+    <div class="quadro"><div class="reticula" style="--c:rgba(255,251,222,.9);--o:.22"></div><img src="assets/${icone}"></div></div>`;
+}
+function espaco(x, y, r, n, slot, slotN) {
+  return `<div class="espaco" style="left:${x}px;top:${y}px;--r:${r}deg;--slot:${slot};--slot-n:${slotN}"><div class="n">${n}</div></div>`;
+}
+function apoio(t, x, y, r, bg, tx, rotulo) {
+  return `<div class="apoio" style="left:${x}px;top:${y}px;--r:${r}deg;--apoio-bg:${bg};--apoio-tx:${tx}">${rotulo ? `<span class="label">${rotulo}</span>` : ''}<div class="body">${t}</div></div>`;
+}
+
+/* ---------- montagem ---------- */
+const A = window.ALBUM;
+const fundos = document.getElementById('fundos'), conteudos = document.getElementById('conteudos');
+const tras = document.getElementById('ponte-tras'), frente = document.getElementById('ponte-frente'), graos = document.getElementById('graos');
+function lamina(k, html, cls = '', bg = '') {
+  fundos.appendChild($(`<div class="lamina ${cls}" style="left:${k * W}px;background:${bg}"></div>`));
+  const c = $(`<div class="lamina" style="left:${k * W}px">${html}</div>`); conteudos.appendChild(c);
+  graos.appendChild($(`<div class="lamina" style="left:${k * W}px"><div class="grao"></div></div>`));
+  return c;
+}
+
+/* 1 · capa: o pacotinho */
+(function capa() {
+  const cp = A.capa;
+  const fundo = `<img src="${estrelaReticula(860, C['violeta-2'])}" style="position:absolute;left:-330px;top:640px;width:860px;opacity:.55">`;
+  const pac = `
+  <div style="position:absolute;left:150px;top:118px;width:740px;height:1060px;transform:rotate(-3deg)">
+    <!-- saquinho -->
+    <div style="position:absolute;left:14px;right:14px;top:430px;bottom:0;border-radius:6px 6px 14px 14px;overflow:hidden;
+      background:linear-gradient(180deg,rgba(255,251,222,.10),rgba(255,251,222,.18));box-shadow:inset 0 0 0 2px rgba(255,251,222,.35), 0 18px 0 rgba(42,20,51,.25)">
+      ${verso(200, 90, -6, 'var(--violeta-2)', 'i-espiral.png')}
+      ${verso(250, 120, 5, 'var(--plum)', 'i-estrela.png')}
+      ${verso(165, 150, -1, 'var(--violeta)', 'i-coracao.png')}
+      <div style="position:absolute;inset:0;background:
+        linear-gradient(115deg, rgba(255,255,255,0) 18%, rgba(255,255,255,.28) 26%, rgba(255,255,255,0) 34%),
+        linear-gradient(115deg, rgba(255,255,255,0) 58%, rgba(255,255,255,.18) 63%, rgba(255,255,255,0) 69%),
+        linear-gradient(180deg, rgba(123,77,242,.22), rgba(98,37,216,.35));"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:26px;background:repeating-linear-gradient(90deg,rgba(255,251,222,.35) 0 3px,transparent 3px 9px)"></div>
+    </div>
+    <!-- cartela grampeada -->
+    <div style="position:absolute;left:0;top:0;width:740px;height:478px;background:var(--ivory);border-radius:8px;box-shadow:var(--shadow-dura);overflow:hidden" class="papel">
+      <div style="position:absolute;left:50%;top:30px;width:120px;height:30px;margin-left:-60px;border-radius:999px;background:#5530b8;box-shadow:inset 0 3px 0 rgba(42,20,51,.45)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:16px;background:rgba(42,20,51,.10)"></div>
+      <div style="position:absolute;left:60px;top:92px">
+        <div class="lead-in" style="color:var(--tinta)">${cp.leadIn}</div>
+        <div class="serif-hero impresso" style="--destaque:var(--pink);color:var(--tinta);font-size:184px;margin-top:4px">${cp.titulo}</div>
+      </div>
+      <div style="position:absolute;left:478px;top:340px;width:92px;height:92px">${BRILHO(C.violeta)}</div>
+      <div style="position:absolute;left:568px;top:312px;width:46px;height:46px">${BRILHO(C.violeta)}</div>
+    </div>
+    <div style="position:absolute;left:120px;top:454px;width:56px;height:10px;border-radius:3px;background:linear-gradient(#cfc9d6,#8a8195);box-shadow:0 2px 0 rgba(42,20,51,.4)"></div>
+    <div style="position:absolute;right:120px;top:454px;width:56px;height:10px;border-radius:3px;background:linear-gradient(#cfc9d6,#8a8195);box-shadow:0 2px 0 rgba(42,20,51,.4)"></div>
+    <!-- selo redondo do pacotinho -->
+    <div style="position:absolute;left:-58px;top:820px;width:250px;height:250px;border-radius:50%;background:var(--manteiga);box-shadow:var(--shadow-dura);transform:rotate(-9deg);display:grid;place-items:center;text-align:center">
+      <div style="font-family:var(--sans);font-weight:600;font-size:27px;line-height:1.12;color:var(--tinta)">${cp.selo}</div>
+    </div>
+  </div>
+  <div class="label" style="position:absolute;right:80px;top:1230px;color:var(--ivory)">${cp.arrasta}</div>
+  ${handle(96, 1232)}`;
+  lamina(0, fundo + pac, 'linho', 'var(--violeta)');
+})();
+
+/* 2–6 · páginas do álbum */
+A.paginas.forEach((p, i) => {
+  const k = i + 1;
+  p.duo = mapa(p.mapa);
+  const L = p.layout || {};
+  const titulo = `<div style="position:absolute;left:80px;top:150px;width:920px;--destaque:${p.destaque};color:${p.tituloCor}" class="serif-title impresso">${p.titulo}</div>`;
+  const chip = `<div class="chip" style="left:80px;top:80px;--chip-bg:${p.chipBg};--chip-tx:${p.chipTx}">${p.pagina}</div>`;
+  const [a, b] = p.cards;
+  const html = `${chip}${titulo}
+    ${espaco(118, 416, 0, a.n, p.slot, p.slotN)}${espaco(556, 416, 0, b.n, p.slot, p.slotN)}
+    ${figurinha(a, p, 112, 410, -3)}
+    ${figurinha(b, p, 560, 422, 2.5)}
+    ${apoio(a.pra, 70, 958, -2, p.apoioBg, p.apoioTx)}
+    ${apoio(b.pra, 540, 978, 1.5, p.apoioBg, p.apoioTx)}
+    ${handle(80, 1236, p.handleBg)}`;
+  lamina(k, html, p.materia, p.fundo);
+});
+
+/* 7 · chamada: o espaço vazio */
+(function chamada() {
+  const ch = A.chamada, k = 6;
+  const html = `
+    <img src="${estrelaReticula(760, C['violeta-2'])}" style="position:absolute;right:-300px;top:-260px;width:760px;opacity:.5">
+    <div class="serif-title impresso" style="position:absolute;left:80px;top:120px;width:900px;color:var(--ivory);--destaque:var(--manteiga)">${ch.titulo}</div>
+    <div style="position:absolute;left:560px;top:470px;width:410px;height:574px;border-radius:22px;background:rgba(42,20,51,.28);border:5px dashed rgba(255,251,222,.7);transform:rotate(3deg)">
+      <div style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:320px;color:rgba(255,251,222,.2);padding-bottom:50px">?</div>
+      <div style="position:absolute;left:0;right:0;bottom:28px;text-align:center;font-family:var(--serif);font-size:64px;color:rgba(255,251,222,.75)">11</div>
+    </div>
+    ${apoio(ch.comenta, 250, 960, -2.5, 'var(--ivory)', 'var(--tinta)')}
+    <div class="chip" style="left:80px;top:1150px;--chip-bg:var(--lavanda);--chip-tx:var(--tinta);font-weight:500">${ch.salva}</div>
+    <img src="assets/selo-ems.png" style="position:absolute;left:840px;top:1100px;width:150px">
+    ${handle(80, 1236)}`;
+  lamina(k, html, 'linho', 'var(--plum)');
+})();
+
+/* ---------- objetos que atravessam os cortes ---------- */
+(A.pontes || []).forEach((o) => {
+  const alvo = o.camada === 'tras' ? tras : frente;
+  if (o.tipo === 'verso') alvo.insertAdjacentHTML('beforeend', verso(o.x, o.y, o.r, o.fundo, o.icone));
+  if (o.tipo === 'estrela') alvo.insertAdjacentHTML('beforeend', `<img src="${estrelaReticula(o.tam, C[o.cor] || o.cor)}" style="position:absolute;left:${o.x}px;top:${o.y}px;width:${o.tam}px;opacity:${o.op || .5};transform:rotate(${o.r || 0}deg)">`);
+  if (o.tipo === 'brilho') alvo.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:${o.x}px;top:${o.y}px;width:${o.tam}px;height:${o.tam}px;filter:drop-shadow(6px 6px 0 #2a1433)">${BRILHO(C[o.cor] || o.cor)}</div>`);
+});
+
+document.fonts.ready.then(() => Promise.all([...document.images].map((im) => im.complete ? 1 : new Promise((r) => { im.onload = im.onerror = r; }))))
+  .then(() => { window.READY = true; });
+</script>
+</body>
+</html>
