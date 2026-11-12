@@ -72,7 +72,6 @@ body{background:#555}
     <div class="titulo" style="top:112px"><span class="lead">depois, o</span><span class="gig" style="font-size:190px;color:var(--pink)">feed</span></div>
     <div class="abs" style="left:0;right:0;top:318px;display:flex;justify-content:center;gap:18px" id="paleta"></div>
     <div class="q" style="left:230px;top:410px;width:620px;height:775px"><img src="img/feed.png"></div>
-    <div class="balao" style="left:760px;top:372px;transform:rotate(5deg)"><img src="img/emoji/1f9e0.png"><img src="img/emoji/1faf6.png"></div>
   </div>
 
   <!-- ===== 4 · OS POSTS ===== -->
@@ -84,10 +83,10 @@ body{background:#555}
 
   <!-- ===== 5 · CHAMADA: "a próxima paciente pode ser a sua marca" + cartão de consulta ===== -->
   <div class="cont" style="left:4320px;color:var(--ivory)">
-    <div class="abs lead" style="left:92px;top:120px;font-size:48px">a próxima</div>
-    <div class="abs gig" style="left:84px;top:170px;font-size:270px;color:var(--manteiga)">paciente</div>
-    <div class="abs lead" style="left:96px;top:418px;font-size:48px">pode ser a sua marca</div>
-    <div class="abs" style="left:150px;top:560px;width:700px;height:478px;background:var(--ivory);transform:rotate(-4deg);box-shadow:8px 10px 0 var(--tinta);padding:56px 60px 0;color:var(--tinta)">
+    <div id="prox" class="abs lead" style="left:92px;top:150px;font-size:48px;white-space:nowrap">a próxima</div>
+    <div class="abs" style="left:84px;top:190px;white-space:nowrap"><span id="pac" class="gig" style="font-size:270px;color:var(--manteiga)">paciente</span></div>
+    <div id="marca" class="abs lead" style="left:96px;top:440px;font-size:46px;white-space:nowrap">pode ser a sua marca</div>
+    <div class="abs" style="left:150px;top:590px;width:700px;height:478px;background:var(--ivory);transform:rotate(-4deg);box-shadow:8px 10px 0 var(--tinta);padding:56px 60px 0;color:var(--tinta)">
       <img src="texturas/m-papel-amassado.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.25">
       <div style="position:relative">
         <div style="display:flex;justify-content:space-between;align-items:center;font:600 21px/1 Poppins;letter-spacing:.16em;color:var(--violeta)"><span>CARTÃO DE CONSULTA</span></div>
@@ -98,8 +97,12 @@ body{background:#555}
         <div class="linha-ficha" style="border:0"><span>onde:</span><span>na minha dm</span></div>
       </div>
     </div>
-    <img class="abs" src="img/selo-ems.png" style="left:770px;top:470px;width:190px;z-index:3;filter:drop-shadow(0 14px 18px rgba(42,20,51,.45))">
-    <div class="balao" style="left:660px;top:1030px;transform:rotate(-3deg)"><img src="img/emoji/1f4ac.png"><img src="img/emoji/2728.png"></div>
+    <svg class="abs" width="90" height="190" viewBox="0 0 90 190" style="left:560px;top:516px;z-index:4;transform:rotate(-6deg);filter:drop-shadow(3px 6px 4px rgba(20,8,26,.45))">
+      <path d="M58 150 V40 a22 22 0 0 0 -44 0 V160 a30 30 0 0 0 60 0 V30 a14 14 0 0 0 -28 0 V140" fill="none" stroke="#4b4258" stroke-width="10" stroke-linecap="round"/>
+      <path d="M58 150 V40 a22 22 0 0 0 -44 0 V160 a30 30 0 0 0 60 0 V30 a14 14 0 0 0 -28 0 V140" fill="none" stroke="#e9e4f0" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M58 150 V40 a22 22 0 0 0 -44 0 V160 a30 30 0 0 0 60 0 V30 a14 14 0 0 0 -28 0 V140" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity=".8" transform="translate(-1.5 -1)"/>
+    </svg>
+    <img class="abs" src="img/selo-ems.png" style="left:770px;top:500px;width:190px;z-index:3;filter:drop-shadow(0 14px 18px rgba(42,20,51,.45))">
     <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
   </div>
 </div>
@@ -129,7 +132,7 @@ document.getElementById('paleta').innerHTML = ['#2742C2', '#F3C6A8', '#F5EEE3', 
   for (let i = 0; i < 8; i++) { const d = document.createElement('div'); d.className = 'q';
     Object.assign(d.style, { left: x0 + (i % 4) * (w + gap) + 'px', top: y0 + Math.floor(i / 4) * (h + gap) + 'px', width: w + 'px', height: h + 'px' });
     d.innerHTML = `<img src="img/s${i + 1}.png">`; g.appendChild(d); } }
-{ const g = document.getElementById('grade-posts'), w = 289, h = 361, gap = 16, x0 = 90, y0 = 360, ordem = [1, 3, 6, 2, 5, 4];
+{ const g = document.getElementById('grade-posts'), w = 289, h = 361, gap = 16, x0 = 90, y0 = 360, ordem = [1, 6, 3, 2, 5, 4];
   ordem.forEach((n, i) => { const d = document.createElement('div'); d.className = 'q';
     Object.assign(d.style, { left: x0 + (i % 3) * (w + gap) + 'px', top: y0 + Math.floor(i / 3) * (h + gap) + 'px', width: w + 'px', height: h + 'px' });
     d.innerHTML = `<img src="img/p${n}.png">`; g.appendChild(d); }); }
@@ -148,7 +151,22 @@ function encaixar() {
   lead.style.top = (parseFloat(lead.style.top) + (alvo - leadBase)) + 'px';
   let fs = 44; while (lead.getBoundingClientRect().right > lEsq - 18 && fs > 30) { fs -= 1; lead.style.fontSize = fs + 'px'; }
 }
-document.fonts.ready.then(() => { encaixar();
+function encaixarChamada() {
+  const pac = document.getElementById('pac'), prox = document.getElementById('prox'), marca = document.getElementById('marca');
+  const marcaY = s => { const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0'; s.appendChild(m); const y = m.getBoundingClientRect().top; m.remove(); return y; };
+  const base = marcaY(pac), ctx = document.createElement('canvas').getContext('2d'); ctx.font = 'italic 270px "Instrument Serif"';
+  const xh = ctx.measureText('x').actualBoundingBoxAscent;
+  const tn = pac.firstChild, letra = ch => { const k = tn.textContent.indexOf(ch), r = document.createRange(); r.setStart(tn, k); r.setEnd(tn, k + 1); return r.getBoundingClientRect(); };
+  const art = pac.closest('.cont').getBoundingClientRect();
+  // de cima: linha de base logo acima do x de "pac", antes do pingo do i
+  const pb = marcaY(prox); prox.style.top = (parseFloat(prox.style.top) + (base - xh - 16 - pb)) + 'px';
+  // de baixo: dentro do rabinho do p (à direita da perna, logo abaixo da linha de base)
+  const a = letra('a');
+  marca.style.left = (a.left - art.left + 6) + 'px';
+  const mb = marcaY(marca), cap = ctx.measureText ? 0 : 0;
+  marca.style.top = (parseFloat(marca.style.top) + (base + 54 - mb)) + 'px';
+}
+document.fonts.ready.then(() => { encaixar(); encaixarChamada();
   Promise.all([...document.images].map(i => i.decode().catch(() => 0))).then(() => window.READY = true); });
 </script>
 </body></html>
