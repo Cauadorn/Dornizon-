@@ -13,28 +13,27 @@
   body { background:#1b1b1b; display:flex; flex-wrap:wrap; gap:24px; padding:24px; }
   .slide { position:relative; width:1080px; height:1350px; overflow:hidden; background:var(--ameixa); flex:none; }
   .slide > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  /* capa: estrutura das refs (foto cheia + título gigante por cima), com as fontes e cores da EMS */
-  .veu { position:absolute; inset:0; background:radial-gradient(ellipse 75% 34% at 50% 66%, rgba(42,20,51,.55), rgba(42,20,51,0) 100%); }
+  /* capa: estrutura das refs (produto em cima, título gigante assentado na área calma), fontes e cores da EMS */
+  .veu { position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,20,51,0) 48%, rgba(42,20,51,.38) 100%); }
   .handle { position:absolute; left:90px; top:90px; color:var(--ivory); font:500 24px/1 "Poppins", sans-serif; letter-spacing:.01em; }
-  .titulo { position:absolute; left:0; right:0; top:690px; text-align:center; color:var(--ivory); }
-  .titulo b { display:block; font:600 184px/0.9 "Poppins", sans-serif; letter-spacing:-0.055em; }
-  .titulo em { display:block; margin-top:30px; font:italic 400 84px/1 "Instrument Serif", serif; color:var(--manteiga); }
-  .serifa .titulo { top:660px; }
-  .serifa .titulo b { font:400 262px/0.78 "Instrument Serif", serif; letter-spacing:-0.025em; }
-  .serifa .titulo em { margin-top:34px; }
+  .titulo { position:absolute; left:0; right:0; text-align:center; color:var(--ivory); }
+  .titulo b { display:block; font:600 196px/0.9 "Poppins", sans-serif; letter-spacing:-0.055em; }
+  .titulo em { display:block; margin-top:34px; font:italic 400 88px/1 "Instrument Serif", serif; color:var(--manteiga); }
+  .caixa .titulo { top:760px; }
+  .leque .titulo { top:735px; }
   .grao { position:absolute; inset:0; opacity:.07; mix-blend-mode:overlay; pointer-events:none; }
 </style>
 </head>
 <body>
-  <section class="slide" id="s1">
-    <img src="cenas/00-capa-flutuando.png" alt="">
+  <section class="slide caixa" id="s1">
+    <img src="cenas/00-capa-caixa.png" alt="">
     <div class="veu"></div>
     <div class="handle">@itsemsdesign</div>
     <div class="titulo"><b>direção</b><b>criativa</b><em>com ia</em></div>
     <canvas class="grao" width="1080" height="1350"></canvas>
   </section>
-  <section class="slide serifa" id="s2">
-    <img src="cenas/00-capa-flutuando.png" alt="">
+  <section class="slide leque" id="s2">
+    <img src="cenas/00-capa-leque.png" alt="">
     <div class="veu"></div>
     <div class="handle">@itsemsdesign</div>
     <div class="titulo"><b>direção</b><b>criativa</b><em>com ia</em></div>
