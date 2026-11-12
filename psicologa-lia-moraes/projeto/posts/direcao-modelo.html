@@ -1,0 +1,51 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:wght@200..500&display=block" rel="stylesheet">
+<style>
+:root{--c:#2742C2;--creme:#F5EEE3;--p:#F3C6A8;--tinta:#1C1D3A}
+*{margin:0;box-sizing:border-box}
+body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
+.art{position:relative;overflow:hidden;flex:none;width:1080px;height:1350px}
+.pf{font-family:'Playfair Display'} .js{font-family:Jost}
+.pf i{font-style:italic}
+/* cabeçalho e rodapé finos, como nas refs */
+.meta{position:absolute;left:72px;right:72px;display:flex;align-items:center;gap:22px;font:400 19px/1 Jost;letter-spacing:.32em;text-transform:uppercase;z-index:5}
+.meta hr{flex:1;border:0;border-top:1.5px solid currentColor;opacity:.55}
+.topo{top:64px}.base{bottom:60px}
+.foto{position:absolute;left:0;right:0;width:100%;object-fit:cover}
+.meta span svg{width:40px!important}
+.sombra-base{position:absolute;left:0;right:0;bottom:0;height:260px;background:linear-gradient(0deg,rgba(20,24,70,.62),rgba(20,24,70,0))}
+</style></head><body>
+
+<!-- CAPA A: faixa cobalto + foto -->
+<div class="art" id="capa-a" style="background:var(--c);color:var(--creme)">
+  <div class="meta topo">@psi.liamoraes<hr>psicóloga clínica</div>
+  <div class="pf" style="position:absolute;left:72px;right:72px;top:150px;font-size:96px;line-height:1.02;letter-spacing:-.012em">Você não precisa chegar no <i style="color:var(--p)">limite</i> pra começar terapia.</div>
+  <img class="foto" src="../ia/automatico-v1.png" style="top:560px;height:790px;object-position:50% 62%">
+  <div class="sombra-base"></div>
+  <div class="meta base" style="color:var(--creme)">1/7<hr>arrasta</div>
+</div>
+
+<!-- CAPA B: foto inteira com o título por cima -->
+<div class="art" id="capa-b" style="color:var(--creme)">
+  <img class="foto" src="../ia/automatico-v1.png" style="top:0;height:100%;object-position:50% 50%">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,45,150,.9) 0%,rgba(29,45,150,.66) 32%,rgba(29,45,150,0) 58%)"></div>
+  <div class="meta topo">@psi.liamoraes<hr>psicóloga clínica</div>
+  <div class="pf" style="position:absolute;left:72px;right:72px;top:150px;font-size:104px;line-height:1.0;letter-spacing:-.012em">Você não precisa chegar no <i style="color:var(--p)">limite</i> pra começar terapia.</div>
+  <div class="sombra-base"></div>
+  <div class="meta base">1/7<hr>arrasta</div>
+</div>
+
+<!-- LÂMINA INTERNA: tipográfica no creme -->
+<div class="art" id="lamina-2" style="background:var(--creme);color:var(--tinta)">
+  <div class="meta topo" style="color:var(--c)">@psi.liamoraes<hr>psicóloga clínica</div>
+  <div style="position:absolute;left:72px;right:72px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center">
+    <div class="pf" style="font-size:46px;line-height:1.25"><i>A gente costuma procurar ajuda só quando tudo desaba.</i></div>
+    <div style="width:90px;height:2px;background:var(--c);margin:56px 0 52px"></div>
+    <div class="pf" style="font-size:132px;line-height:1;letter-spacing:-.015em;color:var(--c)">Mas terapia não é só <i>socorro</i>.</div>
+    <div class="js" style="font-weight:400;font-size:34px;line-height:1.5;margin-top:56px;max-width:820px">Também é pausa, prevenção e um espaço para entender o que está acontecendo antes de virar crise.</div>
+  </div>
+  <div class="meta base" style="color:var(--c)">2/7<hr><span style="display:inline-block;width:44px">{{MONO_C_120}}</span></div>
+</div>
+
+<script>document.fonts.ready.then(()=>window.READY=true)</script>
+</body></html>
