@@ -12,8 +12,10 @@ const dots = (cor, passo = 18, tam = 30) => `radial-gradient(circle, ${cor} ${ta
 const paleta = (cores) => `<div class="paleta mini">${cores.map(([nome, hex, tx]) =>
   `<div style="background:${hex};color:${tx}"><b>${nome}</b><small>${hex.toUpperCase()}</small></div>`).join('')}</div>`;
 
-// img (opcional): no lugar do "Aa", uma imagem (para marcas de letra desenhada, como o monograma do pelo solto)
-const tipo = ({ aa, aaCor, sombra = 'none', amostra, amostraCss, cor, nome, img, imgAlt = 118 }) =>
+// img (opcional): no lugar do "Aa", uma imagem (para marcas de letra desenhada, como o monograma do pelo solto).
+// so: true → o quadro mostra só a imagem, centralizada (a Emi, no pelo solto: "aqui deixa só o ps")
+const tipo = ({ aa, aaCor, sombra = 'none', amostra, amostraCss, cor, nome, img, imgAlt = 118, so = false }) =>
+  so && img ? `<img src="img/${img}" alt="" style="position:absolute;left:50%;top:50%;height:${imgAlt}px;transform:translate(-50%,-50%)">` :
   `<div class="tipo" style="color:${cor}">
      ${img ? `<img src="img/${img}" alt="" style="display:block;height:${imgAlt}px;margin:0 auto 6px">` : `<div class="aa" style="font:${aa};line-height:.86;color:${aaCor};text-shadow:${sombra}">Aa</div>`}
      <div class="amostra" style="font:${amostraCss};line-height:1.1">${amostra}</div>
@@ -112,11 +114,11 @@ const DIRECOES = [
     // pelo solto (aprovado em 12/11): o nome veio do conceito gerado que a Emi escolheu, vetorizado (marcas/pelo-solto/logo.html);
     // o monograma ps sobreposto (ps-sobreposto.svg) é o que vai bordado e estampado. Pesquisa em referencias/pelo-solto.
     heroi: { bg: '#5FA7AE', cheia: { src: 'pelo-manga', px: .5, py: .5 } },   // mockup aprovado: ps bordado na manga (Digs)
-    marca: { bg: '#FDF6E5', cheia: { src: 'pelo-marca', px: .5, py: .5 }, cursor: [356, 334] },   // logo.html?w=452&h=430&escala=.46&dx=-20.5&dy=21.5 (centro da tinta no centro da moldura)
+    marca: { bg: '#FDF6E5', cheia: { src: 'pelo-marca', px: .5, py: .5 }, cursor: [326, 338] },   // logo.html?w=452&h=430&escala=.46&dx=-20.5&dy=21.5 (centro da tinta no centro da moldura)
     quadrado: { bg: '#6B3A1F', cheia: { src: 'd3prod-2', px: .5, py: .8 } },
     alto: { bg: '#E9B03B', cheia: { src: 'd3extra', px: .55, py: .5 } },
     paleta: [['creme', '#FDF6E5', '#5A2E17'], ['café', '#5A2E17', '#FDF6E5'], ['mostarda', '#E9A92B', '#5A2E17'], ['azul piscina', '#5FA7AE', '#FDF6E5']],
-    tipo: { bg: '#5A2E17', img: 'pelo-ps-creme.svg', imgAlt: 112, amostra: 'BANHO & TOSA', amostraCss: "300 15px 'PoppinsL';letter-spacing:.32em", cor: '#FDF6E5', nome: 'lettering + poppins' },
+    tipo: { bg: '#5A2E17', img: 'pelo-ps-creme.svg', imgAlt: 150, so: true },   // só o ps (pedido da Emi)
   },
   // ---------------- 04 · modo atleta ----------------
   {
