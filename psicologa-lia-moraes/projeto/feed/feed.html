@@ -9,10 +9,10 @@ body{background:#777;padding:20px}
 .luz{position:absolute;inset:0;background:radial-gradient(70% 55% at 50% 40%,rgba(255,250,242,.55),rgba(120,80,40,.10))}
 .abs{position:absolute}
 .js{font-family:Poppins;letter-spacing:-.01em}
-.dest{position:absolute;top:46px;width:160px;margin-left:-80px;text-align:center}
-.dest .anel{width:142px;height:142px;border-radius:50%;border:2px solid rgba(28,29,58,.55);padding:6px;margin:0 auto}
-.dest .miolo{width:100%;height:100%;border-radius:50%;overflow:hidden;background-repeat:no-repeat;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-.dest .nome{font:400 22px/1 Poppins;color:var(--tinta);margin-top:14px;letter-spacing:-.005em}
+.dest{position:absolute;top:44px;width:150px;margin-left:-75px;text-align:center}
+.dest .anel{width:146px;height:146px;border-radius:50%;border:4px solid var(--tinta);padding:6px;margin:0 auto}
+.dest .miolo{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden}
+.dest .nome{font:400 25px/1 Poppins;color:var(--tinta);margin-top:14px;letter-spacing:-.01em}
 .grade{position:absolute;left:150px;top:262px;display:grid;grid-template-columns:repeat(3,258px);grid-auto-rows:344px;gap:3px;background:#F1E6D6;
  box-shadow:0 50px 70px -30px rgba(90,55,25,.35),0 14px 30px -10px rgba(90,55,25,.18)}
 .q{position:relative;overflow:hidden;background:#ddd}
@@ -29,12 +29,16 @@ body{background:#777;padding:20px}
 
 <div class="art" id="feed">
   <div class="papel"></div><div class="luz"></div>
-  <!-- destaques (fotos da marca, mesmo tratamento quente) -->
-  <div class="dest" style="left:228px"><div class="anel"><div class="miolo" style="background-image:url(../ia/lia-canva-mesa.png);background-size:404px auto;background-position:-193px -118px"></div></div><div class="nome">sobre mim</div></div>
-  <div class="dest" style="left:384px"><div class="anel"><div class="miolo" style="background-image:url(../ia/consultorio-v1.png);background-size:300px auto;background-position:-150px -205px"></div></div><div class="nome">terapia</div></div>
-  <div class="dest" style="left:540px"><div class="anel"><div class="miolo" style="background-image:url(../fotos-pinterest/base/mesinha-caderno.jpg);background-size:266px auto;background-position:-60px -128px"></div></div><div class="nome">agenda</div></div>
-  <div class="dest" style="left:696px"><div class="anel"><div class="miolo" style="background-image:url(../ia/caneca-v1.png);background-size:258px auto;background-position:-63px -105px"></div></div><div class="nome">dúvidas</div></div>
-  <div class="dest" style="left:852px"><div class="anel"><div class="miolo" style="background-image:url(../ia/lia-online-v1.png);background-size:230px auto;background-position:-34px -110px"></div></div><div class="nome">online</div></div>
+  <!-- destaques -->
+  <div class="dest" style="left:226px"><div class="anel"><div class="miolo" style="background:var(--p)"><img src="../logo/final/lia-moraes-monograma.svg" style="width:62px;margin-top:4px"></div></div><div class="nome">sobre mim</div></div>
+  <div class="dest" style="left:383px"><div class="anel"><div class="miolo" style="background:#fff8ee;border:1.5px solid rgba(39,66,194,.25)"><div class="js" style="font:600 17px/1.08 Poppins;color:var(--c);letter-spacing:-.02em">como<br>funciona a<br>terapia</div></div></div><div class="nome">terapia</div></div>
+  <div class="dest" style="left:540px"><div class="anel"><div class="miolo" style="background:var(--c)">
+    <svg width="58" height="58" viewBox="0 0 48 48" fill="none" stroke="#F5EEE3" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="9" width="36" height="33" rx="6"/><path d="M6 19h36M16 5v8M32 5v8"/><circle cx="16" cy="28" r="1.6" fill="#F5EEE3"/><circle cx="24" cy="28" r="1.6" fill="#F5EEE3"/><circle cx="32" cy="28" r="1.6" fill="#F5EEE3"/><circle cx="16" cy="35" r="1.6" fill="#F5EEE3"/><path d="M22 35l2.4 2.4L30 32" stroke="#F3C6A8"/></svg>
+  </div></div><div class="nome">agenda</div></div>
+  <div class="dest" style="left:697px"><div class="anel"><div class="miolo" style="background:#fff8ee;border:1.5px solid rgba(39,66,194,.25)">
+    <svg width="62" height="62" viewBox="0 0 48 48" fill="none" stroke="#2742C2" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h32a4 4 0 0 1 4 4v17a4 4 0 0 1-4 4H22l-9 7v-7H8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z"/><path d="M20 19.5a4 4 0 1 1 5.6 3.7c-1 .5-1.6 1.3-1.6 2.4v.6"/><circle cx="24" cy="30.2" r="1.3" fill="#2742C2"/></svg>
+  </div></div><div class="nome">dúvidas</div></div>
+  <div class="dest" style="left:854px"><div class="anel"><div class="miolo" style="background:var(--t)"><div class="js" style="font:600 19px/1.08 Poppins;color:var(--creme);letter-spacing:-.02em">atendo<br>online</div></div></div><div class="nome">online</div></div>
 
   <!-- grade 3x3 (recorte 3:4 da grade do Instagram) -->
   <div class="grade">
@@ -43,10 +47,10 @@ body{background:#777;padding:20px}
     <div class="q"><img class="f" src="../posts/carrossel-v3/s1.png"><svg class="ico"><use href="#i-pin"/></svg></div>
     <div class="q"><img class="f" src="../posts/posts-v5/p3.png"></div>
     <div class="q"><img class="f" src="../posts/posts-v5/p6.png"></div>
-    <div class="q"><img class="f" src="../posts/posts-v5/p2.png"></div>
     <div class="q"><img class="f" src="../posts/posts-v5/p5.png"></div>
-    <div class="q"><img class="f" src="../posts/posts-v5/p4.png"></div>
+    <div class="q"><img class="f" src="../posts/posts-v5/p2.png"></div>
     <div class="q"><img class="f" src="pecas/reel.png"><svg class="ico"><use href="#i-reel"/></svg></div>
+    <div class="q"><img class="f" src="../posts/posts-v5/p4.png"></div>
   </div>
   <div class="grao"></div>
 </div>
