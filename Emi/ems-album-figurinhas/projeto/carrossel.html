@@ -162,8 +162,6 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
   const CLIPE = `<svg class="abs" style="left:${X3 + 70}px;top:${Y3 - 66}px;width:52px;transform:rotate(-8deg);filter:drop-shadow(1px 4px 3px rgba(42,20,51,.45));z-index:3" viewBox="0 0 46 130"><defs><linearGradient id="clp" x1="0" x2="1"><stop offset="0" stop-color="#8f8a97"/><stop offset=".45" stop-color="#f4f1f7"/><stop offset="1" stop-color="#7f7987"/></linearGradient></defs>
     <path d="M14 34 V104 a9 9 0 0 0 18 0 V18 a14 14 0 0 0 -28 0 V108 a19 19 0 0 0 38 0 V34" fill="none" stroke="url(#clp)" stroke-width="4.4" stroke-linecap="round"/></svg>`;
   lamina(2, `
-    <img class="abs" src="${estrelaReticula(780, css('lavanda'))}" style="left:560px;top:-280px;width:780px;opacity:.3;transform:rotate(14deg);-webkit-mask-image:linear-gradient(200deg,#000 20%,transparent 85%);mask-image:linear-gradient(200deg,#000 20%,transparent 85%)">
-    <img class="abs" src="${estrelaReticula(640, css('pink'))}" style="left:-260px;top:900px;width:640px;opacity:.75;transform:rotate(-22deg);-webkit-mask-image:linear-gradient(30deg,#000 30%,transparent 90%);mask-image:linear-gradient(30deg,#000 30%,transparent 90%)">
     <div class="abs" style="left:${X3 + 16}px;top:${Y3 + 14}px;width:${W3}px;height:1000px;background:#f3ecd6;transform:rotate(2.2deg);box-shadow:0 18px 40px rgba(20,8,26,.45)"></div>
     <div class="abs" style="left:${X3}px;top:${Y3}px;width:${W3}px;height:1000px;background:#fffaf0;transform:rotate(-1.2deg);box-shadow:0 22px 44px rgba(20,8,26,.5);text-align:center">
       <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.3"></div>
@@ -177,9 +175,16 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
       <div class="abs" style="left:0;right:0;bottom:40px">${by}</div>
     </div>
     ${CLIPE}
-  `, `<div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 40%, var(--plum) 0%, var(--creative-purple) 55%, var(--ameixa) 100%)"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.5"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.35"></div>`, 'grao-forte');
+    <img class="abs" src="emoji/2728.png" style="left:262px;top:332px;width:66px;transform:rotate(-8deg)">
+    <img class="abs" src="emoji/1f972.png" style="left:822px;top:566px;width:72px;transform:rotate(8deg)">
+    <img class="abs" src="emoji/2b50.png" style="left:826px;top:142px;width:92px;transform:rotate(14deg);filter:drop-shadow(0 6px 6px rgba(20,8,26,.35))">
+  `, `<div class="abs" style="inset:0;background:var(--ameixa)"></div>
+      <div class="abs" style="left:-150px;top:-250px;font-family:var(--serif);font-size:900px;line-height:.8;color:#62287a">A</div>
+      <div class="abs" style="left:720px;top:180px;font-family:var(--serif);font-style:italic;font-size:1050px;line-height:.8;color:#5a2470">g</div>
+      <div class="abs" style="left:-170px;top:760px;font-family:var(--serif);font-size:820px;line-height:.8;color:transparent;-webkit-text-stroke:3px rgba(192,165,196,.45)">&amp;</div>
+      <div class="abs" style="left:640px;top:930px;font-family:var(--serif);font-size:640px;line-height:.8;color:transparent;-webkit-text-stroke:3px rgba(221,52,168,.55)">R</div>
+      <div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(20,8,26,.22))"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao-forte');
 })();
 
 /* lupa de acrílico em cima de "algoritmo", ampliando a palavra (posição medida depois das fontes) */
