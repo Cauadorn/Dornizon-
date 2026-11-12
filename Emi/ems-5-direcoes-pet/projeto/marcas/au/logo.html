@@ -8,7 +8,7 @@
      A tentativa de dar pernas e tênis às letras desenhando à mão ficou feia (logo-tentativa-pernas.html): a Emi reprovou.
      A silhueta foi gerada (gpt-image no Figma) e limpa em limpa_silhueta.py.
      Uso: logo.html | ?nome=TROTE | ?fundo=#4342FF&tinta=#CCFF3E | ?bordas=0
-          quadro da lâmina: ?bordas=0&w=452&h=430&escala=.45 (img/matilha-marca.jpg) -->
+          quadro da lâmina: ?bordas=0&w=452&h=430&escala=.45&dx=-11.5&dy=8 (img/matilha-marca.jpg; centro da tinta medido na área visível, sem a sangria) -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: RubikI; src: url(../../fonts/Rubik-italic-var-latin.woff2); font-weight: 300 900; }
 @font-face { font-family: Rubik; src: url(../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
@@ -53,7 +53,7 @@ s.setProperty('--fundo', q.get('fundo') || '#CCFF3E'); s.setProperty('--tinta', 
 document.querySelectorAll('.cor-tinta').forEach(e => e.setAttribute('flood-color', q.get('tinta') || '#121212'));
 if (q.get('bordas') === '0') document.querySelectorAll('.borda').forEach(e => e.remove());
 if (q.get('w')) { const pc = document.querySelector('.palco'); pc.style.width = q.get('w') + 'px'; pc.style.height = q.get('h') + 'px'; }
-if (q.get('escala')) document.querySelector('.logo').style.transform = `translate(-50%, -50%) scale(${q.get('escala')})`;
+if (q.get('escala')) document.querySelector('.logo').style.transform = `translate(calc(-50% + ${q.get('dx') || 0}px), calc(-50% + ${q.get('dy') || 0}px)) scale(${q.get('escala')})`;
 // o nome ocupa 760px de largura (cabe qualquer nome curto)
 if (q.get('nome')) { document.querySelector('.mt').textContent = q.get('nome'); document.querySelectorAll('.borda span').forEach(e => e.textContent = e.textContent.replace('matilha', q.get('nome').toLowerCase())); }
 document.fonts.ready.then(() => { const mt = document.querySelector('.mt'); mt.style.fontSize = (200 * 760 / mt.offsetWidth) + 'px'; });   // offsetWidth: largura sem a escala do transform
