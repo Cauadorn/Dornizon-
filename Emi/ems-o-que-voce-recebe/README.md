@@ -17,10 +17,10 @@ composta com o objeto (o "logo?" entra na caixa de correio; a "marca." sai do en
 | --- | --- | --- | --- |
 | 1 · capa | tinta | o que chega antes do *logo?* | caixa de correio em duotone |
 | 2 · contrato | violeta | combinado não sai *caro.* | só papel e letra: a folha do contrato com o selo |
-| 3 · briefing | ameixa | perguntas que ninguém te *fez.* | caderno em duotone, perguntas sentadas na pauta |
+| 3 · briefing | ameixa | as perguntas que ninguém te *fez.* | só letra: título em bloco e as perguntas em pílulas empilhadas |
 | 4 · direção criativa | violeta-2 | o rumo antes do *desenho.* | varal com as amostras (cor, letra, matéria, voz) |
 | 5 · andamento | plum | sem sumiço, sem *suspense.* | celular em duotone com as etapas na tela |
-| 6 · chamada | violeta | e só então chega a *marca.* | envelope em duotone manteiga, pergunta e etiqueta |
+| 6 · chamada | tinta | e só então chega a *marca.* | tíquete "aviso de chegada": picote, canhoto com o selo, código de barras e carimbo |
 
 ## O que o Cauã reprovou na v1 (12/11/2026)
 
@@ -32,7 +32,8 @@ composta com o objeto (o "logo?" entra na caixa de correio; a "marca." sai do en
   com cenário, com ramos na frente do envelope apagados na mão. Objeto de montagem se gera isolado em fundo liso,
   sem nada na frente, e nunca se remenda.
 - **Depois do recorte limpo**: aprovadas as lâminas 1, 2, 4 e 5; reprovadas a 3 (caderno) e a 6 (envelope), sem motivo dito.
-  Duas alternativas de cada em `entrega/alternativas/` (`projeto/alternativas.html`), esperando a escolha.
+  Das duas alternativas de cada, ficaram as pílulas (3) e o aviso de chegada (6). Pedidos em cima delas: título da 3
+  rediagramado em bloco (as palavras se atropelavam) e o tíquete "mais bonitinho e realista".
 - **Brilhos espalhados** (o ícone de quatro pontas) saíram: "tá parecendo do Gemini". Não usar como enfeite solto.
 - A régua é a qualidade dos stories "toda marca tem fase": **não copiar, chegar no mesmo nível**.
 
