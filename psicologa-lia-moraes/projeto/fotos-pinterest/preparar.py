@@ -12,6 +12,12 @@ CORTES = {
     'mar-ondas':           (0.50, 0.50, 1.00),
     'mar-mulher-agua':     (0.50, 0.42, 1.00),
     'poltrona-azul-trigo': (0.50, 0.50, 1.00),
+    'janela-lua':          (0.50, 0.50, 1.00),
+    'mulher-campo-azul':   (0.50, 0.50, 1.00),
+    'mesinha-cha':         (0.50, 0.64, 1.00),
+    'janela-cortina-azul': (0.50, 0.50, 1.00),
+    'mulher-campo-ceu':    (0.50, 0.55, 1.00),
+    'cadeira-campo-vasto': (0.50, 0.56, 1.00),
 }
 for nome, (cx, cy, wf) in CORTES.items():
     im = Image.open(os.path.join(AQUI, nome + '.jpg')).convert('RGB')

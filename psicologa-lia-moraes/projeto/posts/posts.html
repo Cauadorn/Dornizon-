@@ -1,0 +1,153 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300..700&display=block" rel="stylesheet">
+<style>
+:root{--c:#2742C2;--creme:#F5EEE3;--p:#F3C6A8;--tinta:#1C1D3A}
+*{margin:0;box-sizing:border-box}
+body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
+.art{position:relative;overflow:hidden;flex:none;width:1080px;height:1350px}
+.abs{position:absolute}
+.cen{left:0;right:0;text-align:center}
+.f{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.is{font-family:'Instrument Serif';font-weight:400;letter-spacing:-.025em;line-height:.86;white-space:nowrap}
+.is i{font-style:italic;letter-spacing:-.035em}
+.js{font-family:Jost;font-weight:300}
+.js b{font-weight:600}
+.caps{font-family:Jost;font-weight:500;letter-spacing:.42em;text-transform:uppercase}
+/* cantos (refs 2, 3 e 5) */
+.canto{position:absolute;font:400 21px/1.25 Jost;z-index:40}
+.canto b{font-weight:600}
+.tl{left:62px;top:56px}.tr{right:62px;top:56px;text-align:right}.bl{left:62px;bottom:54px}.br{right:62px;bottom:54px;text-align:right}
+/* faixa atrás da frase (ref 2) */
+.faixa{display:inline;background:var(--c);color:var(--creme);padding:2px 14px 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone;line-height:1.38}
+/* sublinhado fino (ref 3) */
+.sub{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:7px}
+/* texto vazado repetido (ref 2) */
+.vazado{font:500 30px/1 Jost;letter-spacing:-.01em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(245,238,227,.55);white-space:nowrap}
+/* grão de filme por cima de tudo */
+.grao{position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.2;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bloco{position:absolute;left:0;right:0;text-align:center}
+.bloco>*{display:block}
+.papel{background:#F2EADB;box-shadow:0 30px 60px rgba(10,20,60,.35)}
+.papel::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+</style></head><body>
+<!-- P1 · ref 4: frase pequena + palavra gigante, caixa-alta espaçada -->
+<div class="art" id="p1" style="color:var(--creme)">
+  <img class="f" src="../fotos-pinterest/base/janela-lua.jpg">
+  <div class="abs" style="inset:0;background:rgba(8,14,60,.18)"></div>
+  <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
+  <div class="canto tr">@psi.liamoraes</div>
+  <div class="bloco" style="top:330px">
+    <span class="js" style="font-size:46px">Nem tudo precisa ser</span>
+    <span class="is" style="font-size:300px;margin-top:-14px" data-fit="900"><i>resolvido</i></span>
+    <span class="caps" style="font-size:28px;letter-spacing:.5em;margin-top:10px;color:var(--p)">hoje.</span>
+  </div>
+  <div class="canto bl">CRP 00/00000</div>
+  <div class="canto br">psicologia clínica</div>
+  <div class="grao"></div>
+</div>
+
+<!-- P2 · refs 1 e 2 do Cauã: apresentação, a psicóloga na frente do nome -->
+<div class="art" id="p2" style="color:var(--c)">
+  <img class="f" src="../ia/lia-janela-v1.png">
+  <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
+  <div class="canto tr">@psi.liamoraes</div>
+  <div class="bloco" style="top:170px">
+    <span class="js" style="font-size:46px">Prazer, eu sou a</span>
+    <span class="is" style="font-size:400px;margin-top:6px" data-fit="620"><i>Lia.</i></span>
+  </div>
+  <img class="f" src="../ia/lia-janela-v1-recorte.png" style="z-index:5">
+  <div class="abs js" style="left:62px;top:880px;width:330px;font-size:27px;font-weight:400;line-height:1.4;z-index:6;border-left:2.5px solid var(--c);padding-left:20px">Psicóloga clínica. Atendo adultos <b>online e presencial</b>, com escuta sem pressa e sem fórmula pronta.</div>
+  <div class="canto bl" style="z-index:7">CRP 00/00000</div>
+  <div class="canto br" style="color:var(--creme);z-index:7">vem conversar →</div>
+  <div class="grao"></div>
+</div>
+
+<!-- P3 · ref 3: título no céu, faixa de apoio -->
+<div class="art" id="p3" style="color:var(--c)">
+  <img class="f" src="../fotos-pinterest/base/mulher-campo-azul.jpg">
+  <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
+  <div class="canto tr">@psi.liamoraes</div>
+  <div class="bloco" style="top:150px">
+    <span class="js" style="font-size:46px">Ansiedade não é</span>
+    <span class="is" style="font-size:300px;margin-top:-18px" data-fit="860"><i>frescura.</i></span>
+    <span class="js" style="font-size:34px;margin-top:8px"><span class="faixa">é o corpo <b>pedindo atenção.</b></span></span>
+  </div>
+  <div class="canto bl" style="color:var(--creme)">CRP 00/00000</div>
+  <div class="canto br" style="color:var(--creme)">psicologia clínica</div>
+  <div class="grao"></div>
+</div>
+
+<!-- P4 · ref 3: título sobre a parte clara da foto, faixa de apoio -->
+<div class="art" id="p4" style="color:var(--c)">
+  <img class="f" src="../fotos-pinterest/base/mesinha-cha.jpg">
+  <div class="canto tl"><b>Lia Moraes</b><br>Psicóloga</div>
+  <div class="canto tr">@psi.liamoraes</div>
+  <div class="bloco" style="top:150px">
+    <span class="js" style="font-size:46px">Terapia online</span>
+    <span class="is" style="font-size:300px;margin-top:2px" data-fit="840"><i>funciona?</i></span>
+    <span class="js" style="font-size:34px;margin-top:8px"><span class="faixa"><b>sim.</b> mesmo sigilo, mesmo cuidado,</span><br><span class="faixa">de onde você estiver.</span></span>
+  </div>
+  <div class="canto bl">CRP 00/00000</div>
+  <div class="canto br">psicologia clínica</div>
+  <div class="grao"></div>
+</div>
+
+<!-- P5 · ref 5: cartão de papel sobre a foto, imagem em arco -->
+<div class="art" id="p5" style="color:var(--creme)">
+  <img class="f" src="../fotos-pinterest/base/janela-cortina-azul.jpg">
+  <div class="canto tl">@psi.liamoraes</div>
+  <div class="canto tr">CRP 00/00000</div>
+  <div class="abs papel" style="left:130px;right:130px;top:140px;bottom:140px;color:var(--c)">
+    <div class="bloco" style="top:60px;z-index:2">
+      <span class="js" style="font-size:40px">“Você não é um</span>
+      <span class="is" style="font-size:190px;margin-top:4px" data-fit="600"><i>problema</i></span>
+      <span class="js" style="font-size:40px;margin-top:4px">a ser resolvido.”</span>
+    </div>
+    <div class="abs" style="left:210px;right:210px;top:400px;height:470px;border-radius:200px 200px 0 0;overflow:hidden"><img src="../fotos-pinterest/base/mulher-campo-ceu.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 55%"></div>
+    <div class="bloco" style="top:900px">
+      <span class="js" style="font-size:30px">É uma história <b>a ser escutada.</b></span>
+    </div>
+  </div>
+  <div class="canto bl">Lia Moraes · Psicóloga</div>
+  <div class="canto br">psicologia clínica</div>
+  <div class="grao"></div>
+</div>
+
+<!-- P6 · ref 2: palavra gigante em itálico, faixas, texto vazado -->
+<div class="art" id="p6" style="color:var(--creme)">
+  <img class="f" src="../fotos-pinterest/base/cadeira-campo-vasto.jpg">
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(20,40,120,.28),rgba(20,40,120,0) 55%)"></div>
+  <div class="canto tl">@psi.liamoraes</div>
+  <div class="canto tr">CRP 00/00000</div>
+  <div class="abs vazado" style="left:62px;top:150px">pedir ajuda<br>pedir ajuda</div>
+  <div class="bloco" style="top:270px">
+    <span class="js" style="font-size:46px">Pedir ajuda também é</span>
+    <span class="is" style="font-size:300px;margin-top:-14px" data-fit="820"><i><span style="color:var(--p)">c</span>oragem.</i></span>
+    <span class="js" style="font-size:34px;margin-top:10px"><span class="faixa">você não precisa dar conta</span><br><span class="faixa">de <b>tudo sozinha.</b></span></span>
+  </div>
+  <div class="canto bl">Lia Moraes · Psicóloga</div>
+  <div class="canto br">psicologia clínica</div>
+  <div class="grao"></div>
+</div>
+<script>
+document.fonts.ready.then(() => {
+  // ajusta o corpo para a palavra ocupar exatamente a largura pedida
+  document.querySelectorAll('[data-fit]').forEach(el => {
+    const alvo = +el.dataset.fit;
+    el.style.display = 'block';
+    const s = document.createElement('span'); s.innerHTML = el.innerHTML; s.style.whiteSpace = 'nowrap';
+    el.innerHTML = ''; el.appendChild(s);
+    const fs = parseFloat(getComputedStyle(el).fontSize);
+    el.style.fontSize = (fs * alvo / s.getBoundingClientRect().width) + 'px';
+  });
+  document.querySelectorAll('[data-abaixo]').forEach(el => {
+    const ref = document.getElementById(el.dataset.abaixo), art = el.closest('.art');
+    const r = ref.getBoundingClientRect(), a = art.getBoundingClientRect();
+    el.style.top = (r.bottom - a.top + (+el.dataset.gap || 0)) + 'px';
+  });
+  window.READY = true;
+});
+</script>
+</body></html>
