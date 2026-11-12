@@ -15,6 +15,7 @@
 @font-face { font-family: "Graduate"; src: url(fonts/Graduate-normal-400.woff2); }
 @font-face { font-family: "Space Mono"; src: url(fonts/SpaceMono-normal-400.woff2); font-weight: 400; }
 @font-face { font-family: "Space Mono"; src: url(fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: "PoppinsL"; src: url(fonts/Poppins-300.woff2); font-weight: 300; }
 @font-face { font-family: "Archivo"; src: url(fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
 @font-face { font-family: "Rubik"; src: url(fonts/Rubik-italic-var-latin.woff2); font-weight: 300 900; font-style: italic; }
 @font-face { font-family: "Rubik"; src: url(fonts/Rubik-var-latin.woff2); font-weight: 300 900; font-style: normal; }

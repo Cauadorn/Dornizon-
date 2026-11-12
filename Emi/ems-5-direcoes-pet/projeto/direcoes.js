@@ -12,9 +12,10 @@ const dots = (cor, passo = 18, tam = 30) => `radial-gradient(circle, ${cor} ${ta
 const paleta = (cores) => `<div class="paleta mini">${cores.map(([nome, hex, tx]) =>
   `<div style="background:${hex};color:${tx}"><b>${nome}</b><small>${hex.toUpperCase()}</small></div>`).join('')}</div>`;
 
-const tipo = ({ aa, aaCor, sombra = 'none', amostra, amostraCss, cor, nome }) =>
+// img (opcional): no lugar do "Aa", uma imagem (para marcas de letra desenhada, como o monograma do pelo solto)
+const tipo = ({ aa, aaCor, sombra = 'none', amostra, amostraCss, cor, nome, img, imgAlt = 118 }) =>
   `<div class="tipo" style="color:${cor}">
-     <div class="aa" style="font:${aa};line-height:.86;color:${aaCor};text-shadow:${sombra}">Aa</div>
+     ${img ? `<img src="img/${img}" alt="" style="display:block;height:${imgAlt}px;margin:0 auto 6px">` : `<div class="aa" style="font:${aa};line-height:.86;color:${aaCor};text-shadow:${sombra}">Aa</div>`}
      <div class="amostra" style="font:${amostraCss};line-height:1.1">${amostra}</div>
      <div class="nome">${nome}</div></div>`;
 
@@ -77,19 +78,6 @@ const MARCA = {
         <div style="font:500 10px/1 'Bodoni Moda';letter-spacing:.38em;padding-left:.38em">PET COUTURE</div>
         <div style="font:italic 500 13px/1 'Bodoni Moda';margin-top:58px;opacity:.85">nº 001 · coleção inverno</div></div></div>`),
   // 03 · letra groovy com sombras empilhadas e faixa arco-íris que dobra a curva
-  setentinha: `
-    <svg viewBox="0 0 422 400" width="422" height="400" style="position:absolute;inset:0">
-      <g fill="none" stroke-width="16" stroke-linecap="butt">
-        <path d="M-10 52 H318 A58 58 0 0 1 376 110 V410" stroke="#7D7A3A"/>
-        <path d="M-10 68 H318 A42 42 0 0 1 360 110 V410" stroke="#6B3A1F"/>
-        <path d="M-10 84 H318 A26 26 0 0 1 344 110 V410" stroke="#E2701E"/>
-        <path d="M-10 100 H318 A10 10 0 0 1 328 110 V410" stroke="#E9B03B"/></g></svg>
-    <div style="position:absolute;left:30px;top:118px;width:300px;font:400 92px/.84 'Shrikhand';color:#FFF6E5;-webkit-text-stroke:5px #6B3A1F;paint-order:stroke fill;
-      text-shadow:4px 4px 0 #6B3A1F,8px 8px 0 #E2701E,12px 12px 0 #E9B03B,16px 16px 0 #7D7A3A;transform:rotate(-5deg)">pelo<br>solto</div>
-    ${BRILHO4(250, 128, 26, '#E2701E')}${BRILHO4(36, 330, 18, '#7D7A3A')}
-    <div style="position:absolute;left:44px;top:322px;font:400 24px/1 'Shrikhand';color:#6B3A1F">banho &amp; tosa</div>
-    <div style="position:absolute;left:46px;top:354px;font:500 12px/1 var(--sans);letter-spacing:.3em;color:#6B3A1F">DESDE 1974</div>`,
-  // 04 · número de peito preso com alfinetes
 };
 
 const DIRECOES = [
@@ -120,13 +108,15 @@ const DIRECOES = [
   // ---------------- 03 · retrô setentinha ----------------
   {
     titulo: 'retrô <em>setentinha</em>', pra: 'banho e tosa de bairro', card: 'var(--wine)',
-    texto: 'laranja queimado, mostarda e marrom, letra groovy e grão de filme. pra banho e tosa e petshop de bairro com história.',
-    heroi: { bg: '#E2701E', cheia: { src: 'd3pet-2', px: .62, py: .6 } },
-    marca: { bg: '#F4E3C3', html: MARCA.setentinha, cursor: [330, 300] },
+    texto: 'café, mostarda e azul piscina, letra groovy desenhada e monograma bordado. pra banho e tosa de bairro com história.',
+    // pelo solto (aprovado em 12/11): o nome veio do conceito gerado que a Emi escolheu, vetorizado (marcas/pelo-solto/logo.html);
+    // o monograma ps sobreposto (ps-sobreposto.svg) é o que vai bordado e estampado. Pesquisa em referencias/pelo-solto.
+    heroi: { bg: '#5FA7AE', cheia: { src: 'pelo-manga', px: .5, py: .5 } },   // mockup aprovado: ps bordado na manga (Digs)
+    marca: { bg: '#FDF6E5', cheia: { src: 'pelo-marca', px: .5, py: .5 }, cursor: [356, 334] },   // logo.html?w=452&h=430&escala=.46&dx=-20.5&dy=21.5 (centro da tinta no centro da moldura)
     quadrado: { bg: '#6B3A1F', cheia: { src: 'd3prod-2', px: .5, py: .8 } },
     alto: { bg: '#E9B03B', cheia: { src: 'd3extra', px: .55, py: .5 } },
-    paleta: [['mostarda', '#E9B03B', '#3A1E0E'], ['laranja queimado', '#E2701E', '#3A1E0E'], ['marrom vinil', '#6B3A1F', '#F4E3C3'], ['verde oliva', '#7D7A3A', '#F4E3C3']],
-    tipo: { bg: '#7D7A3A', aa: "400 100px 'Shrikhand'", aaCor: '#F4E3C3', sombra: '5px 5px 0 #E2701E', amostra: 'paz & ração', amostraCss: "400 24px 'Shrikhand'", cor: '#F4E3C3', nome: 'shrikhand' },
+    paleta: [['creme', '#FDF6E5', '#5A2E17'], ['café', '#5A2E17', '#FDF6E5'], ['mostarda', '#E9A92B', '#5A2E17'], ['azul piscina', '#5FA7AE', '#FDF6E5']],
+    tipo: { bg: '#5A2E17', img: 'pelo-ps-creme.svg', imgAlt: 112, amostra: 'BANHO & TOSA', amostraCss: "300 15px 'PoppinsL';letter-spacing:.32em", cor: '#FDF6E5', nome: 'lettering + poppins' },
   },
   // ---------------- 04 · modo atleta ----------------
   {
