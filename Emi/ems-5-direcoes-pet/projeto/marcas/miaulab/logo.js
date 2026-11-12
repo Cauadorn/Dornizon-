@@ -22,13 +22,16 @@ function miauLogo(el, o = {}) {
   const filtro = o.pelo ? `<filter id="pelo-${id}" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="2" seed="7"/>`
     + `<feDisplacementMap in="SourceGraphic" scale="${5 / k}" xChannelSelector="R" yChannelSelector="G"/></filter>` : '';
   const comPelo = o.pelo ? `filter="url(#pelo-${id})"` : '';
-  // patas de gato de verdade: a mão arredondada com três dedinhos na frente, dobrando por cima da borda da letra,
-  // e dois risquinhos separando os dedos
-  const pata = (x) => `<ellipse cx="${x}" cy="0" rx="48" ry="30"/>`
-    + [[-27, 15], [0, 19], [27, 15]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${dy}" r="20"/>`).join('');
-  const patas = (f, s) => `<g fill="${f}" ${s ? `stroke="${s}" stroke-width="${9 / k}" stroke-linejoin="round"` : ''}>${pata(-106)}${pata(106)}</g>`
-    + (s ? '' : `<g stroke="${o.contorno || cor}" stroke-width="${2.6 / k}" stroke-linecap="round">`
-      + [-106, 106].map(x => [-13.5, 13.5].map(dx => `<line x1="${x + dx}" y1="${20}" x2="${x + dx}" y2="${33}"/>`).join('')).join('') + '</g>');
+  // patas de gato: um desenho só, com curvas contínuas (sem bolinhas emendadas): o dorso da pata vem de trás,
+  // três dedos dobram por cima da borda da letra (o do meio maior), vales suaves entre os dedos e um risquinho afinado em cada vale.
+  // As duas patas giram um pouco para dentro, como quem segura a borda.
+  const PATA = 'M-50 -2 C-50 -22 -30 -33 0 -33 C30 -33 50 -22 50 -2 C50 14 45 30 32 31 C25 32 20 29 17 24 '
+    + 'C14 33 7 38 0 38 C-7 38 -14 33 -17 24 C-20 29 -25 32 -32 31 C-45 30 -50 14 -50 -2 Z';
+  const RISCO = 'M17 25 Q15.4 19 15.6 12 Q17.6 18 18.8 24 Z';
+  const pata = (x, lado, f, s) => `<g transform="translate(${x} 3) rotate(${lado * 7})">`
+    + `<path d="${PATA}" fill="${f}" ${s ? `stroke="${s}" stroke-width="${9 / k}" stroke-linejoin="round"` : ''}/>`
+    + (s ? '' : `<path d="${RISCO}" fill="${o.contorno || cor}"/><path d="${RISCO}" transform="scale(-1 1)" fill="${o.contorno || cor}"/>`) + '</g>';
+  const patas = (f, s) => pata(-106, 1, f, s) + pata(106, -1, f, s);
   el.style.position = el.style.position || 'absolute';
   el.innerHTML = `
   <svg width="899" height="700" viewBox="0 0 899 700" style="position:absolute;left:0;top:0;overflow:visible">
