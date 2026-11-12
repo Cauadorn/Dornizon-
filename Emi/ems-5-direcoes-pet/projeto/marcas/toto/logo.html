@@ -8,10 +8,10 @@
 html, body { margin: 0; }
 .palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; display: grid; place-items: center; background: var(--fundo); background-size: cover; background-position: center; }
 .logo { position: relative; display: flex; align-items: flex-end; color: var(--cor); filter: var(--sombra); }
-.letras { font: 400 280px/0.8 Cherry; display: flex; align-items: baseline; gap: 2px; }
-.letras .l, .letras .pata { width: 221px; height: 291px; margin: 0 2px -8px; }
-.almofada-anel { display: none; } .anel .almofada-anel { display: inline; } .anel .almofada-solida { display: none; }
-.pata { width: 221px; height: 291px; margin: 0 2px -8px; }
+.letras { font: 400 280px/0.8 Cherry; display: flex; align-items: baseline; gap: 0; letter-spacing: 0; }
+.letras .l { display: inline-block; }
+.letras > * + * { margin-left: 8px; }   /* letras juntinhas (a Emi: "pode juntar um pouquinho") */
+.pata { display: inline-block; width: 221px; height: 291px; margin-bottom: -8px; }
 .almofada-anel { display: none; } .anel .almofada-anel { display: inline; } .anel .almofada-solida { display: none; }
 </style></head><body>
 <div class="palco"><div class="logo">
