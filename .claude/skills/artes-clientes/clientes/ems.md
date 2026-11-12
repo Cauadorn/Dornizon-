@@ -121,6 +121,8 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - O `prompt` vai com as palavras da Emi; o pedido detalhado vai no `user_intent`.
   - O gerador do Figma (`generate_image`) só aceita texto.
   - O Weave do Figma pede conta vinculada (não está vinculada).
+  - **Não mandar a foto de referência de outra marca para o Canva editar.** Com a Grandorf junto, ele copiou a foto quase igual, com o pacote de ração GRANDORF na mão. Para editar uma versão aprovada, mandar só ela e o logo.
+  - Para baixar em alta, coloca a mídia num design (`read-design` com `open_transaction`, depois `edit-design` com `insert_fill`/`update_fill`, depois `commit`) e roda `export-design` em PNG. O design-contêiner é o DAHarvHevXI, 1728 x 2304.
   - O resultado vem como mídia do Canva (`MAHart5B9Rw`, por exemplo). Pela API só sai a miniatura de 149 px; o arquivo grande só abre pelo link `canva.com/M/<id>` ou exportando um design que contenha a imagem.
 - **Toda etiqueta em branco que aparece na lâmina vira rótulo da marca** (a Emi: "tem um rótulo embaixo do logo que tá sem nada").
   - **Conferir se os objetos da cena fazem sentido entre si.** A foto antiga tinha frasco com tampa de rosca e um conta-gotas solto ao lado. A Emi: "tem que substituir a rosca por uma de conta-gotas".
