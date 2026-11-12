@@ -160,6 +160,10 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - v3 também foi reprovada ("não gosto ainda, busque mais referências até acertar; pode mudar o nome"). Na rodada 2 (`referencias/pelo-solto/rodada-2`) ela escolheu **3 Puff Paw + 4 The Tail Club** e manteve o nome.
   - Gerei um poodle sentado e ela disse "gosto dele assim". **Quando ela aprova um elemento gerado, usar do jeito que está.** Eu já estava simplificando as formas sem ela pedir.
   - Na v4, o poodle chapado fica colado no nome empilhado em minúsculas bolhudas (Gluten), com as gotinhas de brilho e as estrelinhas do Puff Paw.
+  - Na v4, ela escolheu a A e pediu três coisas:
+    - "brilhinhos 100% vetor": estrela de quatro pontas e gota lisa são clichê de vetor; trocar por respingo de pincel com borda tremida (feTurbulence + feDisplacementMap) e grão de tinta leve;
+    - "mais movimento na fonte": letras dançando;
+    - "banho & tosa igual ao título, pode ser mais delicado": subtítulo em fonte de outra família (itálico leve), entre fios finos que vão de margem a margem.
   - Alinhamento pela tinta com `measureText().actualBoundingBox*`: a mesma margem à esquerda nas três linhas, e o corpo e o espaçamento do "banho & tosa" são calculados juntos para ele terminar junto com "solto". Conferido em pixel.
 - **Run club (direção 04): virou MATILHA running club.**
   - A identidade "AU" (número de peito na Graduate) foi reprovada: "feia, xoxa".

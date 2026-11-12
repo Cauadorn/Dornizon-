@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- pelo solto · logo v4. Referências que a Emi escolheu na rodada 2 (referencias/pelo-solto/rodada-2): 3 Puff Paw e 4 The Tail Club.
+     4 The Tail Club → o bicho em silhueta chapada ao lado do nome empilhado, colado nele, com a mesma altura do bloco; uma cor só;
+     3 Puff Paw     → a letra bolhuda e redonda em minúscula, os risquinhos de "brilho" saindo do canto e os brilhos de quatro pontas.
+     O poodle é a silhueta gerada que a Emi aprovou ("gosto dele assim"), sem simplificar (poodle-sentado.png).
+     Alinhamento pela TINTA (measureText.actualBoundingBox): pelo, solto e banho & tosa começam na mesma linha à esquerda, e
+     banho & tosa termina junto com "solto" (o espaçamento é calculado). O poodle vai do topo do "l" à base do "banho & tosa".
+     ?letra=Sniglet|Gluten · ?fundo=&tinta=&brilho= · ?w=&h=&escala=&dx=&dy= -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Sniglet; src: url(../../fonts/Sniglet.woff2); font-weight: 100 900; }
+@font-face { font-family: Gluten; src: url(../../fonts/Gluten.woff2); font-weight: 100 900; }
+html, body { margin: 0; }
+.palco { position: relative; overflow: hidden; background: var(--fundo); }
+svg { position: absolute; left: 0; top: 0; }
+</style></head><body>
+<div class="palco"><svg id="s"><defs><filter id="tinge"><feFlood id="cor" flood-color="#5A2614"/><feComposite in2="SourceAlpha" operator="in"/></filter></defs><g id="logo"></g></svg></div>
+<script>
+const q = new URLSearchParams(location.search), $ = (i) => document.getElementById(i), NS = 'http://www.w3.org/2000/svg';
+const C = { fundo: q.get('fundo') || '#E9A92B', tinta: q.get('tinta') || '#5A2614', brilho: q.get('brilho') || q.get('tinta') || '#5A2614' };
+const LETRA = q.get('letra') || 'Sniglet', PESO = LETRA === 'Gluten' ? 900 : 800;
+const W = +(q.get('w') || 1200), H = +(q.get('h') || 760);
+const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px'; pc.style.setProperty('--fundo', C.fundo);
+$('s').setAttribute('width', W); $('s').setAttribute('height', H); $('cor').setAttribute('flood-color', C.tinta);
+const el = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); $('logo').appendChild(e); return e; };
+const ctx = document.createElement('canvas').getContext('2d');
+const tinta = (txt, fs, ls = 0) => { ctx.font = `${PESO} ${fs}px ${LETRA}`; ctx.letterSpacing = ls + 'px'; const m = ctx.measureText(txt);
+  return { esq: m.actualBoundingBoxLeft, dir: m.actualBoundingBoxRight, sobe: m.actualBoundingBoxAscent, desce: m.actualBoundingBoxDescent }; };
+document.fonts.load(`${PESO} 100px ${LETRA}`).then(() => {
+  const FS = 220, X = 0, GAP = 14;
+  // linha 1 "pelo", linha 2 "solto", linha 3 "banho & tosa": encaixadas pela tinta
+  const t1 = tinta('pelo', FS), t2 = tinta('solto', FS);
+  const y1 = 0, y2 = y1 + t1.desce * .25 + GAP + t2.sobe;          // o "p" desce na frente do "s" (x-height), então só um quarto do descendente conta
+  const largura = t2.esq + t2.dir;
+  // "banho & tosa": corpo e espaçamento calculados juntos (espaço = 14% do corpo) para terminar junto com "solto"
+  const base3 = 'banho & tosa', n = base3.length, r0 = tinta(base3, 100), w100 = r0.esq + r0.dir;
+  const FS3 = largura / (w100 / 100 + .14 * (n - 1)), ls = .14 * FS3, t3 = tinta(base3, FS3, ls);
+  const y3 = y2 + t2.desce + GAP * 2.2 + t3.sobe;
+  const txt = (s, fs, y, t, ls2 = 0) => el('text', { x: X + t.esq, y, 'font-family': LETRA, 'font-weight': PESO, 'font-size': fs, 'letter-spacing': ls2, fill: C.tinta }).textContent = s;
+  txt('pelo', FS, y1, t1); txt('solto', FS, y2, t2); txt(base3, FS3, y3, t3, ls);
+  // poodle: do topo do "l" de "pelo" até a base de "banho & tosa", à esquerda, com um respiro curto
+  const topo = y1 - t1.sobe, base = y3 + t3.desce, alt = base - topo, ar = 964 / 1368, larg = alt * ar;
+  el('image', { href: 'poodle-sentado.png', x: X - larg - FS * .1, y: topo, width: larg, height: alt, filter: 'url(#tinge)' });
+  // Puff Paw: três gotinhas de brilho saindo do canto de cima à direita do "o" de "pelo" (recém-banhado) e brilhos de quatro pontas
+  const tO = tinta('o', FS), cx = X + t1.esq + t1.dir + 6, cy = y1 - tO.sobe + 2;
+  for (const [ang, len] of [[-80, 40], [-44, 50], [-8, 38]]) {
+    const r = ang * Math.PI / 180, a0 = 16, ux = Math.cos(r), uy = Math.sin(r), px = -uy, py = ux;
+    const xa = cx + ux * a0, ya = cy + uy * a0, xb = cx + ux * (a0 + len), yb = cy + uy * (a0 + len), w0 = 5, w1 = 11;
+    el('path', { d: `M${xa + px * w0} ${ya + py * w0} L${xb + px * w1} ${yb + py * w1} A${w1} ${w1} 0 0 0 ${xb - px * w1} ${yb - py * w1} L${xa - px * w0} ${ya - py * w0} A${w0} ${w0} 0 0 1 ${xa + px * w0} ${ya + py * w0}Z`, fill: C.brilho });
+  }
+  const estrela = (x, y, r) => el('path', { d: `M${x} ${y - r}C${x + r * .12} ${y - r * .12} ${x + r * .12} ${y - r * .12} ${x + r} ${y}C${x + r * .12} ${y + r * .12} ${x + r * .12} ${y + r * .12} ${x} ${y + r}C${x - r * .12} ${y + r * .12} ${x - r * .12} ${y + r * .12} ${x - r} ${y}C${x - r * .12} ${y - r * .12} ${x - r * .12} ${y - r * .12} ${x} ${y - r}Z`, fill: C.brilho });
+  estrela(X + largura + 42, y2 - t2.sobe * .5, 18);
+  estrela(X + largura + 70, y2 - t2.sobe * .5 + 34, 9);
+  // centraliza pela caixa do grupo
+  const L = $('logo'), bb = L.getBBox(), k = +(q.get('escala') || 1);
+  L.setAttribute('transform', `translate(${W / 2 + (+(q.get('dx') || 0))} ${H / 2 + (+(q.get('dy') || 0))}) scale(${k}) translate(${-(bb.x + bb.width / 2)} ${-(bb.y + bb.height / 2)})`);
+});
+</script></body></html>
