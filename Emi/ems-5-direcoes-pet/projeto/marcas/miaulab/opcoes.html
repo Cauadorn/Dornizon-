@@ -1,0 +1,22 @@
+<!doctype html>
+<!-- Opções do logo v2 lado a lado, para a Emi comparar com a v1. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+html, body { margin: 0; } body { width: 1080px; background: #EDEAE4; font-family: Mono; }
+.p { padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.c { position: relative; overflow: hidden; border-radius: 18px; height: 470px; }
+.t { position: absolute; left: 20px; top: 16px; font: 700 16px/1.3 Mono; letter-spacing: .04em; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+</style><script src="logo.js"></script></head><body><div class="p">
+  <div class="c" style="background:#2F55F2"><div class="logo" id="a"></div><div class="t" style="color:#fff">A · menor, liso</div></div>
+  <div class="c" style="background:#2F55F2"><div class="logo" id="b"></div><div class="t" style="color:#fff">B · menor, com pelo</div></div>
+  <div class="c" style="background:#F5F7F6"><div class="logo" id="c"></div><div class="t">negativo com respiro</div></div>
+  <div class="c" style="background:#FF9FD2"><div class="logo" id="d"></div><div class="t">rosa</div></div>
+</div>
+<script>
+const poe = (id, o) => { const el = document.getElementById(id), k = .5; el.style.left = (510 - 899 * k) / 2 + 'px'; el.style.top = '80px'; el.style.transform = `scale(${k})`; miauLogo(el, { id, ...o }); };
+poe('a', {}); poe('b', { pelo: true });
+poe('c', { cor: '#141418', olho: '#FF9FD2', contorno: '#F5F7F6' });
+poe('d', { cor: '#2F55F2', olho: '#2F55F2' });
+</script></body></html>
