@@ -57,5 +57,6 @@ Há outros artifacts chamados só "Design System" (sem cliente no título): ler 
 | Quero Mais Crédito | `clientes/quero-mais-credito.md` |
 | Topo do Mundo | `clientes/topo-do-mundo.md` |
 | Dr. Luiz Jr | `clientes/dr-luiz-jr.md` |
+| EMS (@itsemsdesign) | `clientes/ems.md` |
 
 LamCred tem skill própria (`lamcred-artes`) e EMS também (`marca-ems`): usar a skill do cliente quando existir e, mesmo assim, cumprir os passos 1 e 2 das regras acima.

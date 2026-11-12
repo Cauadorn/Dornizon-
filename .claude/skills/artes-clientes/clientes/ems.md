@@ -1,0 +1,18 @@
+# EMS (@itsemsdesign, Emi)
+
+- **Motor (Design System)**: https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa (ler `project/README.md` e `project/conteudo.md` antes de qualquer post).
+- **Skill própria**: `marca-ems` (voz, cor, tipografia, grafismos, selo, geração de imagem).
+- **Projetos no repositório**: `Emi/ems-so-um-ajustezinho/`, `reel-ems/` (o carrossel pet `Emi/ems-5-direcoes-pet/` está em outra branch).
+
+## Aprendizados (o que já custou refação)
+
+Registrado também no Design System (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
+
+- **12/11/2026, "é só um ajustezinho"** (carrossel de 6):
+  - **Conectividade é composição contínua, não linha.** Desenhar o carrossel como uma faixa só (6480 × 1350) e cortar depois: em todo corte o fundo continua (troca de cor em diagonal que cruza o corte) e um objeto atravessa de verdade, metade de cada lado (a bússola com o centro no corte foi o exemplo da Emi). Fio ou trilha decorativa ligando as lâminas foi reprovado: nunca usar.
+  - **Um recurso por lâmina.** O caderno repetido em 3 lâminas foi reprovado. Caderno, janela, bilhete e celular: cada um numa lâmina só.
+  - **Referência é repertório, não molde.** Tirar o princípio e traduzir com o vocabulário da EMS; não trazer o objeto da ref. Ref mandada "pra entender" não entra no post.
+  - **Grafismos só da EMS** (ícones tingidos na paleta, `SelectionBox`, cursor "emi", `HandleTag`), um ou dois por lâmina, com motivo. Brilho desenhado que não é da marca foi reprovado. "Pode usar mais grafismos, sem exagero."
+  - **Matéria agrada:** tecido, letra com falha de impressão, objetos em duotone da paleta ("a bússola tava linda").
+  - **Objeto gerado entra reto:** a borracha com 13° de inclinação + rotação no layout ficou "totalmente torta". Medir e nivelar o recorte antes de compor.
+  - **Tema:** *blanding* já tem post no feed da EMS.

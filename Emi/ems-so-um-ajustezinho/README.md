@@ -17,35 +17,42 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 ## Versões
 
 - **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada, no sistema EMS.
-- **v4** (`entrega/v4/`, `projeto/carrossel-v4.html`): **a atual.** Textura de verdade (tecido, papel, linho, letra com falha de impressão, objetos em duotone da paleta) e **um recurso diferente em cada slide**, tirado do repertório das referências e traduzido para a EMS:
+- **v5** (`entrega/v5/`, `projeto/carrossel-v5.html`): **a atual.** Desenhada como **uma faixa só** (6480 × 1350) e cortada em 6. Textura de verdade (tecido, papel, linho, xadrez da paleta, letra com falha de impressão, objetos em duotone) e **um recurso diferente em cada lâmina**:
 
-| Slide | Recurso | De onde veio a ideia |
+| Lâmina | Recurso | Princípio de onde veio |
 | --- | --- | --- |
-| 1 · capa | "ajuste" e "zinho”" se atropelando com falha de impressão + papel amassado em duotone (tinta → violeta-2 → marfim) sobre tecido violeta | @carolrech, jantar |
-| 2 · loop | Página de caderno pontilhado com espiral, divisórias por fase do projeto e post-its com fita (**só neste slide**) | @carolrech, agenda |
-| 3 · pasta | Janela de computador retrô sobre xadrez da paleta, com os ícones da EMS (seta, espiral, coração) na barra de ferramentas e a v1 selecionada | @danibloom.design |
-| 4 · norte | "norte." atropelando a bússola em duotone (tinta → plum → manteiga) + bilhete com fita, sobre tecido ameixa | @carolrech, jantar |
-| 5 · pergunta | A primeira pergunta do briefing numa conversa no celular (avatar = mascote da EMS), com a estrela da EMS grande atrás, sobre linho claro | @rafaelalimadesigner_ |
+| 1 · capa | "ajuste" e "zinho”" se atropelando com falha de impressão + papel amassado em duotone (tinta → violeta-2 → marfim) | @carolrech, jantar (matéria, letra impressa) |
+| 2 · loop | Página de caderno pontilhado com espiral, divisórias por fase do projeto, post-its e a borracha reta no meio (**só nesta lâmina**) | @carolrech, agenda (a peça como objeto) |
+| 3 · pasta | Janela de computador retrô com os ícones da EMS na barra e a v1 selecionada pelo cursor "emi" | @danibloom.design (um cenário que é o roteiro) |
+| 4 · norte | "*norte.*" gigante + bilhete com fita + bússola em duotone (tinta → plum → manteiga) | @carolrech, jantar |
+| 5 · pergunta | A primeira pergunta do briefing numa conversa no celular (avatar = mascote da EMS) | @rafaelalimadesigner_ |
 | 6 · chamada | "brie*f*ing?" impresso + pílula com cursor "emi", selo e xoxo | sistema EMS |
 
-**Conectividade (o carrossel é uma faixa contínua):**
-- Um fio rosa com contorno marfim (o rastro do cursor "emi", nas cores do cursor) começa num ponto ao lado de "é só um" e atravessa as 6 lâminas, sempre por baixo dos objetos. As pontas de cada lâmina batem no corte com a da vizinha. Ele dá laçadas na margem do slide do **loop**, contorna a janela na **pasta**, fica **reto** a partir do **norte** e termina embaixo do cursor que clica em "comenta BRIEFING".
-- Objetos que vazam: a bolinha de papel da capa fica metade no slide 1 e metade no 2; a bússola do slide 4 aparece na borda esquerda do 5.
-- Para mexer no fio: `trilhas` no `<script>` de `carrossel-v4.html` (coordenadas locais de cada lâmina; a ponta que sai em x=1080 precisa ter o mesmo y da que entra em x=0 na lâmina seguinte).
+**Conectividade (composição contínua, nunca fio):** em todo corte o fundo continua e um objeto atravessa de verdade, metade de cada lado.
 
-Grafismos: só os do design system (brilho, espiral, coração, estrela, seta, xoxo), um ou dois por slide e com motivo, tingidos na cor da paleta. Os únicos traços à mão são funcionais: setas do loop e os sublinhados.
+| Corte | O que atravessa | Fundo |
+| --- | --- | --- |
+| 1 \| 2 | pilha de papel amassado | tecido violeta contínuo |
+| 2 \| 3 | a janela começa no fim da lâmina 2 (bolinhas da barra) | diagonal violeta → xadrez cruzando o corte |
+| 3 \| 4 | bilhete colado por cima da janela, fita em cima do corte | diagonal xadrez → ameixa |
+| 4 \| 5 | bússola com o centro no corte | diagonal ameixa → linho |
+| 5 \| 6 | estrela da EMS colada por cima do celular | diagonal linho → violeta |
 
-As v2 e v3 foram descartadas: a v2 repetia a folha de caderno em 3 slides e trazia brilhos que não são da EMS; a v3 voltou demais para a v1.
+O fundo inteiro está em `.fundo` (coordenadas da faixa); cada lâmina posiciona o que atravessa com coordenadas além de 0–1080 (ex.: bússola em `left:760px; width:640px` = centro em 1080).
+
+Grafismos: só os do design system (brilho, espiral, coração, estrela, xoxo, `SelectionBox`, cursor "emi", `HandleTag`), tingidos na cor da paleta, com motivo. Traço à mão só nas setas do diagrama do loop.
+
+Descartadas: v2 (caderno repetido em 3 lâminas, brilhos que não são da EMS), v3 (voltou demais para a v1) e v4 (tinha um fio atravessando as lâminas como "conexão": reprovado, nunca mais). As regras ficaram registradas no Design System da EMS (README › "Regras de carrossel" e conteúdo › "Carrossel: regras aprendidas").
 
 Referências em `referencias/outras/`.
 
 ## Lâminas
 
 1. **Capa** (`violeta`): "“é só um / ajuste*z*inho”" + pilha de papel amassado (v3_ajuste.png, v_final.png, v27_ok.png). "e foi assim que a gente chegou na versão 27."
-2. **Tensão** (`ivory`): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
-3. **Piada** (`ameixa`): "teste rápido: / ache o arquivo *final*". "sem briefing, cada versão é um chute. e chute cansa os dois lados."
-4. **Virada** (`lavanda-2`): "calma: ajuste faz parte. / o que cansa é ajuste sem *norte.*" + bússola. "briefing bem feito é o norte do projeto: todo mundo sabe pra onde vai, e o ajuste vira refinamento, não recomeço."
-5. **Pergunta aberta** (`plum`): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" Três campos para responder nos comentários.
+2. **Tensão** (caderno sobre tecido violeta): "sem briefing, vira isso: / o loop da *refação*". Fecho: "ninguém é o vilão dessa história. / faltou combinar o destino antes de sair."
+3. **Piada** (janela retrô sobre xadrez): "teste rápido: / ache o arquivo *final*". "sem briefing, cada versão é um chute. e chute cansa os dois lados."
+4. **Virada** (tecido ameixa): "calma: ajuste faz parte. / o que cansa é ajuste sem *norte.*" + bússola. "briefing bem feito é o norte do projeto: todo mundo sabe pra onde vai, e o ajuste vira refinamento, não recomeço."
+5. **Pergunta aberta** (linho claro): "a primeira pergunta do meu briefing: / como é a sua marca em *três* palavras?" A pergunta aparece numa conversa no celular; a resposta vai nos comentários.
 6. **Chamada** (`violeta`): "quer as outras perguntas do meu / brie*f*ing?" + "comenta “BRIEFING” que eu te mando na dm" + selo + emsdesign.com.br.
 
 > ⚠️ **Antes de postar:** a chamada promete mandar por dm as perguntas do briefing da Emi. Elas precisam estar prontas num formato fácil de mandar (PDF, nota ou link), e alguém precisa responder quem comentar "BRIEFING". A lâmina 5 diz que "como é a sua marca em três palavras?" é a primeira pergunta do briefing: se no briefing dela a primeira for outra, troque o texto da lâmina ou a ordem do briefing.
@@ -70,7 +77,7 @@ e me conta: como é a sua marca em três palavras?
 
 ## Elementos gerados
 
-Nano Banana Pro (`gemini-3-pro-image`, pelo ElevenLabs, 4 variações por prompt, 1376 × 768), prompts em português com fundo #E9E9E9, no modelo "Objeto 3D recortado" de `geracao-de-imagem.md`. Recorte com `rembg` BiRefNet (papel e borracha brancos perto do #E9E9E9). Escolhidas: papel-1, borracha-1, bussola-3 (originais em `projeto/geradas/`, recortes em `projeto/recortes/`). As outras variações ficaram no flow "EMS — carrossel ajustezinho (objetos)" no ElevenLabs.
+Nano Banana Pro (`gemini-3-pro-image`, pelo ElevenLabs, 4 variações por prompt, 1376 × 768), prompts em português com fundo #E9E9E9, no modelo "Objeto 3D recortado" de `geracao-de-imagem.md`. Recorte com `rembg` BiRefNet (papel e borracha brancos perto do #E9E9E9). Escolhidas: papel-1, bussola-3 e, para a borracha, a variação 3 (`borracha-reta.png`, nivelada pelo eixo do objeto: a 1 estava 13° torta). Originais em `projeto/geradas/`, recortes em `projeto/recortes/`. As outras variações ficaram no flow "EMS — carrossel ajustezinho (objetos)" no ElevenLabs.
 
 - **Papel amassado (capa):** Fotografia de produto de uma pilha de sete bolas de papel sulfite amassado, papel branco levemente marfim com rabiscos de lápis e traços de caneta violeta #6225D8 aparecendo entre as dobras, amontoadas umas sobre as outras formando um pequeno monte, uma bola rolando um pouco afastada, luz de estúdio suave vinda da esquerda, sombras de contato delicadas entre as bolas, textura realista de papel, foco nítido em toda a peça, enquadramento centralizado com respiro nas bordas, fundo liso #E9E9E9, sem sombra projetada no chão, sem texto legível, sem logotipo, sem outros objetos.
 - **Borracha (lâmina 2):** Fotografia de produto de uma borracha escolar branca com cinta de papel violeta #6225D8 lisa e sem texto, muito gasta de tanto apagar, a ponta exposta desgastada, torta e arredondada, alguns farelos de borracha espalhados bem perto dela, objeto deitado em três quartos, luz de estúdio suave vinda da esquerda, sombras de contato delicadas, textura realista de borracha e papel, foco nítido em toda a peça, enquadramento centralizado com respiro nas bordas, fundo liso #E9E9E9, sem sombra projetada no chão, sem texto, sem logotipo, sem outros objetos.
@@ -80,6 +87,6 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1) e `projeto/carrossel-v4.html` (v4): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v4.html v4` gera a v4 em `entrega/v4/` (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v4/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/carrossel.html` (v1) e `projeto/carrossel-v5.html` (v5): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v5.html v5` gera a v5 em `entrega/v5/` (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v5/`: PNGs finais 1080 × 1350 para subir no Instagram.
