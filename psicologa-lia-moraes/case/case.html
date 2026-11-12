@@ -17,7 +17,7 @@ body{background:#555}
 .gig{font-family:'Instrument Serif';font-weight:400;font-style:italic;letter-spacing:-.025em;line-height:.8}
 .titulo{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:baseline;gap:16px;white-space:nowrap}
 .pil{display:inline-block;font:500 28px/1.15 Poppins;letter-spacing:-.01em;padding:14px 28px 16px;border-radius:999px;box-shadow:3px 3px 0 var(--tinta);white-space:nowrap}
-.q{position:absolute;box-shadow:4px 6px 0 rgba(42,20,51,.38)}
+.q{position:absolute;box-shadow:0 14px 30px -6px rgba(42,20,51,.28),0 2px 6px rgba(42,20,51,.12)}
 .q img{display:block;width:100%;height:100%}
 .tag{position:absolute;font:500 22px/1 Poppins;padding:.3em .7em .3em .45em;border-radius:4px;color:var(--ivory);z-index:20}
 .tag svg{position:absolute;left:-18px;bottom:-18px}
@@ -37,57 +37,53 @@ body{background:#555}
 </svg>
 <div class="faixa" id="faixa">
 
-  <!-- ===== FUNDOS: matéria diferente em cada lâmina ===== -->
-  <div class="fundo" style="left:0"><img src="fotos/capa-v2.jpg" style="width:1080px;height:1350px"></div>
-  <div class="fundo" style="left:1080px;background:var(--violeta)"><div style="background:url(../projeto/fotos-pinterest/colagem/linho-textura.png) center/cover;mix-blend-mode:soft-light;opacity:.7"></div><div style="background-image:radial-gradient(rgba(255,251,222,.09) 1.4px,transparent 1.7px);background-size:9px 9px"></div></div>
-  <div class="fundo" style="left:2160px;background:var(--ivory)"><div style="background:url(../projeto/fotos-pinterest/colagem/papel.jpg) center/cover;mix-blend-mode:multiply;opacity:.55"></div></div>
-  <div class="fundo" style="left:3240px;background:var(--ameixa)"><div style="background:url(../projeto/fotos-pinterest/colagem/linho.png) center/700px;mix-blend-mode:soft-light;opacity:.55"></div></div>
-  <div class="fundo" style="left:4320px;background:var(--violeta)"><div style="background:repeating-linear-gradient(0deg,rgba(123,77,242,.35) 0 60px,transparent 60px 120px),repeating-linear-gradient(90deg,rgba(123,77,242,.35) 0 60px,transparent 60px 120px)"></div><div style="background:url(../projeto/fotos-pinterest/colagem/linho-textura.png) center/cover;mix-blend-mode:soft-light;opacity:.6"></div></div>
+  <!-- ===== FUNDOS (v3: claros e limpos; violeta só de acento e na chamada) ===== -->
+  <div class="fundo" style="left:0"><img src="fotos/capa-v3.jpg" style="width:1080px;height:1350px"></div>
+  <div class="fundo" style="left:1080px;background:var(--ivory)"><div style="background:url(../projeto/fotos-pinterest/colagem/papel.jpg) center/cover;mix-blend-mode:multiply;opacity:.35"></div></div>
+  <div class="fundo" style="left:2160px;background:var(--lavanda2)"><div style="background:url(../projeto/fotos-pinterest/colagem/papel-1080.jpg) center/cover;mix-blend-mode:multiply;opacity:.3;filter:grayscale(1)"></div></div>
+  <div class="fundo" style="left:3240px;background:var(--ivory)"><div style="background:url(../projeto/fotos-pinterest/colagem/linho-textura.png) center/cover;mix-blend-mode:multiply;opacity:.18"></div></div>
+  <div class="fundo" style="left:4320px;background:var(--violeta)"><div style="background-image:radial-gradient(rgba(255,251,222,.07) 1.4px,transparent 1.7px);background-size:9px 9px"></div></div>
 
   <svg id="pontes" class="abs" width="5400" height="1350" style="left:0;top:0;z-index:5"></svg>
 
   <!-- ===== 1 · CAPA ===== -->
-  <div class="cont" style="left:0;color:var(--ivory)">
-    <div class="balao" style="left:90px;top:716px;transform:rotate(-5deg)"><img src="img/emoji/1f6cb-fe0f.png"><img src="img/emoji/1f49c.png"><img src="img/emoji/2728.png"></div>
-    <div class="abs lead" style="left:94px;top:820px;font-size:60px;text-shadow:3px 4px 0 var(--tinta)">minha cliente queria</div>
-    <div class="abs" style="left:94px;top:918px;display:flex;align-items:baseline;gap:22px">
-      <span class="lead" style="font-size:60px;text-shadow:3px 4px 0 var(--tinta)">um</span>
-      <span class="gig" style="font-size:290px;color:var(--pink);filter:url(#sticker)">feed</span>
+  <div class="cont" style="left:0;color:var(--tinta)">
+    <div class="abs lead" style="left:92px;top:146px;z-index:2">minha cliente queria um feed</div>
+    <div class="abs" style="left:86px;top:190px;display:flex;align-items:baseline;gap:26px;z-index:2;white-space:nowrap">
+      <span class="gig" style="font-size:244px;font-style:normal">que</span><span class="gig" style="font-size:244px;color:var(--pink)">acolhe</span>
     </div>
-    <div class="abs" style="left:300px;top:1102px;transform:rotate(-3deg);z-index:3">
-      <span style="display:inline-flex;align-items:center;gap:14px;background:var(--ivory);color:var(--tinta);font:500 40px/1 Poppins;letter-spacing:-.015em;padding:14px 26px 16px;border-radius:4px;box-shadow:4px 4px 0 var(--tinta)">
-        <svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2 9 8.4z" fill="#6225d8"/></svg>acolhedor &amp; sem clichê</span>
-    </div>
-    <div class="abs" style="left:322px;top:1196px;display:flex;align-items:center;gap:10px;font:500 36px/1 Poppins;letter-spacing:-.015em;text-shadow:2px 3px 0 var(--tinta)">e eu entreguei isso! <img src="img/emoji/1f449.png" style="width:46px;height:46px"></div>
-    <span class="tag" style="right:96px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
+    <img class="abs" src="fotos/capa-v3-recorte.png" style="left:0;top:0;width:1080px;height:1350px;z-index:3">
+    <div class="abs" style="right:92px;top:474px;z-index:4;transform:rotate(-3deg)"><span class="pil" style="background:var(--violeta);color:var(--ivory);font-size:34px">e eu entreguei isso →</span></div>
+    <div class="balao" style="right:120px;top:566px;transform:rotate(4deg)"><img src="img/emoji/1f6cb-fe0f.png"><img src="img/emoji/1f49c.png"><img src="img/emoji/2728.png"></div>
+    <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
   </div>
 
   <!-- ===== 2 · O CARROSSEL ===== -->
-  <div class="cont" style="left:1080px;color:var(--ivory)">
-    <div class="titulo" style="top:226px"><span class="lead">primeiro, o</span><span class="gig" style="font-size:180px;color:var(--manteiga)">carrossel</span></div>
+  <div class="cont" style="left:1080px;color:var(--tinta)">
+    <div class="titulo" style="top:150px"><span class="lead">primeiro, o</span><span class="gig" style="font-size:190px;color:var(--pink)">carrossel</span></div>
     <div id="grade-carrossel"></div>
-    <div class="abs" style="left:0;right:0;top:1094px;text-align:center"><span class="pil" style="background:var(--ivory);color:var(--tinta)">8 lâminas, do gancho ao convite</span></div>
+    <div class="abs" style="left:0;right:0;top:1030px;text-align:center"><span class="pil" style="background:var(--violeta);color:var(--ivory)">8 lâminas, do gancho ao convite</span></div>
   </div>
 
   <!-- ===== 3 · O FEED ===== -->
   <div class="cont" style="left:2160px;color:var(--tinta)">
-    <div class="titulo" style="top:112px"><span class="lead">depois, o</span><span class="gig" style="font-size:180px;color:var(--pink)">feed</span></div>
-    <div class="q" style="left:190px;top:300px;width:700px;height:875px"><img src="img/feed.png"></div>
-    <div class="balao" style="left:740px;top:262px;transform:rotate(5deg)"><img src="img/emoji/1f9e0.png"><img src="img/emoji/1faf6.png"></div>
-    <div class="abs" style="left:0;right:0;top:1196px;text-align:center"><span class="pil" style="background:var(--violeta);color:var(--ivory)">9 posts + 5 destaques, tudo conversando</span></div>
+    <div class="titulo" style="top:112px"><span class="lead">depois, o</span><span class="gig" style="font-size:190px;color:var(--pink)">feed</span></div>
+    <div class="abs" style="left:0;right:0;top:318px;display:flex;justify-content:center;gap:18px" id="paleta"></div>
+    <div class="q" style="left:230px;top:410px;width:620px;height:775px"><img src="img/feed.png"></div>
+    <div class="balao" style="left:760px;top:372px;transform:rotate(5deg)"><img src="img/emoji/1f9e0.png"><img src="img/emoji/1faf6.png"></div>
   </div>
 
   <!-- ===== 4 · OS POSTS ===== -->
-  <div class="cont" style="left:3240px;color:var(--ivory)">
-    <div class="titulo" style="top:142px"><span class="lead">e os</span><span class="gig" style="font-size:180px;color:var(--manteiga)">posts</span></div>
+  <div class="cont" style="left:3240px;color:var(--tinta)">
+    <div class="titulo" style="top:112px"><span class="lead">e os</span><span class="gig" style="font-size:190px;color:var(--pink)">posts</span></div>
     <div id="grade-posts"></div>
-    <div class="abs" style="left:0;right:0;top:1142px;text-align:center"><span class="pil" style="background:var(--manteiga);color:var(--tinta)">6 posts, cada um com a sua ideia</span></div>
+    <div class="abs" style="left:0;right:0;top:1150px;text-align:center"><span class="pil" style="background:var(--manteiga);color:var(--tinta)">6 posts, cada um com a sua ideia</span></div>
   </div>
 
   <!-- ===== 5 · CHAMADA: ficha de primeira sessão ===== -->
   <div class="cont" style="left:4320px;color:var(--tinta)">
     <div class="abs" style="left:150px;top:170px;width:780px;height:960px;background:var(--ivory);transform:rotate(-2deg);box-shadow:8px 10px 0 var(--tinta);padding:72px 70px 0">
-      <div style="position:absolute;inset:0;background:url(../projeto/fotos-pinterest/colagem/papel.jpg) center/cover;mix-blend-mode:multiply;opacity:.5"></div>
+      <div style="position:absolute;inset:0;background:url(../projeto/fotos-pinterest/colagem/papel.jpg) center/cover;mix-blend-mode:multiply;opacity:.45"></div>
       <div style="position:relative">
         <div style="font:600 22px/1 Poppins;letter-spacing:.16em;color:var(--violeta)">FICHA DE PRIMEIRA SESSÃO</div>
         <div style="margin-top:26px;border-top:2px solid var(--tinta)"></div>
@@ -107,9 +103,8 @@ body{background:#555}
     <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
   </div>
 
-  <!-- relevo de papel + grão de impressão contínuos -->
-  <div class="cobertura" style="background:url(../projeto/fotos-pinterest/colagem/papel-fibra.jpg) 0 0/1080px 1350px repeat-x;mix-blend-mode:soft-light;opacity:.45"></div>
-  <div class="cobertura" style="opacity:.28;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+  <!-- só grão de impressão leve por cima (sem névoa) -->
+  <div class="cobertura" style="opacity:.1;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 </div>
 
 <script>
@@ -131,18 +126,19 @@ function letra(ch, x, y, tam, cheia, contorno) {
     Object.entries({ x, y, 'text-anchor': 'middle', 'font-family': 'Instrument Serif', 'font-style': 'italic', 'font-size': tam, 'clip-path': `url(#l${lam})`, opacity: op }).forEach(([k, v]) => t.setAttribute(k, v));
     if (modo === 'cheia') t.setAttribute('fill', cor); else { t.setAttribute('fill', 'none'); t.setAttribute('stroke', cor); t.setAttribute('stroke-width', 4); }
     pontes.appendChild(t); } }
-estrela(1080, 170, 210, 15, 8, [[0, '#c0a5c4', .6], [1, '#7b4df2', .8]]);      // 1|2
-estrela(2160, 1215, 230, 16, -12, [[1, '#7b4df2', .8], [2, '#c0a5c4', .7]]);   // 2|3
-estrela(3240, 200, 220, 15, 16, [[2, '#c0a5c4', .7], [3, '#7b4df2', .6]]);     // 3|4
-letra('?', 4320, 1010, 600, [3, 'cheia', '#fffbde', .16], [4, 'contorno', '#fffbde', .35]); // 4|5
-
+estrela(1080, 96, 150, 13, 8, [[0, '#c0a5c4', .7], [1, '#c0a5c4', .7]]);       // 1|2
+estrela(2160, 1215, 210, 15, -12, [[1, '#c0a5c4', .7], [2, '#7b4df2', .3]]);   // 2|3
+estrela(3240, 170, 180, 14, 16, [[2, '#7b4df2', .3], [3, '#c0a5c4', .7]]);     // 3|4
+estrela(4320, 1190, 220, 15, -6, [[3, '#c0a5c4', .7], [4, '#7b4df2', .8]]);    // 4|5
+// paleta da Lia em bolinhas em cima do feed
+document.getElementById('paleta').innerHTML = ['#2742C2', '#F3C6A8', '#F5EEE3', '#1C1D3A', '#B8553A'].map(c => `<span style="width:58px;height:58px;border-radius:50%;background:${c};box-shadow:0 0 0 2px rgba(42,20,51,.12)"></span>`).join('');
 // grade do carrossel (4 x 2)
-{ const g = document.getElementById('grade-carrossel'), w = 216, h = 270, gap = 12, x0 = 90, y0 = 470;
+{ const g = document.getElementById('grade-carrossel'), w = 216, h = 270, gap = 12, x0 = 90, y0 = 410;
   for (let i = 0; i < 8; i++) { const d = document.createElement('div'); d.className = 'q';
     Object.assign(d.style, { left: x0 + (i % 4) * (w + gap) + 'px', top: y0 + Math.floor(i / 4) * (h + gap) + 'px', width: w + 'px', height: h + 'px' });
     d.innerHTML = `<img src="img/s${i + 1}.png">`; g.appendChild(d); } }
 // grade dos posts (3 x 2)
-{ const g = document.getElementById('grade-posts'), w = 289, h = 361, gap = 16, x0 = 90, y0 = 346, ordem = [1, 3, 6, 2, 5, 4];
+{ const g = document.getElementById('grade-posts'), w = 289, h = 361, gap = 16, x0 = 90, y0 = 360, ordem = [1, 3, 6, 2, 5, 4];
   ordem.forEach((n, i) => { const d = document.createElement('div'); d.className = 'q';
     Object.assign(d.style, { left: x0 + (i % 3) * (w + gap) + 'px', top: y0 + Math.floor(i / 3) * (h + gap) + 'px', width: w + 'px', height: h + 'px' });
     d.innerHTML = `<img src="img/p${n}.png">`; g.appendChild(d); }); }
