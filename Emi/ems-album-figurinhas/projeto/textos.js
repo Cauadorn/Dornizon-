@@ -34,7 +34,7 @@ window.ALBUM = {
     { etapa: 'pág. 05 · entrega', titulo: 'ANTES DE<br>MANDAR', pro: 'pro <i>cliente:</i>', objeto: 'celular e arquivo (flat)',
       sites: [
         { nome: 'shots.so', pra: 'põe o print do post ou do site num mockup bonito.' },
-        { nome: 'squoosh.app', pra: 'diminui o peso da imagem sem estragar, direto no navegador.' },
+        { nome: 'squoosh.app', pra: 'diminui o peso da imagem sem estragar, no navegador.' },
       ] },
   ],
   chamada: {
