@@ -1,0 +1,90 @@
+/* EMS · stories de serviços · 1080 × 1920, 250px livres em cima e embaixo, 90px nas laterais */
+@font-face { font-family: "Instrument Serif"; src: url(fonts/InstrumentSerif-Regular.ttf); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; src: url(fonts/InstrumentSerif-Italic.ttf); }
+@font-face { font-family: Poppins; font-weight: 400; src: url(fonts/Poppins-Regular.ttf); }
+@font-face { font-family: Poppins; font-weight: 500; src: url(fonts/Poppins-Medium.ttf); }
+@font-face { font-family: Poppins; font-weight: 600; src: url(fonts/Poppins-SemiBold.ttf); }
+
+:root {
+  --ivory: #fffbde; --ivory-2: #f4edcb; --tinta: #2a1433; --ameixa: #3d1c46; --violeta: #6225d8;
+  --violeta-2: #7b4df2; --lavanda: #c0a5c4; --lavanda-2: #e4d6e6; --pink: #dd34a8; --manteiga: #f2cf7a;
+  --serif: "Instrument Serif", Georgia, serif; --sans: Poppins, system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 5400px; height: 1920px; overflow: hidden; position: relative; font-family: var(--sans); }
+#faixa { display: flex; }
+.story { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--fundo); color: var(--texto); }
+.story > * { position: absolute; }
+svg.ht { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+em { font-style: italic; color: var(--destaque); }
+
+/* temas: uma família de cor só (violeta, ameixa, marfim); rosa e manteiga de acento */
+[data-tema="violeta"] { --fundo: var(--violeta); --texto: var(--ivory); --destaque: var(--manteiga); --faixa: var(--ivory); --faixa-texto: var(--tinta); --marca: var(--manteiga); --carimbo: var(--manteiga); --carimbo-ic: var(--violeta); --cta: var(--ivory); --cta-texto: var(--tinta); }
+[data-tema="ameixa"] { --fundo: var(--ameixa); --texto: var(--ivory); --destaque: var(--manteiga); --faixa: var(--lavanda-2); --faixa-texto: var(--tinta); --marca: var(--manteiga); --carimbo: var(--pink); --carimbo-ic: var(--ivory); --cta: var(--ivory); --cta-texto: var(--tinta); }
+[data-tema="marfim"] { --fundo: var(--ivory); --texto: var(--tinta); --destaque: var(--pink); --faixa: var(--violeta); --faixa-texto: var(--ivory); --marca: var(--violeta); --carimbo: var(--manteiga); --carimbo-ic: var(--violeta); --cta: var(--violeta); --cta-texto: var(--ivory); }
+
+/* ícones da marca, tingidos */
+.ic { display: block; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.ic.estrela { --m: url(assets/i-estrela.png); }
+.ic.brilho { --m: url(assets/i-brilho.png); }
+.ic.cursor { --m: url(assets/i-cursor.png); }
+
+/* ---------- lâminas de serviço ---------- */
+.faixa-q { left: 0; top: 0; width: 1080px; height: 590px; background: var(--faixa); color: var(--faixa-texto); border-radius: 0 0 64px 64px; padding: 290px 150px 0 90px; }
+.faixa-q p { font-size: 50px; line-height: 1.2; font-weight: 400; letter-spacing: -.01em; }
+.faixa-q b { font-weight: 600; }
+.carimbo { right: 90px; top: 505px; width: 170px; height: 170px; border-radius: 50%; background: var(--carimbo); color: var(--carimbo-ic); display: grid; place-items: center; box-shadow: 6px 8px 0 rgba(42, 20, 51, .35); transform: rotate(-8deg); }
+.carimbo .ic { width: 96px; height: 96px; }
+
+.miolo { left: 90px; top: 700px; width: 900px; }
+.lead { font-size: 46px; font-weight: 600; line-height: 1.1; }
+.miolo h2 { font-family: var(--serif); font-weight: 400; font-size: 196px; line-height: .8; letter-spacing: -.02em; margin: 6px 0 0 -6px; }
+.miolo h2 em { display: block; font-size: 236px; margin-left: 70px; }
+.sub { font-size: 34px; line-height: 1.3; margin-top: 44px; max-width: 800px; opacity: .92; }
+.miolo ul { list-style: none; margin-top: 34px; display: grid; gap: 20px; }
+.miolo li { font-size: 41px; font-weight: 500; line-height: 1.15; padding-left: 68px; position: relative; }
+.miolo li::before { content: ""; position: absolute; left: 0; top: 2px; width: 44px; height: 44px; background: var(--marca); -webkit-mask: url(assets/i-brilho.png) center / contain no-repeat; mask: url(assets/i-brilho.png) center / contain no-repeat; }
+
+.cta { left: 90px; top: 1556px; height: 96px; padding: 0 44px; border-radius: 999px; background: var(--cta); color: var(--cta-texto); font-size: 38px; font-weight: 600; display: flex; align-items: center; gap: 18px; box-shadow: 6px 6px 0 var(--tinta); border: 3px solid var(--tinta); }
+.cta span { font-size: 44px; line-height: 1; }
+.arroba { right: 90px; top: 1584px; background: var(--pink); color: var(--ivory); font-size: 26px; font-weight: 500; padding: .3em .7em .3em .5em; border-radius: 6px; }
+.arroba .ic { position: absolute; left: -22px; bottom: -24px; width: 30px; height: 30px; color: var(--tinta); filter: drop-shadow(0 0 0 var(--ivory)); }
+
+/* ---------- capa ---------- */
+.capa .foto { left: 0; top: 506px; width: 1080px; height: 860px; overflow: hidden; }
+.capa .foto img { position: absolute; left: 0; top: -50px; width: 1180px; }
+.capa .tinge { position: absolute; inset: 0; background: var(--lavanda-2); mix-blend-mode: multiply; }
+.capa .tinge::after { content: ""; position: absolute; inset: 0; background: var(--violeta); mix-blend-mode: soft-light; opacity: .35; }
+.capa .selo-rosto { left: 452px; top: 632px; width: 190px; height: 190px; border-radius: 50%; background: var(--manteiga); color: var(--violeta); display: grid; place-items: center; transform: rotate(-8deg); box-shadow: 6px 8px 0 rgba(42, 20, 51, .35); }
+.capa .selo-rosto .ic { width: 108px; height: 108px; }
+.capa .bloco { left: 0; width: 1080px; overflow: hidden; }
+.capa .topo { top: 0; height: 566px; background: var(--violeta); border-radius: 0 0 64px 64px; padding: 268px 90px 0; }
+.capa h1 { font-family: var(--serif); font-weight: 400; font-size: 168px; line-height: .86; letter-spacing: -.02em; margin: 0 0 0 -6px; position: relative; }
+.capa h1 em { font-size: 190px; }
+.capa .lead, .capa .linha { position: relative; }
+.capa .linha { display: flex; align-items: center; gap: 18px; font-size: 25px; letter-spacing: .06em; text-transform: lowercase; margin-top: 22px; opacity: .85; }
+.capa .linha i { width: 2px; height: 22px; background: currentColor; }
+.capa .base { top: 1290px; height: 630px; background: var(--ameixa); border-radius: 64px 64px 0 0; padding: 66px 90px 0; }
+.capa .base h2 { font-family: var(--serif); font-weight: 400; font-size: 150px; line-height: .86; letter-spacing: -.02em; margin: 4px 0 0 -4px; position: relative; }
+.capa .base h2 em { font-size: 176px; }
+.capa .seta { position: absolute; right: 90px; top: 250px; width: 110px; height: 110px; border-radius: 50%; background: var(--manteiga); color: var(--tinta); font-size: 58px; font-weight: 500; display: grid; place-items: center; box-shadow: 6px 6px 0 var(--pink); }
+
+/* ---------- fecho ---------- */
+.fecho .selo { left: 90px; top: 280px; width: 300px; filter: drop-shadow(0 18px 24px rgba(42, 20, 51, .45)); }
+.fecho .lead { left: 90px; top: 760px; }
+.fecho h2 { left: 84px; top: 824px; width: 900px; font-family: var(--serif); font-weight: 400; font-size: 190px; line-height: .82; letter-spacing: -.02em; }
+.fecho h2 em { display: block; font-size: 250px; margin-left: 60px; }
+.fecho .sub { left: 90px; top: 1380px; width: 760px; margin: 0; font-size: 36px; }
+.fecho .site { left: 90px; top: 1600px; font-size: 26px; font-weight: 500; letter-spacing: .08em; opacity: .85; }
+.fecho .cta { top: 1480px; }
+.fecho .arroba { top: 1596px; }
+
+/* ---------- matéria: papel + grão por cima de tudo ---------- */
+#papel { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light; opacity: .55;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.55) 0 1.5px, rgba(0,0,0,.5) 1.5px 3px, transparent 3px 6px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 1.5px, rgba(0,0,0,.5) 1.5px 3px, transparent 3px 6px); }
+#grao { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: overlay; opacity: .26; pointer-events: none; }
+
+/* conferência: margens seguras */
+.guia .story::after { content: ""; position: absolute; left: 90px; right: 90px; top: 250px; bottom: 250px; border: 2px dashed #0f0; z-index: 99; }

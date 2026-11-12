@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · stories de serviços</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main id="faixa">
+
+<!-- 1 · capa -->
+<section class="story capa" data-tema="violeta">
+  <div class="foto"><img src="fotos/capa.jpg" alt=""><i class="tinge"></i></div>
+  <div class="selo-rosto"><i class="ic estrela"></i></div>
+  <header class="bloco topo">
+    <svg class="ht" data-star="930,150,330,ivory,.22,-12"></svg>
+    <p class="lead">te indicando</p>
+    <h1>meus <em>serviços</em></h1>
+    <p class="linha"><span>ems</span><i></i><span>identidade visual, social media e site</span></p>
+  </header>
+  <footer class="bloco base">
+    <svg class="ht" data-star="120,560,360,violeta2,.5,18"></svg>
+    <p class="lead">de acordo com a</p>
+    <h2><em>fase</em> da<br>sua marca</h2>
+    <span class="seta">→</span>
+  </footer>
+</section>
+
+<!-- 2 · identidade visual -->
+<section class="story serv" data-tema="violeta">
+  <svg class="ht" data-star="1010,1500,520,violeta2,.6,10"></svg>
+  <header class="faixa-q"><p>sua marca ainda <b>não tem cara</b>? ou tem, mas ninguém <b>reconhece sem o nome</b>?</p></header>
+  <div class="carimbo"><i class="ic estrela"></i></div>
+  <div class="miolo">
+    <p class="lead">te indico a</p>
+    <h2>identidade <em>visual</em></h2>
+    <p class="sub">pra quem tá começando ou vai se reposicionar. o que vem junto:</p>
+    <ul>
+      <li>logo e versões</li>
+      <li>paleta com nome próprio</li>
+      <li>tipografia e grafismos</li>
+      <li>brand book pra usar sem medo</li>
+    </ul>
+  </div>
+  <a class="cta">quero uma marca <span>→</span></a>
+  <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>
+</section>
+
+<!-- 3 · social media -->
+<section class="story serv" data-tema="ameixa">
+  <svg class="ht" data-star="60,1560,500,violeta2,.4,-14"></svg>
+  <header class="faixa-q"><p>a marca já existe, mas o feed <b>não acompanha</b> o seu dia a dia?</p></header>
+  <div class="carimbo"><i class="ic estrela"></i></div>
+  <div class="miolo">
+    <p class="lead">te indico</p>
+    <h2>social <em>media</em></h2>
+    <p class="sub">pra quem já tem identidade e precisa aparecer com constância:</p>
+    <ul>
+      <li>planejamento de conteúdo</li>
+      <li>posts e carrosséis</li>
+      <li>stories e cobertura de evento</li>
+      <li>peças pra campanha e lançamento</li>
+    </ul>
+  </div>
+  <a class="cta">bora conversar? <span>→</span></a>
+  <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>
+</section>
+
+<!-- 4 · site -->
+<section class="story serv" data-tema="marfim">
+  <svg class="ht" data-star="1060,1640,480,lavanda,.5,8"></svg>
+  <header class="faixa-q"><p>te acham no insta, mas <b>não têm onde fechar</b> com você?</p></header>
+  <div class="carimbo"><i class="ic estrela"></i></div>
+  <div class="miolo">
+    <p class="lead">te indico</p>
+    <h2>web design <em>&amp; ux/ui</em></h2>
+    <p class="sub">pra quem já vende e quer um lugar só seu. site não é cartão de visita:</p>
+    <ul>
+      <li>estrutura pensada pra fechar cliente</li>
+      <li>layout com a cara da sua marca</li>
+      <li>versão de celular redondinha</li>
+      <li>site no ar, pronto pra divulgar</li>
+    </ul>
+  </div>
+  <a class="cta">quero um site <span>→</span></a>
+  <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>
+</section>
+
+<!-- 5 · fecho -->
+<section class="story fecho" data-tema="violeta">
+  <svg class="ht" data-star="900,420,620,violeta2,.7,-10"></svg>
+  <svg class="ht" data-star="80,1700,420,ivory,.14,16"></svg>
+  <img class="selo" src="assets/selo-ems.png" alt="selo ems">
+  <p class="lead">não sabe em qual fase tá?</p>
+  <h2>me conta da sua <em>marca</em></h2>
+  <p class="sub">eu respondo rapidinho e te digo por onde faz sentido começar.</p>
+  <a class="cta">chamar na dm <span>→</span></a>
+  <p class="site">emsdesign.com.br</p>
+  <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>
+</section>
+
+</main>
+<div id="papel"></div>
+<svg id="grao" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.1 -.2"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<script src="scripts/palavra-curta.js"></script>
+<script>
+const COR = { ivory: '#fffbde', violeta2: '#7b4df2', lavanda: '#c0a5c4', pink: '#dd34a8', manteiga: '#f2cf7a' };
+// HalftoneStar: pontos que diminuem do centro para a borda
+document.querySelectorAll('svg.ht').forEach((svg) => {
+  const [cx, cy, R, cor, op, rot] = svg.dataset.star.split(',').map((v, i) => (i === 3 ? v : +v));
+  const pts = [];
+  for (let i = 0; i < 10; i++) {
+    const a = (Math.PI / 5) * i - Math.PI / 2 + (rot * Math.PI) / 180, r = i % 2 ? R * 0.46 : R;
+    pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+  }
+  const dentro = (x, y) => {
+    let d = false;
+    for (let i = 0, j = 9; i < 10; j = i++) {
+      const [xi, yi] = pts[i], [xj, yj] = pts[j];
+      if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) d = !d;
+    }
+    return d;
+  };
+  const passo = 15; let s = '';
+  for (let y = cy - R, l = 0; y <= cy + R; y += passo, l++) {
+    for (let x = cx - R + (l % 2 ? passo / 2 : 0); x <= cx + R; x += passo) {
+      if (!dentro(x, y)) continue;
+      const d = Math.hypot(x - cx, y - cy) / R, r = passo * 0.5 * (1 - d * 0.82);
+      if (r > 0.9) s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`;
+    }
+  }
+  svg.innerHTML = `<g fill="${COR[cor]}" opacity="${op}">${s}</g>`;
+});
+if (new URLSearchParams(location.search).has('guia')) document.body.classList.add('guia');
+Promise.all([document.fonts.ready, ...[...document.images].map((i) => i.decode().catch(() => 0))]).then(() => (window.READY = true));
+</script>
+</body>
+</html>
