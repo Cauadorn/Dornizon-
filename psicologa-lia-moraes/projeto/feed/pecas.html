@@ -1,0 +1,49 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@300;400;500;600&display=block" rel="stylesheet">
+<style>
+:root{--c:#2742C2;--creme:#F5EEE3;--p:#F3C6A8;--tinta:#1C1D3A;--t:#B8553A}
+*{margin:0;box-sizing:border-box}
+body{background:#777;padding:20px;display:flex;gap:20px}
+.art{position:relative;overflow:hidden;flex:none;width:1080px;height:1350px}
+.abs{position:absolute}
+.is{font-family:'Instrument Serif';font-weight:400;letter-spacing:-.02em}
+.is i{font-style:italic}
+.js{font-family:Poppins;letter-spacing:-.01em}
+.cab{position:absolute;left:64px;right:64px;display:flex;justify-content:space-between;font:400 23px/1 Poppins;z-index:40}
+.cab b{font-weight:600}
+.topo{top:58px}.rodape{bottom:56px}
+.grao{position:absolute;inset:0;z-index:60;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")}
+</style></head><body>
+
+<!-- FIXADO · COMECE POR AQUI (papel creme, monograma, carrossel de apresentação) -->
+<div class="art" id="comece" style="background:#F2E8DA;color:var(--c)">
+  <div class="abs" style="inset:0;background:url(../fotos-pinterest/colagem/papel-fibra.jpg) center/cover;mix-blend-mode:multiply;opacity:.5"></div>
+  <div class="cab topo" style="color:var(--tinta)"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs" style="left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+    <img src="../logo/final/lia-moraes-monograma.svg" style="width:118px">
+    <div class="is" style="font-size:230px;line-height:.84;margin-top:46px">comece</div>
+    <div class="is" style="font-size:230px;line-height:.84;color:var(--t)"><i>por aqui</i></div>
+    <div style="display:flex;gap:14px;margin-top:58px">
+      <span class="js" style="font-size:27px;border:2px solid var(--c);border-radius:999px;padding:10px 24px 12px">quem eu sou</span>
+      <span class="js" style="font-size:27px;border:2px solid var(--c);border-radius:999px;padding:10px 24px 12px">como funciona</span>
+      <span class="js" style="font-size:27px;border:2px solid var(--c);border-radius:999px;padding:10px 24px 12px;background:var(--c);color:var(--creme)">como agendar</span>
+    </div>
+  </div>
+  <div class="cab rodape" style="color:var(--tinta)"><span>@psi.liamoraes</span><span>arrasta →</span></div>
+  <div class="grao"></div>
+</div>
+
+<!-- REELS · CAPA (Lia rindo; texto no miolo para o recorte 3:4 da grade) -->
+<div class="art" id="reel" style="background:#c98a5e;color:var(--creme)">
+  <img class="abs" src="../ia/lia-rindo-v1.png" style="left:-20px;top:0;width:1120px;height:1390px;object-fit:cover">
+  <div class="abs" style="left:0;right:0;bottom:0;height:620px;background:linear-gradient(transparent,rgba(60,25,10,.55))"></div>
+  <div class="abs" style="left:0;right:0;top:880px;text-align:center">
+    <div class="js" style="display:inline-block;background:var(--p);color:var(--c);font-size:26px;font-weight:500;padding:9px 22px 11px;border-radius:999px">▶&nbsp; reels · 1 minuto</div>
+    <div class="is" style="font-size:118px;line-height:.9;margin-top:22px">por que eu<br><i>virei psicóloga?</i></div>
+  </div>
+  <div class="grao"></div>
+</div>
+
+<script>document.fonts.ready.then(()=>window.READY=true)</script>
+</body></html>

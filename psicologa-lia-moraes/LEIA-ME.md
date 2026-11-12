@@ -21,7 +21,11 @@ Projeto conceitual de portfólio: cliente fictícia. Imagens geradas com IA (Nan
      + riscos de filme (`projeto/texturas/riscos.py`). Foto da mesa com menos zoom: `python3 -I projeto/ia/ampliar-mesa.py projeto/ia/lia-canva-mesa.png ...`. p1: "Lia" gigante em Playfair Display 900 com a cabeça na frente (recorte rembg), bilhete
      recortado cobalto, selo girando com o monograma, texto vertical. p5: rascunhos riscados do que dizer, título em Fraunces com
      contorno de adesivo pêssego (filtro SVG `#adesivo`), balão de fala terracota.
-7. Próximo: feed (grade do perfil com destaques, menos azul) e o carrossel do case.
+7. **Feed** em `projeto/feed/` (inspirado em `referencias/case/ref-feed.jpg`): fileira de 5 destaques (sobre mim, terapia, agenda, dúvidas, online)
+   + grade 3x3 com recorte 3:4 do Instagram. Duas peças extras para completar a grade em `feed/pecas.html`: "comece por aqui" (fixado)
+   e capa de reels "por que eu virei psicóloga?". Gerar: `node projeto/ferramentas/artes.cjs projeto/feed/pecas.html projeto/feed/pecas`
+   e depois `node projeto/ferramentas/artes.cjs projeto/feed/feed.html projeto/feed`.
+8. Próximo: carrossel do case.
 
 ## Descartado (não usar)
 - Prancha de identidade em formato de "documentação" (caixinhas, rótulos, o laço em volta da palavra, a bolinha com legenda): reprovada.
