@@ -38,6 +38,6 @@ window.ALBUM = {
   chamada: {
     titulo: 'qual figurinha<br>tá <i>faltando</i> no<br>meu álbum?',
     comenta: 'me indica nos comentários o site que você não vive sem. eu testo e conto.',
-    salva: 'salva pra completar o seu',
+    salva: 'salva pra completar o seu álbum também&nbsp;↓',
   },
 };

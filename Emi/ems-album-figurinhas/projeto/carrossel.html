@@ -189,8 +189,8 @@ lamina(0, `
       <svg class="abs" style="${lado}:46px;bottom:-26px;width:44px;height:30px" viewBox="0 0 44 30"><path d="M0 0 H44 L${lado === 'left' ? 6 : 38} 30 Z" fill="${bg.startsWith('var') ? css(bg.slice(6, -1)) : bg}"/></svg></div>`;
   lamina(5, `
     ${cab('álbum de figurinhas', p.etapa, 'rgba(255,251,222,.75)', css('manteiga'))}
-    <div class="abs serif" style="left:84px;top:170px;font-size:150px;color:var(--ivory)">a hora de</div>
-    <div class="abs serif" style="left:110px;top:292px;font-size:300px;color:var(--manteiga)"><i style="color:var(--manteiga)">mostrar</i></div>
+    <div class="abs serif" style="left:84px;top:170px;font-size:150px;color:var(--ivory)">a hora</div>
+    <div class="abs serif" style="left:84px;top:292px;font-size:300px;color:var(--ivory)"><span style="font-size:150px;margin-right:26px">de</span><i style="color:var(--manteiga)">mostrar</i></div>
     ${objeto({ x: 500, y: 560, w: 500, r: 4, src: 'presente' })}
     ${balao(90, 640, 430, s1, 'var(--ivory)', 'var(--tinta)', 'left')}
     ${balao(90, 908, 430, s2, 'var(--lavanda)', 'var(--tinta)', 'right')}
@@ -209,7 +209,7 @@ lamina(0, `
       <div class="abs serif" style="inset:0;display:grid;place-items:center;font-size:260px;color:rgba(255,251,222,.3);padding-bottom:40px"><i>?</i></div>
       <div class="abs rotulo" style="left:0;right:0;bottom:26px;text-align:center;color:rgba(255,251,222,.75)">nº 11</div></div>
     <div class="pilula corpo" style="left:530px;top:760px;width:460px;--bg:var(--ivory);--tx:var(--tinta)">${c.comenta}</div>
-    <div class="abs corpo" style="left:534px;top:986px;width:300px;color:var(--lavanda-2);font-size:26px">${c.salva}<br>álbum também ↓</div>
+    <div class="abs corpo" style="left:534px;top:986px;width:300px;color:var(--lavanda-2);font-size:26px">${c.salva}</div>
     <img class="abs" src="assets/selo-ems.png" style="left:840px;top:1010px;width:150px">
     ${handle(96, 1212, 'var(--pink)')}
   `, `<div class="abs" style="inset:0;background:var(--wine)"></div>
@@ -248,5 +248,6 @@ document.fonts.ready.then(() => {
   return Promise.all([...document.images].map((im) => im.complete ? 1 : new Promise((r) => { im.onload = im.onerror = r; })));
 }).then(() => { window.READY = true; });
 </script>
+<script src="scripts/palavra-curta.js"></script>
 </body>
 </html>
