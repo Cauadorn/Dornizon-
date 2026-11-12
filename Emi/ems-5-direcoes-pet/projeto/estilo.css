@@ -1,0 +1,128 @@
+/* EMS · 5 direções criativas pra marcas pet
+   Tokens do design system EMS (project/tokens.json). Canvas 1080 x 1350. */
+
+@font-face { font-family: "Poppins"; src: url(fonts/Poppins-Regular.ttf); font-weight: 400; }
+@font-face { font-family: "Poppins"; src: url(fonts/Poppins-Medium.ttf); font-weight: 500; }
+@font-face { font-family: "Poppins"; src: url(fonts/Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/InstrumentSerif-Regular.ttf); font-style: normal; }
+@font-face { font-family: "Instrument Serif"; src: url(fonts/InstrumentSerif-Italic.ttf); font-style: italic; }
+/* fontes das direções: só dentro dos quadros do moodboard, nunca no texto da EMS */
+@font-face { font-family: "Bagel Fat One"; src: url(fonts/BagelFatOne-normal-400.woff2); }
+@font-face { font-family: "Bodoni Moda"; src: url(fonts/BodoniModa-normal-500.woff2); font-style: normal; font-weight: 500; }
+@font-face { font-family: "Bodoni Moda"; src: url(fonts/BodoniModa-italic-500.woff2); font-style: italic; font-weight: 500; }
+@font-face { font-family: "Shrikhand"; src: url(fonts/Shrikhand-normal-400.woff2); }
+@font-face { font-family: "Graduate"; src: url(fonts/Graduate-normal-400.woff2); }
+@font-face { font-family: "Space Mono"; src: url(fonts/SpaceMono-normal-400.woff2); font-weight: 400; }
+@font-face { font-family: "Space Mono"; src: url(fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+
+:root {
+  --ivory: #fffbde; --ivory-2: #f4edcb; --tinta: #2a1433; --ameixa: #3d1c46;
+  --creative-purple: #482952; --plum: #5b216c; --violeta: #6225d8; --violeta-2: #7b4df2;
+  --lavanda: #c0a5c4; --lavanda-2: #e4d6e6; --wine: #9e122c; --pink: #dd34a8; --manteiga: #f2cf7a;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Poppins", system-ui, sans-serif;
+  --shadow-sticker: 6px 8px 0 rgba(42, 20, 51, .35);
+  --shadow-dura: 6px 6px 0 #2a1433;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #1b1020; font-family: var(--sans); color: var(--ivory); }
+.deck { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+.slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; flex: none; }
+
+/* grão de papel por cima de tudo (opacity-grain) */
+.grain { position: absolute; inset: 0; pointer-events: none; z-index: 50; opacity: .07; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>"); }
+.grain.claro { mix-blend-mode: screen; opacity: .09;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>"); }
+
+.estrela { position: absolute; pointer-events: none; }
+
+/* marca d'água @ITSEMSDESIGN x3 */
+.marcadagua { position: absolute; left: 0; right: 0; display: flex; justify-content: space-around; z-index: 40;
+  font: 500 17px/1 var(--sans); letter-spacing: .12em; color: var(--ivory); opacity: .35; }
+.marcadagua b { font-weight: 600; }
+
+/* SelectionBox: borda 1,5px + 4 alças de 11px */
+.sel { position: absolute; border: 1.5px solid var(--sel, var(--violeta)); pointer-events: none; z-index: 30; }
+.sel i { position: absolute; width: 11px; height: 11px; background: var(--sel-fill, var(--ivory)); border: 1.5px solid var(--sel, var(--violeta)); }
+.sel i:nth-child(1) { left: -6.5px; top: -6.5px; } .sel i:nth-child(2) { right: -6.5px; top: -6.5px; }
+.sel i:nth-child(3) { left: -6.5px; bottom: -6.5px; } .sel i:nth-child(4) { right: -6.5px; bottom: -6.5px; }
+.sel-inline { position: relative; display: inline-block; border: 1.5px solid var(--sel, var(--ivory)); padding: 7px 14px 6px; }
+.sel-inline i { position: absolute; width: 10px; height: 10px; background: var(--sel-fill, var(--violeta)); border: 1.5px solid var(--sel, var(--ivory)); }
+.sel-inline i:nth-child(1) { left: -6px; top: -6px; } .sel-inline i:nth-child(2) { right: -6px; top: -6px; }
+.sel-inline i:nth-child(3) { left: -6px; bottom: -6px; } .sel-inline i:nth-child(4) { right: -6px; bottom: -6px; }
+
+/* HandleTag: etiqueta com cursor encostado no canto */
+.tag { position: absolute; z-index: 35; display: inline-block; white-space: nowrap; color: var(--ivory);
+  font: 500 19px/1 var(--sans); padding: 8px 14px 8px 12px; border-radius: 4px; background: var(--pink); }
+.tag.violeta { background: var(--violeta); }
+.tag svg { position: absolute; left: -17px; bottom: -17px; width: 24px; height: 24px; }
+.tag svg path { fill: var(--tinta); stroke: var(--ivory); stroke-width: 1.6; stroke-linejoin: round; }
+
+/* ---------- lâmina de direção: grade 3 x 3 com cartão no meio ---------- */
+.dir { background: var(--ivory); }
+.q { position: absolute; overflow: hidden; border-radius: 22px; background: var(--bg, #ddd); }
+.q .pad { position: absolute; }           /* área visível do quadro (sem a sangria) */
+img.foto { position: absolute; display: block; }
+.q img.foto { filter: drop-shadow(0 14px 22px rgba(42, 20, 51, .22)); }
+.q .padrao { position: absolute; inset: 0; }
+
+.cartao { position: absolute; left: 326px; top: 422px; width: 428px; height: 506px; border-radius: 22px;
+  background: var(--card); padding: 44px 38px 0; z-index: 20; }
+.cartao .num { font: 500 19px/1 var(--sans); letter-spacing: .1em; color: var(--ivory); }
+.cartao .num .sel-inline { --sel-fill: var(--card); }
+.cartao h2 { font: 400 98px/.88 var(--serif); letter-spacing: -.02em; color: var(--ivory); margin: 34px 0 22px; }
+.cartao h2 em { color: var(--manteiga); }
+.cartao p { font: 400 24.5px/1.34 var(--sans); color: var(--ivory); }
+.cartao .tag { right: 30px; bottom: -18px; }
+
+/* Etiqueta de cursor do Figma (multiplayer) sobre o quadro escolhido */
+.cursor-emi { position: absolute; z-index: 36; }
+.cursor-emi svg { width: 30px; height: 30px; display: block; }
+.cursor-emi svg path { fill: var(--pink); stroke: var(--ivory); stroke-width: 1.6; stroke-linejoin: round; }
+.cursor-emi span { position: absolute; left: 24px; top: 24px; background: var(--pink); color: var(--ivory);
+  font: 500 17px/1 var(--sans); padding: 6px 10px; border-radius: 4px; white-space: nowrap; }
+
+/* quadro de paleta */
+.paleta { position: absolute; display: flex; flex-direction: column; }
+.paleta div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 20px 14px; }
+.paleta b { font: 500 19px/1.1 var(--sans); }
+.paleta small { font: 400 14px/1.3 var(--sans); letter-spacing: .06em; opacity: .8; }
+
+/* quadro de tipografia */
+.tipo { position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.tipo .aa { line-height: .9; }
+.tipo .amostra { margin-top: 18px; }
+.tipo .nome { position: absolute; left: 20px; bottom: 16px; font: 500 15px/1 var(--sans); letter-spacing: .1em; opacity: .85; }
+
+/* ---------- capa ---------- */
+.capa { background: var(--violeta); }
+.capa .gato { position: absolute; z-index: 5; }
+.capa .rotulo { position: absolute; left: 76px; top: 836px; z-index: 12; font: 500 19px/1 var(--sans); letter-spacing: .12em; color: var(--ivory); }
+.capa .cinco { position: absolute; left: 52px; top: 860px; z-index: 12; font: 400 560px/1 var(--serif); letter-spacing: -.04em; color: var(--ivory); }
+.capa .titulo { position: absolute; left: 404px; top: 912px; z-index: 12; }
+.capa .titulo .l1 { font: 600 70px/.98 var(--sans); letter-spacing: -.01em; color: var(--ivory); }
+.capa .titulo .l2 { font: 400 124px/.9 var(--serif); letter-spacing: -.02em; color: var(--ivory); margin-top: 10px; }
+.capa .titulo .l2 em { color: var(--manteiga); }
+.capa .adesivo { position: absolute; z-index: 14; left: 560px; top: 1196px; transform: rotate(-6deg);
+  background: var(--pink); color: var(--ivory); font: 500 38px/1 var(--sans); padding: 16px 30px 18px;
+  border-radius: 999px; box-shadow: var(--shadow-sticker); }
+.capa .adesivo svg { position: absolute; right: -20px; bottom: -22px; width: 34px; height: 34px; transform: rotate(6deg); }
+.capa .adesivo svg path { fill: var(--tinta); stroke: var(--ivory); stroke-width: 1.6; stroke-linejoin: round; }
+.capa .nota { position: absolute; z-index: 15; font: 400 21px/1.2 var(--sans); letter-spacing: .08em; color: var(--ivory); }
+.capa .nota-linha { position: absolute; z-index: 15; fill: none; stroke: var(--ivory); stroke-width: 1.6; }
+
+/* ---------- chamada ---------- */
+.chamada { background: var(--plum); }
+.chamada .gato { position: absolute; z-index: 5; }
+.chamada .pergunta { position: absolute; left: 80px; top: 120px; z-index: 12; font: 500 24px/1.25 var(--sans); color: var(--ivory); --sel-fill: var(--plum); }
+.chamada .lead { position: absolute; left: 80px; z-index: 12; font: 500 50px/1.1 var(--sans); color: var(--ivory); }
+.chamada .grande { position: absolute; left: 72px; z-index: 12; font: 400 168px/.86 var(--serif); letter-spacing: -.02em; color: var(--ivory); }
+.chamada .grande em { color: var(--manteiga); }
+.chamada .selo { position: absolute; z-index: 12; }
+.chamada .dm { position: absolute; z-index: 14; font: 500 34px/1 var(--sans); padding: 16px 26px 17px; border-radius: 999px;
+  background: var(--pink); color: var(--ivory); box-shadow: var(--shadow-sticker); }
+.chamada .dm svg { position: absolute; right: -20px; bottom: -22px; width: 34px; height: 34px; }
+.chamada .dm svg path { fill: var(--tinta); stroke: var(--ivory); stroke-width: 1.6; stroke-linejoin: round; }
+.chamada .assina { position: absolute; z-index: 12; font: 500 22px/1.3 var(--sans); color: var(--ivory); }

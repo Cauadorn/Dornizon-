@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · 5 direções criativas pra marcas pet</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="deck" id="deck"></div>
+<script src="direcoes.js"></script>
+<script>
+// ---------- utilidades ----------
+const CURSOR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z"/></svg>';
+const SEL = '<i></i><i></i><i></i><i></i>';
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+// Estrela de 5 pontas em retícula (HalftoneStar): pontos que diminuem do centro para a borda.
+function estrela({ cx, cy, R, passo = 15, cor, opacidade = .45, rot = -18, rmax = 6.2 }) {
+  const pts = [];
+  for (let i = 0; i < 10; i++) {
+    const a = (rot - 90 + i * 36) * Math.PI / 180, r = i % 2 ? R * .45 : R;
+    pts.push([Math.cos(a) * r, Math.sin(a) * r]);
+  }
+  const dentro = (x, y) => { let c = false; for (let i = 0, j = 9; i < 10; j = i++) {
+    const [xi, yi] = pts[i], [xj, yj] = pts[j];
+    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+  let dots = '';
+  for (let y = -R; y <= R; y += passo) for (let x = -R; x <= R; x += passo) {
+    if (!dentro(x, y)) continue;
+    const d = Math.hypot(x, y) / R, r = Math.max(.6, rmax * (1 - d * .95));
+    dots += `<circle cx="${(x + R).toFixed(1)}" cy="${(y + R).toFixed(1)}" r="${r.toFixed(2)}"/>`;
+  }
+  const s = el('div', 'estrela');
+  s.style.cssText = `left:${cx - R}px;top:${cy - R}px;opacity:${opacidade}`;
+  s.innerHTML = `<svg width="${2 * R}" height="${2 * R}" fill="${cor}">${dots}</svg>`;
+  return s;
+}
+
+function marcaDagua(slide, y, tom = 'var(--ivory)') {
+  const m = el('div', 'marcadagua', '<span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span>');
+  m.style.top = y + 'px'; m.style.color = tom; slide.appendChild(m);
+}
+
+// Foto recortada posicionada por âncora: o ponto (ax, ay) da imagem cai em (x, y) do quadro; h = altura da imagem.
+function foto(q, f) {
+  const img = el('img', 'foto'); img.src = 'img/' + f.src + '.png';
+  if (f.flip) img.style.transform = 'scaleX(-1)';
+  if (f.sombra === false) img.style.filter = 'none';
+  img.onload = () => {
+    const h = f.h, w = h * img.naturalWidth / img.naturalHeight;
+    img.style.height = h + 'px'; img.style.width = w + 'px';
+    img.style.left = (f.x - f.ax * w) + 'px'; img.style.top = (f.y - f.ay * h) + 'px';
+    pendentes--; };
+  pendentes++;
+  return img;
+}
+let pendentes = 0;
+
+// ---------- grade 3 x 3 ----------
+const SANGRIA = 30;
+const COL = { L: [0, 308], C: [326, 428], R: [772, 308] };
+const LIN = { T: [0, 408], M: [422, 506], B: [942, 408] };
+
+function quadro(slide, pos, conteudo) {
+  const [c, l] = [pos[1], pos[0]];               // pos = 'TL', 'MC'...
+  const cc = { L: 'L', C: 'C', R: 'R' }[c], ll = l;
+  let [x, w] = COL[cc], [y, h] = LIN[ll];
+  const bx = cc === 'L' ? SANGRIA : 0, by = ll === 'T' ? SANGRIA : 0;
+  const q = el('div', 'q');
+  q.style.cssText = `left:${x - bx}px;top:${y - by}px;width:${w + bx + (cc === 'R' ? SANGRIA : 0)}px;height:${h + by + (ll === 'B' ? SANGRIA : 0)}px;--bg:${conteudo.bg}`;
+  if (conteudo.padrao) { const p = el('div', 'padrao'); p.style.background = conteudo.padrao; q.appendChild(p); }
+  const pad = el('div', 'pad'); pad.style.cssText = `left:${bx}px;top:${by}px;width:${w}px;height:${h}px`;
+  q.appendChild(pad);
+  if (conteudo.foto) pad.appendChild(foto(pad, conteudo.foto));
+  if (conteudo.html) pad.insertAdjacentHTML('beforeend', conteudo.html);
+  slide.appendChild(q);
+  if (conteudo.escolhido) {           // moldura de seleção do Figma + cursor "emi"
+    const s = el('div', 'sel', SEL);
+    s.style.cssText = `left:${x - 7}px;top:${y - 7}px;width:${w + 14}px;height:${h + 14}px`;
+    slide.appendChild(s);
+    const k = el('div', 'cursor-emi', CURSOR + '<span>emi</span>');
+    const [kx, ky] = conteudo.escolhido;
+    k.style.cssText = `left:${x + kx}px;top:${y + ky}px`;
+    slide.appendChild(k);
+  }
+  return q;
+}
+
+function laminaDirecao(d, i) {
+  const s = el('section', 'slide dir'); s.dataset.nome = `lamina-${String(i + 2).padStart(2, '0')}`;
+  for (const [pos, q] of Object.entries(d.quadros)) quadro(s, pos, q);
+  const c = el('div', 'cartao');
+  c.style.setProperty('--card', d.card);
+  c.innerHTML = `<div class="num"><span class="sel-inline">${SEL}direção ${String(i + 1).padStart(2, '0')} / 05</span></div>
+    <h2>${d.titulo}</h2><p>${d.texto}</p>
+    <span class="tag">@itsemsdesign${CURSOR}</span>`;
+  if (d.tituloTam) c.querySelector('h2').style.fontSize = d.tituloTam + 'px';
+  s.appendChild(c);
+  s.appendChild(el('div', 'grain'));
+  return s;
+}
+
+// ---------- capa ----------
+function capa() {
+  const s = el('section', 'slide capa'); s.dataset.nome = 'lamina-01';
+  s.appendChild(estrela({ cx: 930, cy: 300, R: 470, cor: '#c0a5c4', opacidade: .42 }));
+  s.appendChild(estrela({ cx: 40, cy: 640, R: 300, cor: '#c0a5c4', opacidade: .3, rot: 8 }));
+  marcaDagua(s, 54);
+  const g = el('div', 'gato'); g.style.cssText = 'left:0;top:0;width:1080px;height:1350px;';
+  g.appendChild(foto(g, CAPA.gato)); s.appendChild(g);
+  s.insertAdjacentHTML('beforeend', `
+    <div class="rotulo">ems &nbsp;•&nbsp; identidade visual & direção de arte</div>
+    <div class="cinco">5</div>
+    <div class="titulo"><div class="l1">direções<br>criativas</div><div class="l2">pra marcas <em>pet</em></div></div>
+    <div class="adesivo">fora da casinha${CURSOR}</div>`);
+  const n = CAPA.nota;
+  s.insertAdjacentHTML('beforeend', `<div class="nota" style="left:${n.x}px;top:${n.y}px">${n.texto}</div>
+    <svg class="nota-linha" style="left:${n.lx}px;top:${n.ly}px" width="${n.lw}" height="${n.lh}"><path d="${n.path}"/></svg>`);
+  const sb = el('div', 'sel', SEL); sb.style.cssText = CAPA.selecao + ';--sel:var(--ivory);--sel-fill:var(--violeta)'; s.appendChild(sb);
+  s.appendChild(el('div', 'grain claro'));
+  return s;
+}
+
+// ---------- chamada ----------
+function chamada() {
+  const s = el('section', 'slide chamada'); s.dataset.nome = 'lamina-07';
+  s.appendChild(estrela({ cx: 1000, cy: 360, R: 420, cor: '#dd34a8', opacidade: .45, rot: 12 }));
+  s.appendChild(estrela({ cx: -20, cy: 1300, R: 260, cor: '#dd34a8', opacidade: .35, rot: -4 }));
+  marcaDagua(s, 1296);
+  const g = el('div', 'gato'); g.style.cssText = 'left:0;top:0;width:1080px;height:1350px;';
+  g.appendChild(foto(g, CHAMADA.gato)); s.appendChild(g);
+  s.insertAdjacentHTML('beforeend', `
+    <div class="pergunta"><span class="sel-inline">${SEL}e aí, qual das 5 tem a cara da sua marca?</span></div>
+    <div class="lead" style="top:262px">quer uma marca pet que</div>
+    <div class="grande" style="top:338px">dá pra<br><em>reconhecer</em></div>
+    <div class="lead" style="top:640px">até sem o nome?</div>
+    <div class="dm" style="left:80px;top:760px">me chama na dm${CURSOR}</div>
+    <img class="selo" src="img/selo-ems.png" alt="selo ems" style="left:80px;top:960px;width:150px">
+    <div class="assina" style="left:254px;top:1058px">@itsemsdesign<br><span style="opacity:.75">emsdesign.com.br</span></div>`);
+  s.appendChild(el('div', 'grain claro'));
+  return s;
+}
+
+const deck = document.getElementById('deck');
+deck.appendChild(capa());
+DIRECOES.forEach((d, i) => deck.appendChild(laminaDirecao(d, i)));
+deck.appendChild(chamada());
+window.pronto = () => pendentes === 0 && document.fonts.status === 'loaded';
+</script>
+</body>
+</html>

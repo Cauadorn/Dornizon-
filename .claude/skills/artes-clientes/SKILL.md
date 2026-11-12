@@ -29,6 +29,7 @@ Regra do Cauã, vale para **todos os clientes**:
 | X3 Promotora | https://claude.ai/artifact/9Lg4J1Pc2qZxFhKSgUJP9t |
 | i3Cred | https://claude.ai/artifact/SRz9MHLCDgdCKJeyhiAjW2 |
 | Chat Doutor | https://claude.ai/artifact/GFJPCRUnoywHemwBwKkGij |
+| EMS (@itsemsdesign) | https://claude.ai/artifact/DNhPwJnJSH9f4gih32oQGa |
 
 Há outros artifacts chamados só "Design System" (sem cliente no título): ler o README de cada um para descobrir o cliente e completar a tabela.
 
@@ -57,5 +58,6 @@ Há outros artifacts chamados só "Design System" (sem cliente no título): ler 
 | Quero Mais Crédito | `clientes/quero-mais-credito.md` |
 | Topo do Mundo | `clientes/topo-do-mundo.md` |
 | Dr. Luiz Jr | `clientes/dr-luiz-jr.md` |
+| EMS (@itsemsdesign) | `clientes/ems.md` |
 
 LamCred tem skill própria (`lamcred-artes`) e EMS também (`marca-ems`): usar a skill do cliente quando existir e, mesmo assim, cumprir os passos 1 e 2 das regras acima.
