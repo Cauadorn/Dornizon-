@@ -4,7 +4,7 @@
 // v2 (a Emi: "tá muito grande… tem algo que incomoda… vetorizado… no negativo fica tudo preto"):
 //   - o gato encolheu para quase metade do tamanho: espia de dentro do U, com uma patinha em cada haste.
 //     O nome manda; o gato é o detalhe (como no "meow gigante + gatinho", nº 1 do quadro);
-//   - mais gráfico e menos adesivo: só a silhueta e os olhos de cápsula (sem branco do olho, sem brilho, sem nariz),
+//   - mais gráfico e menos adesivo: só a silhueta, olhos de gato (íris rosa, pupila em fenda) e patas com dedinhos,
 //     com a cabeça levemente inclinada e uma orelha diferente da outra;
 //   - contorno: respiro na cor do fundo entre o gato e as letras (versão negativa, tudo preto);
 //   - pelo: borda irregular de tinta, para quem quiser menos "vetor".
@@ -16,19 +16,26 @@ function miauLogo(el, o = {}) {
   // cabeça desenhada para 280 de largura; k escala; leve inclinação e orelha direita um pouco mais baixa e aberta
   const cabeca = 'M-140 60 L-140 -50 C-140 -96 -134 -150 -123 -194 Q-119 -212 -103 -203 C-82 -188 -60 -168 -45 -150 '
     + 'Q0 -161 45 -150 C62 -164 86 -180 110 -190 Q127 -197 128 -180 C135 -140 140 -96 140 -50 L140 60 Z';
-  const capsula = (x, r) => `<g transform="translate(${x} -78) rotate(${r})"><rect x="-17" y="-38" width="34" height="76" rx="17" fill="${olho2}"/>`
-    + `<path d="M-17 0 V-21 A17 17 0 0 1 17 -21 V0 Z" fill="${olho}"/><line x1="-17" y1="0" x2="17" y2="0" stroke="${gato}" stroke-width="3"/></g>`;
+  // olhos: íris redonda (rosa) com pupila de gato em fenda (a Emi não entendeu a cápsula)
+  const olhoGato = (x, r) => `<g transform="translate(${x} -80) rotate(${r})"><circle r="30" fill="${olho}"/>`
+    + `<path d="M0 -24 Q11 0 0 24 Q-11 0 0 -24 Z" fill="${gato}"/><circle cx="9" cy="-11" r="5" fill="${olho2}"/></g>`;
   const filtro = o.pelo ? `<filter id="pelo-${id}" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="2" seed="7"/>`
     + `<feDisplacementMap in="SourceGraphic" scale="${5 / k}" xChannelSelector="R" yChannelSelector="G"/></filter>` : '';
   const comPelo = o.pelo ? `filter="url(#pelo-${id})"` : '';
-  const patas = (f, s) => `<g fill="${f}" ${s ? `stroke="${s}" stroke-width="${9 / k}"` : ''}><ellipse cx="-106" cy="6" rx="52" ry="33"/><ellipse cx="106" cy="6" rx="52" ry="33"/></g>`;
+  // patas de gato de verdade: a mão arredondada com três dedinhos na frente, dobrando por cima da borda da letra,
+  // e dois risquinhos separando os dedos
+  const pata = (x) => `<ellipse cx="${x}" cy="0" rx="48" ry="30"/>`
+    + [[-27, 15], [0, 19], [27, 15]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${dy}" r="20"/>`).join('');
+  const patas = (f, s) => `<g fill="${f}" ${s ? `stroke="${s}" stroke-width="${9 / k}" stroke-linejoin="round"` : ''}>${pata(-106)}${pata(106)}</g>`
+    + (s ? '' : `<g stroke="${o.contorno || cor}" stroke-width="${2.6 / k}" stroke-linecap="round">`
+      + [-106, 106].map(x => [-13.5, 13.5].map(dx => `<line x1="${x + dx}" y1="${20}" x2="${x + dx}" y2="${33}"/>`).join('')).join('') + '</g>');
   el.style.position = el.style.position || 'absolute';
   el.innerHTML = `
   <svg width="899" height="700" viewBox="0 0 899 700" style="position:absolute;left:0;top:0;overflow:visible">
     <defs><clipPath id="acima-${id}"><rect x="-300" y="-400" width="1500" height="${660 - folga}"/></clipPath>${filtro}</defs>
     <g clip-path="url(#acima-${id})"><g transform="translate(${cx} ${parede}) scale(${k}) rotate(-5 0 -60)">
       <path fill="${gato}" d="${cabeca}" ${comPelo}/>
-      ${capsula(-54, 8)}${capsula(54, -6)}
+      ${olhoGato(-54, 4)}${olhoGato(54, -4)}
     </g></g>
   </svg>
   <div style="position:absolute;left:-19px;top:191px;font:900 470px/1 Archivo;font-stretch:62%;color:${cor};white-space:nowrap">MIAU</div>
