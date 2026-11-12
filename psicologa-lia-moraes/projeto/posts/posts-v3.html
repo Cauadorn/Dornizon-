@@ -1,0 +1,165 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300..700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Nothing+You+Could+Do&family=Poppins:wght@300;400;500;600;700&display=block" rel="stylesheet">
+<style>
+:root{--c:#2742C2;--c2:#1D3398;--creme:#F5EEE3;--p:#F3C6A8;--tinta:#1C1D3A}
+*{margin:0;box-sizing:border-box}
+body{background:#777;padding:20px;display:flex;gap:20px;flex-wrap:wrap}
+.art{position:relative;overflow:hidden;flex:none;width:1080px;height:1350px}
+.abs{position:absolute}
+.f{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.is{font-family:'Instrument Serif';font-weight:400;letter-spacing:-.02em}
+.is i{font-style:italic}
+.js{font-family:Poppins;font-weight:400;letter-spacing:-.01em}
+.js b{font-weight:600}
+.br{font-family:'Bricolage Grotesque';font-weight:800;letter-spacing:-.045em;font-stretch:88%}
+.mao{font-family:'Nothing You Could Do';font-weight:400;letter-spacing:0}
+.canto{position:absolute;font:400 21px/1.25 Jost;z-index:40}
+.canto b{font-weight:600}
+.ctl{left:62px;top:56px}.ctr{right:62px;top:56px;text-align:right}.cbl{left:62px;bottom:54px}.cbr{right:62px;bottom:54px;text-align:right}
+.grao{position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* fita adesiva */
+.fita{position:absolute;height:52px;background:rgba(232,222,198,.82);box-shadow:0 2px 3px rgba(0,0,0,.12);z-index:8;
+ clip-path:polygon(0 8%,4% 0,9% 10%,14% 0,20% 6%,80% 4%,86% 0,91% 9%,96% 0,100% 7%,100% 92%,96% 100%,91% 90%,86% 100%,80% 94%,20% 96%,14% 100%,9% 90%,4% 100%,0 93%)}
+/* selo postal (borda picotada) */
+.selo{padding:16px;background:radial-gradient(circle at 11px 11px,transparent 6px,var(--bg,#fff) 6.6px) -11px -11px/22px 22px;filter:drop-shadow(0 10px 18px rgba(10,20,60,.28))}
+.selo>*{display:block;background:var(--bg,#fff)}
+/* etiqueta de palavra recortada */
+.tag{display:inline-block;background:var(--c);color:var(--creme);padding:2px 16px 8px;margin:6px 4px;box-shadow:3px 4px 0 rgba(20,25,60,.18)}
+.estrela{position:absolute}
+.cab{position:absolute;left:64px;right:64px;display:flex;justify-content:space-between;font:400 23px/1 Poppins;letter-spacing:-.005em;z-index:40}
+.cab b{font-weight:600}
+.topo{top:58px}.rodape{bottom:56px}
+.risco{position:relative;display:inline-block}.risco::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:6px;background:var(--c);border-radius:4px;transform:rotate(-1.5deg)}
+.lk{position:absolute;left:0;right:0;text-align:center}
+.lk>*{display:block}
+</style></head><body>
+
+
+<!-- P1 · MAPA DA TERAPIA -->
+<div class="art" id="p1" style="background:var(--c);color:var(--creme)">
+  <img class="f" src="../fotos-pinterest/colagem/sombra-folhas-1080.png" style="mix-blend-mode:multiply;opacity:.5">
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="lk" style="top:520px">
+    <span class="js" style="font-size:42px">o que a gente faz na</span>
+    <span class="is" style="font-size:330px;line-height:.86;margin-top:-6px" data-fit="780"><i>terapia</i></span>
+  </div>
+  <svg class="abs" viewBox="0 0 1080 1350" width="1080" height="1350" style="left:0;top:0" fill="none" stroke="#F5EEE3" stroke-width="4" stroke-linecap="round">
+    <defs><marker id="seta" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L10 6 L1 11" fill="none" stroke="#F5EEE3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+    <path d="M320 512 C 300 470, 280 430, 262 398" marker-end="url(#seta)"/>
+    <path d="M540 506 C 550 440, 530 360, 540 300" marker-end="url(#seta)"/>
+    <path d="M760 512 C 780 470, 800 430, 818 398" marker-end="url(#seta)"/>
+    <path d="M300 915 C 280 945, 255 970, 232 990" marker-end="url(#seta)"/>
+    <path d="M540 935 C 532 990, 548 1040, 540 1085" marker-end="url(#seta)"/>
+    <path d="M780 915 C 800 945, 825 970, 848 990" marker-end="url(#seta)"/>
+  </svg>
+  <div class="abs mao" style="left:40px;top:278px;width:440px;text-align:center;font-size:46px;line-height:1.15;transform:rotate(-4deg)">entender o que<br>você sente</div>
+  <div class="abs mao" style="left:290px;top:200px;width:500px;text-align:center;font-size:46px;line-height:1.15;transform:rotate(2deg)">dar nome às emoções</div>
+  <div class="abs mao" style="left:600px;top:278px;width:440px;text-align:center;font-size:46px;line-height:1.15;transform:rotate(3deg)">rever padrões<br>que se repetem</div>
+  <div class="abs mao" style="left:20px;top:1000px;width:400px;text-align:center;font-size:46px;line-height:1.15;transform:rotate(3deg)">aprender a<br>colocar limites</div>
+  <div class="abs mao" style="left:360px;top:1100px;width:360px;text-align:center;font-size:46px;line-height:1.15;transform:rotate(-2deg)">se acolher sem<br>se cobrar</div>
+  <div class="abs mao" style="left:660px;top:1000px;width:400px;text-align:center;font-size:46px;line-height:1.15;transform:rotate(-3deg)">fazer as pazes<br>com o passado</div>
+  <div class="cab rodape"><span>@psi.liamoraes</span><span>salva pra lembrar</span></div>
+  <div class="grao"></div>
+</div>
+
+<!-- P2 · BILHETE COLADO NA FOTO -->
+<div class="art" id="p2" style="color:var(--c)">
+  <img class="f" src="../fotos-pinterest/base/mulher-campo-ceu.jpg">
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs" style="left:96px;top:170px;width:888px;height:1010px;transform:rotate(-1.4deg);box-shadow:0 30px 60px rgba(20,30,70,.38)">
+    <img class="f" src="../fotos-pinterest/colagem/papel-1080.jpg">
+    <div class="abs js" style="left:0;right:0;top:84px;text-align:center;font-size:27px;font-weight:600;letter-spacing:.16em;text-transform:uppercase">frases que parecem apoio,</div>
+    <div class="abs is" style="left:50px;right:50px;top:132px;text-align:center;font-size:104px;line-height:.93;color:var(--tinta);letter-spacing:-.03em">mas, na verdade, <i style="color:var(--c)">invalidam</i> o que você sente:</div>
+    <div class="abs mao" style="left:0;right:0;top:470px;text-align:center;font-size:52px;line-height:1.58;color:var(--tinta)">
+      <span class="risco">“podia ser pior.”</span><br><span class="risco">“pensa positivo!”</span><br><span class="risco">“isso é coisa da sua cabeça.”</span><br><span class="risco">“você tem tudo pra ser feliz.”</span>
+    </div>
+    <div class="abs js" style="left:0;right:0;bottom:78px;text-align:center;font-size:40px">Acolher é <b>ouvir sem corrigir.</b></div>
+  </div>
+  <div class="fita" style="left:445px;top:140px;width:200px;transform:rotate(3deg)"></div>
+  <div class="cab rodape" style="color:var(--creme)"><span>@psi.liamoraes</span><span>psicologia clínica</span></div>
+  <div class="grao"></div>
+</div>
+
+<!-- P3 · COLAGEM -->
+<div class="art" id="p3" style="color:var(--c)">
+  <img class="f" src="../fotos-pinterest/colagem/papel-1080.jpg">
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>@psi.liamoraes</span></div>
+  <div class="abs is" style="left:30px;right:30px;top:140px;text-align:center;font-size:98px;line-height:1;letter-spacing:-.03em">
+    <span class="tag" style="transform:rotate(-2deg)">Você</span><span class="tag" style="transform:rotate(1.5deg)">não</span><span class="tag" style="transform:rotate(-1deg)">precisa</span><br>
+    <span class="tag" style="transform:rotate(1deg);background:var(--creme);color:var(--c);border:3px solid var(--c)"><i>ter certeza</i></span><span class="tag" style="transform:rotate(-2.5deg)">do que</span><br>
+    <span class="tag" style="transform:rotate(-1.5deg)">sente pra</span><span class="tag" style="transform:rotate(1.5deg);background:var(--p);color:var(--c)"><i>começar.</i></span>
+  </div>
+  <img class="abs" src="../fotos-pinterest/colagem/ramo-2a-cobalto.png" style="left:120px;top:612px;width:170px;transform:rotate(-10deg)">
+  <img class="abs" src="../fotos-pinterest/colagem/ramo-2b-cobalto.png" style="right:120px;top:612px;width:170px;transform:rotate(10deg)">
+  <div class="abs mao" style="left:0;right:0;top:618px;text-align:center;font-size:54px;transform:rotate(-2deg)">bem-me-quer...</div>
+  <img class="abs" src="../fotos-pinterest/colagem/maos-margarida-recorte.png" style="left:-215px;top:115px;width:1458px">
+  <svg class="estrela" style="left:96px;top:700px;width:52px" viewBox="0 0 100 100"><path d="M50 0C53 35 65 47 100 50 65 53 53 65 50 100 47 65 35 53 0 50 35 47 47 35 50 0Z" fill="#2742C2"/></svg>
+  <svg class="estrela" style="right:110px;top:760px;width:36px" viewBox="0 0 100 100"><path d="M50 0C53 35 65 47 100 50 65 53 53 65 50 100 47 65 35 53 0 50 35 47 47 35 50 0Z" fill="#E9A07C"/></svg>
+  <div class="grao" style="opacity:.12"></div>
+</div>
+
+<!-- P4 · CARTÃO DE APP -->
+<div class="art" id="p4" style="background:var(--c);color:var(--creme)">
+  <div class="abs" style="inset:0;background:radial-gradient(120% 90% at 50% 30%,rgba(255,255,255,.08),rgba(0,0,30,.25))"></div>
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>metáforas da terapia</span></div>
+  <div class="abs" style="left:90px;right:90px;top:128px;background:var(--creme);border-radius:24px;padding:22px 26px 30px;box-shadow:0 18px 40px rgba(0,0,30,.3)">
+    <div style="display:flex;align-items:center;gap:9px;margin-bottom:20px"><i style="width:15px;height:15px;border-radius:50%;background:#C9CFE8"></i><i style="width:15px;height:15px;border-radius:50%;background:#C9CFE8"></i><i style="width:15px;height:15px;border-radius:50%;background:#C9CFE8"></i><span class="js" style="margin-left:auto;font-size:19px;letter-spacing:.12em;text-transform:uppercase;color:var(--c);font-weight:600">metáfora 01</span></div>
+    <div class="br" style="background:#DCE1F5;border-radius:16px;padding:24px 16px 30px;text-align:center;color:var(--c);font-size:108px;line-height:.86">Os passageiros<br>do ônibus</div>
+  </div>
+  <div class="abs js" style="left:70px;right:70px;top:530px;text-align:center;font-size:42px;line-height:1.14">Imagine que você dirige um ônibus. No caminho, sobem passageiros barulhentos:</div>
+  <div class="abs br" style="left:0;right:0;top:722px;text-align:center;font-size:54px;letter-spacing:-.03em">
+    <span style="display:inline-block;background:var(--creme);color:var(--c);padding:2px 18px 10px;transform:rotate(-2deg)">o medo</span><span style="display:inline-block;background:var(--p);color:var(--c);padding:2px 18px 10px;transform:rotate(1.5deg);margin:0 10px">a dúvida</span><span style="display:inline-block;background:var(--creme);color:var(--c);padding:2px 18px 10px;transform:rotate(-1deg)">a autocrítica</span>
+  </div>
+  <div class="abs js" style="left:70px;right:70px;top:832px;text-align:center;font-size:42px;line-height:1.14">Eles gritam pra você mudar de rota.</div>
+  <div class="abs selo" style="left:44px;top:950px;width:400px;transform:rotate(-6deg);--bg:#fff"><img src="../fotos-pinterest/base/trem-janela-escura.jpg" style="width:368px;height:380px;object-fit:cover;object-position:50% 45%"></div>
+  <div class="abs" style="left:480px;top:975px;width:540px;background:var(--creme);color:var(--c);border-radius:30px;padding:30px 34px 34px">
+    <div class="js" style="font-size:37px;line-height:1.15">Você não precisa expulsar ninguém pra seguir <b>pelo caminho que importa.</b></div>
+    <div class="abs" style="left:-28px;top:76px;width:0;height:0;border-top:22px solid transparent;border-bottom:22px solid transparent;border-right:32px solid var(--creme)"></div>
+  </div>
+  <div class="cab rodape" style="justify-content:flex-end;gap:20px;font-size:21px"><span>@psi.liamoraes</span><span>|</span><span>CRP 00/00000</span></div>
+  <div class="grao"></div>
+</div>
+
+<!-- P5 · OBJETO ÚNICO -->
+<div class="art" id="p5" style="background:#F4F1EC;color:var(--c)">
+  <img class="abs" src="../fotos-pinterest/colagem/fosforo.jpg" style="left:560px;top:90px;height:1240px;mix-blend-mode:multiply">
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs" style="left:70px;top:430px;width:640px">
+    <div class="br" style="font-size:186px;line-height:.82">Burnout</div>
+    <div class="js" style="font-size:48px;line-height:1.1;margin-top:34px;color:var(--tinta)">não é preguiça.<br>é o <b style="color:var(--c)">esgotamento</b><br>que vai além<br>do cansaço.</div>
+  </div>
+  <div class="cab rodape"><span style="display:flex;align-items:center;gap:14px"><img src="../logo/final/lia-moraes-monograma.svg" style="height:46px">@psi.liamoraes</span><span>psicologia clínica</span></div>
+  <div class="grao" style="opacity:.1"></div>
+</div>
+
+<!-- P6 · POLAROID DE APRESENTAÇÃO -->
+<div class="art" id="p6" style="background:var(--p);color:var(--c)">
+  <img class="f" src="../fotos-pinterest/colagem/papel-1080.jpg" style="mix-blend-mode:multiply;opacity:.55">
+  <div class="cab topo"><span><b>Lia Moraes</b> // Psicóloga</span><span>CRP 00/00000</span></div>
+  <div class="abs mao" style="left:56px;top:140px;font-size:126px;line-height:1.02;transform:rotate(-5deg)">oi, eu sou<br>a Lia!</div>
+  <div class="abs" style="left:470px;top:330px;width:600px;background:#FBF8F2;padding:28px 28px 104px;transform:rotate(4deg);box-shadow:0 24px 48px rgba(60,30,20,.3);z-index:3">
+    <img src="../ia/lia-rindo-v1.png" style="display:block;width:100%;height:690px;object-fit:cover;object-position:50% 30%">
+    <div class="abs mao" style="left:0;right:0;bottom:28px;text-align:center;font-size:40px;color:var(--tinta)">entre uma sessão e outra</div>
+  </div>
+  <div class="fita" style="left:650px;top:298px;width:210px;transform:rotate(-4deg)"></div>
+  <div class="abs selo" style="left:40px;top:800px;width:410px;transform:rotate(-2deg);--bg:var(--creme);z-index:4">
+    <div class="js" style="padding:30px 30px 34px;font-size:34px;line-height:1.18;color:var(--tinta)">Atendo adultos <b style="color:var(--c)">online e presencial.</b> Por aqui, falo de ansiedade e do direito de pausar.</div>
+  </div>
+  <svg class="estrela" style="left:350px;top:452px;width:60px" viewBox="0 0 100 100"><path d="M50 0C53 35 65 47 100 50 65 53 53 65 50 100 47 65 35 53 0 50 35 47 47 35 50 0Z" fill="#2742C2"/></svg>
+  <svg class="estrela" style="left:520px;top:1240px;width:40px" viewBox="0 0 100 100"><path d="M50 0C53 35 65 47 100 50 65 53 53 65 50 100 47 65 35 53 0 50 35 47 47 35 50 0Z" fill="#F5EEE3"/></svg>
+  <div class="cab rodape" style="justify-content:flex-end"><span>@psi.liamoraes</span></div>
+  <div class="grao" style="opacity:.12"></div>
+</div>
+
+<script>
+document.fonts.ready.then(() => {
+  document.querySelectorAll('[data-fit]').forEach(el => {
+    const alvo = +el.dataset.fit; const s = document.createElement('span'); s.innerHTML = el.innerHTML; s.style.whiteSpace = 'nowrap';
+    el.innerHTML = ''; el.appendChild(s); const fs = parseFloat(getComputedStyle(el).fontSize);
+    el.style.fontSize = (fs * alvo / s.getBoundingClientRect().width) + 'px';
+  });
+  window.READY = true;
+});
+</script>
+</body></html>
