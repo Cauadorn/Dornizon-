@@ -8,6 +8,7 @@
 
 - **Margem de 90px em todos os lados** (Emi, 12/11/2026): texto, @, marca d'água, selo e qualquer elemento de conteúdo ficam a pelo menos 90px da borda (em cima, embaixo, esquerda e direita). Só sangram o fundo, formas grandes cortadas pela borda e o objeto que atravessa o corte do carrossel. No Design System: token `space-4` = 90px. Para conferir: `node Emi/ems-so-um-ajustezinho/projeto/conferir-margens.js <arquivo.html>` (mede cada texto e assinatura das lâminas `.lamina`).
 - **Emoji do iPhone** (Emi, 12/11/2026): a Emi usa iPhone, e o desenho dos emojis do Android/Google é outro. Em arte, nunca deixar o emoji na fonte do sistema (aqui é a Noto, estilo Android): incluir `.claude/skills/artes-clientes/scripts/emoji-iphone.js` e esperar `await window.emojiIphone` antes do `window.READY`. Na legenda não precisa de nada: ela posta do iPhone.
+- **Palavra curta nunca sobra no fim da linha** (Emi, 12/11/2026): e, o, a, é, da, de, di, do, du (qualquer palavra de 1 ou 2 letras) nunca fica sozinha no fim da linha, sempre desce junto com a palavra seguinte. Foi o ajuste do "é só um ajustezinho" v9: "o que cansa é / ajuste sem" virou "o que cansa / é ajuste sem"; no bilhete, "vai, e o / ajuste" desceu e a caixa foi alargada (440 → 470px) para o texto fechar em 4 linhas sem palavra sozinha no fim. Usar `scripts/palavra-curta.js` e conferir com `scripts/conferir-palavra-curta.js` (ver SKILL.md).
 
 ## Aprendizados (o que já custou refação)
 

@@ -18,7 +18,13 @@ Referência de formato: post da @agrizzart sobre manter o perfil ativo com a age
 
 - **v1** (`entrega/v1/`, `projeto/carrossel.html`): primeira versão, digital e chapada.
 - **v7** (`entrega/v7/`, `projeto/carrossel-v7.html`): a disciplina da lâmina aprovada (a da bússola) em todas; capa-pôster; pasta como janela monocromática; celular desenhado em código.
-- **v8** (`entrega/v8/`, `projeto/carrossel-v8.html`): **em teste.** Igual à v7, mas com **objetos 3D gerados**, recortados e montados sobre os fundos de textura da EMS:
+- **v9** (`entrega/v9/`, `projeto/carrossel-v9.html`): **a final.** Igual à v8, com a regra da palavra curta (Emi: e, o, a, é, da, de, do... nunca sobram no fim da linha):
+  - lâmina 4, título: "o que cansa é / ajuste sem" virou "o que cansa / é ajuste sem";
+  - lâmina 4, bilhete: "vai, e o / ajuste" desceu, e a caixa passou de 440 para 470px para fechar em 4 linhas ("briefing bem feito é o norte / do projeto: todo mundo sabe / pra onde vai, e o ajuste vira / **refinamento, não recomeço.**");
+  - lâmina 2, etapa 04: "só" desceu ("volta pro começo, / só que todo mundo / mais cansado").
+
+  As lâminas 1, 3, 5 e 6 são idênticas às da v8. No Drive, slide-02, slide-04 e a visão geral foram trocados (os da v8 foram para a lixeira).
+- **v8** (`entrega/v8/`, `projeto/carrossel-v8.html`): Igual à v7, mas com **objetos 3D gerados**, recortados e montados sobre os fundos de textura da EMS:
   - **capa:** o papel amassado (que incomodava a Emi) sai e entra um **painel de Ajustes 3D** (os controles deslizantes do Photoshop/Lightroom, em rosa e violeta), com um dos controles puxado só um tiquinho; o painel invade o pé do "ZINHO”" (objeto na frente da palavra) e atravessa o corte para a lâmina 2, com a estrela em retícula lavanda atrás. Seleção do Figma e cursor "emi" ficaram de fora da capa porque já aparecem nas lâminas 3 e 6. A estrela em retícula fica atrás do texto de apoio ("e foi assim que a gente chegou na *versão 27.*"), cobrindo o vazio entre o texto e o painel;
   - **textura de papel amassado em todas as lâminas** (ref. @escolacanvadesigner, "Textura é o verdadeiro tchan", `referencias/outras/ref-escolacanvadesigner-texturas.jpg`): scan de papel gerado no Figma, neutralizado em cinza médio (`projeto/assets/textura-papel.jpg`) e aplicado por cima de tudo em *soft-light* a 30% (a 75% ficou exagerado), espelhado/girado em cada lâmina para as dobras não se repetirem. Dá a cara de peça impressa e une o carrossel; Foram descartadas antes: teclas (a Emi já fez capa com teclas) e fita métrica (costura não tem a ver com design);
   - **pasta-envelope rosa com coração violeta** (escolhida pela Emi entre a rosa e uma lilás com elástico; a primeira, amarela, foi achada "feinha"), com as fichas das versões saindo de dentro (nomes datilografados já na imagem), `SelectionBox` + cursor "emi" na `logo_v1.png` e o aviso "spoiler: aprovaram a v1" (referência 17 da pesquisa);
@@ -82,8 +88,9 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 
 ## Arquivos
 
-- `projeto/carrossel.html` (v1), `projeto/carrossel-v7.html` (v7) e `projeto/carrossel-v8.html` (v8): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
+- `projeto/carrossel.html` (v1), `projeto/carrossel-v7.html` (v7) `projeto/carrossel-v8.html` (v8) e `projeto/carrossel-v9.html` (v9, final): as 6 lâminas lado a lado. Abra no navegador para editar texto e posição.
 - `projeto/tela-celular.html`: o conteúdo da tela do celular 3D (renderizado e encaixado em perspectiva na imagem).
-- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v7.html v7` e `node render.mjs carrossel-v8.html v8` geram a v7 e a v8 (lamina-01..06.png + visao-geral.jpg).
-- `entrega/v7/` e `entrega/v8/`: PNGs finais 1080 × 1350 para subir no Instagram.
-- `projeto/conferir-margens.js`: `node conferir-margens.js carrossel-v8.html` aponta qualquer texto, @, selo ou etiqueta a menos de 90px da borda (regra da EMS desde 12/11/2026). A v8 passa.
+- `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v7.html v7` `node render.mjs carrossel-v8.html v8` e `node render.mjs carrossel-v9.html v9` geram a v7, a v8 e a v9 (lamina-01..06.png + visao-geral.jpg).
+- `entrega/v7/`, `entrega/v8/` e `entrega/v9/` (final): PNGs 1080 × 1350 para subir no Instagram.
+- `projeto/conferir-margens.js`: `node conferir-margens.js carrossel-v8.html` aponta qualquer texto, @, selo ou etiqueta a menos de 90px da borda (regra da EMS desde 12/11/2026). A v8 e a v9 passam.
+- Palavra curta: a v9 inclui `.claude/skills/artes-clientes/scripts/palavra-curta.js`; `node ../../../.claude/skills/artes-clientes/scripts/conferir-palavra-curta.js carrossel-v9.html` não acha nenhuma sobra.
