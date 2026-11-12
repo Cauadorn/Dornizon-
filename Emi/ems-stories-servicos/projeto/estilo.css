@@ -99,7 +99,7 @@ h1 em, h2 em { display: block; font-style: italic; color: var(--destaque); }
 
 /* ---------- 6 · fotografia: o título escrito na lua ---------- */
 .s6 { --fundo: var(--ameixa); --destaque: var(--pink); }
-.s6 .foco { left: 60px; top: 560px; width: 960px; height: 780px; background:
+.s6 .foco { left: 60px; top: 535px; width: 960px; height: 780px; background:
   linear-gradient(var(--ivory) 0 0) 0 0 / 90px 5px, linear-gradient(var(--ivory) 0 0) 0 0 / 5px 90px,
   linear-gradient(var(--ivory) 0 0) 100% 0 / 90px 5px, linear-gradient(var(--ivory) 0 0) 100% 0 / 5px 90px,
   linear-gradient(var(--ivory) 0 0) 0 100% / 90px 5px, linear-gradient(var(--ivory) 0 0) 0 100% / 5px 90px,
@@ -108,10 +108,12 @@ h1 em, h2 em { display: block; font-style: italic; color: var(--destaque); }
 .s6 .exif { right: 90px; top: 284px; display: flex; gap: 10px; font-size: 26px; font-weight: 600; letter-spacing: .06em; }
 .s6 .exif span { border: 3px solid var(--ivory); border-radius: 8px; padding: 4px 12px; }
 .s6 .exif span:nth-child(2) { background: var(--ivory); color: var(--tinta); }
-.s6 .lead { left: 0; width: 1080px; text-align: center; top: 810px; color: var(--tinta); font-size: 44px; }
-.s6 h2 { left: 0; width: 1080px; top: 860px; font-size: 236px; color: var(--tinta); display: flex; justify-content: center; align-items: baseline; }
+.s6 .lead { left: 0; width: 1080px; text-align: center; top: 785px; color: var(--tinta); font-size: 44px; }
+.s6 h2 { left: 0; width: 1080px; top: 835px; font-size: 236px; color: var(--tinta); display: flex; justify-content: center; align-items: baseline; }
 .s6 h2 em { font-size: 236px; }
-.s6 .sub { left: 90px; top: 1436px; width: 880px; }
+.s6 .sub { left: 90px; top: 1472px; width: 880px; }
+.s6 .etiqueta { top: 1588px; }
+.s6 .arroba { top: 1612px; }
 
 /* ---------- 7 · fecho ---------- */
 .s7 { --fundo: var(--violeta); }
@@ -145,6 +147,6 @@ h1 em, h2 em { display: block; font-style: italic; color: var(--destaque); }
 .s3 .materia { background: radial-gradient(circle, rgba(192, 165, 196, .5) 2.2px, transparent 2.8px) 0 0 / 16px 16px; -webkit-mask: linear-gradient(200deg, #000 0, transparent 46%); mask: linear-gradient(200deg, #000 0, transparent 46%); }
 .s4 .materia { background: repeating-linear-gradient(0deg, rgba(255, 251, 222, .09) 0 2px, transparent 2px 7px); -webkit-mask: linear-gradient(90deg, transparent 30%, #000); mask: linear-gradient(90deg, transparent 30%, #000); }
 .s5 .materia { mix-blend-mode: soft-light; opacity: .7; background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .6) 0 2px, rgba(0, 0, 0, .5) 2px 4px, transparent 4px 8px), repeating-linear-gradient(90deg, rgba(255, 255, 255, .6) 0 2px, rgba(0, 0, 0, .5) 2px 4px, transparent 4px 8px); }
-.s6 .materia { background: radial-gradient(circle, rgba(242, 207, 122, .4) 2.2px, transparent 2.8px) 0 0 / 16px 16px; -webkit-mask: radial-gradient(circle at 50% 49.5%, transparent 0 510px, #000 520px, transparent 760px); mask: radial-gradient(circle at 50% 49.5%, transparent 0 510px, #000 520px, transparent 760px); }
+.s6 .materia { background: radial-gradient(circle, rgba(242, 207, 122, .4) 2.2px, transparent 2.8px) 0 0 / 16px 16px; -webkit-mask: radial-gradient(circle at 50% 48.2%, transparent 0 510px, #000 520px, transparent 760px); mask: radial-gradient(circle at 50% 48.2%, transparent 0 510px, #000 520px, transparent 760px); }
 .s7 .materia { background: var(--tx-fibras) 0 0 / 460px; mix-blend-mode: soft-light; opacity: .9; }
 .guia .story::after { content: ""; position: absolute; left: 90px; right: 90px; top: 250px; bottom: 250px; border: 2px dashed #0f0; z-index: 99; }
