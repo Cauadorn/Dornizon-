@@ -1,0 +1,228 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>reel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500&display=block">
+<style>
+*{box-sizing:border-box}
+:root{--creme:#F4EDE3;--creme2:#EBE2D5;--tinta:#2A1A17;--vinho:#6A1B29;--laranja:#E07A2E;--urucum:#C8321F;--suave:#857568;--claro:#F2B98A;--serif:"Instrument Serif",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
+html,body{margin:0;background:#000}
+#palco{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--creme);color:var(--tinta);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.cena{position:absolute;inset:0;visibility:hidden;overflow:hidden}
+.centro{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ch{display:inline-block;white-space:pre}
+.q{font-style:italic}
+/* A */
+#A{background:var(--creme)}
+.a1{font:400 66px/1.2 var(--sans);letter-spacing:.01em;color:var(--tinta)}
+.a2{font:italic 400 190px/.95 var(--serif);color:var(--vinho);letter-spacing:-.03em;margin-top:18px}
+#a-simb{width:120px;margin-top:40px}
+/* B */
+#B{background:var(--creme)}
+.b-zoom{position:absolute;inset:0;transform-origin:68% 50%}
+.guia{position:absolute;background:none;border-color:rgba(200,50,31,.55);border-style:dashed;border-width:0}
+.gh{left:0;right:0;border-top-width:2px;transform-origin:left}
+.gv{top:0;bottom:0;border-left-width:2px;transform-origin:top}
+.b-tit{position:absolute;left:0;right:0;top:860px;margin:0;text-align:center;font:400 214px/1 var(--serif);letter-spacing:-.035em;white-space:nowrap}
+.b-tit .q{color:var(--vinho)}
+#swoosh{position:absolute;inset:0;width:100%;height:100%}
+/* C */
+.palavra-c{font:500 112px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+#C1{background:var(--creme)}
+.c-barra{position:relative;display:inline-block;padding:22px 34px;background:var(--laranja);color:#FFF3E6;transform-origin:left}
+#C2{background:var(--vinho);color:#FFF3E6}
+#C3{background:#0CA5AE;color:#FFF3E6}
+#C4{background:var(--urucum);color:#FFF3E6}
+#C5{background:var(--tinta)}
+/* D */
+#D{background:var(--tinta)}
+.listras{position:absolute;inset:0;display:flex;flex-direction:column}
+.lis{flex:1;display:flex;align-items:center;justify-content:center;font:500 30px/1 var(--sans);letter-spacing:.3em}
+.lis span{opacity:0}
+#bola{position:absolute;left:540px;top:960px;width:2400px;height:2400px;margin:-1200px 0 0 -1200px;border-radius:50%;background:var(--laranja);transform:scale(0)}
+/* E */
+.logo-g{font:400 236px/.9 var(--serif);letter-spacing:-.035em;margin:0}
+.logo-g .q{display:block}
+#E1{background:var(--laranja);color:#FFF3E6}
+#E2{background:var(--creme)}
+#E3{background:var(--vinho);color:var(--claro)}
+#E4{background:var(--urucum)}
+#E5{background:var(--tinta);color:#FFF3E6}
+.e-simb{width:190px;margin-bottom:64px}
+.e-simb-g{width:520px}
+.assin-claro{width:640px;filter:brightness(0) invert(1)}
+.lockup{display:flex;flex-direction:column;align-items:center;gap:34px}
+.lockup .col{font:italic 400 110px/1 var(--serif);color:var(--claro)}
+.lockup small{display:block;font:500 24px/1 var(--sans);font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,243,230,.7);margin-bottom:18px}
+/* F */
+#F{background:var(--creme)}
+.f-arte{position:absolute;left:150px;top:300px;width:780px;height:1045px}
+.arco{position:absolute;inset:0;overflow:hidden;border-radius:999px 999px 0 0;background:var(--creme2);box-shadow:0 60px 110px -60px rgba(40,10,10,.5)}
+.arco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.f-par{position:absolute;left:28px;top:220px;width:250px;transform:rotate(-12deg);filter:drop-shadow(0 4px 4px rgba(40,10,10,.25)) drop-shadow(0 26px 30px rgba(40,10,10,.28))}
+.f-leg{position:absolute;left:0;right:0;top:1440px;text-align:center}
+.f-leg b{display:block;font:500 26px/1 var(--sans);letter-spacing:.3em;color:var(--vinho)}
+.f-leg strong{display:block;font:400 92px/1 var(--serif);margin-top:20px}
+.f-leg em{display:block;font:italic 400 44px/1.2 var(--serif);color:var(--suave);margin-top:10px}
+.f-leg{visibility:hidden}
+.f-leg.l0{visibility:visible}
+.arco img.fl{visibility:hidden}
+/* G */
+#G{background:var(--vinho);color:#FFF3E6}
+.g1{font:400 62px/1.2 var(--sans);letter-spacing:.02em;color:rgba(255,243,230,.85)}
+.g2{font:italic 400 172px/.95 var(--serif);color:var(--claro);letter-spacing:-.025em;margin-top:26px}
+/* H */
+#H{background:#222}
+.h-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.h-veu{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,8,0) 38%,rgba(20,10,8,.72) 88%)}
+.h-nome{position:absolute;left:0;right:0;bottom:250px;text-align:center;font:400 170px/.9 var(--serif);letter-spacing:-.035em;color:#FFF3E6;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.h-nome .q{color:var(--claro)}
+.h-leg{position:absolute;left:0;right:0;bottom:170px;text-align:center;font:500 24px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,243,230,.85)}
+/* I */
+#I{background:#F1DCC6}
+.card{position:absolute;width:390px;height:488px;border-radius:22px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(60,20,10,.55);background:#fff}
+.card img{width:100%;height:100%;object-fit:cover}
+.c0{left:120px;top:330px;transform:rotate(-4deg)}
+.c1{left:560px;top:300px;transform:rotate(3deg)}
+.c2{left:110px;top:870px;transform:rotate(2deg)}
+.c3{left:550px;top:850px;transform:rotate(-3deg)}
+.fone{position:absolute;width:390px;height:844px;border-radius:58px;border:14px solid #1B1210;background:#1B1210;overflow:hidden;box-shadow:0 60px 90px -40px rgba(30,10,5,.6)}
+.fone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:44px}
+.fone::after{content:"";position:absolute;left:50%;top:14px;width:110px;height:30px;margin-left:-55px;border-radius:20px;background:#1B1210}
+.i-fone{left:590px;top:1010px;transform:rotate(8deg)}
+/* J */
+#J{background:var(--laranja)}
+.j1{left:120px;top:420px;transform:rotate(-6deg)}
+.j2{left:570px;top:560px;transform:rotate(5deg)}
+.j-leg{position:absolute;left:0;right:0;top:250px;text-align:center;font:500 26px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:#FFF3E6}
+.j-leg em{display:block;font:italic 400 76px/1 var(--serif);letter-spacing:-.01em;text-transform:none;margin-top:16px}
+/* K */
+#K{background:var(--tinta);color:#FFF3E6}
+.k-folha{position:absolute;width:760px}
+.k1{left:-220px;top:-300px;transform:rotate(160deg)}
+.k2{right:-240px;bottom:-280px;transform:rotate(-20deg)}
+.k-nome{font:400 210px/.9 var(--serif);letter-spacing:-.035em;margin:0}
+.k-nome .q{display:block;color:var(--claro)}
+.k-sub{font:italic 400 44px/1.2 var(--serif);color:rgba(255,243,230,.8);margin:34px 0 46px}
+.k-assin{width:520px;filter:brightness(0) invert(1);opacity:.92}
+.k-legal{position:absolute;left:80px;right:80px;bottom:120px;text-align:center;font:500 20px/1.6 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,243,230,.55)}
+</style></head><body><div id="palco">
+<section class="cena centro" id="A"><p class="a1"><span class="ch">U</span><span class="ch">m</span><span class="ch">a</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">o</span><span class="ch">l</span><span class="ch">l</span><span class="ch">a</span><span class="ch">b</span><span class="ch">&nbsp;</span><span class="ch">f</span><span class="ch">e</span><span class="ch">i</span><span class="ch">t</span><span class="ch">a</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">o</span><span class="ch">m</span></p><p class="a2"><span class="ch">b</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="ch">q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></p><div id="a-simb"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div></section>
+<section class="cena" id="B"><div class="b-zoom">
+  <i class="guia gh" style="top:880px"></i><i class="guia gh" style="top:1052px"></i><i class="guia gh" style="top:968px;border-color:rgba(200,50,31,.3)"></i>
+  <i class="guia gv" style="left:96px"></i><i class="guia gv" style="left:540px;border-color:rgba(200,50,31,.3)"></i><i class="guia gv" style="left:984px"></i>
+  <p class="b-tit"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="q"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></span></p></div>
+  <svg id="swoosh" viewBox="0 0 1080 1920"><path id="sw" d="M-120,1500 C 260,1160 520,1700 760,1260 S 1060,700 1240,860" fill="none" stroke="#E07A2E" stroke-width="150" stroke-linecap="round"/></svg></section>
+<section class="cena centro" id="C1"><div class="c-barra palavra-c"><span class="ch">s</span><span class="ch">o</span><span class="ch">l</span><span class="ch">a</span><span class="ch">r</span></div></section>
+<section class="cena centro" id="C2"><p class="palavra-c"><span class="ch">a</span><span class="ch">f</span><span class="ch">e</span><span class="ch">t</span><span class="ch">i</span><span class="ch">v</span><span class="ch">a</span></p></section>
+<section class="cena centro" id="C3"><p class="palavra-c"><span class="ch">d</span><span class="ch">e</span><span class="ch">&nbsp;</span><span class="ch">r</span><span class="ch">u</span><span class="ch">a</span></p></section>
+<section class="cena centro" id="C4"><p class="palavra-c"><span class="ch">b</span><span class="ch">r</span><span class="ch">a</span><span class="ch">s</span><span class="ch">i</span><span class="ch">l</span><span class="ch">e</span><span class="ch">i</span><span class="ch">r</span><span class="ch">a</span></p></section>
+<section class="cena" id="D"><div class="listras"><div class="lis" style="background:#F4EDE3;color:#2A1A17"><span>AREIA</span></div><div class="lis" style="background:#EBE2D5;color:#2A1A17"><span>RENDA</span></div><div class="lis" style="background:#E07A2E;color:#FFF3E6"><span>CAJU</span></div><div class="lis" style="background:#C8321F;color:#FFF3E6"><span>URUCUM</span></div><div class="lis" style="background:#6A1B29;color:#FFF3E6"><span>AÇAÍ</span></div><div class="lis" style="background:#857568;color:#FFF3E6"><span>BARRO</span></div><div class="lis" style="background:#2A1A17;color:#F4EDE3"><span>CAFÉ</span></div></div><div id="bola"></div></section>
+<section class="cena centro" id="E1"><div class="e-simb"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#FFF3E6"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#FFF3E6" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#E07A2E" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#E07A2E" stroke-width="3.4"/></g></svg></div><p class="logo-g"><span style="color:#FFF3E6">Bem-</span><span class="q" style="color:#FFF3E6">Querer</span></p></section>
+<section class="cena centro" id="E2"><div class="e-simb"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E8892B" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E8892B" fill-opacity=".95"/><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#FCFAF6" stroke-width="3.4"/></g></svg></div><p class="logo-g"><span style="color:var(--tinta)">Bem-</span><span class="q" style="color:var(--vinho)">Querer</span></p></section>
+<section class="cena centro" id="E3"><div class="lockup"><img class="assin-claro" src="../_img/assinatura-topo.svg" alt=""><div class="col"><small>coleção</small>Bem-Querer</div></div></section>
+<section class="cena centro" id="E4"><div class="e-simb-g"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#FFF3E6" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#FFF3E6"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#FFF3E6" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#C8321F" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#C8321F" stroke-width="3.4"/></g></svg></div></section>
+<section class="cena centro" id="E5"><p class="logo-g"><span style="color:#FFF3E6">Bem-</span><span class="q" style="color:#F2B98A">Querer</span></p></section>
+<section class="cena" id="F"><div class="f-arte"><div class="arco"><img data-uf="ms720" data-t0="23.4" alt=""><img class="fl" src="../../site/img/pa-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/ba-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/sc-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/ma-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/mg-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/pe-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/rs-ilustracao.jpg" alt=""><img class="fl" src="../../site/img/am-ilustracao.jpg" alt=""></div></div>
+  <img class="f-par" src="../../site/img/ms-par.webp" alt="">
+  <div class="f-leg l0"><b>10 / 14 · CENTRO-OESTE</b><strong>Mato Grosso do Sul</strong><em>Onça de Bonito</em></div><div class="f-leg l1"><b>08 / 14 · NORTE</b><strong>Pará</strong><em>Revoada de Miriti</em></div><div class="f-leg l2"><b>03 / 14 · NORDESTE</b><strong>Bahia</strong><em>Cacau e Fita</em></div><div class="f-leg l3"><b>13 / 14 · SUL</b><strong>Santa Catarina</strong><em>Baleia e Ostra</em></div><div class="f-leg l4"><b>06 / 14 · NORDESTE</b><strong>Maranhão</strong><em>Couro de Boi</em></div><div class="f-leg l5"><b>01 / 14 · SUDESTE</b><strong>Minas Gerais</strong><em>Barroco de Minas</em></div><div class="f-leg l6"><b>04 / 14 · NORDESTE</b><strong>Pernambuco</strong><em>Passo de Frevo</em></div><div class="f-leg l7"><b>14 / 14 · SUL</b><strong>Rio Grande do Sul</strong><em>Roda de Chimarrão</em></div><div class="f-leg l8"><b>07 / 14 · NORTE</b><strong>Amazonas</strong><em>Encontro das Águas</em></div></section>
+<section class="cena centro" id="G"><p class="g1"><span class="ch">e</span><span class="ch">m</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">a</span><span class="ch">d</span><span class="ch">a</span><span class="ch">&nbsp;</span><span class="ch">e</span><span class="ch">s</span><span class="ch">t</span><span class="ch">a</span><span class="ch">m</span><span class="ch">p</span><span class="ch">a</span><span class="ch">,</span></p><p class="g2"><span class="ch">u</span><span class="ch">m</span><span class="ch">&nbsp;</span><span class="ch">c</span><span class="ch">o</span><span class="ch">r</span><span class="ch">a</span><span class="ch">ç</span><span class="ch">ã</span><span class="ch">o</span><br><span class="ch">e</span><span class="ch">s</span><span class="ch">c</span><span class="ch">o</span><span class="ch">n</span><span class="ch">d</span><span class="ch">i</span><span class="ch">d</span><span class="ch">o</span></p></section>
+<section class="cena" id="H"><img class="h-foto" src="../_img/reel-campanha-ce.jpg" alt=""><div class="h-veu"></div>
+  <p class="h-nome"><span class="ch">B</span><span class="ch">e</span><span class="ch">m</span><span class="ch">-</span><span class="q"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">e</span><span class="ch">r</span></span></p><p class="h-leg">Ceará · Renda ao Vento</p></section>
+<section class="cena" id="I"><div class="card c0"><img src="../_img/reel-estudio-mg.jpg" alt=""></div><div class="card c1"><img src="../_img/reel-estudio-pa.jpg" alt=""></div><div class="card c2"><img src="../_img/reel-estudio-ba.jpg" alt=""></div><div class="card c3"><img src="../_img/reel-estudio-rs.jpg" alt=""></div><div class="fone i-fone"><img src="../_img/reel-tela-estado.png" alt=""></div></section>
+<section class="cena" id="J"><p class="j-leg">o site<em>14 estados, um por página</em></p>
+  <div class="fone j1"><img src="../_img/reel-tela-home.png" alt=""></div><div class="fone j2"><img src="../_img/reel-tela-roda.png" alt=""></div></section>
+<section class="cena centro" id="K"><div class="k-folha k1"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#E07A2E" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#E07A2E" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#E07A2E"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#E07A2E" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/></g></svg></div><div class="k-folha k2"><svg viewBox="-6 6 212 196"><g stroke-linecap="round"><path d="M100.0,178.0 L107.7,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0 L92.3,193.1" stroke="#C8321F" stroke-width="5.5"/><path d="M100.0,178.0C106.5,154.5 119.0,101.0 103.9,66.0C92.4,38.2 64.4,30.1 29.6,39.9C1.3,62.2 -8.6,89.7 7.1,115.3C26.5,148.1 77.1,169.5 100.0,178.0Z" fill="#C8321F"/><path d="M100.0,178.0C122.3,169.2 171.7,147.2 190.9,114.3C206.6,88.6 197.5,61.6 170.4,39.9C136.9,30.7 109.7,39.3 98.1,67.0C82.8,101.9 94.0,154.8 100.0,178.0Z" fill="#C8321F" /><path d="M102.7,183.3 Q73.6,121.8 42.8,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/><path d="M97.3,183.3 Q129.9,123.7 157.2,65.7" fill="none" stroke="#2A1A17" stroke-width="3.4"/></g></svg></div>
+  <p class="k-nome">Bem-<span class="q">Querer</span></p><p class="k-sub">uma V2 conceitual da collab</p><img class="k-assin" src="../_img/assinatura-topo.svg" alt="">
+  <p class="k-legal">projeto conceitual de portfólio de Emilly Silva<br>sem vínculo com FARM&nbsp;Rio e havaianas</p></section>
+</div>
+<script src="../../site/js/gsap.min.js"></script><script>
+const FPS = 24, NQ = {"ms720": 103}, QD = '../_quadros/';
+const quadro = (uf, t) => QD + uf + '/' + String((Math.floor(Math.max(0, t) * FPS) % NQ[uf]) + 1).padStart(4, '0') + '.jpg';
+async function trocaQuadros(t) {
+  const espera = [];
+  document.querySelectorAll('img[data-uf][data-t0]').forEach(im => {
+    const src = quadro(im.dataset.uf, t - +im.dataset.t0);
+    if (im.getAttribute('src') !== src) { im.setAttribute('src', src); espera.push(im.decode().catch(() => {})); }
+  });
+  await Promise.all(espera);
+}
+const DUR = 44.0;
+const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+// cada cena aparece e some em cortes secos (como no vídeo de referência)
+const corte = (id, de, ate) => { tl.set('#' + id, { visibility: 'visible' }, de); if (ate) tl.set('#' + id, { visibility: 'hidden' }, ate); };
+function monta() {
+  gsap.set('.ch', { opacity: 0 });
+  // A. frase digitada
+  corte('A', 0, 4.6);
+  tl.to('.a1 .ch', { opacity: 1, duration: .01, stagger: .055 }, .25)
+    .fromTo('.a2 .ch', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: .5, stagger: .07 }, 1.85)
+    .from('#a-simb', { scale: 0, opacity: 0, duration: .6, ease: 'back.out(2.4)' }, 3.0)
+    .to('#A > *', { opacity: 0, filter: 'blur(14px)', y: -20, duration: .55, ease: 'power2.in' }, 3.95);
+  // B. o nome montado sobre as guias, zoom, e o traço laranja varre
+  corte('B', 4.6, 9.4);
+  tl.from('.gh', { scaleX: 0, duration: .6, stagger: .08, ease: 'power2.out' }, 4.6)
+    .from('.gv', { scaleY: 0, duration: .6, stagger: .08, ease: 'power2.out' }, 4.7)
+    .fromTo('.b-tit .ch', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .35, stagger: .1 }, 4.9)
+    .to('.b-zoom', { scale: 2.4, x: -240, duration: 1.8, ease: 'power2.inOut' }, 6.5);
+  const sw = document.getElementById('sw'), L = sw.getTotalLength();
+  gsap.set(sw, { strokeDasharray: L, strokeDashoffset: L });
+  tl.to(sw, { strokeDashoffset: 0, duration: .75, ease: 'power2.in' }, 8.4)
+    .to(sw, { attr: { 'stroke-width': 1900 }, duration: .35, ease: 'power2.in' }, 9.05);
+  // C. palavras em cor chapada
+  corte('C1', 9.4, 10.8);
+  tl.from('.c-barra', { scaleX: 0, duration: .45, ease: 'power3.out' }, 9.45)
+    .to('#C1 .ch', { opacity: 1, duration: .01, stagger: .05 }, 9.75);
+  corte('C2', 10.8, 12.0); tl.fromTo('#C2 .ch', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, stagger: .035 }, 10.85);
+  corte('C3', 12.0, 13.2); tl.fromTo('#C3 .ch', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, stagger: .035 }, 12.05);
+  corte('C4', 13.2, 15.0); tl.fromTo('#C4 .ch', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, stagger: .03 }, 13.25);
+  corte('C5', 14.4, 15.0); tl.fromTo('#C5', { yPercent: 100 }, { yPercent: 0, duration: .55, ease: 'power3.inOut' }, 14.4);
+  // D. a paleta, de baixo para cima, e a bola laranja que leva para o logo
+  corte('D', 15.0, 19.3);
+  tl.from('.lis', { xPercent: -100, duration: .5, stagger: { each: .1, from: 'end' }, ease: 'power3.out' }, 15.0)
+    .to('.lis span', { opacity: 1, duration: .3, stagger: .07 }, 16.0)
+    .to('#bola', { scale: 1, duration: .8, ease: 'power2.in' }, 18.5);
+  // E. variações do logo, um corte a cada 0,8 s
+  [['E1', 19.3], ['E2', 20.1], ['E3', 20.9], ['E4', 21.7], ['E5', 22.5]].forEach(([id, t], k, a) => {
+    corte(id, t, k < a.length - 1 ? a[k + 1][1] : 23.4);
+    tl.from('#' + id + ' > *', { opacity: 0, y: 24, scale: .96, duration: .35, stagger: .06 }, t + .02);
+  });
+  // F. o motion da onça no arco, o par cai
+  corte('F', 23.4, 27.0);
+  tl.fromTo('.f-arte', { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 0px 0px)', duration: .8, ease: 'power3.inOut' }, 23.4)
+    .from('.f-par', { opacity: 0, y: -120, rotation: -40, duration: .7, ease: 'back.out(1.6)' }, 24.05)
+    .from('.f-leg > *', { opacity: 0, y: 26, duration: .5, stagger: .08 }, 24.3);
+  // G. a frase
+  corte('G', 27.0, 29.4);
+  // os outros estados passando no mesmo arco, um corte a cada 0,2 s
+  tl.to('.f-par', { opacity: 0, duration: .15 }, 25.35);
+  document.querySelectorAll('.arco img.fl').forEach(function (im, k) {
+    const t = 25.4 + k * .2;
+    tl.set(im, { visibility: 'visible' }, t).set('.f-leg', { visibility: 'hidden' }, t).set('.f-leg.l' + (k + 1), { visibility: 'visible' }, t);
+    if (k > 0) tl.set(document.querySelectorAll('.arco img.fl')[k - 1], { visibility: 'hidden' }, t);
+  });
+  tl.to('#G .g1 .ch', { opacity: 1, duration: .01, stagger: .045 }, 27.1)
+    .fromTo('#G .g2 .ch', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, stagger: .045 }, 27.9);
+  // H. campanha em tela cheia, o nome entra
+  corte('H', 29.4, 33.0);
+  tl.fromTo('.h-foto', { scale: 1.14 }, { scale: 1, duration: 3.6, ease: 'none' }, 29.4)
+    .fromTo('.h-nome .ch', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, stagger: .07 }, 30.0)
+    .from('.h-leg', { opacity: 0, duration: .5 }, 30.9);
+  // I. quatro pares e o site no celular
+  corte('I', 33.0, 36.6);
+  tl.from('.card', { opacity: 0, y: 220, rotation: 0, duration: .7, stagger: .1, ease: 'power3.out' }, 33.0)
+    .from('.i-fone', { x: 600, rotation: 20, duration: .8, ease: 'power3.out' }, 33.6)
+    .to('.i-fone', { y: -26, duration: 2.0, ease: 'sine.inOut' }, 34.4);
+  // J. o site no celular
+  corte('J', 36.6, 39.8);
+  tl.from('.j-leg', { opacity: 0, y: 20, duration: .5 }, 36.65)
+    .from('.j1', { y: 1300, rotation: -16, duration: .8, ease: 'power3.out' }, 36.7)
+    .from('.j2', { y: 1300, rotation: 14, duration: .8, ease: 'power3.out' }, 36.85)
+    .to('.j1', { y: -30, duration: 2.2, ease: 'sine.inOut' }, 37.5)
+    .to('.j2', { y: 24, duration: 2.2, ease: 'sine.inOut' }, 37.6);
+  // K. cartão final
+  corte('K', 39.8, null);
+  tl.from('.k1', { x: -300, y: -300, rotation: 120, opacity: 0, duration: 1.1, ease: 'power3.out' }, 39.8)
+    .from('.k2', { x: 300, y: 300, rotation: -70, opacity: 0, duration: 1.1, ease: 'power3.out' }, 39.9)
+    .from('.k-nome, .k-sub, .k-assin, .k-legal', { opacity: 0, y: 26, duration: .7, stagger: .12 }, 40.3);
+}
+window.FILME = { dur: DUR, seek: async t => { tl.seek(t, false); await trocaQuadros(t); } };
+window.PRONTO = document.fonts.ready.then(() => new Promise(r => setTimeout(r, 300))).then(monta);
+</script></body></html>

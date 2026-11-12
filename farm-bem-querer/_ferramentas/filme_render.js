@@ -19,6 +19,9 @@ const so = process.argv[3] ? +process.argv[3] : 0;
   const dur = await p.evaluate(() => window.FILME.dur);
   const fim = so || dur;
   const palco = await p.$('#palco');
+  // a janela se ajusta ao tamanho do filme (o reel tem 1920 px de altura)
+  const bx = await palco.boundingBox();
+  await p.setViewportSize({ width: Math.max(1400, Math.ceil(bx.width)), height: Math.max(1400, Math.ceil(bx.height)) });
   const n = Math.round(fim * 24);
   for (let k = 0; k < n; k++) {
     await p.evaluate(t => window.FILME.seek(t), k / 24);

@@ -15,7 +15,7 @@ M = os.path.join(SITE, 'materiais')
 ARQ = os.path.join(M, 'arquivos')
 if os.path.isdir(ARQ):
     shutil.rmtree(ARQ)
-for d in ('behance', 'instagram', 'linkedin', 'filmes'):
+for d in ('behance', 'instagram', 'linkedin', 'reel', 'filmes'):
     os.makedirs(os.path.join(ARQ, d))
 e = lambda s: html.escape(s or '', quote=True)
 
@@ -137,6 +137,23 @@ instagram = f'''
 <div class="grade">{ig_itens}</div>
 </section>'''
 
+# ---------------- reel ----------------
+RL = os.path.join(IG, 'reel')
+vid_rl = copia(os.path.join(RL, 'bem-querer-reel.mp4'), 'reel')
+capa_rl = copia(os.path.join(RL, 'capa-reel.jpg'), 'reel')
+leg_rl = open(os.path.join(RL, 'legenda-reel.txt'), encoding='utf8').read().split('LEGENDA', 1)[1]
+reel = f'''
+<section id="reel"><p class="eb">04 · Reel</p><h2>O reel do <em>Bem-Querer</em></h2>
+<ol class="passos">
+  <li>Suba o vídeo como Reel. Ele está sem som, de propósito.</li>
+  <li>Escolha uma música da biblioteca do Instagram com batida por volta de 120 bpm: os cortes do vídeo seguem esse ritmo.</li>
+  <li>Em <b>Editar capa</b>, use a capa abaixo (adicionar da galeria).</li>
+  <li>Cole a legenda. Não marque a FARM nem a havaianas: é um projeto não oficial.</li>
+</ol>
+<div class="duas"><div class="grade um">{midia(vid_rl, 'reel · 44 s · 9:16', capa_rl)}{midia(capa_rl, 'capa do reel')}</div>
+<div class="textos">{texto('Legenda do reel', leg_rl)}</div></div>
+</section>'''
+
 # ---------------- motions e filmes ----------------
 import json  # noqa: E402
 data = json.load(open(os.path.join(SITE, 'data.json'), encoding='utf8'))
@@ -148,7 +165,7 @@ REND = os.path.join(AP, 'behance', '_render')
 filmes = ''.join(midia(copia(os.path.join(VB, f'filme-{n}.mp4'), 'filmes'), r, copia(os.path.join(REND, n, q), 'filmes', f'{n}-capa.jpg'))
                  for n, r, q in [('abertura', 'abertura · só tipografia', '0217.jpg'), ('colecao', 'a coleção em movimento', '0505.jpg')])
 motion_sec = f'''
-<section id="motions"><p class="eb">04 · motions</p><h2>As 14 ilustrações <em>em movimento</em></h2>
+<section id="motions"><p class="eb">05 · motions</p><h2>As 14 ilustrações <em>em movimento</em></h2>
 <div class="grade">{motions}</div>
 <h3>Os filmes</h3><div class="grade">{filmes}</div>
 </section>'''
@@ -180,6 +197,7 @@ h3{{font:400 32px/1.1 var(--serif);margin:46px 0 18px}}
 .passos li{{margin-bottom:6px}}
 .grade{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}}
 .grade.um{{grid-template-columns:minmax(0,520px)}}
+#reel .grade.um{{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
 .item{{margin:0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 14px 34px -24px rgba(40,10,10,.5)}}
 .item img,.item video{{display:block;width:100%;background:var(--creme2)}}
 .item figcaption{{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;font-size:14px}}
@@ -197,11 +215,11 @@ pre{{margin:0;white-space:pre-wrap;font:400 15px/1.55 var(--sans);color:#3E2F29;
 @media (max-width:800px){{.duas{{grid-template-columns:minmax(0,1fr)}}}}
 </style></head><body>
 <header><div class="cab"><a class="marca" href="../index.html">Bem-Querer · materiais</a>
-<nav><a href="#behance">Behance</a><a href="#linkedin">LinkedIn</a><a href="#instagram">Instagram</a><a href="#motions">Motions</a><a href="{pdf_ap}" download>PDF da apresentação</a></nav></div></header>
+<nav><a href="#behance">Behance</a><a href="#linkedin">LinkedIn</a><a href="#instagram">Instagram</a><a href="#reel">Reel</a><a href="#motions">Motions</a><a href="{pdf_ap}" download>PDF da apresentação</a></nav></div></header>
 <main><div class="intro"><p class="eb">tudo para postar</p><h1>Materiais do <em>Bem-Querer</em></h1>
 <p>Tudo o que você precisa para postar, já na ordem. Os vídeos tocam aqui mesmo; cada arquivo tem o botão de baixar, e cada texto, o botão de copiar.</p>
 <p>Esta página não aparece no menu do site.</p></div>
-{behance}{linkedin}{instagram}{motion_sec}</main>
+{behance}{linkedin}{instagram}{reel}{motion_sec}</main>
 <script>
 document.querySelectorAll('[data-copia]').forEach(function (b) {{
   b.addEventListener('click', function () {{
