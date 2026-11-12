@@ -93,6 +93,7 @@ body{background:#140a19;width:max-content}
 #l1 .frase{left:84px;top:1010px;font-size:60px;line-height:.98;color:var(--ivory);z-index:4}
 #l1 .frase em{color:var(--ivory)}
 #l1 .handle{left:96px;bottom:60px}
+.papeltex{inset:0;z-index:63;pointer-events:none;background:url(assets/textura-papel.jpg) center/cover;mix-blend-mode:soft-light;opacity:.75}
 #l1 .estrela{left:0;top:0;width:1080px;height:1350px;z-index:1;pointer-events:none}
 
 /* ---------- 02 loop: o desenho é o próprio loop ---------- */
@@ -195,13 +196,13 @@ body{background:#140a19;width:max-content}
 <section class="lamina tecido" id="l1" style="--c:var(--violeta)">
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">“é só um</p>
-  <svg class="estrela" data-estrela="cx:860,cy:1000,R:440,cor:#c0a5c4,rot:10"></svg>
+  <svg class="estrela" data-estrela="cx:600,cy:1000,R:420,cor:#c0a5c4,rot:10"></svg>
   <h1 class="poster impresso" id="poster"><span class="p1">ajuste</span><span class="p2">zinho”</span></h1>
   <!-- na frente da palavra e atravessando o corte 1|2 -->
   <img class="ajustes" src="recortes/ajustes-3d.png" alt="">
   <p class="serif frase impresso">e foi assim que a gente<br>chegou na <em>versão 27.</em></p>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-  <div class="tela"></div><div class="grao"></div>
+  <div class="papeltex" style="transform:none"></div><div class="tela"></div><div class="grao"></div>
 </section>
 
 <!-- 02 LOOP: o círculo É o loop -->
@@ -219,7 +220,7 @@ body{background:#140a19;width:max-content}
   <!-- atravessa o corte 2|3 -->
   <svg class="forma" data-brilho="r:110,cor:#6225d8,rot:8" style="left:960px;top:20px;width:240px;height:240px;z-index:7"></svg>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-  <div class="tela"></div><div class="grao"></div>
+  <div class="papeltex" style="transform:scaleX(-1)"></div><div class="tela"></div><div class="grao"></div>
 </section>
 
 <!-- 03 PASTA: objeto 3D (pasta-envelope com as versões) sobre tecido plum -->
@@ -237,7 +238,7 @@ body{background:#140a19;width:max-content}
   <!-- atravessa o corte 3|4 -->
   <svg class="forma" data-brilho="r:96,cor:#f2cf7a,rot:-10" style="left:980px;top:1150px;width:200px;height:200px;z-index:7"></svg>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-  <div class="tela"></div><div class="grao"></div>
+  <div class="papeltex" style="transform:scaleY(-1)"></div><div class="tela"></div><div class="grao"></div>
 </section>
 
 <!-- 04 NORTE · a lâmina da v2 (aprovada) -->
@@ -252,7 +253,7 @@ body{background:#140a19;width:max-content}
   <svg class="forma" data-brilho="r:46,cor:#f2cf7a,rot:8" style="left:880px;top:500px;width:110px;height:110px;z-index:7"></svg>
   <svg class="forma" data-brilho="r:24,cor:#f2cf7a,rot:-8" style="left:972px;top:600px;width:60px;height:60px;z-index:7"></svg>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-  <div class="tela"></div><div class="grao"></div>
+  <div class="papeltex" style="transform:rotate(180deg)"></div><div class="tela"></div><div class="grao"></div>
 </section>
 
 <!-- 05 PERGUNTA: celular 3D com a resposta sendo escrita na tela, sobre linho -->
@@ -265,7 +266,7 @@ body{background:#140a19;width:max-content}
   <!-- atravessa o corte 5|6 -->
   <svg class="forma" data-brilho="r:130,cor:#f2cf7a,rot:6" style="left:940px;top:-40px;width:280px;height:280px;z-index:3"></svg>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-  <div class="tela"></div><div class="grao"></div>
+  <div class="papeltex" style="transform:scaleX(-1)"></div><div class="tela"></div><div class="grao"></div>
 </section>
 
 <!-- 06 CHAMADA -->
@@ -281,7 +282,7 @@ body{background:#140a19;width:max-content}
   <img class="selo" src="assets/selo-ems.png" alt="selo ems">
   <p class="site">identidade visual, social media e site<br><b>emsdesign.com.br</b></p>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-  <div class="tela"></div><div class="grao"></div>
+  <div class="papeltex" style="transform:scaleY(-1)"></div><div class="tela"></div><div class="grao"></div>
 </section>
 </div>
 
