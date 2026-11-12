@@ -13,30 +13,24 @@
   body { background:#1b1b1b; display:flex; flex-wrap:wrap; gap:24px; padding:24px; }
   .slide { position:relative; width:1080px; height:1350px; overflow:hidden; background:var(--ameixa); flex:none; }
   .slide > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  /* capa: estrutura das refs (produto em cima, título gigante assentado na área calma), fontes e cores da EMS */
-  .veu { position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,20,51,0) 48%, rgba(42,20,51,.38) 100%); }
-  .handle { position:absolute; left:90px; top:90px; color:var(--ivory); font:500 24px/1 "Poppins", sans-serif; letter-spacing:.01em; }
-  .titulo { position:absolute; left:0; right:0; text-align:center; color:var(--ivory); }
-  .titulo b { display:block; font:600 196px/0.9 "Poppins", sans-serif; letter-spacing:-0.055em; }
-  .titulo em { display:block; margin-top:34px; font:italic 400 88px/1 "Instrument Serif", serif; color:var(--manteiga); }
-  .caixa .titulo { top:760px; }
-  .leque .titulo { top:735px; }
+  /* capa: foto limpa, título pequeno e discreto no canto, fontes e cores da EMS */
+  .titulo { position:absolute; left:90px; top:90px; color:var(--ivory); font:500 54px/1.12 "Poppins", sans-serif; letter-spacing:-0.02em; }
+  .titulo em { font:italic 400 64px/1 "Instrument Serif", serif; color:var(--manteiga); letter-spacing:-0.01em; }
+  .handle { position:absolute; right:90px; top:104px; color:var(--ivory); opacity:.7; font:500 22px/1 "Poppins", sans-serif; }
   .grao { position:absolute; inset:0; opacity:.07; mix-blend-mode:overlay; pointer-events:none; }
 </style>
 </head>
 <body>
-  <section class="slide caixa" id="s1">
-    <img src="cenas/00-capa-caixa.png" alt="">
-    <div class="veu"></div>
+  <section class="slide" id="s1">
+    <img src="cenas/00-capa-estojo.png" alt="">
+    <div class="titulo">direção criativa<br><em>com ia</em></div>
     <div class="handle">@itsemsdesign</div>
-    <div class="titulo"><b>direção</b><b>criativa</b><em>com ia</em></div>
     <canvas class="grao" width="1080" height="1350"></canvas>
   </section>
-  <section class="slide leque" id="s2">
-    <img src="cenas/00-capa-leque.png" alt="">
-    <div class="veu"></div>
+  <section class="slide" id="s2">
+    <img src="cenas/00-capa-pedra.png" alt="">
+    <div class="titulo">direção criativa<br><em>com ia</em></div>
     <div class="handle">@itsemsdesign</div>
-    <div class="titulo"><b>direção</b><b>criativa</b><em>com ia</em></div>
     <canvas class="grao" width="1080" height="1350"></canvas>
   </section>
   <section class="slide" id="s3"><img src="cenas/01-bolsa.png" alt=""></section>
