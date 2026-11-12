@@ -6,6 +6,7 @@
      - "o banho e tosa tá igual o título, pode ser mais delicado": "letra de forma, tipo uma Poppins ou mais delicada ainda,
        espaçada" → Poppins Light em caixa alta bem espaçada, entre dois fios finos de margem a margem (o itálico não era isso);
      - "o p e o s estão se encostando": mais entrelinha entre "pelo" e "solto".
+     v6 ("tira esses riscos... tudo tem cara de IA"): sem respingos, sem fios, sem grão; BANHO & TOSA espaçado de margem a margem.
      O poodle continua o que ela aprovou (poodle-sentado.png), sem mexer. A v4 fica em logo-v4.html.
      ?fundo=&tinta= · ?w=&h=&escala=&dx=&dy= · ?grao=0 -->
 <html><head><meta charset="utf-8"><style>
@@ -37,7 +38,7 @@ const C = { fundo: q.get('fundo') || '#E9A92B', tinta: q.get('tinta') || '#5A261
 const W = +(q.get('w') || 1200), H = +(q.get('h') || 760);
 const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px'; pc.style.setProperty('--fundo', C.fundo);
 $('s').setAttribute('width', W); $('s').setAttribute('height', H); $('cor').setAttribute('flood-color', C.tinta);
-if (q.get('grao') !== '0') $('tudo').setAttribute('filter', 'url(#grao)');
+if (q.get('grao') === '1') $('tudo').setAttribute('filter', 'url(#grao)');
 const el = (tag, at, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (pai || $('logo')).appendChild(e); return e; };
 const ctx = document.createElement('canvas').getContext('2d');
 const mede = (txt, font, ls = 0) => { ctx.font = font; ctx.letterSpacing = ls + 'px'; const m = ctx.measureText(txt);
@@ -66,24 +67,16 @@ document.fonts.load('900 100px Gluten').then(() => document.fonts.load('italic 4
   const g1 = palavra('pelo', FS, X + t1.esq, y1), g2 = palavra('solto', FS, X + t2.esq, y2);
   // margens reais pela caixa das palavras já dançando
   const b1 = g1.getBBox(), b2 = g2.getBBox(), esq = Math.min(b1.x, b2.x), dir = b2.x + b2.width;
-  // BANHO & TOSA: letra de forma fina (Poppins Light), caixa alta bem espaçada, entre dois fios finos de margem a margem
-  const FS3 = 30, LS3 = FS3 * .42, F3 = `300 ${FS3}px PoppinsL`, t3 = mede('BANHO & TOSA', F3, LS3);
-  const larg3 = t3.esq + t3.dir, meio = (esq + dir) / 2, y3 = b2.y + b2.height + 14 + t3.sobe;
-  el('text', { x: meio - larg3 / 2 + t3.esq, y: y3, 'font-family': 'PoppinsL', 'font-weight': 300, 'font-size': FS3, 'letter-spacing': LS3, fill: C.tinta }).textContent = 'BANHO & TOSA';
-  const yf = y3 - t3.sobe * .5, folga = 26;
-  el('line', { x1: esq + 4, y1: yf, x2: meio - larg3 / 2 - folga, y2: yf, stroke: C.tinta, 'stroke-width': 2, 'stroke-linecap': 'round' });
-  el('line', { x1: meio + larg3 / 2 + folga, y1: yf, x2: dir - 4, y2: yf, stroke: C.tinta, 'stroke-width': 2, 'stroke-linecap': 'round' });
+  // BANHO & TOSA: Poppins Light em caixa alta, espaçada até ocupar exatamente da margem esquerda ao fim de "solto"
+  // a caixa do SVG das letras dançando não é a tinta: medido em pixel, a tinta começa 7 px depois e termina 13 px antes
+  const e3 = esq + 7, d3 = dir - 13;
+  const FS3 = 30, base3 = 'BANHO & TOSA', n3 = base3.length, r3 = mede(base3, `300 ${FS3}px PoppinsL`);
+  const LS3 = ((d3 - e3) - (r3.esq + r3.dir)) / (n3 - 1), t3 = mede(base3, `300 ${FS3}px PoppinsL`, LS3);
+  const y3 = b2.y + b2.height + 18 + t3.sobe;
+  el('text', { x: e3 + t3.esq, y: y3, 'font-family': 'PoppinsL', 'font-weight': 300, 'font-size': FS3, 'letter-spacing': LS3, fill: C.tinta }).textContent = base3;
   // poodle: do topo das letras até a base do subtítulo
   const topo = Math.min(b1.y, b2.y), base = y3 + t3.desce, alt = base - topo, ar = 964 / 1368, larg = alt * ar;
   el('image', { href: 'poodle-sentado.png', x: esq - larg - FS * .08, y: topo, width: larg, height: alt, filter: 'url(#tinge)' });
-  // respingos de pincel saindo do canto de cima do último "o" de "pelo": três traços de larguras e comprimentos diferentes
-  const ultimo = g1.lastChild.getBBox(), cx = ultimo.x + ultimo.width - 18, cy = ultimo.y + 40;   // getBBox não inclui a dança: o "o" final sobe 4 e gira 8°
-  const resp = el('g', { filter: 'url(#pincel)' });
-  for (const [ang, a0, len, w0, w1, curva] of [[-84, 22, 46, 3, 10, -6], [-46, 18, 58, 4, 13, 8], [-10, 24, 36, 3, 8, -4]]) {
-    const r = ang * Math.PI / 180, ux = Math.cos(r), uy = Math.sin(r), px = -uy, py = ux;
-    const xa = cx + ux * a0, ya = cy + uy * a0, xb = cx + ux * (a0 + len), yb = cy + uy * (a0 + len), mx = (xa + xb) / 2 + px * curva, my = (ya + yb) / 2 + py * curva;
-    el('path', { d: `M${xa + px * w0} ${ya + py * w0} Q${mx + px * (w0 + w1) / 2} ${my + py * (w0 + w1) / 2} ${xb + px * w1} ${yb + py * w1} A${w1} ${w1} 0 0 0 ${xb - px * w1} ${yb - py * w1} Q${mx - px * (w0 + w1) / 2} ${my - py * (w0 + w1) / 2} ${xa - px * w0} ${ya - py * w0} A${w0} ${w0} 0 0 1 ${xa + px * w0} ${ya + py * w0}Z`, fill: C.tinta }, resp);
-  }
   const L = $('logo'), bb = L.getBBox(), k = +(q.get('escala') || 1);
   L.setAttribute('transform', `translate(${W / 2 + (+(q.get('dx') || 0))} ${H / 2 + (+(q.get('dy') || 0))}) scale(${k}) translate(${-(bb.x + bb.width / 2)} ${-(bb.y + bb.height / 2)})`);
 });
