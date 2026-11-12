@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · capa de destaque "serviços"</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+  body { width: 2160px; }
+  .d h2 { left: 0; width: 1080px; text-align: center; }
+  .d .circ { left: 180px; top: 600px; width: 720px; height: 720px; border-radius: 50%; border: 3px dashed #0f0; display: none; z-index: 9; }
+  .guia .d .circ { display: block; } .guia .story::after { display: none; }
+  /* A · só a lua cheia: lê em qualquer tamanho */
+  .da { --fundo: var(--ameixa); }
+  .da .materia { background: radial-gradient(circle, rgba(242, 207, 122, .45) 2.4px, transparent 3px) 0 0 / 17px 17px; -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 262px, #000 272px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 262px, #000 272px, transparent 420px); }
+  /* B · meia-lua e a palavra */
+  .db { --fundo: var(--tinta); }
+  .db h2 { top: 1010px; font-size: 200px; }
+  .db h2 em { font-size: 200px; }
+  .db .materia { background: var(--tx-grao) 0 0 / 300px; mix-blend-mode: overlay; opacity: .3; }
+</style>
+</head>
+<body>
+<main id="faixa">
+<section class="story d da">
+  <svg class="ht" data-star="540,960,470,violeta2,.5,-10"></svg>
+  <i class="lua" data-f="cheia-manteiga" data-c="540,960,250"></i>
+  <i class="ic brilho g" style="left:762px;top:716px;width:74px;height:74px;color:var(--ivory)"></i>
+  <i class="ic brilho g" style="left:268px;top:1120px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
+  <i class="circ"></i>
+</section>
+<section class="story d db">
+  <i class="lua" data-f="quarto-noite" data-c="540,850,215"></i>
+  <h2><em>serviços</em></h2>
+  <i class="ic brilho g" style="left:770px;top:700px;width:64px;height:64px;color:var(--manteiga)"></i>
+  <i class="circ"></i>
+</section>
+</main>
+<div id="acab-papel"></div><div id="acab-grao"></div>
+<script>
+const COR = { ivory: '#fffbde', violeta2: '#7b4df2', lavanda: '#c0a5c4', pink: '#dd34a8', manteiga: '#f2cf7a' };
+// Lua real (foto NASA tratada em luas.py). data-c = centro x, centro y, raio do disco, em px do story.
+// O disco ocupa 93,8% da foto. Espelhada: no hemisfério sul a lua crescente acende pela esquerda.
+document.querySelectorAll('i.lua').forEach((el) => {
+  const frente = el.classList.contains('frente');
+  el.style.backgroundImage = `url(lua/${el.dataset.f}${frente ? '-frente.png' : '.jpg'})`;
+  if (!el.dataset.c) return;
+  const [cx, cy, r] = el.dataset.c.split(',').map(Number), lado = (2 * r) / 0.938;
+  Object.assign(el.style, { left: cx - lado / 2 + 'px', top: cy - lado / 2 + 'px', width: lado + 'px', height: lado + 'px' });
+});
+// HalftoneStar
+document.querySelectorAll('svg.ht').forEach((svg) => {
+  const [cx, cy, R, cor, op, rot] = svg.dataset.star.split(',').map((v, i) => (i === 3 ? v : +v));
+  const pts = [];
+  for (let i = 0; i < 10; i++) { const a = (Math.PI / 5) * i - Math.PI / 2 + (rot * Math.PI) / 180, r = i % 2 ? R * 0.46 : R; pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); }
+  const dentro = (x, y) => { let d = false; for (let i = 0, j = 9; i < 10; j = i++) { const [xi, yi] = pts[i], [xj, yj] = pts[j]; if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) d = !d; } return d; };
+  const passo = Math.max(9, R / 26); let s = '';
+  for (let y = cy - R, l = 0; y <= cy + R; y += passo, l++) for (let x = cx - R + (l % 2 ? passo / 2 : 0); x <= cx + R; x += passo) {
+    if (!dentro(x, y)) continue;
+    const d = Math.hypot(x - cx, y - cy) / R, r = passo * 0.5 * (1 - d * 0.82);
+    if (r > 0.9) s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`;
+  }
+  svg.innerHTML = `<g fill="${COR[cor]}" opacity="${op}">${s}</g>`;
+});
+// acabamento contínuo por cima de tudo: relevo de papel (soft-light) + grão de impressão (overlay)
+{
+  const uri = (svg) => `url("data:image/svg+xml;utf8,${svg}")`;
+  const grao = uri(`<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360'><filter id='g' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' seed='21' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncR type='linear' slope='2.6' intercept='-.8'/><feFuncG type='linear' slope='2.6' intercept='-.8'/><feFuncB type='linear' slope='2.6' intercept='-.8'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>`);
+  const papel = uri(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><filter id='p' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.028' numOctaves='5' seed='31' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='3.2'><feDistantLight azimuth='225' elevation='30'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>`);
+  const fibras = uri(`<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'><filter id='f' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.6 0.05' numOctaves='2' seed='8' stitchTiles='stitch'/><feDiffuseLighting lighting-color='white' surfaceScale='1.6'><feDistantLight azimuth='225' elevation='30'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>`);
+  const r = document.documentElement.style;
+  r.setProperty('--tx-grao', grao); r.setProperty('--tx-papel', papel); r.setProperty('--tx-fibras', fibras);
+  // uma matéria por story, por cima do fundo e da lua, por baixo do acabamento
+  document.querySelectorAll('.story').forEach((st) => st.insertAdjacentHTML('beforeend', '<i class="materia"></i>'));
+}
+if (new URLSearchParams(location.search).has('guia')) document.body.classList.add('guia');
+const fundos = [...document.querySelectorAll('i.lua')].map((el) => new Promise((ok) => { const im = new Image(); im.onload = im.onerror = ok; im.src = el.style.backgroundImage.slice(5, -2); }));
+Promise.all([document.fonts.ready, ...fundos, ...[...document.images].map((i) => i.decode().catch(() => 0))]).then(() => (window.READY = true));
+</script>
+</body>
+</html>
