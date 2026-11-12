@@ -4,6 +4,10 @@
 - **Skill própria**: `marca-ems` (voz, cor, tipografia, grafismos, selo, geração de imagem).
 - **Projetos no repositório**: `Emi/ems-so-um-ajustezinho/`, `reel-ems/` (o carrossel pet `Emi/ems-5-direcoes-pet/` está em outra branch).
 
+## Regras fixas
+
+- **Margem de 90px em todos os lados** (Emi, 12/11/2026): texto, @, marca d'água, selo e qualquer elemento de conteúdo ficam a pelo menos 90px da borda (em cima, embaixo, esquerda e direita). Só sangram o fundo, formas grandes cortadas pela borda e o objeto que atravessa o corte do carrossel. No Design System: token `space-4` = 90px.
+
 ## Aprendizados (o que já custou refação)
 
 Registrado também no Design System (README › "Regras de carrossel"; conteúdo › "Carrossel: regras aprendidas").
