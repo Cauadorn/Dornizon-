@@ -86,3 +86,4 @@ O resto é desenhado em código com os tokens: estrela em retícula (`HalftoneSt
 - `projeto/tela-celular.html`: o conteúdo da tela do celular 3D (renderizado e encaixado em perspectiva na imagem).
 - `projeto/render.mjs`: `node render.mjs` gera a v1 em `entrega/v1/`; `node render.mjs carrossel-v7.html v7` e `node render.mjs carrossel-v8.html v8` geram a v7 e a v8 (lamina-01..06.png + visao-geral.jpg).
 - `entrega/v7/` e `entrega/v8/`: PNGs finais 1080 × 1350 para subir no Instagram.
+- `projeto/conferir-margens.js`: `node conferir-margens.js carrossel-v8.html` aponta qualquer texto, @, selo ou etiqueta a menos de 90px da borda (regra da EMS desde 12/11/2026). A v8 passa.
