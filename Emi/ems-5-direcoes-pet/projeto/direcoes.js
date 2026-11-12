@@ -135,7 +135,7 @@ const DIRECOES = [
     // MATILHA running club (aprovada em 12/11): o nome "AU" virou MATILHA. Pesquisa em referencias/au-running-club,
     // logo em marcas/au/logo.html e estampa em marcas/au/estampa. O destaque é o mockup aprovado: Grandorf + Juicy Kibbles,
     // gerado no Canva com o logo e a estampa de referência, na rua e só com a guia (marcas/au/mockup).
-    heroi: { bg: '#8EC9F2', cheia: { src: 'matilha-corrida', px: .5, py: .2 } },   // a imagem ganhou 110 px de céu em cima (espelhado) para o logo do canto não cair na sangria
+    heroi: { bg: '#8EC9F2', cheia: { src: 'matilha-corrida', px: .5, py: .2 } },   // sem o logo grande do canto (a Emi pediu; marcas/au/mockup/tira_logo.py), com 110 px de céu espelhado em cima
     marca: { bg: '#CCFF3E', cheia: { src: 'matilha-marca', px: .5, py: .5 }, cursor: [326, 338] },
     quadrado: { bg: '#B8502E', cheia: { src: 'd4prod-2', px: .5, py: .5 } },
     alto: { bg: '#8EC9F2', cheia: { src: 'd4pet-2', px: .5, py: .4 } },
