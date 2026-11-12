@@ -8,7 +8,7 @@
      A tentativa de dar pernas e tênis às letras desenhando à mão ficou feia (logo-tentativa-pernas.html): a Emi reprovou.
      A silhueta foi gerada (gpt-image no Figma) e limpa em limpa_silhueta.py.
      Uso: logo.html | ?nome=TROTE | ?fundo=#4342FF&tinta=#CCFF3E | ?bordas=0
-          quadro da lâmina: ?bordas=0&w=452&h=430&escala=.45&dx=-11.5&dy=8 (img/matilha-marca.jpg; centro da tinta medido na área visível, sem a sangria) -->
+          quadro da lâmina: ?bordas=0&w=452&h=430&escala=.45&dx=-18.5&dy=8 (img/matilha-marca.jpg; centro da tinta medido na área visível, sem a sangria) -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: RubikI; src: url(../../fonts/Rubik-italic-var-latin.woff2); font-weight: 300 900; }
 @font-face { font-family: Rubik; src: url(../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
@@ -16,8 +16,8 @@ html, body { margin: 0; }
 .palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; background: var(--fundo); }
 .grao { position: absolute; inset: 0; opacity: .28; mix-blend-mode: multiply; pointer-events: none; }
 .borda { position: absolute; left: 44px; right: 44px; display: flex; justify-content: space-between; font: 700 19px/1 Rubik; letter-spacing: .12em; color: var(--tinta); text-transform: uppercase; }
-.logo { position: absolute; left: 50%; top: 53%; transform: translate(-50%, -50%); width: 820px; display: flex; flex-direction: column; align-items: center; }
-.cao { display: block; width: 470px; height: 278px; margin: 0 0 21px 60px; overflow: visible; }  /* vão até o MATILHA = 24px, igual ao do RUNNING CLUB */
+.logo { position: absolute; left: calc(50% + 7px); top: 53%; transform: translate(-50%, -50%); width: 820px; display: flex; flex-direction: column; align-items: center; }
+.cao { display: block; width: 470px; height: 278px; margin: 0 0 21px -16px; overflow: visible; }  /* vão até o MATILHA = 24px, igual ao do RUNNING CLUB; margem esquerda -16px = o centro da tinta do cachorro alinhado ao centro do nome (medido) */
 .nome { filter: url(#liquido); color: var(--tinta); display: flex; flex-direction: column; align-items: center; }
 .mt { font: 900 200px/.8 RubikI; letter-spacing: -.015em; white-space: nowrap; }
 svg.rc { display: block; overflow: visible; margin-top: 0; }
