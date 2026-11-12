@@ -30,11 +30,14 @@
 - **Foto não se repete no carrossel**, e variações da mesma cena contam como repetição. Por direção, 3 cenas diferentes: o bicho, o produto e uma cena extra (outro bicho, detalhe de material ou bastidor).
 - **Capa** (v5): capa de revista.
   - Nome "direções" em Instrument Serif gigante atrás da cabeça do gato: recorte da mesma foto, alinhado, por cima do texto.
-  - "criativas pra marcas *pet*", chamadas "nesta edição" com as 5 direções, selo redondo `pink` "nenhuma é patinha + osso" e código de barras com o @.
+  - "criativas pra marcas *pet*" colado embaixo do nome, formando um bloco só. A Emi reclamou de "muito espaçamento entre o título".
+  - Chamada de capa que não entrega o conteúdo: "5 universos pra sua marca pet sair do *óbvio*". **Capa não dá spoiler**: a lista das 5 direções foi reprovada ("qual sentido de dar spoiler no que tá vindo?").
+  - Selo redondo `pink` "nenhuma é patinha + osso" e código de barras com o @.
   - A v4 foi reprovada por diagramação: seleção do Figma fora do rosto do gato, anotação "diretoria criativa" (cópia) e "5" gigante + pílula (estrutura da referência).
 - **Chamada** (v5): enquete.
   - "qual delas tem a cara da sua *marca*?" e cartão de enquete com as 5 opções.
-  - O gato levanta a pata e "aperta" uma opção (recorte por cima do cartão); depois "comenta o número", dm e selo.
+  - O gato levanta a pata e "aperta" uma opção (recorte por cima do cartão).
+  - **Composição equilibrada**: título centralizado em cima, cartão à esquerda, "comenta o número da sua favorita" e a dm à direita acima do gato, assinatura embaixo à esquerda. A Emi reprovou "texto empilhado de um lado só".
   - A v4, com texto + gato + pílula, foi reprovada: "muito xoxo, sem graça".
 - **Regra da Emi: "os posts precisam ser diferentes, senão eu postava a mesma coisa todo dia".**
   - Cada post do Instagram da EMS tem diagramação própria.

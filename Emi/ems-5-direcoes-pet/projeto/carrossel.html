@@ -148,10 +148,9 @@ function capa() {
     <div class="masthead">direções</div>`);
   cheia(s, { ...CAPA.foto, src: CAPA.recorte, ext: 'png', classe: 'recorte' }, W, H);
   s.insertAdjacentHTML('beforeend', `
-    <div class="sub">criativas<br>pra marcas<br><em>pet</em></div>
+    <div class="sub">criativas<br>pra marcas <em>pet</em></div>
     <div class="selo-redondo"><span>nenhuma<br>é patinha<br>+ osso</span></div>
-    <div class="chamadas"><div class="rot">nesta edição</div>${DIRECOES.map((d, i) =>
-      `<div class="item"><span class="n">${num(i + 1)}</span><span class="tx"><b>${d.titulo.replace(/<\/?em>/g, '')}</b><small>${d.pra}</small></span></div>`).join('')}</div>
+    <div class="teaser">5 universos pra<br>sua marca pet<br>sair do <em>óbvio</em></div>
     <div class="arrasta">↳ arrasta pra folhear</div>
     <div class="barras"><div class="b"></div><span>@itsemsdesign</span></div>`);
   s.appendChild(el('div', 'grain claro'));
@@ -164,7 +163,7 @@ function chamada() {
   const s = el('section', 'slide chamada'); s.dataset.nome = 'lamina-07';
   cheia(s, CHAMADA.foto, W, H);
   s.insertAdjacentHTML('beforeend', `
-    <div class="grande">qual delas tem<br>a cara da sua<br><em>marca</em>?</div>
+    <div class="grande">qual delas tem a<br>cara da sua <em>marca</em>?</div>
     <div class="enquete">
       <div class="topo"><span>enquete</span><b>vota nos comentários</b></div>
       ${DIRECOES.map((d, i) => `<div class="op${i === CHAMADA.marcada ? ' marcada' : ''}"><span class="n">${num(i + 1)}</span><span class="nm">${d.titulo.replace(/<\/?em>/g, '')}</span>
@@ -172,8 +171,8 @@ function chamada() {
     </div>`);
   cheia(s, { ...CHAMADA.foto, src: CHAMADA.recorte, ext: 'png', classe: 'recorte' }, W, H);
   s.insertAdjacentHTML('beforeend', `
-    <div class="comenta">comenta o número ↓</div>
-    <div class="dm">ou me chama na dm${CURSOR}</div>
+    <div class="direita"><div class="comenta">comenta o número<br>da sua favorita</div>
+      <div class="dm">ou me chama na dm${CURSOR}</div></div>
     <img class="selo" src="img/selo-ems.png" alt="selo ems">
     <div class="assina">@itsemsdesign<br><span>emsdesign.com.br</span></div>`);
   s.appendChild(el('div', 'grain claro'));

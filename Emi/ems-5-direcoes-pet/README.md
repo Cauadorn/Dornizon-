@@ -37,13 +37,13 @@ Respiro `ivory` de 18px, raio 22, sangria de 30px em quem encosta na borda. Coor
 
 | # | Lâmina | Cor do cartão | Fotos (destaque · quadrada · alta) | Marca fictícia · fonte |
 |---|---|---|---|---|
-| 1 | Capa de revista: nome "direções" atrás da cabeça do gato (recorte da mesma foto por cima), "criativas pra marcas *pet*", chamadas das 5 direções, selo "nenhuma é patinha + osso", código de barras com o @ | fundo violeta da foto | capa-2 (+ recorte) | — |
+| 1 | Capa de revista: nome "direções" atrás da cabeça do gato (recorte da mesma foto por cima), "criativas pra marcas *pet*" colado embaixo, chamada "5 universos pra sua marca pet sair do *óbvio*" (sem spoiler das direções), selo "nenhuma é patinha + osso", código de barras com o @ | fundo violeta da foto | capa-2 (+ recorte) | — |
 | 2 | 01 pop de *gibi* | `violeta` | vira-lata pulando · corgi e petisco · osso, bola e pote | AU! petiscaria · Bagel Fat One |
 | 3 | 02 clube de *grife* | `plum` | whippet de suéter · bolsa de couro · tricô com plaquinha MC | Maison Caramelo · Bodoni Moda |
 | 4 | 03 retrô *setentinha* | `wine` | lhasa no tapete · pote e margarida · poodle no secador | pelo solto · Shrikhand |
 | 5 | 04 modo *atleta* | `creative-purple` | border collie e frisbee · peitoral na pista · corredor e vizsla | AU running club · Graduate |
 | 6 | 05 ciência *fofa* | `ameixa` | gato tigrado · frascos e ração · filhote no veterinário | miau.lab · Space Mono |
-| 7 | Chamada em enquete: "qual delas tem a cara da sua *marca*?", cartão de enquete com as 5 opções, o gato apertando uma com a pata (recorte por cima do cartão), "comenta o número", dm, selo | fundo ameixa da foto | cham-2 (+ recorte) | — |
+| 7 | Chamada em enquete: "qual delas tem a cara da sua *marca*?" centralizado, cartão de enquete à esquerda com o gato apertando uma opção com a pata (recorte por cima do cartão), "comenta o número da sua favorita" e dm à direita, assinatura embaixo | fundo ameixa da foto | cham-2 (+ recorte) | — |
 
 Legenda pronta em `legenda.md`.
 
