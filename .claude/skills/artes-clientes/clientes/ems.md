@@ -86,7 +86,13 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - farelos em retícula de gibi;
   - etiqueta com borda de selo.
 
-  "Algo assim, mas na identidade da marca e sem copiar exatamente": muda o bicho, a ação, a borda e as fontes. Para aplicar num pacote, recortar o pacote com BiRefNet (`marcas/aplica_pacote.py`); a máscara por cor falha na parte em sombra. Composição em `projeto/marcas/aplica.py`, que deforma a arte em perspectiva e herda a luz da foto; a lateral usa a luz da frente.
+  "Algo assim, mas na identidade da marca e sem copiar exatamente": muda o bicho, a ação, a borda e as fontes.
+  - Ajustes que ela pediu depois:
+    - logo centralizado;
+    - a etiqueta em grade estava "feia, estranha" e cópia do Pikku, e virou uma faixa amarela de sabor com selo de peso;
+    - amarelo no nome do produto, porque usar uma cor da paleta da direção tira a cara de cópia;
+    - o pé dos "T" estava cortado.
+  - **Exportar logo com letras giradas:** fotografar o palco inteiro e aparar pelo alfa (`marcas/toto/exporta-logo.mjs`). Recortar pela caixa do elemento corta o que passa dela. Para aplicar num pacote, recortar o pacote com BiRefNet (`marcas/aplica_pacote.py`); a máscara por cor falha na parte em sombra. Composição em `projeto/marcas/aplica.py`, que deforma a arte em perspectiva e herda a luz da foto; a lateral usa a luz da frente.
 - **Logo do petisco: o que a Emi aprovou como caminho.** Foi a referência NOSY (`referencias/logo-petisco/12-nosy.jpg`): letra desenhada, gordinha e orgânica, com um detalhe só (a pata no lugar do "O"), em creme chapado sobre uma foto de textura com marcas de pata. Ela liberou mudar o nome, e a marca virou **TOTÓ**. A pata entra no **primeiro "O"**, na altura exata das maiúsculas, e o "Ó" final mantém o acento. A pata no fim lia "TOT" e quebrava a simetria ("não sei se parece totó").
 - **Logo de letra desenhada precisa de assimetria**: as letras dançam, cada uma numa altura e num ângulo (como no NOSY, Puff Paw, Sandy Paws). Uma versão toda reta, alinhada e com o mesmo espaço ficou "muito estranha". Atenção: no recado "n tem aimetria" ela quis dizer *assimetria*; eu li "simetria" e endureci o logo.
 - **Símbolo dentro da letra tem que manter a forma da letra**: a pata no lugar do "O" precisa de almofada redonda (o próprio O da fonte, maciço ou com o furo) e dedos por cima. A almofada em sino (triângulo) lia "A". Referências em `referencias/logo-petisco/pinterest-pata-no-o-*.jpg`.
