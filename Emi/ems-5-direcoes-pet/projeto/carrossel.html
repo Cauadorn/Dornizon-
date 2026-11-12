@@ -126,7 +126,7 @@ const GRADE = {
 function laminaDirecao(d, i) {
   const s = el('section', 'slide dir'); s.dataset.nome = `lamina-${num(i + 2)}`;
   bloco(s, { r: GRADE.heroi, ...d.heroi });
-  bloco(s, { r: GRADE.marca, bg: d.marca.bg, padrao: d.marca.padrao, html: d.marca.html, escolhido: d.marca.cursor });
+  bloco(s, { r: GRADE.marca, bg: d.marca.bg, padrao: d.marca.padrao, html: d.marca.html, cheia: d.marca.cheia, escolhido: d.marca.cursor });
   bloco(s, { r: GRADE.quadrado, ...d.quadrado });
   bloco(s, { r: GRADE.alto, ...d.alto });
   bloco(s, { r: GRADE.paleta, bg: '#fff', html: paleta(d.paleta) });

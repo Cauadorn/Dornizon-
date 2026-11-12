@@ -39,5 +39,7 @@ const fundo = q.get('fundo') || 'textura';
 raiz.setProperty('--fundo', fundo === 'textura' ? 'url(textura-massa.png)' : fundo);
 raiz.setProperty('--cor', q.get('cor') || '#FFF1D6');
 if (q.get('pata') === 'anel') document.querySelector('.logo').classList.add('anel');
+if (q.get('escala')) Object.assign(document.querySelector('.logo').style, { position: 'absolute', left: '50%', top: '50%', transform: `translate(calc(-50% + ${q.get('dx') || 0}px), calc(-50% + ${q.get('dy') || 0}px)) scale(${q.get('escala')})` });
+if (q.get('w')) { const pc = document.querySelector('.palco'); pc.style.width = q.get('w') + 'px'; pc.style.height = q.get('h') + 'px'; }
 raiz.setProperty('--sombra', fundo === 'textura' ? 'drop-shadow(0 6px 6px rgba(90,20,5,.45)) drop-shadow(0 1px 1px rgba(90,20,5,.5))' : 'none');
 </script></body></html>
