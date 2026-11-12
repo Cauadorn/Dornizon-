@@ -13,7 +13,7 @@ const { chromium } = require('playwright');
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
-const N = 5, W = 1080, H = 1920;
+const N = 7, W = 1080, H = 1920;
 const saida = path.join(dir, '..', opt('--saida', 'entrega'));
 fs.mkdirSync(saida, { recursive: true });
 
