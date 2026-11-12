@@ -85,13 +85,13 @@ const brilho4 = (x, y, tam, cor, r = 0) => `<svg class="abs" style="left:${x}px;
   const botao = (conteudo, extra = '') => `<div style="display:flex;align-items:center;gap:26px;padding:16px 20px;border-radius:999px;background:#fffdf4;box-shadow:0 6px 14px rgba(42,20,51,.16), inset 0 -2px 0 rgba(42,20,51,.06);${extra}">${conteudo}</div>`;
   const CX = 130, CY = 210;           // canto do cartão
   lamina(0, `
-    <img class="abs" src="${estrelaReticula(860, css('lavanda'))}" style="left:-330px;top:-300px;width:860px;opacity:.38;transform:rotate(-11deg)">
-    <img class="abs" src="${estrelaReticula(940, css('violeta-2'))}" style="left:520px;top:860px;width:940px;opacity:.95;transform:rotate(17deg)">
-    <img class="abs" src="${estrelaReticula(400, css('pink'))}" style="left:-160px;top:1030px;width:400px;opacity:.55;transform:rotate(26deg)">
-    <img class="abs" src="${estrelaReticula(300, css('lavanda'))}" style="left:860px;top:330px;width:300px;opacity:.22;transform:rotate(-30deg)">
-    ${brilho4(870, 92, 130, css('manteiga'), 0)}
+    <img class="abs" src="${estrelaReticula(860, css('lavanda'))}" style="left:-330px;top:-300px;width:860px;opacity:.62;transform:rotate(-11deg);-webkit-mask-image:linear-gradient(150deg,#000 25%,transparent 80%);mask-image:linear-gradient(150deg,#000 25%,transparent 80%)">
+    <img class="abs" src="${estrelaReticula(940, css('pink'))}" style="left:520px;top:860px;width:940px;opacity:.9;transform:rotate(17deg);-webkit-mask-image:linear-gradient(-40deg,#000 35%,transparent 90%);mask-image:linear-gradient(-40deg,#000 35%,transparent 90%)">
+    <img class="abs" src="${estrelaReticula(400, css('lavanda'))}" style="left:-160px;top:1030px;width:400px;opacity:.28;transform:rotate(26deg)">
+    <img class="abs" src="${estrelaReticula(300, css('ivory'))}" style="left:880px;top:300px;width:300px;opacity:.16;transform:rotate(-30deg);-webkit-mask-image:linear-gradient(90deg,#000,transparent);mask-image:linear-gradient(90deg,#000,transparent)">
     <div class="abs" style="left:${CX}px;top:${CY}px;width:820px;height:930px;border-radius:52px;background:var(--ivory);box-shadow:0 30px 60px rgba(42,20,51,.45), inset 0 -10px 0 rgba(42,20,51,.05)">
-      <div class="abs fibra" style="border-radius:52px;opacity:.14"></div>
+      <div class="abs" style="inset:0;border-radius:52px;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.38"></div>
+      <div class="abs" style="inset:0;border-radius:52px;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>
       <div class="abs" style="left:44px;right:44px;top:44px;display:flex;align-items:center;gap:26px">
         ${botao(ic('<path d="M15 5l-7 7 7 7"/>'), 'padding:16px;')}
         <span style="font-family:var(--sans);font-weight:600;font-size:40px;color:var(--tinta);text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:3px">Notas</span>
@@ -110,7 +110,9 @@ const brilho4 = (x, y, tam, cor, r = 0) => `<svg class="abs" style="left:${x}px;
     <!-- o clique é no cartão: como se abrisse a nota -->
     <svg class="abs" style="left:912px;top:${CY + 690}px;width:64px;filter:drop-shadow(1px 3px 2px rgba(42,20,51,.35))" viewBox="0 0 24 24"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.6 L11 13.4 L17.6 13.2 Z" fill="${css('tinta')}" stroke="${css('ivory')}" stroke-width="1.5" stroke-linejoin="round"/></svg>
     <svg class="abs" style="left:880px;top:${CY + 662}px;width:48px" viewBox="0 0 40 40" fill="none" stroke="${css('violeta')}" stroke-width="3.2" stroke-linecap="round"><path d="M30 24 L38 26"/><path d="M26 16 L31 9"/><path d="M18 14 L17 5"/></svg>
-  `, `<div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 42%, var(--violeta-2) 0%, var(--violeta) 38%, var(--plum) 80%, var(--ameixa) 100%)"></div>`, 'grao-forte');
+  `, `<div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 42%, var(--violeta-2) 0%, var(--violeta) 38%, var(--plum) 80%, var(--ameixa) 100%)"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.5"></div>
+      <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.35"></div>`, 'grao-forte');
 })();
 
 /* ================= 2 · pesquisa — diagramação da ref 8 (agenda) ================= */
