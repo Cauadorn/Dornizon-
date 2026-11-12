@@ -65,44 +65,48 @@ function lamina(k, html, fundo, grao = 'grao') {
   camada('graos').insertAdjacentHTML('beforeend', `<div class="lamina" style="left:${k * W}px"><div class="${grao}"></div>${params.has('guia') ? '<div class="guia"></div>' : ''}</div>`);
 }
 
-/* ================= 1 · capa — diagramação da ref 6 (cartão de Notas, estrelas-patch, degradê) ================= */
+/* ================= 1 · capa — diagramação da ref 6 (cartão de Notas sobre fundo rico) ================= */
+/* estrela em retícula da EMS (HalftoneStar): pontos que diminuem do centro para a borda */
+function estrelaReticula(tam, cor, passo = 18) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = tam; const ctx = cv.getContext('2d');
+  const c = tam / 2, R = tam / 2, m = document.createElement('canvas').getContext('2d'); m.canvas.width = m.canvas.height = tam;
+  m.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? R * .45 : R * .95; m.lineTo(c + rr * Math.cos(a), c + rr * Math.sin(a)); } m.closePath();
+  ctx.fillStyle = cor;
+  for (let y = passo / 2; y < tam; y += passo) for (let x = passo / 2; x < tam; x += passo) {
+    if (!m.isPointInPath(x, y)) continue;
+    const d = Math.hypot(x - c, y - c) / R; ctx.beginPath(); ctx.arc(x, y, passo * .46 * Math.max(.14, 1 - d * .95), 0, 7); ctx.fill();
+  }
+  return cv.toDataURL();
+}
+const BRILHO4 = 'M0,-1 C0.07,-0.27 0.27,-0.07 1,0 C0.27,0.07 0.07,0.27 0,1 C-0.07,0.27 -0.27,0.07 -1,0 C-0.27,-0.07 -0.07,-0.27 0,-1Z';
+const brilho4 = (x, y, tam, cor, r = 0) => `<svg class="abs" style="left:${x}px;top:${y}px;width:${tam}px;height:${tam}px;transform:rotate(${r}deg);filter:drop-shadow(0 8px 10px rgba(42,20,51,.35))" viewBox="-1 -1 2 2"><path d="${BRILHO4}" fill="${cor}"/></svg>`;
 (() => {
-  // estrela da marca (i-estrela, pontas arredondadas) como patch: retícula de pontos + costura
-  const ESTRELA_R = 'M0,-0.95 C0.07,-0.95 0.1,-0.9 0.13,-0.83 L0.3,-0.43 L0.74,-0.39 C0.87,-0.38 0.9,-0.27 0.81,-0.19 L0.48,0.1 L0.58,0.53 C0.61,0.66 0.5,0.73 0.39,0.66 L0,0.43 L-0.39,0.66 C-0.5,0.73 -0.61,0.66 -0.58,0.53 L-0.48,0.1 L-0.81,-0.19 C-0.9,-0.27 -0.87,-0.38 -0.74,-0.39 L-0.3,-0.43 L-0.13,-0.83 C-0.1,-0.9 -0.07,-0.95 0,-0.95Z';
-  let n = 0;
-  const patch = ({ x, y, tam, r, base, ponto, linha }) => { const id = 'pt' + (n++); return `<svg class="abs" style="left:${x}px;top:${y}px;width:${tam}px;height:${tam}px;transform:rotate(${r}deg);filter:drop-shadow(0 12px 14px rgba(42,20,51,.35))" viewBox="-1 -1 2 2">
-    <defs><pattern id="${id}" width=".055" height=".055" patternUnits="userSpaceOnUse"><circle cx=".0275" cy=".0275" r=".013" fill="${ponto}"/></pattern>
-      <radialGradient id="${id}g" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
-    <path d="${ESTRELA_R}" fill="${base}"/><path d="${ESTRELA_R}" fill="url(#${id})"/><path d="${ESTRELA_R}" fill="url(#${id}g)"/>
-    <path d="${ESTRELA_R}" transform="scale(.86) translate(0,.02)" fill="none" stroke="${linha}" stroke-width=".022" stroke-dasharray=".05 .035" stroke-linecap="round"/></svg>`; };
-  const ic = (d, w = 44) => `<svg viewBox="0 0 24 24" style="width:${w}px;height:${w}px" fill="none" stroke="${css('tinta')}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
-  const botao = (conteudo, extra = '') => `<div style="display:flex;align-items:center;gap:26px;padding:14px 18px;border-radius:999px;background:#fffdf4;box-shadow:0 6px 14px rgba(42,20,51,.16), inset 0 -2px 0 rgba(42,20,51,.06);${extra}">${conteudo}</div>`;
+  const ic = (d, w = 40) => `<svg viewBox="0 0 24 24" style="width:${w}px;height:${w}px" fill="none" stroke="${css('tinta')}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+  const botao = (conteudo, extra = '') => `<div style="display:flex;align-items:center;gap:26px;padding:16px 20px;border-radius:999px;background:#fffdf4;box-shadow:0 6px 14px rgba(42,20,51,.16), inset 0 -2px 0 rgba(42,20,51,.06);${extra}">${conteudo}</div>`;
+  const CX = 130, CY = 210;           // canto do cartão
   lamina(0, `
-    ${patch({ x: -150, y: -110, tam: 520, r: -14, base: css('pink'), ponto: '#f58fd2', linha: '#ffd3ee' })}
-    ${patch({ x: 820, y: 40, tam: 230, r: 16, base: css('pink'), ponto: '#f58fd2', linha: '#ffd3ee' })}
-    ${patch({ x: -120, y: 980, tam: 470, r: 10, base: css('lavanda'), ponto: '#e4d6e6', linha: '#fffbde' })}
-    ${patch({ x: 780, y: 1010, tam: 420, r: -18, base: css('pink'), ponto: '#f58fd2', linha: '#ffd3ee' })}
-    <div class="abs" style="left:130px;top:250px;width:820px;height:860px;border-radius:52px;background:var(--ivory);box-shadow:0 30px 60px rgba(42,20,51,.45), inset 0 -10px 0 rgba(42,20,51,.05)">
-      <div class="abs fibra" style="border-radius:52px;opacity:.12"></div>
+    <img class="abs" src="${estrelaReticula(820, css('lavanda'))}" style="left:-300px;top:-260px;width:820px;opacity:.75">
+    <img class="abs" src="${estrelaReticula(900, css('violeta-2'))}" style="left:560px;top:880px;width:900px;opacity:.9">
+    <img class="abs" src="${estrelaReticula(420, css('pink'))}" style="left:-150px;top:1010px;width:420px;opacity:.7">
+    ${brilho4(870, 92, 130, css('manteiga'), 0)}
+    <div class="abs" style="left:${CX}px;top:${CY}px;width:820px;height:930px;border-radius:52px;background:var(--ivory);box-shadow:0 30px 60px rgba(42,20,51,.45), inset 0 -10px 0 rgba(42,20,51,.05)">
+      <div class="abs fibra" style="border-radius:52px;opacity:.14"></div>
       <div class="abs" style="left:44px;right:44px;top:44px;display:flex;align-items:center;gap:26px">
-        ${botao(ic('<path d="M15 5l-7 7 7 7"/>', 40), 'padding:16px;')}
+        ${botao(ic('<path d="M15 5l-7 7 7 7"/>'), 'padding:16px;')}
         <span style="font-family:var(--sans);font-weight:600;font-size:40px;color:var(--tinta);text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:3px">Notas</span>
         <div style="flex:1"></div>
-        ${botao(ic('<path d="M12 15V3M8 7l4-4 4 4"/><path d="M6 11v9h12v-9"/>', 40) + ic('<circle cx="5" cy="12" r="1.3" fill="#2a1433"/><circle cx="12" cy="12" r="1.3" fill="#2a1433"/><circle cx="19" cy="12" r="1.3" fill="#2a1433"/>', 40), 'padding:16px 26px;')}
+        ${botao(ic('<path d="M12 15V3M8 7l4-4 4 4"/><path d="M6 11v9h12v-9"/>') + ic('<circle cx="5" cy="12" r="1.3" fill="#2a1433"/><circle cx="12" cy="12" r="1.3" fill="#2a1433"/><circle cx="19" cy="12" r="1.3" fill="#2a1433"/>'), 'padding:16px 26px;')}
       </div>
-      <div class="abs" style="left:70px;top:206px;font-family:'Anton';font-size:166px;line-height:.9;color:var(--violeta);letter-spacing:-.005em">FIGURINHAS</div>
-      <div class="abs" style="right:70px;top:430px;font-family:'Anton';font-size:190px;line-height:.9;color:var(--violeta)">RARAS</div>
-      <div class="abs" style="left:96px;top:356px;font-family:var(--serif);font-style:italic;font-size:116px;line-height:1;color:var(--pink);transform:rotate(-6deg);white-space:nowrap">do meu pacotinho</div>
-      <div class="abs" style="left:110px;right:110px;top:640px;text-align:center;font-family:var(--sans);font-size:31px;line-height:1.3;color:var(--pink)">os 10 sites que salvam meu processo e quase ninguém tem no álbum.</div>
-      <div class="abs" style="left:44px;right:44px;bottom:44px;display:flex;align-items:center">
-        ${botao(ic('<path d="M4 6h1M9 6h11M4 12h1M9 12h11M4 18h1M9 18h11"/>', 40) + ic('<path d="M21 12.5l-8.5 8.5a5 5 0 01-7-7L14 5.5a3.3 3.3 0 014.7 4.7L10.2 18.7a1.7 1.7 0 01-2.4-2.4L15.5 8.6"/>', 40) + ic('<circle cx="12" cy="12" r="9"/><path d="M9 16l1-4 5-5 2 2-5 5-3 2z"/>', 40))}
-        <div style="flex:1;text-align:center;font-family:var(--sans);font-weight:600;font-size:22px;color:var(--violeta)">@itsemsdesign</div>
-        ${botao(ic('<path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13 7l4 4"/>', 40), 'padding:16px;')}
-      </div>
+      <div class="abs" style="left:66px;top:182px;font-family:'Anton';font-size:166px;line-height:.9;color:var(--violeta)">FIGURINHAS</div>
+      <div class="abs" style="right:70px;top:338px;font-family:var(--serif);font-style:italic;font-size:92px;line-height:1;color:var(--pink);white-space:nowrap">do meu pacotinho</div>
+      <div class="abs" style="right:66px;top:440px;font-family:'Anton';font-size:196px;line-height:.9;color:var(--violeta)">RARAS</div>
+      <div class="abs" style="left:110px;right:110px;top:704px;text-align:center;font-family:var(--sans);font-size:31px;line-height:1.3;color:var(--pink)">os 10 sites que salvam meu processo e quase ninguém tem no álbum.</div>
+      <div class="abs" style="left:44px;bottom:44px">${botao(ic('<path d="M4 6h1M9 6h11M4 12h1M9 12h11M4 18h1M9 18h11"/>') + ic('<path d="M21 12.5l-8.5 8.5a5 5 0 01-7-7L14 5.5a3.3 3.3 0 014.7 4.7L10.2 18.7a1.7 1.7 0 01-2.4-2.4L15.5 8.6"/>') + ic('<circle cx="12" cy="12" r="9"/><path d="M9 16l1-4 5-5 2 2-5 5-3 2z"/>'))}</div>
+      <div class="abs" style="right:44px;bottom:44px">${botao(ic('<path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13 7l4 4"/>'), 'padding:16px;')}</div>
     </div>
-    ${objeto({ x: 846, y: 760, w: 220, r: 10, src: 'pacotinho' })}
-  `, `<div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 42%, var(--violeta-2) 0%, var(--violeta) 38%, var(--plum) 78%, var(--ameixa) 100%)"></div>
-      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:700px;mix-blend-mode:multiply;opacity:.35"></div>`, 'grao-luz');
+    ${objeto({ x: CX + 44, y: CY + 414, w: 244, r: -8, src: 'pacotinho' })}
+    <div class="handle" id="capa-handle" style="left:540px;top:${CY + 930 - 44 - 58}px;transform:translateX(-50%);--bg:var(--pink)">@itsemsdesign${CURSOR}</div>
+  `, `<div class="abs" style="inset:0;background:radial-gradient(ellipse at 50% 42%, var(--violeta-2) 0%, var(--violeta) 38%, var(--plum) 80%, var(--ameixa) 100%)"></div>`, 'grao-forte');
 })();
 
 /* ================= 2 · pesquisa — diagramação da ref 8 (agenda) ================= */

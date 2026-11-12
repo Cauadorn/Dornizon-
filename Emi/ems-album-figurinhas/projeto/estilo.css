@@ -23,6 +23,7 @@ html, body { background: #120818; }
 
 /* matérias */
 .grao { position: absolute; inset: 0; background-image: var(--tx-grao); background-size: 300px; opacity: .1; mix-blend-mode: multiply; }
+.grao-forte { position: absolute; inset: 0; background-image: var(--tx-grao); background-size: 180px; opacity: 1; mix-blend-mode: soft-light; }
 .grao-luz { position: absolute; inset: 0; background-image: var(--tx-grao); background-size: 300px; opacity: .07; mix-blend-mode: screen; }
 .fibra { position: absolute; inset: 0; background-image: var(--tx-papel); background-size: 520px; opacity: .22; mix-blend-mode: multiply; }
 
