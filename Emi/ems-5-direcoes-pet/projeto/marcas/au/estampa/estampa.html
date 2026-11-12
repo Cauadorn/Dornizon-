@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Estampa MATILHA: a matilha correndo em raias de pista. Cachorros de corrida (galgo, vizsla, border collie e o vira-lata do logo),
+     silhuetas geradas e limpas (racas-geradas.png → galgo/vizsla/collie/viralata.png). Cada raia tem um ritmo diferente, e a
+     linha da raia leva "matilha running club" bem pequeno. Repete sem emenda (tile 1200 x 1200).
+     ?fundo=#CCFF3E&tinta=#121212 | ?fundo=#121212&tinta=#CCFF3E | ?fundo=#4342FF&tinta=#CCFF3E · &rep=2 mostra 2x2 tiles -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Rubik; src: url(../../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
+@font-face { font-family: RubikI; src: url(../../../fonts/Rubik-italic-var-latin.woff2); font-weight: 300 900; }
+html, body { margin: 0; }
+.p { position: relative; overflow: hidden; background: var(--fundo); }
+.raia { position: absolute; left: 0; right: 0; height: 2px; background: var(--tinta); opacity: .85; }
+.leg { position: absolute; font: 700 15px/1 Rubik; letter-spacing: .3em; color: var(--tinta); white-space: nowrap; text-transform: uppercase; }
+.c { position: absolute; background: var(--tinta); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-repeat: no-repeat; }
+</style></head><body><div class="p" id="p"></div>
+<script>
+const q = new URLSearchParams(location.search), s = document.documentElement.style;
+s.setProperty('--fundo', q.get('fundo') || '#CCFF3E'); s.setProperty('--tinta', q.get('tinta') || '#121212');
+const T = 1200, rep = +(q.get('rep') || 1), p = document.getElementById('p');
+p.style.width = p.style.height = T * rep + 'px';
+const R = { galgo: 1340 / 666, vizsla: 1304 / 734, collie: 1337 / 728, viralata: 1286 / 763 };
+// 6 raias de 200px; em cada uma, 2 cachorros (raça, x, largura, sobe/desce)
+const raias = [
+  [['galgo', 80, 250, 0], ['viralata', 690, 215, 8]],
+  [['vizsla', 330, 240, 4], ['collie', 930, 230, -2]],
+  [['collie', 30, 225, 2], ['galgo', 600, 260, -4]],
+  [['viralata', 380, 210, 0], ['vizsla', 960, 235, 6]],
+  [['vizsla', 120, 235, -2], ['collie', 700, 225, 4]],
+  [['galgo', 450, 255, 2], ['viralata', 1010, 210, -4]],
+];
+for (let ty = 0; ty < rep; ty++) for (let tx = -1; tx <= rep; tx++) {
+  const ox = tx * T, oy = ty * T;
+  raias.forEach((r, i) => {
+    const y = oy + i * 200;
+    if (tx === 0) { const l = document.createElement('div'); l.className = 'raia'; l.style.top = (y + 196) + 'px'; p.appendChild(l);
+      for (let k = 0; k < rep * 3; k++) { const g = document.createElement('div'); g.className = 'leg'; g.textContent = 'matilha running club';
+        g.style.left = (k * 400 + (i % 2) * 200 + 20) + 'px'; g.style.top = (y + 172) + 'px'; p.appendChild(g); } }
+    r.forEach(([raca, x, w, dy]) => { const c = document.createElement('div'); c.className = 'c'; const h = w / R[raca];
+      c.style.cssText += `left:${ox + x}px;top:${y + 160 - h + dy}px;width:${w}px;height:${h}px;-webkit-mask-image:url(${raca}.png);mask-image:url(${raca}.png)`;
+      p.appendChild(c); });
+  });
+}
+</script></body></html>
