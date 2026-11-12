@@ -13,10 +13,11 @@
   .d .materia { background: radial-gradient(circle, rgba(242, 207, 122, .45) 2.4px, transparent 3px) 0 0 / 17px 17px; -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 262px, #000 272px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 262px, #000 272px, transparent 420px); }
   /* a estrela em retícula fica só em volta do astro, nunca por cima dele */
   .d svg.ht { -webkit-mask: radial-gradient(circle at 540px 960px, transparent 0 268px, #000 278px); mask: radial-gradient(circle at 540px 960px, transparent 0 268px, #000 278px); }
-  .nada svg.ht { -webkit-mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); }
+  .larga svg.ht { -webkit-mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); }
+  .d img.fotoq { position: absolute; z-index: -1; }
   .d img.obj { position: absolute; filter: drop-shadow(0 14px 18px rgba(42, 20, 51, .45)); }
   .d .selo { left: 365px; top: 721px; width: 350px; }
-  .nada .materia { -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); }
+  .larga .materia { -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); }
   .selo-d .materia { -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 250px, #000 262px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 250px, #000 262px, transparent 420px); }
 </style>
 </head>
@@ -38,10 +39,20 @@
   <i class="ic brilho g" style="left:268px;top:1120px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
-<!-- done here: o pacotinho de figurinhas (os trabalhos prontos) -->
+<!-- done here: pin de localização ("feito aqui") -->
 <section class="story d" data-nome="done-here">
   <svg class="ht" data-star="540,960,470,violeta2,.5,26"></svg>
-  <img class="obj" src="objetos/pacotinho-manteiga.png" style="width:330px;left:375px;top:722px;transform:rotate(-6deg)" alt="">
+  <svg class="obj pino" viewBox="0 0 200 290" style="width:330px;left:375px;top:722px" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="pg" cx="34%" cy="24%" r="92%"><stop offset="0" stop-color="#fffbde"/><stop offset=".32" stop-color="#f2cf7a"/><stop offset=".68" stop-color="#c9799a"/><stop offset=".9" stop-color="#6d2c80"/><stop offset="1" stop-color="#4a1d58"/></radialGradient>
+      <radialGradient id="pf" cx="50%" cy="38%" r="60%"><stop offset=".55" stop-color="#2a1433" stop-opacity=".55"/><stop offset="1" stop-color="#2a1433" stop-opacity="0"/></radialGradient>
+      <filter id="pb" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+    <ellipse cx="100" cy="276" rx="44" ry="8" fill="#2a1433" opacity=".55" filter="url(#pb)"/>
+    <path fill="url(#pg)" fill-rule="evenodd" d="M100 272C62 204 18 158 18 102A82 82 0 1 1 182 102C182 158 138 204 100 272ZM100 68A34 34 0 1 0 100 136A34 34 0 1 0 100 68Z"/>
+    <circle cx="100" cy="102" r="34" fill="none" stroke="#4a1d58" stroke-width="5" opacity=".55"/>
+    <path d="M40 78A66 66 0 0 1 96 30" fill="none" stroke="#fffbde" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+  </svg>
   <i class="ic brilho g" style="left:250px;top:730px;width:70px;height:70px;color:var(--ivory)"></i>
   <i class="ic brilho g" style="left:770px;top:1130px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
@@ -54,12 +65,12 @@
   <i class="ic brilho g" style="left:280px;top:1150px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
-<!-- feedbacks: o presente (carinho de cliente) -->
-<section class="story d" data-nome="feedbacks">
+<!-- feedbacks: o bilhete no varal (foto real, CC0) -->
+<section class="story d larga" data-nome="feedbacks">
   <svg class="ht" data-star="540,960,470,violeta2,.5,-28"></svg>
-  <img class="obj" src="objetos/presente-manteiga.png" style="width:420px;left:330px;top:732px;transform:rotate(0deg)" alt="">
-  <i class="ic brilho g" style="left:770px;top:1110px;width:70px;height:70px;color:var(--ivory)"></i>
-  <i class="ic brilho g" style="left:262px;top:760px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
+  <img class="fotoq" src="objetos/bilhete.jpg" style="left:175px;top:595px;width:730px" alt="">
+  <i class="ic brilho g" style="left:812px;top:1150px;width:70px;height:70px;color:var(--ivory)"></i>
+  <i class="ic brilho g" style="left:236px;top:1140px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
 <!-- made by me: o pincel -->
