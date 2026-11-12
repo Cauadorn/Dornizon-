@@ -123,7 +123,7 @@ const DIRECOES = [
     // Arte em marcas/toto/logo.html (?pata=anel); a imagem do quadro é gerada por ela (img/toto-marca.jpg).
     marca: { bg: '#F2542D', cheia: { src: 'toto-marca', px: .5, py: .5 }, cursor: [326, 338] },
     quadrado: { bg: '#F2542D', cheia: { src: 'd1extra', px: .04, py: .5 } },
-    alto: { bg: '#2B59C3', cheia: { src: 'd1prod-1', px: .5, py: .45 } },
+    alto: { bg: '#F4E9D6', cheia: { src: 'toto-pacote', px: .5, py: .45 } },   // aplicação aprovada: pacote TOTÓ (marcas/toto/mockup)
     paleta: [['amarelo gema', '#FFD23F', '#1B1B1B'], ['vermelho tomate', '#F2542D', '#1B1B1B'], ['azul gibi', '#2B59C3', '#FFFBDE'], ['preto nanquim', '#1B1B1B', '#FFFBDE']],
     tipo: { bg: '#2B59C3', aa: "400 112px 'Cherry Bomb One'", aaCor: '#FFD23F', sombra: '5px 5px 0 #1B1B1B', amostra: 'au au!', amostraCss: "400 28px 'Cherry Bomb One'", cor: '#FFFBDE', nome: 'cherry bomb one' },
   },
