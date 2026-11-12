@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:wght@200..500&display=block" rel="stylesheet">
+<style>
+:root{--c:#2742C2;--creme:#F5EEE3;--p:#F3C6A8}
+*{margin:0;box-sizing:border-box}
+body{background:#888;padding:20px;display:flex;flex-wrap:wrap;gap:20px}
+.art{position:relative;overflow:hidden;flex:none}
+.pf{font-family:'Playfair Display'} .js{font-family:Jost}
+.tile{position:absolute}
+.sem{font-size:22px;letter-spacing:.24em;opacity:.75}
+</style></head><body>
+
+<!-- cartão: frente -->
+<div class="art" id="cartao-frente" style="width:1750px;height:1115px;background:var(--c);display:flex;align-items:center;justify-content:center">{{VERT_CREME_520}}</div>
+
+<!-- cartão: verso -->
+<div class="art" id="cartao-verso" style="width:1750px;height:1115px;background:var(--p);color:var(--c);display:flex;align-items:center;justify-content:center">
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)">{{MONO_P2_900}}</div>
+  <div style="position:relative;text-align:center">
+    <div class="pf" style="font-size:118px;line-height:1">Lia Moraes</div>
+    <div class="js" style="font-weight:400;font-size:27px;letter-spacing:.55em;margin:34px -.55em 0 0">PSICÓLOGA CLÍNICA · CRP 00/00000</div>
+    <div style="width:120px;height:2px;background:var(--c);margin:56px auto 50px;opacity:.7"></div>
+    <div class="js" style="font-weight:400;font-size:32px;letter-spacing:.06em;line-height:1.75">(11) 90000-0000 &nbsp;·&nbsp; @psi.liamoraes<br>liamoraes.com.br</div>
+  </div>
+</div>
+
+<!-- caneca cobalto: estampa -->
+<div class="art" id="caneca-cobalto" style="width:900px;height:900px">
+  <svg viewBox="0 0 900 900" width="900" height="900" style="position:absolute;inset:0">
+    <path id="aro" d="M450 450m-330 0a330 330 0 1 1 660 0a330 330 0 1 1 -660 0" fill="none"/>
+    <text fill="#F5EEE3" style="font:300 40px Jost;letter-spacing:.42em"><textPath href="#aro" textLength="2060" lengthAdjust="spacing">LIA MORAES · PSICOLOGIA CLÍNICA · ESCUTA E CUIDADO ·</textPath></text>
+  </svg>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-52%)">{{MONO_CREME_400}}</div>
+</div>
+
+<!-- caneca pêssego: estampa -->
+<div class="art" id="caneca-pessego" style="width:700px;height:900px;display:flex;align-items:center;justify-content:center">{{VERT_C_560}}</div>
+
+<!-- calendário de mesa (vertical) -->
+<div class="art" id="calendario" style="width:1200px;height:1605px;background:var(--c);color:var(--creme);display:flex;flex-direction:column;align-items:center;padding-top:190px">
+  {{MONO_CREME_210}}
+  <div class="pf" style="font-size:126px;line-height:1;margin-top:70px"><i>Novembro</i></div>
+  <div class="js" style="font-weight:300;font-size:30px;letter-spacing:.5em;margin:26px -.5em 70px 0">2026</div>
+  <div class="js" style="display:grid;grid-template-columns:repeat(7,112px);row-gap:34px;font-weight:300;font-size:38px;text-align:center">{{CAB}}{{DIAS}}</div>
+  <div class="js" style="position:absolute;bottom:120px;font-weight:400;font-size:24px;letter-spacing:.5em;margin-right:-.5em">LIA MORAES · PSICÓLOGA</div>
+</div>
+
+<script>document.fonts.ready.then(()=>window.READY=true)</script>
+</body></html>
