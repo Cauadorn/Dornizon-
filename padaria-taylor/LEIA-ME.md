@@ -2,7 +2,18 @@
 
 Projeto conceitual de fã para o portfólio, no formato "E se a Taylor Swift me contratasse…". Não tem vínculo com a Taylor Swift, a gravadora ou qualquer marca dela.
 
-## Marca: Loaf Story, era folklore/evermore (versão atual)
+## Versão atual: imagens geradas no Gemini (Figma)
+
+Arquivo no Figma: https://www.figma.com/design/IVrR4Y0cOLPR5EZ5br6iPz (time da 4D). As imagens foram geradas com o modelo Gemini 3.1 Flash Image e estão em `04-gemini/`:
+
+1. `01-painel-da-marca.png`: logo, selo do pão com corte em folha, cores, tipografia e ilustrações em guache.
+2. `02-embalagens.png`: saco de papel com a marca, caixa com barbante ferrugem e adesivo "original sourdough!", na cozinha da cabana.
+3. `03-post.png`: post 4:5 "baked in a cabin. given away for free."
+4. `04-ilustracoes.png`: 8 ilustrações em guache (pão, fermento, caneca, cesta, biscoitos, cabana, pinheiro, cardigã). A caneca veio escrita "BAKERY", o que precisa ser corrigido ou cortado.
+
+As versões anteriores (vetorial, com a gata) ficam em `_descartado/`, só como histórico.
+
+## Versão anterior (descartada): Loaf Story, era folklore/evermore, vetorial
 
 Segue o estilo das referências (Don Rollos, The Little Oven e o café "mode"): mascote, rabiscos de traço único, letra gorda e simpática, poucas cores com nome e as peças aplicadas.
 
