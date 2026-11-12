@@ -9,10 +9,10 @@
 @font-face { font-family: PoppinsL; src: url(../../fonts/Poppins-300.woff2); font-weight: 300; }
 html, body { margin: 0; }
 .palco { position: relative; overflow: hidden; background: var(--fundo); }
-.logo { position: absolute; left: 50%; top: 50%; width: 645px; height: 640px; transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) scale(var(--escala, 1)); }
+.logo { position: absolute; left: 50%; top: 50%; width: 645px; height: 622px; transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) scale(var(--escala, 1)); }
 .nome { position: absolute; left: 0; top: 0; width: 645px; height: 560px; background: var(--tinta);
   -webkit-mask: url(nome.svg) 0 0 / 645px 560px no-repeat; mask: url(nome.svg) 0 0 / 645px 560px no-repeat; }
-.sub { position: absolute; top: 584px; font: 300 34px/1 PoppinsL; color: var(--tinta); white-space: nowrap; }
+.sub { position: absolute; top: 567px;   /* vão de 18 px até a base do nome (a Emi: "aproxima") */ font: 300 34px/1 PoppinsL; color: var(--tinta); white-space: nowrap; }
 </style></head><body>
 <div class="palco"><div class="logo"><div class="nome"></div><div class="sub" id="sub">BANHO &amp; TOSA</div></div></div>
 <script>
