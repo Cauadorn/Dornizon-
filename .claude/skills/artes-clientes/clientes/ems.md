@@ -28,8 +28,21 @@
   - faixa de baixo com o cartão na cor da série (`violeta` → `plum` → `wine` → `creative-purple` → `ameixa`), uma foto alta e a coluna paleta + letra ("Aa").
   - Respiro `ivory` de 18px, raio 22.
 - **Foto não se repete no carrossel**, e variações da mesma cena contam como repetição. Por direção, 3 cenas diferentes: o bicho, o produto e uma cena extra (outro bicho, detalhe de material ou bastidor).
-- **Capa** (aprovada): foto inteira do gato preto na parede violeta com estrelas, "5" gigante, "direções criativas pra marcas *pet*", adesivo "fora da casinha".
-- **Chamada:** gato acenando em `plum`, "quer uma marca pet que dá pra *reconhecer* até sem o nome?", dm, selo.
+- **Capa** (v5): capa de revista.
+  - Nome "direções" em Instrument Serif gigante atrás da cabeça do gato: recorte da mesma foto, alinhado, por cima do texto.
+  - "criativas pra marcas *pet*", chamadas "nesta edição" com as 5 direções, selo redondo `pink` "nenhuma é patinha + osso" e código de barras com o @.
+  - A v4 foi reprovada por diagramação: seleção do Figma fora do rosto do gato, anotação "diretoria criativa" (cópia) e "5" gigante + pílula (estrutura da referência).
+- **Chamada** (v5): enquete.
+  - "qual delas tem a cara da sua *marca*?" e cartão de enquete com as 5 opções.
+  - O gato levanta a pata e "aperta" uma opção (recorte por cima do cartão); depois "comenta o número", dm e selo.
+  - A v4, com texto + gato + pílula, foi reprovada: "muito xoxo, sem graça".
+- **Regra da Emi: "os posts precisam ser diferentes, senão eu postava a mesma coisa todo dia".**
+  - Cada post do Instagram da EMS tem diagramação própria.
+  - Não reaproveitar os recursos de outro post: anotação à mão com linha curva, seleção do Figma decorativa, marca d'água em fila, colagem em selo do "cpf x cnpj" (esse estilo ela não quer de jeito nenhum).
+  - Não reaproveitar a estrutura da referência.
+  - A identidade (cor, fonte, selo) se mantém; a diagramação muda.
+  - Antes de diagramar capa e chamada, procurar referências de diagramação (Pinterest, capas de revista, adesivos de story) e escolher um conceito que caiba no tema.
+- **Recorte "na frente do texto":** rembg (`birefnet-general`) salvando a máscara no tamanho da foto (sem cortar), borda endurecida (alfa < 70 vira 0, > 190 vira 255) para o texto de trás não vazar pelo pelo. Posicionar com os mesmos parâmetros da foto.
 - Código reaproveitável: `Emi/ems-5-direcoes-pet/projeto/` (`direcoes.js` tem o conteúdo, `GRADE` em `carrossel.html` tem a estrutura; trocar o nicho = trocar `direcoes.js` e as fotos).
 - Figma editável: https://www.figma.com/design/elmpB2QlAid4OFWruJL31H (time 4D) · Drive: pasta `EMS · @itsemsdesign` → `2026-11 · 5 direções criativas pra marcas pet` (`1BihRkZXTpaY704VBm0gmCygNapc3i9SP`), com os 7 PNGs, a visão geral e a legenda em Doc.
 - Próximos nichos sugeridos no DS: cafeterias, confeitarias, estúdio de tatuagem, academia e luta, moda autoral, clínica de estética.

@@ -59,7 +59,7 @@ const MARCA = {
 const DIRECOES = [
   // ---------------- 01 · pop de gibi ----------------
   {
-    titulo: 'pop de <em>gibi</em>', card: 'var(--violeta)',
+    titulo: 'pop de <em>gibi</em>', pra: 'petisco e brinquedo', card: 'var(--violeta)',
     texto: 'cores primárias chapadas, contorno grosso e retícula de gibi. pra petisco e brinquedo que querem ser a alegria da prateleira.',
     heroi: { bg: '#FFD23F', cheia: { src: 'd1pet-2', px: .5, py: .3 } },
     marca: { bg: '#FFD23F', padrao: dots('#F2542D', 16, 22), html: MARCA.gibi, cursor: [326, 290] },
@@ -70,7 +70,7 @@ const DIRECOES = [
   },
   // ---------------- 02 · clube de grife ----------------
   {
-    titulo: 'clube de <em>grife</em>', card: 'var(--plum)',
+    titulo: 'clube de <em>grife</em>', pra: 'marca premium', card: 'var(--plum)',
     texto: 'creme, caramelo e café, serifa clássica, monograma, tricô e couro. pra marca premium que quer ser grife, não petshop.',
     heroi: { bg: '#23392E', cheia: { src: 'd2pet-2', px: .55, py: .5 } },
     marca: { bg: '#4A2E21', html: MARCA.grife, cursor: [330, 330] },
@@ -81,7 +81,7 @@ const DIRECOES = [
   },
   // ---------------- 03 · retrô setentinha ----------------
   {
-    titulo: 'retrô <em>setentinha</em>', card: 'var(--wine)',
+    titulo: 'retrô <em>setentinha</em>', pra: 'banho e tosa de bairro', card: 'var(--wine)',
     texto: 'laranja queimado, mostarda e marrom, letra groovy e grão de filme. pra banho e tosa e petshop de bairro com história.',
     heroi: { bg: '#E2701E', cheia: { src: 'd3pet-2', px: .62, py: .6 } },
     marca: { bg: '#F4E3C3', html: MARCA.setentinha(422, 400), cursor: [330, 300] },
@@ -92,7 +92,7 @@ const DIRECOES = [
   },
   // ---------------- 04 · modo atleta ----------------
   {
-    titulo: 'modo <em>atleta</em>', card: 'var(--creative-purple)',
+    titulo: 'modo <em>atleta</em>', pra: 'passeio e adestramento', card: 'var(--creative-purple)',
     texto: 'azul royal, verde-limão, cara de uniforme e foto em movimento. pra passeio, coleira e adestramento que vendem energia.',
     heroi: { bg: '#8EC9F2', cheia: { src: 'd4pet-2', px: .5, py: .4 } },
     marca: { bg: '#1F3FBF', html: MARCA.atleta, cursor: [330, 310] },
@@ -103,7 +103,7 @@ const DIRECOES = [
   },
   // ---------------- 05 · ciência fofa ----------------
   {
-    titulo: 'ciência <em>fofa</em>', card: 'var(--ameixa)',
+    titulo: 'ciência <em>fofa</em>', pra: 'nutrição e saúde', card: 'var(--ameixa)',
     texto: 'branco, azul clínico e menta, rótulo de laboratório e letra mono. pra nutrição e saúde pet: confiança sem cara de hospital.',
     heroi: { bg: '#BDEBD6', cheia: { src: 'd5pet-1', px: .5, py: .6 } },
     marca: { bg: '#2F6BFF', html: MARCA.ciencia, cursor: [300, 320] },
@@ -114,13 +114,8 @@ const DIRECOES = [
   },
 ];
 
-// Capa (a da v2, aprovada: "a capa anterior mil x melhor"): foto inteira do gato preto na parede
-// violeta com estrelas em retícula, "5" gigante, título e adesivo "fora da casinha".
-const CAPA = {
-  cheia: { src: 'capa-2', px: .5, py: .5 },
-  selecao: 'left:262px;top:262px;width:430px;height:400px',
-  nota: { texto: 'diretoria<br>criativa', x: 80, y: 168, lx: 160, ly: 226, lw: 110, lh: 70, path: 'M4 10 C44 4 84 22 104 62' },
-};
+// Capa: capa de revista com o gato preto de modelo (fundo violeta com estrelas em retícula, aprovado).
+const CAPA = { foto: { src: 'capa-2', px: .5, py: .5 }, recorte: 'capa-2-gato' };
 
-// Chamada (a da v2): o gato acenando no fundo ameixa, espaço livre em cima e à esquerda para o texto.
-const CHAMADA = { cheia: { src: 'cham-1', px: .5, py: .5 } };
+// Chamada: enquete; o gato (fundo ameixa) levanta a pata até a opção marcada.
+const CHAMADA = { foto: { src: 'cham-2', px: .85, py: .95, zoom: 1.25 }, recorte: 'cham-2-gato', marcada: 1 };

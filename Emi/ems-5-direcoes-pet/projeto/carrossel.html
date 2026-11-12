@@ -25,7 +25,7 @@ function marcaDagua(slide, y, tom = 'var(--ivory)') {
 // Foto inteira (cenário já fotografado, sem recorte) cobrindo a caixa: como object-fit: cover,
 // com posição px/py (0 a 1, como object-position) e zoom opcional. Tamanho explícito para o export do Figma.
 function cheia(caixa, c, Wc, Hc) {
-  const img = el('img', 'foto'); img.src = 'img/' + c.src + '.jpg'; img.alt = c.src;
+  const img = el('img', 'foto' + (c.classe ? ' ' + c.classe : '')); img.src = 'img/' + c.src + '.' + (c.ext || 'jpg'); img.alt = c.src;
   img.onload = () => {
     const s = Math.max(Wc / img.naturalWidth, Hc / img.naturalHeight) * (c.zoom || 1);
     const w = img.naturalWidth * s, h = img.naturalHeight * s;
@@ -136,37 +136,46 @@ function laminaDirecao(d, i) {
   return s;
 }
 
-// ---------- capa (v2) ----------
+// ---------- capa: capa de revista ----------
+// O gato é o "modelo da capa": foto inteira no fundo, o nome da revista ("direções") atrás da cabeça
+// (a mesma foto recortada vai por cima do título, alinhada pixel a pixel), chamadas das 5 direções à esquerda.
 function capa() {
   const s = el('section', 'slide capa'); s.dataset.nome = 'lamina-01';
-  cheia(s, CAPA.cheia, 1080, 1350);
-  marcaDagua(s, 54);
+  cheia(s, CAPA.foto, W, H);
   s.insertAdjacentHTML('beforeend', `
-    <div class="rotulo">ems &nbsp;•&nbsp; identidade visual & direção de arte</div>
-    <div class="cinco">5</div>
-    <div class="titulo"><div class="l1">direções<br>criativas</div><div class="l2">pra marcas <em>pet</em></div></div>
-    <div class="adesivo">fora da casinha${CURSOR}</div>`);
-  const n = CAPA.nota;
-  s.insertAdjacentHTML('beforeend', `<div class="nota" style="left:${n.x}px;top:${n.y}px">${n.texto}</div>
-    <svg class="nota-linha" style="left:${n.lx}px;top:${n.ly}px" width="${n.lw}" height="${n.lh}"><path d="${n.path}"/></svg>`);
-  const sb = el('div', 'sel', SEL); sb.style.cssText = CAPA.selecao + ';--sel:var(--ivory);--sel-fill:var(--violeta)'; s.appendChild(sb);
+    <div class="escurece"></div>
+    <div class="meta"><span>ems design · revista de branding</span><span>edição pet · nov 2026</span></div>
+    <div class="masthead">direções</div>`);
+  cheia(s, { ...CAPA.foto, src: CAPA.recorte, ext: 'png', classe: 'recorte' }, W, H);
+  s.insertAdjacentHTML('beforeend', `
+    <div class="sub">criativas<br>pra marcas<br><em>pet</em></div>
+    <div class="selo-redondo"><span>nenhuma<br>é patinha<br>+ osso</span></div>
+    <div class="chamadas"><div class="rot">nesta edição</div>${DIRECOES.map((d, i) =>
+      `<div class="item"><span class="n">${num(i + 1)}</span><span class="tx"><b>${d.titulo.replace(/<\/?em>/g, '')}</b><small>${d.pra}</small></span></div>`).join('')}</div>
+    <div class="arrasta">↳ arrasta pra folhear</div>
+    <div class="barras"><div class="b"></div><span>@itsemsdesign</span></div>`);
   s.appendChild(el('div', 'grain claro'));
   return s;
 }
 
-// ---------- chamada (v2) ----------
+// ---------- chamada: enquete ----------
+// O gato da chamada levanta a pata e "aperta" uma opção da enquete (recorte por cima do cartão).
 function chamada() {
   const s = el('section', 'slide chamada'); s.dataset.nome = 'lamina-07';
-  cheia(s, CHAMADA.cheia, 1080, 1350);
-  marcaDagua(s, 1296);
+  cheia(s, CHAMADA.foto, W, H);
   s.insertAdjacentHTML('beforeend', `
-    <div class="pergunta"><span class="sel-inline">${SEL}e aí, qual das 5 tem a cara da sua marca?</span></div>
-    <div class="lead" style="top:262px">quer uma marca pet que</div>
-    <div class="grande" style="top:338px">dá pra<br><em>reconhecer</em></div>
-    <div class="lead" style="top:640px">até sem o nome?</div>
-    <div class="dm" style="left:80px;top:760px">me chama na dm${CURSOR}</div>
-    <img class="selo" src="img/selo-ems.png" alt="selo ems" style="left:80px;top:960px;width:150px">
-    <div class="assina" style="left:254px;top:1058px">@itsemsdesign<br><span style="opacity:.75">emsdesign.com.br</span></div>`);
+    <div class="grande">qual delas tem<br>a cara da sua<br><em>marca</em>?</div>
+    <div class="enquete">
+      <div class="topo"><span>enquete</span><b>vota nos comentários</b></div>
+      ${DIRECOES.map((d, i) => `<div class="op${i === CHAMADA.marcada ? ' marcada' : ''}"><span class="n">${num(i + 1)}</span><span class="nm">${d.titulo.replace(/<\/?em>/g, '')}</span>
+        <span class="pts">${d.paleta.slice(0, 3).map(([, hex]) => `<i style="background:${hex}"></i>`).join('')}</span></div>`).join('')}
+    </div>`);
+  cheia(s, { ...CHAMADA.foto, src: CHAMADA.recorte, ext: 'png', classe: 'recorte' }, W, H);
+  s.insertAdjacentHTML('beforeend', `
+    <div class="comenta">comenta o número ↓</div>
+    <div class="dm">ou me chama na dm${CURSOR}</div>
+    <img class="selo" src="img/selo-ems.png" alt="selo ems">
+    <div class="assina">@itsemsdesign<br><span>emsdesign.com.br</span></div>`);
   s.appendChild(el('div', 'grain claro'));
   return s;
 }

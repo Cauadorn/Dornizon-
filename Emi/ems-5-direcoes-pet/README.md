@@ -11,11 +11,10 @@ Carrossel 1080 × 1350 (7 lâminas) para o @itsemsdesign, no formato `PostCurado
 1. **v1:** fotos recortadas pousadas em cor chapada. Reprovada: "parece copia e cola".
 2. **v2:** fotos inteiras na grade 3 × 3 da referência. "Amei, mas as imagens se repetem e queria menos cópia da ref."
 3. **v3:** um layout diferente por direção, capa marfim com índice e chamada com paletas. Reprovada: a Emi quer uma estrutura só nas 5 lâminas, e "a capa anterior mil x melhor".
-4. **v4 (atual):**
-   - Capa e chamada da v2.
-   - As 5 direções numa estrutura própria da EMS, igual em todas e diferente da referência.
-   - 3 cenas diferentes por direção.
-   - Nenhuma foto repetida.
+4. **v4:** as 5 direções numa estrutura própria da EMS, igual em todas (aprovada). Capa e chamada da v2. Reprovadas, ambas por diagramação:
+   - **Capa**: o fundo e o gato ficam, mas a seleção do Figma ficou fora do rosto e o "diretoria criativa" era "cópia na cara".
+   - **Chamada**: "muito xoxo, sem graça".
+5. **v5 (atual):** a capa vira capa de revista e a chamada vira enquete. Diagramação pensada para este post, com referências de capa de revista e adesivo de enquete. A regra: "os posts precisam ser diferentes, senão eu postava a mesma coisa todo dia".
 
 ## Estrutura das lâminas de direção (igual nas 5)
 
@@ -38,13 +37,13 @@ Respiro `ivory` de 18px, raio 22, sangria de 30px em quem encosta na borda. Coor
 
 | # | Lâmina | Cor do cartão | Fotos (destaque · quadrada · alta) | Marca fictícia · fonte |
 |---|---|---|---|---|
-| 1 | Capa: gato preto, "5 direções criativas pra marcas *pet*", adesivo "fora da casinha" | `violeta` | capa-2 | — |
+| 1 | Capa de revista: nome "direções" atrás da cabeça do gato (recorte da mesma foto por cima), "criativas pra marcas *pet*", chamadas das 5 direções, selo "nenhuma é patinha + osso", código de barras com o @ | fundo violeta da foto | capa-2 (+ recorte) | — |
 | 2 | 01 pop de *gibi* | `violeta` | vira-lata pulando · corgi e petisco · osso, bola e pote | AU! petiscaria · Bagel Fat One |
 | 3 | 02 clube de *grife* | `plum` | whippet de suéter · bolsa de couro · tricô com plaquinha MC | Maison Caramelo · Bodoni Moda |
 | 4 | 03 retrô *setentinha* | `wine` | lhasa no tapete · pote e margarida · poodle no secador | pelo solto · Shrikhand |
 | 5 | 04 modo *atleta* | `creative-purple` | border collie e frisbee · peitoral na pista · corredor e vizsla | AU running club · Graduate |
 | 6 | 05 ciência *fofa* | `ameixa` | gato tigrado · frascos e ração · filhote no veterinário | miau.lab · Space Mono |
-| 7 | Chamada: "quer uma marca pet que dá pra *reconhecer* até sem o nome?" + me chama na dm + selo | `plum` | cham-1 | — |
+| 7 | Chamada em enquete: "qual delas tem a cara da sua *marca*?", cartão de enquete com as 5 opções, o gato apertando uma com a pata (recorte por cima do cartão), "comenta o número", dm, selo | fundo ameixa da foto | cham-2 (+ recorte) | — |
 
 Legenda pronta em `legenda.md`.
 
@@ -55,7 +54,7 @@ Legenda pronta em `legenda.md`.
 - `entrega/lamina-01..07.png` e `entrega/visao-geral.jpg`: arte final.
 - `projeto/carrossel.html` + `estilo.css` + `direcoes.js`: a peça em código. `direcoes.js` concentra o conteúdo de cada direção: fotos, marca, paleta e letra.
 - `projeto/render.mjs`: `node render.mjs` exporta para `entrega/`; `node render.mjs --previa` exporta para `previa/` (fora do git).
-- `projeto/img/`: só as 17 fotos usadas e o selo original.
+- `projeto/img/`: só as fotos usadas, os dois recortes de gato (`*-gato.png`, mesmo tamanho da foto, para a camada da frente) e o selo original.
 - `projeto/figma/`: `exporta.mjs` (HTML → cena de camadas), `montador.js` (monta no Figma com `use_figma`), `sobe.sh` (envia as imagens para os nós). `figma/saida/` é gerada e fica fora do git.
 - `projeto/fonts/`: Poppins e Instrument Serif (EMS) + as cinco fontes das direções (Google Fonts, licença OFL).
 
