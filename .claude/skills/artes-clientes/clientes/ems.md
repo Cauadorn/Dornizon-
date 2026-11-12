@@ -119,7 +119,15 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - **Toda etiqueta em branco que aparece na lâmina vira rótulo da marca** (a Emi: "tem um rótulo embaixo do logo que tá sem nada").
   - **Conferir se os objetos da cena fazem sentido entre si.** A foto antiga tinha frasco com tampa de rosca e um conta-gotas solto ao lado. A Emi: "tem que substituir a rosca por uma de conta-gotas".
     - O gerador do Figma não edita foto, só cria a partir de texto. Então a cena foi gerada de novo, já com conta-gotas e com a etiqueta em branco.
-    - A arte foi aplicada com `marcas/aplica_etiqueta.py`: a borda de cima e a de baixo da etiqueta são medidas na foto e ajustadas como arco de elipse com inclinação. Antes de pintar, olhar onde o bicho encosta: uma máscara do gato por luminância pegava a borda escura do pote e deixava uma faixa branca.
+    - A arte foi aplicada com `marcas/aplica_etiqueta.py`: a borda de cima e a de baixo da etiqueta são medidas na foto e ajustadas como arco de elipse com inclinação.
+    - Mesmo refeita (com supersampling, sem filete branco e com rótulo mais simples), a Emi achou "horrível" e pediu "um de comprimido, uma caixa".
+    - Ficou a caixa (`marcas/miaulab/mockup/caixa/monta_caixa.py`), montada assim:
+      - a caixa branca é gerada a 3/4;
+      - os cantos são medidos com zoom de 5x;
+      - a frente e a lateral recebem a arte por homografia, com a arte reduzida antes e a luz em linear;
+      - a aba de cima é pintada;
+      - a cartela de comprimidos, recortada com BiRefNet, volta por cima.
+    - **Lição:** etiqueta pequena em vidro curvo fica com cara de colada. Caixa e faces planas aceitam a arte muito melhor. Em frasco, só com arte grande e simples. Antes de pintar, olhar onde o bicho encosta: uma máscara do gato por luminância pegava a borda escura do pote e deixava uma faixa branca.
   - **Exportar logo com letras giradas:** fotografar o palco inteiro e aparar pelo alfa (`marcas/toto/exporta-logo.mjs`). Recortar pela caixa do elemento corta o que passa dela. Para aplicar num pacote, recortar o pacote com BiRefNet (`marcas/aplica_pacote.py`); a máscara por cor falha na parte em sombra. Composição em `projeto/marcas/aplica.py`, que deforma a arte em perspectiva e herda a luz da foto; a lateral usa a luz da frente.
 - **Logo do petisco: o que a Emi aprovou como caminho.** Foi a referência NOSY (`referencias/logo-petisco/12-nosy.jpg`): letra desenhada, gordinha e orgânica, com um detalhe só (a pata no lugar do "O"), em creme chapado sobre uma foto de textura com marcas de pata. Ela liberou mudar o nome, e a marca virou **TOTÓ**. A pata entra no **primeiro "O"**, na altura exata das maiúsculas, e o "Ó" final mantém o acento. A pata no fim lia "TOT" e quebrava a simetria ("não sei se parece totó").
 - **Logo de letra desenhada precisa de assimetria**: as letras dançam, cada uma numa altura e num ângulo (como no NOSY, Puff Paw, Sandy Paws). Uma versão toda reta, alinhada e com o mesmo espaço ficou "muito estranha". Atenção: no recado "n tem aimetria" ela quis dizer *assimetria*; eu li "simetria" e endureci o logo.

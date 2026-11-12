@@ -157,8 +157,8 @@ const DIRECOES = [
     // O destaque é a aplicação aprovada: os potes pintados com o rótulo enrolado (marcas/miaulab/mockup/pinta_potes.py).
     heroi: { bg: '#BDEBD6', cheia: { src: 'miau-potes', px: .5, py: .5 } },
     marca: { bg: '#2F55F2', cheia: { src: 'miau-marca', px: .5, py: .5 }, cursor: [326, 338] },
-    // frascos de gotas com tampa de conta-gotas (a Emi: o vidro tinha tampa de rosca e o conta-gotas estava solto) e rótulos MIAU.LAB
-    quadrado: { bg: '#F5F7F6', cheia: { src: 'miau-gotas', px: .5, py: .5 } },
+    // caixa de comprimidos MIAU.LAB (marcas/miaulab/mockup/caixa). Substituiu os frascos de gotas, que a Emi achou feios.
+    quadrado: { bg: '#F2C4C4', cheia: { src: 'miau-caixa', px: .5, py: .5 } },
     alto: { bg: '#BDEBD6', cheia: { src: 'd5extra', px: .45, py: .5 } },
     paleta: [['azul laboratório', '#2F55F2', '#FFFBDE'], ['rosa cápsula', '#FF9FD2', '#141418'], ['jaleco', '#F5F7F6', '#141418'], ['nanquim', '#141418', '#FFFBDE']],
     tipo: { bg: '#141418', aa: "900 extra-condensed 132px 'Archivo'", aaCor: '#FF9FD2', amostra: '.lab nº07', amostraCss: "700 22px 'Space Mono'", cor: '#FFFBDE', nome: 'archivo + space mono' },

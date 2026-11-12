@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- MIAU.LAB · caixa de comprimidos (a Emi trocou os frascos de gotas por "um de comprimido, uma caixa").
+     Mesma família dos potes: fundo numa cor, molécula grande na outra (ONCE/wllab), etiqueta preta com o produto e o logo (logo.js).
+     Caixa de duas cores, como a ONCE: frente azul, lateral e topo rosa.
+     ?face=frente (800 x 1400) | ?face=lado (467 x 1400). Proporção da caixa: 8 x 12 x 4 cm. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-400.woff2); font-weight: 400; }
+html, body { margin: 0; }
+.f { position: relative; overflow: hidden; }
+.etq { position: absolute; background: #141418; color: #fff; font: 700 96px/1 Archivo; font-stretch: 88%; padding: 16px 26px 22px; letter-spacing: -.01em; }
+.etq.pq { background: #FF9FD2; color: #2F55F2; font: 700 30px/1 Mono; padding: 12px 16px; letter-spacing: .04em; }
+.info { position: absolute; font: 400 30px/1.4 Mono; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+svg { position: absolute; left: 0; top: 0; }
+</style><script src="logo.js"></script></head><body>
+<div class="f" id="frente" style="width:800px;height:1400px;background:#2F55F2;display:none">
+  <svg width="800" height="1400" viewBox="0 0 800 1400">
+    <defs><filter id="goo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="24" result="b"/>
+      <feColorMatrix in="b" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 36 -16" result="a"/>
+      <feFlood flood-color="#FF9FD2"/><feComposite in2="a" operator="in"/>
+    </filter></defs>
+    <!-- a molécula dos potes, grande, vazando pela direita (como a forma grande da ONCE) -->
+    <g filter="url(#goo)" transform="translate(520 640) scale(.8) translate(-770 -365)">
+      <g stroke="#000" stroke-width="64" stroke-linecap="round">
+        <line x1="770" y1="360" x2="560" y2="200"/><line x1="770" y1="360" x2="1010" y2="190"/>
+        <line x1="770" y1="360" x2="1080" y2="520"/><line x1="770" y1="360" x2="600" y2="560"/>
+      </g>
+      <circle cx="770" cy="365" r="168"/><circle cx="555" cy="195" r="78"/><circle cx="1015" cy="185" r="92"/>
+      <circle cx="1090" cy="525" r="104"/><circle cx="595" cy="575" r="66"/><circle cx="1185" cy="330" r="34"/><circle cx="430" cy="380" r="26"/>
+    </g>
+  </svg>
+  <div class="etq pq" style="left:56px;top:96px">FÓRMULA Nº09</div>
+  <div class="etq" style="left:56px;top:150px">mobilidade</div>
+  <div class="info" style="left:58px;top:290px;color:#FF9FD2">comprimidos<br>mastigáveis p/ gatos</div>
+  <div class="logo" id="lf"></div>
+</div>
+<div class="f" id="lado" style="width:467px;height:1400px;background:#FF9FD2;display:none">
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font:900 300px/1 Archivo;font-stretch:62%;color:#2F55F2">MIAU.LAB</div>
+  <div class="etq" style="left:40px;top:60px;font-size:54px;padding:10px 16px 14px">nº09</div>
+  <div class="info" style="left:40px;bottom:60px;color:#2F55F2;font-size:24px">mobilidade<br>60 comp.</div>
+</div>
+<script>
+const face = new URLSearchParams(location.search).get('face') || 'frente';
+document.getElementById(face).style.display = 'block';
+if (face === 'frente') { const lg = document.getElementById('lf'), k = 690 / 899; lg.style.left = '55px'; lg.style.top = (1400 - 60 - 700 * k) + 'px'; lg.style.transform = `scale(${k})`;
+  miauLogo(lg, { cor: '#FF9FD2', fundo: '#2F55F2', id: 'f' }); }
+</script></body></html>
