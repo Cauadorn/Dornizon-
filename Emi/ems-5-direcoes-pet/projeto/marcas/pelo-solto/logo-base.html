@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- pelo solto · base do logo (a arte final passa por monta_logo.py, que recorta tudo "com tesoura").
+     Referências que a Emi escolheu (referencias/pelo-solto): 20 The Barking Barber (principal: letra de papel recortado, cada
+     letra dançando, bicho geométrico ao lado, uma tinta com grão), 3 Moon Gazer (duas cores nas duas palavras, sombra escura,
+     brilhos) e 2 Haley Sue (paleta anos 70, arco e flor no sistema).
+     Cada camada sai numa cor pura para o script separar: PELO = vermelho, SOLTO = verde, poodle = azul, brilhos = magenta, BANHO & TOSA = ciano.
+     ?fonte=Ranchers|ChelaOne|BowlbyOne -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Ranchers; src: url(../../fonts/Ranchers.woff2); }
+@font-face { font-family: ChelaOne; src: url(../../fonts/ChelaOne.woff2); }
+@font-face { font-family: BowlbyOne; src: url(../../fonts/BowlbyOne.woff2); }
+html, body { margin: 0; background: #fff; }
+.palco { position: relative; width: 1200px; height: 760px; overflow: hidden; }
+.poodle { position: absolute; left: 96px; top: 168px; width: 440px; height: 440px; background: #0000FF;
+  -webkit-mask: url(poodle-recorte.png) center / contain no-repeat; mask: url(poodle-recorte.png) center / contain no-repeat; }
+.linha { position: absolute; display: flex; align-items: flex-end; font-family: var(--fonte); line-height: .8; }
+.linha span { display: inline-block; }
+.p { left: 520px; top: 170px; color: #FF0000; font-size: 230px; }
+.s { left: 500px; top: 385px; color: #00FF00; font-size: 205px; }
+.sub { position: absolute; left: 512px; top: 578px; font: 400 33px/1 Ranchers; letter-spacing: .32em; color: #00FFFF; }
+.b { position: absolute; background: #FF00FF; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+</style></head><body><div class="palco"><div style="position:absolute;inset:0;transform:translateX(-12px)">
+  <div class="poodle"></div>
+  <div class="linha p"><span style="transform:rotate(-6deg) translateY(6px)">P</span><span style="transform:rotate(4deg) translateY(-10px) scale(.92)">E</span><span style="transform:rotate(-3deg) translateY(4px) scale(1.06)">L</span><span style="transform:rotate(7deg) translateY(-6px)">O</span></div>
+  <div class="linha s"><span style="transform:rotate(5deg) translateY(-4px)">S</span><span style="transform:rotate(-5deg) translateY(8px) scale(1.08)">O</span><span style="transform:rotate(3deg) translateY(-8px) scale(.9)">L</span><span style="transform:rotate(-7deg) translateY(2px)">T</span><span style="transform:rotate(6deg) translateY(-4px) scale(1.04)">O</span></div>
+  <div class="sub">BANHO &amp; TOSA</div>
+  <div class="b" style="left:458px;top:150px;width:50px;height:50px"></div>
+  <div class="b" style="left:494px;top:212px;width:26px;height:26px"></div>
+  <div class="b" style="left:1034px;top:168px;width:34px;height:34px"></div>
+</div></div>
+<script>
+const f = new URLSearchParams(location.search).get('fonte') || 'Ranchers';
+document.documentElement.style.setProperty('--fonte', f);
+const gap = { Ranchers: 2, ChelaOne: 4, BowlbyOne: -6 }[f] || 0;
+document.querySelectorAll('.linha span + span').forEach(e => e.style.marginLeft = gap + 'px');
+</script></body></html>
