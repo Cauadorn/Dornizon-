@@ -89,17 +89,11 @@ body{background:#140a19;width:max-content}
 #l1 .poster span{display:block;white-space:nowrap}
 #l1 .poster .p1{color:var(--ivory)}
 #l1 .poster .p2{color:var(--manteiga)}
-#l1 .ajustes{left:640px;top:850px;width:540px;transform:rotate(-10deg);z-index:3;filter:drop-shadow(0 26px 40px rgba(20,8,25,.45))}
+#l1 .ajustes{left:610px;top:700px;width:600px;transform:rotate(-10deg);z-index:3;filter:drop-shadow(0 26px 40px rgba(20,8,25,.45))}
 #l1 .frase{left:84px;top:1010px;font-size:60px;line-height:.98;color:var(--ivory);z-index:4}
 #l1 .frase em{color:var(--ivory)}
 #l1 .handle{left:96px;bottom:60px}
 #l1 .estrela{left:0;top:0;width:1080px;height:1350px;z-index:1;pointer-events:none}
-/* moldura de seleção do Figma (SelectionBox) em volta do "ZINHO”", com a etiqueta de medida */
-#l1 .selz{border:2px solid var(--ivory);z-index:5;pointer-events:none}
-#l1 .selz i{position:absolute;width:14px;height:14px;background:var(--violeta);border:2px solid var(--ivory)}
-#l1 .selz i:nth-of-type(1){left:-8px;top:-8px}#l1 .selz i:nth-of-type(2){right:-8px;top:-8px}
-#l1 .selz i:nth-of-type(3){left:-8px;bottom:-8px}#l1 .selz i:nth-of-type(4){right:-8px;bottom:-8px}
-#l1 .selz .medida{position:absolute;left:50%;bottom:-54px;transform:translateX(-50%);background:var(--pink);color:var(--ivory);font:600 22px/1 var(--sans);padding:8px 14px;border-radius:6px;white-space:nowrap}
 
 /* ---------- 02 loop: o desenho é o próprio loop ---------- */
 #l2 .lead{left:0;right:0;top:132px;text-align:center;font-size:34px;color:var(--wine)}
@@ -202,11 +196,9 @@ body{background:#140a19;width:max-content}
   <div class="agua" style="color:var(--ivory)"><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span><span>@ITS<b>EMS</b>DESIGN</span></div>
   <p class="lead">“é só um</p>
   <svg class="estrela" data-estrela="cx:860,cy:1000,R:440,cor:#c0a5c4,rot:10"></svg>
-  <div class="selz" id="selz"><i></i><i></i><i></i><i></i><span class="medida">+1px</span></div>
   <h1 class="poster impresso" id="poster"><span class="p1">ajuste</span><span class="p2">zinho”</span></h1>
   <!-- na frente da palavra e atravessando o corte 1|2 -->
   <img class="ajustes" src="recortes/ajustes-3d.png" alt="">
-  <div class="emi" id="emi-capa" style="left:1012px;top:1150px"><svg width="38" height="38" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#dd34a8" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg><span style="left:-64px;top:40px">emi</span></div>
   <p class="serif frase impresso">e foi assim que a gente<br>chegou na <em>versão 27.</em></p>
   <span class="handle">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
   <div class="tela"></div><div class="grao"></div>
@@ -341,14 +333,6 @@ function estrela(svg){
 }
 document.querySelectorAll('[data-estrela]').forEach(estrela);
 
-function posicionaSel() {
-  const sp = document.querySelector('#poster .p2'), lam = document.getElementById('l1').getBoundingClientRect();
-  const r = document.createRange(); r.selectNodeContents(sp); const b = r.getBoundingClientRect();
-  const el = document.getElementById('selz'), pad = 14;
-  // altura da caixa = a altura real das letras (cap-height da Anton ~ .72em)
-  const fs = parseFloat(getComputedStyle(sp).fontSize), cap = fs * .80, top = b.top - lam.top + (b.height - cap) / 2 - fs * .025;
-  Object.assign(el.style, { left: (b.left - lam.left - pad) + 'px', top: (top - pad) + 'px', width: (b.width + pad) + 'px', height: (cap + 2 * pad) + 'px' });
-}
 function ajustaPoster() {
   const box = document.getElementById('poster'), W = box.clientWidth;
   box.querySelectorAll('span').forEach(sp => {
@@ -356,7 +340,7 @@ function ajustaPoster() {
     const w = sp.getBoundingClientRect().width; sp.style.fontSize = (100 * W / w).toFixed(1) + 'px'; sp.style.display = 'block';
   });
 }
-Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { ajustaPoster(); posicionaEtapas(); posicionaSel(); window.READY = true; });
+Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { ajustaPoster(); posicionaEtapas(); window.READY = true; });
 </script>
 </body>
 </html>
