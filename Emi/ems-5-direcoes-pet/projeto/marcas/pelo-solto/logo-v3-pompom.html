@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- pelo solto · logo v3. Histórico:
+     - v1, papel recortado, reprovada: "quero mais refinado e arredondado, bem vintage; o banho e tosa desalinhado";
+     - v2, A: serifa macia com o poodle ao lado (logo-v2-poodle.html): "a A tá melhor, mas ainda tá com cara de IA".
+       O que dava cara de IA: o poodle de clip-art gerado, os brilhos genéricos e tudo em bloco centralizado.
+     Na v3 sai o clip-art e a marca vira lettering de verdade, como o Haley Sue (2):
+       - "Pelo" e "Solto" escalonados e encaixados (Solto entra por baixo, deslocado para a direita);
+       - o "o" de "Pelo" vira um pompom de poodle tosado (borda fofinha em ondas, miolo redondo): o cachorro está na letra;
+       - flores de seis pétalas do Haley Sue no lugar dos brilhos;
+       - contorno e sombra café do Moon Gazer (3), mantidos porque ela gostou;
+       - BANHO & TOSA pequeno embaixo de "Solto", com a largura exata dele (a regra que resolveu o desalinhamento da v1).
+     ?fundo=&pelo=&solto=&tinta=&sub= · ?w=&h=&escala=&dx=&dy= -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Fraunces; src: url(../../fonts/Fraunces.woff2); font-weight: 100 900; }
+@font-face { font-family: Rubik; src: url(../../fonts/Rubik-var-latin.woff2); font-weight: 300 900; }
+html, body { margin: 0; }
+.palco { position: relative; width: 1200px; height: 760px; overflow: hidden; background: var(--fundo); }
+svg { position: absolute; left: 0; top: 0; }
+.n { font-family: Fraunces; font-weight: 900; font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144; }
+.sub { font-family: Rubik; font-weight: 600; }
+</style></head><body>
+<div class="palco"><svg id="s" width="1200" height="760" viewBox="0 0 1200 760">
+  <g id="logo">
+    <g id="sombras"></g>
+    <g id="frente"></g>
+    <text class="n" id="medida" font-size="230" fill="none" visibility="hidden">o</text>
+  </g>
+</svg></div>
+<script>
+const q = new URLSearchParams(location.search), $ = (i) => document.getElementById(i), NS = 'http://www.w3.org/2000/svg';
+const C = { fundo: q.get('fundo') || '#F3E2C3', pelo: q.get('pelo') || '#C8472B', solto: q.get('solto') || '#E39B2D', tinta: q.get('tinta') || '#3A2410', sub: q.get('sub') || q.get('tinta') || '#3A2410', flor: q.get('flor') || '#E39B2D', flor2: q.get('flor2') || q.get('pelo') || '#C8472B' };
+document.querySelector('.palco').style.setProperty('--fundo', C.fundo);
+const FS = 230, SW = 9, SH = 18, DX = 7, DY = 9;
+const el = (tag, at, pai) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (pai || $('frente')).appendChild(e); return e; };
+// pompom: círculo com a borda em ondas (pelo tosado), miolo redondo
+function pompom(cx, cy, R, ondas) {
+  let d = '';
+  for (let i = 0; i <= ondas; i++) {
+    const a0 = (i / ondas) * 2 * Math.PI, a1 = ((i + .5) / ondas) * 2 * Math.PI, a2 = ((i + 1) / ondas) * 2 * Math.PI;
+    const p = (a, r) => `${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
+    if (i === 0) d += `M${p(a0, R * .9)} `;
+    if (i < ondas) d += `Q${p(a1, R * 1.1)} ${p(a2, R * .9)} `;
+  }
+  return d + 'Z';
+}
+document.fonts.ready.then(() => {
+  const X0 = 300, Y0 = 330, DESL = 150, ENTRE = 172;
+  // "Pel" + pompom no lugar do "o"
+  const tPel = (cls) => el('text', { class: 'n', x: X0, y: Y0, 'font-size': FS, 'letter-spacing': -4 }, cls);
+  const tSol = (cls) => el('text', { class: 'n', x: X0 + DESL, y: Y0 + ENTRE, 'font-size': FS, 'letter-spacing': -4 }, cls);
+  const pf = tPel(); pf.textContent = 'Pel';
+  const bPel = pf.getBBox(); $('medida').remove();
+  // o "o" da Fraunces 900 tem ~0,53 do corpo de altura: o pompom fica um pouco maior (fofo)
+  const R = FS * .29, cx = bPel.x + bPel.width + R * .92, cy = Y0 - FS * .255;
+  const dPom = pompom(cx, cy, R, 13), rMiolo = R * .36;
+  const sf = tSol(); sf.textContent = 'Solto';
+  const bSol = sf.getBBox();
+  pf.remove(); sf.remove();
+  // sombras (contorno grosso deslocado), depois a frente
+  const sombra = $('sombras'); sombra.setAttribute('transform', `translate(${DX} ${DY})`);
+  for (const pai of [sombra, $('frente')]) {
+    const eh = pai === sombra, est = eh ? { fill: C.tinta, stroke: C.tinta, 'stroke-width': SH } : { stroke: C.tinta, 'stroke-width': SW, 'paint-order': 'stroke' };
+    const sol = el('text', { class: 'n', x: X0 + DESL, y: Y0 + ENTRE, 'font-size': FS, 'letter-spacing': -4, 'stroke-linejoin': 'round', ...est, ...(eh ? {} : { fill: C.solto }) }, pai); sol.textContent = 'Solto';
+    const pel = el('text', { class: 'n', x: X0, y: Y0, 'font-size': FS, 'letter-spacing': -4, 'stroke-linejoin': 'round', ...est, ...(eh ? {} : { fill: C.pelo }) }, pai); pel.textContent = 'Pel';
+    el('path', { d: dPom + ` M${cx + rMiolo} ${cy} A${rMiolo} ${rMiolo} 0 1 0 ${cx - rMiolo} ${cy} A${rMiolo} ${rMiolo} 0 1 0 ${cx + rMiolo} ${cy}Z`, 'fill-rule': 'evenodd', 'stroke-linejoin': 'round', ...est, ...(eh ? {} : { fill: C.pelo }) }, pai);
+  }
+  // BANHO & TOSA: embaixo de "Solto", com exatamente a largura dele (8 px para dentro de cada lado)
+  el('text', { class: 'sub', x: bSol.x + 8, y: Y0 + ENTRE + 58, 'font-size': 28, fill: C.sub, textLength: Math.round(bSol.width - 16), lengthAdjust: 'spacing' }).textContent = 'BANHO & TOSA';
+  // flores de seis pétalas (Haley Sue)
+  const flor = (x, y, r, cor) => { const g = el('g', { transform: `translate(${x} ${y})` });
+    for (let i = 0; i < 6; i++) el('ellipse', { cx: 0, cy: -r * .55, rx: r * .3, ry: r * .5, fill: cor, transform: `rotate(${i * 60})` }, g);
+    el('circle', { cx: 0, cy: 0, r: r * .22, fill: C.fundo }, g); };
+  flor(cx + R * 1.55, cy - R * 1.25, 30, C.flor);
+  flor(bPel.x + 62, Y0 + ENTRE - 34, 24, C.flor2);   // embaixo do "P", no vão à esquerda de "Solto" (equilibra o escalonado)
+  // centraliza pela caixa real
+  const L = $('logo'), bb = L.getBBox(), W = +(q.get('w') || 1200), H = +(q.get('h') || 760), k = +(q.get('escala') || 1);
+  const pc = document.querySelector('.palco'); pc.style.width = W + 'px'; pc.style.height = H + 'px';
+  $('s').setAttribute('width', W); $('s').setAttribute('height', H); $('s').setAttribute('viewBox', `0 0 ${W} ${H}`);
+  L.setAttribute('transform', `translate(${W / 2 + (+(q.get('dx') || 0))} ${H / 2 + (+(q.get('dy') || 0))}) scale(${k}) translate(${-(bb.x + bb.width / 2)} ${-(bb.y + bb.height / 2)})`);
+});
+</script></body></html>
