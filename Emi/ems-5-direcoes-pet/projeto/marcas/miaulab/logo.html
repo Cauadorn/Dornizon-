@@ -1,11 +1,11 @@
 <!doctype html>
-<!-- Logo MIAU.LAB (o desenho está em logo.js). Uso: logo.html | ?fundo=#FF9FD2&cor=#2F55F2 | ?fundo=#F5F7F6&cor=#141418&olho=#FF9FD2 | ?w=&h=&escala= -->
+<!-- Logo MIAU.LAB (o desenho está em logo.js). Uso: logo.html ?w=452&h=430&escala=.33&dx=-15&dy=-6 (quadro da lâmina, img/miau-marca.jpg) | | ?fundo=#FF9FD2&cor=#2F55F2 | ?fundo=#F5F7F6&cor=#141418&olho=#FF9FD2 | ?w=&h=&escala= -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
 @font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
 html, body { margin: 0; }
 .palco { position: relative; width: 1080px; height: 1080px; overflow: hidden; background: var(--fundo); }
-.logo { position: absolute; left: 50%; top: 50%; width: 899px; height: 700px; transform: translate(-50%, -50%) scale(var(--escala, .9)); }
+.logo { position: absolute; left: 50%; top: 50%; width: 899px; height: 700px; transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) scale(var(--escala, .9)); }
 </style><script src="logo.js"></script></head><body>
 <div class="palco"><div class="logo"></div></div>
 <script>
@@ -13,5 +13,6 @@ const q = new URLSearchParams(location.search), s = document.documentElement.sty
 s.setProperty('--fundo', q.get('fundo') || '#2F55F2');
 miauLogo(document.querySelector('.logo'), { fundo: q.get('fundo') || '#2F55F2', contorno: q.get('contorno') || undefined, cor: q.get('cor') || '#FF9FD2', gato: q.get('gato') || '#141418', olho: q.get('olho') || q.get('cor') || '#FF9FD2' });
 if (q.get('escala')) s.setProperty('--escala', q.get('escala'));
+if (q.get('dx')) s.setProperty('--dx', q.get('dx') + 'px'); if (q.get('dy')) s.setProperty('--dy', q.get('dy') + 'px');
 if (q.get('w')) { const pc = document.querySelector('.palco'); pc.style.width = q.get('w') + 'px'; pc.style.height = q.get('h') + 'px'; }
 </script></body></html>

@@ -99,18 +99,6 @@ const MARCA = {
       <div style="position:absolute;left:0;right:0;bottom:0;height:34px;background:#C7F23E"></div>
       <div style="position:absolute;left:0;right:0;bottom:11px;text-align:center;font:400 13px/1 'Graduate';letter-spacing:.24em;padding-left:.24em">5K · CORRE COM ELE</div>
       ${ALFINETE(10, 54, -30)}${ALFINETE(236, 52, 28)}${ALFINETE(10, 170, 20)}${ALFINETE(236, 172, -24)}</div>`),
-  ciencia: centro(262, 318, `
-    <div style="position:absolute;left:6px;top:4px;width:250px;height:306px;background:#fff;border:2px solid #23262B;border-radius:12px;overflow:hidden;
-         transform:rotate(-4deg);box-shadow:6px 8px 0 rgba(35,38,43,.35);color:#23262B">
-      <div style="position:absolute;left:0;right:0;top:0;height:56px;background:#BDEBD6;border-bottom:2px solid #23262B"></div>
-      <div style="position:absolute;left:16px;top:15px;font:700 25px/1 'Space Mono'">MIAU.LAB</div>
-      <div style="position:absolute;right:14px;top:14px;width:26px;height:26px;border-radius:50%;border:2px solid #23262B;background:#fff"></div>
-      <div style="position:absolute;left:16px;top:72px;font:400 13px/1 'Space Mono';opacity:.75">fórmula</div>
-      <div style="position:absolute;left:14px;top:88px;font:700 52px/1 'Space Mono'">nº07</div>
-      <div style="position:absolute;left:16px;right:16px;top:152px;height:2px;background:#23262B"></div>
-      <div style="position:absolute;left:16px;top:164px;font:400 12.5px/1.5 'Space Mono'">suplemento p/ gatos<br>60 cápsulas · lote 26.11</div>
-      <div style="position:absolute;left:16px;right:16px;top:218px;height:46px;background:repeating-linear-gradient(90deg,#23262B 0 2px,transparent 2px 5px,#23262B 5px 9px,transparent 9px 11px,#23262B 11px 12px,transparent 12px 16px)"></div>
-      <div style="position:absolute;left:0;right:0;top:270px;text-align:center;font:400 11px/1 'Space Mono';letter-spacing:.2em;padding-left:.2em">7 891234 260711</div></div>`),
 };
 
 const DIRECOES = [
@@ -163,13 +151,16 @@ const DIRECOES = [
   // ---------------- 05 · ciência fofa ----------------
   {
     titulo: 'ciência <em>fofa</em>', pra: 'nutrição e saúde', card: 'var(--ameixa)',
-    texto: 'branco, azul clínico e menta, rótulo de laboratório e letra mono. pra nutrição e saúde pet: confiança sem cara de hospital.',
-    heroi: { bg: '#BDEBD6', cheia: { src: 'd5pet-1', px: .5, py: .6 } },
-    marca: { bg: '#2F6BFF', html: MARCA.ciencia, cursor: [326, 338] },
+    texto: 'azul de laboratório, rosa cápsula, etiqueta preta e nome gigante. pra nutrição e saúde pet: ciência sem cara de hospital.',
+    // MIAU.LAB (aprovada em 12/11): a pesquisa está em referencias/miaulab e o logo em marcas/miaulab/logo.js.
+    // Nome condensado, gato preto espiando de dentro do U, com unhas e arranhões, e ".lab" embaixo.
+    // O destaque é a aplicação aprovada: os potes pintados com o rótulo enrolado (marcas/miaulab/mockup/pinta_potes.py).
+    heroi: { bg: '#BDEBD6', cheia: { src: 'miau-potes', px: .5, py: .5 } },
+    marca: { bg: '#2F55F2', cheia: { src: 'miau-marca', px: .5, py: .5 }, cursor: [326, 338] },
     quadrado: { bg: '#F5F7F6', cheia: { src: 'd5prod-2', px: .5, py: .72 } },
     alto: { bg: '#BDEBD6', cheia: { src: 'd5extra', px: .45, py: .5 } },
-    paleta: [['azul clínico', '#2F6BFF', '#FFFBDE'], ['menta', '#BDEBD6', '#23262B'], ['branco jaleco', '#F5F7F6', '#23262B'], ['grafite', '#23262B', '#FFFBDE']],
-    tipo: { bg: '#23262B', aa: "700 96px 'Space Mono'", aaCor: '#BDEBD6', amostra: 'fórmula_07', amostraCss: "400 22px 'Space Mono'", cor: '#FFFBDE', nome: 'space mono' },
+    paleta: [['azul laboratório', '#2F55F2', '#FFFBDE'], ['rosa cápsula', '#FF9FD2', '#141418'], ['jaleco', '#F5F7F6', '#141418'], ['nanquim', '#141418', '#FFFBDE']],
+    tipo: { bg: '#141418', aa: "900 extra-condensed 132px 'Archivo'", aaCor: '#FF9FD2', amostra: '.lab nº07', amostraCss: "700 22px 'Space Mono'", cor: '#FFFBDE', nome: 'archivo + space mono' },
   },
 ];
 
