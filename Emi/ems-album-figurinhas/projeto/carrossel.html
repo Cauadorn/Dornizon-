@@ -215,6 +215,30 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
       <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:460px;mix-blend-mode:multiply;opacity:.3"></div>`, 'grao-forte');
 })();
 
+/* ================= 5 · textura — ref 3 da Nicole Holz, lâmina 5 (título forte, pinceladas tom sobre tom saindo da borda,
+   objeto por cima do fim do título, texto em coluna à direita e bloco miúdo de texto-textura à esquerda) ================= */
+const PINC = 'filter:brightness(.4) saturate(1.35) contrast(1.1)';
+(() => {
+  const p = A.paginas[3], [s1, s2] = p.sites;
+  /* carimbo gasto: furinhos de ruído na palavra "lisa" (a única palavra com textura é justamente a "lisa") */
+  document.documentElement.style.setProperty('--mk-gasto', `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='m' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.5' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -14 0 0 0 8.9'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>")`);
+  const miudo = Array(14).fill(p.miudo).join(' ');
+  const par = (s) => `<p style="margin:0 0 30px"><b style="font-weight:600;color:var(--manteiga)">${s.nome}</b> ${s.pra}</p>`;
+  lamina(4, `
+    <img class="abs" src="texturas/pincelada-1.png" style="left:500px;top:-150px;width:780px;transform:scaleX(-1) rotate(10deg);${PINC}">
+    <img class="abs" src="texturas/pincelada-2.png" style="left:860px;top:640px;width:330px;transform:rotate(8deg);${PINC};opacity:.9">
+    <img class="abs" src="${estrelaReticula(340, css('ivory'))}" style="left:-120px;top:110px;width:340px;opacity:.16;transform:rotate(-14deg)">
+    ${[150, 470, 790].map((x) => `<div class="abs" style="left:${x}px;top:78px;width:200px;text-align:center;font-family:var(--sans);font-weight:500;font-size:21px;color:rgba(255,251,222,.82)">@itsemsdesign</div>`).join('')}
+    <div class="abs" id="tit5" style="left:146px;top:236px;font-family:var(--sans);font-weight:600;font-size:124px;line-height:.9;letter-spacing:-.05em;color:var(--ivory);white-space:nowrap">pra marca<br>não ficar<br><i id="lisa" style="display:inline-block;font-family:var(--serif);font-weight:400;font-size:236px;line-height:.78;letter-spacing:-.03em;margin-top:6px;-webkit-mask-image:var(--mk-gasto);-webkit-mask-size:260px;mask-image:var(--mk-gasto);mask-size:260px">lisa.</i></div>
+    <div class="abs" style="left:150px;top:700px;width:340px;height:300px;overflow:hidden;font-family:var(--sans);font-weight:500;font-size:11.5px;line-height:1.32;letter-spacing:.05em;text-transform:uppercase;text-align:justify;color:rgba(255,251,222,.34)" data-sem-cola>${miudo}</div>
+    <div class="abs" style="left:540px;top:690px;width:420px;font-family:var(--sans);font-size:33px;line-height:1.24;color:var(--ivory)">${par(s1)}${par(s2)}</div>
+    <div class="abs" style="left:150px;top:1060px;width:780px;text-align:center;font-family:var(--sans);font-size:35px;line-height:1.22;color:var(--ivory)">${p.fecho}</div>
+    <img class="objeto" id="pincel" src="recortes/pincel.png" style="left:560px;top:250px;width:420px">
+  `, `<div class="abs" style="inset:0;background:var(--violeta-2)"></div>
+      <img class="abs" src="texturas/linho-violeta.png" style="left:-40px;top:-50px;width:1160px;height:1450px;object-fit:cover;filter:grayscale(1) contrast(1.5);mix-blend-mode:soft-light;opacity:.7">
+      <div class="abs" style="inset:0;background:radial-gradient(120% 90% at 20% 30%, rgba(255,251,222,.10), transparent 60%), radial-gradient(90% 80% at 90% 100%, rgba(42,20,51,.28), transparent 70%)"></div>`, 'grao-forte');
+})();
+
 /* lupa de acrílico em cima de "algoritmo", ampliando a palavra (posição medida depois das fontes) */
 
 /* ================= o que atravessa os cortes (metade de cada lado) ================= */
@@ -227,6 +251,7 @@ const FOLHA = `<div class="abs" style="inset:0;background:var(--ivory-2)"></div>
     pt.insertAdjacentHTML('beforeend', `<div class="abs" style="left:0;top:0;width:${3 * W}px;height:${H}px;overflow:hidden">${g('color:#5a2470;opacity:.45')}</div>
       <div class="abs" style="left:${3 * W}px;top:0;width:${W}px;height:${H}px;overflow:hidden"><div class="abs" style="left:${-3 * W}px;top:0">${g('color:transparent;-webkit-text-stroke:3px rgba(91,33,108,.22)')}</div></div>`);
   }
+  if (N >= 5) pt.insertAdjacentHTML('beforeend', `<img class="abs" src="texturas/pincelada-3.png" style="left:${4 * W - 250}px;top:780px;width:520px;transform:rotate(-58deg);${PINC}">`);
   if (N >= 4) pt.insertAdjacentHTML('beforeend', `<img class="abs" src="${estrelaReticula(700, css('pink'))}" style="left:${3 * W - 350}px;top:930px;width:700px;opacity:.3;transform:rotate(-16deg)">`);
 })();
 

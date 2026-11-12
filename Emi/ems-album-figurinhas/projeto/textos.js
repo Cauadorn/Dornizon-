@@ -24,11 +24,13 @@ window.ALBUM = {
         { nome: 'realtimecolors.com', pra: 'testa a paleta num site de verdade antes de mostrar pro cliente.' },
         { nome: 'whocanuse.com', pra: 'mostra como o contraste aparece pra quem tem daltonismo.' },
       ] },
-    { etapa: 'pág. 04 · textura', titulo: 'pra marca não<br>ficar <i>lisa</i>', objeto: 'spray',
+    { etapa: 'pág. 04 · textura', titulo: 'pra marca<br>não ficar<br><i>lisa.</i>', objeto: 'pincel',
       sites: [
-        { nome: 'fffuel.co', pra: 'gerador de grão, ruído e textura em svg, liberado pra uso comercial.' },
-        { nome: 'haikei.app', pra: 'fundos em svg: ondas, blobs e camadas, sem cadastro.' },
-      ] },
+        { nome: 'fffuel.co', pra: 'gera grão, ruído e textura em svg, liberado até pra uso comercial.' },
+        { nome: 'haikei.app', pra: 'faz fundo em svg (onda, blob, camada) e exporta sem cadastro.' },
+      ],
+      fecho: 'textura é o detalhe que faz a arte parecer <b>feita à mão</b>, e não <b>saída de template.</b>',
+      miudo: 'grão ruído papel linho retícula pincelada onda blob camada relevo fibra carimbo xerox riso spray giz' },
     { etapa: 'pág. 05 · entrega', titulo: 'a hora de<br><i>mostrar</i>', objeto: 'presente',
       sites: [
         { nome: 'shots.so', pra: 'põe o print do post ou do site num mockup bonito.' },
