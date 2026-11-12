@@ -64,3 +64,20 @@ Daqui saiu a variação B da capa: "5 direções criativas pra marcas" pequeno n
 ## Referência da própria EMS que **não** se usa neste tipo de post
 
 - Carrossel "cpf x cnpj" (no Design System, grupo Referencias): colagem em selo, anotações à mão com linha curva. A Emi: "não quero de jeito nenhum igual ao estilo cpf cnpj". Cada post tem a sua diagramação.
+
+## `mockups-da-emi/`: aplicações de marca que a Emi salvou
+
+Ela mandou estas cinco referências para as aplicações realistas das marcas fictícias:
+- `pattu-outdoor-rua.jpg`: outdoor em parede de tijolo, com uma pessoa passando com o cachorro.
+- `digs-bordado-manga.jpg`: logo bordado na manga do uniforme, com o pelo do cachorro no canto.
+- `vet-union-jaleco-gato.jpg`: jaleco com o logo, a pessoa segurando o gato e o rosto cortado.
+- `pawly-pacote-estudio.jpg`: pacote num set de estúdio colorido, com pedestal e brinquedos.
+- `grandorf-corrida-angulo-baixo.jpg`: grande-angular de baixo, a pessoa correndo com o cachorro e o pacote na mão.
+
+O que elas têm em comum:
+- a marca vive numa cena de verdade;
+- o bicho é o protagonista;
+- o rosto da pessoa não importa (cortado ou de lado);
+- o material aparece (bordado, papel de outdoor, tecido, embalagem brilhante).
+
+**Nunca** "produto em cima da mesa" sem graça, nem a pessoa posando para a câmera. Na corrida, foco no cachorro e só a camiseta da pessoa.

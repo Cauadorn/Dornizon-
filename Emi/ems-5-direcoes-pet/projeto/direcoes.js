@@ -172,7 +172,7 @@ const DIRECOES = [
 ];
 
 // Capa: capa de revista com o gato preto de modelo (fundo violeta com estrelas em retícula, aprovado).
-const CAPA = { foto: { src: 'capa-2', px: .5, py: .5 }, recorte: 'capa-2-gato', cedilha: [452, 330, 80, 96] };
+const CAPA = { foto: { src: 'capa-2', px: .5, py: .5 }, recorte: 'capa-2-gato' };
 
 // Chamada: enquete; o gato (fundo ameixa) levanta a pata até a opção marcada.
 const CHAMADA = {

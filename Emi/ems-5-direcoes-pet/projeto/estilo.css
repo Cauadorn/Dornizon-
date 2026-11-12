@@ -119,7 +119,6 @@ img.foto { position: absolute; display: block; }
 /* ---------- capa: capa de revista ---------- */
 .capa { background: var(--violeta); }
 .capa img.recorte { z-index: 6; }
-.capa .cedilha { position: absolute; z-index: 7; overflow: hidden; }
 .capa .escurece { position: absolute; inset: 0; z-index: 2;
   background: linear-gradient(90deg, rgba(42, 20, 51, .55) 0, rgba(42, 20, 51, .25) 30%, transparent 48%),
               linear-gradient(0deg, rgba(42, 20, 51, .45) 0, transparent 22%); }

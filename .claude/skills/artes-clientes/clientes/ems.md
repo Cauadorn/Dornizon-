@@ -65,6 +65,11 @@ Só passou a MIAU.LAB, que é um rótulo aplicado. A regra:
 
 Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marcas/`.
 
+**Logo e aplicação gerados com IA, não desenhados em código** (Emi, 12/11: "não quero vetorizado assim, pode gerar em algum lugar, se vira").
+- Logo de marca fictícia: gerar com modelo de imagem que escreve bem (pelo Figma, `gpt-image-2.5-flare` ou `-sunburst`; o Gemini também acerta) e mostrar 3 ou 4 caminhos diferentes para ela escolher. Conferir a grafia.
+- Aplicação (mockup): seguir as referências dela em `Emi/ems-5-direcoes-pet/referencias/mockups-da-emi/`. A marca fica numa cena real, o bicho é o protagonista, o rosto da pessoa é cortado e o material aparece (bordado, outdoor, jaleco, embalagem em set).
+- **Mandar para aprovação antes de colocar no post.**
+
 ## Frases da Emi (para lembrar o gosto)
 
 - "legal a ideia mas a execução não, os recortes não se encaixam, parece literalmente copia e cola"

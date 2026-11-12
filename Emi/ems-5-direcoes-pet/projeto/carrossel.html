@@ -147,9 +147,6 @@ function capa() {
     <div class="meta"><span>ems design · revista de branding</span><span>edição pet · nov 2026</span></div>
     <div class="masthead">direções</div>`);
   cheia(s, { ...CAPA.foto, src: CAPA.recorte, ext: 'png', classe: 'recorte' }, W, H);
-  // o cedilha do "ç" cai atrás da cabeça do gato: repete só esse pedaço do nome por cima do recorte
-  s.insertAdjacentHTML('beforeend', `<div class="cedilha" style="left:${CAPA.cedilha[0]}px;top:${CAPA.cedilha[1]}px;width:${CAPA.cedilha[2]}px;height:${CAPA.cedilha[3]}px">
-    <div class="masthead" style="left:${84 - CAPA.cedilha[0]}px;top:${84 - CAPA.cedilha[1]}px">direções</div></div>`);
   s.insertAdjacentHTML('beforeend', `
     <div class="sub">criativas<br>pra marcas <em>pet</em></div>
     <div class="selo-redondo"><span>nenhuma<br>é patinha<br>+ osso</span></div>
