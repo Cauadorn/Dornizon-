@@ -13,10 +13,10 @@
   .d .materia { background: radial-gradient(circle, rgba(242, 207, 122, .45) 2.4px, transparent 3px) 0 0 / 17px 17px; -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 262px, #000 272px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 262px, #000 272px, transparent 420px); }
   /* a estrela em retícula fica só em volta do astro, nunca por cima dele */
   .d svg.ht { -webkit-mask: radial-gradient(circle at 540px 960px, transparent 0 268px, #000 278px); mask: radial-gradient(circle at 540px 960px, transparent 0 268px, #000 278px); }
-  .saturno svg.ht { -webkit-mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); }
-  .d i.astro { position: absolute; background: center / cover no-repeat; z-index: -1; }
+  .nada svg.ht { -webkit-mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); mask: radial-gradient(circle at 540px 960px, transparent 0 306px, #000 316px); }
+  .d img.obj { position: absolute; filter: drop-shadow(0 14px 18px rgba(42, 20, 51, .45)); }
   .d .selo { left: 365px; top: 721px; width: 350px; }
-  .saturno .materia { -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); }
+  .nada .materia { -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 300px, #000 312px, transparent 420px); }
   .selo-d .materia { -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0 250px, #000 262px, transparent 420px); mask: radial-gradient(circle at 50% 50%, transparent 0 250px, #000 262px, transparent 420px); }
 </style>
 </head>
@@ -38,35 +38,35 @@
   <i class="ic brilho g" style="left:268px;top:1120px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
-<!-- done here: a Terra ("aqui") -->
+<!-- done here: o pacotinho de figurinhas (os trabalhos prontos) -->
 <section class="story d" data-nome="done-here">
   <svg class="ht" data-star="540,960,470,violeta2,.5,26"></svg>
-  <i class="astro" data-a="terra" data-c="540,960,590"></i>
+  <img class="obj" src="objetos/pacotinho-manteiga.png" style="width:330px;left:375px;top:722px;transform:rotate(-6deg)" alt="">
   <i class="ic brilho g" style="left:250px;top:730px;width:70px;height:70px;color:var(--ivory)"></i>
   <i class="ic brilho g" style="left:770px;top:1130px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
-<!-- backstage: Saturno, o que gira em volta -->
-<section class="story d saturno" data-nome="backstage">
+<!-- backstage: a lupa (o processo visto de perto) -->
+<section class="story d" data-nome="backstage">
   <svg class="ht" data-star="540,960,470,violeta2,.5,8"></svg>
-  <i class="astro" data-a="saturno" data-c="540,960,660"></i>
-  <i class="ic brilho g" style="left:740px;top:690px;width:70px;height:70px;color:var(--ivory)"></i>
-  <i class="ic brilho g" style="left:290px;top:1170px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
+  <img class="obj" src="objetos/lupa-3d-manteiga.png" style="width:440px;left:320px;top:740px;transform:rotate(0deg)" alt="">
+  <i class="ic brilho g" style="left:760px;top:700px;width:70px;height:70px;color:var(--ivory)"></i>
+  <i class="ic brilho g" style="left:280px;top:1150px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
-<!-- feedbacks: o Sol, uma estrela de verdade -->
+<!-- feedbacks: o presente (carinho de cliente) -->
 <section class="story d" data-nome="feedbacks">
   <svg class="ht" data-star="540,960,470,violeta2,.5,-28"></svg>
-  <i class="astro" data-a="sol" data-c="540,960,640"></i>
-  <i class="ic brilho g" style="left:776px;top:1110px;width:70px;height:70px;color:var(--ivory)"></i>
+  <img class="obj" src="objetos/presente-manteiga.png" style="width:420px;left:330px;top:732px;transform:rotate(0deg)" alt="">
+  <i class="ic brilho g" style="left:770px;top:1110px;width:70px;height:70px;color:var(--ivory)"></i>
   <i class="ic brilho g" style="left:262px;top:760px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
-<!-- made by me: Júpiter -->
+<!-- made by me: o pincel -->
 <section class="story d" data-nome="made-by-me">
   <svg class="ht" data-star="540,960,470,violeta2,.5,44"></svg>
-  <i class="astro" data-a="jupiter" data-c="540,960,590"></i>
-  <i class="ic brilho g" style="left:246px;top:1110px;width:70px;height:70px;color:var(--ivory)"></i>
+  <img class="obj" src="objetos/pincel-manteiga.png" style="width:450px;left:315px;top:739px;transform:rotate(0deg)" alt="">
+  <i class="ic brilho g" style="left:250px;top:1110px;width:70px;height:70px;color:var(--ivory)"></i>
   <i class="ic brilho g" style="left:780px;top:750px;width:40px;height:40px;color:var(--lavanda);opacity:.9"></i>
   <i class="circ"></i>
 </section>
@@ -74,11 +74,6 @@
 <div id="acab-papel"></div><div id="acab-grao"></div>
 <script>
 const COR = { ivory: '#fffbde', violeta2: '#7b4df2', lavanda: '#c0a5c4', pink: '#dd34a8', manteiga: '#f2cf7a' };
-document.querySelectorAll('i.astro').forEach((el) => {
-  const [cx, cy, lado] = el.dataset.c.split(',').map(Number);
-  el.style.backgroundImage = `url(astro/${el.dataset.a}.jpg)`;
-  Object.assign(el.style, { left: cx - lado / 2 + 'px', top: cy - lado / 2 + 'px', width: lado + 'px', height: lado + 'px' });
-});
 // Lua real (foto NASA tratada em luas.py). data-c = centro x, centro y, raio do disco, em px do story.
 // O disco ocupa 93,8% da foto. Espelhada: no hemisfério sul a lua crescente acende pela esquerda.
 document.querySelectorAll('i.lua').forEach((el) => {
