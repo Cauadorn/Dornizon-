@@ -95,6 +95,27 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
 - **MIAU.LAB é marca de suplemento para gatos, não clínica.** A aplicação é o produto (potes), não o jaleco. A Emi perguntou "a MIAU.LAB é sobre o quê?" quando eu fui pelo jaleco do Vet Union. Antes de escolher a aplicação, conferir o que a marca vende.
   - Referências dela: Pawfy, com o bicho passando ao lado dos potes empilhados em fundo pastel, e DOG by Dr Lisa, com frascos e vidraria de laboratório. Ficou o Pawfy com gato tigrado cinza em fundo menta, rótulo nº07 em azul clínico e nº12 branco com faixa menta.
   - Rótulo em pote cilíndrico: `marcas/aplica_cilindro.py`, que enrola a arte (meia volta, de borda a borda) com theta = asin(x/r), herda sombra e brilho, e deixa o conteúdo no miolo.
+  - **A primeira identidade (rótulo azul e branco em Space Mono) foi reprovada** ("não ficou bonito") **e o mockup saiu "torto"**: a borda do rótulo era reta e a boca do pote é curva.
+    - Pesquisa: `referencias/miaulab/quadro.jpg`, 20 refs. Ela escolheu o 2 (PELZ), desistiu vendo de perto e foi para **um misto do 13 ONCE, 15 wllab e 16 CURAME**:
+      - o pote inteiro numa cor;
+      - uma molécula de bolhas na segunda cor;
+      - etiquetas pretas;
+      - o nome gigante e condensado.
+    - Da molécula, ficou a primeira versão.
+  - **Logo com animal** ("falta ter animal por causa do nome") e o ".lab" embaixo. Pesquisa: `referencias/miaulab/gato-espiando/`. O que ela pediu em cada rodada:
+    - gato preto espiando por trás das letras: gostou da ideia, mas "não tá bem executado";
+    - "muito grande, vetorizado, no negativo fica tudo preto": o gato encolheu para metade e foi para dentro do U, com uma pata em cada haste; ganhou um respiro na cor do fundo na versão preta; perdeu o branco do olho, o brilho e o nariz;
+    - "não entendi os olhos": a pupila de cápsula virou olho de gato (íris rosa, pupila em fenda);
+    - "patas de gato mesmo, refina": cada pata virou um traço só, com três dedos e risquinhos;
+    - "as unhas e um rastrinho delicado": unhas brancas e arranhões finos recortados na letra.
+
+    Ela aprovou ("perfeitoooo"). O código está em `marcas/miaulab/logo.js`.
+  - **Pote pintado inteiro** (`marcas/miaulab/mockup/pinta_potes.py`):
+    - a silhueta é medida linha a linha na borda limpa da foto e espelhada no eixo;
+    - a tampa e o corpo são pintados em linear com a luz da foto;
+    - o rótulo é enrolado pelo cilindro descontando a curva da elipse, b(h) = K·(h − H0), com a curva crescendo de cima para baixo.
+
+    Ela achou que "ficou lindo". Antes de pintar, olhar onde o bicho encosta: uma máscara do gato por luminância pegava a borda escura do pote e deixava uma faixa branca.
   - **Exportar logo com letras giradas:** fotografar o palco inteiro e aparar pelo alfa (`marcas/toto/exporta-logo.mjs`). Recortar pela caixa do elemento corta o que passa dela. Para aplicar num pacote, recortar o pacote com BiRefNet (`marcas/aplica_pacote.py`); a máscara por cor falha na parte em sombra. Composição em `projeto/marcas/aplica.py`, que deforma a arte em perspectiva e herda a luz da foto; a lateral usa a luz da frente.
 - **Logo do petisco: o que a Emi aprovou como caminho.** Foi a referência NOSY (`referencias/logo-petisco/12-nosy.jpg`): letra desenhada, gordinha e orgânica, com um detalhe só (a pata no lugar do "O"), em creme chapado sobre uma foto de textura com marcas de pata. Ela liberou mudar o nome, e a marca virou **TOTÓ**. A pata entra no **primeiro "O"**, na altura exata das maiúsculas, e o "Ó" final mantém o acento. A pata no fim lia "TOT" e quebrava a simetria ("não sei se parece totó").
 - **Logo de letra desenhada precisa de assimetria**: as letras dançam, cada uma numa altura e num ângulo (como no NOSY, Puff Paw, Sandy Paws). Uma versão toda reta, alinhada e com o mesmo espaço ficou "muito estranha". Atenção: no recado "n tem aimetria" ela quis dizer *assimetria*; eu li "simetria" e endureci o logo.
