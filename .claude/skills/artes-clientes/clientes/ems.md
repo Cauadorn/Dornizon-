@@ -124,6 +124,11 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - **Não mandar a foto de referência de outra marca para o Canva editar.** Com a Grandorf junto, ele copiou a foto quase igual, com o pacote de ração GRANDORF na mão. Para editar uma versão aprovada, mandar só ela e o logo.
   - Para baixar em alta, coloca a mídia num design (`read-design` com `open_transaction`, depois `edit-design` com `insert_fill`/`update_fill`, depois `commit`) e roda `export-design` em PNG. O design-contêiner é o DAHarvHevXI, 1728 x 2304.
   - O resultado vem como mídia do Canva (`MAHart5B9Rw`, por exemplo). Pela API só sai a miniatura de 149 px; o arquivo grande só abre pelo link `canva.com/M/<id>` ou exportando um design que contenha a imagem.
+- **Mais qualidade em foto gerada (a Emi: "só preciso de mais qualidade"):**
+  - O Canva gera em ~1088 px e o Freepik estava sem crédito. Use o upscaler local `.claude/skills/artes-clientes/ferramentas/upscale.py`, com o modelo 4xNomosWebPhoto (ESRGAN em ONNX, baixado de huggingface.co/nesaorg/4xNomosWebPhoto_esrgan_fp32_opset17).
+  - Ele roda na CPU, em blocos: 1088 px viram 2400 px em ~4 min.
+  - O tecido e o fio do bordado ficam nítidos, sem inventar coisa.
+- **Bordado:** fazer bordado em código (pontos, relevo, sombra) não convence: "nem parece bordado". Mande a foto com o logo aplicado e a referência de bordado para o Canva refazer só o bordado e, depois, passe pelo upscaler.
 - **Toda etiqueta em branco que aparece na lâmina vira rótulo da marca** (a Emi: "tem um rótulo embaixo do logo que tá sem nada").
   - **Conferir se os objetos da cena fazem sentido entre si.** A foto antiga tinha frasco com tampa de rosca e um conta-gotas solto ao lado. A Emi: "tem que substituir a rosca por uma de conta-gotas".
     - O gerador do Figma não edita foto, só cria a partir de texto. Então a cena foi gerada de novo, já com conta-gotas e com a etiqueta em branco.
