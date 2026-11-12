@@ -42,6 +42,23 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
 - Nada foi copiado da referência nem de outro post.
 - Nenhuma foto se repete.
 
+## Marca fictícia (logo dentro de post) sem cara de IA
+
+A Emi reprovou, por "cara de IA", estas marcas da primeira versão:
+- o balão "AU!";
+- o monograma no círculo;
+- o sol listrado;
+- o brasão universitário.
+
+Só passou a MIAU.LAB, que é um rótulo aplicado. A regra:
+1. Pesquisar no Pinterest marcas **reais** do universo (embalagem de snack pop, marca pet de luxo, logo anos 70, run club) antes de desenhar.
+2. **Desenhar a letra**, sem só digitar uma fonte. Exemplos: letras que pulam (cada uma girada e numa altura), contorno e volume, sombras empilhadas em cores, caixa-alta bem espaçada com um detalhe.
+3. **Aplicar num objeto**: adesivo recortado, etiqueta de couro, número de peito, rótulo, embalagem. Nunca logo boiando no meio do quadro.
+4. Detalhe que só marca de verdade tem: ™, "desde 1974", "nº 001", código de barras, costura, alfinete.
+5. Texto centralizado na forma (não na caixa); espaçamento entre letras compensado com recuo igual à esquerda.
+
+Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marcas/`.
+
 ## Frases da Emi (para lembrar o gosto)
 
 - "legal a ideia mas a execução não, os recortes não se encaixam, parece literalmente copia e cola"
@@ -54,6 +71,7 @@ O carrossel pet levou 6 rodadas até ser aprovado. A Emi pediu para salvar tudo 
 - "qual sentido de dar spoiler no que tá vindo?" · "muuuuito espaçamento entre o título" · "texto empilhado de um lado só"
 - "falta uma textura" · "gostava mais quando a orelha do gato encostava na pílula" · "não tem problema encostar, passar um pouquinho, fica estilizado"
 - "sempre pesquisar na internet, no Pinterest, dar uma olhada no Instagram, no que os designers andam postando, pra gente errar menos"
+- "com exceção do último, TODOS tão com cara de IA, pegue referências e refaça" (marcas fictícias; o último era o rótulo MIAU.LAB)
 
 ## Referências que a Emi gostou (para calibrar o gosto)
 

@@ -25,48 +25,76 @@ const centro = (w, h, html) => `<div class="centro" style="width:${w}px;height:$
 // - texto centralizado no corpo da forma, não na caixa (o balão tem cauda: o centro dele não é o centro da caixa);
 // - texto com espaçamento entre letras ganha o mesmo valor de recuo à esquerda (o espaçamento sobra depois da última letra);
 // - forma e texto feitos em camadas simples (SVG para a forma, texto de verdade por cima) para virar camada editável no Figma.
-const BALAO = 'M221.4 232.7 L300 312 L271.4 212.7 A150 108 0 1 0 221.4 232.7 Z';   // elipse centro (175,130), cauda p/ baixo-direita
+// Explosão de gibi (estrela de pontas irregulares), gerada uma vez
+const EXPLOSAO = (() => { const n = 18, cx = 190, cy = 150, pts = [];
+  for (let i = 0; i < n * 2; i++) { const a = (i / (n * 2)) * Math.PI * 2 - Math.PI / 2;
+    const r = i % 2 ? 112 + (i % 4 === 1 ? 6 : -4) : 156 + ((i * 37) % 3) * 9;
+    pts.push(`${(cx + Math.cos(a) * r * 1.12).toFixed(1)},${(cy + Math.sin(a) * r * .86).toFixed(1)}`); }
+  return pts.join(' '); })();
+// Faixa com pontas recortadas
+const FAIXA = 'M14 8 L286 0 L274 30 L290 60 L10 66 L24 36 Z';
+// Alfinete de fralda (número de peito)
+const ALFINETE = (x, y, r) => `<svg viewBox="0 0 34 12" width="34" height="12" style="position:absolute;left:${x}px;top:${y}px;transform:rotate(${r}deg)">
+  <path d="M5 6 H30" stroke="#9AA3AD" stroke-width="2.4" stroke-linecap="round"/><path d="M8 3.2 H28" stroke="#C9D0D6" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="5" cy="6" r="4.2" fill="#C9D0D6" stroke="#7B848D" stroke-width="1.2"/></svg>`;
+const BRILHO4 = (x, y, w, cor) => `<svg viewBox="0 0 40 40" width="${w}" height="${w}" style="position:absolute;left:${x}px;top:${y}px"><path d="M20 0 C21.5 13 27 18.5 40 20 C27 21.5 21.5 27 20 40 C18.5 27 13 21.5 0 20 C13 18.5 18.5 13 20 0 Z" fill="${cor}"/></svg>`;
+
 const MARCA = {
-  gibi: centro(360, 330, `
-    <svg viewBox="0 0 360 330" width="360" height="330" style="position:absolute;inset:0">
-      <path d="${BALAO}" transform="translate(9 9)" fill="#1B1B1B"/>
-      <path d="${BALAO}" fill="#fff" stroke="#1B1B1B" stroke-width="8" stroke-linejoin="round"/></svg>
-    <div style="position:absolute;left:25px;top:22px;width:300px;height:216px;display:grid;place-items:center">
-      <div style="font:400 118px/1 'Bagel Fat One';color:#1B1B1B;transform:rotate(-6deg);padding-top:10px">AU!</div></div>
-    <div style="position:absolute;left:0;width:320px;top:226px;text-align:center">
-      <span style="display:inline-block;transform:rotate(-4deg);background:#F2542D;border:5px solid #1B1B1B;border-radius:999px;padding:8px 26px 12px;
-        font:400 38px/1 'Bagel Fat One';color:#fff;box-shadow:6px 6px 0 #1B1B1B">petiscaria</span></div>`),
-  grife: `
-    <div class="pilha" style="color:#D8BC7E">
-      <div style="position:relative;width:92px;height:92px;border:1.5px solid #D8BC7E;border-radius:50%;display:grid;place-items:center">
-        <div style="position:absolute;left:5px;top:5px;width:79px;height:79px;border:1px solid rgba(216,188,126,.55);border-radius:50%"></div>
-        <div style="font:italic 500 34px/1 'Bodoni Moda';padding-top:2px">MC</div></div>
-      <div style="font:500 54px/1 'Bodoni Moda';margin-top:28px">Maison</div>
-      <div style="font:italic 500 70px/1 'Bodoni Moda';margin-top:2px">Caramelo</div>
-      <div style="display:flex;align-items:center;gap:10px;margin:22px 0 14px">
-        <span style="display:block;width:62px;height:1px;background:#D8BC7E;opacity:.75"></span>
-        <span style="display:block;width:7px;height:7px;background:#D8BC7E;transform:rotate(45deg)"></span>
-        <span style="display:block;width:62px;height:1px;background:#D8BC7E;opacity:.75"></span></div>
-      <div style="font:500 14px/1 'Bodoni Moda';letter-spacing:.34em;padding-left:.34em">PET COUTURE</div></div>`,
-  setentinha: centro(360, 340, `
-    <div style="position:absolute;left:40px;top:6px;width:280px;height:280px;border-radius:50%;overflow:hidden;background:#E9B03B">
-      <div style="position:absolute;left:0;right:0;top:146px;height:16px;background:#E2701E"></div>
-      <div style="position:absolute;left:0;right:0;top:172px;height:22px;background:#E2701E"></div>
-      <div style="position:absolute;left:0;right:0;top:204px;height:28px;background:#6B3A1F"></div>
-      <div style="position:absolute;left:0;right:0;top:242px;height:38px;background:#7D7A3A"></div></div>
-    <div style="position:absolute;left:0;right:0;top:36px;text-align:center;font:400 104px/.86 'Shrikhand';color:#6B3A1F;
-      text-shadow:5px 5px 0 #F4E3C3;transform:rotate(-6deg)">pelo<br>solto</div>
-    <div style="position:absolute;left:0;right:0;top:266px;text-align:center">
-      <span style="display:inline-block;background:#6B3A1F;color:#F4E3C3;border:3px solid #F4E3C3;border-radius:999px;padding:9px 26px 13px;
-        font:400 27px/1 'Shrikhand';box-shadow:0 0 0 3px #6B3A1F">banho & tosa</span></div>`),
-  atleta: `
-    <div class="pilha">
-      <div style="font:400 156px/1 'Graduate';color:#C7F23E;-webkit-text-stroke:8px #fff;paint-order:stroke fill;text-shadow:7px 7px 0 #142C8F">AU</div>
-      <div style="margin-top:10px;background:#C7F23E;padding:9px 16px 8px;font:400 23px/1 'Graduate';color:#1E1E24;letter-spacing:.14em;padding-left:calc(16px + .14em)">RUNNING CLUB</div>
-      <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
-        <span style="display:block;width:46px;height:2px;background:#C7F23E"></span>
-        <span style="font:400 14px/1 'Graduate';color:#fff;letter-spacing:.3em;padding-left:.3em">EST. 2026</span>
-        <span style="display:block;width:46px;height:2px;background:#C7F23E"></span></div></div>`,
+  // 01 · adesivo recortado de embalagem de snack: letras que pulam, contorno grosso, volume, explosão e faixa
+  gibi: centro(380, 350, `
+    <svg viewBox="0 0 380 350" width="380" height="350" style="position:absolute;inset:0">
+      <polygon points="${EXPLOSAO}" fill="#fff" stroke="#fff" stroke-width="26" stroke-linejoin="round"/>
+      <polygon points="${EXPLOSAO}" transform="translate(8 8)" fill="#1B1B1B"/>
+      <polygon points="${EXPLOSAO}" fill="#F2542D" stroke="#1B1B1B" stroke-width="6" stroke-linejoin="round"/></svg>
+    <div style="position:absolute;left:0;width:380px;top:46px;text-align:center;font:400 150px/1 'Bagel Fat One';color:#FFD23F;
+      -webkit-text-stroke:9px #1B1B1B;paint-order:stroke fill;text-shadow:7px 7px 0 #1B1B1B;white-space:nowrap">
+      <span style="display:inline-block;position:relative;top:8px;transform:rotate(-9deg)">A</span><span style="display:inline-block;position:relative;top:-10px;transform:rotate(6deg)">U</span><span style="display:inline-block;position:relative;top:2px;transform:rotate(13deg)">!</span></div>
+    <div style="position:absolute;left:330px;top:150px;font:400 20px/1 'Bagel Fat One';color:#1B1B1B">™</div>
+    <div style="position:absolute;left:40px;top:236px;width:300px;height:70px;transform:rotate(-4deg)">
+      <svg viewBox="0 0 300 70" width="300" height="70" style="position:absolute;inset:0">
+        <path d="${FAIXA}" transform="translate(6 6)" fill="#1B1B1B"/>
+        <path d="${FAIXA}" fill="#2B59C3" stroke="#1B1B1B" stroke-width="5" stroke-linejoin="round"/></svg>
+      <div style="position:absolute;left:0;right:0;top:13px;text-align:center;font:400 38px/1 'Bagel Fat One';color:#fff;-webkit-text-stroke:6px #1B1B1B;paint-order:stroke fill">petiscaria</div></div>
+    <div style="position:absolute;left:0;right:0;top:322px;text-align:center;font:400 17px/1 'Bagel Fat One';color:#1B1B1B">crocante desde 2026</div>`),
+  // 02 · etiqueta de couro pendurada, dourado em relevo
+  grife: centro(300, 380, `
+    <svg viewBox="0 0 300 380" width="300" height="380" style="position:absolute;inset:0">
+      <path d="M150 -40 C150 10 120 30 150 78" fill="none" stroke="#C08A4F" stroke-width="3"/></svg>
+    <div style="position:absolute;left:44px;top:58px;width:212px;height:300px;transform:rotate(-5deg)">
+      <svg viewBox="0 0 212 300" width="212" height="300" style="position:absolute;inset:0">
+        <path d="M40 0 H172 L212 40 V288 Q212 300 200 300 H12 Q0 300 0 288 V40 Z" transform="translate(6 8)" fill="rgba(42,26,18,.45)"/>
+        <path d="M40 0 H172 L212 40 V288 Q212 300 200 300 H12 Q0 300 0 288 V40 Z" fill="#4A2E21"/>
+        <path d="M44 9 H168 L203 44 V284 Q203 291 196 291 H16 Q9 291 9 284 V44 Z" fill="none" stroke="#C08A4F" stroke-width="1.4" stroke-dasharray="5 4" opacity=".8"/>
+        <circle cx="106" cy="30" r="11" fill="#F3E9D7"/><circle cx="106" cy="30" r="11" fill="none" stroke="#B8975A" stroke-width="4"/></svg>
+      <div style="position:absolute;left:0;right:0;top:78px;text-align:center;color:#D8BC7E;text-shadow:0 1px 0 rgba(0,0,0,.45)">
+        <div style="font:500 13px/1 'Bodoni Moda';letter-spacing:.42em;padding-left:.42em">MAISON</div>
+        <div style="font:italic 500 43px/1 'Bodoni Moda';margin-top:12px;letter-spacing:-.01em">Caramelo</div>
+        <div style="width:58px;height:1px;background:#B8975A;margin:16px auto 12px"></div>
+        <div style="font:500 10px/1 'Bodoni Moda';letter-spacing:.38em;padding-left:.38em">PET COUTURE</div>
+        <div style="font:italic 500 13px/1 'Bodoni Moda';margin-top:58px;opacity:.85">nº 001 · coleção inverno</div></div></div>`),
+  // 03 · letra groovy com sombras empilhadas e faixa arco-íris que dobra a curva
+  setentinha: `
+    <svg viewBox="0 0 422 400" width="422" height="400" style="position:absolute;inset:0">
+      <g fill="none" stroke-width="16" stroke-linecap="butt">
+        <path d="M-10 52 H318 A58 58 0 0 1 376 110 V410" stroke="#7D7A3A"/>
+        <path d="M-10 68 H318 A42 42 0 0 1 360 110 V410" stroke="#6B3A1F"/>
+        <path d="M-10 84 H318 A26 26 0 0 1 344 110 V410" stroke="#E2701E"/>
+        <path d="M-10 100 H318 A10 10 0 0 1 328 110 V410" stroke="#E9B03B"/></g></svg>
+    <div style="position:absolute;left:30px;top:118px;width:300px;font:400 92px/.84 'Shrikhand';color:#FFF6E5;-webkit-text-stroke:5px #6B3A1F;paint-order:stroke fill;
+      text-shadow:4px 4px 0 #6B3A1F,8px 8px 0 #E2701E,12px 12px 0 #E9B03B,16px 16px 0 #7D7A3A;transform:rotate(-5deg)">pelo<br>solto</div>
+    ${BRILHO4(250, 128, 26, '#E2701E')}${BRILHO4(36, 330, 18, '#7D7A3A')}
+    <div style="position:absolute;left:44px;top:322px;font:400 24px/1 'Shrikhand';color:#6B3A1F">banho &amp; tosa</div>
+    <div style="position:absolute;left:46px;top:354px;font:500 12px/1 var(--sans);letter-spacing:.3em;color:#6B3A1F">DESDE 1974</div>`,
+  // 04 · número de peito preso com alfinetes
+  atleta: centro(300, 272, `
+    <div style="position:absolute;left:10px;top:14px;width:280px;height:236px;transform:rotate(-4deg);background:#F7F8FA;border-radius:6px;
+      box-shadow:7px 9px 0 rgba(10,20,70,.35);overflow:hidden;color:#1E1E24">
+      <div style="position:absolute;left:0;right:0;top:0;height:46px;background:#1E1E24"></div>
+      <div style="position:absolute;left:0;right:0;top:15px;text-align:center;font:400 17px/1 'Graduate';color:#C7F23E;letter-spacing:.16em;padding-left:.16em">AU RUNNING CLUB</div>
+      <div style="position:absolute;left:0;right:0;top:56px;text-align:center;font:400 128px/1 'Graduate';color:#1F3FBF;letter-spacing:-.02em">026</div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:34px;background:#C7F23E"></div>
+      <div style="position:absolute;left:0;right:0;bottom:11px;text-align:center;font:400 13px/1 'Graduate';letter-spacing:.24em;padding-left:.24em">5K · CORRE COM ELE</div>
+      ${ALFINETE(10, 54, -30)}${ALFINETE(236, 52, 28)}${ALFINETE(10, 170, 20)}${ALFINETE(236, 172, -24)}</div>`),
   ciencia: centro(262, 318, `
     <div style="position:absolute;left:6px;top:4px;width:250px;height:306px;background:#fff;border:2px solid #23262B;border-radius:12px;overflow:hidden;
          transform:rotate(-4deg);box-shadow:6px 8px 0 rgba(35,38,43,.35);color:#23262B">
@@ -87,7 +115,7 @@ const DIRECOES = [
     titulo: 'pop de <em>gibi</em>', pra: 'petisco e brinquedo', card: 'var(--violeta)',
     texto: 'cores primárias chapadas, contorno grosso e retícula de gibi. pra petisco e brinquedo que querem ser a alegria da prateleira.',
     heroi: { bg: '#FFD23F', cheia: { src: 'd1pet-2', px: .5, py: .3 } },
-    marca: { bg: '#FFD23F', padrao: dots('#F2542D', 16, 22), html: MARCA.gibi, cursor: [326, 290] },
+    marca: { bg: '#FFD23F', padrao: dots('#F2542D', 16, 22), html: MARCA.gibi, cursor: [340, 318] },
     quadrado: { bg: '#F2542D', cheia: { src: 'd1extra', px: .04, py: .5 } },
     alto: { bg: '#2B59C3', cheia: { src: 'd1prod-1', px: .5, py: .45 } },
     paleta: [['amarelo gema', '#FFD23F', '#1B1B1B'], ['vermelho tomate', '#F2542D', '#1B1B1B'], ['azul gibi', '#2B59C3', '#FFFBDE'], ['preto nanquim', '#1B1B1B', '#FFFBDE']],
@@ -98,7 +126,7 @@ const DIRECOES = [
     titulo: 'clube de <em>grife</em>', pra: 'marca premium', card: 'var(--plum)',
     texto: 'creme, caramelo e café, serifa clássica, monograma, tricô e couro. pra marca premium que quer ser grife, não petshop.',
     heroi: { bg: '#23392E', cheia: { src: 'd2pet-2', px: .55, py: .5 } },
-    marca: { bg: '#4A2E21', html: MARCA.grife, cursor: [330, 330] },
+    marca: { bg: '#F3E9D7', html: MARCA.grife, cursor: [300, 340] },
     quadrado: { bg: '#F3E9D7', cheia: { src: 'd2prod-2', px: .62, py: .6 } },
     alto: { bg: '#23392E', cheia: { src: 'd2extra', px: .6, py: .55 } },
     paleta: [['creme', '#F3E9D7', '#4A2E21'], ['caramelo', '#C08A4F', '#2A1A12'], ['café', '#4A2E21', '#F3E9D7'], ['verde-garrafa', '#23392E', '#F3E9D7']],
@@ -120,7 +148,7 @@ const DIRECOES = [
     titulo: 'modo <em>atleta</em>', pra: 'passeio e adestramento', card: 'var(--creative-purple)',
     texto: 'azul royal, verde-limão, cara de uniforme e foto em movimento. pra passeio, coleira e adestramento que vendem energia.',
     heroi: { bg: '#8EC9F2', cheia: { src: 'd4pet-2', px: .5, py: .4 } },
-    marca: { bg: '#1F3FBF', html: MARCA.atleta, cursor: [330, 310] },
+    marca: { bg: '#1F3FBF', html: MARCA.atleta, cursor: [326, 316] },
     quadrado: { bg: '#B8502E', cheia: { src: 'd4prod-2', px: .5, py: .5 } },
     alto: { bg: '#1E1E24', cheia: { src: 'd4extra', px: .42, py: .6 } },
     paleta: [['azul royal', '#1F3FBF', '#FFFBDE'], ['verde-limão', '#C7F23E', '#1E1E24'], ['branco quadra', '#EEF1F4', '#1E1E24'], ['asfalto', '#1E1E24', '#FFFBDE']],
