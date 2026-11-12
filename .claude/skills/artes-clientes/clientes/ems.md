@@ -116,7 +116,13 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
     - o rótulo é enrolado pelo cilindro descontando a curva da elipse, b(h) = K·(h − H0), com a curva crescendo de cima para baixo.
 
     Ela achou que "ficou lindo".
-  - **Toda etiqueta em branco que aparece na lâmina vira rótulo da marca** (a Emi: "tem um rótulo embaixo do logo que tá sem nada").
+  - **Gerar imagem com a arte de verdade como referência: Canva.** O `generate-image` do Canva aceita `imageReferences`.
+  - Para subir cada imagem: `create-upload-url` e depois POST com os bytes crus (`Content-Type: application/octet-stream`).
+  - O `prompt` vai com as palavras da Emi; o pedido detalhado vai no `user_intent`.
+  - O gerador do Figma (`generate_image`) só aceita texto.
+  - O Weave do Figma pede conta vinculada (não está vinculada).
+  - O resultado vem como mídia do Canva (`MAHart5B9Rw`, por exemplo). Pela API só sai a miniatura de 149 px; o arquivo grande só abre pelo link `canva.com/M/<id>` ou exportando um design que contenha a imagem.
+- **Toda etiqueta em branco que aparece na lâmina vira rótulo da marca** (a Emi: "tem um rótulo embaixo do logo que tá sem nada").
   - **Conferir se os objetos da cena fazem sentido entre si.** A foto antiga tinha frasco com tampa de rosca e um conta-gotas solto ao lado. A Emi: "tem que substituir a rosca por uma de conta-gotas".
     - O gerador do Figma não edita foto, só cria a partir de texto. Então a cena foi gerada de novo, já com conta-gotas e com a etiqueta em branco.
     - A arte foi aplicada com `marcas/aplica_etiqueta.py`: a borda de cima e a de baixo da etiqueta são medidas na foto e ajustadas como arco de elipse com inclinação.
