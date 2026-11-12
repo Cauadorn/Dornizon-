@@ -26,7 +26,7 @@ A v2 (caderno com espiral, fita e brilhos desenhados) foi descartada: copiava el
 
 ### O que as referências ensinaram (`referencias/outras/`)
 
-Leitura das quatro refs (@carolrech ×2, @danibloom.design, @rafaelalimadesigner_) como **princípio**, não como elemento a copiar:
+Leitura das refs da @carolrech como **princípio**, não como elemento a copiar:
 
 1. **Superfície com matéria:** nenhuma tem fundo chapado. Na EMS isso é o grão e a retícula, com força suficiente para aparecer.
 2. **Um cenário que é o roteiro:** cada post escolhe uma moldura e conta a história dentro dela. Na EMS, a moldura vem do mundo da Emi (Figma, seleção, cursor "emi").
