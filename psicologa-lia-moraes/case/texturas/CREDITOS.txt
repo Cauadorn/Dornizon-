@@ -1,0 +1,4 @@
+Texturas do case (Freepik, licença gratuita):
+- papel-amassado.jpg: "empty white crumpled and creased paper poster texture background"
+- linho-canvas.jpg: "Linen canvas texture background"
+- grao.jpg: "Noisy background"

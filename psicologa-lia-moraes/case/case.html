@@ -1,68 +1,70 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
-<!-- Case "minha cliente queria um feed" · @itsemsdesign (design system EMS) · v2: 5 lâminas
-     Intuito da ref @bybelladesignn (foto grande + título na capa, peças em grade), com o vocabulário da EMS:
-     Instrument Serif + Poppins, uma palavra em itálico, StickerWord, EmojiBubble (emoji do iPhone), HalftoneStar,
-     HandleTag, selo original. Faixa de 5400 x 1350 cortada em 1080 x 1350; em todo corte algo atravessa. -->
+<!-- Case "minha cliente queria um feed que acolhe" · @itsemsdesign (design system EMS) · v4, 5 lâminas
+     Texturas como matéria de verdade (ref @escolacanvadesigner "Textura é o verdadeiro tchan"):
+     grão na capa, papel amassado, meio-tom, linho e grão na chamada. Mapas em cinza neutro (texturas/preparar.py)
+     usados em overlay: marcam a matéria sem lavar a cor. Fundos em roxo profundo (ameixa, creative-purple) + lavanda.
+     Faixa de 5400 x 1350 cortada em 1080 x 1350 (cortar.cjs); estrelas em retícula atravessam os cortes. -->
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;500;600&display=block" rel="stylesheet">
 <style>
-:root{--violeta:#6225d8;--violeta2:#7b4df2;--lavanda:#c0a5c4;--lavanda2:#e4d6e6;--ameixa:#3d1c46;--plum:#5b216c;--ivory:#fffbde;--tinta:#2a1433;--pink:#dd34a8;--manteiga:#f2cf7a}
+:root{--violeta:#6225d8;--violeta2:#7b4df2;--lavanda:#c0a5c4;--lavanda2:#e4d6e6;--ameixa:#3d1c46;--cpurple:#482952;--plum:#5b216c;--ivory:#fffbde;--tinta:#2a1433;--pink:#dd34a8;--manteiga:#f2cf7a}
 *{margin:0;box-sizing:border-box}
 body{background:#555}
 .faixa{position:relative;width:5400px;height:1350px;overflow:hidden}
 .fundo{position:absolute;top:0;width:1080px;height:1350px;overflow:hidden}
-.fundo>*{position:absolute;inset:0}
+.fundo>*{position:absolute;inset:0;width:1080px;height:1350px}
+.mat{mix-blend-mode:overlay}
 .cont{position:absolute;top:0;width:1080px;height:1350px;z-index:10}
 .abs{position:absolute}
 .lead{font:600 44px/1.05 Poppins;letter-spacing:-.02em}
 .gig{font-family:'Instrument Serif';font-weight:400;font-style:italic;letter-spacing:-.025em;line-height:.8}
 .titulo{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:baseline;gap:16px;white-space:nowrap}
 .pil{display:inline-block;font:500 28px/1.15 Poppins;letter-spacing:-.01em;padding:14px 28px 16px;border-radius:999px;box-shadow:3px 3px 0 var(--tinta);white-space:nowrap}
-.q{position:absolute;box-shadow:0 14px 30px -6px rgba(42,20,51,.28),0 2px 6px rgba(42,20,51,.12)}
+.q{position:absolute;box-shadow:0 18px 36px -8px rgba(20,8,26,.45),0 2px 6px rgba(20,8,26,.2)}
 .q img{display:block;width:100%;height:100%}
 .tag{position:absolute;font:500 22px/1 Poppins;padding:.3em .7em .3em .45em;border-radius:4px;color:var(--ivory);z-index:20}
 .tag svg{position:absolute;left:-18px;bottom:-18px}
 .balao{position:absolute;display:flex;gap:8px;background:var(--ivory);border-radius:999px;padding:12px 20px;box-shadow:4px 5px 0 rgba(42,20,51,.35);z-index:20}
 .balao img{width:50px;height:50px}
 .balao::after{content:"";position:absolute;left:30px;bottom:-14px;width:26px;height:20px;background:var(--ivory);clip-path:polygon(0 0,100% 0,10% 100%)}
-.cobertura{position:absolute;inset:0;z-index:100;pointer-events:none}
+.linha-ficha{display:flex;align-items:baseline;gap:14px;border-bottom:2px dotted rgba(42,20,51,.35);padding:6px 0 10px}
+.linha-ficha span:first-child{font:400 25px Poppins;color:rgba(42,20,51,.7);white-space:nowrap}
+.linha-ficha span:last-child{font-family:'Instrument Serif';font-style:italic;font-size:60px;line-height:1;color:var(--violeta);white-space:nowrap}
 </style></head><body>
-<svg width="0" height="0" style="position:absolute">
-  <!-- StickerWord: contorno marfim + sombra dura em tinta -->
-  <filter id="sticker" x="-10%" y="-20%" width="125%" height="150%">
-    <feMorphology in="SourceAlpha" operator="dilate" radius="9" result="d"/>
-    <feFlood flood-color="#fffbde"/><feComposite in2="d" operator="in" result="contorno"/>
-    <feOffset in="d" dx="9" dy="10" result="dd"/><feFlood flood-color="#2a1433"/><feComposite in2="dd" operator="in" result="sombra"/>
-    <feMerge><feMergeNode in="sombra"/><feMergeNode in="contorno"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-</svg>
 <div class="faixa" id="faixa">
 
-  <!-- ===== FUNDOS (v3: claros e limpos; violeta só de acento e na chamada) ===== -->
-  <div class="fundo" style="left:0"><img src="fotos/capa-v3.jpg" style="width:1080px;height:1350px"></div>
-  <div class="fundo" style="left:1080px;background:var(--ivory)"><div style="background:url(../projeto/fotos-pinterest/colagem/papel.jpg) center/cover;mix-blend-mode:multiply;opacity:.35"></div></div>
-  <div class="fundo" style="left:2160px;background:var(--lavanda2)"><div style="background:url(../projeto/fotos-pinterest/colagem/papel-1080.jpg) center/cover;mix-blend-mode:multiply;opacity:.3;filter:grayscale(1)"></div></div>
-  <div class="fundo" style="left:3240px;background:var(--ivory)"><div style="background:url(../projeto/fotos-pinterest/colagem/linho-textura.png) center/cover;mix-blend-mode:multiply;opacity:.18"></div></div>
-  <div class="fundo" style="left:4320px;background:var(--violeta)"><div style="background-image:radial-gradient(rgba(255,251,222,.07) 1.4px,transparent 1.7px);background-size:9px 9px"></div></div>
+  <!-- ===== FUNDOS ===== -->
+  <!-- 1 capa: foto + grão de filme -->
+  <div class="fundo" style="left:0"><img src="fotos/capa-v3.jpg"><img class="mat" src="texturas/m-grao.png" style="opacity:.32"></div>
+  <!-- 2 ameixa + papel amassado -->
+  <div class="fundo" style="left:1080px;background:var(--ameixa)"><img class="mat" src="texturas/m-papel-amassado.png" style="opacity:.85"></div>
+  <!-- 3 lavanda + meio-tom violeta + grão -->
+  <div class="fundo" style="left:2160px;background:var(--lavanda2)">
+    <div style="background:var(--violeta);opacity:.2;-webkit-mask:url(texturas/m-meiotom-inv.png) 0 0/1080px 1350px;mask:url(texturas/m-meiotom-inv.png) 0 0/1080px 1350px;mask-mode:luminance"></div>
+    <img class="mat" src="texturas/m-grao.png" style="opacity:.35"></div>
+  <!-- 4 roxo profundo + linho -->
+  <div class="fundo" style="left:3240px;background:var(--cpurple)"><img class="mat" src="texturas/m-linho.png" style="opacity:.8"></div>
+  <!-- 5 violeta + grão forte -->
+  <div class="fundo" style="left:4320px;background:var(--violeta)"><img class="mat" src="texturas/m-grao.png" style="opacity:.6"></div>
 
   <svg id="pontes" class="abs" width="5400" height="1350" style="left:0;top:0;z-index:5"></svg>
 
   <!-- ===== 1 · CAPA ===== -->
   <div class="cont" style="left:0;color:var(--tinta)">
-    <div class="abs lead" style="left:92px;top:146px;z-index:2">minha cliente queria um feed</div>
-    <div class="abs" style="left:86px;top:190px;display:flex;align-items:baseline;gap:26px;z-index:2;white-space:nowrap">
-      <span class="gig" style="font-size:244px;font-style:normal">que</span><span class="gig" style="font-size:244px;color:var(--pink)">acolhe</span>
+    <div id="lead1" class="abs lead" style="left:92px;top:146px;z-index:2;white-space:nowrap">minha cliente queria um feed</div>
+    <div id="grande1" class="abs" style="left:86px;top:190px;display:flex;align-items:baseline;gap:26px;z-index:2;white-space:nowrap">
+      <span class="gig" style="font-size:244px;font-style:normal">que</span><span id="acolhe" class="gig" style="font-size:244px;color:var(--pink)">acolhe</span>
     </div>
     <img class="abs" src="fotos/capa-v3-recorte.png" style="left:0;top:0;width:1080px;height:1350px;z-index:3">
-    <div class="abs" style="right:92px;top:474px;z-index:4;transform:rotate(-3deg)"><span class="pil" style="background:var(--violeta);color:var(--ivory);font-size:34px">e eu entreguei isso →</span></div>
-    <div class="balao" style="right:120px;top:566px;transform:rotate(4deg)"><img src="img/emoji/1f6cb-fe0f.png"><img src="img/emoji/1f49c.png"><img src="img/emoji/2728.png"></div>
+    <div class="balao" style="right:150px;top:1068px;transform:rotate(-4deg)"><img src="img/emoji/1f6cb-fe0f.png"><img src="img/emoji/1f49c.png"><img src="img/emoji/2728.png"></div>
+    <div class="abs" style="right:92px;top:1170px;z-index:4;transform:rotate(-2deg)"><span class="pil" style="background:var(--manteiga);color:var(--tinta);font-size:34px">e eu entreguei isso →</span></div>
     <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
   </div>
 
   <!-- ===== 2 · O CARROSSEL ===== -->
-  <div class="cont" style="left:1080px;color:var(--tinta)">
-    <div class="titulo" style="top:150px"><span class="lead">primeiro, o</span><span class="gig" style="font-size:190px;color:var(--pink)">carrossel</span></div>
+  <div class="cont" style="left:1080px;color:var(--ivory)">
+    <div class="titulo" style="top:150px"><span class="lead">primeiro, o</span><span class="gig" style="font-size:190px;color:var(--manteiga)">carrossel</span></div>
     <div id="grade-carrossel"></div>
-    <div class="abs" style="left:0;right:0;top:1030px;text-align:center"><span class="pil" style="background:var(--violeta);color:var(--ivory)">8 lâminas, do gancho ao convite</span></div>
+    <div class="abs" style="left:0;right:0;top:1030px;text-align:center"><span class="pil" style="background:var(--manteiga);color:var(--tinta)">8 lâminas, do gancho ao convite</span></div>
   </div>
 
   <!-- ===== 3 · O FEED ===== -->
@@ -74,37 +76,32 @@ body{background:#555}
   </div>
 
   <!-- ===== 4 · OS POSTS ===== -->
-  <div class="cont" style="left:3240px;color:var(--tinta)">
-    <div class="titulo" style="top:112px"><span class="lead">e os</span><span class="gig" style="font-size:190px;color:var(--pink)">posts</span></div>
+  <div class="cont" style="left:3240px;color:var(--ivory)">
+    <div class="titulo" style="top:112px"><span class="lead">e os</span><span class="gig" style="font-size:190px;color:var(--manteiga)">posts</span></div>
     <div id="grade-posts"></div>
-    <div class="abs" style="left:0;right:0;top:1150px;text-align:center"><span class="pil" style="background:var(--manteiga);color:var(--tinta)">6 posts, cada um com a sua ideia</span></div>
+    <div class="abs" style="left:0;right:0;top:1150px;text-align:center"><span class="pil" style="background:var(--ivory);color:var(--tinta)">6 posts, cada um com a sua ideia</span></div>
   </div>
 
-  <!-- ===== 5 · CHAMADA: ficha de primeira sessão ===== -->
-  <div class="cont" style="left:4320px;color:var(--tinta)">
-    <div class="abs" style="left:150px;top:170px;width:780px;height:960px;background:var(--ivory);transform:rotate(-2deg);box-shadow:8px 10px 0 var(--tinta);padding:72px 70px 0">
-      <div style="position:absolute;inset:0;background:url(../projeto/fotos-pinterest/colagem/papel.jpg) center/cover;mix-blend-mode:multiply;opacity:.45"></div>
+  <!-- ===== 5 · CHAMADA: "a próxima paciente pode ser a sua marca" + cartão de consulta ===== -->
+  <div class="cont" style="left:4320px;color:var(--ivory)">
+    <div class="abs lead" style="left:92px;top:120px;font-size:48px">a próxima</div>
+    <div class="abs gig" style="left:84px;top:170px;font-size:270px;color:var(--manteiga)">paciente</div>
+    <div class="abs lead" style="left:96px;top:418px;font-size:48px">pode ser a sua marca</div>
+    <div class="abs" style="left:150px;top:560px;width:700px;height:478px;background:var(--ivory);transform:rotate(-4deg);box-shadow:8px 10px 0 var(--tinta);padding:56px 60px 0;color:var(--tinta)">
+      <img src="texturas/m-papel-amassado.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.25">
       <div style="position:relative">
-        <div style="font:600 22px/1 Poppins;letter-spacing:.16em;color:var(--violeta)">FICHA DE PRIMEIRA SESSÃO</div>
-        <div style="margin-top:26px;border-top:2px solid var(--tinta)"></div>
-        <div style="display:flex;align-items:baseline;gap:16px;margin-top:34px"><span style="font:500 32px Poppins">paciente:</span><span class="gig" style="font-size:124px;line-height:.9;color:var(--pink)">sua marca</span></div>
-        <div style="font:600 32px/1 Poppins;margin-top:44px">queixa principal</div>
-        <div style="margin-top:14px;font:400 31px/1.25 Poppins">
-          <div style="display:flex;gap:16px;margin-top:12px"><span style="color:var(--violeta);font-weight:600">☑</span><span>feed bonito que ninguém lembra</span></div>
-          <div style="display:flex;gap:16px;margin-top:12px"><span style="color:var(--violeta);font-weight:600">☑</span><span>post que não chama cliente</span></div>
-          <div style="display:flex;gap:16px;margin-top:12px"><span style="font-weight:600">☐</span><span>tá tudo ótimo (a gente sabe que não)</span></div>
-        </div>
-        <div style="margin-top:38px;border-top:2px dashed rgba(42,20,51,.45)"></div>
-        <div style="font:600 32px/1.3 Poppins;margin-top:30px">conduta: <span style="font-weight:400">identidade + social media</span></div>
-        <div style="font:600 32px/1.3 Poppins;margin-top:10px">retorno: <span style="font-weight:400">me chama na dm</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font:600 21px/1 Poppins;letter-spacing:.16em;color:var(--violeta)"><span>CARTÃO DE CONSULTA</span></div>
+        <div style="margin-top:20px;border-top:2px solid var(--tinta)"></div>
+        <div class="linha-ficha" style="margin-top:22px"><span>paciente:</span><span>sua marca</span></div>
+        <div class="linha-ficha"><span>dia:</span><span>hoje</span></div>
+        <div class="linha-ficha"><span>horário:</span><span>quando quiser</span></div>
+        <div class="linha-ficha" style="border:0"><span>onde:</span><span>na minha dm</span></div>
       </div>
-      <img src="img/selo-ems.png" style="position:absolute;right:50px;bottom:44px;width:160px">
     </div>
+    <img class="abs" src="img/selo-ems.png" style="left:770px;top:470px;width:190px;z-index:3;filter:drop-shadow(0 14px 18px rgba(42,20,51,.45))">
+    <div class="balao" style="left:660px;top:1030px;transform:rotate(-3deg)"><img src="img/emoji/1f4ac.png"><img src="img/emoji/2728.png"></div>
     <span class="tag" style="left:108px;top:1236px;background:var(--pink)">@itsemsdesign<svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" style="fill:#2a1433;stroke:#fffbde;stroke-width:1.5;stroke-linejoin:round"/></svg></span>
   </div>
-
-  <!-- só grão de impressão leve por cima (sem névoa) -->
-  <div class="cobertura" style="opacity:.1;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 </div>
 
 <script>
@@ -121,27 +118,37 @@ function estrela(cx, cy, R, passo, rot, cores) {
       const r = passo * .47 * (1 - .78 * Math.hypot(x - cx, y - cy) / R); if (r < .8) continue;
       const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', r); g.appendChild(c); }
     pontes.appendChild(g); } }
-function letra(ch, x, y, tam, cheia, contorno) {
-  for (const [lam, modo, cor, op] of [cheia, contorno]) { const t = document.createElementNS(NS, 'text'); t.textContent = ch;
-    Object.entries({ x, y, 'text-anchor': 'middle', 'font-family': 'Instrument Serif', 'font-style': 'italic', 'font-size': tam, 'clip-path': `url(#l${lam})`, opacity: op }).forEach(([k, v]) => t.setAttribute(k, v));
-    if (modo === 'cheia') t.setAttribute('fill', cor); else { t.setAttribute('fill', 'none'); t.setAttribute('stroke', cor); t.setAttribute('stroke-width', 4); }
-    pontes.appendChild(t); } }
-estrela(1080, 96, 150, 13, 8, [[0, '#c0a5c4', .7], [1, '#c0a5c4', .7]]);       // 1|2
-estrela(2160, 1215, 210, 15, -12, [[1, '#c0a5c4', .7], [2, '#7b4df2', .3]]);   // 2|3
-estrela(3240, 170, 180, 14, 16, [[2, '#7b4df2', .3], [3, '#c0a5c4', .7]]);     // 3|4
-estrela(4320, 1190, 220, 15, -6, [[3, '#c0a5c4', .7], [4, '#7b4df2', .8]]);    // 4|5
-// paleta da Lia em bolinhas em cima do feed
+estrela(1080, 96, 150, 13, 8, [[0, '#c0a5c4', .7], [1, '#7b4df2', .7]]);        // 1|2
+estrela(2160, 1215, 210, 15, -12, [[1, '#7b4df2', .7], [2, '#7b4df2', .35]]);    // 2|3
+estrela(3240, 170, 180, 14, 16, [[2, '#7b4df2', .35], [3, '#7b4df2', .7]]);      // 3|4
+estrela(4320, 1190, 220, 15, -6, [[3, '#7b4df2', .7], [4, '#7b4df2', .9]]);      // 4|5
+estrela(5400, 300, 260, 16, 12, [[4, '#7b4df2', .9]]);                           // chamada, cortada na borda
+
 document.getElementById('paleta').innerHTML = ['#2742C2', '#F3C6A8', '#F5EEE3', '#1C1D3A', '#B8553A'].map(c => `<span style="width:58px;height:58px;border-radius:50%;background:${c};box-shadow:0 0 0 2px rgba(42,20,51,.12)"></span>`).join('');
-// grade do carrossel (4 x 2)
 { const g = document.getElementById('grade-carrossel'), w = 216, h = 270, gap = 12, x0 = 90, y0 = 410;
   for (let i = 0; i < 8; i++) { const d = document.createElement('div'); d.className = 'q';
     Object.assign(d.style, { left: x0 + (i % 4) * (w + gap) + 'px', top: y0 + Math.floor(i / 4) * (h + gap) + 'px', width: w + 'px', height: h + 'px' });
     d.innerHTML = `<img src="img/s${i + 1}.png">`; g.appendChild(d); } }
-// grade dos posts (3 x 2)
 { const g = document.getElementById('grade-posts'), w = 289, h = 361, gap = 16, x0 = 90, y0 = 360, ordem = [1, 3, 6, 2, 5, 4];
   ordem.forEach((n, i) => { const d = document.createElement('div'); d.className = 'q';
     Object.assign(d.style, { left: x0 + (i % 3) * (w + gap) + 'px', top: y0 + Math.floor(i / 3) * (h + gap) + 'px', width: w + 'px', height: h + 'px' });
     d.innerHTML = `<img src="img/p${n}.png">`; g.appendChild(d); }); }
-Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => 0))]).then(() => window.READY = true);
+
+// capa: a frase de cima encaixa no vão do "l" de "acolhe", logo acima da altura do x
+function encaixar() {
+  const ac = document.getElementById('acolhe'), lead = document.getElementById('lead1');
+  const marca = s => { const m = document.createElement('span'); m.style.cssText = 'display:inline-block;width:0;height:0'; s.appendChild(m); const y = m.getBoundingClientRect().top; m.remove(); return y; };
+  const base = marca(ac);
+  const ctx = document.createElement('canvas').getContext('2d'); ctx.font = 'italic 244px "Instrument Serif"';
+  const xh = ctx.measureText('x').actualBoundingBoxAscent;
+  const tn = ac.firstChild, k = tn.textContent.indexOf('l'), r = document.createRange(); r.setStart(tn, k); r.setEnd(tn, k + 1);
+  const lEsq = r.getBoundingClientRect().left;
+  const leadBase = marca(lead);
+  const alvo = base - xh - 20;                       // linha de base da frase: 20 px acima do x
+  lead.style.top = (parseFloat(lead.style.top) + (alvo - leadBase)) + 'px';
+  let fs = 44; while (lead.getBoundingClientRect().right > lEsq - 18 && fs > 30) { fs -= 1; lead.style.fontSize = fs + 'px'; }
+}
+document.fonts.ready.then(() => { encaixar();
+  Promise.all([...document.images].map(i => i.decode().catch(() => 0))).then(() => window.READY = true); });
 </script>
 </body></html>
