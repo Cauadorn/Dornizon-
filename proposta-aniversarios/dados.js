@@ -12,13 +12,13 @@ window.PROPOSTA = {
   heroVideo: "assets/portfolio/topo-eventos.mp4",
   heroPoster: "assets/portfolio/topo-eventos.jpg",
   heroSelo: "Trabalho recente",
-  faixa: ["Fotos tratadas", "Vídeo do dia", "Aniversário do filho", "Day use com piscina"],
+  faixa: ["Fotos tratadas", "Vídeo do dia", "Aniversário do filho", "Day use com piscina", "Cauã + Emilly", "Duas câmeras"],
 
   pedido: [
     { pediu: "Aniversário do seu filho", entrega: "Sábado, 20/02, das 12h às 17h. Cinco horas de cobertura, dentro de uma diária." },
     { pediu: "Aniversário da sua esposa", entrega: "Day use com piscina, das 09h às 18h. Dia inteiro de cobertura, dentro de uma diária." },
-    { pediu: "Fotos", entrega: "Câmera profissional com flash. As fotos saem tratadas, em alta resolução, por link." },
-    { pediu: "Vídeos", entrega: "Câmera de cinema em 4K e um vídeo editado de cada data, na vertical, com corte, cor, som e trilha." }
+    { pediu: "Fotos", entrega: "A Emilly fotografa com uma Sony A7 e a lente 28-200 mm. As fotos saem tratadas, em alta resolução, por link." },
+    { pediu: "Vídeos", entrega: "O Cauã filma com a câmera de cinema em 4K e edita um vídeo de cada data, na vertical, com corte, cor, som e trilha." }
   ],
 
   eventos: [
@@ -31,7 +31,7 @@ window.PROPOSTA = {
       local: "A confirmar",
       cobertura: "12h às 17h",
       horas: 5,
-      nota: "Chego antes do meio-dia para preparar a câmera e a luz."
+      nota: "Chegamos antes do meio-dia para preparar as câmeras e a luz."
     },
     {
       dia: "Day use",
@@ -49,26 +49,37 @@ window.PROPOSTA = {
   equipe: [
     {
       nome: "Cauã Dorn",
-      papel: "Direção, fotografia, vídeo e edição",
+      papel: "Direção, vídeo e edição",
       texto:
-        "Dirijo, fotografo, filmo e edito. São mais de 6 anos em direção de arte e audiovisual, com casamentos, debutantes, festas e making of. Nas duas datas, fico com a câmera de cinema e a fotografia. Depois, com o tratamento das fotos e a edição dos vídeos.",
+        "Dirijo, filmo e edito. São mais de 6 anos em direção de arte e audiovisual, com casamentos, debutantes, festas e making of. Nas duas datas, fico com a câmera de cinema e o vídeo. Depois, com a edição.",
       fotos: ["assets/equipe/caua-retrato.jpg", "assets/equipe/caua-palestra.jpg"],
       links: [
         { rotulo: "Instagram", url: "https://instagram.com/ohdorn" },
         { rotulo: "Behance", url: "https://www.behance.net/cauaalencar" },
         { rotulo: "Site", url: "https://cauadorn.com.br" }
       ]
+    },
+    {
+      nome: "Emilly Silva",
+      papel: "Fotografia",
+      texto:
+        "Fica com as fotos das duas datas: os retratos, a família reunida, os detalhes da festa e os momentos espontâneos. Fotografa com uma Sony A7 e a lente 28-200 mm, que vai do grupo inteiro ao detalhe sem trocar de lente.",
+      fotos: ["assets/equipe/emilly-retrato.jpg"],
+      links: [
+        { rotulo: "Instagram", url: "https://instagram.com/itsemsdesign" },
+        { rotulo: "Site", url: "https://emsdesign.com.br" }
+      ]
     }
   ],
 
   equipamentos: [
     { nome: "Câmera de cinema", texto: "Captação em 4K com cor de cinema, para o vídeo de cada aniversário.", foto: "assets/equipamentos/camera.jpg" },
-    { nome: "Lentes", texto: "Zoom Tamron 28-200 mm, da mesa do bolo ao detalhe sem trocar de lente, e lentes fixas Viltrox para pouca luz e fundo desfocado.", foto: "assets/equipamentos/lentes.jpg" },
+    { nome: "Lentes", texto: "Zoom 28-200 mm nas fotos, da mesa do bolo ao detalhe sem trocar de lente, e lentes fixas Viltrox no vídeo, para pouca luz e fundo desfocado.", foto: "assets/equipamentos/lentes.jpg" },
     { nome: "Iluminação profissional", texto: "Bastão de LED (tocha) e luzes de LED, para as fotos e o vídeo não dependerem da luz do local.", foto: "assets/equipamentos/iluminacao.jpg" },
     { nome: "Áudio", texto: "Microfone sem fio, para gravar o parabéns e os recados com som limpo.", foto: "assets/equipamentos/audio.jpg" },
     { nome: "Gimbal", texto: "Estabilizador para os movimentos de câmera entre os convidados e na beira da piscina.", foto: "assets/equipamentos/gimbal.jpg" }
   ],
-  extrasEquipamento: ["Câmera profissional com flash para as fotos", "Baterias e cartões para o dia inteiro"],
+  extrasEquipamento: ["Sony A7 com a lente 28-200 mm para as fotos", "Baterias e cartões para o dia inteiro"],
 
   portfolio: [
     { titulo: "Topo do Mundo · Eventos no Topo", tipo: "Evento", video: "assets/portfolio/topo-eventos.mp4", poster: "assets/portfolio/topo-eventos.jpg" },
@@ -110,7 +121,7 @@ window.PROPOSTA = {
 
   condicoes: [
     "Sinal de 30% para reservar cada data. O restante na entrega.",
-    "Uma diária por data. No day use, a hora a mais fica por minha conta.",
+    "Uma diária por data. No day use, a hora a mais fica por nossa conta.",
     "Fotos em alta resolução, entregues por link.",
     "Vídeo na vertical, pronto para o Instagram e o WhatsApp, com uma rodada de ajuste.",
     "Deslocamento e entrada no day use não estão no valor. Combinamos quando o local estiver definido.",

@@ -63,7 +63,7 @@
   P.equipe.forEach((m, i) => {
     const fotos = m.fotos.map((f) => '<figure><img loading="lazy" src="' + f + '" alt="' + m.nome + '"></figure>').join("");
     const links = m.links.map((l) => '<a href="' + l.url + '" target="_blank" rel="noopener">' + l.rotulo + " ↗</a>").join("");
-    $("lista-equipe").appendChild(el("article", "pessoa",
+    $("lista-equipe").appendChild(el("article", "pessoa" + (i === 1 ? " pessoa--emilly" : ""),
       '<div class="pessoa__fotos">' + fotos + "</div>" +
       '<div><span class="rotulo">' + String(i + 1).padStart(2, "0") + "</span><h3>" + m.nome + "</h3>" +
       '<p class="pessoa__papel"><mark>' + m.papel + "</mark></p>" +
