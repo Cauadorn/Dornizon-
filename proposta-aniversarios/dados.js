@@ -16,7 +16,7 @@ window.PROPOSTA = {
 
   pedido: [
     { pediu: "Aniversário do seu filho", entrega: "Sábado, 20/02, das 12h às 17h. Cinco horas de cobertura, dentro de uma diária." },
-    { pediu: "Aniversário da sua esposa", entrega: "Day use com piscina, das 09h às 18h. Nove horas de cobertura: uma diária e uma hora extra." },
+    { pediu: "Aniversário da sua esposa", entrega: "Day use com piscina, das 09h às 18h. Dia inteiro de cobertura, dentro de uma diária." },
     { pediu: "Fotos", entrega: "Câmera profissional com flash. As fotos saem tratadas, em alta resolução, por link." },
     { pediu: "Vídeos", entrega: "Câmera de cinema em 4K e um vídeo editado de cada data, na vertical, com corte, cor, som e trilha." }
   ],
@@ -76,13 +76,15 @@ window.PROPOSTA = {
     { titulo: "Topo do Mundo · Fondue", tipo: "Restaurante", video: "assets/portfolio/topo-fondue.mp4", poster: "assets/portfolio/topo-fondue.jpg" }
   ],
 
-  /* Preço: a diária cobre a captação por até 8 horas. Passou disso, hora extra proporcional (diária ÷ 8).
-     Fotos e vídeo são valores à parte, por data. */
+  /* Preço: uma diária de captação por data (a hora a mais do day use não é cobrada).
+     Fotos e vídeo são valores à parte, por data. Fechando as duas datas, entra o desconto. */
   preco: {
     diaria: 900,
     horasDiaria: 8,
     fotos: 300,     // tratamento e entrega das fotos, por data
-    video: 300,     // um vídeo editado, por data
+    video: 250,     // um vídeo editado, por data
+    horaExtra: false,   // true: cobra as horas além da diária, proporcional (diária ÷ horasDiaria)
+    descontoDuas: 200,  // desconto para quem fecha as duas datas
     sinal: 0.3,
     datas: [
       { id: "filho", rotulo: "Filho", nome: "o aniversário do seu filho (20/02)", eventos: [0] },
@@ -95,7 +97,7 @@ window.PROPOSTA = {
       { id: "completo", rotulo: "Fotos + vídeo", nome: "fotos e vídeo", fotos: true, video: true }
     ],
     padrao: { datas: "duas", entrega: "completo" },
-    nota: "A diária cobre até 8 horas no local. O day use tem 9 horas, por isso entra 1 hora extra, proporcional à diária. Vídeo extra de cada data: R$ 300."
+    nota: "Fechando as duas datas, você ganha R$ 200 de desconto. O day use tem 9 horas e a hora a mais não é cobrada. Vídeo extra de cada data: R$ 250."
   },
 
   prazos: [
@@ -108,11 +110,11 @@ window.PROPOSTA = {
 
   condicoes: [
     "Sinal de 30% para reservar cada data. O restante na entrega.",
-    "A diária cobre até 8 horas. Hora extra só com o seu OK, proporcional à diária.",
+    "Uma diária por data. No day use, a hora a mais fica por minha conta.",
     "Fotos em alta resolução, entregues por link.",
     "Vídeo na vertical, pronto para o Instagram e o WhatsApp, com uma rodada de ajuste.",
     "Deslocamento e entrada no day use não estão no valor. Combinamos quando o local estiver definido.",
-    "Você pode fechar uma data agora e a outra depois, pelos mesmos valores."
+    "O desconto de R$ 200 vale para quem reserva as duas datas juntas."
   ],
 
   contato: { whatsapp: "5511970696237" }

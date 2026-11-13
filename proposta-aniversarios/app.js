@@ -106,7 +106,7 @@
   /* ---------- 06 investimento: todos os cenários ---------- */
   const pr = P.preco;
   const horaExtra = pr.diaria / pr.horasDiaria;
-  const extrasDe = (e) => Math.max(0, e.horas - pr.horasDiaria);
+  const extrasDe = (e) => pr.horaExtra ? Math.max(0, e.horas - pr.horasDiaria) : 0;
   // conta de um cenário: datas escolhidas x entrega escolhida
   function conta(d, t) {
     const evs = d.eventos.map((i) => ev[i]);
@@ -116,16 +116,20 @@
     if (horas) linhas.push(["Hora extra no day use · " + horas + " × " + brl(horaExtra), horas * horaExtra]);
     if (t.fotos) linhas.push(["Fotos tratadas · " + n + " × " + brl(pr.fotos), n * pr.fotos]);
     if (t.video) linhas.push(["Vídeo editado · " + n + " × " + brl(pr.video), n * pr.video]);
-    return { linhas, total: linhas.reduce((s, l) => s + l[1], 0) };
+    const cheio = linhas.reduce((s, l) => s + l[1], 0);
+    const desconto = n > 1 ? (pr.descontoDuas || 0) : 0;
+    if (desconto) linhas.push(["Desconto por fechar as duas datas", -desconto]);
+    return { linhas, cheio, total: cheio - desconto };
   }
 
   // valores de referência
   const comExtra = ev.filter((e) => extrasDe(e) > 0);
   $("tabela").innerHTML =
-    "<tr><td>Diária de captação<small>Até " + pr.horasDiaria + " horas no local, por data</small></td><td>" + brl(pr.diaria) + "</td></tr>" +
+    "<tr><td>Diária de captação<small>Por data</small></td><td>" + brl(pr.diaria) + "</td></tr>" +
     (comExtra.length ? "<tr><td>Hora extra<small>Proporcional à diária, por hora além das " + pr.horasDiaria + "</small></td><td>" + brl(horaExtra) + "</td></tr>" : "") +
     "<tr><td>Fotos tratadas<small>Valor à parte, por data</small></td><td>" + brl(pr.fotos) + "</td></tr>" +
-    "<tr><td>Vídeo editado<small>Valor à parte, por data</small></td><td>" + brl(pr.video) + "</td></tr>";
+    "<tr><td>Vídeo editado<small>Valor à parte, por data</small></td><td>" + brl(pr.video) + "</td></tr>" +
+    (pr.descontoDuas ? "<tr><td>Fechando as duas datas<small>Desconto sobre o total</small></td><td>− " + brl(pr.descontoDuas) + "</td></tr>" : "");
   $("nota-tabela").textContent = pr.nota;
 
   // matriz com os nove cenários
@@ -184,10 +188,10 @@
     const c = conta(d, t);
     const sinal = c.total * pr.sinal;
     const frase = t.nome.charAt(0).toUpperCase() + t.nome.slice(1) + " para " + d.nome;
-    $("total-de").textContent = frase;
+    $("total-de").innerHTML = frase + (c.total < c.cheio ? " · de <s>" + brl(c.cheio) + "</s> por" : "");
     contar(totalAtual, c.total); totalAtual = c.total;
     $("resumo-preco").innerHTML =
-      c.linhas.map((l) => "<dt>" + l[0] + "</dt><dd>" + brl(l[1]) + "</dd>").join("") +
+      c.linhas.map((l) => "<dt>" + l[0] + "</dt><dd>" + (l[1] < 0 ? "− " + brl(-l[1]) : brl(l[1])) + "</dd>").join("") +
       '<dt class="forte">Sinal de ' + Math.round(pr.sinal * 100) + '% para reservar</dt><dd class="forte">' + brl(Math.round(sinal * 100) / 100) + "</dd>" +
       "<dt>Restante na entrega</dt><dd>" + brl(Math.round((c.total - sinal) * 100) / 100) + "</dd>";
     $("barra-total").textContent = t.rotulo + " · " + brl(c.total);
