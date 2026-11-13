@@ -3,7 +3,7 @@ window.PROPOSTA = {
   numero: "002",
   data: "13.11.2026",
   validade: "Cada data fica reservada na agenda com o sinal de 30%.",
-  cliente: "",                      // nome do cliente. Vazio: o topo mostra o título curto no lugar do nome.
+  cliente: "Thiago",                   // nome do cliente. Vazio: o topo mostra o título curto no lugar do nome.
   tituloCurto: "Dois aniversários",
   titulo: "Fotos e vídeo de duas datas em família",
   tituloDestaque: "duas datas",
