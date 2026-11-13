@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Proposta Dois Aniversários</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script src="dados.js?v=1"></script>
+</head>
+<body>
+  <div class="progresso" id="progresso"></div>
+
+  <header class="topo">
+    <div class="container topo__in">
+      <a class="marca" href="#inicio">DORN</a>
+      <nav class="menu" aria-label="Seções">
+        <a href="#pedido">Pedido</a>
+        <a href="#agenda">Datas</a>
+        <a href="#equipe">Quem faz</a>
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#investimento">Investimento</a>
+      </nav>
+      <a class="botao botao--mini" id="cta-topo" target="_blank" rel="noopener">Reservar</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="inicio">
+      <div class="hero__texto">
+        <p class="rotulo" id="topo-num"></p>
+        <p class="hero__para" id="hero-para">Proposta para</p>
+        <h1 class="hero__nome" id="cliente"></h1>
+        <p class="hero__titulo" id="titulo"></p>
+        <p class="hero__resumo" id="resumo"></p>
+        <div class="pilulas" id="pilulas"></div>
+        <a class="rolar" href="#pedido"><span></span>Ver a proposta</a>
+      </div>
+      <div class="hero__reel" id="hero-reel">
+        <video id="hero-video" muted loop playsinline autoplay></video>
+        <span class="hero__selo" id="hero-selo"></span>
+        <div class="adesivo adesivo--a" id="adesivo-a"></div>
+        <div class="adesivo adesivo--b" id="adesivo-b"></div>
+      </div>
+    </section>
+
+    <div class="faixa" aria-hidden="true"><div class="faixa__trilho" id="faixa"></div></div>
+
+    <section class="secao container" id="pedido">
+      <div class="secao__cab"><span class="rotulo">01</span><h2>O que você pediu, <em>e como eu entrego</em></h2></div>
+      <ol class="pedido" id="lista-pedido"></ol>
+    </section>
+
+    <section class="secao container" id="agenda">
+      <div class="secao__cab"><span class="rotulo">02</span><h2>As <em>duas datas</em></h2></div>
+      <div class="eventos" id="eventos"></div>
+    </section>
+
+    <section class="secao container" id="equipe">
+      <div class="secao__cab"><span class="rotulo">03</span><h2>Quem <em>vai estar lá</em></h2></div>
+      <div class="equipe" id="lista-equipe"></div>
+    </section>
+
+    <section class="secao container" id="equipamento">
+      <div class="secao__cab"><span class="rotulo">04</span><h2>O que <em>eu levo</em></h2></div>
+      <div class="equip" id="lista-equip"></div>
+      <ul class="extras" id="extras"></ul>
+    </section>
+
+    <section class="secao secao--trabalhos" id="trabalhos">
+      <div class="container secao__cab"><span class="rotulo">05</span><h2>Trabalhos <em>recentes</em></h2></div>
+      <p class="container dica">Passe o mouse para tocar. Clique para ouvir.</p>
+      <div class="trilho" id="trilho">
+        <div class="portfolio" id="portfolio"></div>
+      </div>
+      <p class="container mais-trabalhos"><span class="rotulo">Mais projetos</span>
+        <a href="https://cauadorn.com.br" target="_blank" rel="noopener">cauadorn.com.br <span aria-hidden="true">↗</span></a>
+        <a href="https://instagram.com/ohdorn" target="_blank" rel="noopener">@ohdorn <span aria-hidden="true">↗</span></a>
+      </p>
+    </section>
+
+    <section class="secao container" id="investimento">
+      <div class="secao__cab"><span class="rotulo">06</span><h2>Investimento, <em>em todos os cenários</em></h2></div>
+      <div class="invest">
+        <div class="invest__tabela">
+          <p class="rotulo">Valores</p>
+          <table id="tabela"></table>
+          <p class="rotulo">Todos os cenários · toque para escolher</p>
+          <div class="matriz-wrap"><table class="matriz" id="matriz"></table></div>
+          <p class="nota-tabela" id="nota-tabela"></p>
+        </div>
+        <div class="invest__pacote">
+          <span class="rotulo" id="rot-datas">Quais datas?</span>
+          <div class="volumes" id="seg-datas" role="radiogroup" aria-labelledby="rot-datas"></div>
+          <span class="rotulo" id="rot-entrega">O que você recebe?</span>
+          <div class="volumes" id="seg-entrega" role="radiogroup" aria-labelledby="rot-entrega"></div>
+          <div class="total">
+            <p class="total__de" id="total-de"></p>
+            <p class="total__por"><strong id="total-pacote"></strong></p>
+          </div>
+          <dl class="resumo-preco" id="resumo-preco"></dl>
+          <p class="nota-desconto">O valor muda na hora, conforme a sua escolha. O botão de reserva já leva o cenário escolhido para o WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao container" id="prazos">
+      <div class="secao__cab"><span class="rotulo">07</span><h2>Prazos</h2></div>
+      <div class="linha-wrap"><span class="linha__risco" id="risco"></span><ol class="linha" id="linha"></ol></div>
+    </section>
+
+    <section class="secao container" id="condicoes">
+      <div class="secao__cab"><span class="rotulo">08</span><h2>Condições</h2></div>
+      <ul class="condicoes" id="lista-condicoes"></ul>
+    </section>
+
+    <section class="fecho">
+      <div class="container">
+        <p class="rotulo">Próximo passo</p>
+        <p class="fecho__titulo">As datas ficam <em>reservadas</em> com o sinal.</p>
+        <a class="botao botao--grande ima" id="cta" target="_blank" rel="noopener">Reservar pelo WhatsApp <span aria-hidden="true">→</span></a>
+        <p class="rotulo fecho__validade" id="validade"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape container">
+    <span>CAUÃ DORN</span>
+    <span class="rotulo" id="rodape-num"></span>
+  </footer>
+
+  <a class="barra-cta" id="cta-barra" target="_blank" rel="noopener"><span id="barra-total"></span><strong>Reservar →</strong></a>
+  <div class="cursor" id="cursor"><span>Assistir</span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="app.js?v=1"></script>
+</body>
+</html>
