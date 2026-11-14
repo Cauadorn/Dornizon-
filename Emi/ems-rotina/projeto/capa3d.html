@@ -1,0 +1,28 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>EMS · capa 3D</title>
+<style>
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Regular.ttf);font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Italic.ttf);font-style:italic}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#111}*{box-sizing:border-box}
+#c{position:relative;width:1080px;height:1350px;overflow:hidden;background:#e4d6e6;font-family:Poppins}
+#c>*{position:absolute}
+.ret{inset:0;background-image:radial-gradient(rgba(98,37,216,.16) 1.6px,transparent 2px);background-size:14px 14px}
+.brilho{left:-200px;top:-260px;width:1500px;height:1200px;background:radial-gradient(closest-side,rgba(255,251,222,.95),rgba(255,251,222,0))}
+.lead{left:90px;top:96px;font:600 48px/1.1 Poppins;color:#2a1433;white-space:nowrap}
+.pal{left:78px;top:874px;font:italic 400 356px/.86 "Instrument Serif";letter-spacing:-.03em;color:#dd34a8;white-space:nowrap}
+.sub{right:90px;top:1178px;font:500 34px/1.2 Poppins;color:#2a1433;text-align:right;white-space:nowrap}
+.tag{left:110px;top:1206px;font:500 26px/1 Poppins;padding:.34em .7em .34em .5em;border-radius:5px;color:#fffbde;background:#6225d8;white-space:nowrap}
+.tag svg{position:absolute;left:-20px;bottom:-22px}
+.b{left:-50px;top:70px;width:1180px;filter:drop-shadow(0 34px 34px rgba(42,20,51,.28))}
+.cab{top:90px;font:500 20px/1 Poppins;letter-spacing:.08em;text-transform:uppercase;color:#2a1433;white-space:nowrap}
+svg.g{inset:0;width:100%;height:100%;mix-blend-mode:overlay;opacity:.22;pointer-events:none}
+</style></head><body><div id="c">
+<div class="ret"></div><div class="brilho"></div>
+<img class="b" src="3d/render/blocos.png">
+<span class="pal">semana</span>
+<span class="lead">a ia que organiza a minha</span>
+<span class="sub">e o que eu não<br>entrego pra ela.</span>
+<span class="tag">@itsemsdesign<svg width="30" height="30" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+<svg class="g"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
+</div></body></html>

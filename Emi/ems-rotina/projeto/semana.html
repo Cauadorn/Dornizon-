@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>minha semana</title>
+<style>
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
+:root{
+  --ivory:#fffbde;--ivory-2:#f4edcb;--tinta:#2a1433;--ameixa:#3d1c46;--plum:#5b216c;
+  --violeta:#6225d8;--violeta-2:#7b4df2;--lavanda:#c0a5c4;--lavanda-2:#e4d6e6;--wine:#9e122c;--pink:#dd34a8;--manteiga:#f2cf7a;
+  --serif:"Instrument Serif",Georgia,serif;--sans:"Poppins",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--ivory);color:var(--tinta);font:400 16px/1.45 var(--sans);
+  background-image:radial-gradient(rgba(42,20,51,.09) 1px,transparent 1.3px);background-size:9px 9px}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 64px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+h1{font:400 64px/.9 var(--serif);letter-spacing:-.02em;margin:0}
+h1 em{color:var(--pink)}
+.semana{font:500 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--wine)}
+.placar{margin:18px 0 22px;display:flex;align-items:center;gap:12px;font:500 14px/1 var(--sans)}
+.barra{flex:1;height:12px;border-radius:999px;background:var(--lavanda-2);border:2px solid var(--tinta);overflow:hidden}
+.barra i{display:block;height:100%;background:var(--violeta);width:0;transition:width .35s cubic-bezier(.34,1.56,.64,1)}
+.despejo{background:var(--violeta);color:var(--ivory);border:2px solid var(--tinta);border-radius:20px;padding:18px;box-shadow:6px 6px 0 var(--tinta)}
+.despejo label{display:block;font:400 30px/1 var(--serif);margin-bottom:4px}
+.despejo label em{color:var(--manteiga)}
+.despejo p{margin:0 0 12px;font-size:14px;opacity:.85}
+textarea{width:100%;min-height:150px;resize:vertical;border:2px solid var(--tinta);border-radius:12px;padding:12px 14px;
+  font:400 16px/1.5 var(--sans);color:var(--tinta);background:var(--ivory)}
+textarea:focus,button:focus-visible,input:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.acoes{display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap}
+button{font:600 15px/1 var(--sans);cursor:pointer;border:2px solid var(--tinta);border-radius:999px;padding:13px 20px;
+  background:var(--manteiga);color:var(--tinta);box-shadow:0 4px 0 var(--tinta);transition:transform .15s,box-shadow .15s}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--tinta)}
+button:active{transform:translateY(2px);box-shadow:0 2px 0 var(--tinta)}
+button.leve{background:transparent;color:var(--ivory);border-color:var(--ivory);box-shadow:none;font-weight:500}
+.dias{display:grid;gap:14px;margin-top:26px}
+.dia{background:var(--ivory);border:2px solid var(--tinta);border-radius:20px;padding:12px 14px 14px;min-height:92px}
+.dia.sobre{background:var(--lavanda-2)}
+.dia h2{margin:0 0 10px;font:400 30px/1 var(--serif);display:flex;align-items:baseline;gap:10px}
+.dia h2 small{font:500 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--wine)}
+.vazio{font-size:14px;color:var(--wine);opacity:.75}
+.lista{display:flex;flex-wrap:wrap;gap:10px}
+.card{display:flex;align-items:flex-start;gap:10px;max-width:100%;background:var(--lavanda-2);border:2px solid var(--tinta);border-radius:14px;
+  padding:10px 12px;box-shadow:3px 3px 0 var(--tinta);cursor:grab;animation:entra .45s cubic-bezier(.34,1.56,.64,1) backwards}
+@keyframes entra{from{transform:scale(.6) rotate(-4deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.card{animation:none}.barra i,button{transition:none}}
+.card.feito{background:var(--ivory-2);box-shadow:none;opacity:.6}
+.card.feito .txt{text-decoration:line-through}
+.card input{appearance:none;width:22px;height:22px;flex:none;margin:1px 0 0;border:2px solid var(--tinta);border-radius:7px;background:var(--ivory);cursor:pointer}
+.card input:checked{background:var(--violeta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7' fill='none' stroke='%23fffbde' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.card .txt{font:500 15px/1.3 var(--sans)}
+.card .cli{display:block;font:400 12px/1.2 var(--sans);color:var(--wine);margin-top:2px}
+.tipo{flex:none;font:600 11px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:999px;color:var(--ivory);background:var(--plum);margin-top:1px}
+.tipo.identidade{background:var(--violeta)}.tipo.social{background:var(--pink)}.tipo.site{background:var(--ameixa)}
+.tipo.foto{background:var(--wine)}.tipo.adm{background:var(--manteiga);color:var(--tinta)}
+.x{all:unset;cursor:pointer;font:500 18px/1 var(--sans);color:var(--wine);padding:0 2px;margin-left:2px}
+footer{margin-top:28px;font-size:13px;color:var(--wine)}
+@media (min-width:700px){h1{font-size:84px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>minha <em>semana</em></h1>
+    <span class="semana" id="semana"></span>
+  </header>
+  <div class="placar"><span id="conta">nada por aqui ainda</span><div class="barra"><i id="barra"></i></div></div>
+
+  <section class="despejo">
+    <label for="dump">despeja <em>tudo</em> aqui</label>
+    <p>uma coisa por linha, do jeito que vier. se tiver cliente, escreve antes de dois pontos. se tiver dia, fala o dia.</p>
+    <textarea id="dump" placeholder="pet shop: aprovar paleta na terça&#10;responder orçamento da cafeteria&#10;carrossel de sexta"></textarea>
+    <div class="acoes">
+      <button id="organizar">organizar minha semana</button>
+      <button class="leve" id="limpar">limpar tudo</button>
+    </div>
+  </section>
+
+  <section class="dias" id="dias" aria-live="polite"></section>
+  <footer>arrasta um cartão pra mudar de dia. fica salvo só neste aparelho.</footer>
+</div>
+<script>
+const DIAS=[['seg','segunda'],['ter','terça'],['qua','quarta'],['qui','quinta'],['sex','sexta']];
+const RX_DIA=[/\b(na |de |pra |para |até )?(segunda|seg)(-feira)?\b/i,/\b(na |de |pra |para |até )?(ter[çc]a|ter)(-feira)?\b/i,/\b(na |de |pra |para |até )?(quarta|qua)(-feira)?\b/i,/\b(na |de |pra |para |até )?(quinta|qui)(-feira)?\b/i,/\b(na |de |pra |para |até )?(sexta|sex)(-feira)?\b/i];
+const TIPOS=[['identidade',/logo|identidade|marca|paleta|naming|manual/i],['social',/post|carrossel|reel|stor|social|legenda|feed/i],
+  ['site',/site|p[áa]gina|landing|ux|ui|wireframe/i],['foto',/foto|ensaio|edi[çc][ãa]o|tratar|c[âa]mera/i],
+  ['adm',/or[çc]amento|proposta|contrato|nota|reuni[ãa]o|responder|cobrar|pagar|boleto|e-?mail/i]];
+const KEY='ems-minha-semana';
+let itens=[];
+try{itens=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+const salvar=()=>{try{localStorage.setItem(KEY,JSON.stringify(itens))}catch(e){}};
+const hoje=()=>Math.min(4,Math.max(0,new Date().getDay()-1));
+
+function ler(linha){
+  let txt=linha.trim().replace(/^[-•*]\s*/,'');if(!txt)return null;
+  let cli='';const m=txt.match(/^([^:]{2,28}):\s*(.+)$/);if(m){cli=m[1].trim();txt=m[2].trim()}
+  let dia=-1;
+  if(/\bhoje\b/i.test(txt)){dia=hoje();txt=txt.replace(/\bhoje\b/i,'')}
+  else if(/\bamanh[ãa]\b/i.test(txt)){dia=Math.min(4,hoje()+1);txt=txt.replace(/\bamanh[ãa]\b/i,'')}
+  else RX_DIA.forEach((rx,i)=>{if(dia<0&&rx.test(txt)){dia=i;txt=txt.replace(rx,'')}});
+  const tipo=(TIPOS.find(([,rx])=>rx.test(txt+' '+cli))||['outros'])[0];
+  txt=txt.replace(/\s{2,}/g,' ').replace(/\s+([,.])/g,'$1').replace(/[\s,]+$/,'').trim();
+  return {id:Date.now()+Math.random(),txt,cli,dia,tipo,feito:false};
+}
+function organizar(texto){
+  const novos=texto.split(/\n|;/).map(ler).filter(Boolean);
+  novos.forEach(n=>{ if(n.dia<0){ // sem dia: vai pro dia mais vazio
+      const carga=DIAS.map((_,d)=>itens.filter(i=>i.dia===d&&!i.feito).length);
+      n.dia=carga.indexOf(Math.min(...carga)); }
+    itens.push(n); });
+  salvar();desenhar(novos.map(n=>n.id));
+}
+function desenhar(novos=[]){
+  const el=document.getElementById('dias');el.innerHTML='';
+  DIAS.forEach(([,nome],d)=>{
+    const lista=itens.filter(i=>i.dia===d);
+    const sec=document.createElement('section');sec.className='dia';sec.dataset.dia=d;
+    sec.innerHTML=`<h2>${nome}<small>${lista.filter(i=>!i.feito).length||'sem'} pendência${lista.filter(i=>!i.feito).length===1?'':'s'}</small></h2><div class="lista"></div>`;
+    const box=sec.querySelector('.lista');
+    if(!lista.length)box.innerHTML='<span class="vazio">dia livre</span>';
+    lista.forEach(i=>{
+      const c=document.createElement('div');c.className='card'+(i.feito?' feito':'');c.draggable=true;c.dataset.id=i.id;
+      const k=novos.indexOf(i.id);c.style.animationDelay=k>=0?(k*70)+'ms':'0ms';if(k<0)c.style.animation='none';
+      c.innerHTML=`<input type="checkbox" ${i.feito?'checked':''} aria-label="marcar como feito"><span><span class="txt"></span><span class="cli"></span></span><span class="tipo ${i.tipo}">${i.tipo}</span><button class="x" aria-label="apagar">×</button>`;
+      c.querySelector('.txt').textContent=i.txt;c.querySelector('.cli').textContent=i.cli;
+      c.querySelector('input').onchange=e=>{i.feito=e.target.checked;salvar();desenhar()};
+      c.querySelector('.x').onclick=()=>{itens=itens.filter(x=>x!==i);salvar();desenhar()};
+      c.ondragstart=e=>e.dataTransfer.setData('text/plain',i.id);
+      box.appendChild(c);
+    });
+    sec.ondragover=e=>{e.preventDefault();sec.classList.add('sobre')};
+    sec.ondragleave=()=>sec.classList.remove('sobre');
+    sec.ondrop=e=>{e.preventDefault();const it=itens.find(x=>String(x.id)===e.dataTransfer.getData('text/plain'));if(it){it.dia=d;salvar();desenhar()}};
+    el.appendChild(sec);
+  });
+  const f=itens.filter(i=>i.feito).length;
+  document.getElementById('conta').textContent=itens.length?`${f} de ${itens.length} feito${f===1?'':'s'}`:'nada por aqui ainda';
+  document.getElementById('barra').style.width=(itens.length?f/itens.length*100:0)+'%';
+}
+(function(){const n=new Date(),s=new Date(n);s.setDate(n.getDate()-((n.getDay()+6)%7));const x=new Date(s);x.setDate(s.getDate()+4);
+  const mes=d=>d.toLocaleDateString('pt-BR',{month:'short'}).replace('.','');
+  document.getElementById('semana').textContent=`semana de ${s.getDate()}${s.getMonth()!==x.getMonth()?' '+mes(s):''} a ${x.getDate()} de ${mes(x)}`;})();
+document.getElementById('organizar').onclick=()=>{const t=document.getElementById('dump');if(t.value.trim()){organizar(t.value);t.value=''}};
+document.getElementById('limpar').onclick=()=>{if(!itens.length||confirm('apagar a semana inteira?')){itens=[];salvar();desenhar()}};
+desenhar();
+</script>
+</body>
+</html>
