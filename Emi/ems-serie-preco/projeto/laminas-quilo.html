@@ -119,62 +119,22 @@ const L={
   </div>
   ${clipe(520,120,4)}`},
 
-/* 04 · a virada — cena de verdade: dois pratos de louça na toalha de linho, só a estrela num e tudo no outro (imagem gerada como cena única,
-   peças assentadas no prato). O título vai no terço de cima; cada prato ganha a sua etiqueta de papel; o apoio vai num adesivo embaixo. */
-4:()=>`<img class="abs" src="cenas/fotos/dois-pratos.png" style="left:0;top:0;width:1080px;height:1350px;clip-path:inset(0 0 calc(100% - 3px) 0);transform-origin:50% 0;transform:scaleY(30)">
-  <img class="abs" src="cenas/fotos/dois-pratos.png" style="left:0;top:76px;width:1080px;height:1350px">
-  <div class="abs" style="left:0;right:0;top:0;height:420px;background:linear-gradient(rgba(74,26,158,.55),rgba(74,26,158,0))"></div>
-  ${cab(css('ivory'))}
-  <div class="abs" data-centro style="left:0;right:0;top:168px;text-align:center;font:500 40px/1.16 Poppins;color:var(--ivory)">quanto mais coisa<br>vai no prato,</div>
-  <div class="abs serif gasto" data-centro style="left:0;right:0;top:252px;text-align:center;font-size:206px;line-height:.9;color:var(--ivory)">mais <em style="color:var(--manteiga)">pesa.</em></div>
-  <div class="abs" data-bloco style="left:74px;top:918px;width:268px;background:var(--ivory);color:var(--tinta);padding:16px 10px 18px;text-align:center;transform:rotate(-4deg);box-shadow:5px 6px 0 rgba(42,20,51,.5)">
-    <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.3"></div>
-    <span data-centro class="serif" style="position:relative;display:block;font-size:60px;line-height:.9">só o logo</span><span data-centro style="position:relative;display:block;font:600 24px/1.2 Poppins;color:var(--wine);margin-top:6px">pesa pouco.</span></div>
-  <div class="abs" data-bloco style="left:478px;top:964px;width:386px;background:var(--manteiga);color:var(--tinta);padding:16px 10px 18px;text-align:center;transform:rotate(3deg);box-shadow:5px 6px 0 rgba(42,20,51,.5)">
-    <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.3"></div>
-    <span data-centro class="serif" style="position:relative;display:block;font-size:60px;line-height:.9">a marca <em style="color:var(--violeta)">inteira</em></span><span data-centro style="position:relative;display:block;font:600 24px/1.2 Poppins;color:var(--wine);margin-top:6px">pesa mais.</span></div>
-  ${fita(140,896,-8,130)}${fita(610,942,5,130)}
-  <div class="abs" data-bloco style="left:215px;top:1158px;width:650px;background:var(--violeta-2);color:var(--ivory);border-radius:999px;padding:24px 20px 26px;text-align:center;font:600 32px/1 Poppins;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)"><span data-centro>orçamento de marca não é tabela.</span></div>`,
-
-/* 04 · alternativa A — a frase servida dentro do prato: prato de louça de verdade visto de cima, garfo e faca, e o texto no fundo do prato
-   (ref @carolrech, a lâmina do círculo com caixa-alta). Um elemento só, bem no centro. */
-'4a':()=>`<div class="abs" style="inset:0;background:radial-gradient(ellipse 90% 70% at 50% 45%,#7b4df2 0,#6225d8 55%,#4a1a9e 100%)"></div>
+/* 04 · a virada — a frase servida dentro do prato: prato de louça de verdade visto de cima, garfo e faca, sobre toalha xadrez
+   (ref @carolrech, a lâmina do círculo com caixa-alta). Escolhida pela Emi em 15/11 entre três opções; as outras duas estão em entrega/quilo/opcoes-slide4.
+   O prato tem respiro em volta; o texto é uma coluna centrada no meio exato do prato. */
+4:()=>`<div class="abs" style="inset:0;background:radial-gradient(ellipse 90% 70% at 50% 45%,#7b4df2 0,#6225d8 55%,#4a1a9e 100%)"></div>
   <div class="abs" style="inset:0;background-image:linear-gradient(rgba(42,20,51,.16) 50%,transparent 50%),linear-gradient(90deg,rgba(42,20,51,.16) 50%,transparent 50%);background-size:180px 180px"></div>
   <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:420px;mix-blend-mode:soft-light;opacity:.7"></div>
   ${cab(css('ivory'))}
-  <img class="abs" src="cenas/fotos/garfo-rec.png" style="left:24px;top:330px;height:700px;filter:drop-shadow(-8px 14px 12px rgba(30,8,60,.5))">
-  <img class="abs" src="cenas/fotos/faca-rec.png" style="left:978px;top:316px;height:730px;filter:drop-shadow(-8px 14px 12px rgba(30,8,60,.5))">
-  <img class="abs" src="cenas/fotos/prato-vazio-rec.png" style="left:120px;top:228px;width:840px;filter:drop-shadow(-14px 26px 22px rgba(30,8,60,.55))">
-  <div class="abs" data-bloco data-miolo style="left:290px;top:384px;width:500px;height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--tinta)">
-    <div data-centro style="font:500 31px/1.18 Poppins">quanto mais coisa<br>vai no prato,</div>
-    <div class="anton gasto" data-centro style="font-size:160px;line-height:1;margin-top:10px">mais</div>
-    <div class="serif" data-centro style="font-size:186px;line-height:.9;margin-top:-22px;color:var(--pink)"><em>pesa.</em></div>
+  <img class="abs" src="cenas/fotos/garfo-rec.png" style="left:104px;top:356px;height:590px;filter:drop-shadow(-8px 14px 12px rgba(30,8,60,.5))">
+  <img class="abs" src="cenas/fotos/faca-rec.png" style="left:912px;top:344px;height:614px;filter:drop-shadow(-8px 14px 12px rgba(30,8,60,.5))">
+  <img class="abs" src="cenas/fotos/prato-vazio-rec.png" style="left:195px;top:303px;width:690px;height:694px;filter:drop-shadow(-12px 24px 20px rgba(30,8,60,.55))">
+  <div class="abs" data-bloco data-miolo style="left:300px;top:404px;width:480px;height:480px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--tinta)">
+    <div data-centro style="font:500 27px/1.18 Poppins">quanto mais coisa<br>vai no prato,</div>
+    <div class="anton gasto" data-centro style="font-size:132px;line-height:1.06;margin-top:6px">mais</div>
+    <div class="serif" data-centro style="font-size:150px;line-height:1;margin-top:-26px;color:var(--pink)"><em>pesa.</em></div>
   </div>
-  <div class="abs" data-bloco style="left:215px;top:1132px;width:650px;background:var(--ivory);color:var(--tinta);border-radius:999px;padding:24px 20px 26px;text-align:center;font:600 32px/1 Poppins;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)"><span data-centro>orçamento de marca não é tabela.</span></div>`,
-
-/* 04 · alternativa B — duas comandas lado a lado: a de quem pede só o logo é curtinha, a da marca inteira é comprida.
-   O tamanho do papel é o argumento (refs dos bilhetes e do bloquinho). Sem foto e sem 3D. */
-'4b':()=>{const serr='-webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 16px) no-repeat,conic-gradient(from -45deg at 50% 100%,#0000 0 90deg,#000 0) bottom/32px 16px repeat-x;mask:linear-gradient(#000 0 0) top/100% calc(100% - 16px) no-repeat,conic-gradient(from 135deg at 50% 0,#000 0 90deg,#0000 0) bottom/32px 16px repeat-x';
-  const linha=(t)=>`<div style="display:flex;align-items:center;gap:14px;padding:11px 0;border-top:3px dotted rgba(42,20,51,.45);font:500 29px/1 Poppins"><svg width="34" height="30" viewBox="0 0 64 60"><path d="M8 30 L24 46 L58 6" fill="none" stroke="${css('pink')}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>${t}</div>`;
-  const comanda=(x,y,w,r,titulo,itens,peso)=>`<div class="abs" data-bloco style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${r}deg);filter:drop-shadow(0 18px 20px rgba(30,8,60,.45))">
-    <div style="position:relative;background:var(--ivory);color:var(--tinta);${serr}">
-      <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.34"></div>
-      <div data-miolo style="position:relative;padding:58px 34px 48px;text-align:center">
-        <div data-centro style="font:500 18px/1 Poppins;letter-spacing:.2em;text-transform:uppercase;color:var(--wine)">comanda</div>
-        <div class="serif" data-centro style="font-size:64px;line-height:.9;margin-top:10px">${titulo}</div>
-        <div style="margin-top:20px;text-align:left">${itens.map(linha).join('')}</div>
-        <div style="border-top:4px dashed var(--tinta);margin-top:4px;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline;font:600 24px/1 Poppins"><span>peso</span><span class="serif" style="font-size:48px;line-height:.8;color:var(--violeta)"><em>${peso}</em></span></div>
-      </div></div></div>`;
-  return `<div class="abs" style="inset:0;background:radial-gradient(ellipse 90% 70% at 50% 30%,#7b4df2 0,#6225d8 52%,#4a1a9e 100%)"></div>
-  <img class="abs" src="${estrelaReticula(820,css('violeta-2'))}" style="left:480px;top:-300px;width:820px;opacity:.55;transform:rotate(16deg)">
-  <img class="abs" src="${estrelaReticula(620,css('violeta-2'))}" style="left:-260px;top:940px;width:620px;opacity:.45;transform:rotate(-16deg)">
-  ${cab(css('ivory'))}
-  <div class="abs" data-centro style="left:0;right:0;top:166px;text-align:center;font:500 40px/1.16 Poppins;color:var(--ivory)">quanto mais coisa<br>vai no prato,</div>
-  <div class="abs serif gasto" data-centro style="left:0;right:0;top:256px;text-align:center;font-size:206px;line-height:.9;color:var(--ivory)">mais <em style="color:var(--manteiga)">pesa.</em></div>
-  ${comanda(96,520,372,-3,'só o logo',['o logo'],'leve')}
-  ${comanda(520,500,464,2,'a marca <em style="color:var(--pink)">inteira</em>',['o logo','a letra','a cor','o uso','o detalhe'],'bem mais')}
-  ${clipe(120,470,-10)}${clipe(900,450,9)}
-  <div class="abs" data-bloco style="left:96px;top:1010px;width:372px;text-align:center;font:600 31px/1.2 Poppins;color:var(--ivory)"><span data-centro>orçamento de marca<br>não é tabela.</span></div>`},
+  <div class="abs" data-bloco style="left:215px;top:1090px;width:650px;background:var(--ivory);color:var(--tinta);border-radius:999px;padding:24px 20px 26px;text-align:center;font:600 32px/1 Poppins;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)"><span data-centro>orçamento de marca não é tabela.</span></div>`,
 
 /* 05 · a chamada — a conversa de dm já começada: o selo da Emi de avatar, a pergunta dela, a resposta pronta da pessoa e o cursor no botão de enviar.
    O objetivo é a pessoa pedir orçamento. Elementos da marca: selo (inteiro, reto, sem recolorir), chip "disponível", cursor. */
