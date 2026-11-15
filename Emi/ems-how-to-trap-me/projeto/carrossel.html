@@ -13,15 +13,14 @@
 </svg>
 <script src="iscas.js"></script>
 <script>
-const N = LAMINAS.length, doisDig = (n) => String(n).padStart(2, '0');
 
 // estrela em retícula: pontos que somem do centro pra borda
-function estrela(cx, cy, R, passo = 16) {
+function estrela(cx, cy, R, passo = 20) {
   let s = '';
   for (let y = -R; y <= R; y += passo) for (let x = -R; x <= R; x += passo) {
     const d = Math.pow(Math.pow(Math.abs(x), .62) + Math.pow(Math.abs(y), .62), 1 / .62) / R;
     if (d >= 1) continue;
-    s += `<circle cx="${cx + x}" cy="${cy + y}" r="${(passo * .47 * (1 - d * .8)).toFixed(1)}"/>`;
+    s += `<circle cx="${cx + x}" cy="${cy + y}" r="${(passo * .5 * (1 - d * .72)).toFixed(1)}"/>`;
   }
   return s;
 }
@@ -30,18 +29,39 @@ const isca = (it) => it.html
   ? `<div class="isca" style="left:${it.x}px;top:${it.y}px;transform:rotate(${it.r || 0}deg);z-index:${it.z || 1}">${it.html}</div>`
   : `<img class="isca" src="recortes/${it.src}" style="left:${it.x}px;top:${it.y}px;width:${it.w}px;transform:rotate(${it.r || 0}deg) scaleX(${it.flip ? -1 : 1});z-index:${it.z || 1}">`;
 
+// estampa presa numa face da caixa: leva um retângulo w×h para os 4 cantos da face (TL, TR, BR, BL)
+function face(w, h, q) {
+  const A = [], b = [];
+  [[0, 0], [w, 0], [w, h], [0, h]].forEach(([x, y], i) => {
+    const [X, Y] = q[i];
+    A.push([x, y, 1, 0, 0, 0, -x * X, -y * X]); b.push(X);
+    A.push([0, 0, 0, x, y, 1, -x * Y, -y * Y]); b.push(Y);
+  });
+  for (let c = 0; c < 8; c++) {                       // eliminação de Gauss
+    let p = c; for (let r = c + 1; r < 8; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r;
+    [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]];
+    for (let r = 0; r < 8; r++) if (r !== c) { const f = A[r][c] / A[c][c]; for (let k = c; k < 8; k++) A[r][k] -= f * A[c][k]; b[r] -= f * b[c]; }
+  }
+  const m = b.map((v, i) => v / A[i][i]);
+  return `matrix3d(${m[0]},${m[3]},0,${m[6]}, ${m[1]},${m[4]},0,${m[7]}, 0,0,1,0, ${m[2]},${m[5]},0,1)`;
+}
+const TAMPA = face(640, 400, [[292, 492], [712, 468], [577, 744], [157, 722]]);
+const LADO = face(420, 400, [[577, 744], [712, 468], [935, 770], [830, 1042]]);
+
 document.getElementById('faixa').innerHTML = LAMINAS.map((l, k) => `
-<section class="lamina ${l.fim ? 'fim' : ''}">
-  <i class="camada fundo"></i>
-  <i class="papel"></i>
+<section class="lamina ${l.fim ? 'fim' : ''}" style="--fundo:var(--${l.fundo});--estrela:var(--${l.estrela})">
   <svg class="ht" viewBox="0 0 1080 1350">${l.estrelas.map((e) => estrela(...e)).join('')}</svg>
+  <i class="papel"></i>
   <div class="grafismos">${l.icones.map(ic).join('')}</div>
   <i class="camada caixa"></i>
   <div class="iscas">${(l.iscas || []).map(isca).join('')}</div>
-  <i class="camada frente"></i>
-  <h1><small>how to</small><span>trap <em>${l.fim ? 'you?' : 'me'}</em></span></h1>
+  <div class="frente">
+    <i class="camada base"></i>
+    <i class="estampa tampa" style="transform:${TAMPA}"></i>
+    <i class="estampa lado" style="transform:${LADO}"></i>
+  </div>
+  <h1><small>how to</small><span>trap</span><em>${l.fim ? 'you?' : 'me'}</em></h1>
   ${l.fim ? '<p class="pilula">me conta nos comentários o que te faria cair nessa armadilha</p>' : ''}
-  <p class="conta">${doisDig(k + 1)}/${doisDig(N)}</p>
   <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>
   <i class="grao"></i>
 </section>`).join('');
