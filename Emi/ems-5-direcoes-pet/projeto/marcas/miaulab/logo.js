@@ -94,12 +94,29 @@ function miauLogoV3(el, o = {}) {
   const dedo = (P, x, lado, [ux, uy]) => { const t = lado * giro * Math.PI / 180, px = (ux - (P.x0 + P.x1) / 2) * sp, py = (uy - G.borda) * sp;
     return [x + px * Math.cos(t) - py * Math.sin(t), parede + px * Math.sin(t) + py * Math.cos(t)]; };
   let unhasSvg = '', rastros = '';
+  // arranhão curvo (a Emi: "os arranhões continuam retilíneos, retos"): o traço segue uma curva de Bézier que verga
+  // para fora (cada pata escorrega para o seu lado), afina até sumir e tem a largura levemente irregular, como um risco
+  // de unha de verdade. ?curva= controla quanto verga (fração do comprimento); ?forma=s faz um S suave.
+  function risco(sx, sy, L, lado, semente) {
+    const vg = (o.curva ?? .16) * L * -lado, S = o.forma === 's', w0 = o.rastroW || 1.35, N = 40;
+    const P = [[sx, sy], [sx + vg * (S ? -.5 : .15), sy + L * .33], [sx + vg * (S ? 1.3 : .75), sy + L * .7], [sx + vg * (S ? .7 : 1), sy + L]];
+    const pt = t => { const u = 1 - t; return [0, 1].map(k => u * u * u * P[0][k] + 3 * u * u * t * P[1][k] + 3 * u * t * t * P[2][k] + t * t * t * P[3][k]); };
+    const esq = [], dir = [];
+    for (let n = 0; n <= N; n++) {
+      const t = n / N, [x, y] = pt(t), [x2, y2] = pt(Math.min(1, t + .01)), [x1, y1] = pt(Math.max(0, t - .01));
+      let nx = -(y2 - y1), ny = x2 - x1; const m = Math.hypot(nx, ny) || 1; nx /= m; ny /= m;
+      // largura: sobe rápido logo abaixo da unha, afina devagar até a ponta, com um tremor discreto
+      const w = w0 * Math.min(1, t / .08 + .35) * Math.pow(1 - t, .85) * (1 + .18 * Math.sin(t * 17 + semente * 2.3) * Math.sin(t * 7 + semente));
+      esq.push([x + nx * w, y + ny * w]); dir.unshift([x - nx * w, y - ny * w]);
+    }
+    return `<path d="M${esq.concat(dir).map(p => p[0].toFixed(2) + ' ' + p[1].toFixed(2)).join(' L')} Z" fill="${fundo}"/>`;
+  }
   [[G.pataE, cx - dx, 1], [G.pataD, cx + dx, -1]].forEach(([P, x, lado], i) => P.dedos.forEach((u, j) => {
     const [tx, ty] = dedo(P, x, lado, u), r = lado * 7;
     unhasSvg += `<g transform="translate(${tx} ${ty}) rotate(${r}) scale(${ku})"><path d="${UNHA}" transform="translate(0 ${-(o.encaixeUnha ?? 4)})" fill="${o.unha || '#F1ECE2'}"/></g>`;
     const tr = r * Math.PI / 180, py = 13 - (o.encaixeUnha ?? 4) + 3;
-    const sx = tx - py * ku * Math.sin(tr), sy = ty + py * ku * Math.cos(tr), L = TAM[i][j], w = 1.25, d = (j - 1) * 1.6 + lado * -1.2;
-    rastros += `<path d="M${sx - w} ${sy} Q${sx - w * .6 + d * .4} ${sy + L * .55} ${sx + d} ${sy + L} Q${sx + w * .6 + d * .4} ${sy + L * .55} ${sx + w} ${sy} Z" fill="${fundo}"/>`;
+    const sx = tx - py * ku * Math.sin(tr), sy = ty + py * ku * Math.cos(tr), L = TAM[i][j] * (o.rastroK || 1);
+    rastros += risco(sx, sy, L, lado, i * 3 + j);
   }));
   el.style.position = el.style.position || 'absolute';
   el.innerHTML = `
