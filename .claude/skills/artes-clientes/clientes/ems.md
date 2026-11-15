@@ -321,3 +321,7 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
 - **Foto pequena para capa:** ampliar 2x com Topaz (`topaz-image-upscale-v2` no ElevenLabs, ~US$ 0,09) antes de recortar.
 - Drive: a EMS não tinha pasta; criada `EMS · @itsemsdesign` no Meu Drive do Cauã, uma subpasta por post (`AAAA-MM · título`). Runrun.it: não há card da EMS (marca pessoal da Emi).
 - Sem pedir confirmação: escolher nicho, fotos e enquadramento sozinho e explicar no relatório.
+
+### Entrega no Drive (aprendido no case MIAU.LAB, nov/2026)
+- A conexão com o Drive aceita no máximo ~3 MB por arquivo: PNG de 1440x1800 com grão (~4,7 MB) é recusado. Mandar as fotos direto em JPG qualidade 96 (sem subamostragem, ~1,3 MB), que é o que o Instagram usa; o PNG fica no repositório.
+- Case MIAU.LAB entregue em "2026-11 · case MIAU.LAB (carrossel)": 9 lâminas (01 capa animada, 02–08 fotos/logo, 09 "Ciência que ronrona." animada fechando com as mesmas cores da capa). A assinatura da marca precisa ter lâmina própria, não só aparecer pequena na capa.
