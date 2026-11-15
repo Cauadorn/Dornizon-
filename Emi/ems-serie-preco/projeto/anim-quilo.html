@@ -52,17 +52,18 @@ const pancada=(t,t0,freq=17,amort=5.5)=>t<t0?0:Math.exp(-amort*(t-t0))*Math.sin(
 const $=id=>document.getElementById(id);
 let M;
 // a pilha da arte, um pouco menor, assentada dentro do prato da balança nova
-const ESC=.93,CX=490,CY=392,DESCE=6;
-const casa=m=>({x:CX+(m.x-CX)*ESC,y:CY+(m.y-CY)*ESC+DESCE,w:m.w*ESC,h:m.h*ESC});
-// camadas do prato, de trás pra frente: o cursor fica na frente da borda, como na arte
-const ORDEM=['bal-prato','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','bal-prato-frente','cursor'];
+const ESC=.86,CX=490,CY=392,DESCE=30,DX=-16;   // menor e mais fundo: os pés ficam atrás da borda da frente, dentro do prato
+const AJUSTE={cursor:[-50,-40],estrela:[-20,-22]};   // o cursor e a estrela entram mais pra dentro do prato, pra não sumirem atrás da borda
+const casa=(m,k)=>{const a=AJUSTE[k]||[0,0];return{x:CX+(m.x-CX)*ESC+DX+a[0],y:CY+(m.y-CY)*ESC+DESCE+a[1],w:m.w*ESC,h:m.h*ESC}};
+// camadas do prato, de trás pra frente: tudo fica atrás da borda da frente, dentro da tigela
+const ORDEM=['bal-prato','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','cursor','bal-prato-frente'];
 // o prato começa vazio. cada peça: quando pousa, quanto pesa (graus no ponteiro), de que giro vem
 const QUEDA=[
  {id:'A',pouso:1.00,peso:17,giro:-22}, {id:'a',pouso:1.50,peso:13,giro:18},
  {id:'amostra1',pouso:2.00,peso:6,giro:-30}, {id:'amostra2',pouso:2.28,peso:6,giro:20},
  {id:'amostra3',pouso:2.56,peso:6,giro:-16}, {id:'amostra4',pouso:2.84,peso:6,giro:26},
  {id:'estrela',pouso:3.30,peso:6,giro:160}, {id:'cursor',pouso:3.75,peso:11,giro:-40},
- {id:'ar1',pouso:4.25,peso:7,giro:-150,alvo:[716,214],fim:34},   // a amostra lilás que estava no ar: encosta na ponta do leque
+ {id:'ar1',pouso:4.25,peso:7,giro:-150,alvo:[640,272],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato, atrás da estrela e do cursor
 ];
 const TQ=.42,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
 // a estrelinha: cai, bate no alto da pilha, quica e vai parar no chão, na frente da palavra
@@ -72,7 +73,7 @@ function render(t){
   let dip=0;QUEDA.forEach(q=>{dip+=.6*q.peso*pancada(t,q.pouso,16,5.2)});dip+=3*pancada(t,E2.bate,18,6);
   const carga=QUEDA.reduce((s,q)=>s+q.peso*clamp((t-q.pouso)*40),0)/TOTAL;
   $('prato').style.transform=`translateY(${dip+5*carga-5}px)`;
-  QUEDA.forEach(q=>{const h=casa(M[q.id]),e=$('l-'+q.id),p=P(t,q.pouso-TQ,TQ),cai=p*p;
+  QUEDA.forEach(q=>{const h=casa(M[q.id],q.id),e=$('l-'+q.id),p=P(t,q.pouso-TQ,TQ),cai=p*p;
     const dx=q.alvo?q.alvo[0]-(h.x+h.w/2):0,dy=q.alvo?q.alvo[1]-(h.y+h.h/2):0;
     const y0=-(h.y+h.h+110),quique=-14*Math.abs(pancada(t,q.pouso,13,7.5));
     const amassa=1-.07*Math.max(0,Math.sin(Math.PI*P(t,q.pouso,.16)));
@@ -94,7 +95,7 @@ function render(t){
   const g=mola(P(t,.1,.8));$('tag').style.opacity=clamp(P(t,.1,.15));$('tag').style.transform=`scale(${.5+.5*g})`;
 }
 fetch('camadas/quilo/meta.json').then(r=>r.json()).then(async m=>{M=m;
-  $('prato').innerHTML=ORDEM.map(k=>{const q=k.startsWith('bal-')?m[k]:casa(m[k]);return `<img id="l-${k}" src="camadas/quilo/${k}.png" style="left:${q.x}px;top:${q.y}px;width:${q.w}px">`}).join('');
+  $('prato').innerHTML=ORDEM.map(k=>{const q=k.startsWith('bal-')?m[k]:casa(m[k],k);return `<img id="l-${k}" src="camadas/quilo/${k}.png" style="left:${q.x}px;top:${q.y}px;width:${q.w}px">`}).join('');
   const co=$('corpo');co.style.left=m['bal-corpo'].x+'px';co.style.top=m['bal-corpo'].y+'px';
   const pt=$('pont'),po=m.ponteiro;pt.style.left=(m.balanca.eixo[0]-(po.px-po.x))+'px';pt.style.top=(m.balanca.eixo[1]-(po.py-po.y))+'px';pt.style.transformOrigin=`${po.px-po.x}px ${po.py-po.y}px`;
   await Promise.all([document.fonts.load('400 60px "Instrument Serif"'),document.fonts.load('italic 400 60px "Instrument Serif"'),document.fonts.load('600 40px Poppins'),document.fonts.load('500 40px Poppins'),...[...document.images].map(i=>i.decode().catch(()=>{}))]);

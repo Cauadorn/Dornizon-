@@ -10,14 +10,24 @@ def salva(nome, rgba, x, y): cv2.imwrite(f'{out}/{nome}.png', rgba); meta[nome] 
 
 # palavra: rosa do objeto, do mostrador pra baixo
 rosa = ((hh >= 148) & (hh <= 178)) & (ss > 90) & (vv > 70)
-forte = rosa & (ss > 95) & (vv > 60)                      # só o rosa cheio das letras, sem reflexo rosa na base da balança
-pal = ((fg > 100) & forte).astype(np.uint8) * 255; pal[:705, :] = 0
-pal = cv2.morphologyEx(pal, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8))
+# recorte da palavra por GrabCut: rosa cheio é letra com certeza; violeta/marfim da balança antiga e o fundo são fundo com certeza;
+# o que fica na dúvida (sombra e brilho na borda das letras) o algoritmo decide pela vizinhança, e a borda sai inteira
+forte = rosa & (ss > 120) & (vv > 100)
+viol = (hh >= 112) & (hh <= 146) & (ss > 70)
+marf = (hh >= 8) & (hh <= 45) & (ss < 90) & (vv > 150)
+gc = np.full((H, W), cv2.GC_PR_BGD, np.uint8)
+gc[rosa & (fg > 100)] = cv2.GC_PR_FGD
+gc[cv2.erode(forte.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0] = cv2.GC_FGD
+gc[cv2.erode(((viol | marf) & ~rosa).astype(np.uint8), np.ones((3, 3), np.uint8)) > 0] = cv2.GC_BGD
+gc[fg < 20] = cv2.GC_BGD; gc[:700, :] = cv2.GC_BGD
+y0, y1 = 690, 1120; sub = gc[y0:y1].copy()
+cv2.grabCut(im[y0:y1], sub, None, np.zeros((1, 65)), np.zeros((1, 65)), 6, cv2.GC_INIT_WITH_MASK)
+pal = np.zeros((H, W), np.uint8); pal[y0:y1] = np.where((sub == cv2.GC_FGD) | (sub == cv2.GC_PR_FGD), 255, 0)
 n, lab, st, _ = cv2.connectedComponentsWithStats(pal); pal = np.isin(lab, [i for i in range(1, n) if st[i, 4] > 2500]).astype(np.uint8) * 255
-cs, hi = cv2.findContours(pal, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)   # tapa só os brilhos pequenos de dentro das letras
+cs, hi = cv2.findContours(pal, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
 for i, c in enumerate(cs):
     if hi[0][i][3] >= 0 and cv2.contourArea(c) < 900: cv2.drawContours(pal, [c], -1, 255, -1)
-pal = cv2.morphologyEx(pal, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11)))   # tira fiapos finos que não são letra
+pal = cv2.morphologyEx(pal, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7)))
 pal = cv2.GaussianBlur(pal, (0, 0), 1.0)
 cv2.imwrite(out + '/palavra.png', np.dstack([im, pal])); cv2.imwrite(out + '/palavra-mask.png', np.dstack([np.full((H, W, 3), 255, np.uint8), pal]))
 
