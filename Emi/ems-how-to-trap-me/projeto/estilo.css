@@ -1,0 +1,50 @@
+/* EMS · how to trap me · carrossel 1080 × 1350, margem de 90px em todos os lados */
+@font-face { font-family: "Instrument Serif"; src: url(fonts/InstrumentSerif-Regular.ttf); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; src: url(fonts/InstrumentSerif-Italic.ttf); }
+@font-face { font-family: Poppins; font-weight: 400; src: url(fonts/Poppins-Regular.ttf); }
+@font-face { font-family: Poppins; font-weight: 500; src: url(fonts/Poppins-Medium.ttf); }
+@font-face { font-family: Poppins; font-weight: 600; src: url(fonts/Poppins-SemiBold.ttf); }
+
+:root {
+  --ivory: #fffbde; --tinta: #2a1433; --ameixa: #3d1c46; --violeta: #6225d8; --violeta-2: #7b4df2;
+  --lavanda: #c0a5c4; --pink: #dd34a8; --manteiga: #f2cf7a;
+  --serif: "Instrument Serif", Georgia, serif; --sans: Poppins, system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 9720px; height: 1350px; overflow: hidden; font-family: var(--sans); }
+#faixa { display: flex; }
+.lamina { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: var(--violeta); color: var(--ivory); isolation: isolate; flex: none; }
+.lamina > * { position: absolute; }
+
+.foto { inset: 0; background: center / cover no-repeat; z-index: -2; }
+svg.ht { inset: 0; width: 100%; height: 100%; fill: var(--violeta-2); opacity: .45; mix-blend-mode: screen; z-index: -1; }
+.grao { inset: 0; filter: url(#grao); opacity: .07; mix-blend-mode: overlay; pointer-events: none; }
+
+/* cabeçalho fino, de revista */
+.cab { left: 90px; right: 90px; top: 90px; display: flex; justify-content: space-between; font-size: 22px; font-weight: 500; letter-spacing: .08em; opacity: .85; }
+
+/* título: lead-in pequeno colado na palavra gigante, um destaque só */
+h1 { left: 84px; top: 128px; font-weight: 400; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; }
+h1 small { font-family: var(--sans); font-size: 46px; font-weight: 600; letter-spacing: -.01em; }
+h1 span { font-family: var(--serif); font-size: 232px; line-height: .86; letter-spacing: -.03em; }
+h1 em { font-style: italic; color: var(--manteiga); padding-right: .04em; }
+
+/* etiqueta amarrada na ponta do barbante */
+.etiqueta { left: 90px; top: 1128px; min-height: 108px; padding: 16px 40px 18px 84px; background: var(--ivory); color: var(--tinta); border-radius: 12px; clip-path: polygon(40px 0, 100% 0, 100% 100%, 40px 100%, 0 50%); transform: rotate(-4deg); transform-origin: left center; display: grid; align-content: center; filter: drop-shadow(6px 8px 0 rgba(42, 20, 51, .35)); }
+.etiqueta::before { content: ""; position: absolute; left: 40px; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 50%; background: var(--violeta); }
+.etiqueta b { font-size: 46px; font-weight: 600; line-height: 1.05; letter-spacing: -.01em; }
+.etiqueta span { font-size: 25px; font-weight: 400; line-height: 1.25; }
+
+.arroba { right: 90px; bottom: 90px; background: var(--pink); color: var(--ivory); font-size: 24px; font-weight: 500; padding: .32em .7em .34em .55em; border-radius: 4px; }
+.ic { display: block; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.arroba .ic { position: absolute; left: -22px; bottom: -22px; width: 30px; height: 30px; --m: url(assets/i-cursor.png); }
+
+/* última lâmina: caixa vazia, a pergunta pra quem segue */
+.fim h1 { flex-direction: column; gap: 0; top: 150px; }
+.fim h1 small { font-size: 46px; }
+.fim h1 span { font-size: 178px; margin-top: 6px; }
+.etiqueta.vazia { grid-auto-flow: column; align-items: end; gap: 18px; }
+.etiqueta.vazia b { font-size: 40px; }
+.etiqueta.vazia u { display: block; width: 250px; border-bottom: 4px dashed var(--tinta); margin-bottom: 10px; }
+.pilula { right: 90px; top: 452px; width: 400px; background: var(--manteiga); color: var(--tinta); font-size: 29px; font-weight: 500; line-height: 1.22; padding: 22px 30px 24px; border-radius: 26px; transform: rotate(3deg); box-shadow: 6px 6px 0 var(--tinta); }
+.selo { left: 90px; top: 90px; width: 0; display: none; }
