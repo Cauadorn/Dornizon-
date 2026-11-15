@@ -50,6 +50,23 @@ if (peca === 'pouch') {
   const k = (W - 2 * m) / 899, x0 = m, y0 = H - m * 1.15 - 700 * k;
   logo(x0, y0, k, { cor: C.rosa, fundo: C.cobalto, gato: C.nanquim, olho: C.rosa, labFundo: C.nanquim, labCor: C.rosa });
 }
+if (peca === 'pote') {
+  // rótulo de pote (a Emi: "igual da referência do primeiro… pele e unha, bafinho, coisas relacionadas a gatos"):
+  // como os potes da direção 05 — microtexto mono no alto, etiqueta preta com o nome do produto, linhas mono, padrão de
+  // olhos à direita, e o logo MIAU inteiro com .lab no pé. ?cor=cobalto|rosa · ?nome= · ?l1= · ?l2=
+  const cobalto = (q.get('cor') || 'cobalto') === 'cobalto';
+  const fundo = cobalto ? C.cobalto : C.rosa, tinta = cobalto ? C.rosa : C.cobalto, m = W * .07;
+  p.style.background = fundo;
+  const nome = q.get('nome') || 'pelo & pele', l1 = q.get('l1') || 'ômega 3 + biotina', l2 = q.get('l2') || 'pra um pelo que brilha';
+  p.insertAdjacentHTML('beforeend', `
+    <div style="position:absolute;left:${m}px;right:${m}px;top:${H * .07}px;display:flex;justify-content:space-between;font:700 ${W * .022}px/1 Mono;letter-spacing:.1em;color:${tinta}"><span>FÓRMULA Nº07</span><span>PETISCO FUNCIONAL</span><span>30 UN.</span></div>
+    <div style="position:absolute;left:${m}px;top:${H * .16}px">
+      <div style="display:inline-block;background:${C.nanquim};color:#F6EEDC;font:600 ${W * .062}px/1 IS;letter-spacing:-.02em;padding:${W * .012}px ${W * .022}px ${W * .016}px">${nome}</div>
+      <div style="font:700 ${W * .024}px/1.4 Mono;color:${tinta};margin-top:${W * .018}px;text-transform:uppercase">${l1}<br>${l2}</div></div>`);
+  // (sem padrão no pote: atrás do gato e do logo ele embolava)
+  const k = (W - 2 * m) / 899, y0 = H - m - 700 * k;
+  logo(m, y0, k, { cor: tinta, fundo, gato: C.nanquim, olho: C.rosa, labFundo: C.nanquim, labCor: '#F6EEDC' });
+}
 document.body.dataset.pronto = 1;
 });
 </script></body></html>
