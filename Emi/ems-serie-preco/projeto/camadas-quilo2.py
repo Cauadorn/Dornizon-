@@ -65,4 +65,7 @@ for nome in ['estrela', 'ar2']:
     q = meta[nome]; t = max(q['w'], q['h']) - 12
     e = cv2.resize(est, (t, int(t * est.shape[0] / est.shape[1])), interpolation=cv2.INTER_AREA)
     salva(nome, e, q['x'] + (q['w'] - e.shape[1]) // 2, q['y'] + (q['h'] - e.shape[0]) // 2)
+# cursor inteiro, no lugar do cursor da arte
+cu = cv2.imread(f'{PEC}/cursor-rec.png', cv2.IMREAD_UNCHANGED); q = meta['cursor']; hc = 165
+cu = cv2.resize(cu, (int(cu.shape[1] * hc / cu.shape[0]), hc), interpolation=cv2.INTER_AREA); salva('cursor', cu, q['x'], q['y'])
 json.dump(meta, open(out + '/meta.json', 'w'), indent=1); print(meta['balanca'], meta['bal-corpo'], meta['estrela'], meta['ar2'])
