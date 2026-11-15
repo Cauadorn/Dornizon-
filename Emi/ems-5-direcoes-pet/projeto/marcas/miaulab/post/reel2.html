@@ -1,0 +1,204 @@
+<!doctype html>
+<!-- MIAU.LAB · reel v2 (9:16, 1080x1920) — "valorizar mais" (a Emi): o gato pisca e olha no ritmo, os produtos entram
+     com o nome gigante, o padrão corre, as fotos trocam por ladrilhos e o fecho termina no logo inteiro.
+     Tudo na grade de uma trilha a 130 BPM (funk com o miado picotado: som/trilha2.py). 1 tempo = 60/130 s.
+     Seções (em tempos): A 0–6 abertura · B 6–14 cortes de cor · C 14–22 produtos · D 22–26 padrões ·
+                         E 26–36 fotos · F 36–40 "Ciência que ronrona." · G 40–43,5 logo final
+     Uso: render-reel.mjs reel2.html saida.mp4 -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+@font-face { font-family: Mea; src: url(../../../fonts/MeaCulpa.woff2); }
+html, body { margin: 0; background: #000; }
+#p { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+.cena { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.mic { position: absolute; font: 700 21px/1.35 Mono; letter-spacing: .06em; white-space: nowrap; }
+.pil { position: absolute; border: 2.5px solid currentColor; border-radius: 999px; padding: 13px 30px 12px; font: 500 24px/1 IS; letter-spacing: .08em; white-space: nowrap; left: 50%; transform: translateX(-50%); }
+.foto { position: absolute; inset: 0; background-repeat: no-repeat; will-change: transform; }
+.nome { position: absolute; left: 72px; top: 250px; font: 900 250px/.84 Archivo; font-stretch: 62%; letter-spacing: -.005em; text-transform: uppercase; white-space: nowrap; }
+.nome span { display: block; overflow: hidden; } .nome span i { display: block; font-style: normal; }
+#grade { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+</style><script src="../gato-v3/gato.js"></script><script src="../logo.js"></script></head><body><div id="p"></div>
+<script>
+const W = 1080, H = 1920, p = document.getElementById('p'), BT = 60 / 130, b = n => n * BT;
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', creme: '#F6EEDC', manteiga: '#F2DC8B', nanquim: '#1C1A24' };
+const cv = document.createElement('canvas').getContext('2d');
+const eo = x => 1 - Math.pow(1 - x, 3), eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eb = x => { const c1 = 1.6, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), fx = (t, a, d) => cl((t - a) / d);
+const cena = (bg) => { const d = document.createElement('div'); d.className = 'cena'; if (bg) d.style.background = bg; p.appendChild(d); return d; };
+const K = W * .84 / 899, X0 = (W - 899 * K) / 2, Y0 = H / 2 - (141 + 700) / 2 * K - 60;
+function logo(dono, o, k = K, x0 = X0, y0 = Y0) {
+  const d = document.createElement('div'); d.className = 'logo'; d.style.cssText = `left:${x0}px;top:${y0}px;transform:scale(${k})`;
+  dono.appendChild(d); miauLogoV3(d, Object.assign({ gato: C.nanquim, olho: C.rosa }, o));
+  const f = 52, fonte = `500 ${f}px IS`; cv.font = fonte; const mm = cv.measureText('F'), cap = mm.actualBoundingBoxAscent;
+  const lh = 700 - 610 - cap, top = 610 + cap - (lh - (mm.fontBoundingBoxAscent + mm.fontBoundingBoxDescent)) / 2 - mm.fontBoundingBoxAscent;
+  d.insertAdjacentHTML('beforeend', `<div class="ass" style="position:absolute;left:-1px;top:${top}px;font:${fonte};line-height:${lh}px;letter-spacing:-.015em;color:${o.cor}">Fórmula veterinária.<br>Feita pra gatos.</div>`);
+  // olhos: guardo os grupos para piscar (escala vertical) e olhar (pupila + brilho de lado)
+  const olhos = [...d.children[0].children[1].children];
+  d.olhos = olhos.map(g => ({ g, t0: g.getAttribute('transform'), pup: [...g.children].slice(1) }));
+  return d;
+}
+function olho(L, pisca, olhar) {   // pisca: 0 aberto → 1 fechado · olhar: -1 esquerda … 1 direita
+  L.olhos.forEach(({ g, t0, pup }) => { g.setAttribute('transform', `${t0} scale(1 ${Math.max(.06, 1 - pisca)})`);
+    pup.forEach(e => e.setAttribute('transform', `translate(${olhar * 12} 0)`)); });
+}
+const piscada = (t, em) => { const u = (t - em) / .16; return u > 0 && u < 1 ? Math.sin(Math.PI * u) : 0; };
+function cantos(dono, cor, [a, c, d, e]) {
+  const m = 64;
+  dono.insertAdjacentHTML('beforeend', `
+    <div class="mic" style="left:${m}px;top:${m}px;color:${cor}">${a}</div><div class="mic" style="right:${m}px;top:${m}px;color:${cor};text-align:right">${c}</div>
+    <div class="mic" style="left:${m}px;bottom:${m}px;color:${cor}">${d}</div><div class="mic" style="right:${m}px;bottom:${m}px;color:${cor};text-align:right">${e}</div>`);
+}
+const tiros = [], tiro = (el, t0, tin, anim) => tiros.push({ el, t0, tin, anim: anim || (() => {}) });
+
+Promise.all(['500 100px IS', '400 100px Mea', '900 100px Archivo', '700 64px Mono'].map(f => document.fonts.load(f))).then(() => {
+  // ---------- A · abertura (0–6) ----------
+  const A = cena(C.cobalto), LA = logo(A, { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
+  cantos(A, C.rosa, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', 'FEITO PRA GATOS', 'Nº01—05']);
+  const [svgCab, txt, svgPat, lab] = LA.children, ass = LA.querySelector('.ass');
+  txt.innerHTML = [...'MIAU'].map(l => `<span style="display:inline-block">${l}</span>`).join('');
+  txt.style.clipPath = 'inset(-40px -60px 0 -60px)';
+  const letras = [...txt.children];
+  const cabG = document.createElementNS('http://www.w3.org/2000/svg', 'g'); [...svgCab.children].forEach(n => cabG.appendChild(n)); svgCab.appendChild(cabG);
+  svgCab.style.clipPath = 'polygon(-1000px -1000px, 2000px -1000px, 2000px 262px, -1000px 262px)';
+  const ns = 'http://www.w3.org/2000/svg', gR = document.createElementNS(ns, 'g'), gP = document.createElementNS(ns, 'g');
+  const cp = document.createElementNS(ns, 'clipPath'); cp.id = 'riscoA'; cp.setAttribute('clipPathUnits', 'userSpaceOnUse');
+  const rr = document.createElementNS(ns, 'rect'); rr.setAttribute('x', -100); rr.setAttribute('y', 250); rr.setAttribute('width', 1200); rr.setAttribute('height', 0);
+  cp.appendChild(rr); svgPat.querySelector('defs').appendChild(cp); gR.setAttribute('clip-path', 'url(#riscoA)');
+  [...svgPat.children].forEach(n => { if (n.tagName === 'path') gR.appendChild(n); else if (n.tagName === 'g') gP.appendChild(n); });
+  svgPat.appendChild(gR); svgPat.appendChild(gP);
+  lab.style.transformOrigin = '50% 50%';
+  const micA = [...A.querySelectorAll('.mic')];
+  tiro(A, 0, 0, t => {
+    letras.forEach((s, i) => { const u = eo(fx(t, b(.1) + i * b(.18), b(.9))); s.style.transform = `translateY(${(1 - u) * 520}px)`; });
+    const c = eb(fx(t, b(1.2), b(.9))); cabG.setAttribute('transform', `translate(0 ${(1 - c) * 150})`);
+    const pa = fx(t, b(2.2), b(.4)); gP.setAttribute('transform', `translate(0 ${(1 - eb(pa)) * -70})`); gP.style.opacity = cl(pa * 4);
+    rr.setAttribute('height', eio(fx(t, b(2.5), b(.8))) * 90);
+    const lb = fx(t, b(3.4), b(.6)); lab.style.transform = `scale(${eb(lb)})`; lab.style.opacity = lb > 0 ? 1 : 0;
+    const as = eo(fx(t, b(3.7), b(.8))); ass.style.opacity = as; ass.style.transform = `translateY(${(1 - as) * 18}px)`;
+    micA.forEach((m, i) => m.style.opacity = fx(t, b(3.9) + i * .05, .01));
+    // o gato pisca e olha para os lados antes do drop
+    const ol = t < b(4.8) ? 0 : t < b(5.3) ? -1 : 1;
+    olho(LA, piscada(t, b(4.3)), ol);
+  });
+  // ---------- B · cortes de cor com o logo travado (6–14): os olhos alternam de lado a cada corte ----------
+  const B = [
+    [C.rosa, C.cobalto, C.cobalto, C.creme, ['MIAU.LAB', 'CIÊNCIA QUE RONRONA', 'PELO & PELE', 'Nº01']],
+    [C.manteiga, C.cobalto, C.nanquim, C.manteiga, ['MIAU.LAB', 'PETISCO FUNCIONAL', 'BOLA DE PELO', 'Nº02']],
+    [C.creme, C.cobalto, C.rosa, C.nanquim, ['MIAU.LAB', 'SUPLEMENTO', 'BAFINHO', 'Nº03']],
+    [C.cobalto, C.rosa, C.creme, C.nanquim, ['LAB_04 · GRADE', 'FÓRMULA Nº04', 'CALMINHA', '30 UN.'], 'grade'],
+    [C.rosa, C.cobalto, C.nanquim, C.rosa, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', 'MOBILIDADE', 'Nº05']],
+    [C.manteiga, C.rosa, C.cobalto, C.creme, ['MIAU.LAB', 'FEITO PRA GATOS', 'SUPLEMENTO P/ GATOS', '2026']],
+    [C.cobalto, C.manteiga, C.rosa, C.nanquim, ['MIAU.LAB', 'CIÊNCIA QUE RONRONA', 'FEITO PRA GATOS', 'Nº01—05']],
+    [C.rosa, C.cobalto, C.cobalto, C.creme, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', 'FEITO PRA GATOS', '★']],
+  ];
+  B.forEach(([bg, cor, labFundo, labCor, txts, extra], i) => {
+    const S = cena(bg);
+    if (extra === 'grade') {
+      let g = ''; [90, W - 90].forEach(x => g += `<div style="position:absolute;left:${x}px;top:0;width:1.5px;height:${H}px;background:${cor};opacity:.55"></div>`);
+      [Y0 + 120 * K, Y0 + 700 * K + 40].forEach(y => g += `<div style="position:absolute;left:0;top:${y}px;width:${W}px;height:1.5px;background:${cor};opacity:.55"></div>`);
+      g += `<div style="position:absolute;left:${W - 90 - 14}px;top:${Y0 + 120 * K - 14}px;width:28px;height:28px;border:1.5px solid ${cor};border-radius:50%"></div>`;
+      S.insertAdjacentHTML('beforeend', g);
+    }
+    const L = logo(S, { cor, fundo: bg, labFundo, labCor }); cantos(S, cor, txts);
+    tiro(S, b(6 + i), 0, t => olho(L, i === 3 || i === 7 ? piscada(t, b(.35)) : 0, i % 2 ? 1 : -1));
+  });
+  // ---------- C · produtos com o nome gigante (14–22) ----------
+  const P = [
+    ['pouch-pelo.png', 1120, 2000, C.manteiga, C.cobalto, ['PELO', '& PELE'], 'FÓRMULA Nº01 · PETISCO FUNCIONAL<br>ÔMEGA 3 + BIOTINA', -7],
+    ['pouch-bola.png', 1120, 2000, C.cobalto, C.rosa, ['BOLA', 'DE PELO'], 'FÓRMULA Nº02 · PETISCO FUNCIONAL<br>FIBRA + MALTE', 6],
+    ['pouch-bafinho.png', 1120, 2000, C.rosa, C.cobalto, ['BAFI', 'NHO'], 'FÓRMULA Nº03 · PETISCO DENTAL<br>MENTA + ZINCO', -5],
+    ['caixa-mobilidade.png', 800, 1400, C.creme, C.cobalto, ['MOBILI', 'DADE'], 'FÓRMULA Nº05 · SUPLEMENTO<br>CONDROITINA + GLUCOSAMINA', 5],
+  ];
+  P.forEach(([src, w, h, bg, cor, linhas, spec, rot], i) => {
+    const S = cena(bg), ph = h > 1600 ? 1000 : 980, pw = w * ph / h;
+    S.insertAdjacentHTML('beforeend', `<div class="nome" style="color:${cor}">${linhas.map(l => `<span><i>${l}</i></span>`).join('')}</div>
+      <div class="mic" style="left:76px;top:${250 + 2 * 210 + 40}px;color:${cor};font-size:26px">${spec}</div>
+      <div class="emb" style="position:absolute;left:${W - pw - 40}px;top:${H - ph - 60}px;width:${pw}px;height:${ph}px;background:url(fotos/${src}) center/100% 100%;box-shadow:0 60px 80px -40px #1c1a2466;transform-origin:50% 100%"></div>`);
+    cantos(S, cor, ['MIAU.LAB', `Nº0${[1, 2, 3, 5][i]}`, '', '']);
+    const nm = [...S.querySelectorAll('.nome i')], emb = S.querySelector('.emb'), mc = S.querySelector('.mic');
+    tiro(S, b(14 + 2 * i), 0, t => {
+      nm.forEach((e, j) => { const u = eo(fx(t, j * b(.25), b(.7))); e.style.transform = `translateY(${(1 - u) * 105}%)`; });
+      const u = eb(fx(t, b(.15), b(.9))), bal = Math.sin(fx(t, b(1), b(1)) * Math.PI) * 1.2;
+      emb.style.transform = `translateY(${(1 - u) * 900}px) rotate(${rot * (1 - .25 * u) + bal}deg)`;
+      mc.style.opacity = fx(t, b(.8), .05);
+    });
+  });
+  // ---------- D · padrões correndo (22–26) ----------
+  [['../behance/padrao-peixe.png', C.cobalto, C.creme, 'PETISCOS · OLHO + PEIXINHO'], ['../behance/padrao-remedio.png', C.rosa, C.cobalto, 'SUPLEMENTOS · OLHO + CÁPSULA']].forEach(([src, bg, cor, rot], i) => {
+    const S = cena(bg); S.insertAdjacentHTML('beforeend', `<div class="foto" style="background-image:url(${src});background-size:1400px 2100px;width:1400px;height:2100px"></div>
+      <div class="pil" style="top:${H / 2 - 30}px;background:${C.creme};color:${C.cobalto};border-color:${C.creme};font-size:30px;padding:18px 38px 16px">${rot}</div>`);
+    const f = S.querySelector('.foto'), pl = S.querySelector('.pil');
+    tiro(S, b(22 + 2 * i), 0, t => { const u = t / b(2); f.style.transform = `translate(${-80 - 160 * u * (i ? -1 : 1) - (i ? 160 : 0)}px, ${-40 - 140 * u}px)`;
+      pl.style.transform = `translateX(-50%) scale(${.9 + .1 * eb(fx(t, 0, b(.6)))})`; });
+  });
+  // ---------- E · fotos trocando por ladrilhos (26–36) ----------
+  const F = [['fotos/v2-l3-edicao-b.png', 1856, 2304, .46], ['fotos/v2-l2-edicao-a.png', 1856, 2304, .58], ['fotos/v2-l7-caixa.png', 1856, 2304, .36],
+             ['fotos/v2-l8-linha.png', 1856, 2304, [.12, .88]], ['fotos/v2-l56-panoramica.png', 2752, 1536, [.2, .66]]];
+  const T0 = [26, 28, 30, 32, 34].map(b);
+  F.forEach(([src, w, h, pos], i) => {
+    const S = cena('#111'), k = H / h, sw = w * k, f = document.createElement('div'); f.className = 'foto';
+    f.style.cssText += `background-image:url(${src});background-size:${sw}px ${H}px;width:${sw}px;height:${H}px;transform-origin:0 0`;
+    S.appendChild(f);
+    const dur = (T0[i + 1] || b(36)) - T0[i] + .45;
+    tiro(S, T0[i], .41, t => {
+      const u = cl(t / dur);
+      if (Array.isArray(pos)) { const cx = (pos[0] + (pos[1] - pos[0]) * eio(u)) * sw; f.style.transform = `translateX(${cl(W / 2 - cx, W - sw, 0)}px)`; }
+      else { const z = 1 + .06 * u, cx = pos * sw; f.style.transform = `translate(${W / 2 - cx * z}px, ${H / 2 - H / 2 * z}px) scale(${z})`; }
+    });
+  });
+  // ---------- F · "Ciência que ronrona." (36–40) ----------
+  const tinta = (t, font, ls = 0) => { cv.font = font; cv.letterSpacing = ls + 'px'; const m = cv.measureText(t); cv.letterSpacing = '0px';
+    return { asc: m.actualBoundingBoxAscent, desc: m.actualBoundingBoxDescent, l: m.actualBoundingBoxLeft, r: m.actualBoundingBoxRight }; };
+  [[C.rosa, C.cobalto], [C.manteiga, C.cobalto], [C.cobalto, C.rosa], [C.rosa, C.cobalto]].forEach(([bg, cor], i) => {
+    const S = cena(bg);
+    const linha = (t, font, ls, f, x, base) => { cv.font = font; const m = cv.measureText('x');
+      S.insertAdjacentHTML('beforeend', `<div style="position:absolute;white-space:nowrap;left:${x}px;top:${base - (m.fontBoundingBoxAscent - m.fontBoundingBoxDescent) / 2}px;font:${font};line-height:${f}px;height:0;letter-spacing:${ls}px;color:${cor};display:flex;align-items:center">${t}</div>`); };
+    const f1 = 128, F1 = `500 ${f1}px IS`, ls1 = -.04 * f1, m1 = tinta('Ciência que', F1, ls1);
+    const f2 = 252, F2 = `400 ${f2}px Mea`, m2 = tinta('ronrona.', F2), vao = 12;
+    const alt = m1.asc + m1.desc + vao + m2.asc + m2.desc, topo = H / 2 - alt / 2 - 60, b1 = topo + m1.asc, b2 = b1 + m1.desc + vao + m2.asc;
+    linha('Ciência que', F1, ls1, f1, W / 2 - (m1.r - m1.l) / 2, b1);
+    linha('ronrona.', F2, 0, f2, W / 2 - (m2.r - m2.l) / 2, b2);
+    S.insertAdjacentHTML('beforeend', `<div class="pil" style="top:${b2 + m2.desc + 36}px;color:${cor}">FEITO PRA GATOS</div>`);
+    cantos(S, cor, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', '', 'Nº01—05']);
+    tiro(S, b(36 + i), i ? 0 : .41);
+  });
+  // ---------- G · logo final (40–43,5): o gato pisca para a câmera ----------
+  const G = cena(C.cobalto), LG = logo(G, { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
+  G.insertAdjacentHTML('beforeend', `<div class="pil" style="top:${Y0 + 760 * K}px;color:${C.rosa}">CIÊNCIA QUE RONRONA</div>`);
+  cantos(G, C.rosa, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', 'FEITO PRA GATOS', 'Nº01—05']);
+  tiro(G, b(40), .41, t => { olho(LG, piscada(t, b(1.6)), t < b(1) ? 0 : t < b(2.4) ? -1 : 0);
+    LG.style.transform = `scale(${K * (1.04 - .04 * eo(fx(t, 0, b(2))))})`; });
+  // grade creme que aparece durante a troca por ladrilhos
+  const grade = document.createElement('div'); grade.id = 'grade'; let gl = '';
+  for (let c = 1; c < 3; c++) gl += `<div style="position:absolute;left:${c * W / 3 - 1}px;top:0;width:2px;height:${H}px;background:${C.creme}"></div>`;
+  for (let r = 1; r < 5; r++) gl += `<div style="position:absolute;left:0;top:${r * H / 5 - 1}px;width:${W}px;height:2px;background:${C.creme}"></div>`;
+  grade.innerHTML = gl; p.appendChild(grade);
+  document.body.dataset.pronto = 1;
+});
+function ladrilhos(u) {
+  const cw = W / 3, rh = H / 5, D = .035, dur = .2; let d = '';
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 3; c++) {
+    const q = eio(cl((u * .41 - (r + c) * D) / dur)); if (q <= 0) continue;
+    const x = c * cw, h = rh * q, y = c % 2 ? r * rh : r * rh + rh - h;
+    d += `M${x - .5} ${y - .5}H${x + cw + .5}V${y + h + .5}H${x - .5}Z`;
+  }
+  return d ? `path('${d}')` : 'inset(100%)';
+}
+window.DURACAO = b(43.5) + .3;
+window.quadro = t => {
+  let grade = 0;
+  tiros.forEach((s, i) => {
+    const prox = tiros[i + 1], fim = prox ? prox.t0 + prox.tin : Infinity, vis = t >= s.t0 && t < fim;
+    s.el.style.visibility = vis ? 'visible' : 'hidden';
+    if (!vis) return;
+    if (s.tin && t < s.t0 + s.tin) { const u = (t - s.t0) / s.tin; s.el.style.clipPath = ladrilhos(u); grade = Math.max(grade, Math.sin(Math.PI * u) * .9); }
+    else s.el.style.clipPath = 'none';
+    s.anim(t - s.t0);
+  });
+  document.getElementById('grade').style.opacity = grade;
+};
+</script></body></html>

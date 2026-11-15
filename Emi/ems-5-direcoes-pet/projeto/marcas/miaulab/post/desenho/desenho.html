@@ -1,0 +1,127 @@
+<!doctype html>
+<!-- MIAU.LAB · take de abertura do reel: o GATINHO sendo desenhado à mão no tablet (o MIAU é fonte, entra digitado).
+     Pedido da Emi a partir do reel da clarissa.marcas ("só o gatinho; o miau obviamente é uma fonte").
+     Roteiro: MIAU digitado com cursor de texto → a câmera chega perto do U → rascunho a lápis (círculo de construção,
+     eixos, contorno, olhos, patas) → traço final a nanquim → balde de tinta (gato, olhos, unhas) → a câmera abre no
+     logo inteiro, no mesmo lugar e tamanho do reel.html, que vem em seguida. Uso: render-reel.mjs desenho/desenho.html saida.mp4 -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Mono; src: url(../../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: Archivo; src: url(../../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+html, body { margin: 0; background: #000; }
+#p { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #F6EEDC; }
+.mic { position: absolute; font: 700 21px/1.35 Mono; letter-spacing: .06em; white-space: nowrap; color: #1C1A24; }
+#caneta { position: absolute; width: 0; height: 0; }
+#caneta i { position: absolute; left: -15px; top: -15px; width: 26px; height: 26px; border: 2px solid #1C1A24; border-radius: 50%; }
+#caneta b { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; background: #1C1A24; border-radius: 50%; }
+#oculto { position: absolute; left: -5000px; width: 899px; height: 700px; }
+</style><script src="../../gato-v3/gato.js"></script><script src="../../logo.js"></script><script src="glifos.js"></script></head>
+<body><div id="p"></div><div id="oculto"></div>
+<script>
+const W = 1080, H = 1920, p = document.getElementById('p'), ns = 'http://www.w3.org/2000/svg';
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', creme: '#F6EEDC', nanquim: '#1C1A24', lapis: '#8C857C' };
+const K = W * .84 / 899, X0 = (W - 899 * K) / 2, Y0 = H / 2 - (141 + 700) / 2 * K - 60;   // igual ao reel.html
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2, eo = x => 1 - Math.pow(1 - x, 3);
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), fx = (t, a, d) => cl((t - a) / d);
+let pts = ''; for (let y = 40; y < H; y += 48) for (let x = 36; x < W; x += 48) pts += `<circle cx="${x}" cy="${y}" r="1.6"/>`;
+p.innerHTML = `<svg id="tela" width="${W}" height="${H}" style="position:absolute;left:0;top:0;overflow:visible">
+    <defs><filter id="lapis" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs>
+    <g id="cam"><g fill="#1C1A24" fill-opacity=".08">${pts}</g><g id="L" transform="translate(${X0} ${Y0}) scale(${K})">
+      <g id="texto"></g><g id="cores"></g><g id="tracos"></g></g></g></svg>
+  <div id="cursor" style="position:absolute;width:3px;background:#1C1A24"></div>
+  <div id="caneta"><i></i><b></b></div>
+  <div class="mic" style="left:64px;top:64px">MIAU.LAB · SÍMBOLO</div><div class="mic" style="right:64px;top:64px;text-align:right" id="fase">01 — TIPO</div>
+  <div class="mic" style="left:64px;bottom:64px">GATO DESENHADO À MÃO</div><div class="mic" style="right:64px;bottom:64px;text-align:right" id="zoom">100%</div>`;
+const cam = document.getElementById('cam'), L = document.getElementById('L'), gT = document.getElementById('tracos'), gC = document.getElementById('cores');
+const caneta = document.getElementById('caneta'), cursor = document.getElementById('cursor');
+const el = (tag, at, pai) => { const e = document.createElementNS(ns, tag); for (const k in at) e.setAttribute(k, at[k]); (pai || gT).appendChild(e); return e; };
+const ZM = 3.4;   // zoom da câmera enquanto desenha
+const traco = (d, tr, fase) => { const e = el('path', Object.assign({ d, transform: tr || '', fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' },
+    fase === 'lapis' ? { stroke: C.lapis, filter: 'url(#lapis)', 'stroke-opacity': .9 } : { stroke: C.nanquim }));
+  // espessura em px de tela no zoom máximo: 2,4 (lápis) e 3,6 (nanquim), qualquer que seja a escala do caminho
+  const m = L.getCTM().inverse().multiply(e.getCTM()), esc = Math.hypot(m.a, m.b) * K * ZM;
+  e.setAttribute('stroke-width', (fase === 'lapis' ? 2.4 : 3.6) / esc); return e; };
+Promise.all(['900 100px Archivo', '700 64px Mono'].map(f => document.fonts.load(f))).then(() => {
+  const o = document.getElementById('oculto'); miauLogoV3(o, { cor: '#000', fundo: C.creme, gato: C.nanquim, olho: C.rosa, unha: C.creme });
+  const [s0, , s2] = o.children, cab = s0.children[0], olhos = s0.children[1];
+  const tr = n0 => { let t = [], n = n0; while (n && n.tagName !== 'svg') { if (n.getAttribute && n.getAttribute('transform')) t.unshift(n.getAttribute('transform')); n = n.parentNode; } return t.join(' '); };
+  // MIAU: a fonte (contornos da Archivo condensed black), em cobalto, digitada letra a letra
+  const s = 470 / GLIFOS.upm, base = 191 + (470 - (GLIFOS.asc + GLIFOS.desc) * s) / 2 + GLIFOS.asc * s;
+  const letras = GLIFOS.letras.map(g => el('path', { d: g.d, transform: `translate(${-19 + g.x * s} ${base}) scale(${s} ${-s})`, fill: C.cobalto }, document.getElementById('texto')));
+  const fimLetra = GLIFOS.letras.map((g, i) => -19 + (GLIFOS.letras[i + 1] ? GLIFOS.letras[i + 1].x : GLIFOS.largura) * s);
+  // as cores do gato (entram no balde de tinta), recortadas por um círculo que cresce a partir do clique
+  const corG = (cx, cy, id) => { const cp = el('clipPath', { id, clipPathUnits: 'userSpaceOnUse' }, L); const c = el('circle', { cx, cy, r: 0 }, cp);
+    return [el('g', { 'clip-path': `url(#${id})` }, gC), c]; };
+  const [gGato, cGato] = corG(798, 200, 'balde1'), [gOlho, cOlho] = corG(798, 210, 'balde2'), [gUnha, cUnha] = corG(798, 270, 'balde3');
+  const clone = (n, pai, at = {}) => { const c = n.cloneNode(true); for (const k in at) c.setAttribute(k, at[k]); const t = tr(n.parentNode);
+    if (t) { const g = el('g', { transform: t }, pai); g.appendChild(c); } else pai.appendChild(c); return c; };
+  clone(cab.children[0], gGato);
+  const patas = [...s2.children].filter(n => n.tagName === 'g' && n.children.length === 2), unhas = [...s2.children].filter(n => n.tagName === 'g' && n.children.length === 1);
+  const riscos = [...s2.children].filter(n => n.tagName === 'path');
+  patas.forEach(g => clone(g.children[1], gGato));
+  [...olhos.children].forEach(g => { const gg = el('g', { transform: tr(g) }, gOlho); [...g.children].forEach(c => gg.appendChild(c.cloneNode(true))); });
+  unhas.forEach(g => clone(g.children[0], gUnha));
+  riscos.forEach(r => clone(r, gUnha, { fill: C.creme }));
+  // geometria da cabeça para os traços de construção (círculo, eixo, linha dos olhos)
+  const tmp = el('path', { d: cab.children[0].getAttribute('d'), transform: tr(cab.children[0]), fill: 'none' });
+  const bb = tmp.getBBox(), m = tmp.getCTM(), mi = L.getCTM().inverse();
+  const canto = (x, y) => { const q = new DOMPoint(x, y).matrixTransform(m).matrixTransform(mi); return [q.x, q.y]; };
+  const [hx0, hy0] = canto(bb.x, bb.y), [hx1, hy1] = canto(bb.x + bb.width, bb.y + bb.height); tmp.remove();
+  const hcx = (hx0 + hx1) / 2, hcy = hy0 + (hy1 - hy0) * .62, hr = (hx1 - hx0) * .42;
+  // roteiro dos traços: [elemento, início, duração]
+  const R = []; let t = 1.15;
+  const add = (els, dur, gap = .05) => { els.forEach(e => { R.push([e, t, dur]); t += dur + gap; }); };
+  // rascunho: construção primeiro, como gente desenha
+  add([traco(`M${hcx + hr} ${hcy} A${hr} ${hr * .86} 0 1 1 ${hcx - hr} ${hcy} A${hr} ${hr * .86} 0 1 1 ${hcx + hr} ${hcy}`, '', 'lapis')], .26, .05);
+  add([traco(`M${hcx} ${hy0 - 10} L${hcx} ${hy1 + 10}`, '', 'lapis'), traco(`M${hx0 - 10} ${hcy - 8} L${hx1 + 10} ${hcy - 8}`, '', 'lapis')], .09, .04);
+  add([traco(cab.children[0].getAttribute('d'), tr(cab.children[0]), 'lapis')], .44, .05);
+  [...olhos.children].forEach(g => add([traco('M30 0 A30 30 0 1 1 -30 0 A30 30 0 1 1 30 0', tr(g), 'lapis')], .1, .04));
+  patas.forEach(g => add([traco(g.children[1].getAttribute('d'), tr(g.children[1]), 'lapis')], .17, .04));
+  const tinta0 = t + .1; t = tinta0;
+  // arte final a nanquim, mais rápida e firme
+  add([traco(cab.children[0].getAttribute('d'), tr(cab.children[0]), 'tinta')], .36, .05);
+  [...olhos.children].forEach(g => add([traco('M30 0 A30 30 0 1 1 -30 0 A30 30 0 1 1 30 0', tr(g), 'tinta'), traco(g.children[1].getAttribute('d'), tr(g), 'tinta')], .07, .02));
+  patas.forEach(g => add([traco(g.children[1].getAttribute('d'), tr(g.children[1]), 'tinta')], .15, .04));
+  add(unhas.map(g => traco(g.children[0].getAttribute('d'), tr(g.children[0]), 'tinta')), .035, .012);
+  add(riscos.map(r => traco(r.getAttribute('d'), '', 'tinta')), .022, .004);
+  const balde = t + .06, FIM = balde + 1.1;
+  R.forEach(([e]) => { const n = e.getTotalLength(); e.dataset.n = n; e.setAttribute('stroke-dasharray', `${n} ${n}`); e.setAttribute('stroke-dashoffset', n); });
+  const ponto = (e, u) => { const q = e.getPointAtLength(u * +e.dataset.n), mm = e.getScreenCTM(), r = p.getBoundingClientRect();
+    return [mm.a * q.x + mm.c * q.y + mm.e - r.left, mm.b * q.x + mm.d * q.y + mm.f - r.top]; };
+  // câmera: chega perto do U para desenhar e abre no logo inteiro no fim (foco vai para o centro da tela)
+  const foco = [X0 + hcx * K, Y0 + (hcy + 25) * K];
+  const camera = tm => { const z = 1 + (ZM - 1) * (eio(fx(tm, .78, .4)) - eio(fx(tm, FIM - .75, .6))), u = (z - 1) / (ZM - 1), [cx, cy] = foco;
+    cam.setAttribute('transform', `translate(${(W / 2 * u + cx * (1 - u)) - cx * z} ${(H / 2 * u + cy * (1 - u)) - cy * z}) scale(${z})`); return z; };
+  const fase = document.getElementById('fase'), zoom = document.getElementById('zoom');
+  const lab = el('g', {}, L); el('rect', { x: 705, y: 610, width: 194, height: 90, fill: C.nanquim }, lab);
+  const labT = el('text', { x: 725, y: 676, fill: C.creme, 'font-family': 'Mono', 'font-weight': 700, 'font-size': 64 }, lab); labT.textContent = '.lab';
+  window.DURACAO = FIM + .35;
+  window.ROTEIRO = { tracos: R.map(([e, t0, d]) => [+t0.toFixed(3), +d.toFixed(3), e.getAttribute('stroke') === C.nanquim ? 'tinta' : 'lapis']), letras: [.12, .27, .42, .57], balde, fim: FIM };
+  window.quadro = tm => {
+    const z = camera(tm);
+    // digitação do MIAU (com cursor de texto piscando)
+    const nL = tm < .12 ? 0 : Math.min(4, 1 + Math.floor((tm - .12) / .15)); letras.forEach((e, i) => e.style.visibility = i < nL ? 'visible' : 'hidden');
+    const xc = X0 + (nL ? fimLetra[nL - 1] + 6 : -13) * K;
+    cursor.style.left = xc + 'px'; cursor.style.top = (Y0 + 205 * K) + 'px'; cursor.style.height = (380 * K) + 'px';
+    cursor.style.opacity = tm < .75 && (tm < .7 || Math.floor(tm / .2) % 2 === 0) ? 1 : 0;
+    let pos = null;
+    R.forEach(([e, t0, d], i) => {
+      const u = eio(cl((tm - t0) / d)); e.setAttribute('stroke-dashoffset', +e.dataset.n * (1 - u)); e.style.visibility = u > 0 ? 'visible' : 'hidden';
+      if (tm >= t0 && tm < t0 + d) pos = ponto(e, u);
+      else if (!pos && tm >= t0 + d && R[i + 1] && tm < R[i + 1][1]) { const a = ponto(e, 1), b = ponto(R[i + 1][0], 0), v = eio((tm - t0 - d) / (R[i + 1][1] - t0 - d)); pos = [a[0] + (b[0] - a[0]) * v, a[1] + (b[1] - a[1]) * v]; }
+    });
+    R.forEach(([e]) => { if (e.getAttribute('stroke') !== C.nanquim) e.setAttribute('stroke-opacity', .9 - .75 * fx(tm, tinta0, 1)); });
+    // balde de tinta: gato, olhos, unhas (o nanquim some quando a cor assenta; o rascunho some junto)
+    cGato.setAttribute('r', 260 * eo(fx(tm, balde, .3))); cOlho.setAttribute('r', 260 * eo(fx(tm, balde + .3, .2))); cUnha.setAttribute('r', 400 * eo(fx(tm, balde + .45, .25)));
+    R.forEach(([e]) => e.setAttribute('opacity', 1 - fx(tm, balde + .55, .3)));
+    const bp = tm >= balde && tm < balde + .7 ? (tm < balde + .3 ? [798, 200] : tm < balde + .45 ? [798, 210] : [798, 270]) : null;
+    if (bp) { const mm = L.getScreenCTM(), r = p.getBoundingClientRect(); pos = [mm.a * bp[0] + mm.e - r.left, mm.d * bp[1] + mm.f - r.top]; }
+    const [lx, ly] = pos || [W * .5, H * .7];
+    caneta.style.transform = `translate(${lx}px, ${ly}px)`; caneta.style.opacity = tm > 1.0 && tm < balde + .75 ? 1 : 0;
+    lab.style.opacity = fx(tm, FIM - .3, .1);
+    fase.textContent = tm < 1.1 ? '01 — TIPO' : tm < tinta0 ? '02 — RASCUNHO' : tm < balde ? '03 — ARTE FINAL' : '04 — COR';
+    zoom.textContent = Math.round(z * 100) + '%';
+  };
+  window.quadro(0); document.body.dataset.pronto = 1;
+});
+</script></body></html>
