@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · quilo · lâminas 2 a 5</title>
+<style>
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Regular.ttf);font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Italic.ttf);font-style:italic}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#111}*{box-sizing:border-box}
+#c{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Poppins;color:#fffbde;background:#3d1c46}
+#c>*{position:absolute}
+.estudio{inset:0;background:radial-gradient(ellipse 62% 46% at 50% 40%,rgba(98,37,216,.85),rgba(98,37,216,.25) 60%,rgba(61,28,70,0) 100%)}
+.chao{left:0;right:0;bottom:0;height:300px;background:linear-gradient(rgba(61,28,70,0),rgba(42,20,51,.75))}
+.tag{left:110px;top:90px;font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;background:#6225d8;white-space:nowrap}
+.tag svg{position:absolute;left:-19px;bottom:-21px}
+.pag{right:90px;top:99px;font:500 20px/1 Poppins;letter-spacing:.08em;opacity:.75}
+.serif{font-family:"Instrument Serif";font-weight:400;letter-spacing:-.02em;line-height:.86;white-space:nowrap}
+.serif em{font-style:italic;color:#f2cf7a}
+.lead{font:600 44px/1.1 Poppins;white-space:nowrap}
+.corpo{font:400 31px/1.28 Poppins}
+.cartao{font:600 36px/1.14 Poppins;padding:18px 26px 20px;border-radius:20px;white-space:nowrap;transform-origin:0 100%;box-shadow:7px 8px 0 rgba(42,20,51,.55);background:#fffbde;color:#2a1433}
+.obj{filter:drop-shadow(0 22px 22px rgba(30,8,40,.5))}
+.obj img,img.obj{display:block}
+svg.g{inset:0;width:100%;height:100%;mix-blend-mode:overlay;opacity:.12;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="c"></div>
+<script>
+const cur='<svg width="28" height="28" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+const topo=n=>`<span class="tag">@itsemsdesign${cur}</span><span class="pag">0${n} / 05</span>`;
+const P='cenas/pecas/';
+const grao='<svg class="g"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>';
+const L={
+ // 02 · a pergunta: tipografia gigante em cima, a balança vazia embaixo, a resposta colada nela
+ 2:`<div class="estudio"></div><img src="laminas/cena-vazia.png" style="left:-108px;top:262px;width:1296px;-webkit-mask-image:linear-gradient(transparent 2%,#000 26%);mask-image:linear-gradient(transparent 2%,#000 26%)">
+  <div style="left:0;right:0;bottom:0;height:330px;background:linear-gradient(rgba(61,28,70,0),#3d1c46 55%)"></div>
+  ${topo(2)}
+  <span class="lead" style="left:90px;top:196px">todo mundo pergunta</span>
+  <span class="serif" style="left:84px;top:244px;font-size:214px">quanto custa</span>
+  <span class="serif" style="left:84px;top:414px;font-size:214px">um <em>logo?</em></span>
+  <span class="cartao" style="left:90px;top:1110px;transform:rotate(-3deg)">depende do que<br>vai no prato.</span>
+  <span class="corpo" style="right:90px;top:1146px;text-align:right;width:420px">nenhuma marca leva<br>as mesmas coisas.</span>`,
+ // 03 · o que entra no prato: as quatro peças, em escada, cada uma com o seu nome grande
+ 3:`<div class="estudio"></div><div class="chao"></div>
+  ${topo(3)}
+  <span class="lead" style="left:90px;top:188px">o que entra no</span>
+  <span class="serif" style="left:468px;top:140px;font-size:150px"><em>prato</em></span>
+  ${[['a letra','a fonte que fala<br>do jeito da marca.',`<img src="${P}A-rec.png" style="width:150px"><img src="${P}a-min-rec.png" style="width:118px;margin-left:-22px;margin-top:46px">`,90,330],
+     ['a cor','paleta com motivo,<br>não cor bonita solta.',[1,2,3,4].map((k,i)=>`<img src="${P}amostra${k}-rec.png" style="width:58px;transform:rotate(${-18+12*i}deg);margin-left:${i?-8:0}px">`).join(''),470,548],
+     ['o uso','site, rede social, embalagem:<br>onde ela vai viver.',`<img src="${P}cursor-rec.png" style="width:170px">`,90,772],
+     ['o detalhe','o grafismo que faz<br>reconhecer sem o nome.',`<img src="${P}estrela-rec.png" style="width:150px">`,470,990]]
+    .map(([nome,txt,img,x,y])=>`<div class="obj" style="left:${x}px;top:${y}px;width:220px;height:200px;display:flex;align-items:center;justify-content:center">${img}</div>
+      <span class="serif" style="left:${x+236}px;top:${y+22}px;font-size:92px">${nome}</span>
+      <span class="corpo" style="left:${x+240}px;top:${y+110}px;font-size:29px;line-height:1.22;white-space:nowrap;color:#e4d6e6">${txt}</span>`).join('')}`,
+ // 04 · a virada: a balança cheia grande, cortada pela borda; a frase em coluna do outro lado
+ 4:`<img src="laminas/cena-cheia.png" style="left:-520px;top:-30px;width:1620px">
+  <div style="left:0;right:0;bottom:0;height:420px;background:linear-gradient(rgba(61,28,70,0),#3d1c46 60%)"></div>
+  ${topo(4)}
+  <span class="lead" style="right:90px;top:520px;text-align:right">quanto mais coisa<br>no prato,</span>
+  <span class="serif" style="right:84px;top:632px;font-size:230px;text-align:right">mais</span>
+  <span class="serif" style="right:84px;top:806px;font-size:300px;text-align:right"><em>pesa.</em></span>
+  <span class="cartao" style="right:90px;top:1134px;transform:rotate(2deg);transform-origin:100% 100%;text-align:right">orçamento de marca<br>não é tabela.</span>`,
+ // 05 · chamada: etiqueta de balança de mercado, com as peças soltas em volta
+ 5:`<div class="estudio"></div><div class="chao"></div>
+  ${topo(5)}
+  <span class="lead" style="left:90px;top:196px">e o seu prato,</span>
+  <span class="serif" style="left:84px;top:236px;font-size:226px">leva o <em>quê?</em></span>
+  <img class="obj" src="${P}A-rec.png" style="left:742px;top:452px;width:230px;transform:rotate(12deg)">
+  <img class="obj" src="${P}amostra1-rec.png" style="left:86px;top:470px;width:84px;transform:rotate(-24deg)">
+  <img class="obj" src="${P}amostra3-rec.png" style="left:170px;top:452px;width:84px;transform:rotate(-6deg)">
+  <div style="left:150px;top:640px;width:780px;background:#fffbde;color:#2a1433;border-radius:26px;padding:34px 42px 36px;transform:rotate(-3deg);box-shadow:10px 12px 0 rgba(42,20,51,.6)">
+    <div style="display:flex;justify-content:space-between;font:500 20px/1 Poppins;letter-spacing:.14em;text-transform:uppercase;color:#9e122c"><span>balança ems</span><span>etiqueta de peso</span></div>
+    <div style="border-top:3px dashed #2a1433;margin:20px 0 18px"></div>
+    <div style="display:flex;justify-content:space-between;font:500 27px/1.5 Poppins"><span>produto</span><b style="font-weight:600">identidade visual</b></div>
+    <div style="display:flex;justify-content:space-between;font:500 27px/1.5 Poppins"><span>peso</span><b style="font-weight:600">depende do prato</b></div>
+    <div style="border-top:3px dashed #2a1433;margin:18px 0 20px"></div>
+    <div class="serif" style="font-size:118px;line-height:.9;color:#2a1433">comenta <em style="color:#dd34a8">balança</em></div>
+    <div style="font:500 28px/1.3 Poppins;margin-top:16px">que eu te mando a calculadora<br>que pesa a sua marca.</div>
+    <div style="margin-top:24px;height:58px;background:repeating-linear-gradient(90deg,#2a1433 0 5px,transparent 5px 9px,#2a1433 9px 11px,transparent 11px 17px,#2a1433 17px 24px,transparent 24px 28px)"></div>
+  </div>
+  <img class="obj" src="${P}cursor-rec.png" style="left:790px;top:1010px;width:200px;transform:rotate(8deg)">
+  <img class="obj" src="${P}estrela-rec.png" style="left:84px;top:1090px;width:130px;transform:rotate(-12deg)">`,
+};
+const n=new URLSearchParams(location.search).get('n')||'2';
+document.getElementById('c').innerHTML=L[n]+grao;
+</script>
+</body>
+</html>

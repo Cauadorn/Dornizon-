@@ -108,7 +108,10 @@ fetch('camadas/quilo/meta.json').then(r=>r.json()).then(async m=>{M=m;
   const co=$('corpo');co.style.left=m['bal-corpo'].x+'px';co.style.top=m['bal-corpo'].y+'px';
   const pt=$('pont'),po=m.ponteiro;pt.style.left=(m.balanca.eixo[0]-(po.px-po.x))+'px';pt.style.top=(m.balanca.eixo[1]-(po.py-po.y))+'px';pt.style.transformOrigin=`${po.px-po.x}px ${po.py-po.y}px`;
   await Promise.all([document.fonts.load('400 60px "Instrument Serif"'),document.fonts.load('italic 400 60px "Instrument Serif"'),document.fonts.load('600 40px Poppins'),document.fonts.load('500 40px Poppins'),...[...document.images].map(i=>i.decode().catch(()=>{}))]);
-  window.DURATION=DUR;window.render=render;const q=new URLSearchParams(location.search);render(parseFloat(q.get('t')||'7'));window.READY=true;
+  window.DURATION=DUR;window.render=render;const q=new URLSearchParams(location.search);
+  // ?cena=1: só a balança no estúdio, sem palavra nem texto, para os outros slides
+  if(q.get('cena')){document.querySelectorAll('#c>.t,#brilho,#l-ar2,#sombra').forEach(e=>e.style.display='none');document.querySelector('img[src$="palavra.png"]').style.display='none';}
+  render(parseFloat(q.get('t')||'7'));window.READY=true;
   if(q.get('play')){const s=performance.now();(function l(){render(((performance.now()-s)/1000)%DUR);requestAnimationFrame(l)})();}});
 </script>
 </body>
