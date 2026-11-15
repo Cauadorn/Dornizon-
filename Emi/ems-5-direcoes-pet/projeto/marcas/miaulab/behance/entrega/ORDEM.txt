@@ -1,5 +1,0 @@
-MIAU.LAB · post de Behance (ordem de subida)
-Capa do projeto: 00-capa-do-projeto.jpg (808x632 em 2x)
-Módulos, de cima pra baixo, na ordem dos números: 01 a 20.
-Os .gif são as pranchas animadas (motion) e o 17 é o vídeo do reel (sobe como vídeo).
-Pranchas em 2800 px de largura (o Behance mostra a 1400 px, fica nítido em tela retina).

@@ -9,7 +9,7 @@ const srv = http.createServer((rq, rs) => { const f = path.join(raiz, decodeURIC
   fs.readFile(f, (e, d) => { if (e) { rs.writeHead(404); rs.end(); return; } rs.writeHead(200, { 'content-type': tipos[path.extname(f)] || 'application/octet-stream' }); rs.end(d); }); });
 await new Promise(r => srv.listen(0, r));
 const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1400, height: 1000 }, deviceScaleFactor: 2 });
-await p.goto(`http://127.0.0.1:${srv.address().port}/marcas/miaulab/behance/behance.html`);
+await p.goto(`http://127.0.0.1:${srv.address().port}/marcas/miaulab/behance-producao/behance.html`);
 await p.waitForFunction(() => document.body.dataset.pronto === '1');
 await p.evaluate(() => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
 await p.evaluate(async () => { const urls = [...document.querySelectorAll('.foto')].map(f => getComputedStyle(f).backgroundImage.slice(5, -2));

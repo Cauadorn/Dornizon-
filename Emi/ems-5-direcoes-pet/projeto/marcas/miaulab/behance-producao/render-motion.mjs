@@ -10,7 +10,7 @@ const srv = http.createServer((rq, rs) => { const f = path.join(raiz, decodeURIC
   fs.readFile(f, (e, d) => { if (e) { rs.writeHead(404); rs.end(); return; } rs.writeHead(200, { 'content-type': tipos[path.extname(f)] || 'application/octet-stream' }); rs.end(d); }); });
 await new Promise(r => srv.listen(0, r));
 const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1400, height: 1050 } });
-await p.goto(`http://127.0.0.1:${srv.address().port}/marcas/miaulab/behance/motion.html?m=${modo}`);
+await p.goto(`http://127.0.0.1:${srv.address().port}/marcas/miaulab/behance-producao/motion.html?m=${modo}`);
 await p.waitForFunction(() => document.body.dataset.pronto === '1');
 await p.evaluate(() => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
 const n = Math.round(await p.evaluate(() => window.DURACAO) * FPS), mp4 = path.join(out, `${modo}.mp4`);
@@ -22,5 +22,5 @@ ff.stdin.end(); await new Promise(r => ff.on('close', r));
 await b.close(); srv.close();
 // GIF em loop (paleta própria, cores chapadas da marca ficam limpas); 3 voltas no MP4 para quem preferir vídeo
 spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', mp4, '-vf', 'fps=25,scale=1400:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=none', '-loop', '0', path.join(out, `${modo}.gif`)]);
-spawnSync('ffmpeg', ['-v', 'error', '-y', '-stream_loop', '2', '-i', mp4, '-c', 'copy', path.join(out, `${modo}-3x.mp4`)]);
+
 console.log('ok', modo, n, 'quadros');
