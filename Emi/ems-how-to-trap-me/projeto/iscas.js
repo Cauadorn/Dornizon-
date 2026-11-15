@@ -20,7 +20,12 @@ const LAMINAS = [
       { src: 'series-gilmore-1.jpg', x: 402, y: 880, w: 190, r: -4, z: 2 }, { src: 'series-ahs-1.jpg', x: 580, y: 930, w: 180, r: 5, z: 2 },
     ],
          estrelas: [[1010, 520, 300], [90, 1240, 280]],  icones: [['estrela', 100, 500, 84, 'manteiga', -14], ['brilho', 900, 470, 44, 'ivory', 0, .85], ['espiral', 880, 1040, 86, 'lavanda', 20, .9]] },
-  { tema: 'massas',      estrelas: [[70, 480, 280], [1000, 1180, 330]],  icones: [['brilho', 860, 440, 70, 'manteiga'], ['brilho', 790, 530, 30, 'ivory', 0, .8], ['xoxo', 80, 520, 130, 'lavanda', 10, .9]] },
+  { tema: 'massas', iscas: [
+      { src: 'massas-4.png', x: 196, y: 850, w: 172, z: 2 },
+      { src: 'massas-1.png', x: 404, y: 742, w: 240 }, { src: 'massas-5.png', x: 585, y: 800, w: 200 },
+      { src: 'massas-2.png', x: 392, y: 868, w: 330, z: 3 }, { src: 'massas-3.png', x: 610, y: 950, w: 216, z: 2 },
+      { src: 'massas-6.png', x: 420, y: 1062, w: 210, z: 4 },
+    ], estrelas: [[70, 480, 280], [1000, 1180, 330]],  icones: [['brilho', 860, 440, 70, 'manteiga'], ['brilho', 790, 530, 30, 'ivory', 0, .8], ['xoxo', 80, 520, 130, 'lavanda', 10, .9]] },
   { tema: 'cameras',     estrelas: [[1000, 190, 320], [70, 1210, 310]],  icones: [['brilho', 120, 480, 60, 'manteiga'], ['brilho', 190, 560, 28, 'ivory', 0, .8], ['estrela', 880, 470, 80, 'lavanda', 16, .9]] },
   { tema: 'doces',       estrelas: [[90, 540, 300], [1010, 1250, 300]],  icones: [['espiral', 850, 440, 96, 'pink', 8], ['brilho', 120, 480, 46, 'manteiga'], ['brilho', 950, 1000, 32, 'ivory', 0, .8]] },
   { tema: 'livros',      estrelas: [[1000, 500, 300], [80, 1230, 300]],  icones: [['brilho', 850, 450, 66, 'manteiga'], ['brilho', 940, 540, 30, 'ivory', 0, .8], ['estrela', 96, 500, 80, 'lavanda', -10, .9]] },
