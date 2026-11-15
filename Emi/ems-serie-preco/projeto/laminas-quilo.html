@@ -50,9 +50,9 @@ const L={
   <span class="lead" style="left:90px;top:188px">o que entra no</span>
   <span class="serif" style="left:468px;top:140px;font-size:150px"><em>prato</em></span>
   ${[['a letra','a fonte que fala<br>do jeito da marca.',`<img src="${P}A-rec.png" style="width:150px"><img src="${P}a-min-rec.png" style="width:118px;margin-left:-22px;margin-top:46px">`,90,330],
-     ['a cor','paleta com motivo,<br>não cor bonita solta.',[1,2,3,4].map((k,i)=>`<img src="${P}amostra${k}-rec.png" style="width:58px;transform:rotate(${-18+12*i}deg);margin-left:${i?-8:0}px">`).join(''),470,548],
+     ['a cor','paleta com motivo,<br>não cor bonita solta.',[1,2,3,4].map((k,i)=>`<img src="${P}amostra${k}-rec.png" style="width:58px;transform:rotate(${-18+12*i}deg);margin-left:${i?-8:0}px">`).join(''),372,548],
      ['o uso','site, rede social, embalagem:<br>onde ela vai viver.',`<img src="${P}cursor-rec.png" style="width:170px">`,90,772],
-     ['o detalhe','o grafismo que faz<br>reconhecer sem o nome.',`<img src="${P}estrela-rec.png" style="width:150px">`,470,990]]
+     ['o detalhe','o grafismo que faz<br>reconhecer sem o nome.',`<img src="${P}estrela-rec.png" style="width:150px">`,372,990]]
     .map(([nome,txt,img,x,y])=>`<div class="obj" style="left:${x}px;top:${y}px;width:220px;height:200px;display:flex;align-items:center;justify-content:center">${img}</div>
       <span class="serif" style="left:${x+236}px;top:${y+22}px;font-size:92px">${nome}</span>
       <span class="corpo" style="left:${x+240}px;top:${y+110}px;font-size:29px;line-height:1.22;white-space:nowrap;color:#e4d6e6">${txt}</span>`).join('')}`,
