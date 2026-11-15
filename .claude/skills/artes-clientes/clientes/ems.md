@@ -161,6 +161,12 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - Na MIAU.LAB estava 10 px fora.
   - O dx positivo leva a tinta para a direita: para tirar folga da esquerda, dx diminui.
   - Depois, centralizado na moldura, ela achou que "foi demais" e pediu "um pouquinho de nada de volta". Ficou 3 px para a direita e para cima. O ponto certo, para o olho dela, fica entre a moldura e a área verde, um pouco mais perto da moldura.
+- **Nada espaçado, nada flutuando (a Emi: "você tem uma mania muito feia de deixar as coisas espaçadas… parece que tá tudo flutuando feio").**
+  - Cada peça é UM bloco compacto. O texto pequeno fica encaixado no logo (como o "Freshly baked. Worth melting for." no copo da Melt), não solto no topo ou no pé da lâmina.
+  - Frase em duas linhas: entrelinha justa, medida pela tinta (`measureText`, `actualBoundingBoxAscent`). Na MIAU.LAB, a folga entre a base da linha 1 e o topo do x da script é 10% da altura das maiúsculas.
+  - Texto ao lado de uma etiqueta: topo das maiúsculas = topo da etiqueta, base da 2ª linha = base da etiqueta.
+  - Pílulas e selos encostados no bloco (uns 40 px), não presos à borda. Selo grande no quadro, não pequeno no meio do vazio.
+  - Letter-spacing aberto só em pílula pequena (até .08em). Linha de microtexto de canto a canto só sobre foto.
 - **Banho e tosa (direção 03): pelo solto.**
   - Pesquisa: `referencias/pelo-solto`. Ela escolheu 2 Haley Sue, 3 Moon Gazer e "principalmente" 20 Barking Barber.
   - v1, papel recortado (approxPolyDP): "quero mais refinado e arredondado, bem vintage". O BANHO & TOSA estava desalinhado: "péssimo".
