@@ -3,6 +3,7 @@
      Telas animadas: a cor troca seca, como nas lâminas 1 e 4 da referência.
      ?n=1 · capa: o símbolo em close (gato espiando por cima do U gigante, arranhões), texto encaixado nas hastes do U
      ?n=4 · logo inteiro centralizado, bloco compacto, cor invertendo
+     ?n=9 · fecho: "Ciência que ronrona." centrada pela tinta, com as mesmas trocas de cor da capa
      ?e=0,1,2… estado de cor · ?w=&h= -->
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: Archivo; src: url(../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
@@ -52,6 +53,22 @@ if (n === 1) {
   d.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:-1px;top:${top}px;font:${fonte};line-height:${lh}px;letter-spacing:-.015em;color:${cor}">Fórmula veterinária.<br>Feita pra gatos.</div>`);
   // pílula encostada no bloco (uns 40 px abaixo da etiqueta), centralizada
   p.insertAdjacentHTML('beforeend', `<div class="pilula" style="left:50%;transform:translateX(-50%);top:${y0 + 700 * k + 44}px;color:${cor}">SUPLEMENTO P/ GATOS</div>`);
+} else if (n === 9) {
+  // fecho: a assinatura "Ciência que ronrona." (a mesma peça aprovada no sistema: centrada pela tinta, linhas quase encostando)
+  // com as MESMAS trocas de cor da capa (rosa → manteiga → cobalto), para o carrossel abrir e fechar igual
+  const E = [[C.rosa, C.cobalto], [C.manteiga, C.cobalto], [C.cobalto, C.rosa]][e % 3];
+  p.style.background = E[0];
+  const tinta = (t, font, ls = 0) => { cv.font = font; cv.letterSpacing = ls + 'px'; const m = cv.measureText(t); cv.letterSpacing = '0px';
+    return { asc: m.actualBoundingBoxAscent, desc: m.actualBoundingBoxDescent, l: m.actualBoundingBoxLeft, r: m.actualBoundingBoxRight }; };
+  const linha = (t, font, ls, f, x, base) => { cv.font = font; const m = cv.measureText('x');
+    p.insertAdjacentHTML('beforeend', `<div style="position:absolute;white-space:nowrap;left:${x}px;top:${base - (m.fontBoundingBoxAscent - m.fontBoundingBoxDescent) / 2}px;font:${font};line-height:${f}px;height:0;letter-spacing:${ls}px;color:${E[1]};display:flex;align-items:center">${t}</div>`); };
+  const f1 = 168, F1 = `500 ${f1}px IS`, ls1 = -.04 * f1, m1 = tinta('Ciência que', F1, ls1);
+  const f2 = 330, F2 = `400 ${f2}px Mea`, m2 = tinta('ronrona.', F2), vao = 16;
+  const alt = m1.asc + m1.desc + vao + m2.asc + m2.desc, topo = H / 2 - alt / 2 - 40;
+  const b1 = topo + m1.asc, b2 = b1 + m1.desc + vao + m2.asc;
+  linha('Ciência que', F1, ls1, f1, W / 2 - (m1.r - m1.l) / 2, b1);
+  linha('ronrona.', F2, 0, f2, W / 2 - (m2.r - m2.l) / 2, b2);
+  p.insertAdjacentHTML('beforeend', `<div class="pilula" style="left:50%;transform:translateX(-50%);top:${b2 + m2.desc + 40}px;color:${E[1]};font-size:28px;padding:15px 34px 14px">FEITO PRA GATOS</div>`);
 }
 document.body.dataset.pronto = 1;
 });
