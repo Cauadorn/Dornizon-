@@ -102,6 +102,22 @@ if (peca === 'pote') {
   const k = (W - 2 * m) / 899, y0 = H - m - 700 * k;
   logo(m, y0, k, { cor: tinta, fundo, gato: C.nanquim, olho: C.rosa, labFundo: C.nanquim, labCor: '#F6EEDC' });
 }
+if (peca === 'caixa') {
+  // frente da caixinha de REMÉDIO (comprimidos): microtexto mono, etiqueta preta com o nome, linhas mono,
+  // padrão olho + cápsula (cápsula só nos remédios) e o logo inteiro com .lab · ?cor= ?nome= ?l1= ?l2= ?formula=
+  const cobalto = (q.get('cor') || 'cobalto') === 'cobalto';
+  const fundo = cobalto ? C.cobalto : C.rosa, tinta = cobalto ? C.rosa : C.cobalto, m = W * .08;
+  p.style.background = fundo;
+  const nome = q.get('nome') || 'mobilidade', l1 = q.get('l1') || 'condroitina + glucosamina', l2 = q.get('l2') || 'pra subir no sofá sem drama', f = q.get('formula') || '05';
+  p.insertAdjacentHTML('beforeend', `
+    <div style="position:absolute;left:${m}px;right:${m}px;top:${H * .045}px;display:flex;justify-content:space-between;font:700 ${W * .03}px/1 Mono;letter-spacing:.1em;color:${tinta}"><span>FÓRMULA Nº${f}</span><span>30 COMPRIMIDOS</span></div>
+    <div style="position:absolute;left:${m}px;top:${H * .09}px">
+      <div style="display:inline-block;background:${C.nanquim};color:#F6EEDC;font:600 ${W * .085}px/1 IS;letter-spacing:-.02em;padding:${W * .016}px ${W * .03}px ${W * .022}px">${nome}</div>
+      <div style="font:700 ${W * .032}px/1.4 Mono;color:${tinta};margin-top:${W * .025}px;text-transform:uppercase">${l1}<br>${l2}</div></div>`);
+  padrao(0, H * .27, W, H * .36, W / 3, fundo, 'remedio');
+  const k = (W - 2 * m) / 899, y0 = H - m - 700 * k;
+  logo(m, y0, k, { cor: tinta, fundo, gato: C.nanquim, olho: C.rosa, labFundo: C.nanquim, labCor: '#F6EEDC' });
+}
 document.body.dataset.pronto = 1;
 });
 </script></body></html>
