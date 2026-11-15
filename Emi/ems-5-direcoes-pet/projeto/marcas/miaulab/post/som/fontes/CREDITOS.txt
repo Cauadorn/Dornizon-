@@ -1,0 +1,7 @@
+Sons de gato usados no reel da MIAU.LAB (Wikimedia Commons), todos de uso livre:
+- miau-gatinha.ogg  · "Maullido de gata hembra joven.ogg" · CC0
+- miau-grego.flac   · "2015-11-24.νιαούρισμα.Νιάου.noise reduced.flac" · CC0
+- ronrom-bertie.ogg · "Purring cat bertie.ogg" · domínio público
+- ronrom-whiskers.ogg · "Whiskers' purr edit.ogg" · domínio público
+(miau-impaciente.ogg, miau-pedindo.oga e ronrom-1.oga: domínio público, baixados como alternativa, não usados)
+Música e demais efeitos: sintetizados em trilha.py (sem uso de material de terceiros).

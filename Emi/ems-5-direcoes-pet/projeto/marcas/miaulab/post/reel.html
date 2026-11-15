@@ -1,0 +1,176 @@
+<!doctype html>
+<!-- MIAU.LAB · reel de apresentação da marca (9:16, 1080x1920), no ritmo das referências que a Emi mandou
+     (referencias/miaulab/reel-*: drench = logo travado no centro com o fundo cortando no ritmo e microtipografia;
+     Melt/Ayeida = fotos das embalagens trocando por uma grade de ladrilhos; Nova e Marea = produto em cena).
+     Linha do tempo (s):
+       0,0–2,4  abertura: MIAU sobe, o gato sobe por trás do U, as patas agarram a borda, os arranhões riscam, .lab entra
+       2,4–5,4  cortes secos de cor a cada 0,5 s com o logo travado no mesmo lugar (como a drench)
+       5,4–11,4 fotos das embalagens trocando por ladrilhos (como a Melt), com zoom lento / panorâmica correndo
+       (tudo cai no tempo de uma trilha a 120 BPM: cortes a cada 0,5 s, fotos a cada 1 s; som em som/trilha.py)
+       11,4–14,4 fecho "Ciência que ronrona." trocando de cor como a lâmina 09
+     Uso: render-reel.mjs abre esta página e chama window.quadro(t) para cada quadro. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+@font-face { font-family: Mea; src: url(../../../fonts/MeaCulpa.woff2); }
+html, body { margin: 0; background: #000; }
+#p { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+.cena { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.mic { position: absolute; font: 700 21px/1.35 Mono; letter-spacing: .06em; white-space: nowrap; }
+.pil { position: absolute; border: 2.5px solid currentColor; border-radius: 999px; padding: 13px 30px 12px; font: 500 24px/1 IS; letter-spacing: .08em; white-space: nowrap; left: 50%; transform: translateX(-50%); }
+.foto { position: absolute; inset: 0; background-repeat: no-repeat; will-change: transform; }
+#grade { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+</style><script src="../gato-v3/gato.js"></script><script src="../logo.js"></script></head><body><div id="p"></div>
+<script>
+const W = 1080, H = 1920, p = document.getElementById('p');
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', creme: '#F6EEDC', manteiga: '#F2DC8B', nanquim: '#1C1A24' };
+const cv = document.createElement('canvas').getContext('2d');
+const eo = x => 1 - Math.pow(1 - x, 3), eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eb = x => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), fx = (t, a, d) => cl((t - a) / d);
+const cena = (bg) => { const d = document.createElement('div'); d.className = 'cena'; if (bg) d.style.background = bg; p.appendChild(d); return d; };
+// logo no mesmo lugar em todas as cenas de logo (o bloco do topo da cabeça, y≈141, à base da etiqueta, y=700, centrado)
+const K = W * .84 / 899, X0 = (W - 899 * K) / 2, Y0 = H / 2 - (141 + 700) / 2 * K - 60;
+function logo(dono, o) {
+  const d = document.createElement('div'); d.className = 'logo'; d.style.cssText = `left:${X0}px;top:${Y0}px;transform:scale(${K})`;
+  dono.appendChild(d); miauLogoV3(d, Object.assign({ gato: C.nanquim, olho: C.rosa }, o));
+  // assinatura encaixada sob o M-I, na altura da etiqueta (igual ao sistema)
+  const f = 52, fonte = `500 ${f}px IS`; cv.font = fonte; const mm = cv.measureText('F'), cap = mm.actualBoundingBoxAscent;
+  const lh = 700 - 610 - cap, top = 610 + cap - (lh - (mm.fontBoundingBoxAscent + mm.fontBoundingBoxDescent)) / 2 - mm.fontBoundingBoxAscent;
+  d.insertAdjacentHTML('beforeend', `<div class="ass" style="position:absolute;left:-1px;top:${top}px;font:${fonte};line-height:${lh}px;letter-spacing:-.015em;color:${o.cor}">Fórmula veterinária.<br>Feita pra gatos.</div>`);
+  return d;
+}
+// microtipografia nos cantos (a drench troca esses textos a cada corte)
+function cantos(dono, cor, [a, b, c, d]) {
+  const m = 64;
+  dono.insertAdjacentHTML('beforeend', `
+    <div class="mic" style="left:${m}px;top:${m}px;color:${cor}">${a}</div>
+    <div class="mic" style="right:${m}px;top:${m}px;color:${cor};text-align:right">${b}</div>
+    <div class="mic" style="left:${m}px;bottom:${m}px;color:${cor}">${c}</div>
+    <div class="mic" style="right:${m}px;bottom:${m}px;color:${cor};text-align:right">${d}</div>`);
+}
+const tiros = [];   // { el, t0, tin (0 = corte seco), anim(tLocal) }
+const tiro = (el, t0, tin, anim) => tiros.push({ el, t0, tin, anim: anim || (() => {}) });
+
+Promise.all(['500 100px IS', '400 100px Mea', '900 100px Archivo', '700 64px Mono'].map(f => document.fonts.load(f))).then(() => {
+  // ---------- A · abertura ----------
+  const A = cena(C.cobalto), LA = logo(A, { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
+  cantos(A, C.rosa, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', 'FEITO PRA GATOS', 'Nº01—05']);
+  const [svgCab, txt, svgPat, lab] = LA.children, ass = LA.querySelector('.ass');
+  txt.innerHTML = [...'MIAU'].map(l => `<span style="display:inline-block">${l}</span>`).join('');
+  txt.style.clipPath = 'inset(-40px -60px 0 -60px)';
+  const letras = [...txt.children];
+  // cabeça: sobe por trás da parede do U (recorte na linha da borda)
+  svgCab.innerHTML = `<g id="cabG">${svgCab.innerHTML}</g>`; const cabG = svgCab.querySelector('#cabG');
+  svgCab.style.clipPath = 'polygon(-1000px -1000px, 2000px -1000px, 2000px 262px, -1000px 262px)';
+  // arranhões riscando de cima para baixo; patas e unhas agarrando a borda
+  const ns = 'http://www.w3.org/2000/svg', gR = document.createElementNS(ns, 'g'), gP = document.createElementNS(ns, 'g');
+  const cp = document.createElementNS(ns, 'clipPath'); cp.id = 'riscoA'; cp.setAttribute('clipPathUnits', 'userSpaceOnUse');
+  const rr = document.createElementNS(ns, 'rect'); rr.setAttribute('x', -100); rr.setAttribute('y', 250); rr.setAttribute('width', 1200); rr.setAttribute('height', 0);
+  cp.appendChild(rr); svgPat.querySelector('defs').appendChild(cp); gR.setAttribute('clip-path', 'url(#riscoA)');
+  [...svgPat.children].forEach(n => { if (n.tagName === 'path') gR.appendChild(n); else if (n.tagName === 'g') gP.appendChild(n); });
+  svgPat.appendChild(gR); svgPat.appendChild(gP);
+  lab.style.transformOrigin = '50% 50%';
+  const micA = [...A.querySelectorAll('.mic')];
+  tiro(A, 0, 0, t => {
+    letras.forEach((s, i) => { const u = eo(fx(t, .05 + i * .07, .42)); s.style.transform = `translateY(${(1 - u) * 520}px)`; });
+    const c = eb(fx(t, .55, .42)); cabG.setAttribute('transform', `translate(0 ${(1 - c) * 150})`);
+    const pa = fx(t, .98, .2); gP.setAttribute('transform', `translate(0 ${(1 - eb(pa)) * -70})`); gP.style.opacity = cl(pa * 4);
+    rr.setAttribute('height', eio(fx(t, 1.16, .38)) * 90);
+    const lb = fx(t, 1.5, .3); lab.style.transform = `scale(${eb(lb)})`; lab.style.opacity = lb > 0 ? 1 : 0;
+    const as = eo(fx(t, 1.62, .4)); ass.style.opacity = as; ass.style.transform = `translateY(${(1 - as) * 18}px)`;
+    micA.forEach((m, i) => m.style.opacity = fx(t, 1.7 + i * .06, .01));
+  });
+  // ---------- B · cortes de cor com o logo travado ----------
+  const B = [
+    [C.rosa, C.cobalto, C.cobalto, C.creme, ['MIAU.LAB', 'CIÊNCIA QUE RONRONA', 'PELO & PELE', 'Nº01']],
+    [C.manteiga, C.cobalto, C.nanquim, C.manteiga, ['MIAU.LAB', 'PETISCO FUNCIONAL', 'BOLA DE PELO', 'Nº02']],
+    [C.creme, C.cobalto, C.rosa, C.nanquim, ['MIAU.LAB', 'SUPLEMENTO', 'BAFINHO', 'Nº03']],
+    [C.cobalto, C.rosa, C.creme, C.nanquim, ['LAB_04 · GRADE', 'FÓRMULA Nº04', 'CALMINHA', '30 UN.'], 'grade'],
+    [C.rosa, C.cobalto, C.nanquim, C.rosa, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', 'MOBILIDADE', 'Nº05']],
+    [C.manteiga, C.rosa, C.cobalto, C.creme, ['MIAU.LAB', 'FEITO PRA GATOS', 'SUPLEMENTO P/ GATOS', '2026']],
+  ];
+  B.forEach(([bg, cor, labFundo, labCor, txts, extra], i) => {
+    const S = cena(bg);
+    if (extra === 'grade') {   // cara de interface técnica (como os quadros de grade da drench)
+      let g = ''; [90, W - 90].forEach(x => g += `<div style="position:absolute;left:${x}px;top:0;width:1.5px;height:${H}px;background:${cor};opacity:.55"></div>`);
+      [Y0 + 120 * K, Y0 + 700 * K + 40].forEach(y => g += `<div style="position:absolute;left:0;top:${y}px;width:${W}px;height:1.5px;background:${cor};opacity:.55"></div>`);
+      g += `<div style="position:absolute;left:${W - 90 - 14}px;top:${Y0 + 120 * K - 14}px;width:28px;height:28px;border:1.5px solid ${cor};border-radius:50%"></div>`;
+      g += `<div style="position:absolute;left:${90 - 6}px;top:${Y0 + 700 * K + 40 - 6}px;width:12px;height:12px;background:${cor}"></div>`;
+      S.insertAdjacentHTML('beforeend', g);
+    }
+    logo(S, { cor, fundo: bg, labFundo, labCor }); cantos(S, cor, txts);
+    tiro(S, 2.4 + i * .5, 0);
+  });
+  // ---------- C · fotos trocando por ladrilhos ----------
+  const F = [   // arquivo, largura x altura, posição horizontal do recorte 9:16 (0–1) ou panorâmica [de, até]
+    ['fotos/v2-l3-edicao-b.png', 1856, 2304, .46],
+    ['fotos/v2-l2-edicao-a.png', 1856, 2304, .58],
+    ['fotos/v2-l7-caixa.png', 1856, 2304, .36],
+    ['fotos/v2-l8-linha.png', 1856, 2304, [.12, .88]],
+    ['fotos/v2-l56-panoramica.png', 2752, 1536, [.2, .66]],
+  ];
+  const T0 = [5.4, 6.4, 7.4, 8.4, 9.4];   // no tempo da música (120 BPM: um tempo = 0,5 s)
+  F.forEach(([src, w, h, pos], i) => {
+    const S = cena('#111'), k = H / h, sw = w * k, f = document.createElement('div'); f.className = 'foto';
+    f.style.cssText += `background-image:url(${src});background-size:${sw}px ${H}px;width:${sw}px;height:${H}px;transform-origin:0 0`;
+    S.appendChild(f);
+    const dur = (T0[i + 1] || 11.4) - T0[i] + .45;
+    tiro(S, T0[i], .41, t => {
+      const u = cl(t / dur);
+      if (Array.isArray(pos)) {   // panorâmica correndo (centro do recorte de pos[0] a pos[1])
+        const cx = (pos[0] + (pos[1] - pos[0]) * eio(u)) * sw; f.style.transform = `translateX(${cl(W / 2 - cx, W - sw, 0)}px)`;
+      } else {                    // zoom lento para dentro
+        const z = 1 + .06 * u, cx = pos * sw; f.style.transform = `translate(${W / 2 - cx * z}px, ${H / 2 - H / 2 * z}px) scale(${z})`;
+      }
+    });
+  });
+  // ---------- D · fecho "Ciência que ronrona." ----------
+  const tinta = (t, font, ls = 0) => { cv.font = font; cv.letterSpacing = ls + 'px'; const m = cv.measureText(t); cv.letterSpacing = '0px';
+    return { asc: m.actualBoundingBoxAscent, desc: m.actualBoundingBoxDescent, l: m.actualBoundingBoxLeft, r: m.actualBoundingBoxRight }; };
+  [[C.rosa, C.cobalto], [C.manteiga, C.cobalto], [C.cobalto, C.rosa], [C.rosa, C.cobalto]].forEach(([bg, cor], i) => {
+    const S = cena(bg);
+    const linha = (t, font, ls, f, x, base) => { cv.font = font; const m = cv.measureText('x');
+      S.insertAdjacentHTML('beforeend', `<div style="position:absolute;white-space:nowrap;left:${x}px;top:${base - (m.fontBoundingBoxAscent - m.fontBoundingBoxDescent) / 2}px;font:${font};line-height:${f}px;height:0;letter-spacing:${ls}px;color:${cor};display:flex;align-items:center">${t}</div>`); };
+    const f1 = 128, F1 = `500 ${f1}px IS`, ls1 = -.04 * f1, m1 = tinta('Ciência que', F1, ls1);
+    const f2 = 252, F2 = `400 ${f2}px Mea`, m2 = tinta('ronrona.', F2), vao = 12;
+    const alt = m1.asc + m1.desc + vao + m2.asc + m2.desc, topo = H / 2 - alt / 2 - 60, b1 = topo + m1.asc, b2 = b1 + m1.desc + vao + m2.asc;
+    linha('Ciência que', F1, ls1, f1, W / 2 - (m1.r - m1.l) / 2, b1);
+    linha('ronrona.', F2, 0, f2, W / 2 - (m2.r - m2.l) / 2, b2);
+    S.insertAdjacentHTML('beforeend', `<div class="pil" style="top:${b2 + m2.desc + 36}px;color:${cor}">FEITO PRA GATOS</div>`);
+    cantos(S, cor, ['MIAU.LAB', 'FÓRMULA VETERINÁRIA', '@MIAU.LAB', 'Nº01—05']);
+    tiro(S, [11.4, 11.9, 12.4, 12.9][i], i ? 0 : .41);
+  });
+  // grade creme que aparece durante a troca por ladrilhos (como na Melt)
+  const grade = document.createElement('div'); grade.id = 'grade'; let gl = '';
+  for (let c = 1; c < 3; c++) gl += `<div style="position:absolute;left:${c * W / 3 - 1}px;top:0;width:2px;height:${H}px;background:${C.creme}"></div>`;
+  for (let r = 1; r < 5; r++) gl += `<div style="position:absolute;left:0;top:${r * H / 5 - 1}px;width:${W}px;height:2px;background:${C.creme}"></div>`;
+  grade.innerHTML = gl; p.appendChild(grade);
+  document.body.dataset.pronto = 1;
+});
+// ladrilhos 3x5: cada um abre de cima ou de baixo (colunas alternadas), em diagonal
+function ladrilhos(u) {
+  const cw = W / 3, rh = H / 5, D = .035, dur = .2; let d = '';
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 3; c++) {
+    const q = eio(cl((u * .41 - (r + c) * D) / dur)); if (q <= 0) continue;
+    const x = c * cw, h = rh * q, y = c % 2 ? r * rh : r * rh + rh - h;
+    d += `M${x - .5} ${y - .5}H${x + cw + .5}V${y + h + .5}H${x - .5}Z`;
+  }
+  return d ? `path('${d}')` : 'inset(100%)';
+}
+window.DURACAO = 14.4;
+window.quadro = t => {
+  let grade = 0;
+  tiros.forEach((s, i) => {
+    const prox = tiros[i + 1], fim = prox ? prox.t0 + prox.tin : Infinity, vis = t >= s.t0 && t < fim;
+    s.el.style.visibility = vis ? 'visible' : 'hidden';
+    if (!vis) return;
+    if (s.tin && t < s.t0 + s.tin) { const u = (t - s.t0) / s.tin; s.el.style.clipPath = ladrilhos(u); grade = Math.max(grade, Math.sin(Math.PI * u) * .9); }
+    else s.el.style.clipPath = 'none';
+    s.anim(t - s.t0);
+  });
+  document.getElementById('grade').style.opacity = grade;
+};
+</script></body></html>

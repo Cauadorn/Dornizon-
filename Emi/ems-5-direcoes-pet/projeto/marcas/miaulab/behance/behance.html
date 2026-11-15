@@ -1,0 +1,140 @@
+<!doctype html>
+<!-- MIAU.LAB · projeto para o Behance (1400 px de largura, uma prancha por <section>; exporta.mjs recorta cada uma).
+     Inspirado no jeito de apresentar das referências que a Emi mandou (Behance da studio lizzzy: pranchas cheias,
+     contraste alto, tipo grande), mas com a cara da MIAU.LAB: o gato no U, o padrão de olhos e a voz da marca. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+@font-face { font-family: Mea; src: url(../../../fonts/MeaCulpa.woff2); }
+:root { --cobalto: #2B3FD1; --rosa: #F4B9CD; --manteiga: #F2DC8B; --creme: #F6EEDC; --nanquim: #1C1A24; }
+html, body { margin: 0; background: var(--creme); }
+section { position: relative; width: 1400px; overflow: hidden; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.mic { position: absolute; font: 700 17px/1.45 Mono; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
+.t1 { font: 900 150px/.86 Archivo; font-stretch: 62%; letter-spacing: -.01em; text-transform: uppercase; }
+.txt { font: 400 25px/1.42 IS; letter-spacing: -.005em; }
+.pil { display: inline-block; border: 2px solid currentColor; border-radius: 999px; padding: 10px 24px 9px; font: 500 18px/1 IS; letter-spacing: .08em; text-transform: uppercase; }
+img { display: block; }
+.foto { position: absolute; background-size: cover; background-position: center; }
+</style><script src="../gato-v3/gato.js"></script><script src="../logo.js"></script></head><body>
+<script>
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', manteiga: '#F2DC8B', creme: '#F6EEDC', nanquim: '#1C1A24' };
+const cv = document.createElement('canvas').getContext('2d');
+const sec = (h, bg, id) => { const s = document.createElement('section'); s.style.height = h + 'px'; s.style.background = bg; s.id = id; document.body.appendChild(s); return s; };
+const html = (s, h) => s.insertAdjacentHTML('beforeend', h);
+// logo centrado num retângulo (cx, cy = centro do bloco do topo da cabeça à base da etiqueta), largura do nome = w
+function logo(s, cx, cy, w, o, assinatura = true) {
+  const k = w / 899, d = document.createElement('div'); d.className = 'logo';
+  d.style.cssText = `left:${cx - 899 * k / 2}px;top:${cy - (141 + 700) / 2 * k}px;transform:scale(${k})`;
+  s.appendChild(d); miauLogoV3(d, Object.assign({ gato: C.nanquim, olho: C.rosa }, o));
+  if (assinatura && o.lab !== false) {
+    const f = 52, fonte = `500 ${f}px IS`; cv.font = fonte; const mm = cv.measureText('F'), cap = mm.actualBoundingBoxAscent;
+    const lh = 700 - 610 - cap, top = 610 + cap - (lh - (mm.fontBoundingBoxAscent + mm.fontBoundingBoxDescent)) / 2 - mm.fontBoundingBoxAscent;
+    d.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:-1px;top:${top}px;font:${fonte};line-height:${lh}px;letter-spacing:-.015em;color:${o.cor}">Fórmula veterinária.<br>Feita pra gatos.</div>`);
+  }
+  return d;
+}
+const cantos = (s, cor, [a, b, c, d], m = 56) => html(s, `
+  <div class="mic" style="left:${m}px;top:${m}px;color:${cor}">${a}</div><div class="mic" style="right:${m}px;top:${m}px;color:${cor};text-align:right">${b}</div>
+  <div class="mic" style="left:${m}px;bottom:${m}px;color:${cor}">${c}</div><div class="mic" style="right:${m}px;bottom:${m}px;color:${cor};text-align:right">${d}</div>`);
+const F = '../post/fotos/', Q = '../post/quadros/', CR = '../post/carrossel/';
+
+Promise.all(['500 100px IS', '400 100px IS', '400 100px Mea', '900 100px Archivo', '700 64px Mono'].map(f => document.fonts.load(f))).then(() => {
+  // 01 · capa
+  let s = sec(1750, C.cobalto, 'b01');
+  logo(s, 700, 830, 1040, { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
+  cantos(s, C.rosa, ['MIAU.LAB — identidade visual', 'Brand identity · 2026', 'Suplementos e petiscos<br>funcionais para gatos', 'Design<br>EMS · @itsemsdesign']);
+  // 02 · conceito
+  s = sec(1050, C.creme, 'b02');
+  html(s, `<div style="position:absolute;left:96px;top:120px;color:${C.cobalto}">
+      <div style="font:500 112px/1 IS;letter-spacing:-.045em">Ciência que</div>
+      <div style="font:400 230px/.7 Mea;margin:22px 0 0 -6px">ronrona.</div></div>
+    <div class="txt" style="position:absolute;left:96px;top:560px;width:560px;color:${C.nanquim}">
+      A MIAU.LAB tira o suplemento felino da prateleira da farmácia e leva para a vida real do gato: o sofá, o pote, a janela.
+      Rigor de laboratório com o humor de quem divide a casa com um gato.</div>
+    <div class="txt" style="position:absolute;left:740px;top:560px;width:560px;color:${C.nanquim}">
+      Cada fórmula ganha o nome do problema que o tutor reconhece no dia a dia: pelo &amp; pele, bola de pelo, bafinho, mobilidade.
+      E o gato espiando por cima do U resume a marca inteira: curioso, confiante e com as unhas de fora.</div>
+    <div style="position:absolute;left:96px;bottom:96px;display:flex;gap:12px;color:${C.cobalto}">
+      <span class="pil">curiosa</span><span class="pil">confiável</span><span class="pil">brincalhona</span><span class="pil">feita pra gatos</span></div>`);
+  cantos(s, C.cobalto, ['01 — conceito', 'MIAU.LAB', '', '']);
+  // 03 · logo principal
+  s = sec(1050, C.rosa, 'b03');
+  logo(s, 700, 525, 860, { cor: C.cobalto, fundo: C.rosa, labFundo: C.nanquim, labCor: C.creme });
+  cantos(s, C.cobalto, ['02 — logo', 'MIAU.LAB', 'Archivo condensed black, redesenhado', 'o gato espia por cima do U']);
+  // 04 · o gato (detalhe com anotações)
+  s = sec(1050, C.cobalto, 'b04');
+  { const k = 1400 * 3.2 / 899, cx = 798, d = logo(s, 0, 0, 1400 * 3.2, { cor: C.rosa, fundo: C.cobalto, lab: false }, false);
+    // enquadra o gato: o centro da cabeça (x=798, y≈205) no meio da prancha
+    d.style.left = (700 - cx * k) + 'px'; d.style.top = (470 - 230 * k) + 'px';
+    const notas = [[56, 150, 'orelhas curtas e largas<br>de gato (não de raposa)', 326, 168, 398, 112],
+                   [1080, 300, 'olhos em fenda,<br>nivelados, brilho no alto', 1074, 318, 930, 372],
+                   [56, 520, 'unhas off-white<br>em gancho', 236, 540, 306, 636],
+                   [1232, 690, 'arranhões<br>retos e<br>rasgados', 1226, 708, 1102, 760]];
+    notas.forEach(([x, y, t, lx, ly, px, py]) => html(s, `
+      <svg style="position:absolute;left:0;top:0" width="1400" height="1050"><line x1="${lx}" y1="${ly}" x2="${px}" y2="${py}" stroke="${C.creme}" stroke-width="1.5"/>
+      <circle cx="${px}" cy="${py}" r="6" fill="none" stroke="${C.creme}" stroke-width="1.5"/></svg>
+      <div class="mic" style="left:${x}px;top:${y}px;color:${C.creme}">${t}</div>`)); }
+  cantos(s, C.creme, ['03 — o gato', 'símbolo · refinado à mão', '', '']);
+  // 05 · versões
+  s = sec(1050, C.creme, 'b05');
+  [[0, 0, C.cobalto, C.rosa, C.creme, C.nanquim], [700, 0, C.creme, C.cobalto, C.rosa, C.nanquim], [0, 525, C.manteiga, C.cobalto, C.nanquim, C.manteiga], [700, 525, C.rosa, C.cobalto, C.nanquim, C.creme]]
+    .forEach(([x, y, bg, cor, lf, lc]) => { html(s, `<div style="position:absolute;left:${x}px;top:${y}px;width:700px;height:525px;background:${bg}"></div>`);
+      logo(s, x + 350, y + 262, 430, { cor, fundo: bg, labFundo: lf, labCor: lc }); });
+  cantos(s, C.nanquim, ['04 — versões', '', '', ''], 32);
+  // 06 · paleta
+  s = sec(1050, C.creme, 'b06');
+  const pal = [['Cobalto', C.cobalto, '43 63 209', 400, C.creme], ['Rosa', C.rosa, '244 185 205', 280, C.nanquim], ['Manteiga', C.manteiga, '242 220 139', 260, C.nanquim], ['Creme', C.creme, '246 238 220', 240, C.nanquim], ['Nanquim', C.nanquim, '28 26 36', 220, C.creme]];
+  let x = 0; pal.forEach(([n, hex, rgb, w, tc]) => { html(s, `<div style="position:absolute;left:${x}px;top:0;width:${w}px;height:1050px;background:${hex};${n === 'Creme' ? 'box-shadow:inset 1px 0 0 #0001,inset -1px 0 0 #0001' : ''}">
+      <div style="position:absolute;left:28px;bottom:150px;font:900 52px/1 Archivo;font-stretch:62%;text-transform:uppercase;color:${tc}">${n}</div>
+      <div class="mic" style="left:32px;bottom:56px;color:${tc}">HEX ${hex}<br>RGB ${rgb}</div></div>`); x += w; });
+  html(s, `<div class="mic" style="left:32px;top:40px;color:${C.creme}">05 — cores</div>`);
+  // 07 · tipografia
+  s = sec(1050, C.manteiga, 'b07');
+  html(s, `<div style="position:absolute;left:90px;top:90px;color:${C.cobalto};font:900 420px/.8 Archivo;font-stretch:62%;letter-spacing:-.01em">MIAU</div>
+    <div class="mic" style="left:96px;top:470px;color:${C.nanquim}">Archivo condensed black — nome, títulos, nomes de produto</div>
+    <div style="position:absolute;left:96px;top:560px;width:560px;color:${C.nanquim};font:500 46px/1.12 IS;letter-spacing:-.025em">Fórmula veterinária. Feita pra gatos.</div>
+    <div class="mic" style="left:96px;top:690px;color:${C.nanquim}">Instrument Sans — textos e assinatura</div>
+    <div style="position:absolute;left:740px;top:560px;color:${C.nanquim};font:700 30px/1.35 Mono;letter-spacing:.04em">FÓRMULA Nº01<br>30 COMPRIMIDOS</div>
+    <div class="mic" style="left:740px;top:690px;color:${C.nanquim}">Space Mono — rótulos técnicos</div>
+    <div style="position:absolute;left:90px;top:780px;color:${C.cobalto};font:400 190px/1 Mea">ronrona.</div>
+    <div class="mic" style="left:740px;top:880px;color:${C.nanquim}">Mea Culpa — um acento só por peça</div>`);
+  cantos(s, C.nanquim, ['', '06 — tipografia', '', '']);
+  // 08 · padrões (recortes das artes das embalagens)
+  s = sec(1050, C.creme, 'b08');
+  html(s, `<div class="foto" style="left:0;top:0;width:700px;height:1050px;background-image:url(padrao-peixe.png)"></div>
+    <div class="foto" style="left:700px;top:0;width:700px;height:1050px;background-image:url(padrao-remedio.png)"></div>
+    <div class="pil" style="position:absolute;left:40px;bottom:40px;background:${C.creme};color:${C.cobalto};border-color:${C.creme}">petiscos · olho + peixinho</div>
+    <div class="pil" style="position:absolute;left:740px;bottom:40px;background:${C.creme};color:${C.cobalto};border-color:${C.creme}">suplementos · olho + cápsula</div>`);
+  cantos(s, C.creme, ['07 — padrões', '', '', ''], 40);
+  // 09 · linha (artes planas)
+  s = sec(1600, C.creme, 'b09');
+  [['pouch-pelo', 80], ['pouch-bola', 500], ['pouch-bafinho', 920]].forEach(([f, x]) => html(s, `<img src="${F}${f}.png" style="position:absolute;left:${x}px;top:150px;width:400px;box-shadow:0 30px 60px -30px #1c1a2455">`));
+  html(s, `<img src="${F}pote-pelo.png" style="position:absolute;left:80px;top:930px;width:500px;box-shadow:0 30px 60px -30px #1c1a2455">
+    <img src="${F}pote-bafinho.png" style="position:absolute;left:600px;top:930px;width:500px;box-shadow:0 30px 60px -30px #1c1a2455">
+    <img src="${F}caixa-mobilidade.png" style="position:absolute;left:1120px;top:930px;width:200px;box-shadow:0 30px 60px -30px #1c1a2455">
+    <div class="mic" style="left:80px;top:1380px;color:${C.nanquim}">pouches de petisco · rótulos dos potes · caixa de suplemento<br>cada produto com a sua fórmula: Nº01 pelo &amp; pele · Nº02 bola de pelo · Nº03 bafinho · Nº05 mobilidade</div>`);
+  cantos(s, C.nanquim, ['08 — embalagens', 'MIAU.LAB', '', '']);
+  // 10–13 · fotos
+  s = sec(1750, '#111', 'b10'); html(s, `<div class="foto" style="inset:0;background-image:url(${F}v2-l3-edicao-b.png)"></div>`);
+  s = sec(875, '#111', 'b11'); html(s, `<div class="foto" style="left:0;top:0;width:700px;height:875px;background-image:url(${F}v2-l2-edicao-a.png)"></div>
+    <div class="foto" style="left:700px;top:0;width:700px;height:875px;background-image:url(${F}v2-l7-caixa.png)"></div>`);
+  s = sec(781, '#111', 'b12'); html(s, `<div class="foto" style="inset:0;background-image:url(${F}v2-l56-panoramica.png)"></div>`);
+  s = sec(1750, '#111', 'b13'); html(s, `<div class="foto" style="inset:0;background-image:url(${F}v2-l8-linha.png)"></div>`);
+  // 14 · social (o carrossel de 9 lâminas)
+  s = sec(1840, C.cobalto, 'b14');
+  const lam = [Q + 't1-0.png', CR + '02.png', CR + '03.png', Q + 't4-0.png', CR + '05-06-a.png', CR + '05-06-b.png', CR + '07.png', CR + '08.png', Q + 't9-0.png'];
+  lam.forEach((src, i) => { const c = i % 3, r = Math.floor(i / 3), w = 400, h = 500, gx = 20;
+    html(s, `<div class="foto" style="left:${(1400 - 3 * w - 2 * gx) / 2 + c * (w + gx)}px;top:${150 + r * (h + gx)}px;width:${w}px;height:${h}px;background-image:url(${src});border-radius:6px"></div>`); });
+  cantos(s, C.rosa, ['09 — lançamento', 'carrossel de 9 lâminas no Instagram', '1 · 4 · 9 animadas, trocando de cor', '5 e 6 emendam numa foto só']);
+  // 15 · fecho
+  s = sec(1050, C.rosa, 'b15');
+  html(s, `<div style="position:absolute;left:0;width:1400px;top:300px;text-align:center;color:${C.cobalto}">
+      <div style="font:500 120px/1 IS;letter-spacing:-.045em">Ciência que</div>
+      <div style="font:400 250px/.7 Mea;margin-top:24px">ronrona.</div>
+      <div class="pil" style="margin-top:70px">obrigada!</div></div>`);
+  cantos(s, C.cobalto, ['MIAU.LAB', 'identidade visual', 'design · EMS', '@itsemsdesign']);
+  document.body.dataset.pronto = 1;
+});
+</script></body></html>

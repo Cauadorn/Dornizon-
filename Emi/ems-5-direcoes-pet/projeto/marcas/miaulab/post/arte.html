@@ -68,6 +68,10 @@ function padrao(x, y, w, h, cel, fundo, tipo = 'remedio') {
   }
   p.insertAdjacentHTML('beforeend', s + '</svg>');
 }
+if (peca === 'padrao') {   // só o padrão, em tela cheia (prancha de padrões do Behance): ?tipo=peixe|remedio&cor=cobalto|rosa&cel=
+  const fundo = { cobalto: C.cobalto, rosa: C.rosa, manteiga: '#F2DC8B' }[q.get('cor') || 'cobalto'];
+  padrao(0, 0, W, H, +(q.get('cel') || W / 2.4), fundo, q.get('tipo') || 'peixe');
+}
 if (peca === 'pouch') {
   // pouch inteiro numa cor da marca (?cor=cobalto|rosa|manteiga): microtexto mono no alto, padrão de olhos, faixa com o
   // nome do produto (?nome= ?l1= ?l2=), logo INTEIRO com .lab no pé
