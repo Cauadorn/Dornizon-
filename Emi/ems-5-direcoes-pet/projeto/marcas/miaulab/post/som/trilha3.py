@@ -15,21 +15,21 @@ def poe(dest, t0, sig, g=1.0, pan=0.0):
     dest[0, i:i + len(sig)] += sig * g * np.cos(a); dest[1, i:i + len(sig)] += sig * g * np.sin(a)
 # ---------- take do desenho ----------
 def tecla():
-    t = tt(.05); return (filt(ruido(.05), 'bandpass', [2000, 6000]) * np.exp(-t * 160) + np.sin(2 * np.pi * 160 * t) * np.exp(-t * 70) * .5) * .8
-def lapis(d):   # grafite no papel: chiado granulado
-    t = tt(d + .04); n = len(t); grao = np.repeat(rng.uniform(.4, 1, n // 120 + 1), 120)[:n]
-    s = filt(ruido(d + .04), 'bandpass', [1500, 6500]) * grao
-    env = np.minimum(1, t / .02) * np.clip((d + .04 - t) / .04, 0, 1); return s * env * .5
+    t = tt(.05); return (filt(ruido(.05), 'bandpass', [1200, 3500]) * np.exp(-t * 160) + np.sin(2 * np.pi * 160 * t) * np.exp(-t * 70) * .5) * .8
+def lapis(d):   # grafite no papel: chiado macio (sem agudo que dá gastura)
+    t = tt(d + .06); n = len(t); grao = filt(np.repeat(rng.uniform(.75, 1, n // 240 + 1), 240)[:n], 'lowpass', 40)
+    s = filt(filt(ruido(d + .06), 'bandpass', [700, 3000]), 'lowpass', 3500) * grao
+    env = np.minimum(1, t / .05) * np.clip((d + .06 - t) / .06, 0, 1); return s * env * .5
 def caneta(d):   # caneta no vidro do tablet: mais lisa, com um toque no começo
-    t = tt(d + .03); s = filt(ruido(d + .03), 'bandpass', [700, 2600]) * .35
-    env = np.minimum(1, t / .015) * np.clip((d + .03 - t) / .03, 0, 1); s = s * env
-    toque = filt(ruido(.012), 'bandpass', [3000, 6000]) * np.exp(-tt(.012) * 300) * .8; s[:len(toque)] += toque; return s
-for i, x in enumerate(R['letras']): poe(fx, x, tecla(), .7, -.3 + .2 * i)
-poe(fx, .78, vento(.45, 300, 2200, .3))
-for t0, d, fase in R['tracos']: poe(fx, t0, lapis(d) if fase == 'lapis' else caneta(d), 1.0 if fase == 'lapis' else .9, rng.uniform(-.2, .2))
+    t = tt(d + .05); s = filt(ruido(d + .05), 'bandpass', [400, 1600]) * .35
+    env = np.minimum(1, t / .04) * np.clip((d + .05 - t) / .05, 0, 1); s = s * env
+    toque = filt(ruido(.012), 'bandpass', [1200, 3000]) * np.exp(-tt(.012) * 300) * .4; s[:len(toque)] += toque; return s
+for i, x in enumerate(R['letras']): poe(fx, x, tecla(), .32, -.3 + .2 * i)
+poe(fx, .78, vento(.45, 300, 1600, .16))
+for t0, d, fase in R['tracos']: poe(fx, t0, lapis(d) if fase == 'lapis' else caneta(d), .3 if fase == 'lapis' else .26, rng.uniform(-.15, .15))
 for k, (dx, f) in enumerate([(0, 1.0), (.3, 1.25), (.45, 1.5)]):
-    b = bolha(); poe(fx, R['balde'] + dx, transpoe(b, f), .6, -.1 + .1 * k)   # balde de tinta
-poe(fx, R['fim'] - .75, vento(.6, 2200, 300, .3)); poe(fx, R['fim'] - .3, bolha(), .45)
+    b = bolha(); poe(fx, R['balde'] + dx, transpoe(b, f), .4, -.1 + .1 * k)   # balde de tinta
+poe(fx, R['fim'] - .75, vento(.6, 1600, 300, .16)); poe(fx, R['fim'] - .3, bolha(), .35)
 amb = filt(ruido(D), 'lowpass', 900) * .012; poe(fx, 0, amb)                    # ar do estúdio
 # ---------- reel (tudo deslocado de D) ----------
 for i, n in enumerate(['C5', 'E5', 'G5', 'C6']): poe(fx, D + .05 + i * .07, marimba(nota(n), .5), .8, -.3 + .2 * i)

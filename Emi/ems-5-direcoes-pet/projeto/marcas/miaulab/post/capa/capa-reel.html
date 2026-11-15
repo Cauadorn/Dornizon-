@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- Capa do reel do case MIAU.LAB no perfil @itsemsdesign: identidade da EMS (violeta, Instrument Serif com UMA palavra em
+     itálico na cor destaque, estrela em retícula, grão, etiqueta @, selo original) + a MIAU.LAB entrando como adesivo
+     (o logo com o gato no cobalto, sombra dura em tinta). 1080x1920; o que importa fica no miolo 3:4 (y 240–1680) para
+     aparecer inteiro no grid do perfil. Sem spoiler: a chamada brinca com o take do gato sendo desenhado. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Serif; src: url(../../../../fonts/InstrumentSerif-Regular.ttf); }
+@font-face { font-family: Serif; src: url(../../../../fonts/InstrumentSerif-Italic.ttf); font-style: italic; }
+@font-face { font-family: Poppins; src: url(../../../../fonts/Poppins-Medium.ttf); font-weight: 500; }
+@font-face { font-family: Archivo; src: url(../../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+:root { --violeta: #6225d8; --violeta-2: #7b4df2; --ivory: #fffbde; --tinta: #2a1433; --manteiga: #f2cf7a; --pink: #dd34a8;
+        --cobalto: #2B3FD1; --rosa: #F4B9CD; --creme: #F6EEDC; --nanquim: #1C1A24; }
+html, body { margin: 0; }
+#p { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #3d1c46; }
+canvas { position: absolute; left: 0; top: 0; }
+.lead { position: absolute; left: 90px; top: 330px; font: 500 40px/1.1 Poppins; color: var(--ivory); }
+.titulo { position: absolute; left: 84px; top: 392px; font: 400 176px/.86 Serif; letter-spacing: -.02em; color: var(--ivory); white-space: nowrap; }
+.titulo i { color: var(--manteiga); }
+.adesivo { position: absolute; left: 150px; top: 860px; width: 840px; height: 600px; background: var(--cobalto); transform: rotate(-4deg);
+  box-shadow: 9px 9px 0 var(--tinta); }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.tag { position: absolute; left: 90px; top: 1556px; background: var(--pink); color: var(--ivory); font: 500 30px/1 Poppins; padding: 14px 20px 13px; border-radius: 4px; }
+.selo { position: absolute; right: 90px; top: 1468px; width: 150px; }
+</style><script src="../../gato-v3/gato.js"></script><script src="../../logo.js"></script></head><body><div id="p">
+  <canvas id="estrela" width="1080" height="1920"></canvas>
+  <div class="lead">case novo no feed</div>
+  <div class="titulo">do rascunho<br>ao <i>miau</i>.</div>
+  <div class="adesivo" id="adesivo"></div>
+  <div class="tag">@itsemsdesign</div>
+  <img class="selo" src="../../../../img/selo-ems.png" alt="">
+  <canvas id="grao" width="1080" height="1920"></canvas>
+</div>
+<script>
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', creme: '#F6EEDC', nanquim: '#1C1A24' };
+// estrela em retícula (HalftoneStar): pontos iguais que somem do centro para a borda, cortada pela borda do quadro
+{ const c = document.getElementById('estrela').getContext('2d'), cx = 880, cy = 330, R = 430, r = 185, n = 5, passo = 24;
+  const dentro = (x, y) => { const a = Math.atan2(y - cy, x - cx) + Math.PI / 2, d = Math.hypot(x - cx, y - cy);
+    const seg = (2 * Math.PI) / n, t = ((a % seg) + seg) % seg / seg, raio = t < .5 ? R + (r - R) * (t * 2) : r + (R - r) * ((t - .5) * 2);
+    return d / raio; };
+  c.fillStyle = '#7b4df2'; c.globalAlpha = .45;
+  for (let y = 0; y < 900; y += passo) for (let x = 380; x < 1080 + passo; x += passo) { const v = dentro(x, y); if (v < 1) { c.beginPath(); c.arc(x, y, 8.5 * (1 - v * .8), 0, 7); c.fill(); } } }
+// grão de papel por cima de tudo (opacity-grain .07)
+{ const c = document.getElementById('grao').getContext('2d'), im = c.createImageData(1080, 1920);
+  for (let i = 0; i < im.data.length; i += 4) { const v = Math.random() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 18; }
+  c.putImageData(im, 0, 0); }
+Promise.all(['400 100px Serif', 'italic 400 100px Serif', '500 40px Poppins', '900 100px Archivo', '700 64px Mono', '500 100px IS'].map(f => document.fonts.load(f))).then(() => {
+  // o logo da MIAU.LAB inteiro, centrado no adesivo
+  const a = document.getElementById('adesivo'), w = 640, k = w / 899, d = document.createElement('div'); d.className = 'logo';
+  d.style.cssText = `left:${(840 - w) / 2}px;top:${300 - (141 + 700) / 2 * k + 6}px;transform:scale(${k})`; a.appendChild(d);
+  miauLogoV3(d, { cor: C.rosa, fundo: C.cobalto, gato: C.nanquim, olho: C.rosa, labFundo: C.creme, labCor: C.nanquim });
+  const f = 52, fonte = `500 ${f}px IS`, cv = document.createElement('canvas').getContext('2d'); cv.font = fonte; const mm = cv.measureText('F'), cap = mm.actualBoundingBoxAscent;
+  const lh = 700 - 610 - cap, top = 610 + cap - (lh - (mm.fontBoundingBoxAscent + mm.fontBoundingBoxDescent)) / 2 - mm.fontBoundingBoxAscent;
+  d.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:-1px;top:${top}px;font:${fonte};line-height:${lh}px;letter-spacing:-.015em;color:${C.rosa}">Fórmula veterinária.<br>Feita pra gatos.</div>`);
+  document.body.dataset.pronto = 1;
+});
+</script></body></html>
