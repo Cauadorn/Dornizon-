@@ -10,12 +10,12 @@
 @font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
 html,body{margin:0;background:#111}*{box-sizing:border-box}
 #c{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Poppins;color:#fffbde;background:#3d1c46}
-#cam{position:absolute;left:0;top:0;width:1080px;height:1350px;transform-origin:50% 52%}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1350px;transform-origin:50% 40%}
 #cena{position:absolute;left:0;top:0;width:1024px;height:1280px;transform-origin:0 0;transform:scale(1.0546875)}
-#cena>*{position:absolute}
-#cena img{display:block}
-#brilho{left:0;top:0;width:1024px;height:1280px;-webkit-mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mix-blend-mode:screen;overflow:hidden}
-#faixa{position:absolute;top:600px;left:0;width:340px;height:600px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,240,250,.85) 45%,rgba(255,255,255,.95) 50%,rgba(255,240,250,.85) 55%,rgba(255,255,255,0));transform-origin:50% 50%}
+#cena img,#prato img{position:absolute;display:block}
+#prato{position:absolute;left:0;top:0;width:1024px;height:1280px}
+#brilho{position:absolute;left:0;top:0;width:1024px;height:1280px;-webkit-mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mix-blend-mode:screen;overflow:hidden}
+#faixa{position:absolute;top:600px;left:0;width:340px;height:600px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,240,250,.85) 45%,rgba(255,255,255,.95) 50%,rgba(255,240,250,.85) 55%,rgba(255,255,255,0))}
 #c>.t{position:absolute}
 .tag{left:110px;top:90px;font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;background:#6225d8;white-space:nowrap;transform-origin:0 100%}
 .tag svg{position:absolute;left:-19px;bottom:-21px}
@@ -29,9 +29,7 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 <div id="c">
   <div id="cam"><div id="cena">
     <img src="camadas/quilo/fundo.png" style="left:0;top:0">
-    <img id="topo" src="camadas/quilo/topo.png" style="left:0;top:0">
-    <img id="p1" src="camadas/quilo/peca1.png">
-    <img id="p2" src="camadas/quilo/peca2.png">
+    <div id="prato"></div>
     <img id="pont" src="camadas/quilo/ponteiro.png">
     <div id="brilho"><div id="faixa"></div></div>
   </div></div>
@@ -40,47 +38,57 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
   <span class="t fecho" id="fecho"><span><i>o que entra no <em>prato</em></i></span><span><i>de uma identidade visual.</i></span></span>
 </div>
 <script>
-const FPS=30,DUR=6.5;
+const FPS=30,DUR=7.6;
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const P=(t,t0,d)=>clamp((t-t0)/d);
 const outCubic=p=>1-Math.pow(1-p,3);
 const mola=p=>p<=0?0:p>=1?1:1-Math.exp(-6.5*p)*Math.cos(11*p);
-// resposta de mola a uma pancada no instante t0: sobe, passa do ponto e morre
 const pancada=(t,t0,freq=17,amort=5.5)=>t<t0?0:Math.exp(-amort*(t-t0))*Math.sin(freq*(t-t0));
 const $=id=>document.getElementById(id);
 let M;
-// as duas peças: quando caem, onde pousam (centro, em px da cena), com que giro
-const PECAS=[{id:'p1',t0:.75,dur:.5,alvo:[733,196],rot0:-150,rot:32},{id:'p2',t0:1.75,dur:.46,alvo:[606,128],rot0:140,rot:-12}];
-const POUSO=PECAS.map(p=>p.t0+p.dur);
+// ordem das camadas do prato (de trás pra frente)
+const ORDEM=['prato-fundo','prato-tras','prato-forro','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','cursor','prato-frente','ar2'];
+// o prato começa vazio. cada peça: quando pousa, quanto pesa (graus no ponteiro), de que giro vem
+const QUEDA=[
+ {id:'A',pouso:1.00,peso:17,giro:-22}, {id:'a',pouso:1.50,peso:13,giro:18},
+ {id:'amostra1',pouso:2.00,peso:6,giro:-30}, {id:'amostra2',pouso:2.28,peso:6,giro:20},
+ {id:'amostra3',pouso:2.56,peso:6,giro:-16}, {id:'amostra4',pouso:2.84,peso:6,giro:26},
+ {id:'estrela',pouso:3.30,peso:6,giro:160}, {id:'cursor',pouso:3.75,peso:11,giro:-40},
+ {id:'ar1',pouso:4.25,peso:7,giro:-150,alvo:[733,196],fim:32},   // a amostra lilás que estava no ar: pousa na ponta do leque
+];
+const TQ=.42,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
+const AR2={bate:4.72};   // a estrelinha bate na pilha e quica pra fora: não cabe mais nada
 
 function render(t){
-  // prato + pilha: afundam a cada pouso
-  const dip=10*pancada(t,POUSO[0],16,5)+7*pancada(t,POUSO[1],18,5.5);
-  const aperto=1-.012*Math.max(0,pancada(t,POUSO[0],16,5))-.008*Math.max(0,pancada(t,POUSO[1],18,5.5));
-  $('topo').style.transformOrigin=`512px ${M.corte}px`;
-  $('topo').style.transform=`translateY(${dip}px) scaleY(${aperto})`;
-  // peças: queda livre (acelera), pouso com quique, depois acompanham o prato
-  PECAS.forEach((p,i)=>{const m=M['peca'+(i+1)],e=$(p.id),q=P(t,p.t0,p.dur),cai=q*q;
-    const x=p.alvo[0]-m.w/2,y0=-m.h-80,y1=p.alvo[1]-m.h/2;
-    const quique=-16*Math.abs(pancada(t,POUSO[i],13,7));
-    e.style.left=x+'px';e.style.top='0px';e.style.opacity=t<p.t0?0:1;
-    e.style.transform=`translateY(${y0+(y1-y0)*cai+(q>=1?quique+dip:0)}px) rotate(${p.rot0+(p.rot-p.rot0)*outCubic(q)+(q>=1?6*pancada(t,POUSO[i],15,6):0)}deg)`;});
-  // ponteiro: começa mais leve e pula a cada peça; termina igual à arte parada
-  const ang=-17+8*mola(P(t,POUSO[0],.9))+9*mola(P(t,POUSO[1],.9))+1.2*Math.sin(t*2.2)*clamp(t-3);
+  // prato inteiro afunda a cada pouso, na medida do peso
+  let dip=0;QUEDA.forEach(q=>{dip+=.62*q.peso*pancada(t,q.pouso,16,5.2)});dip+=3*pancada(t,AR2.bate,18,6);
+  const carga=QUEDA.reduce((s,q)=>s+q.peso*clamp((t-q.pouso)*40),0)/TOTAL;   // o prato também fica um pouco mais baixo conforme enche
+  $('prato').style.transformOrigin=`512px ${M.corte}px`;$('prato').style.transform=`translateY(${dip+4*carga-4}px)`;
+  QUEDA.forEach(q=>{const m=M[q.id],e=$('l-'+q.id),p=P(t,q.pouso-TQ,TQ),cai=p*p;
+    const dx=q.alvo?q.alvo[0]-(m.x+m.w/2):0,dy=q.alvo?q.alvo[1]-(m.y+m.h/2):0;
+    const y0=-(m.y+m.h+90),quique=-14*Math.abs(pancada(t,q.pouso,13,7.5));
+    const amassa=1-.07*Math.max(0,Math.sin(Math.PI*P(t,q.pouso,.16)));
+    e.style.opacity=t<q.pouso-TQ?0:1;e.style.transformOrigin='50% 100%';
+    e.style.transform=`translate(${dx}px,${dy+y0*(1-cai)+(p>=1?quique:0)}px) rotate(${q.giro*(1-outCubic(p))+(q.fim||0)*outCubic(p)+(p>=1?4*pancada(t,q.pouso,15,6.5):0)}deg) scaleY(${amassa})`;});
+  // estrelinha: cai, bate no alto da pilha e sai voando pra direita
+  {const m=M.ar2,e=$('l-ar2'),t0=AR2.bate-.4,bx=560-(m.x+m.w/2),by=118-(m.y+m.h/2);let x,y,r;
+   if(t<AR2.bate){const p=P(t,t0,.4);x=bx;y=by-(by+m.y+m.h+90)*(1-p*p);r=200*(1-p);}
+   else{const s=t-AR2.bate;x=bx+430*s;y=by-520*s+1500*s*s;r=-520*s;}
+   e.style.opacity=t<t0?0:1;e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`;}
+  // ponteiro: sobe um degrau a cada peça, com a tremida de mola
+  let ang=-TOTAL;QUEDA.forEach(q=>{ang+=q.peso*mola(P(t,q.pouso,.7))});ang+=5*pancada(t,AR2.bate,20,5)+.9*Math.sin(t*2.3)*clamp(t-5.2);
   const pt=$('pont');pt.style.left=M.ponteiro.x+'px';pt.style.top=M.ponteiro.y+'px';
   pt.style.transformOrigin=`${M.ponteiro.px-M.ponteiro.x}px ${M.ponteiro.py-M.ponteiro.y}px`;pt.style.transform=`rotate(${ang}deg)`;
-  // brilho que atravessa a palavra
-  const b=P(t,2.7,1.3);$('faixa').style.transform=`translateX(${-320+1500*b}px) rotate(18deg)`;$('faixa').style.opacity=b>0&&b<1?.42:0;
-  // câmera chega devagar
-  $('cam').style.transform=`scale(${1+.035*outCubic(P(t,0,DUR))})`;
-  // textos
+  const b=P(t,5.3,1.3);$('faixa').style.transform=`translateX(${-360+1560*b}px) rotate(18deg)`;$('faixa').style.opacity=b>0&&b<1?.42:0;
+  $('cam').style.transform=`scale(${1.06-.06*outCubic(P(t,0,5.2))+.02*P(t,5.2,DUR-5.2)})`;   // começa perto do prato, abre até a arte inteira
   const c=mola(P(t,.25,.9));$('cartao').style.opacity=clamp(P(t,.25,.15));$('cartao').style.transform=`rotate(${-5-14*(1-c)}deg) scale(${.5+.5*c})`;
   [...$('fecho').querySelectorAll('i')].forEach((l,i)=>{const p=outCubic(P(t,.5+i*.14,.6));l.style.transform=`translateY(${(1-p)*105}%)`;});
   const g=mola(P(t,.1,.8));$('tag').style.opacity=clamp(P(t,.1,.15));$('tag').style.transform=`scale(${.5+.5*g})`;
 }
 fetch('camadas/quilo/meta.json').then(r=>r.json()).then(async m=>{M=m;
+  $('prato').innerHTML=ORDEM.map(k=>`<img id="l-${k}" src="camadas/quilo/${k}.png" style="left:${m[k].x}px;top:${m[k].y}px">`).join('');
   await Promise.all([document.fonts.load('400 60px "Instrument Serif"'),document.fonts.load('italic 400 60px "Instrument Serif"'),document.fonts.load('600 40px Poppins'),document.fonts.load('500 40px Poppins'),...[...document.images].map(i=>i.decode().catch(()=>{}))]);
-  window.DURATION=DUR;window.render=render;const q=new URLSearchParams(location.search);render(parseFloat(q.get('t')||'6'));window.READY=true;
+  window.DURATION=DUR;window.render=render;const q=new URLSearchParams(location.search);render(parseFloat(q.get('t')||'7'));window.READY=true;
   if(q.get('play')){const s=performance.now();(function l(){render(((performance.now()-s)/1000)%DUR);requestAnimationFrame(l)})();}});
 </script>
 </body>
