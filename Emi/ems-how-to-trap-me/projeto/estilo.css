@@ -48,4 +48,3 @@ h1 em { font-style: italic; color: var(--manteiga); padding-right: .05em; }
 /* última lâmina: caixa vazia, a pergunta pra quem segue */
 .fim h1 span { font-size: 214px; }
 .pilula { left: 216px; top: 1122px; width: 470px; text-align: center; background: var(--manteiga); color: var(--tinta); font-size: 28px; font-weight: 500; line-height: 1.22; padding: 20px 30px 22px; border-radius: 26px; transform: rotate(-2deg); box-shadow: 6px 6px 0 var(--tinta); }
-.selo { right: 100px; top: 440px; width: 150px; }
