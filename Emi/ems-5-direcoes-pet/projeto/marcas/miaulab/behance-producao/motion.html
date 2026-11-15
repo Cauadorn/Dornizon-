@@ -18,7 +18,9 @@ html, body { margin: 0; background: #000; }
 .pil { position: absolute; border: 2px solid currentColor; border-radius: 999px; padding: 11px 26px 10px; font: 500 20px/1 IS; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 </style><script src="../gato-v3/gato.js"></script><script src="../logo.js"></script></head><body><div id="p"></div>
 <script>
-const W = 1400, H = 1050, p = document.getElementById('p'), modo = new URLSearchParams(location.search).get('m') || 'gato';
+const modo = new URLSearchParams(location.search).get('m') || 'gato';
+const W = 1400, H = modo === 'abertura' ? 1750 : 1050, p = document.getElementById('p');
+p.style.height = H + 'px'; window.ALTURA = H;
 const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', manteiga: '#F2DC8B', creme: '#F6EEDC', nanquim: '#1C1A24' };
 const cv = document.createElement('canvas').getContext('2d');
 const eo = x => 1 - Math.pow(1 - x, 3), cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), fx = (t, a, d) => cl((t - a) / d);
@@ -43,6 +45,35 @@ const cantos = (s, cor, [a, b, c, d], m = 44) => s.insertAdjacentHTML('beforeend
   <div class="mic" style="left:${m}px;bottom:${m}px;color:${cor}">${c}</div><div class="mic" style="right:${m}px;bottom:${m}px;color:${cor};text-align:right">${d}</div>`);
 const lista = [];   // [cena, t0, t1, anim]
 Promise.all(['500 100px IS', '400 100px Mea', '900 100px Archivo', '700 64px Mono'].map(f => document.fonts.load(f))).then(() => {
+  if (modo === 'abertura') {   // prancha 01 animada: o logo se monta (como a abertura do reel) e o gato pisca e olha (5,2 s, em loop)
+    const s = cena(C.cobalto), L = logo(s, 700, 830, 1040, { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
+    cantos(s, C.rosa, ['MIAU.LAB — identidade visual', 'Brand identity · 2026', 'Suplementos e petiscos<br>funcionais para gatos', 'Design<br>EMS · @itsemsdesign'], 56);
+    const [svgCab, txt, svgPat, lab] = L.children, ass = L.querySelector('div[style*="IS"]') || L.lastElementChild;
+    txt.innerHTML = [...'MIAU'].map(l => `<span style="display:inline-block">${l}</span>`).join(''); txt.style.clipPath = 'inset(-40px -60px 0 -60px)';
+    const letras = [...txt.children], ns = 'http://www.w3.org/2000/svg';
+    const cabG = document.createElementNS(ns, 'g'); [...svgCab.children].forEach(n => cabG.appendChild(n)); svgCab.appendChild(cabG);
+    svgCab.style.clipPath = 'polygon(-1000px -1000px, 2000px -1000px, 2000px 262px, -1000px 262px)';
+    const gR = document.createElementNS(ns, 'g'), gP = document.createElementNS(ns, 'g'), cp = document.createElementNS(ns, 'clipPath'); cp.id = 'riscoAb'; cp.setAttribute('clipPathUnits', 'userSpaceOnUse');
+    const rr = document.createElementNS(ns, 'rect'); rr.setAttribute('x', -100); rr.setAttribute('y', 250); rr.setAttribute('width', 1200); rr.setAttribute('height', 0);
+    cp.appendChild(rr); svgPat.querySelector('defs').appendChild(cp); gR.setAttribute('clip-path', 'url(#riscoAb)');
+    [...svgPat.children].forEach(n => { if (n.tagName === 'path') gR.appendChild(n); else if (n.tagName === 'g') gP.appendChild(n); });
+    svgPat.appendChild(gR); svgPat.appendChild(gP); lab.style.transformOrigin = '50% 50%';
+    const assin = [...L.children].filter(n => n.tagName === 'DIV' && n.innerHTML.includes('Fórmula'))[0], mic = [...s.querySelectorAll('.mic')];
+    const eb2 = x => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); }, eio2 = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    window.DURACAO = 5.2;
+    lista.push([s, 0, 5.2, t => {
+      const sai = fx(t, 4.75, .4);   // no fim tudo desce de volta, para o loop emendar
+      letras.forEach((e, i) => { const u = eo(fx(t, .1 + i * .07, .42)); e.style.transform = `translateY(${((1 - u) + sai) * 520}px)`; });
+      const c = eb2(fx(t, .6, .42)); cabG.setAttribute('transform', `translate(0 ${((1 - c) + sai) * 150})`);
+      const pa = fx(t, 1.03, .2); gP.setAttribute('transform', `translate(0 ${(1 - eb2(pa)) * -70})`); gP.style.opacity = cl(pa * 4) * (1 - sai);
+      rr.setAttribute('height', eio2(fx(t, 1.2, .38)) * 90 * (1 - sai));
+      const lb = fx(t, 1.55, .3); lab.style.transform = `scale(${eb2(lb) * (1 - sai)})`;
+      if (assin) { const as = eo(fx(t, 1.68, .4)); assin.style.opacity = as * (1 - sai); assin.style.transform = `translateY(${(1 - as) * 18}px)`; }
+      mic.forEach((m, i) => m.style.opacity = fx(t, 1.8 + i * .06, .01) * (1 - sai));
+      const ol = t < 2.6 ? 0 : t < 3.2 ? -1 : t < 3.8 ? 1 : 0;
+      olho(L, Math.max(piscada(t, 2.3), piscada(t, 4.05)), ol);
+    }]);
+  }
   if (modo === 'gato') {   // o gato em close, olhando de um lado para o outro e piscando
     const s = cena(C.cobalto), k = 1400 * 3.2 / 899, L = logo(s, 0, 0, 1400 * 3.2, { cor: C.rosa, fundo: C.cobalto, lab: false }, false);
     L.style.left = (700 - 798 * k) + 'px'; L.style.top = (470 - 230 * k) + 'px';
