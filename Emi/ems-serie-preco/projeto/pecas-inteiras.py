@@ -6,7 +6,7 @@ d = sys.argv[1]; s = new_session('isnet-general-use')
 def rec(nome):
     a = np.array(remove(Image.open(f'{d}/{nome}.png').convert('RGB'), session=s)); al = a[..., 3].astype(float)
     a[..., 3] = (np.clip((al - 40) / 175, 0, 1) * 255).astype('uint8'); return a
-for nome in ['A', 'a-min']:
+for nome in ['A', 'a-min', 'balanca', 'estrela']:
     A = rec(nome); ys, xs = np.where(A[..., 3] > 20); Image.fromarray(A[ys.min():ys.max() + 1, xs.min():xs.max() + 1]).save(f'{d}/{nome}-rec.png')
 am = rec('amostras'); n, lab, st, cen = cv2.connectedComponentsWithStats((am[..., 3] > 60).astype(np.uint8))
 ids = sorted([i for i in range(1, n) if st[i, 4] > 5000], key=lambda i: st[i, 0])
