@@ -8,7 +8,7 @@
 html,body{margin:0;background:#111}*{box-sizing:border-box}
 #c{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Poppins;color:#fffbde}
 #c>*{position:absolute}
-.foto{inset:0;width:1080px;height:1350px;object-fit:cover}
+.foto{left:0;top:0;width:1080px;height:1350px;object-fit:cover}
 .tag{font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;white-space:nowrap}
 .tag svg{position:absolute;left:-19px;bottom:-21px}
 .serie{font:500 19px/1 Poppins;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
@@ -40,11 +40,13 @@ const V={
   ${tag(110,90,'#dd34a8')}
   <span class="tira" style="left:84px;top:756px;transform:rotate(-4deg)"><b>no débito ou no</b></span>
   <span class="serif" style="left:90px;top:1126px;font-size:60px;line-height:.96;color:#2a1433">o que vem na <em style="color:#dd34a8">notinha</em><br>de uma identidade visual.</span>`,
- // 03 · manchete em serifa empilhada na palavra + pílula colada embaixo
- bolinha:`<img class="foto" src="cenas/bolinha.png">
+ // 03 · manchete em serifa empilhada na palavra + pílula colada embaixo.
+ // a cena desce 110px (sobrava chão embaixo); o topo é completado esticando a primeira linha do fundo
+ bolinha:`<img class="foto" src="cenas/bolinha.png" style="top:0;clip-path:inset(0 0 calc(100% - 3px) 0);transform-origin:50% 0;transform:scaleY(40)">
+  <img class="foto" src="cenas/bolinha.png" style="top:110px">
   ${tag(110,90,'#dd34a8')}
-  <span class="serif" style="left:88px;top:574px;font-size:92px;line-height:.86">design não é<br>máquina de</span>
-  <span class="cartao" style="left:90px;top:1066px;background:#dd34a8;color:#fffbde;font-size:32px;border-radius:999px;padding:16px 30px 17px;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)">não é pôr a moeda e sair marca pronta.</span>`,
+  <span class="serif" style="left:88px;top:684px;font-size:92px;line-height:.86">design não é<br>máquina de</span>
+  <span class="cartao" style="left:90px;top:1176px;background:#dd34a8;color:#fffbde;font-size:32px;border-radius:999px;padding:16px 30px 17px;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)">não é pôr a moeda e sair marca pronta.</span>`,
 };
 const k=new URLSearchParams(location.search).get('v')||'quilo';document.getElementById('c').innerHTML=V[k];
 </script></body></html>
