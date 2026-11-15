@@ -1,0 +1,240 @@
+<!doctype html>
+<!-- MIAU.LAB · take de abertura do reel, versão "feito no Illustrator" (a Emi: o rascunho a lápis "ainda parece IA;
+     talvez um desenho feito pelo Illustrator"). Timelapse de construção vetorial, numa interface genérica de editor de
+     vetor (sem marca de programa nenhuma):
+       MIAU digitado com a ferramenta de texto → zoom no U → caneta de bézier clicando âncoras e puxando alças
+       (cabeça, olhos com a elipse, pupilas, patas, unhas) → amostras de cor preenchem → arranhões com "subtrair"
+       → zoom de volta no logo inteiro. O logo fica no mesmo lugar e tamanho do reel.html, que vem em seguida.
+     A cabeça do traço original tem 570 curvas; a caneta mostra uma construção de ~26 âncoras (como um designer faria)
+     e a forma exata entra no preenchimento. Uso: render-reel.mjs desenho/vetor.html saida.mp4 -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+html, body { margin: 0; background: #000; }
+#p { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #2b2b2e; font-family: IS, sans-serif; }
+#tela { position: absolute; left: 0; top: 0; }
+.ui { position: absolute; background: #38383c; color: #d9d9de; }
+#topo { left: 0; right: 0; top: 0; height: 120px; border-bottom: 1px solid #1f1f22; display: flex; align-items: flex-end; padding: 0 0 0 96px; box-sizing: border-box; }
+#aba { background: #2b2b2e; color: #e8e8ec; font: 500 22px/1 IS; padding: 18px 24px 16px; border-radius: 8px 8px 0 0; }
+#ferr { left: 18px; top: 160px; width: 64px; border-radius: 10px; padding: 8px 0; display: grid; gap: 4px; justify-items: center; }
+#ferr div { width: 48px; height: 48px; border-radius: 8px; display: grid; place-items: center; }
+#ferr div.on { background: #4a7bff; }
+#ferr svg { width: 28px; height: 28px; fill: none; stroke: #e8e8ec; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#amostras { right: 18px; top: 160px; width: 72px; border-radius: 10px; padding: 10px 0; display: grid; gap: 10px; justify-items: center; }
+#amostras i { width: 44px; height: 44px; border-radius: 6px; display: block; box-shadow: inset 0 0 0 1px #0004; }
+#amostras i.on { outline: 3px solid #fff; outline-offset: 3px; }
+#rodape { left: 0; right: 0; bottom: 0; height: 64px; display: flex; align-items: center; gap: 28px; padding-left: 24px; font: 500 20px/1 IS; color: #b9b9c0; border-top: 1px solid #1f1f22; }
+#pathfinder { right: 110px; top: 470px; width: 300px; border-radius: 10px; padding: 16px; font: 600 18px/1 IS; opacity: 0; }
+#pathfinder .bt { display: flex; gap: 10px; margin-top: 12px; }
+#pathfinder .bt span { width: 52px; height: 52px; border-radius: 8px; background: #2b2b2e; display: grid; place-items: center; }
+#pathfinder .bt span.on { background: #4a7bff; }
+#cursor { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 9; }
+#cursor svg { position: absolute; overflow: visible; }
+#oculto { position: absolute; left: -5000px; width: 899px; height: 700px; }
+</style><script src="../../gato-v3/gato.js"></script><script src="../../logo.js"></script><script src="glifos.js"></script></head>
+<body><div id="p">
+  <svg id="tela" width="1080" height="1920"><defs><clipPath id="prancheta"><rect id="cp" x="0" y="0" width="0" height="0"/></clipPath></defs>
+    <g id="cam"><rect id="art" fill="#F6EEDC"/><g clip-path="url(#prancheta)"><g id="L"><g id="texto"></g><g id="cores"></g><g id="furos"></g></g></g>
+      <g id="sel"></g></g></svg>
+  <div class="ui" id="topo"><div id="aba">miau-lab_logo.svg @ <span id="zt">100</span>% (RGB/Visualizar)</div></div>
+  <div class="ui" id="ferr"></div>
+  <div class="ui" id="amostras"></div>
+  <div class="ui" id="pathfinder">Pathfinder<div class="bt"><span></span><span id="menos"></span><span></span><span></span></div></div>
+  <div class="ui" id="rodape"><span id="zr">100%</span><span>Prancheta 1</span><span id="ferrNome">Texto</span></div>
+  <div id="cursor"></div>
+</div><div id="oculto"></div>
+<script>
+const W = 1080, H = 1920, ns = 'http://www.w3.org/2000/svg', AZ = '#4a7bff', MG = '#ff3fc8';
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', manteiga: '#F2DC8B', creme: '#F6EEDC', nanquim: '#1C1A24' };
+const K = W * .84 / 899, X0 = (W - 899 * K) / 2, Y0 = H / 2 - (141 + 700) / 2 * K - 60;   // igual ao reel.html
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2, eo = x => 1 - Math.pow(1 - x, 3);
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), fx = (t, a, d) => cl((t - a) / d);
+const el = (tag, at, pai) => { const e = document.createElementNS(ns, tag); for (const k in at) e.setAttribute(k, at[k]); if (pai) pai.appendChild(e); return e; };
+const $ = id => document.getElementById(id);
+// ---------- interface ----------
+const ICONES = { sel: 'M8 4 L8 22 L13 17 L16 24 L19 23 L16 16 L23 16 Z', dir: 'M8 4 L8 22 L13 17 L16 24 L19 23 L16 16 L23 16 Z',
+  caneta: 'M6 24 L10 14 L18 6 L22 10 L14 18 Z M10 14 L14 18 M6 24 L11 19', texto: 'M7 6 H21 M14 6 V24 M10 24 H18', elipse: 'M14 6 A8 8 0 1 1 13.9 6',
+  ret: 'M6 8 H22 V20 H6 Z', conta: 'M8 22 L18 12 M16 8 L22 14 M14 10 L20 16 L22 10 L18 6 Z' };
+const FERR = ['sel', 'dir', 'caneta', 'texto', 'elipse', 'ret', 'conta'];
+$('ferr').innerHTML = FERR.map(f => `<div data-f="${f}"><svg viewBox="0 0 28 28"><path d="${ICONES[f]}" ${f === 'dir' ? 'fill="#e8e8ec"' : ''}/></svg></div>`).join('');
+const AMO = [C.nanquim, C.cobalto, C.rosa, C.manteiga, C.creme, '#ffffff'];
+$('amostras').innerHTML = AMO.map(c => `<i style="background:${c}"></i>`).join('');
+const NOMES = { sel: 'Seleção', dir: 'Seleção direta', caneta: 'Caneta', texto: 'Texto', elipse: 'Elipse', ret: 'Retângulo', conta: 'Conta-gotas' };
+// cursores (ponto quente na origem)
+const CUR = { caneta: `<svg width="40" height="40" style="left:-4px;top:-36px"><path d="M4 36 L12 18 L26 4 L36 14 L22 28 Z" fill="#111" stroke="#fff" stroke-width="2"/><circle cx="16" cy="24" r="2.5" fill="#fff"/></svg>`,
+  sel: `<svg width="30" height="40" style="left:-2px;top:-2px"><path d="M2 2 L2 30 L9 23 L14 34 L19 32 L14 21 L24 21 Z" fill="#111" stroke="#fff" stroke-width="2"/></svg>`,
+  texto: `<svg width="20" height="40" style="left:-10px;top:-20px"><path d="M4 4 H16 M10 4 V36 M4 36 H16" stroke="#111" stroke-width="3"/><path d="M4 4 H16 M10 4 V36 M4 36 H16" stroke="#fff" stroke-width="1"/></svg>`,
+  mira: `<svg width="40" height="40" style="left:-20px;top:-20px"><path d="M20 4 V36 M4 20 H36" stroke="#111" stroke-width="3"/><path d="M20 4 V36 M4 20 H36" stroke="#fff" stroke-width="1"/></svg>` };
+Promise.all(['900 100px Archivo', '700 64px Mono', '500 30px IS'].map(f => document.fonts.load(f))).then(() => {
+  const L = $('L'), sel = $('sel'), cam = $('cam');
+  L.setAttribute('transform', `translate(${X0} ${Y0}) scale(${K})`);
+  // prancheta: a área do logo com folga
+  const ax = X0 - 70, ay = Y0 + 60 * K, aw = 899 * K + 140, ah = 700 * K + 40;
+  $('art').setAttribute('x', ax); $('art').setAttribute('y', ay); $('art').setAttribute('width', aw); $('art').setAttribute('height', ah);
+  ['x', 'y', 'width', 'height'].forEach((k, i) => $('cp').setAttribute(k, [ax, ay, aw, ah][i]));
+  // o logo de verdade (para pegar os desenhos com as mesmas transformações)
+  const o = $('oculto'); miauLogoV3(o, { cor: '#000', fundo: C.creme, gato: C.nanquim, olho: C.rosa, unha: C.creme });
+  const [s0, , s2] = o.children, cab = s0.children[0], olhos = s0.children[1];
+  const tr = n0 => { let t = [], n = n0; while (n && n.tagName !== 'svg') { if (n.getAttribute && n.getAttribute('transform')) t.unshift(n.getAttribute('transform')); n = n.parentNode; } return t.join(' '); };
+  const patas = [...s2.children].filter(n => n.tagName === 'g' && n.children.length === 2), unhas = [...s2.children].filter(n => n.tagName === 'g' && n.children.length === 1);
+  const riscos = [...s2.children].filter(n => n.tagName === 'path');
+  // ----- MIAU (texto) -----
+  const s = 470 / GLIFOS.upm, base = 191 + (470 - (GLIFOS.asc + GLIFOS.desc) * s) / 2 + GLIFOS.asc * s;
+  const letras = GLIFOS.letras.map(g => el('path', { d: g.d, transform: `translate(${-19 + g.x * s} ${base}) scale(${s} ${-s})`, fill: C.nanquim }, $('texto')));
+  const fimLetra = GLIFOS.letras.map((g, i) => -19 + (GLIFOS.letras[i + 1] ? GLIFOS.letras[i + 1].x : GLIFOS.largura) * s);
+  // ----- formas finais (entram na cor) -----
+  const cores = $('cores');
+  const grupo = (n, pai) => { const g = el('g', { transform: tr(n.parentNode) }, pai); g.appendChild(n.cloneNode(true)); return g; };
+  const fCab = grupo(cab.children[0], cores), fPatas = patas.map(g => grupo(g.children[1], cores));
+  const fOlhos = [...olhos.children].map(g => { const gg = el('g', { transform: tr(g) }, cores); [...g.children].forEach(c => gg.appendChild(c.cloneNode(true))); return gg; });
+  const fUnhas = unhas.map(g => grupo(g.children[0], cores));
+  [fCab, ...fPatas, ...fOlhos, ...fUnhas].forEach(g => g.style.opacity = 0);
+  const furos = riscos.map(r => { const c = r.cloneNode(true); c.setAttribute('fill', C.creme); c.style.opacity = 0; $('furos').appendChild(c); return c; });
+  // ----- conversão: coordenadas de um elemento → coordenadas de L -----
+  const paraL = (e, x, y) => { const m = L.getCTM().inverse().multiply(e.getCTM()); const q = new DOMPoint(x, y).matrixTransform(m); return [q.x, q.y]; };
+  // simplifica um contorno em ~N âncoras: quinas (ângulo forte) + pontos espaçados; alças estilo Catmull-Rom
+  function ancoras(pathEl, N, cantos = 2) {
+    const T = pathEl.getTotalLength(), M = 600, P = [];
+    for (let i = 0; i < M; i++) { const q = pathEl.getPointAtLength(T * i / M); P.push(paraL(pathEl, q.x, q.y)); }
+    const ang = P.map((p, i) => { const a = P[(i - 8 + M) % M], b = P[(i + 8) % M];
+      const v1 = [p[0] - a[0], p[1] - a[1]], v2 = [b[0] - p[0], b[1] - p[1]];
+      return Math.abs(Math.atan2(v1[0] * v2[1] - v1[1] * v2[0], v1[0] * v2[0] + v1[1] * v2[1])); });
+    const quinas = [];
+    [...ang.keys()].sort((a, b) => ang[b] - ang[a]).forEach(i => { if (quinas.length < cantos && quinas.every(j => Math.min(Math.abs(i - j), M - Math.abs(i - j)) > 40)) quinas.push(i); });
+    let idx = [...quinas]; for (let k = 0; k < N; k++) { const i = Math.round(k * M / N); if (idx.every(j => Math.min(Math.abs(i - j), M - Math.abs(i - j)) > 10)) idx.push(i); }
+    idx.sort((a, b) => a - b);
+    const A = idx.map(i => ({ p: P[i], quina: quinas.includes(i) }));
+    A.forEach((a, i) => { const pr = A[(i - 1 + A.length) % A.length].p, nx = A[(i + 1) % A.length].p, f = a.quina ? 0 : 1 / 6;
+      a.h1 = [a.p[0] - (nx[0] - pr[0]) * f, a.p[1] - (nx[1] - pr[1]) * f]; a.h2 = [a.p[0] + (nx[0] - pr[0]) * f, a.p[1] + (nx[1] - pr[1]) * f]; });
+    return A;
+  }
+  const pEl = (d, t) => { const e = el('path', { d, transform: t, fill: 'none' }, L); return e; };
+  const tmpCab = pEl(cab.children[0].getAttribute('d'), tr(cab.children[0]));
+  const aCab = ancoras(tmpCab, 22, 2); tmpCab.remove();
+  const aPatas = patas.map(g => { const t = pEl(g.children[1].getAttribute('d'), tr(g.children[1])); const a = ancoras(t, 9, 0); t.remove(); return a; });
+  // olhos: centro e raio em L
+  const eyeInfo = [...olhos.children].map(g => { const c = el('circle', { r: 30, transform: tr(g) }, L); const b = c.getBBox(); const p1 = paraL(c, -30, -30), p2 = paraL(c, 30, 30); c.remove();
+    return { x0: Math.min(p1[0], p2[0]), y0: Math.min(p1[1], p2[1]), x1: Math.max(p1[0], p2[0]), y1: Math.max(p1[1], p2[1]) }; });
+  // ----- camada de seleção (em coordenadas de tela, desenhada a cada quadro) -----
+  const S = v => [X0 + v[0] * K, Y0 + v[1] * K];   // L → tela (antes da câmera)
+  // ----- roteiro -----
+  const EV = []; let t = 0;
+  const fase = (nome, dur, dados = {}) => { EV.push(Object.assign({ nome, t0: t, dur }, dados)); t += dur; };
+  fase('texto', 1.0); fase('zoomIn', .45);
+  fase('cabeca', aCab.length * .072 + .15, { A: aCab }); fase('pausa', .08);
+  eyeInfo.forEach((e, i) => fase('elipse', .32, { e, i })); fase('pausa', .05);
+  fase('pupilas', .36); aPatas.forEach((A, i) => fase('pata', A.length * .06 + .1, { A, i })); fase('unhas', .4);
+  fase('preenche', .9); fase('subtrai', .65); fase('zoomOut', .6); fase('fim', .4);
+  const ev = n => EV.find(e => e.nome === n), evs = n => EV.filter(e => e.nome === n);
+  window.DURACAO = t;
+  // ----- desenho de âncoras / caminho parcial -----
+  const segD = (A, n, uLast) => {   // caminho com as primeiras n âncoras (+ fração do segmento seguinte), em tela
+    if (n < 1) return ''; let d = `M${S(A[0].p).join(' ')}`;
+    for (let i = 1; i < n; i++) d += ` C${S(A[i - 1].h2).join(' ')} ${S(A[i].h1).join(' ')} ${S(A[i].p).join(' ')}`;
+    return d; };
+  function desenhaCaminho(A, prog, fechado) {   // prog em âncoras (pode ser fracionário); devolve [x,y] da caneta
+    const n = Math.min(A.length, Math.floor(prog) + 1), fr = prog - Math.floor(prog);
+    let d = segD(A, n);
+    if (fechado) d += ` C${S(A[A.length - 1].h2).join(' ')} ${S(A[0].h1).join(' ')} ${S(A[0].p).join(' ')} Z`;
+    let html = `<path d="${d}" fill="none" stroke="${AZ}" stroke-width="2"/>`;
+    for (let i = 0; i < n; i++) { const [x, y] = S(A[i].p); const atual = i === n - 1 && !fechado;
+      if (atual && !A[i].quina) { const ha = S(A[i].h1), hb = S(A[i].h2), g = eo(cl(fr * 3));   // alças sendo puxadas
+        const h1 = [x + (ha[0] - x) * g, y + (ha[1] - y) * g], h2 = [x + (hb[0] - x) * g, y + (hb[1] - y) * g];
+        html += `<path d="M${h1.join(' ')} L${h2.join(' ')}" stroke="${AZ}" stroke-width="1.5"/><circle cx="${h1[0]}" cy="${h1[1]}" r="5" fill="${AZ}"/><circle cx="${h2[0]}" cy="${h2[1]}" r="5" fill="${AZ}"/>`; }
+      html += `<rect x="${x - 6}" y="${y - 6}" width="12" height="12" fill="${atual ? AZ : '#fff'}" stroke="${AZ}" stroke-width="2"/>`; }
+    const atual = A[Math.min(n, A.length) - 1], prox = A[Math.min(n, A.length - 1)];
+    const pc = fr < .35 || n >= A.length ? S(atual.p) : (() => { const v = eio((fr - .35) / .65), a = S(atual.p), b = S(prox.p); return [a[0] + (b[0] - a[0]) * v, a[1] + (b[1] - a[1]) * v]; })();
+    return [html, pc];
+  }
+  const caixa = (x0, y0, x1, y1, alcas = true) => { let h = `<rect x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" fill="none" stroke="${AZ}" stroke-width="1.5"/>`;
+    if (alcas) [[x0, y0], [x1, y0], [x0, y1], [x1, y1], [(x0 + x1) / 2, y0], [(x0 + x1) / 2, y1], [x0, (y0 + y1) / 2], [x1, (y0 + y1) / 2]].forEach(([x, y]) => h += `<rect x="${x - 6}" y="${y - 6}" width="12" height="12" fill="#fff" stroke="${AZ}" stroke-width="1.5"/>`);
+    return h; };
+  const guia = (x, y, txt) => `<text x="${x + 14}" y="${y - 12}" fill="${MG}" font-family="IS" font-size="20" font-weight="600">${txt}</text>`;
+  // ----- câmera -----
+  const ZM = 3.2, foco = S([798, 215]);
+  const zoomEm = tm => { const zi = ev('zoomIn'), zo = ev('zoomOut'); return 1 + (ZM - 1) * (eio(fx(tm, zi.t0, zi.dur)) - eio(fx(tm, zo.t0, zo.dur))); };
+  const telaDe = (z, [x, y]) => { const u = (z - 1) / (ZM - 1), cx = foco[0], cy = foco[1]; const tx = (W / 2 * u + cx * (1 - u)) - cx * z, ty = (H * .52 * u + cy * (1 - u)) - cy * z; return [tx + x * z, ty + y * z, tx, ty]; };
+  const ferr = f => { [...$('ferr').children].forEach(d => d.classList.toggle('on', d.dataset.f === f)); $('ferrNome').textContent = NOMES[f] || ''; };
+  const amostra = c => [...$('amostras').children].forEach((i, k) => i.classList.toggle('on', AMO[k] === c));
+  const cursor = (tipo, [x, y]) => { $('cursor').innerHTML = CUR[tipo] || ''; $('cursor').style.transform = `translate(${x}px, ${y}px)`; };
+  window.ROTEIRO = { eventos: [], dur: t };
+  // eventos de som: teclas, cliques de âncora, arrastos de elipse, cliques de amostra, zoom
+  { const E = window.ROTEIRO.eventos; [.12, .28, .44, .6].forEach(x => E.push([x, 'tecla']));
+    E.push([ev('zoomIn').t0, 'zoom']); const c = ev('cabeca'); aCab.forEach((a, i) => E.push([c.t0 + i * .072, 'clique']));
+    evs('elipse').forEach(e => { E.push([e.t0, 'clique']); E.push([e.t0 + .25, 'solta']); }); E.push([ev('pupilas').t0, 'clique']); E.push([ev('pupilas').t0 + .18, 'clique']);
+    evs('pata').forEach(p => p.A.forEach((a, i) => E.push([p.t0 + i * .06, 'clique'])));
+    for (let k = 0; k < 6; k++) E.push([ev('unhas').t0 + k * .06, 'clique']);
+    const pr = ev('preenche'); [0, .3, .55, .78].forEach(x => E.push([pr.t0 + x, 'amostra'])); E.push([ev('subtrai').t0 + .35, 'amostra']);
+    E.push([ev('zoomOut').t0, 'zoom']); }
+  window.quadro = tm => {
+    const z = zoomEm(tm), [, , tx, ty] = telaDe(z, [0, 0]);
+    cam.setAttribute('transform', `translate(${tx} ${ty}) scale(${z})`);
+    $('zt').textContent = Math.round(z * 100); $('zr').textContent = Math.round(z * 100) + '%';
+    const scr = p => [tx + p[0] * z, ty + p[1] * z];   // tela-antes-da-câmera → tela final
+    let html = '', cur = ['sel', scr(S([450, 760]))];
+    // texto
+    const et = ev('texto'), nL = tm < .12 ? 0 : Math.min(4, 1 + Math.floor((tm - .12) / .16));
+    letras.forEach((e, i) => e.style.visibility = i < nL ? 'visible' : 'hidden');
+    if (tm < et.t0 + et.dur) { ferr('texto'); const xc = S([nL ? fimLetra[nL - 1] + 4 : -15, 0])[0], y0 = S([0, 205])[1], y1 = S([0, base])[1];
+      html += `<path d="M${S([-19, base])[0]} ${y1} H${xc}" stroke="${AZ}" stroke-width="2"/><rect x="${S([-19, 0])[0] - 5}" y="${y1 - 5}" width="10" height="10" fill="${AZ}"/>`;
+      if (Math.floor(tm / .25) % 2 === 0 || tm < .7) html += `<rect x="${xc}" y="${y0}" width="3" height="${y1 - y0}" fill="#111"/>`;
+      cur = ['texto', scr([xc + 40, y0 + 150])]; }
+    // cabeça
+    const ec = ev('cabeca');
+    if (tm >= ec.t0) { ferr('caneta'); const prog = Math.min(aCab.length - .001, (tm - ec.t0) / .072), fechado = tm >= ec.t0 + aCab.length * .072;
+      const [h, pc] = desenhaCaminho(aCab, prog, fechado); if (tm < ev('preenche').t0 + .25) html += h;
+      if (tm < ec.t0 + ec.dur) { cur = ['caneta', scr(pc)]; if (fechado) html += guia(...pc, 'fechar caminho'); else if (Math.floor(prog) % 7 === 3) html += guia(...pc, 'âncora'); } }
+    // elipses dos olhos
+    evs('elipse').forEach(e => { if (tm < e.t0) return; const u = eo(fx(tm, e.t0, .25)), a = S([e.e.x0, e.e.y0]), b = S([e.e.x1, e.e.y1]);
+      const x1 = a[0] + (b[0] - a[0]) * u, y1 = a[1] + (b[1] - a[1]) * u;
+      if (tm < ev('preenche').t0 + .25) { html += `<ellipse cx="${(a[0] + x1) / 2}" cy="${(a[1] + y1) / 2}" rx="${(x1 - a[0]) / 2}" ry="${(y1 - a[1]) / 2}" fill="none" stroke="${AZ}" stroke-width="2"/>`;
+        if (tm < e.t0 + e.dur) html += caixa(a[0], a[1], x1, y1, false) + guia(x1, y1, `L: ${Math.round((x1 - a[0]) / K)} px`); }
+      if (tm >= e.t0 && tm < e.t0 + e.dur) { ferr('elipse'); cur = ['mira', scr([x1, y1])]; } });
+    // pupilas (dois pontos com alças)
+    const ep = ev('pupilas');
+    if (tm >= ep.t0 && tm < ev('preenche').t0 + .25) { eyeInfo.forEach((e, i) => { if (tm < ep.t0 + i * .18) return; const cx = (e.x0 + e.x1) / 2, cy = (e.y0 + e.y1) / 2, ry = (e.y1 - e.y0) * .4, rx = (e.x1 - e.x0) * .14;
+        const a = S([cx, cy - ry]), b = S([cx, cy + ry]), c1 = S([cx + rx * 1.4, cy]), c2 = S([cx - rx * 1.4, cy]);
+        html += `<path d="M${a.join(' ')} Q${c1.join(' ')} ${b.join(' ')} Q${c2.join(' ')} ${a.join(' ')}" fill="none" stroke="${AZ}" stroke-width="2"/>`;
+        [a, b].forEach(p => html += `<rect x="${p[0] - 6}" y="${p[1] - 6}" width="12" height="12" fill="#fff" stroke="${AZ}" stroke-width="2"/>`);
+        if (tm < ep.t0 + ep.dur) { ferr('caneta'); cur = ['caneta', scr(b)]; } }); }
+    // patas
+    evs('pata').forEach(e => { if (tm < e.t0) return; const prog = Math.min(e.A.length - .001, (tm - e.t0) / .06), fechado = tm >= e.t0 + e.A.length * .06;
+      const [h, pc] = desenhaCaminho(e.A, prog, fechado); if (tm < ev('preenche').t0 + .25) html += h; if (tm < e.t0 + e.dur) { ferr('caneta'); cur = ['caneta', scr(pc)]; } });
+    // unhas: aparecem uma a uma já como caminho
+    const eu = ev('unhas');
+    fUnhas.forEach((g, k) => { const on = tm >= eu.t0 + k * .06; if (on && tm < ev('preenche').t0) { const b = g.getBBox(), m = L.getCTM().inverse().multiply(g.getCTM());
+      const p1 = new DOMPoint(b.x, b.y).matrixTransform(m), p2 = new DOMPoint(b.x + b.width, b.y + b.height).matrixTransform(m); const a = S([p1.x, p1.y]), c = S([p2.x, p2.y]);
+      html += `<rect x="${a[0]}" y="${a[1]}" width="${c[0] - a[0]}" height="${c[1] - a[1]}" fill="none" stroke="${AZ}" stroke-width="1.5"/>`; } });
+    if (tm >= eu.t0 && tm < eu.t0 + eu.dur) { ferr('caneta'); const g = fUnhas[Math.min(5, Math.floor((tm - eu.t0) / .06))], b = g.getBBox(), m = L.getCTM().inverse().multiply(g.getCTM());
+      const q = new DOMPoint(b.x + b.width / 2, b.y + b.height).matrixTransform(m); cur = ['caneta', scr(S([q.x, q.y]))]; }
+    // preenchimento por amostra: gato preto, olhos, unhas; o MIAU vira cobalto
+    const ef = ev('preenche'), passo = [[0, [fCab, ...fPatas], C.nanquim], [.3, fOlhos, C.rosa], [.55, fUnhas, C.creme], [.78, letras, C.cobalto]];
+    passo.forEach(([dt, gs, cor], k) => { const u = fx(tm, ef.t0 + dt, .12);
+      if (k === 3) gs.forEach(e => e.setAttribute('fill', u > 0 ? C.cobalto : C.nanquim)); else gs.forEach(g => g.style.opacity = u); });
+    if (tm >= ef.t0 && tm < ef.t0 + ef.dur) { ferr('sel'); const k = passo.filter(p => tm >= ef.t0 + p[0]).length - 1; amostra(k >= 0 ? passo[k][2] : null);
+      const sw = $('amostras').children[AMO.indexOf(passo[Math.max(0, k)][2])].getBoundingClientRect(), pr = $('p').getBoundingClientRect();
+      cur = ['sel', [sw.left - pr.left + 22, sw.top - pr.top + 22]];
+      // seleção do conjunto
+      const b0 = S([700, 120]), b1 = S([900, 275]); html += caixa(...b0, ...b1); } else amostra(null);
+    // subtrair: arranhões entram como furos no U
+    const es = ev('subtrai'), us = fx(tm, es.t0 + .35, .15);
+    furos.forEach(f => f.style.opacity = us);
+    $('pathfinder').style.opacity = tm >= es.t0 && tm < es.t0 + es.dur ? 1 : 0; $('menos').classList.toggle('on', tm >= es.t0 + .3 && tm < es.t0 + es.dur);
+    if (tm >= es.t0 && tm < es.t0 + .35) { riscos.forEach(r => { const d = r.getAttribute('d'); html += `<path d="${d}" transform="translate(${X0} ${Y0}) scale(${K})" fill="none" stroke="${AZ}" stroke-width=".9"/>`; }); }
+    if (tm >= es.t0) ferr('sel');
+    if (tm >= es.t0 && tm < es.t0 + es.dur) { const m = $('menos').getBoundingClientRect(), pr = $('p').getBoundingClientRect(); cur = ['sel', [m.left - pr.left + 26, m.top - pr.top + 26]]; }
+    if (tm >= ev('zoomOut').t0) cur = ['sel', [W * .82, H * .8]];
+    sel.innerHTML = '';
+    // a camada de seleção fica dentro da câmera? não: desenhamos em tela final
+    $('tela').querySelector('#selFinal')?.remove();
+    const gSel = el('g', { id: 'selFinal', transform: `translate(${tx} ${ty}) scale(${z})` }, $('tela')); gSel.innerHTML = html;
+    gSel.querySelectorAll('[stroke-width]').forEach(e => e.setAttribute('stroke-width', +e.getAttribute('stroke-width') / z));
+    gSel.querySelectorAll('rect[width="12"]').forEach(e => { const x = +e.getAttribute('x') + 6, y = +e.getAttribute('y') + 6, r = 6 / z; e.setAttribute('x', x - r); e.setAttribute('y', y - r); e.setAttribute('width', 2 * r); e.setAttribute('height', 2 * r); });
+    gSel.querySelectorAll('circle').forEach(e => e.setAttribute('r', 5 / z));
+    gSel.querySelectorAll('text').forEach(e => e.setAttribute('font-size', 20 / z));
+    cursor(cur[0], cur[1]);
+  };
+  window.quadro(0); document.body.dataset.pronto = 1;
+});
+</script></body></html>

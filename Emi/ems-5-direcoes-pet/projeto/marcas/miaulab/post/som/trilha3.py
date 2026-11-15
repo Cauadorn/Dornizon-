@@ -7,7 +7,9 @@
 import os, json, subprocess, numpy as np
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from sint import *
-rot = json.load(open('../desenho/roteiro.json')); D = round(rot['dur'] * 30) / 30; R = rot['roteiro']
+import sys
+TAKE = sys.argv[1] if len(sys.argv) > 1 else 'lapis'   # 'lapis' (rascunho) ou 'vetor' (construção tipo Illustrator)
+rot = json.load(open('../desenho/roteiro-vetor.json' if TAKE == 'vetor' else '../desenho/roteiro.json')); D = round(rot['dur'] * 30) / 30; R = rot['roteiro']
 DUR = D + 14.4
 fx = np.zeros((2, int(SR * DUR))); mus = np.zeros((2, int(SR * DUR)))
 def poe(dest, t0, sig, g=1.0, pan=0.0):
@@ -24,12 +26,22 @@ def caneta(d):   # caneta no vidro do tablet: mais lisa, com um toque no começo
     t = tt(d + .05); s = filt(ruido(d + .05), 'bandpass', [400, 1600]) * .35
     env = np.minimum(1, t / .04) * np.clip((d + .05 - t) / .05, 0, 1); s = s * env
     toque = filt(ruido(.012), 'bandpass', [1200, 3000]) * np.exp(-tt(.012) * 300) * .4; s[:len(toque)] += toque; return s
-for i, x in enumerate(R['letras']): poe(fx, x, tecla(), .32, -.3 + .2 * i)
-poe(fx, .78, vento(.45, 300, 1600, .16))
-for t0, d, fase in R['tracos']: poe(fx, t0, lapis(d) if fase == 'lapis' else caneta(d), .3 if fase == 'lapis' else .26, rng.uniform(-.15, .15))
-for k, (dx, f) in enumerate([(0, 1.0), (.3, 1.25), (.45, 1.5)]):
-    b = bolha(); poe(fx, R['balde'] + dx, transpoe(b, f), .4, -.1 + .1 * k)   # balde de tinta
-poe(fx, R['fim'] - .75, vento(.6, 1600, 300, .16)); poe(fx, R['fim'] - .3, bolha(), .35)
+def clique(g=1.0):   # clique de mouse/caneta: curto e macio, sem agudo
+    t = tt(.03); return (filt(ruido(.03), 'bandpass', [900, 3200]) * np.exp(-t * 260) + np.sin(2 * np.pi * 180 * t) * np.exp(-t * 120) * .4) * g
+if TAKE == 'vetor':
+    for t0, tipo in R['eventos']:
+        if tipo == 'tecla': poe(fx, t0, tecla(), .3, rng.uniform(-.2, .2))
+        elif tipo == 'clique': poe(fx, t0, clique(), .2, rng.uniform(-.15, .15))
+        elif tipo == 'solta': poe(fx, t0, clique(.6), .14)
+        elif tipo == 'amostra': poe(fx, t0, clique(1.2), .26); poe(fx, t0 + .02, transpoe(bolha(), 1.4), .16)
+        elif tipo == 'zoom': poe(fx, t0, vento(.45, 400, 1500, .12))
+else:
+    for i, x in enumerate(R['letras']): poe(fx, x, tecla(), .32, -.3 + .2 * i)
+    poe(fx, .78, vento(.45, 300, 1600, .16))
+    for t0, d, fase in R['tracos']: poe(fx, t0, lapis(d) if fase == 'lapis' else caneta(d), .3 if fase == 'lapis' else .26, rng.uniform(-.15, .15))
+    for k, (dx, f) in enumerate([(0, 1.0), (.3, 1.25), (.45, 1.5)]):
+        b = bolha(); poe(fx, R['balde'] + dx, transpoe(b, f), .4, -.1 + .1 * k)   # balde de tinta
+    poe(fx, R['fim'] - .75, vento(.6, 1600, 300, .16)); poe(fx, R['fim'] - .3, bolha(), .35)
 amb = filt(ruido(D), 'lowpass', 900) * .012; poe(fx, 0, amb)                    # ar do estúdio
 # ---------- reel (tudo deslocado de D) ----------
 for i, n in enumerate(['C5', 'E5', 'G5', 'C6']): poe(fx, D + .05 + i * .07, marimba(nota(n), .5), .8, -.3 + .2 * i)
@@ -51,7 +63,7 @@ poe(fx, D + 13.75, fade(carrega('fontes/miau-grego.flac', .2, .95), .005, .15), 
 S16 = .125
 miau = carrega('fontes/miau-gatinha.ogg', 0, 1.0); f0 = altura(miau); chop = fade(miau[:int(.3 * SR)], .003, .07)
 def miado(n, d=None): s = transpoe(chop, nota(n) / f0); return fade(s[:int(d * SR)] if d else s, .003, .04)
-for k, x in enumerate([R['fim'] - .9, R['fim'] - .4]): poe(mus, x, filt(kick808(), 'lowpass', 250), .35 + .15 * k)   # puxada no fim do desenho
+for k, x in enumerate([D - .9, D - .4]): poe(mus, x, filt(kick808(), 'lowpass', 250), .35 + .15 * k)   # puxada no fim do desenho
 for x in [.4, .9, 1.4, 1.9]: poe(mus, D + x, filt(kick808(), 'lowpass', 300), .45)
 for k, x in enumerate([2.025, 2.15, 2.275]): poe(mus, D + x, miado(['C5', 'D#5', 'G5'][k], .1), .55)
 poe(mus, D + 1.75, vento(.65, 600, 7000, .2))
