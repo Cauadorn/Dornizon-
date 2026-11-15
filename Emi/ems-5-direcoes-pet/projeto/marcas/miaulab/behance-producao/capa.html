@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- Capa do projeto no Behance (808x632, renderizada em 2x). Mosaico: a foto do pouch na mão (o produto de verdade),
+     o logo com o gato no cobalto e o padrão de olho + cápsula no rosa, com respiro creme entre os blocos. -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+html, body { margin: 0; }
+#p { position: relative; width: 808px; height: 632px; background: #F6EEDC; overflow: hidden; }
+.b { position: absolute; overflow: hidden; border-radius: 10px; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.mic { position: absolute; font: 700 9px/1.3 Mono; letter-spacing: .1em; text-transform: uppercase; }
+</style><script src="../gato-v3/gato.js"></script><script src="../logo.js"></script></head><body><div id="p">
+  <div class="b" style="left:12px;top:12px;width:420px;height:608px;background:url(../post/fotos/v2-l3-edicao-b.png) 46% 40%/auto 118%"></div>
+  <div class="b" id="azul" style="left:444px;top:12px;width:352px;height:378px;background:#2B3FD1">
+    <div class="mic" style="left:16px;top:16px;color:#F4B9CD">MIAU.LAB</div><div class="mic" style="right:16px;top:16px;color:#F4B9CD">Identidade visual</div></div>
+  <div class="b" style="left:444px;top:402px;width:352px;height:218px;background:url(padrao-remedio-loop.png) 0 -40px/420px auto"></div>
+</div>
+<script>
+Promise.all(['900 100px Archivo', '700 64px Mono', '500 52px IS'].map(f => document.fonts.load(f))).then(() => {
+  const a = document.getElementById('azul'), w = 290, k = w / 899, d = document.createElement('div'); d.className = 'logo';
+  d.style.cssText = `left:${(352 - w) / 2}px;top:${189 - (141 + 700) / 2 * k + 8}px;transform:scale(${k})`; a.appendChild(d);
+  miauLogoV3(d, { cor: '#F4B9CD', fundo: '#2B3FD1', gato: '#1C1A24', olho: '#F4B9CD', labFundo: '#F6EEDC', labCor: '#1C1A24' });
+  document.body.dataset.pronto = 1;
+});
+</script></body></html>
