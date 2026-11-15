@@ -30,6 +30,18 @@ function padrao(x, y, w, h, cel, fundo, tipo = 'remedio') {
     const olhoCor = fundo === C.rosa ? C.cobalto : C.rosa;
     if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${r}" fill="${olhoCor}"/>`
       + `<path d="M0 ${-r * .8} Q${r * .36} 0 0 ${r * .8} Q${-r * .36} 0 0 ${-r * .8} Z" fill="${C.nanquim}"/><circle cx="${r * .3}" cy="${-r * .36}" r="${r * .15}" fill="#F6EEDC"/></g>`;
+    else if (tipo === 'miau') s += `<text x="${cx}" y="${cy + r * .3}" text-anchor="middle" transform="rotate(-12 ${cx} ${cy})" font-family="Mea" font-size="${r * 1.35}" fill="#F6EEDC">miau</text>`;
+    else if (tipo === 'patinha') s += `<g transform="translate(${cx} ${cy}) rotate(-14)" fill="#F6EEDC">`
+      + `<path d="M0 ${-r * .02} C${r * .42} ${-r * .02} ${r * .62} ${r * .32} ${r * .52} ${r * .52} C${r * .42} ${r * .72} ${r * .14} ${r * .62} 0 ${r * .62} C${-r * .14} ${r * .62} ${-r * .42} ${r * .72} ${-r * .52} ${r * .52} C${-r * .62} ${r * .32} ${-r * .42} ${-r * .02} 0 ${-r * .02} Z"/>`
+      + [[-.56, -.18, -18], [-.2, -.5, -6], [.2, -.5, 6], [.56, -.18, 18]].map(([x, y, a]) => `<ellipse cx="${r * x}" cy="${r * y}" rx="${r * .17}" ry="${r * .23}" transform="rotate(${a} ${r * x} ${r * y})"/>`).join('') + '</g>';
+    else if (tipo === 'arranhao') { let g = `<g transform="translate(${cx} ${cy}) rotate(-22)">`;
+      // três arranhões de unha como os do logo: retos, afinando, borda levemente irregular
+      [-.42, 0, .42].forEach((ox, t) => { const L = r * (1.7 - Math.abs(ox) * .5), w = r * .1, n = 24; let e = [], d = [];
+        for (let k = 0; k <= n; k++) { const f = k / n, y = -L / 2 + L * f, ww = w * Math.min(1, .45 + f / .08) * Math.pow(1 - f, .8);
+          const j1 = 1 + .35 * Math.sin(f * 37 + t * 5), j2 = 1 + .35 * Math.sin(f * 29 + t * 3 + 1);
+          e.push(`${(r * ox - ww * j1).toFixed(1)} ${y.toFixed(1)}`); d.unshift(`${(r * ox + ww * j2).toFixed(1)} ${y.toFixed(1)}`); }
+        g += `<path d="M${e.concat(d).join(' L')} Z" fill="#F6EEDC"/>`; });
+      s += g + '</g>'; }
     else if (tipo === 'olhos') continue;   // petisco: só o olho do logo (a Emi: "coisa vetorizada… feio demais" para pente/novelo/menta/peixe)
     else if (tipo === 'pente') s += `<g transform="translate(${cx} ${cy}) rotate(-28)">`
       // pentinho de gato (pelo & pele): costas arredondadas creme + dentes na cor do olho
