@@ -1,0 +1,280 @@
+<title>MIAU.LAB</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wght@400..700&family=Mea+Culpa&family=Space+Mono:wght@700&display=swap">
+<style>
+/* layout: uma história de rolagem em passos numerados (como a referência POUR|PLAY, com a cara da MIAU.LAB):
+   1 abre o pacote (MIAU gigante, mão com o pouch, petiscos caindo) · 2 o gato vem (o gato preto entra esticando a pata)
+   · 3 um pra cada drama (pouches passando de lado em 3D) · 4 sobe no sofá sem drama (caixa e comprimidos) ·
+   manifesto "Ciência que ronrona." com o gato que segue o cursor e ronrona no clique. Um mundo visual só (cores da marca). */
+:root {
+  --cobalto: #2B3FD1; --rosa: #F4B9CD; --manteiga: #F2DC8B; --creme: #F6EEDC; --nanquim: #1C1A24;
+  --display: 'Archivo', 'Arial Narrow', sans-serif; --texto: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', ui-monospace, Menlo, monospace; --acento: 'Mea Culpa', 'Brush Script MT', cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--manteiga); color: var(--nanquim); font: 400 17px/1.5 var(--texto); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--manteiga); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cobalto); outline-offset: 3px; border-radius: 6px; }
+.lado { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font: 700 12px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.pil { display: inline-flex; align-items: center; gap: 8px; border: 2px solid currentColor; border-radius: 999px; padding: 10px 18px 9px; font: 600 13px/1 var(--texto); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; background: none; color: inherit; cursor: pointer; }
+.pil.cheia { background: var(--nanquim); color: var(--creme); border-color: var(--nanquim); }
+.logo { position: absolute; left: 0; top: 0; width: 899px; height: 700px; transform-origin: 0 0; }
+
+/* cursor próprio (só com mouse) */
+#cur { position: fixed; left: 0; top: 0; z-index: 80; pointer-events: none; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--nanquim);
+  transition: width .25s, height .25s, margin .25s, background .25s; mix-blend-mode: multiply; display: none; }
+#cur.grande { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: var(--cobalto); mix-blend-mode: normal; opacity: .9; }
+#cur span { position: absolute; inset: 0; display: grid; place-items: center; font: 400 26px/1 var(--acento); color: var(--creme); opacity: 0; }
+#cur.grande span { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { #cur { display: block; } body { cursor: none; } a, button { cursor: none; } }
+
+/* topo */
+.topo { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); z-index: 50; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; pointer-events: none; }
+.topo > * { pointer-events: auto; }
+.marca { font: 900 28px/1 var(--display); font-stretch: 62%; text-decoration: none; color: var(--nanquim); }
+.marca small { font: 700 13px/1 var(--mono); }
+.nav { display: flex; gap: 22px; align-items: center; }
+.nav a:not(.pil) { font: 600 14px/1 var(--texto); text-decoration: none; }
+@media (max-width: 720px) { .nav a:not(.pil) { display: none; } }
+
+/* 1 · hero */
+.passo { position: relative; overflow: hidden; }
+#hero { height: 100svh; min-height: 620px; background: var(--manteiga); }
+#hero .num { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 96px; display: grid; gap: 10px; max-width: min(420px, 60vw); z-index: 3; }
+#hero h1 { margin: 0; font: 900 clamp(46px, 7.2vw, 108px)/.86 var(--display); font-stretch: 62%; text-transform: uppercase; color: var(--cobalto); }
+#hero p { margin: 0; max-width: 32ch; font-size: 16px; }
+#miauHero { position: absolute; left: 50%; bottom: 2svh; transform: translateX(-50%); width: min(94vw, 98svh); aspect-ratio: 899 / 560; z-index: 1; }
+#mao { position: absolute; left: 41vw; top: 7vh; width: min(27vw, 360px); z-index: 4; filter: drop-shadow(0 30px 30px #1c1a2440); will-change: transform; }
+#chuva { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+#dica { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 20px; z-index: 6; }
+@media (max-width: 720px) { #mao { width: 52vw; top: 20vh; left: auto; right: 2vw; } #hero .num { top: 84px; } }
+
+/* 2 · o gato vem */
+#gatoVem { height: 100svh; min-height: 600px; background: var(--manteiga); }
+#gatoVem .fundo { position: absolute; inset: 0; display: grid; place-items: center; font: 900 clamp(120px, 30vw, 460px)/.8 var(--display); font-stretch: 62%; color: transparent; -webkit-text-stroke: 2px var(--cobalto); text-transform: uppercase; text-align: center; }
+#gatoVem .num { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 96px; z-index: 3; display: grid; gap: 8px; }
+#gatoVem h2, .passo h2 { margin: 0; font: 900 clamp(44px, 7vw, 104px)/.86 var(--display); font-stretch: 62%; text-transform: uppercase; color: var(--cobalto); }
+#gatoPreto { position: absolute; right: -2vw; bottom: 6vh; width: min(78vw, 1050px); z-index: 2; will-change: transform; }
+.petiscoChao { position: absolute; width: clamp(40px, 5vw, 70px); z-index: 2; }
+
+/* 3 · linha */
+#linha { height: 100svh; min-height: 640px; background: var(--rosa); }
+#linha .num { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 96px; z-index: 3; display: grid; gap: 8px; }
+#trilho { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: center; gap: 8vw; padding-left: 52vw; padding-right: 20vw; will-change: transform; }
+.card { width: min(68vw, 560px); flex: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; perspective: 900px; }
+.pouch { position: relative; aspect-ratio: 560 / 1000; transform-style: preserve-3d; transition: transform .35s ease-out; }
+.pouch img { width: 100%; height: 100%; display: block; border-radius: 26px 26px 18px 18px; box-shadow: 0 40px 50px -30px #1c1a2470; }
+.pouch::after { content: ""; position: absolute; inset: 0; border-radius: 26px 26px 18px 18px; background: linear-gradient(105deg, #ffffff38 0%, transparent 28%, transparent 62%, #1c1a2426 100%); pointer-events: none; }
+.pouch::before { content: ""; position: absolute; left: 6%; right: 6%; top: 3.2%; height: 1.4%; border-radius: 4px; background: #ffffff44; z-index: 2; }
+.card h3 { margin: 0 0 10px; font: 900 clamp(48px, 6vw, 86px)/.84 var(--display); font-stretch: 62%; text-transform: uppercase; color: var(--cobalto); }
+.card p { margin: 10px 0 0; font-size: 16px; max-width: 26ch; }
+@media (max-width: 720px) { .card { grid-template-columns: 1fr; width: 78vw; gap: 14px; } .pouch { width: 52vw; } #trilho { padding-left: 30vw; } }
+
+/* 4 · caixa */
+#caixaSec { height: 100svh; min-height: 640px; background: var(--cobalto); color: var(--creme); }
+#caixaSec h2 { color: var(--creme); }
+#caixaSec .num { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 96px; z-index: 3; display: grid; gap: 8px; max-width: 520px; }
+#caixa { position: absolute; left: 50%; top: 54%; width: min(40vw, 420px); transform: translate(-50%, -50%); z-index: 2; filter: drop-shadow(0 40px 40px #0006); will-change: transform; }
+.pilula { position: absolute; width: 44px; height: 20px; border-radius: 20px; background: linear-gradient(90deg, var(--rosa) 50%, var(--creme) 50%); box-shadow: 0 6px 10px #0003; z-index: 3; }
+.compr { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #e7e2d6); box-shadow: 0 5px 8px #0003; z-index: 3; }
+
+/* manifesto */
+#manifesto { background: var(--rosa); padding-block: clamp(80px, 12vw, 160px); color: var(--cobalto); text-align: center; }
+#manifesto .linhaA { font: 500 clamp(44px, 8vw, 120px)/1 var(--texto); letter-spacing: -.045em; }
+#manifesto .linhaB { font: 400 clamp(96px, 17vw, 260px)/.8 var(--acento); margin-top: .1em; }
+#manifesto .ch { display: inline-block; }
+#gatoManif { position: relative; width: min(86vw, 860px); margin: clamp(40px, 6vw, 80px) auto 0; aspect-ratio: 899 / 560; }
+#carinho { margin-top: 28px; }
+#ronron { font: 400 clamp(40px, 5vw, 64px)/1 var(--acento); height: 1.1em; margin-top: 10px; opacity: 0; transition: opacity .4s; }
+
+/* panorâmica */
+#pano { position: relative; height: clamp(340px, 60vw, 780px); overflow: hidden; }
+#pano img { position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; object-position: 45% 50%; will-change: transform; }
+#pano figcaption { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); bottom: 18px; background: var(--manteiga); padding: 8px 12px; border-radius: 6px; }
+
+/* rodapé */
+.rodape { background: var(--cobalto); color: var(--rosa); padding-block: clamp(60px, 8vw, 110px) 30px; }
+.rodape-in { max-width: 1240px; margin: 0 auto; display: grid; gap: 40px; }
+#logoRod { position: relative; width: min(100%, 900px); aspect-ratio: 899 / 640; margin: 0 auto; }
+.base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 2px solid var(--rosa); padding-top: 18px; }
+.marquee { overflow: hidden; background: var(--nanquim); color: var(--manteiga); padding-block: 18px; white-space: nowrap; }
+.marquee div { display: inline-block; font: 900 clamp(40px, 6vw, 80px)/1 var(--display); font-stretch: 62%; text-transform: uppercase; animation: corre 22s linear infinite; }
+.marquee i { font: 400 1.1em/1 var(--acento); color: var(--rosa); text-transform: none; padding: 0 .3em; }
+@keyframes corre { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
+</style>
+
+<div id="cur"><span>miau</span></div>
+<header class="topo lado">
+  <a class="marca" href="#hero" aria-label="MIAU.LAB, início">MIAU<small>.lab</small></a>
+  <nav class="nav" aria-label="Seções"><a href="#gatoVem">O gato</a><a href="#linha">Fórmulas</a><a href="#manifesto">Ciência</a><a class="pil cheia" href="#linha">Ver fórmulas</a></nav>
+</header>
+
+<main>
+  <section class="passo" id="hero" aria-label="Abre o pacote">
+    <div class="num"><span class="mono">01 — abre o pacote</span><h1>Petisco<br>com ciência.</h1><p>Fórmula veterinária, feita pra gatos. Pelo &amp; pele com ômega 3 e biotina.</p>
+      <div><button class="pil cheia" id="sacode" type="button" data-hover>Sacudir o pacote</button></div></div>
+    <div id="miauHero" role="img" aria-label="Logo MIAU.lab: um gato preto espiando por cima do U"></div>
+    <img id="mao" src="img/mao-pouch.webp" alt="Mão segurando o pouch Pelo & Pele da MIAU.LAB">
+    <canvas id="chuva"></canvas>
+    <span id="dica" class="mono">role ↓</span>
+  </section>
+
+  <section class="passo" id="gatoVem" aria-label="O gato vem">
+    <div class="fundo" aria-hidden="true">vem.</div>
+    <div class="num"><span class="mono">02 — o gato vem</span><h2>Ele ouve<br>o pacote.</h2></div>
+    <img class="petiscoChao" src="img/petisco-1.webp" alt="" style="left:14vw;bottom:9vh;transform:rotate(-20deg)">
+    <img class="petiscoChao" src="img/petisco-2.webp" alt="" style="left:22vw;bottom:7vh;transform:rotate(30deg)">
+    <img class="petiscoChao" src="img/petisco-3.webp" alt="" style="left:9vw;bottom:5vh;transform:rotate(80deg)">
+    <img id="gatoPreto" src="img/gato.webp" alt="Gato preto esticando a pata até os petiscos" data-hover>
+  </section>
+
+  <section class="passo" id="linha" aria-label="As fórmulas">
+    <div class="num"><span class="mono">03 — um pra cada drama</span><h2>Escolhe<br>o drama.</h2></div>
+    <div id="trilho">
+      <article class="card"><div class="pouch" data-hover><img src="img/pouch-pelo.webp" alt="Pouch Pelo & Pele"></div>
+        <div><span class="mono">Nº01 · petisco funcional</span><h3>Pelo &amp; pele</h3><p>Ômega 3 e biotina, pra um pelo que brilha no sol da janela.</p></div></article>
+      <article class="card"><div class="pouch" data-hover><img src="img/pouch-bola.webp" alt="Pouch Bola de Pelo"></div>
+        <div><span class="mono">Nº02 · petisco funcional</span><h3>Bola de pelo</h3><p>Fibra e malte, pra bola de pelo sair sem drama.</p></div></article>
+      <article class="card"><div class="pouch" data-hover><img src="img/pouch-bafinho.webp" alt="Pouch Bafinho"></div>
+        <div><span class="mono">Nº03 · petisco dental</span><h3>Bafinho</h3><p>Menta e zinco, pro hálito de gato feliz.</p></div></article>
+    </div>
+  </section>
+
+  <section class="passo" id="caixaSec" aria-label="Sobe no sofá sem drama">
+    <div class="num"><span class="mono">04 — suplemento</span><h2>Sobe no sofá<br>sem drama.</h2><p>Condroitina e glucosamina em comprimido. Nº05, mobilidade.</p></div>
+    <img id="caixa" src="img/caixa.webp" alt="Caixa Mobilidade da MIAU.LAB com cartela de comprimidos">
+  </section>
+
+  <section id="manifesto" class="lado" aria-label="Ciência que ronrona">
+    <div class="linhaA" id="lA">Ciência que</div><div class="linhaB" id="lB">ronrona.</div>
+    <div id="gatoManif" role="img" aria-label="Logo MIAU.lab com o gato que segue o cursor"></div>
+    <button class="pil" id="carinho" type="button" data-hover>Fazer carinho no gato</button>
+    <div id="ronron" aria-live="polite">rrrrrr</div>
+  </section>
+
+  <figure id="pano" style="margin:0"><img src="img/pano.webp" alt="Gato preto esticando a pata até os petiscos que saíram do pouch, fundo amarelo" loading="lazy"><figcaption class="mono">Petisco no chão, gato no quadro.</figcaption></figure>
+  <div class="marquee" aria-hidden="true"><div>fórmula veterinária <i>miau</i> feita pra gatos <i>miau</i> ciência que ronrona <i>miau</i> fórmula veterinária <i>miau</i> feita pra gatos <i>miau</i> ciência que ronrona <i>miau</i>&nbsp;</div></div>
+</main>
+
+<footer class="rodape lado">
+  <div class="rodape-in">
+    <div id="logoRod" role="img" aria-label="Logo MIAU.lab"></div>
+    <div class="base mono"><span>MIAU.LAB · marca conceitual</span><span>Identidade visual: EMS · @itsemsdesign</span><span>Feita pra gatos.</span></div>
+  </div>
+</footer>
+<audio id="aMiau" src="img/miau.mp3" preload="auto"></audio><audio id="aRon" src="img/ronrom.mp3" preload="auto"></audio>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/gato.js"></script>
+<script src="js/logo.js"></script>
+<script>
+(() => {
+  const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', manteiga: '#F2DC8B', creme: '#F6EEDC', nanquim: '#1C1A24' };
+  const $ = id => document.getElementById(id), reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // ---------- cursor ----------
+  const cur = $('cur'); let mx = innerWidth / 2, my = innerHeight / 2;
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(${mx}px, ${my}px)`; }, { passive: true });
+  document.querySelectorAll('[data-hover], a, button').forEach(el => { el.addEventListener('pointerenter', () => cur.classList.add('grande')); el.addEventListener('pointerleave', () => cur.classList.remove('grande')); });
+  // ---------- logos com o gato (olhos seguem o cursor e piscam) ----------
+  const logos = [];
+  function poeLogo(caixa, o, ass = false) {
+    const d = document.createElement('div'); d.className = 'logo'; caixa.appendChild(d);
+    miauLogoV3(d, Object.assign({ gato: C.nanquim, olho: C.rosa }, o));
+    const lab = d.lastElementChild; if (lab && lab.textContent.includes('.lab')) lab.style.fontFamily = "'Space Mono', monospace";
+    const ajusta = () => { const k = caixa.clientWidth / 899; d.style.transform = `translate(0, ${-130 * k}px) scale(${k})`; };
+    ajusta(); addEventListener('resize', ajusta);
+    d.olhos = [...d.children[0].children[1].children].map(g => ({ g, t0: g.getAttribute('transform'), pup: [...g.children].slice(1) }));
+    d.caixa = caixa; logos.push(d); return d;
+  }
+  let pisca = 0, prox = performance.now() + 2200, feliz = 0;
+  function olhos(t) {
+    if (!reduz && t > prox) { const u = (t - prox) / 170; pisca = u < 1 ? Math.sin(Math.PI * u) : 0; if (u >= 1) prox = t + 2400 + Math.random() * 2800; }
+    logos.forEach(L => { const r = L.caixa.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+      const k = r.width / 899, cx = r.left + 798 * k, cy = r.top + (215 - 130) * k, dx = mx - cx, dy = my - cy, n = Math.max(Math.hypot(dx, dy), 200);
+      const fecha = Math.max(pisca, feliz * .82);
+      L.olhos.forEach(({ g, t0, pup }) => { g.setAttribute('transform', `${t0} scale(1 ${Math.max(.06, 1 - fecha)})`); pup.forEach(e => e.setAttribute('transform', `translate(${dx / n * 12} ${dy / n * 7})`)); }); });
+    requestAnimationFrame(olhos);
+  }
+  // ---------- chuva de petiscos (canvas) ----------
+  const cv = $('chuva'), cx = cv.getContext('2d'), sprites = [1, 2, 3].map(i => { const im = new Image(); im.src = `img/petisco-${i}.webp`; return im; });
+  let P = [], dpr = Math.min(2, devicePixelRatio || 1);
+  const tam = () => { const r = cv.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; }; tam(); addEventListener('resize', tam);
+  const boca = () => { const m = $('mao').getBoundingClientRect(), h = $('hero').getBoundingClientRect(); return [m.left - h.left + m.width * .18, m.top - h.top + m.height * .42]; };
+  function solta(n, forca = 1) { const [bx, by] = boca(); for (let i = 0; i < n; i++) P.push({ x: bx + (Math.random() - .5) * 30, y: by + Math.random() * 20,
+      vx: (-1.5 - Math.random() * 3) * forca, vy: (-2 - Math.random() * 4) * forca, r: Math.random() * 6.28, vr: (Math.random() - .5) * .2, s: .45 + Math.random() * .35, im: sprites[i % 3] }); }
+  let ultimo = 0;
+  function chuva(t) {
+    const W = cv.width / dpr, H = cv.height / dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); cx.clearRect(0, 0, W, H);
+    if (!reduz && t - ultimo > 420 && P.length < 70) { solta(1, .6); ultimo = t; }
+    P.forEach(p => { p.vy += .32; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      if (p.y > H - 30 && p.vy > 0) { p.y = H - 30; p.vy *= -.35; p.vx *= .7; p.vr *= .5; p.chao = (p.chao || 0) + 1; }
+      const w = (p.im.naturalWidth || 150) * p.s, h = (p.im.naturalHeight || 160) * p.s;
+      cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); if (p.im.complete) cx.drawImage(p.im, -w / 2, -h / 2, w, h); cx.restore(); });
+    P = P.filter(p => p.x > -100 && (p.chao || 0) < 40);
+    requestAnimationFrame(chuva);
+  }
+  const som = id => { const a = $(id); try { a.currentTime = 0; a.play().catch(() => {}); } catch (e) {} };
+  $('sacode').addEventListener('click', () => { solta(26, 1.4); som('aMiau'); if (!reduz) gsap.fromTo('#mao', { rotate: -8 }, { rotate: 0, duration: .9, ease: 'elastic.out(1.2, .35)' }); });
+  $('hero').addEventListener('click', e => { if (e.target.closest('button,a')) return; solta(10, 1.1); });
+  // mão acompanha o mouse (leve) e flutua
+  addEventListener('pointermove', () => { if (reduz) return; const dx = (mx / innerWidth - .5), dy = (my / innerHeight - .5); gsap.to('#mao', { x: dx * 26, y: dy * 18, rotateZ: dx * 5, duration: .8, overwrite: 'auto' }); }, { passive: true });
+  // ---------- manifesto: letras ----------
+  ['lA', 'lB'].forEach(id => { const el = $(id); el.innerHTML = [...el.textContent].map(c => `<span class="ch">${c === ' ' ? '&nbsp;' : c}</span>`).join(''); });
+  // ---------- carinho: ronrona ----------
+  $('carinho').addEventListener('click', () => { som('aRon'); $('ronron').style.opacity = 1; gsap.to({ v: 0 }, { v: 1, duration: .5, onUpdate() { feliz = this.targets()[0].v; } });
+    setTimeout(() => { $('ronron').style.opacity = 0; gsap.to({ v: 1 }, { v: 0, duration: .6, onUpdate() { feliz = this.targets()[0].v; } }); }, 5200); });
+  $('gatoPreto').addEventListener('click', () => som('aMiau'));
+  // ---------- pouches com inclinação 3D no mouse ----------
+  document.querySelectorAll('.pouch').forEach(pc => { pc.addEventListener('pointermove', e => { const r = pc.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    pc.style.transform = `rotateY(${x * 22}deg) rotateX(${-y * 16}deg) translateZ(20px)`; }); pc.addEventListener('pointerleave', () => pc.style.transform = ''); });
+  // ---------- rolagem (GSAP ScrollTrigger) ----------
+  document.fonts.ready.then(() => {
+    poeLogo($('miauHero'), { cor: C.cobalto, fundo: C.manteiga, lab: false });
+    poeLogo($('gatoManif'), { cor: C.cobalto, fundo: C.rosa, labFundo: C.nanquim, labCor: C.creme });
+    poeLogo($('logoRod'), { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
+    requestAnimationFrame(olhos); requestAnimationFrame(chuva); setTimeout(() => solta(14, 1), 500);
+    if (reduz || !window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger);
+    // entrada
+    gsap.from('#miauHero', { yPercent: 40, opacity: 0, duration: 1.1, ease: 'power3.out' });
+    gsap.from('#mao', { y: -160, rotate: 12, opacity: 0, duration: 1.2, ease: 'back.out(1.6)', delay: .2 });
+    gsap.from('#hero .num > *', { y: 30, opacity: 0, stagger: .08, duration: .8, ease: 'power3.out', delay: .3 });
+    // 1 · o pacote vira e a marca sobe
+    gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=120%', scrub: .6, pin: true } })
+      .to('#mao', { rotate: -38, xPercent: -40, yPercent: 20, scale: .9, ease: 'none' }, 0)
+      .to('#miauHero', { scale: 1.12, yPercent: -6, ease: 'none' }, 0)
+      .to('#hero .num', { y: -60, opacity: 0, ease: 'none' }, .2)
+      .call(() => solta(20, 1.3), null, .35);
+    // 2 · o gato entra esticando a pata
+    gsap.timeline({ scrollTrigger: { trigger: '#gatoVem', start: 'top top', end: '+=110%', scrub: .6, pin: true } })
+      .fromTo('#gatoPreto', { xPercent: 70 }, { xPercent: 0, ease: 'power2.out' }, 0)
+      .fromTo('#gatoVem .fundo', { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, ease: 'none' }, 0)
+      .from('.petiscoChao', { y: -300, rotate: 200, stagger: .08, ease: 'bounce.out' }, 0);
+    // 3 · trilho horizontal de pouches (cada um gira ao passar)
+    const tr = $('trilho');
+    gsap.to(tr, { x: () => -(tr.scrollWidth - innerWidth), ease: 'none', scrollTrigger: { trigger: '#linha', start: 'top top', end: () => '+=' + (tr.scrollWidth - innerWidth), scrub: .6, pin: true, invalidateOnRefresh: true } });
+    gsap.from('#linha .num', { opacity: 0, y: 40, scrollTrigger: { trigger: '#linha', start: 'top 70%', end: 'top 30%', scrub: true } });
+    // fundo do corpo acompanha a seção
+    [['#hero', C.manteiga], ['#gatoVem', C.manteiga], ['#linha', C.rosa], ['#caixaSec', C.cobalto], ['#manifesto', C.rosa]].forEach(([s, c]) =>
+      ScrollTrigger.create({ trigger: s, start: 'top 50%', end: 'bottom 50%', onToggle: e => e.isActive && gsap.to('body', { backgroundColor: c, duration: .4 }) }));
+    // 4 · caixa gira e chovem comprimidos
+    const sec = $('caixaSec');
+    for (let i = 0; i < 18; i++) { const e = document.createElement('i'); e.className = i % 3 ? 'pilula' : 'compr'; e.style.left = (8 + Math.random() * 84) + '%'; e.style.top = '-8%'; e.style.transform = `rotate(${Math.random() * 180}deg)`; sec.appendChild(e); }
+    gsap.timeline({ scrollTrigger: { trigger: '#caixaSec', start: 'top top', end: '+=110%', scrub: .6, pin: true } })
+      .fromTo('#caixa', { rotate: -18, scale: .6, yPercent: -20 }, { rotate: 4, scale: 1, yPercent: -50, ease: 'power2.out' }, 0)
+      .to('#caixaSec .pilula, #caixaSec .compr', { y: () => innerHeight * (.9 + Math.random() * .3), rotate: '+=220', stagger: .02, ease: 'power1.in' }, 0);
+    // manifesto: letras sobem
+    gsap.from('#lA .ch, #lB .ch', { yPercent: 110, opacity: 0, stagger: .03, ease: 'power3.out', scrollTrigger: { trigger: '#manifesto', start: 'top 75%', end: 'top 20%', scrub: .6 } });
+    gsap.from('#gatoManif', { y: 120, opacity: 0, scrollTrigger: { trigger: '#gatoManif', start: 'top 95%', end: 'top 55%', scrub: .6 } });
+    // panorâmica com parallax
+    gsap.to('#pano img', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#pano', start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+})();
+</script>
