@@ -91,14 +91,15 @@ Promise.all(['500 100px IS', '400 100px Mea', '900 100px Archivo', '700 64px Mon
       lista.push([s, i * .5, i * .5 + .5, t => { s.style.transform = `scale(${1 + .02 * (1 - eo(fx(t, 0, .2)))})`; olho(L, i === 3 ? piscada(t, .12) : 0, i === 1 ? -1 : i === 4 ? 1 : 0); }]); });
   }
   if (modo === 'padrao') {  // dois padrões correndo em sentidos opostos (o deslocamento é um período inteiro: emenda perfeita)
-    const s = cena(C.creme); window.DURACAO = 4;
+    const s = cena(C.creme); window.DURACAO = 2;
     s.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;top:0;width:700px;height:1050px;overflow:hidden"><img id="a" src="padrao-peixe-loop.png" style="position:absolute;left:0;top:0;width:1260px"></div>
       <div style="position:absolute;left:700px;top:0;width:700px;height:1050px;overflow:hidden"><img id="b" src="padrao-remedio-loop.png" style="position:absolute;left:0;top:0;width:1260px"></div>
       <div class="pil" style="left:40px;bottom:40px;background:${C.creme};color:${C.cobalto};border-color:${C.creme}">petiscos · olho + peixinho</div>
       <div class="pil" style="left:740px;bottom:40px;background:${C.creme};color:${C.cobalto};border-color:${C.creme}">suplementos · olho + cápsula</div>`);
     cantos(s, C.creme, ['07 — padrões', '', '', ''], 40);
     const a = s.querySelector('#a'), b = s.querySelector('#b');
-    lista.push([s, 0, 4, t => { const u = t / 4; a.style.transform = `translateY(${-720 * u}px)`; b.style.transform = `translateY(${-720 + 720 * u}px)`; }]);
+    lista.push([s, 0, 2, t => { const u = t / 2;   // um período em diagonal (meia célula de lado + uma célula para cima): emenda perfeita
+      a.style.transform = `translate(${-180 * u}px, ${-360 * u}px)`; b.style.transform = `translate(${-180 + 180 * u}px, ${-360 + 360 * u}px)`; }]);
   }
   if (modo === 'frase') {
     const tinta = (t, font, ls = 0) => { cv.font = font; cv.letterSpacing = ls + 'px'; const m = cv.measureText(t); cv.letterSpacing = '0px';

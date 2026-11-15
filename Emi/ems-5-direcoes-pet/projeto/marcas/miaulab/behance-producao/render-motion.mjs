@@ -22,6 +22,6 @@ for (let i = 0; i < n; i++) { await p.evaluate(t => window.quadro(t), i / FPS); 
 ff.stdin.end(); await new Promise(r => ff.on('close', r));
 await b.close(); srv.close();
 // GIF em loop (paleta própria, cores chapadas da marca ficam limpas); 3 voltas no MP4 para quem preferir vídeo
-spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', mp4, '-vf', (modo === 'abertura' ? 'fps=20,scale=1000:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=24:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle' : 'fps=25,scale=1400:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=none'), '-loop', '0', path.join(out, `${modo}.gif`)]);
+spawnSync('ffmpeg', ['-v', 'error', '-y', '-i', mp4, '-vf', (modo === 'padrao' ? 'fps=15,scale=1400:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=16:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle' : modo === 'abertura' ? 'fps=20,scale=1000:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=24:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle' : 'fps=25,scale=1400:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=none'), '-loop', '0', path.join(out, `${modo}.gif`)]);
 
 console.log('ok', modo, n, 'quadros');
