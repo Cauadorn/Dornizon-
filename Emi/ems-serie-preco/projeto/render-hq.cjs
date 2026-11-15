@@ -12,6 +12,9 @@ const { chromium } = require('playwright'); const path = require('node:path'); c
   await Promise.all(Array.from({ length: W }, async (_, k) => { const p = await open();
     for (let f = k * per; f < Math.min(total, (k + 1) * per); f++) { await p.evaluate((t) => window.render(t), f / FPS); await p.screenshot({ path: path.join(tmp, `f${String(f).padStart(5, '0')}.png`), clip: { x: 0, y: 0, width: +w, height: +h } }); } await p.close(); }));
   await b.close();
-  const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(tmp, 'f%05d.png'), '-vf', `scale=${w}:${h}:flags=lanczos`, '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '12', '-preset', 'slow', '-tune', 'grain', '-movflags', '+faststart', out], { stdio: 'inherit' });
-  fs.rmSync(tmp, { recursive: true, force: true }); console.log(r.status === 0 ? `ok → ${out} (${total} quadros)` : 'ffmpeg falhou');
+  const base = ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(tmp, 'f%05d.png'), '-vf', `scale=${w}:${h}:flags=lanczos`];
+  const r = spawnSync('ffmpeg', [...base, '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-crf', '12', '-preset', 'slow', '-tune', 'grain', '-movflags', '+faststart', out], { stdio: 'inherit' });
+  // versão leve (HEVC): mesma qualidade visual em arquivo menor, pra caber no limite de envio do conector do Drive (≈3,1 MB)
+  if (process.env.LEVE) spawnSync('ffmpeg', [...base, '-c:v', 'libx265', '-pix_fmt', 'yuv420p', '-crf', process.env.LEVE_CRF || '17', '-preset', 'slow', '-tag:v', 'hvc1', '-x265-params', 'log-level=error', '-movflags', '+faststart', process.env.LEVE], { stdio: 'inherit' });
+  if (process.env.GUARDA) { fs.rmSync(process.env.GUARDA, { recursive: true, force: true }); fs.renameSync(tmp, process.env.GUARDA); } else fs.rmSync(tmp, { recursive: true, force: true });   // GUARDA=<pasta>: mantém os quadros pra recodificar sem renderizar de novo console.log(r.status === 0 ? `ok → ${out} (${total} quadros)` : 'ffmpeg falhou');
 })();
