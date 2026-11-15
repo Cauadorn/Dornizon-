@@ -76,7 +76,7 @@ if (peca === 'pouch') {
   const nome = q.get('nome') || 'PELO & PELE', l1 = q.get('l1') || 'PETISCO FUNCIONAL COM ÔMEGA 3 E BIOTINA', l2 = q.get('l2') || 'PRA UM PELO QUE BRILHA · 60 G';
   p.style.background = fundo;
   const m = W * .07, cel = W / 3.2;
-  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;right:0;top:${H * .135}px;text-align:center;font:700 ${W * .026}px/1 Mono;letter-spacing:.12em;color:${tinta}">MIAU.LAB · FÓRMULA Nº07 · FEITO PRA GATOS</div>`);
+  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;right:0;top:${H * .135}px;text-align:center;font:700 ${W * .026}px/1 Mono;letter-spacing:.12em;color:${tinta}">MIAU.LAB · FÓRMULA Nº${q.get('formula') || '01'} · FEITO PRA GATOS</div>`);
   const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, fundo, q.get('icone') || 'peixe');   // petisco: olho + peixinho; cápsula só nos remédios
   const fTop = pTop + pH, fH = H * .165;
   p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;top:${fTop}px;width:${W}px;height:${fH}px;background:${faixa};color:${corFaixaTexto};box-sizing:border-box;padding:${fH * .14}px ${m}px 0">
@@ -94,7 +94,7 @@ if (peca === 'pote') {
   p.style.background = fundo;
   const nome = q.get('nome') || 'pelo & pele', l1 = q.get('l1') || 'ômega 3 + biotina', l2 = q.get('l2') || 'pra um pelo que brilha';
   p.insertAdjacentHTML('beforeend', `
-    <div style="position:absolute;left:${m}px;right:${m}px;top:${H * .07}px;display:flex;justify-content:space-between;font:700 ${W * .022}px/1 Mono;letter-spacing:.1em;color:${tinta}"><span>FÓRMULA Nº07</span><span>PETISCO FUNCIONAL</span><span>30 UN.</span></div>
+    <div style="position:absolute;left:${m}px;right:${m}px;top:${H * .07}px;display:flex;justify-content:space-between;font:700 ${W * .022}px/1 Mono;letter-spacing:.1em;color:${tinta}"><span>FÓRMULA Nº${q.get('formula') || '01'}</span><span>PETISCO FUNCIONAL</span><span>30 UN.</span></div>
     <div style="position:absolute;left:${m}px;top:${H * .16}px">
       <div style="display:inline-block;background:${C.nanquim};color:#F6EEDC;font:600 ${W * .062}px/1 IS;letter-spacing:-.02em;padding:${W * .012}px ${W * .022}px ${W * .016}px">${nome}</div>
       <div style="font:700 ${W * .024}px/1.4 Mono;color:${tinta};margin-top:${W * .018}px;text-transform:uppercase">${l1}<br>${l2}</div></div>`);
