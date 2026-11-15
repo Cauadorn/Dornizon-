@@ -16,6 +16,9 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 .serif{font-family:"Instrument Serif";font-weight:400;letter-spacing:-.015em;white-space:nowrap}
 .serif em{font-style:italic}
 .cartao{font:600 38px/1.12 Poppins;padding:18px 26px 20px;border-radius:20px;white-space:nowrap;transform-origin:0 100%;box-shadow:7px 8px 0 rgba(42,20,51,.55)}
+/* tira de notinha: papel marfim com a ponta serrilhada */
+.tira{transform-origin:0 100%;filter:drop-shadow(5px 7px 0 rgba(42,20,51,.35))}
+.tira b{display:block;font:600 36px/1 Poppins;color:#2a1433;background:#fffbde;padding:20px 52px 22px 28px;white-space:nowrap;clip-path:polygon(0 0,96% 0,100% 8.3%,96% 16.6%,100% 25%,96% 33.3%,100% 41.6%,96% 50%,100% 58.3%,96% 66.6%,100% 75%,96% 83.3%,100% 91.6%,96% 100%,0 100%)}
 /* notinha */
 .nota{color:#2a1433;text-align:center;transform-origin:50% 0}
 .nota .cab{font:500 17px/1 Poppins;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
@@ -32,21 +35,11 @@ const V={
   ${tag(110,90,'#6225d8')}<span class="serie" style="left:356px;top:100px">série preço · <b>01</b> / 03</span>
   <span class="cartao" style="left:90px;top:704px;background:#fffbde;color:#2a1433;transform:rotate(-5deg)">marca não<br>se vende no</span>
   <span class="serif" style="left:90px;top:1132px;font-size:60px;line-height:.96">o que entra no <em style="color:#f2cf7a">prato</em><br>de uma identidade visual.</span>`,
- // 02 · o texto é impresso na própria notinha
+ // 02 · a entrada é um pedaço da própria notinha, colado na palavra; fecho em serifa logo abaixo
  credito:`<img class="foto" src="cenas/credito.png">
-  <span class="serif" style="left:338px;top:408px;font-size:90px;line-height:.9;color:#2a1433;transform:rotate(-1.5deg)">ou <em style="color:#dd34a8">débito?</em></span>
-  <div class="nota" style="left:240px;top:566px;width:580px;transform:perspective(1500px) rotateX(13deg)">
-    <div class="cab">série preço · 02 / 03</div>
-    <div class="serif" style="font-size:58px;line-height:.96;margin-top:16px">o que vem na notinha<br>de uma identidade visual</div>
-    <hr>
-    <div class="lin"><span>pesquisa</span><i></i><b>incluso</b></div>
-    <div class="lin"><span>conceito</span><i></i><b>incluso</b></div>
-    <div class="lin"><span>letra e cor</span><i></i><b>incluso</b></div>
-    <div class="lin"><span>ajustezinho infinito</span><i></i><b style="color:#dd34a8">à parte</b></div>
-    <hr>
-    <div class="lin" style="font-size:31px;margin-top:0"><b>total</b><i style="border:0"></i><b>arrasta pra ver</b></div>
-  </div>
-  ${tag(660,1268-90,'#6225d8')}`,
+  ${tag(110,90,'#dd34a8')}<span class="serie" style="left:356px;top:100px;color:#2a1433">série preço · <b>02</b> / 03</span>
+  <span class="tira" style="left:84px;top:756px;transform:rotate(-4deg)"><b>no débito ou no</b></span>
+  <span class="serif" style="left:90px;top:1126px;font-size:60px;line-height:.96;color:#2a1433">o que vem na <em style="color:#dd34a8">notinha</em><br>de uma identidade visual.</span>`,
  // 03 · manchete em serifa empilhada na palavra + pílula colada embaixo
  bolinha:`<img class="foto" src="cenas/bolinha.png">
   ${tag(110,90,'#dd34a8')}<span class="serie" style="left:356px;top:100px">série preço · <b>03</b> / 03</span>
