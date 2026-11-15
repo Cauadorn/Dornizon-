@@ -172,6 +172,11 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - o que ela pediu no caminho: "menos pelinhos" (um tufinho por bochecha; alisar por abertura morfológica virou "bolinhas", tem que gerar de novo); "a orelha parece de raposa" (achatar não resolve, gerar orelha curta de base larga); "os olhos, você esqueceu" e "o olho tá tudo torto" (manter os olhos do original, nivelados com a cabeça); unhas "off-white", sem lascas do desenho gerado (voltam as unhas da v2);
   - arranhões: "retilíneos" não era pedido de curva ("eu quis dizer só que era pra ficar mais real"). Reto, com borda rasgada (ruído fino e grosso, diferente em cada lado), largura que crava e some desigual, e uma falha curta no do meio.
   - **Falar sempre em português com ela, inclusive nas mensagens de andamento** ("para de falar inglês").
+- **Mockups da EMS (post de apresentação MIAU.LAB):**
+  - Embalagem SEMPRE 100% nas cores escolhidas da marca, nunca o material cru ("o saco vai ser bege? essas são as coisas que a gente escolheu?"). Referência: case RUTH da hola.carlydesign (`referencias/miaulab/post-ruth-carly`): embalagem toda na cor, padrão gráfico grande, texto miúdo em mono, grão de filme nas fotos.
+  - O logo NUNCA é cortado na embalagem ("você cortou o MIAU, que é o logo, o mais importante"), mesmo que a referência corte o nome dela.
+  - Ela não quer mockup montado na mão com cara de colagem nem fundo bege de mockup grátis. O caminho que ela pediu: Magnific Spaces, Nano Banana Pro 2K (`imagen-nano-banana-2`), com a arte plana como referência, para a IA já entregar o mockup pronto. Pela integração (MCP) o ilimitado NÃO vale (cobra 75 créditos por imagem); no site vale (símbolo de infinito). Então: montar o espaço com os nós prontos (arte plana conectada na referência + prompt) e pedir para ela clicar em gerar no site.
+  - Mockups que ela achou bonitos: os potes empilhados com o gato real cheirando (fundo menta) e a caixa com a cartela de comprimidos (fundo rosa) da direção 05.
 - **Banho e tosa (direção 03): pelo solto.**
   - Pesquisa: `referencias/pelo-solto`. Ela escolheu 2 Haley Sue, 3 Moon Gazer e "principalmente" 20 Barking Barber.
   - v1, papel recortado (approxPolyDP): "quero mais refinado e arredondado, bem vintage". O BANHO & TOSA estava desalinhado: "péssimo".
