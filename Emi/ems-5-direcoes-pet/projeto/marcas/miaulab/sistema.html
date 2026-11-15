@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- MIAU.LAB · sistema sofisticado (pedido da Emi: "sofisticar ela e trabalhar melhor pra postar assim", com o post da Melt/Ayeida
+     de referência: referencias/miaulab/post-melt-ayeida). Do post vem a IDEIA, não a estrutura:
+     - um nome forte que vira grafismo gigante nas embalagens (aqui o MIAU condensado com o gato no U, já aprovado);
+     - uma letra de apoio limpa e pequena (Instrument Sans) e uma palavra em script de acento (Mea Culpa);
+     - selo em pílula, linha de microtexto em três colunas, paleta curta de 2 cores fortes + 1 neutra quente;
+     - o grafismo próprio da MIAU.LAB: os arranhõezinhos do gato (das unhas do logo) sublinham a palavra em script.
+     ?parte=principal|negativo|frase|selo|paleta|letras · ?w=&h= -->
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: Archivo; src: url(../../fonts/Archivo-var-latin.woff2); font-weight: 100 900; font-stretch: 62% 125%; }
+@font-face { font-family: Mono; src: url(../../fonts/SpaceMono-normal-700.woff2); font-weight: 700; }
+@font-face { font-family: IS; src: url(../../fonts/InstrumentSans-var.woff2); font-weight: 400 700; }
+@font-face { font-family: Mea; src: url(../../fonts/MeaCulpa.woff2); }
+:root { --cobalto: #2B3FD1; --rosa: #F4B9CD; --creme: #F6EEDC; --manteiga: #F2DC8B; --nanquim: #1C1A24; }
+html, body { margin: 0; }
+.p { position: relative; overflow: hidden; }
+.logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
+.lab { position: absolute; font: 400 150px/1 Mea; }
+.micro { position: absolute; left: 64px; right: 64px; display: flex; justify-content: space-between; font: 500 30px/1 IS; letter-spacing: .005em; }
+.micro i { font: 400 56px/0 Mea; font-style: normal; position: relative; top: 4px; }
+.pilula { position: absolute; left: 50%; transform: translateX(-50%); border: 2px solid currentColor; border-radius: 999px; padding: 16px 44px 15px; font: 500 26px/1 IS; letter-spacing: .16em; white-space: nowrap; }
+.frase { position: absolute; left: 0; right: 0; text-align: center; font: 500 132px/1 IS; letter-spacing: -.035em; }
+.frase .s { font: 400 300px/.9 Mea; letter-spacing: 0; position: relative; display:inline-block; margin-top: -10px; }
+svg.risco { position: absolute; overflow: visible; }
+</style><script src="logo.js"></script></head><body>
+<div class="p" id="p"></div>
+<script>
+const q = new URLSearchParams(location.search), parte = q.get('parte') || 'principal';
+const W = +(q.get('w') || 1440), H = +(q.get('h') || 1800), p = document.getElementById('p');
+p.style.width = W + 'px'; p.style.height = H + 'px';
+const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', creme: '#F6EEDC', manteiga: '#F2DC8B', nanquim: '#1C1A24' };
+// arranhõezinhos (o grafismo da marca): três traços finos e afinados, como as unhas do logo
+const riscos = (x, y, larg, cor) => { let s = `<svg class="risco" style="left:${x}px;top:${y}px" width="${larg}" height="40" viewBox="0 0 ${larg} 40">`;
+  [[0.04, 0.9, 6, 3.2], [0.06, 0.96, 18, 3.6], [0.1, 0.84, 30, 2.8]].forEach(([a, b, yy, w]) => {
+    const x0 = larg * a, x1 = larg * b, m = (x0 + x1) / 2;
+    s += `<path d="M${x0} ${yy} Q${m} ${yy - 5 + w} ${x1} ${yy + 2} Q${m} ${yy - 5 + w + w * .9} ${x0} ${yy} Z" fill="${cor}"/>`; });
+  return s + '</svg>'; };
+function logo(x, y, k, o) {
+  const d = document.createElement('div'); d.className = 'logo'; d.style.cssText = `left:${x}px;top:${y}px;transform:scale(${k})`; p.appendChild(d);
+  miauLogo(d, o); return d;
+}
+if (['principal', 'negativo', 'rosa'].includes(parte)) {
+  const V = { principal: [C.creme, C.cobalto, C.nanquim, C.creme], negativo: [C.cobalto, C.creme, C.rosa, C.nanquim], rosa: [C.rosa, C.cobalto, C.nanquim, C.rosa] }[parte];
+  const [bg, tinta, labFundo, labCor] = V;
+  p.style.background = bg; p.style.color = tinta;
+  const k = W * .6 / 899, x = (W - 899 * k) / 2, y = H * .5 - 440 * k;
+  logo(x, y, k, { cor: tinta, fundo: bg, gato: C.nanquim, olho: parte === 'rosa' ? C.manteiga : C.rosa, labFundo, labCor });
+  p.insertAdjacentHTML('beforeend', `<div class="micro" style="top:64px"><span>fórmula veterinária</span><span>saúde de <i>sete</i> vidas</span><span>são paulo</span></div>
+    <div class="pilula" style="bottom:86px">SUPLEMENTO P/ GATOS</div>`);
+} else if (parte === 'frase') {
+  p.style.background = C.rosa; p.style.color = C.cobalto;
+  p.insertAdjacentHTML('beforeend', `<div class="frase" style="top:${H / 2 - 250}px">Ciência que<br><span class="s">ronrona.</span></div>
+    <div class="micro" style="top:64px"><span>miau.lab</span><span>fórmula nº 07</span><span>são paulo</span></div>
+    <div class="pilula" style="bottom:86px">FEITO PRA GATOS</div>`);
+} else if (parte === 'selo') {
+  p.style.background = C.manteiga;
+  const cw = W * .74, ch = cw * .36, cx = W / 2, top = H * .52;
+  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:${cx - cw / 2}px;top:${top}px;width:${cw}px;height:${ch}px;border-radius:${ch}px;background:${C.cobalto};color:${C.creme};display:flex;align-items:center;justify-content:center;font:500 ${ch * .17}px/1 IS;letter-spacing:.18em">MIAU.LAB &nbsp;·&nbsp; Nº 07</div>`);
+  // o gato do logo (cabeça + patas) espiando por cima da cápsula
+  const k = cw * .62 / 899, d = logo(cx - 798 * k, top - 260 * k, k, { cor: 'transparent', fundo: C.cobalto, gato: C.nanquim, olho: C.rosa, unhas: false, lab: false });
+}
+</script></body></html>
