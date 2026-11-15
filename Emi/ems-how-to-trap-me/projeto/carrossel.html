@@ -7,57 +7,52 @@
 </head>
 <body>
 <main id="faixa"></main>
-<svg width="0" height="0" style="position:absolute"><filter id="grao"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"/></filter></svg>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grao"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 -.1"/></filter>
+  <filter id="papel"><feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.45"/></filter>
+</svg>
+<script src="iscas.js"></script>
 <script>
-// uma isca por lâmina; a última é a caixa vazia (a pergunta pra quem segue)
-const ISCAS = [
-  { foto: 'l1-gatos',       nome: 'gatos',                 obs: 'todos. sem exceção.' },
-  { foto: 'l2-divas',       nome: 'divas pop',             obs: 'álbum novo = sumi' },
-  { foto: 'l3-series',      nome: 'séries',                obs: 'de menininha e de terror' },
-  { foto: 'l4-massas',      nome: 'massas',                obs: 'lasanha conta em dobro' },
-  { foto: 'l5-cameras',     nome: 'câmeras',               obs: 'de qualquer tipo' },
-  { foto: 'l6-doces',       nome: 'doces',                 obs: 'sobremesa antes, se der' },
-  { foto: 'l7-livros',      nome: 'livros',                obs: 'só mais um capítulo' },
-  { foto: 'l8-ferramentas', nome: 'ferramentas de design', obs: 'aí eu nem tento fugir' },
-  { foto: 'l9-vazia',       fim: true },
-];
-const N = ISCAS.length, doisDig = (n) => String(n).padStart(2, '0');
+const N = LAMINAS.length, doisDig = (n) => String(n).padStart(2, '0');
 
 // estrela em retícula: pontos que somem do centro pra borda
-function estrela(cx, cy, R, passo = 17) {
+function estrela(cx, cy, R, passo = 16) {
   let s = '';
   for (let y = -R; y <= R; y += passo) for (let x = -R; x <= R; x += passo) {
     const d = Math.pow(Math.pow(Math.abs(x), .62) + Math.pow(Math.abs(y), .62), 1 / .62) / R;
     if (d >= 1) continue;
-    s += `<circle cx="${cx + x}" cy="${cy + y}" r="${(passo * .46 * (1 - d * .85)).toFixed(1)}"/>`;
+    s += `<circle cx="${cx + x}" cy="${cy + y}" r="${(passo * .47 * (1 - d * .8)).toFixed(1)}"/>`;
   }
   return s;
 }
-const ESTRELAS = [[1010, 150, 330], [70, 1290, 300], [1040, 1180, 280], [60, 520, 260]];
+const ic = ([tipo, x, y, t, cor, rot = 0, op = 1]) => `<i class="ic ${tipo}" style="left:${x}px;top:${y}px;width:${t}px;height:${t}px;color:var(--${cor});transform:rotate(${rot}deg);opacity:${op}"></i>`;
+const isca = (it) => it.html
+  ? `<div class="isca" style="left:${it.x}px;top:${it.y}px;transform:rotate(${it.r || 0}deg);z-index:${it.z || 1}">${it.html}</div>`
+  : `<img class="isca" src="recortes/${it.src}" style="left:${it.x}px;top:${it.y}px;width:${it.w}px;transform:rotate(${it.r || 0}deg) scaleX(${it.flip ? -1 : 1});z-index:${it.z || 1}">`;
 
-document.getElementById('faixa').innerHTML = ISCAS.map((it, k) => {
-  const [ex, ey, er] = ESTRELAS[k % ESTRELAS.length];
-  return `
-<section class="lamina ${it.fim ? 'fim' : ''}">
-  <i class="foto" style="background-image:url(fotos/${it.foto}.jpg)"></i>
-  <svg class="ht" viewBox="0 0 1080 1350">${estrela(ex, ey, er)}</svg>
-  <p class="cab"><span>${it.fim ? 'sua vez' : 'isca nº ' + doisDig(k + 1)}</span><span>${doisDig(k + 1)}/${doisDig(N)}</span></p>
-  <h1><small>${it.fim ? 'e você?' : 'how to'}</small><span>${it.fim ? 'how to trap <em>you</em>' : 'trap <em>me</em>'}</span></h1>
-  ${it.fim
-    ? `<p class="etiqueta vazia"><b>a sua isca:</b><u></u></p>
-       <p class="pilula">me conta nos comentários o que te faria cair nessa armadilha</p>`
-    : `<p class="etiqueta"><b>${it.nome}</b><span>${it.obs}</span></p>`}
+document.getElementById('faixa').innerHTML = LAMINAS.map((l, k) => `
+<section class="lamina ${l.fim ? 'fim' : ''}">
+  <i class="camada fundo"></i>
+  <i class="papel"></i>
+  <svg class="ht" viewBox="0 0 1080 1350">${l.estrelas.map((e) => estrela(...e)).join('')}</svg>
+  <div class="grafismos">${l.icones.map(ic).join('')}</div>
+  <i class="camada caixa"></i>
+  <div class="iscas">${(l.iscas || []).map(isca).join('')}</div>
+  <i class="camada frente"></i>
+  <h1><small>how to</small><span>trap <em>${l.fim ? 'you?' : 'me'}</em></span></h1>
+  ${l.fim ? '<p class="pilula">me conta nos comentários o que te faria cair nessa armadilha</p><img class="selo" src="assets/selo-ems.png" alt="">' : ''}
+  <p class="conta">${doisDig(k + 1)}/${doisDig(N)}</p>
   <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>
-  ${it.fim ? '<img class="selo" src="assets/selo-ems.png" alt="">' : ''}
   <i class="grao"></i>
-</section>`;
-}).join('');
+</section>`).join('');
 </script>
 <script src="scripts/palavra-curta.js"></script>
 <script>
-Promise.all([document.fonts.ready, ...[...document.querySelectorAll('.foto')].map((el) => new Promise((ok) => {
-  const im = new Image(); im.onload = im.onerror = ok; im.src = el.style.backgroundImage.slice(5, -2);
-}))]).then(() => { window.READY = true; });
+const urls = ['fotos/fundo.jpg', 'fotos/caixa.png', 'fotos/frente.png'];
+Promise.all([document.fonts.ready,
+  ...urls.map((u) => new Promise((ok) => { const im = new Image(); im.onload = im.onerror = ok; im.src = u; })),
+  ...[...document.images].map((im) => im.complete ? 1 : new Promise((ok) => { im.onload = im.onerror = ok; })),
+]).then(() => { window.READY = true; });
 </script>
 </body>
 </html>

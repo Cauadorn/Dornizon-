@@ -16,35 +16,36 @@ body { width: 9720px; height: 1350px; overflow: hidden; font-family: var(--sans)
 .lamina { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: var(--violeta); color: var(--ivory); isolation: isolate; flex: none; }
 .lamina > * { position: absolute; }
 
-.foto { inset: 0; background: center / cover no-repeat; z-index: -2; }
-svg.ht { inset: 0; width: 100%; height: 100%; fill: var(--violeta-2); opacity: .45; mix-blend-mode: screen; z-index: -1; }
-.grao { inset: 0; filter: url(#grao); opacity: .07; mix-blend-mode: overlay; pointer-events: none; }
+/* a foto da caixa em três camadas: fundo, caixa (com sombra) e frente (lado de fora, graveto e barbante) */
+.camada { inset: 0; background: center / cover no-repeat; }
+.fundo { background-image: url(fotos/fundo.jpg); }
+.caixa { background-image: url(fotos/caixa.png); }
+.frente { background-image: url(fotos/frente.png); }
 
-/* cabeçalho fino, de revista */
-.cab { left: 90px; right: 90px; top: 90px; display: flex; justify-content: space-between; font-size: 22px; font-weight: 500; letter-spacing: .08em; opacity: .85; }
+/* matéria do fundo: papel com fibras + estrela em retícula, por baixo da caixa */
+.papel { inset: 0; filter: url(#papel); opacity: .26; mix-blend-mode: soft-light; }
+svg.ht { inset: 0; width: 100%; height: 100%; fill: var(--violeta-2); opacity: .8; mix-blend-mode: screen; }
+.grafismos { inset: 0; }
+.ic { position: absolute; display: block; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.ic.brilho { --m: url(assets/i-brilho.png); } .ic.espiral { --m: url(assets/i-espiral.png); }
+.ic.estrela { --m: url(assets/i-estrela.png); } .ic.xoxo { --m: url(assets/i-xoxo.png); } .ic.cursor { --m: url(assets/i-cursor.png); }
+.grao { inset: 0; filter: url(#grao); opacity: .1; mix-blend-mode: overlay; pointer-events: none; }
+
+/* iscas: recortes embaixo da caixa, com sombra de adesivo na cor tinta */
+.iscas { inset: 0; }
+.isca { position: absolute; filter: drop-shadow(0 10px 14px rgba(42, 20, 51, .45)); }
 
 /* título: lead-in pequeno colado na palavra gigante, um destaque só */
-h1 { left: 84px; top: 128px; font-weight: 400; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; }
-h1 small { font-family: var(--sans); font-size: 46px; font-weight: 600; letter-spacing: -.01em; }
-h1 span { font-family: var(--serif); font-size: 232px; line-height: .86; letter-spacing: -.03em; }
-h1 em { font-style: italic; color: var(--manteiga); padding-right: .04em; }
+h1 { left: 0; width: 1080px; top: 116px; font-weight: 400; display: flex; justify-content: center; align-items: baseline; gap: 22px; white-space: nowrap; }
+h1 small { font-family: var(--sans); font-size: 48px; font-weight: 600; letter-spacing: -.01em; }
+h1 span { font-family: var(--serif); font-size: 250px; line-height: .86; letter-spacing: -.03em; }
+h1 em { font-style: italic; color: var(--manteiga); padding-right: .05em; }
 
-/* etiqueta amarrada na ponta do barbante */
-.etiqueta { left: 90px; top: 1128px; min-height: 108px; padding: 16px 40px 18px 84px; background: var(--ivory); color: var(--tinta); border-radius: 12px; clip-path: polygon(40px 0, 100% 0, 100% 100%, 40px 100%, 0 50%); transform: rotate(-4deg); transform-origin: left center; display: grid; align-content: center; filter: drop-shadow(6px 8px 0 rgba(42, 20, 51, .35)); }
-.etiqueta::before { content: ""; position: absolute; left: 40px; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 50%; background: var(--violeta); }
-.etiqueta b { font-size: 46px; font-weight: 600; line-height: 1.05; letter-spacing: -.01em; }
-.etiqueta span { font-size: 25px; font-weight: 400; line-height: 1.25; }
-
+.conta { left: 90px; bottom: 90px; font-size: 22px; font-weight: 500; letter-spacing: .08em; opacity: .85; line-height: 46px; }
 .arroba { right: 90px; bottom: 90px; background: var(--pink); color: var(--ivory); font-size: 24px; font-weight: 500; padding: .32em .7em .34em .55em; border-radius: 4px; }
-.ic { display: block; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
-.arroba .ic { position: absolute; left: -22px; bottom: -22px; width: 30px; height: 30px; --m: url(assets/i-cursor.png); }
+.arroba .ic { left: -22px; bottom: -22px; width: 30px; height: 30px; }
 
 /* última lâmina: caixa vazia, a pergunta pra quem segue */
-.fim h1 { flex-direction: column; gap: 0; top: 150px; }
-.fim h1 small { font-size: 46px; }
-.fim h1 span { font-size: 178px; margin-top: 6px; }
-.etiqueta.vazia { grid-auto-flow: column; align-items: end; gap: 18px; }
-.etiqueta.vazia b { font-size: 40px; }
-.etiqueta.vazia u { display: block; width: 250px; border-bottom: 4px dashed var(--tinta); margin-bottom: 10px; }
-.pilula { right: 90px; top: 452px; width: 400px; background: var(--manteiga); color: var(--tinta); font-size: 29px; font-weight: 500; line-height: 1.22; padding: 22px 30px 24px; border-radius: 26px; transform: rotate(3deg); box-shadow: 6px 6px 0 var(--tinta); }
-.selo { left: 90px; top: 90px; width: 0; display: none; }
+.fim h1 span { font-size: 214px; }
+.pilula { left: 216px; top: 1122px; width: 470px; text-align: center; background: var(--manteiga); color: var(--tinta); font-size: 28px; font-weight: 500; line-height: 1.22; padding: 20px 30px 22px; border-radius: 26px; transform: rotate(-2deg); box-shadow: 6px 6px 0 var(--tinta); }
+.selo { right: 100px; top: 440px; width: 150px; }
