@@ -1,0 +1,25 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>EMS · série preço · capas</title>
+<style>
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#111}*{box-sizing:border-box}
+#c{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Poppins}
+#c>*{position:absolute}
+.foto{inset:0;width:1080px;height:1350px;object-fit:cover}
+.lead{font:600 44px/1.14 Poppins;white-space:nowrap}
+.sub{font:500 30px/1.25 Poppins;white-space:nowrap}
+.tag{font:500 26px/1 Poppins;padding:.34em .7em .34em .5em;border-radius:5px;color:#fffbde;white-space:nowrap}
+.tag svg{position:absolute;left:-20px;bottom:-22px}
+</style></head><body><div id="c"></div><script>
+const V={
+ quilo:{ink:'#fffbde',tag:'#6225d8',lead:[90,598,'marca não<br>se vende<br>no'],sub:[990,1196,'o que entra no prato<br>de uma identidade visual.','right'],tagpos:[110,1206]},
+ credito:{ink:'#2a1433',tag:'#dd34a8',lead:[90,1142,'ou débito?'],sub:[90,1200,'o que vem na notinha de uma identidade visual.','left'],tagpos:[110,104]},
+ bolinha:{ink:'#fffbde',tag:'#dd34a8',lead:[90,640,'design não é<br>máquina de'],sub:[90,1150,'não é pôr a moeda<br>e sair marca pronta.','left'],tagpos:[110,104]},
+};
+const k=new URLSearchParams(location.search).get('v')||'quilo',v=V[k];
+const cur='<svg width="30" height="30" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+document.getElementById('c').innerHTML=`<img class="foto" src="cenas/${k}.png">
+ <span class="lead" style="left:${v.lead[0]}px;top:${v.lead[1]}px;color:${v.ink}">${v.lead[2]}</span>
+ <span class="sub" style="${v.sub[3]==='right'?`right:${1080-v.sub[0]}px;text-align:right`:`left:${v.sub[0]}px`};top:${v.sub[1]}px;color:${v.ink}">${v.sub[2]}</span>
+ <span class="tag" style="left:${v.tagpos[0]}px;top:${v.tagpos[1]}px;background:${v.tag}">@itsemsdesign${cur}</span>`;
+</script></body></html>
