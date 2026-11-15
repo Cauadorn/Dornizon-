@@ -32,7 +32,7 @@ svg.ht { inset: 0; width: 100%; height: 100%; fill: var(--violeta-2); opacity: .
 .grao { inset: 0; filter: url(#grao); opacity: .1; mix-blend-mode: overlay; pointer-events: none; }
 
 /* iscas: recortes embaixo da caixa, com sombra de adesivo na cor tinta */
-.iscas { inset: 0; }
+.iscas { inset: 0; isolation: isolate; }
 .isca { position: absolute; filter: drop-shadow(0 10px 14px rgba(42, 20, 51, .45)); }
 
 /* título: lead-in pequeno colado na palavra gigante, um destaque só */
