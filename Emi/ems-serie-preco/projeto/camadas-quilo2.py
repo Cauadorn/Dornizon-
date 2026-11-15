@@ -34,7 +34,7 @@ pal = cv2.GaussianBlur(pal, (0, 0), 1.0)
 ys_, xs_ = np.where(pal > 128); px0, px1, py1 = xs_.min(), xs_.max(), ys_.max()
 nova = cv2.imread(f'{PEC}/quilo-rec.png', cv2.IMREAD_UNCHANGED); esc = (px1 - px0 + 1) / nova.shape[1]
 esc *= .95; nova = cv2.resize(nova, (int(nova.shape[1] * esc), int(nova.shape[0] * esc)), interpolation=cv2.INTER_AREA)
-tela = np.zeros((H, W, 4), np.uint8); ty = py1 + 30 - nova.shape[0]; tx = (px0 + px1) // 2 - nova.shape[1] // 2; tela[ty:ty + nova.shape[0], tx:tx + nova.shape[1]] = nova
+tela = np.zeros((H, W, 4), np.uint8); ty = py1 - 12 - nova.shape[0]; tx = (px0 + px1) // 2 - nova.shape[1] // 2; tela[ty:ty + nova.shape[0], tx:tx + nova.shape[1]] = nova
 cv2.imwrite(out + '/palavra.png', tela); cv2.imwrite(out + '/palavra-mask.png', np.dstack([np.full((H, W, 3), 255, np.uint8), tela[..., 3]]))
 print('palavra', px0, ty, nova.shape)
 

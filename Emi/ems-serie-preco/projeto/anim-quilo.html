@@ -14,7 +14,7 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 #cena{position:absolute;left:0;top:0;width:1024px;height:1280px;transform-origin:0 0;transform:scale(1.0546875)}
 #cena img,#prato img{position:absolute;display:block}
 #prato,#bal{position:absolute;left:0;top:0;width:1024px;height:1280px}
-#bal{transform:translateY(-46px)}   /* a balança sobe um pouco: o mostrador fica livre acima da palavra */
+#bal{transform:translateY(-80px)}   /* a balança sobe um pouco: o mostrador fica livre acima da palavra */
 #bal img{position:absolute;display:block}
 /* prato mais raso: achatado na vertical a partir do fundo (onde encaixa no pescoço), a abertura fica menos funda */
 #l-bal-prato,#l-bal-prato-aro{transform-origin:50% 223px;transform:scaleY(.8)}
@@ -26,7 +26,7 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 .tag{left:110px;top:90px;font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;background:#6225d8;white-space:nowrap;transform-origin:0 100%}
 .tag svg{position:absolute;left:-19px;bottom:-21px}
 .cartao{left:90px;top:704px;font:600 38px/1.12 Poppins;padding:18px 26px 20px;border-radius:20px;white-space:nowrap;transform-origin:0 100%;box-shadow:7px 8px 0 rgba(42,20,51,.55);background:#fffbde;color:#2a1433}
-.fecho{left:318px;top:1150px;font:400 60px/.96 "Instrument Serif";letter-spacing:-.015em;white-space:nowrap}
+.fecho{left:90px;top:1146px;font:400 58px/.96 "Instrument Serif";letter-spacing:-.015em;white-space:nowrap}
 .fecho em{font-style:italic;color:#f2cf7a}
 .fecho span{display:block;overflow:hidden}.fecho span i{display:block;font-style:normal}
 </style>
@@ -75,7 +75,7 @@ const QUEDA=[   // cadência rápida: uma peça atrás da outra, o ponteiro sobe
 ];
 const TQ=.30,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
 // a estrelinha: cai, bate no alto da pilha, quica e vai parar no chão, na frente da palavra
-const E2={sai:2.50,bate:2.82,topo:[585,84],chao:[928,1168],voo:.70};
+const E2={sai:2.50,bate:2.82,topo:[585,50],chao:[928,1168],voo:.70};
 
 function render(t){
   let dip=0;QUEDA.forEach(q=>{dip+=.6*q.peso*pancada(t,q.pouso,16,5.2)});dip+=3*pancada(t,E2.bate,18,6);
