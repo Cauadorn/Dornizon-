@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · quanto cobrar · capa animada</title>
+<style>
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Regular.ttf);font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Italic.ttf);font-style:italic}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
+html,body{margin:0;background:#111}*{box-sizing:border-box}
+#c{position:relative;width:1080px;height:1350px;overflow:hidden;background:#6225d8;font-family:Poppins}
+#c>*{position:absolute}
+.luz{left:-260px;top:-380px;width:1600px;height:1500px;background:radial-gradient(closest-side,rgba(160,120,255,.85),rgba(123,77,242,.35) 55%,rgba(98,37,216,0))}
+.ret{inset:0;background-image:radial-gradient(rgba(42,20,51,.16) 1.6px,transparent 2px);background-size:14px 14px}
+.obj{will-change:transform;filter:drop-shadow(0 30px 28px rgba(42,20,51,.42))}
+.obj img{display:block;width:100%}
+.lead{left:90px;top:716px;font:600 48px/1.1 Poppins;color:#fffbde;white-space:nowrap}
+.palw{left:0;top:706px;width:1080px;height:470px;overflow:hidden}
+.pal{position:absolute;left:66px;top:0;font:italic 400 430px/.9 "Instrument Serif";letter-spacing:-.03em;color:#f2cf7a;white-space:nowrap}
+.sub{right:90px;top:1172px;font:500 34px/1.2 Poppins;color:#fffbde;text-align:right;white-space:nowrap}
+.tag{left:110px;top:1206px;font:500 26px/1 Poppins;padding:.34em .7em .34em .5em;border-radius:5px;color:#fffbde;background:#dd34a8;white-space:nowrap}
+.tag svg{position:absolute;left:-20px;bottom:-22px}
+#grao{inset:0;width:1080px;height:1350px;mix-blend-mode:overlay;opacity:.1;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="c">
+  <div class="luz"></div><div class="ret"></div>
+  <img id="star" style="left:520px;top:-300px;width:900px;opacity:.5">
+  <div class="obj" id="m2" style="left:104px;top:486px;width:150px"><img src="3d/recorte/moeda.png" style="filter:blur(2.5px)"></div>
+  <div class="obj" id="rel" style="left:64px;top:84px;width:290px"><img src="3d/recorte/relogio.png"></div>
+  <div class="palw"><span class="pal" id="pal">preço</span></div>
+  <div class="obj" id="moe" style="left:776px;top:520px;width:226px"><img src="3d/recorte/moeda.png"></div>
+  <div class="obj" id="cal" style="left:262px;top:176px;width:560px"><img src="3d/recorte/calculadora.png"></div>
+  <div class="obj" id="eti" style="left:716px;top:90px;width:290px"><img src="3d/recorte/etiqueta.png"></div>
+  <span class="lead" id="lead">como eu chego no</span>
+  <span class="sub" id="sub">de uma identidade<br>visual.</span>
+  <span class="tag" id="tag">@itsemsdesign<svg width="30" height="30" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+  <img id="grao" alt="">
+</div>
+<script>
+const FPS=30,DUR=7;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,t0,d)=>clamp((t-t0)/d);
+const outCubic=p=>1-Math.pow(1-p,3);
+// mola: passa do ponto e assenta
+const mola=p=>p<=0?0:p>=1?1:1-Math.exp(-6.5*p)*Math.cos(11*p);
+const $=id=>document.getElementById(id);
+
+// estrela em retícula do sistema (HalftoneStar)
+(function(){const size=900,c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d');
+  const cx=size/2,cy=size/2,R=size*.49,r=R*.45,pts=[];
+  for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r:R;pts.push([cx+rr*Math.cos(a),cy+rr*Math.sin(a)]);}
+  const path=new Path2D();pts.forEach((p,i)=>i?path.lineTo(...p):path.moveTo(...p));path.closePath();
+  g.fillStyle='#7b4df2';const step=size/60;
+  for(let y=step/2;y<size;y+=step)for(let x=step/2;x<size;x+=step){if(!g.isPointInPath(path,x,y))continue;
+    const d=Math.hypot(x-cx,y-cy)/R,rad=step*.48*(1-d*.82);if(rad>.6){g.beginPath();g.arc(x,y,rad,0,7);g.fill();}}
+  $('star').src=c.toDataURL();})();
+const _g=[];(function(){for(let k=0;k<4;k++){const c=document.createElement('canvas');c.width=540;c.height=675;const g=c.getContext('2d'),im=g.createImageData(540,675);
+  for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255;}g.putImageData(im,0,0);_g.push(c.toDataURL('image/jpeg',.8));}})();
+
+// cada objeto: entrada (de onde vem, quando) + flutuação em laço (períodos que fecham em DUR)
+const O={
+  cal:{t0:.10,de:[0,520],rot:-4, amp:16,per:DUR,   fase:0,   bal:2.2,org:'50% 50%'},
+  eti:{t0:.32,de:[260,-420],rot:10,amp:10,per:DUR/2,fase:1.1, bal:9,  org:'24% 9%'},   // balança pendurada pelo furo
+  rel:{t0:.24,de:[-380,-200],rot:-9,amp:13,per:DUR/2,fase:2.4,bal:3.5,org:'50% 50%'},
+  moe:{t0:.44,de:[380,300],rot:8, amp:18,per:DUR,  fase:3.3, bal:5,  org:'50% 50%'},
+  m2: {t0:.52,de:[-300,340],rot:-16,amp:12,per:DUR/2,fase:4.6,bal:6,  org:'50% 50%'},
+};
+function render(t){
+  const w=2*Math.PI;
+  for(const id in O){const o=O[id],p=mola(P(t,o.t0,1.25)),ap=clamp(P(t,o.t0,.25));
+    const f=Math.sin(w*t/o.per+o.fase),f2=Math.cos(w*t/o.per+o.fase*1.7);
+    const x=o.de[0]*(1-p),y=o.de[1]*(1-p)+o.amp*f;
+    let giro='';
+    if(id==='moe'){const g=P(t,3.1,.9);if(g>0&&g<1){giro=` scaleX(${Math.cos(Math.PI*2*outCubic(g))})`;}}  // a moeda dá uma volta
+    const e=$(id);e.style.transformOrigin=o.org;e.style.opacity=ap;
+    e.style.transform=`translate(${x}px,${y}px) rotate(${o.rot+o.bal*f2+(1-p)*28}deg) scale(${.35+.65*p})${giro}`;}
+  // a palavra sobe de dentro da máscara; o resto do texto entra em seguida
+  const pw=outCubic(P(t,.7,.9));$('pal').style.transform=`translateY(${(1-pw)*470}px)`;
+  const pl=outCubic(P(t,.55,.6));$('lead').style.opacity=pl;$('lead').style.transform=`translateY(${(1-pl)*30}px)`;
+  const ps=outCubic(P(t,1.35,.6));$('sub').style.opacity=ps;$('sub').style.transform=`translateY(${(1-ps)*30}px)`;
+  const pt=mola(P(t,1.6,.9));$('tag').style.opacity=clamp(P(t,1.6,.2));$('tag').style.transform=`scale(${.4+.6*pt})`;$('tag').style.transformOrigin='0 100%';
+  $('star').style.transform=`rotate(${10+6*Math.sin(w*t/DUR)}deg)`;
+  $('grao').src=_g[Math.floor(t*FPS/2)%_g.length];
+}
+Promise.all([document.fonts.load('italic 400 100px "Instrument Serif"'),document.fonts.load('600 40px Poppins'),document.fonts.load('500 40px Poppins'),
+  ...[...document.images].filter(i=>i.src).map(i=>i.decode().catch(()=>{}))]).then(()=>{
+  window.DURATION=DUR;window.render=render;const q=new URLSearchParams(location.search);render(parseFloat(q.get('t')||'5'));window.READY=true;
+  if(q.get('play')){const s=performance.now();(function l(){render(((performance.now()-s)/1000)%DUR);requestAnimationFrame(l)})();}
+});
+</script>
+</body>
+</html>
