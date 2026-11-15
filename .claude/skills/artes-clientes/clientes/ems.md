@@ -325,3 +325,7 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
 ### Entrega no Drive (aprendido no case MIAU.LAB, nov/2026)
 - A conexão com o Drive aceita no máximo ~3 MB por arquivo: PNG de 1440x1800 com grão (~4,7 MB) é recusado. Mandar as fotos direto em JPG qualidade 96 (sem subamostragem, ~1,3 MB), que é o que o Instagram usa; o PNG fica no repositório.
 - Case MIAU.LAB entregue em "2026-11 · case MIAU.LAB (carrossel)": 9 lâminas (01 capa animada, 02–08 fotos/logo, 09 "Ciência que ronrona." animada fechando com as mesmas cores da capa). A assinatura da marca precisa ter lâmina própria, não só aparecer pequena na capa.
+
+### Capa de reel no perfil (case MIAU.LAB, nov/2026)
+- Reprovada ("que capa horrorosa"): logo do cliente como cartão-adesivo colado sobre fundo liso da EMS, título em cima, @ e selo soltos. Ficou genérico e sem foto.
+- Caminho certo (mesma regra das capas aprovadas): a FOTO é a cena inteira (o gato preto do case), palavra gigante em Instrument Serif com UMA letra em itálico passando por trás do objeto (recorte por chave de cor no gato preto), chamada curta em Poppins, adesivo redondo rosa com o nome do case e a etiqueta @. Conferir o recorte 3:4 do grid (y 240–1680).
