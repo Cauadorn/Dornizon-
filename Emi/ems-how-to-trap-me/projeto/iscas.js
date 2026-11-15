@@ -2,7 +2,11 @@
 // estrelas: [cx, cy, raio] · icones: [tipo, x, y, tamanho, cor, giro, opacidade]
 // iscas: { src (em recortes/), x, y, w, r (giro), z, flip } no quadro de 1080 × 1350
 const LAMINAS = [
-  { tema: 'gatos',       estrelas: [[1000, 170, 330], [60, 1260, 300]],  icones: [['brilho', 840, 430, 64, 'manteiga'], ['brilho', 930, 520, 30, 'ivory', 0, .8], ['espiral', 96, 560, 92, 'lavanda', -12, .9]] },
+  { tema: 'gatos', iscas: [
+      { src: 'gatos-1.png', x: 176, y: 770, w: 168, z: 2 },
+      { src: 'gatos-6.png', x: 408, y: 748, w: 200 }, { src: 'gatos-2.png', x: 500, y: 800, w: 200, z: 1 },
+      { src: 'gatos-5.png', x: 600, y: 880, w: 176, z: 2, flip: 1 }, { src: 'gatos-4.png', x: 396, y: 930, w: 250, z: 3 },
+    ], estrelas: [[1000, 170, 330], [60, 1260, 300]],  icones: [['brilho', 840, 430, 64, 'manteiga'], ['brilho', 930, 520, 30, 'ivory', 0, .8], ['espiral', 96, 560, 92, 'lavanda', -12, .9]] },
   { tema: 'divas', iscas: [
       { src: 'divas-ts-reputation.jpg', x: 182, y: 742, w: 168, r: -5 }, { src: 'divas-ts-1989.jpg', x: 160, y: 912, w: 180, r: 4, z: 2 },
       { src: 'divas-od-artofloving.jpg', x: 404, y: 716, w: 178, r: 4 }, { src: 'divas-or-guts.jpg', x: 562, y: 742, w: 176, r: -5 },
