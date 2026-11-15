@@ -63,6 +63,7 @@ function miauLogo(el, o = {}) {
   ${o.lab === false ? '' : `<div style="position:absolute;right:0;top:610px;background:${o.labFundo || '#141418'};color:${o.labCor || '#fff'};font:700 64px/1 Mono;padding:10px 20px 16px;letter-spacing:.02em">.lab</div>`}`;
 }
 
+// v3 · APROVADA ("sim perfeito"): gato-v3/gerado-e.png, olhos nivelados, patas .39, unhas e arranhões reais.
 // v3 (a Emi: "você refinou o logo? … tá refinadinho ou tá vetorizado?" e "mais parecido com o original… os olhos do gatinho"):
 // mesmo logo e mesma montagem da v2 (gato espiando de dentro do U, uma pata em cada haste, olhos de gato rosa com
 // pupila em fenda, arranhões descendo nas hastes), mas o desenho da cabeça e das patas sai de uma silhueta gerada e
@@ -72,12 +73,12 @@ function miauLogo(el, o = {}) {
 function miauLogoV3(el, o = {}) {
   const G = GATO3, fundo = o.fundo || '#2F55F2', cor = o.cor || '#FF9FD2', gato = o.gato || '#141418';
   const olho = o.olho || '#FF9FD2', olho2 = o.olho2 || '#FFFFFF', id = o.id || 'l3';
-  const s = o.s3 || .3, sp = o.sp3 || s * 1.12, cx = o.cx || 798, parede = 260, dx = o.patasDx || 59.4;
+  const s = o.s3 || .3, sp = o.sp3 || .39, cx = o.cx || 798, parede = 260, dx = o.patasDx || 59.4;   // aprovado: gato E, patas .39
   const ko = .56, olhoGato = (x, r) => `<g transform="translate(${x} -80) rotate(${r})"><circle r="30" fill="${olho}"/>`
     + `<path d="M0 -24 Q11 0 0 24 Q-11 0 0 -24 Z" fill="${gato}"/><circle cx="9" cy="-11" r="5" fill="${olho2}"/></g>`;
   const cab = `<g transform="translate(${cx} ${parede}) scale(${s}) translate(${-G.cabeca.cx} ${-G.borda})"><path d="${G.cabeca.d}" fill="${gato}"/></g>`;
   // olhos acompanham a inclinação da cabeça nova (a direita mais baixa); a v2 girava -5°, ao contrário: "o olho tá tudo torto"
-  const olhos = `<g transform="translate(${cx + (o.olhoDx || 0)} ${parede + (o.olhoDy || 0)}) scale(${ko * (o.olhoK || 1)}) rotate(${o.olhoGiro ?? 4} 0 -80)">${olhoGato(-54, 0)}${olhoGato(54, 0)}</g>`;
+  const olhos = `<g transform="translate(${cx + (o.olhoDx || 0)} ${parede + (o.olhoDy || 0)}) scale(${ko * (o.olhoK || 1)}) rotate(${o.olhoGiro ?? 0} 0 -80)">${olhoGato(-54, 0)}${olhoGato(54, 0)}</g>`;
   const pata = (P, x, lado) => {
     const pc = (P.x0 + P.x1) / 2, t = `translate(${x} ${parede}) rotate(${lado * (o.giro3 ?? 4)}) scale(${sp}) translate(${-pc} ${-G.borda})`;
     return { t, pc, svg: `<g transform="${t}">`

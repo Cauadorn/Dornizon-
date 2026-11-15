@@ -167,6 +167,11 @@ Referências e o que saiu de cada uma: `Emi/ems-5-direcoes-pet/referencias/marca
   - Texto ao lado de uma etiqueta: topo das maiúsculas = topo da etiqueta, base da 2ª linha = base da etiqueta.
   - Pílulas e selos encostados no bloco (uns 40 px), não presos à borda. Selo grande no quadro, não pequeno no meio do vazio.
   - Letter-spacing aberto só em pílula pequena (até .08em). Linha de microtexto de canto a canto só sobre foto.
+- **MIAU.LAB · gato v3 (refinado e aprovado, "sim perfeito").** Ela perguntou "tá refinadinho ou tá vetorizado?": o gato da v2 era vetor desenhado à mão em código (laterais retas, cara de caixinha). O caminho que funcionou:
+  - silhueta gerada (Figma, gpt-image-2.5-sunburst, preto chapado, sem rosto) → separada em cabeça + 2 patas (componentes) → potrace (`marcas/miaulab/gato-v3/extrai.py`) → `gato-v3/gato.js` → `miauLogoV3` no `logo.js`;
+  - o que ela pediu no caminho: "menos pelinhos" (um tufinho por bochecha; alisar por abertura morfológica virou "bolinhas", tem que gerar de novo); "a orelha parece de raposa" (achatar não resolve, gerar orelha curta de base larga); "os olhos, você esqueceu" e "o olho tá tudo torto" (manter os olhos do original, nivelados com a cabeça); unhas "off-white", sem lascas do desenho gerado (voltam as unhas da v2);
+  - arranhões: "retilíneos" não era pedido de curva ("eu quis dizer só que era pra ficar mais real"). Reto, com borda rasgada (ruído fino e grosso, diferente em cada lado), largura que crava e some desigual, e uma falha curta no do meio.
+  - **Falar sempre em português com ela, inclusive nas mensagens de andamento** ("para de falar inglês").
 - **Banho e tosa (direção 03): pelo solto.**
   - Pesquisa: `referencias/pelo-solto`. Ela escolheu 2 Haley Sue, 3 Moon Gazer e "principalmente" 20 Barking Barber.
   - v1, papel recortado (approxPolyDP): "quero mais refinado e arredondado, bem vintage". O BANHO & TOSA estava desalinhado: "péssimo".
