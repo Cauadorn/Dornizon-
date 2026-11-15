@@ -119,49 +119,47 @@ const L={
   </div>
   ${clipe(520,120,4)}`},
 
-/* 04 · a virada — dois pratos lado a lado explicam o argumento: só o logo pesa pouco, a marca inteira pesa mais.
-   Pratos desenhados, peças 3D apoiadas neles (as mesmas da lista). Sem fruta. Título e etiquetas centrados. */
-4:()=>`<div class="abs" style="inset:0;background:radial-gradient(ellipse 90% 70% at 50% 34%,#7b4df2 0,#6225d8 52%,#4a1a9e 100%)"></div>
-  <img class="abs" src="${estrelaReticula(820,css('violeta-2'))}" style="left:480px;top:-300px;width:820px;opacity:.55;transform:rotate(16deg)">
-  <img class="abs" src="${estrelaReticula(620,css('violeta-2'))}" style="left:-260px;top:940px;width:620px;opacity:.45;transform:rotate(-16deg)">
+/* 04 · a virada — cena de verdade: dois pratos de louça na toalha de linho, só a estrela num e tudo no outro (imagem gerada como cena única,
+   peças assentadas no prato). O título vai no terço de cima; cada prato ganha a sua etiqueta de papel; o apoio vai num adesivo embaixo. */
+4:()=>`<img class="abs" src="cenas/fotos/dois-pratos.png" style="left:0;top:0;width:1080px;height:1350px;clip-path:inset(0 0 calc(100% - 3px) 0);transform-origin:50% 0;transform:scaleY(30)">
+  <img class="abs" src="cenas/fotos/dois-pratos.png" style="left:0;top:76px;width:1080px;height:1350px">
+  <div class="abs" style="left:0;right:0;top:0;height:420px;background:linear-gradient(rgba(74,26,158,.55),rgba(74,26,158,0))"></div>
   ${cab(css('ivory'))}
-  <div class="abs" data-centro style="left:0;right:0;top:176px;text-align:center;font:500 40px/1.16 Poppins;color:var(--ivory)">quanto mais coisa<br>vai no prato,</div>
-  <div class="abs serif gasto" data-centro style="left:0;right:0;top:272px;text-align:center;font-size:236px;line-height:.9;color:var(--ivory)">mais <em style="color:var(--manteiga)">pesa.</em></div>
-  ${prato(96,790,340)}
-  <div class="abs" style="left:96px;top:660px;width:340px;display:flex;justify-content:center;align-items:flex-end;height:200px">${peca('estrela',150)}</div>
-  ${prato(480,760,504)}
-  <div class="abs" style="left:480px;top:520px;width:504px;height:330px">
-    <div class="abs" style="left:150px;top:6px;display:flex;align-items:flex-end">${[1,2,3,4].map((k,i)=>peca('amostra'+k,62,-22+14*i,i?'margin-left:-8px':'')).join('')}</div>
-    <div class="abs" style="left:54px;top:92px">${peca('A',200)}</div>
-    <div class="abs" style="left:206px;top:148px">${peca('a-min',148)}</div>
-    <div class="abs" style="left:318px;top:196px">${peca('estrela',96)}</div>
-    <div class="abs" style="left:356px;top:150px">${peca('cursor',128)}</div>
-  </div>
-  <div class="abs" data-bloco style="left:96px;top:936px;width:340px;text-align:center;color:var(--ivory)"><span data-centro class="serif" style="display:block;font-size:66px;line-height:.9">só o logo</span><span data-centro style="display:block;font:500 28px/1.2 Poppins;color:var(--lavanda-2);margin-top:8px">pesa pouco.</span></div>
-  <div class="abs" data-bloco style="left:480px;top:936px;width:504px;text-align:center;color:var(--ivory)"><span data-centro class="serif" style="display:block;font-size:66px;line-height:.9">a marca <em style="color:var(--manteiga)">inteira</em></span><span data-centro style="display:block;font:500 28px/1.2 Poppins;color:var(--lavanda-2);margin-top:8px">pesa mais.</span></div>
-  <div class="abs" data-bloco style="left:215px;top:1128px;width:650px;background:var(--ivory);color:var(--tinta);border-radius:999px;padding:24px 20px 26px;text-align:center;font:600 32px/1 Poppins;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.55)"><span data-centro>orçamento de marca não é tabela.</span></div>`,
+  <div class="abs" data-centro style="left:0;right:0;top:168px;text-align:center;font:500 40px/1.16 Poppins;color:var(--ivory)">quanto mais coisa<br>vai no prato,</div>
+  <div class="abs serif gasto" data-centro style="left:0;right:0;top:252px;text-align:center;font-size:206px;line-height:.9;color:var(--ivory)">mais <em style="color:var(--manteiga)">pesa.</em></div>
+  <div class="abs" data-bloco style="left:74px;top:918px;width:268px;background:var(--ivory);color:var(--tinta);padding:16px 10px 18px;text-align:center;transform:rotate(-4deg);box-shadow:5px 6px 0 rgba(42,20,51,.5)">
+    <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.3"></div>
+    <span data-centro class="serif" style="position:relative;display:block;font-size:60px;line-height:.9">só o logo</span><span data-centro style="position:relative;display:block;font:600 24px/1.2 Poppins;color:var(--wine);margin-top:6px">pesa pouco.</span></div>
+  <div class="abs" data-bloco style="left:478px;top:964px;width:386px;background:var(--manteiga);color:var(--tinta);padding:16px 10px 18px;text-align:center;transform:rotate(3deg);box-shadow:5px 6px 0 rgba(42,20,51,.5)">
+    <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:400px;mix-blend-mode:multiply;opacity:.3"></div>
+    <span data-centro class="serif" style="position:relative;display:block;font-size:60px;line-height:.9">a marca <em style="color:var(--violeta)">inteira</em></span><span data-centro style="position:relative;display:block;font:600 24px/1.2 Poppins;color:var(--wine);margin-top:6px">pesa mais.</span></div>
+  ${fita(140,896,-8,130)}${fita(610,942,5,130)}
+  <div class="abs" data-bloco style="left:215px;top:1158px;width:650px;background:var(--violeta-2);color:var(--ivory);border-radius:999px;padding:24px 20px 26px;text-align:center;font:600 32px/1 Poppins;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)"><span data-centro>orçamento de marca não é tabela.</span></div>`,
 
-/* 05 · a chamada — pergunta gigante em serifa + senha de atendimento chamando pra dm (objetivo: pedido de orçamento, não comentário).
-   Único 3D: o cursor, clicando na senha. */
+/* 05 · a chamada — a conversa de dm já começada: o selo da Emi de avatar, a pergunta dela, a resposta pronta da pessoa e o cursor no botão de enviar.
+   O objetivo é a pessoa pedir orçamento. Elementos da marca: selo (inteiro, reto, sem recolorir), chip "disponível", cursor. */
 5:()=>`<div class="abs" style="inset:0;background:var(--ivory)"></div>
   <img class="abs" src="${estrelaReticula(820,css('lavanda'))}" style="left:520px;top:-300px;width:820px;opacity:.5;transform:rotate(12deg)">
   <img class="abs" src="${estrelaReticula(520,css('lavanda'))}" style="left:-230px;top:960px;width:520px;opacity:.4;transform:rotate(-14deg)">
   <div class="abs" style="inset:0;background-image:var(--tx-fibra);background-size:520px;mix-blend-mode:multiply;opacity:.3"></div>
   ${cab(css('tinta'))}
-  <div class="abs serif gasto" data-centro style="left:0;right:0;top:172px;text-align:center;font-size:214px;line-height:.82;color:var(--tinta)">quer saber<br>quanto pesa<br>a <em style="color:var(--pink)">sua?</em></div>
-  <div class="abs" data-bloco style="left:170px;top:770px;width:740px;transform:rotate(2deg);filter:drop-shadow(0 18px 22px rgba(42,20,51,.34))">
-    <div style="position:relative;padding:22px;background:var(--violeta);-webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 10px,transparent 96%,#000) -15px -15px/30px 30px round;mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 10px,transparent 96%,#000) -15px -15px/30px 30px round">
-      <div data-miolo style="background:var(--violeta);color:var(--ivory);padding:32px 30px 32px;text-align:center">
-        <div data-centro style="font:500 20px/1 Poppins;letter-spacing:.2em;text-transform:uppercase;color:var(--manteiga)">senha de atendimento</div>
-        <div style="border-top:3px dashed var(--ivory);opacity:.6;margin:20px 0 20px"></div>
-        <div data-centro style="font:500 32px/1 Poppins">me chama na dm e escreve</div>
-        <div class="anton" data-centro style="font-size:100px;line-height:1.02;color:var(--ivory);margin-top:10px">quero<br>um orçamento</div>
-        <div data-centro style="font:500 28px/1.24 Poppins;margin-top:16px">a gente vê junto o que<br>vai no prato da sua marca.</div>
-      </div></div>
-    <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:420px;mix-blend-mode:multiply;opacity:.25;pointer-events:none"></div>
+  <div class="abs serif gasto" data-centro style="left:0;right:0;top:166px;text-align:center;font-size:188px;line-height:.82;color:var(--tinta)">quer saber<br>quanto pesa<br>a <em style="color:var(--pink)">sua?</em></div>
+  <div class="abs" data-bloco style="left:140px;top:660px;width:800px;background:var(--lavanda-2);border:5px solid var(--tinta);border-radius:44px;box-shadow:10px 11px 0 var(--tinta);transform:rotate(-1.5deg);overflow:hidden">
+    <div style="display:flex;align-items:center;gap:18px;padding:20px 30px;background:var(--ivory);border-bottom:5px solid var(--tinta)">
+      <img src="marca/selo-ems.png" style="height:92px">
+      <span style="font:600 32px/1 Poppins;color:var(--tinta)">@itsemsdesign</span>
+      <span style="margin-left:auto;display:inline-flex;align-items:center;gap:10px;font:500 20px/1 Poppins;color:var(--tinta);border:3px solid var(--tinta);border-radius:999px;padding:9px 16px"><i style="width:10px;height:10px;border-radius:50%;background:#7cf29c;box-shadow:0 0 0 2px var(--tinta)"></i>dm aberta</span>
+    </div>
+    <div style="padding:30px 30px 26px;display:flex;flex-direction:column;gap:20px">
+      <div style="align-self:flex-start;background:var(--ivory);color:var(--tinta);border:4px solid var(--tinta);border-radius:30px 30px 30px 8px;padding:18px 26px 20px;font:500 31px/1.22 Poppins">me conta o que vai<br>no prato da sua marca?</div>
+      <div style="align-self:flex-end;background:var(--violeta);color:var(--ivory);border:4px solid var(--tinta);border-radius:30px 30px 8px 30px;padding:20px 30px 22px;font:600 46px/1.08 Poppins">quero<br>um orçamento</div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:6px">
+        <span style="flex:1;background:var(--ivory);border:4px solid var(--tinta);border-radius:999px;padding:18px 28px;font:400 27px/1 Poppins;color:rgba(42,20,51,.55)">mensagem...</span>
+        <span style="width:74px;height:74px;border-radius:50%;background:var(--pink);border:4px solid var(--tinta);display:flex;align-items:center;justify-content:center"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M4 12 H19 M13 5 L20 12 L13 19" fill="none" stroke="${css('ivory')}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </div>
   </div>
-  ${fita(455,748,-3)}
-  <img class="abs" src="${P}cursor-rec.png" style="left:818px;top:1092px;width:170px;transform:rotate(-4deg);filter:drop-shadow(-8px 14px 10px rgba(42,20,51,.42));z-index:6">`,
+  <img class="abs" src="${P}cursor-rec.png" style="left:884px;top:1172px;width:118px;transform:rotate(-4deg);filter:drop-shadow(-8px 14px 10px rgba(42,20,51,.42));z-index:6">`,
 };
 const n=new URLSearchParams(location.search).get('n')||'2';
 document.getElementById('c').innerHTML=L[n]()+acab;
