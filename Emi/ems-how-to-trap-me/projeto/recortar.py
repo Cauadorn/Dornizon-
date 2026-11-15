@@ -1,11 +1,12 @@
 # Separa os objetos de uma folha de recortes gerada sobre fundo liso #E9E9E9 (só Pillow + numpy).
-# uso: python3 recortar.py folhas/gatos.png gatos [tolerancia=11] -> recortes/gatos-1.png ... (ordem de leitura)
+# uso: python3 recortar.py folhas/gatos.png gatos [tolerancia=11] [halo] -> recortes/gatos-1.png ... (ordem de leitura)
 import sys
 import numpy as np
 from PIL import Image, ImageFilter, ImageDraw, ImageOps
 
 folha, nome = sys.argv[1], sys.argv[2]
 tol = float(sys.argv[3]) if len(sys.argv) > 3 else 11
+halo = len(sys.argv) > 4 and sys.argv[4] == 'halo'   # tira também o clarão branco sem cor em volta do objeto
 src = Image.open(folha)
 tem_alfa = src.mode == 'RGBA' and np.asarray(src)[..., 3].min() < 250   # folha que já veio sem fundo do Magnific
 im = src.convert('RGB')
@@ -13,6 +14,7 @@ a = np.asarray(im).astype(np.int16)
 H, W = a.shape[:2]
 fundo = np.median(np.concatenate([a[:8].reshape(-1, 3), a[-8:].reshape(-1, 3), a[:, :8].reshape(-1, 3), a[:, -8:].reshape(-1, 3)]), axis=0)
 parece = (np.abs(a - fundo).max(axis=2) <= tol)
+if halo: parece |= ((a.max(axis=2) - a.min(axis=2)) < 17) & (a.min(axis=2) > 205)
 # só é fundo o que está ligado à borda da folha (o claro de dentro do objeto fica)
 m = ImageOps.expand(Image.fromarray((parece * 255).astype('uint8')), 1, 255)
 ImageDraw.floodfill(m, (0, 0), 128)

@@ -41,6 +41,12 @@ svg.ht { inset: 0; width: 100%; height: 100%; fill: var(--estrela); opacity: .55
 .iscas { inset: 0; isolation: isolate; }
 .isca { position: absolute; filter: drop-shadow(0 8px 10px rgba(42, 20, 51, .45)); }
 
+/* ícones dos programas, na lâmina de ferramentas */
+.app { width: 112px; height: 112px; border-radius: 26px; display: grid; place-items: center; font: 600 56px/1 var(--sans); letter-spacing: -.02em; overflow: hidden; }
+.app.ps { background: #001e36; color: #31a8ff; border: 4px solid #31a8ff; }
+.app.ai { background: #330000; color: #ff9a00; border: 4px solid #ff9a00; }
+.app.fg { background: #1e1e1e; }
+
 /* título em adesivo: contorno marfim e sombra dura; um destaque só, em itálico */
 h1 { left: 0; width: 1080px; top: 96px; height: 330px; font-weight: 400; filter: drop-shadow(9px 10px 0 var(--tinta)); }
 h1 > * { position: absolute; }
