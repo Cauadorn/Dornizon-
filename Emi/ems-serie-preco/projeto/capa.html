@@ -2,33 +2,56 @@
 <style>
 @font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Regular.ttf);font-style:normal}
 @font-face{font-family:"Instrument Serif";src:url(fonts/InstrumentSerif-Italic.ttf);font-style:italic}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-Regular.ttf);font-weight:400}
 @font-face{font-family:"Poppins";src:url(fonts/Poppins-Medium.ttf);font-weight:500}
 @font-face{font-family:"Poppins";src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
 html,body{margin:0;background:#111}*{box-sizing:border-box}
-#c{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Poppins}
+#c{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Poppins;color:#fffbde}
 #c>*{position:absolute}
 .foto{inset:0;width:1080px;height:1350px;object-fit:cover}
-/* cabeçalho fino, igual nas três: @ à esquerda, série à direita */
-.tag{left:110px;top:90px;font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;white-space:nowrap}
+.tag{font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;white-space:nowrap}
 .tag svg{position:absolute;left:-19px;bottom:-21px}
-.serie{left:326px;top:100px;font:500 19px/1 Poppins;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.serie{font:500 19px/1 Poppins;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 .serie b{font-weight:600}
-/* a entrada da frase: cartão-adesivo colado em cima do começo da palavra 3D */
+.serif{font-family:"Instrument Serif";font-weight:400;letter-spacing:-.015em;white-space:nowrap}
+.serif em{font-style:italic}
 .cartao{font:600 38px/1.12 Poppins;padding:18px 26px 20px;border-radius:20px;white-space:nowrap;transform-origin:0 100%;box-shadow:7px 8px 0 rgba(42,20,51,.55)}
-/* o fecho: serifa grande na base, uma palavra em itálico */
-.fecho{left:90px;font:400 58px/.98 "Instrument Serif";letter-spacing:-.015em;white-space:nowrap}
-.fecho em{font-style:italic}
+/* notinha */
+.nota{color:#2a1433;text-align:center;transform-origin:50% 0}
+.nota .cab{font:500 17px/1 Poppins;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+.nota .lin{display:flex;align-items:baseline;gap:10px;font:500 27px/1 Poppins;margin-top:17px;text-align:left}
+.nota .lin i{flex:1;border-bottom:3px dotted rgba(42,20,51,.45);transform:translateY(-5px)}
+.nota .lin b{font-weight:600}
+.nota hr{border:0;border-top:3px dashed #2a1433;margin:24px 0 18px}
 </style></head><body><div id="c"></div><script>
-const V={
- quilo:{n:1,ink:'#fffbde',tag:'#6225d8',cart:['#fffbde','#2a1433',90,676,-5,'marca não<br>se vende no'],fecho:[1146,'o que entra no <em>prato</em><br>de uma identidade visual.','#f2cf7a']},
- credito:{n:2,ink:'#2a1433',tag:'#dd34a8',cart:['#2a1433','#fffbde',90,772,-5,'no débito<br>ou no'],fecho:[1140,'o que vem na <em>notinha</em><br>de uma identidade visual.','#dd34a8']},
- bolinha:{n:3,ink:'#fffbde',tag:'#dd34a8',cart:['#fffbde','#2a1433',90,612,-5,'design não é<br>máquina de'],fecho:[1146,'não é pôr a moeda<br>e sair marca <em>pronta.</em>','#f2cf7a']},
-};
-const k=new URLSearchParams(location.search).get('v')||'quilo',v=V[k];
 const cur='<svg width="28" height="28" viewBox="0 0 24 24"><path d="M3 2 L21 10 L12.5 12.5 L9 21 Z" fill="#2a1433" stroke="#fffbde" stroke-width="1.6" stroke-linejoin="round"/></svg>';
-document.getElementById('c').innerHTML=`<img class="foto" src="cenas/${k}.png">
- <span class="tag" style="background:${v.tag}">@itsemsdesign${cur}</span>
- <span class="serie" style="color:${v.ink}">série preço · <b>0${v.n}</b> / 03</span>
- <span class="cartao" style="left:${v.cart[2]}px;top:${v.cart[3]}px;background:${v.cart[0]};color:${v.cart[1]};transform:rotate(${v.cart[4]}deg)">${v.cart[5]}</span>
- <span class="fecho" style="top:${v.fecho[0]}px;color:${v.ink}">${v.fecho[1].replace('<em>',`<em style="color:${v.fecho[2]}">`)}</span>`;
+const tag=(x,y,bg)=>`<span class="tag" style="left:${x}px;top:${y}px;background:${bg}">@itsemsdesign${cur}</span>`;
+const V={
+ // 01 · adesivo colado na palavra + fecho em serifa encaixado embaixo dela
+ quilo:`<img class="foto" src="cenas/quilo.png">
+  ${tag(110,90,'#6225d8')}<span class="serie" style="left:356px;top:100px">série preço · <b>01</b> / 03</span>
+  <span class="cartao" style="left:90px;top:704px;background:#fffbde;color:#2a1433;transform:rotate(-5deg)">marca não<br>se vende no</span>
+  <span class="serif" style="left:90px;top:1132px;font-size:60px;line-height:.96">o que entra no <em style="color:#f2cf7a">prato</em><br>de uma identidade visual.</span>`,
+ // 02 · o texto é impresso na própria notinha
+ credito:`<img class="foto" src="cenas/credito.png">
+  <span class="serif" style="left:338px;top:408px;font-size:90px;line-height:.9;color:#2a1433;transform:rotate(-1.5deg)">ou <em style="color:#dd34a8">débito?</em></span>
+  <div class="nota" style="left:240px;top:566px;width:580px;transform:perspective(1500px) rotateX(13deg)">
+    <div class="cab">série preço · 02 / 03</div>
+    <div class="serif" style="font-size:58px;line-height:.96;margin-top:16px">o que vem na notinha<br>de uma identidade visual</div>
+    <hr>
+    <div class="lin"><span>pesquisa</span><i></i><b>incluso</b></div>
+    <div class="lin"><span>conceito</span><i></i><b>incluso</b></div>
+    <div class="lin"><span>letra e cor</span><i></i><b>incluso</b></div>
+    <div class="lin"><span>ajustezinho infinito</span><i></i><b style="color:#dd34a8">à parte</b></div>
+    <hr>
+    <div class="lin" style="font-size:31px;margin-top:0"><b>total</b><i style="border:0"></i><b>arrasta pra ver</b></div>
+  </div>
+  ${tag(660,1268-90,'#6225d8')}`,
+ // 03 · manchete em serifa empilhada na palavra + pílula colada embaixo
+ bolinha:`<img class="foto" src="cenas/bolinha.png">
+  ${tag(110,90,'#dd34a8')}<span class="serie" style="left:356px;top:100px">série preço · <b>03</b> / 03</span>
+  <span class="serif" style="left:88px;top:574px;font-size:92px;line-height:.86">design não é<br>máquina de</span>
+  <span class="cartao" style="left:90px;top:1066px;background:#dd34a8;color:#fffbde;font-size:32px;border-radius:999px;padding:16px 30px 17px;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.6)">não é pôr a moeda e sair marca pronta.</span>`,
+};
+const k=new URLSearchParams(location.search).get('v')||'quilo';document.getElementById('c').innerHTML=V[k];
 </script></body></html>
