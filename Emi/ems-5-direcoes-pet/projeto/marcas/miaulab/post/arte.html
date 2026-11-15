@@ -27,28 +27,30 @@ function padrao(x, y, w, h, cel, fundo) {
   const r = cel * .4;
   for (let j = -1, l = 0; j * cel < h + cel; j++, l++) for (let i = -1; i * cel < w + cel; i++) {
     const cx = i * cel + cel / 2 + (l % 2 ? cel / 2 : 0), cy = j * cel + cel / 2;
-    if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${r}" fill="${C.rosa}"/>`
+    const olhoCor = fundo === C.rosa ? C.cobalto : C.rosa;
+    if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${r}" fill="${olhoCor}"/>`
       + `<path d="M0 ${-r * .8} Q${r * .36} 0 0 ${r * .8} Q${-r * .36} 0 0 ${-r * .8} Z" fill="${C.nanquim}"/><circle cx="${r * .3}" cy="${-r * .36}" r="${r * .15}" fill="#F6EEDC"/></g>`;
     else s += `<g transform="translate(${cx} ${cy}) rotate(-35)"><rect x="${-r * 1.05}" y="${-r * .42}" width="${r * 2.1}" height="${r * .84}" rx="${r * .42}" fill="#F6EEDC"/>`
-      + `<rect x="0" y="${-r * .42}" width="${r * 1.05}" height="${r * .84}" rx="${r * .42}" fill="${C.rosa}"/><rect x="0" y="${-r * .42}" width="${r * .45}" height="${r * .84}" fill="${C.rosa}"/></g>`;
+      + `<rect x="0" y="${-r * .42}" width="${r * 1.05}" height="${r * .84}" rx="${r * .42}" fill="${olhoCor}"/><rect x="0" y="${-r * .42}" width="${r * .45}" height="${r * .84}" fill="${olhoCor}"/></g>`;
   }
   p.insertAdjacentHTML('beforeend', s + '</svg>');
 }
 if (peca === 'pouch') {
-  // pouch inteiro em cobalto: microtexto mono no alto, padrão de olhos, faixa rosa com o nome do produto, MIAU gigante no pé
-  p.style.background = C.cobalto;
+  // pouch inteiro numa cor da marca (?cor=cobalto|rosa|manteiga): microtexto mono no alto, padrão de olhos, faixa com o
+  // nome do produto (?nome= ?l1= ?l2=), logo INTEIRO com .lab no pé
+  const esq = { cobalto: [C.cobalto, C.rosa, C.rosa], rosa: [C.rosa, C.cobalto, C.cobalto], manteiga: ['#F2DC8B', C.cobalto, C.cobalto] }[q.get('cor') || 'cobalto'];
+  const [fundo, tinta, faixa] = esq, corFaixaTexto = faixa === C.rosa ? C.nanquim : '#F6EEDC';
+  const nome = q.get('nome') || 'PELO & PELE', l1 = q.get('l1') || 'PETISCO FUNCIONAL COM ÔMEGA 3 E BIOTINA', l2 = q.get('l2') || 'PRA UM PELO QUE BRILHA · 60 G';
+  p.style.background = fundo;
   const m = W * .07, cel = W / 3.2;
-  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;right:0;top:${H * .135}px;text-align:center;font:700 ${W * .026}px/1 Mono;letter-spacing:.12em;color:#F6EEDC">MIAU.LAB · FÓRMULA Nº07 · FEITO PRA GATOS</div>`);
-  const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, C.cobalto);
-  // faixa rosa colada no padrão
+  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;right:0;top:${H * .135}px;text-align:center;font:700 ${W * .026}px/1 Mono;letter-spacing:.12em;color:${tinta}">MIAU.LAB · FÓRMULA Nº07 · FEITO PRA GATOS</div>`);
+  const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, fundo);
   const fTop = pTop + pH, fH = H * .165;
-  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;top:${fTop}px;width:${W}px;height:${fH}px;background:${C.rosa};color:${C.nanquim};box-sizing:border-box;padding:${fH * .14}px ${m}px 0">
-     <div style="font:900 ${W * .155}px/.86 Archivo;font-stretch:62%;letter-spacing:.005em">PELO & PELE</div>
-     <div style="font:700 ${W * .028}px/1.35 Mono;margin-top:${fH * .1}px">PETISCO FUNCIONAL COM ÔMEGA 3 E BIOTINA<br>PRA UM PELO QUE BRILHA · 60 G</div></div>`);
-  // logo INTEIRO (a Emi: "você cortou o MIAU, que é o logo, o mais importante"): de margem a margem, com a etiqueta .lab,
-  // ancorado no pé com a mesma margem das laterais; o gato fica no azul, entre a faixa rosa e as letras
+  p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;top:${fTop}px;width:${W}px;height:${fH}px;background:${faixa};color:${corFaixaTexto};box-sizing:border-box;padding:${fH * .14}px ${m}px 0">
+     <div style="font:900 ${W * .155}px/.86 Archivo;font-stretch:62%;letter-spacing:.005em">${nome}</div>
+     <div style="font:700 ${W * .028}px/1.35 Mono;margin-top:${fH * .1}px">${l1}<br>${l2}</div></div>`);
   const k = (W - 2 * m) / 899, x0 = m, y0 = H - m * 1.15 - 700 * k;
-  logo(x0, y0, k, { cor: C.rosa, fundo: C.cobalto, gato: C.nanquim, olho: C.rosa, labFundo: C.nanquim, labCor: C.rosa });
+  logo(x0, y0, k, { cor: tinta, fundo, gato: C.nanquim, olho: C.rosa, labFundo: C.nanquim, labCor: '#F6EEDC' });
 }
 if (peca === 'pote') {
   // rótulo de pote (a Emi: "igual da referência do primeiro… pele e unha, bafinho, coisas relacionadas a gatos"):
