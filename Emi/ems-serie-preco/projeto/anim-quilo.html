@@ -57,8 +57,8 @@ const pancada=(t,t0,freq=17,amort=5.5)=>t<t0?0:Math.exp(-amort*(t-t0))*Math.sin(
 const $=id=>document.getElementById(id);
 let M;
 // a pilha da arte, um pouco menor, assentada dentro do prato da balança nova
-const ESC=.80,CX=490,CY=392,DESCE=-9,DX=-10;   // as peças pousam no fundo do prato, dentro da abertura: nada passa por trás da parede, nada é cortado nem escurece
-const AJUSTE={cursor:[-44,2],estrela:[-20,4]};   // o cursor e a estrela entram mais pra dentro do prato, pra não sumirem atrás da borda
+const ESC=.93,CX=490,CY=392,DESCE=-8,DX=-12;   // as peças pousam no fundo do prato, dentro da abertura: nada passa por trás da parede, nada é cortado nem escurece
+const AJUSTE={cursor:[-46,-8],estrela:[-22,2]};   // o cursor e a estrela entram mais pra dentro do prato, pra não sumirem atrás da borda
 const casa=(m,k)=>{const a=AJUSTE[k]||[0,0];return{x:CX+(m.x-CX)*ESC+DX+a[0],y:CY+(m.y-CY)*ESC+DESCE+a[1],w:m.w*ESC,h:m.h*ESC}};
 // camadas do prato, de trás pra frente: tudo fica atrás da borda da frente, dentro da tigela
 const ORDEM=['bal-prato','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','cursor'];
@@ -69,7 +69,7 @@ const QUEDA=[   // cadência rápida: uma peça atrás da outra, o ponteiro sobe
  {id:'amostra1',pouso:1.12,peso:6,giro:-30}, {id:'amostra2',pouso:1.30,peso:6,giro:20},
  {id:'amostra3',pouso:1.48,peso:6,giro:-16}, {id:'amostra4',pouso:1.66,peso:6,giro:26},
  {id:'estrela',pouso:1.90,peso:6,giro:160}, {id:'cursor',pouso:2.16,peso:11,giro:-40},
- {id:'ar1',pouso:2.46,peso:7,giro:-150,alvo:[632,276],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato
+ {id:'ar1',pouso:2.46,peso:7,giro:-150,alvo:[652,258],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato
 ];
 const TQ=.30,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
 // a estrelinha: cai, bate no alto da pilha, quica e vai parar no chão, na frente da palavra
