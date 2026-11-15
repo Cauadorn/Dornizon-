@@ -13,7 +13,11 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 #cam{position:absolute;left:0;top:0;width:1080px;height:1350px;transform-origin:50% 40%}
 #cena{position:absolute;left:0;top:0;width:1024px;height:1280px;transform-origin:0 0;transform:scale(1.0546875)}
 #cena img,#prato img{position:absolute;display:block}
-#prato{position:absolute;left:0;top:0;width:1024px;height:1280px}
+#prato,#bal{position:absolute;left:0;top:0;width:1024px;height:1280px}
+#bal{transform:translateY(-46px)}   /* a balança sobe um pouco: o mostrador fica livre acima da palavra */
+#bal img{position:absolute;display:block}
+/* a parede da frente da tigela é acrílico: fica por cima das peças, mas deixa ver através, então nada aparece cortado */
+#l-bal-prato-frente{opacity:.42}
 #sombra{position:absolute;width:90px;height:18px;border-radius:50%;background:rgba(30,8,40,.55);filter:blur(6px)}
 #brilho{position:absolute;left:0;top:0;width:1024px;height:1280px;-webkit-mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mix-blend-mode:screen;overflow:hidden}
 #faixa{position:absolute;top:600px;left:0;width:340px;height:600px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,240,250,.85) 45%,rgba(255,255,255,.95) 50%,rgba(255,240,250,.85) 55%,rgba(255,255,255,0))}
@@ -21,7 +25,7 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 .tag{left:110px;top:90px;font:500 24px/1 Poppins;padding:.36em .7em .36em .5em;border-radius:5px;color:#fffbde;background:#6225d8;white-space:nowrap;transform-origin:0 100%}
 .tag svg{position:absolute;left:-19px;bottom:-21px}
 .cartao{left:90px;top:704px;font:600 38px/1.12 Poppins;padding:18px 26px 20px;border-radius:20px;white-space:nowrap;transform-origin:0 100%;box-shadow:7px 8px 0 rgba(42,20,51,.55);background:#fffbde;color:#2a1433}
-.fecho{left:90px;top:1132px;font:400 60px/.96 "Instrument Serif";letter-spacing:-.015em;white-space:nowrap}
+.fecho{left:318px;top:1150px;font:400 60px/.96 "Instrument Serif";letter-spacing:-.015em;white-space:nowrap}
 .fecho em{font-style:italic;color:#f2cf7a}
 .fecho span{display:block;overflow:hidden}.fecho span i{display:block;font-style:normal}
 </style>
@@ -30,9 +34,11 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 <div id="c">
   <div id="cam"><div id="cena">
     <img src="camadas/quilo/fundo.png" style="left:0;top:0">
-    <img id="corpo" src="camadas/quilo/bal-corpo.png">
-    <img id="pont" src="camadas/quilo/ponteiro.png">
-    <div id="prato"></div>
+    <div id="bal">
+      <img id="corpo" src="camadas/quilo/bal-corpo.png">
+      <img id="pont" src="camadas/quilo/ponteiro.png">
+      <div id="prato"></div>
+    </div>
     <img src="camadas/quilo/palavra.png" style="left:0;top:0">
     <div id="sombra"></div>
     <img id="l-ar2" src="camadas/quilo/ar2.png">
@@ -43,7 +49,7 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
   <span class="t fecho" id="fecho"><span><i>o que entra no <em>prato</em></i></span><span><i>de uma identidade visual.</i></span></span>
 </div>
 <script>
-const FPS=30,DUR=8.2;
+const FPS=30,DUR=6.4;
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const P=(t,t0,d)=>clamp((t-t0)/d);
 const outCubic=p=>1-Math.pow(1-p,3);
@@ -58,16 +64,16 @@ const casa=(m,k)=>{const a=AJUSTE[k]||[0,0];return{x:CX+(m.x-CX)*ESC+DX+a[0],y:C
 // camadas do prato, de trás pra frente: tudo fica atrás da borda da frente, dentro da tigela
 const ORDEM=['bal-prato','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','cursor','bal-prato-frente'];
 // o prato começa vazio. cada peça: quando pousa, quanto pesa (graus no ponteiro), de que giro vem
-const QUEDA=[
- {id:'A',pouso:1.00,peso:17,giro:-22}, {id:'a',pouso:1.50,peso:13,giro:18},
- {id:'amostra1',pouso:2.00,peso:6,giro:-30}, {id:'amostra2',pouso:2.28,peso:6,giro:20},
- {id:'amostra3',pouso:2.56,peso:6,giro:-16}, {id:'amostra4',pouso:2.84,peso:6,giro:26},
- {id:'estrela',pouso:3.30,peso:6,giro:160}, {id:'cursor',pouso:3.75,peso:11,giro:-40},
- {id:'ar1',pouso:4.25,peso:7,giro:-150,alvo:[640,272],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato, atrás da estrela e do cursor
+const QUEDA=[   // cadência rápida: uma peça atrás da outra, o ponteiro sobe sem parar
+ {id:'A',pouso:.62,peso:17,giro:-22}, {id:'a',pouso:.88,peso:13,giro:18},
+ {id:'amostra1',pouso:1.12,peso:6,giro:-30}, {id:'amostra2',pouso:1.30,peso:6,giro:20},
+ {id:'amostra3',pouso:1.48,peso:6,giro:-16}, {id:'amostra4',pouso:1.66,peso:6,giro:26},
+ {id:'estrela',pouso:1.90,peso:6,giro:160}, {id:'cursor',pouso:2.16,peso:11,giro:-40},
+ {id:'ar1',pouso:2.46,peso:7,giro:-150,alvo:[640,272],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato
 ];
-const TQ=.42,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
+const TQ=.30,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
 // a estrelinha: cai, bate no alto da pilha, quica e vai parar no chão, na frente da palavra
-const E2={sai:4.35,bate:4.75,topo:[585,96],chao:[842,1138],voo:.78};
+const E2={sai:2.50,bate:2.82,topo:[585,50],chao:[928,1168],voo:.70};
 
 function render(t){
   let dip=0;QUEDA.forEach(q=>{dip+=.6*q.peso*pancada(t,q.pouso,16,5.2)});dip+=3*pancada(t,E2.bate,18,6);
@@ -86,10 +92,10 @@ function render(t){
    else{const s=t-fim;cx=E2.chao[0]+26*(1-Math.exp(-4*s));cy=E2.chao[1]-70*Math.abs(Math.exp(-4.2*s)*Math.sin(9.5*s));r=-300-40*(1-Math.exp(-3*s));}
    e.style.left=(cx-m.w/2)+'px';e.style.top=(cy-m.h/2)+'px';e.style.opacity=op;e.style.transform=`rotate(${r}deg)`;
    const perto=t<E2.bate?0:clamp(1-(E2.chao[1]-cy)/260);const so=$('sombra');so.style.left=(cx-45)+'px';so.style.top=(E2.chao[1]+m.h/2-10)+'px';so.style.opacity=.9*perto*perto;so.style.transform=`scale(${.5+.5*perto})`;}
-  let ang=-TOTAL;QUEDA.forEach(q=>{ang+=q.peso*mola(P(t,q.pouso,.7))});ang+=5*pancada(t,E2.bate,20,5)+.9*Math.sin(t*2.3)*clamp(t-5.8);
+  let ang=-TOTAL;QUEDA.forEach(q=>{ang+=q.peso*mola(P(t,q.pouso,.55))});ang+=5*pancada(t,E2.bate,20,5)+.9*Math.sin(t*2.3)*clamp(t-3.9);
   $('pont').style.transform=`rotate(${ang}deg)`;
-  const b=P(t,6.1,1.3);$('faixa').style.transform=`translateX(${-360+1560*b}px) rotate(18deg)`;$('faixa').style.opacity=b>0&&b<1?.42:0;
-  $('cam').style.transform=`scale(${1.06-.06*outCubic(P(t,0,5.4))})`;
+  const b=P(t,4.2,1.2);$('faixa').style.transform=`translateX(${-360+1560*b}px) rotate(18deg)`;$('faixa').style.opacity=b>0&&b<1?.42:0;
+  $('cam').style.transform=`scale(${1.06-.06*outCubic(P(t,0,3.6))})`;
   const c=mola(P(t,.25,.9));$('cartao').style.opacity=clamp(P(t,.25,.15));$('cartao').style.transform=`rotate(${-5-14*(1-c)}deg) scale(${.5+.5*c})`;
   [...$('fecho').querySelectorAll('i')].forEach((l,i)=>{const p=outCubic(P(t,.5+i*.14,.6));l.style.transform=`translateY(${(1-p)*105}%)`;});
   const g=mola(P(t,.1,.8));$('tag').style.opacity=clamp(P(t,.1,.15));$('tag').style.transform=`scale(${.5+.5*g})`;

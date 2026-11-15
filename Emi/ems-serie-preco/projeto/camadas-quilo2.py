@@ -29,13 +29,20 @@ for i, c in enumerate(cs):
     if hi[0][i][3] >= 0 and cv2.contourArea(c) < 900: cv2.drawContours(pal, [c], -1, 255, -1)
 pal = cv2.morphologyEx(pal, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7)))
 pal = cv2.GaussianBlur(pal, (0, 0), 1.0)
-cv2.imwrite(out + '/palavra.png', np.dstack([im, pal])); cv2.imwrite(out + '/palavra-mask.png', np.dstack([np.full((H, W, 3), 255, np.uint8), pal]))
+# a palavra que vai pro vídeo é a gerada sozinha (inteira e limpa), no tamanho e no lugar da palavra da arte;
+# o recorte acima só serve pra saber onde ela fica e pra tirar a antiga do fundo
+ys_, xs_ = np.where(pal > 128); px0, px1, py1 = xs_.min(), xs_.max(), ys_.max()
+nova = cv2.imread(f'{PEC}/quilo-rec.png', cv2.IMREAD_UNCHANGED); esc = (px1 - px0 + 1) / nova.shape[1]
+esc *= .95; nova = cv2.resize(nova, (int(nova.shape[1] * esc), int(nova.shape[0] * esc)), interpolation=cv2.INTER_AREA)
+tela = np.zeros((H, W, 4), np.uint8); ty = py1 + 30 - nova.shape[0]; tx = (px0 + px1) // 2 - nova.shape[1] // 2; tela[ty:ty + nova.shape[0], tx:tx + nova.shape[1]] = nova
+cv2.imwrite(out + '/palavra.png', tela); cv2.imwrite(out + '/palavra-mask.png', np.dstack([np.full((H, W, 3), 255, np.uint8), tela[..., 3]]))
+print('palavra', px0, ty, nova.shape)
 
 # fundo sem balança, sem peças e sem palavra (a palavra volta por cima, como camada)
 tudo = cv2.dilate(((fg > 40) | (pal > 40)).astype(np.uint8) * 255, np.ones((35, 35), np.uint8))
 claro = ((vv > 140) & (fg < 40)).astype(np.uint8) * 255; claro[260:, :] = 0; claro[:, :560] = 0
 tudo |= cv2.dilate(cv2.morphologyEx(claro, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8)), np.ones((31, 31), np.uint8))
-tudo[1085:, :] = 0                                          # o reflexo da palavra no chão fica
+tudo[1128:, :] = 0                                          # o reflexo da palavra no chão fica
 peq = cv2.resize(im, (W // 4, H // 4), interpolation=cv2.INTER_AREA); mq = cv2.resize(tudo, (W // 4, H // 4), interpolation=cv2.INTER_NEAREST)
 liso = cv2.resize(cv2.GaussianBlur(cv2.inpaint(peq, mq, 12, cv2.INPAINT_TELEA), (0, 0), 9), (W, H), interpolation=cv2.INTER_CUBIC)
 w = cv2.GaussianBlur(tudo.astype(np.float32) / 255, (0, 0), 10)[..., None]
