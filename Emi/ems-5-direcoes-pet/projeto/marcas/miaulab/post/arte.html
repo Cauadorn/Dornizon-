@@ -11,7 +11,7 @@
 html, body { margin: 0; background: #fff; }
 #p { position: relative; overflow: hidden; background: #fff; }
 .logo { position: absolute; width: 899px; height: 700px; transform-origin: 0 0; }
-</style><script src="../gato-v3/gato.js"></script><script src="../logo.js"></script></head><body><div id="p"></div>
+</style><script src="../gato-v3/gato.js"></script><script src="peixe/peixe.js"></script><script src="../logo.js"></script></head><body><div id="p"></div>
 <script>
 const q = new URLSearchParams(location.search), peca = q.get('peca') || 'pouch';
 const W = +(q.get('w') || 1120), H = +(q.get('h') || 2000), p = document.getElementById('p');
@@ -30,6 +30,9 @@ function padrao(x, y, w, h, cel, fundo, tipo = 'remedio') {
     const olhoCor = fundo === C.rosa ? C.cobalto : C.rosa;
     if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${r}" fill="${olhoCor}"/>`
       + `<path d="M0 ${-r * .8} Q${r * .36} 0 0 ${r * .8} Q${-r * .36} 0 0 ${-r * .8} Z" fill="${C.nanquim}"/><circle cx="${r * .3}" cy="${-r * .36}" r="${r * .15}" fill="#F6EEDC"/></g>`;
+    else if (tipo === 'peixe') { const kp = r * 2.15 / PEIXE.w;   // peixinho gerado no Figma e vetorizado (peixe/vetoriza.py)
+      s += `<g transform="translate(${cx} ${cy}) rotate(-22) scale(${kp}) translate(${-PEIXE.w / 2} ${-PEIXE.h / 2})">`
+        + `<path d="${PEIXE.creme}" fill="#F6EEDC"/><path d="${PEIXE.rosa}" fill="${olhoCor}"/><path d="${PEIXE.preto}" fill="${C.nanquim}"/></g>`; }
     else if (tipo === 'miau') s += `<text x="${cx}" y="${cy + r * .3}" text-anchor="middle" transform="rotate(-12 ${cx} ${cy})" font-family="Mea" font-size="${r * 1.35}" fill="#F6EEDC">miau</text>`;
     else if (tipo === 'patinha') s += `<g transform="translate(${cx} ${cy}) rotate(-14)" fill="#F6EEDC">`
       + `<path d="M0 ${-r * .02} C${r * .42} ${-r * .02} ${r * .62} ${r * .32} ${r * .52} ${r * .52} C${r * .42} ${r * .72} ${r * .14} ${r * .62} 0 ${r * .62} C${-r * .14} ${r * .62} ${-r * .42} ${r * .72} ${-r * .52} ${r * .52} C${-r * .62} ${r * .32} ${-r * .42} ${-r * .02} 0 ${-r * .02} Z"/>`
@@ -72,7 +75,7 @@ if (peca === 'pouch') {
   p.style.background = fundo;
   const m = W * .07, cel = W / 3.2;
   p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;right:0;top:${H * .135}px;text-align:center;font:700 ${W * .026}px/1 Mono;letter-spacing:.12em;color:${tinta}">MIAU.LAB · FÓRMULA Nº07 · FEITO PRA GATOS</div>`);
-  const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, fundo, q.get('icone') || 'olhos');   // petisco nunca leva cápsula (cápsula é dos remédios)
+  const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, fundo, q.get('icone') || 'peixe');   // petisco: olho + peixinho; cápsula só nos remédios
   const fTop = pTop + pH, fH = H * .165;
   p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;top:${fTop}px;width:${W}px;height:${fH}px;background:${faixa};color:${corFaixaTexto};box-sizing:border-box;padding:${fH * .14}px ${m}px 0">
      <div style="font:900 ${W * .155}px/.86 Archivo;font-stretch:62%;letter-spacing:.005em">${nome}</div>
