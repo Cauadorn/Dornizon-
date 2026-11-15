@@ -61,63 +61,88 @@ const estrela=(x,y,tam,r=0)=>{const id='ge'+(ne++);return `<svg class="abs" styl
 const explosao=(x,y,tam,r,cor,html)=>{const pts=[];for(let i=0;i<28;i++){const a=i*Math.PI/14,rr=i%2?.82:1;pts.push((50+50*rr*Math.cos(a)).toFixed(2)+'% '+(50+50*rr*Math.sin(a)).toFixed(2)+'%');}
   return `<div class="abs" style="left:${x}px;top:${y}px;width:${tam}px;height:${tam}px;transform:rotate(${r}deg);filter:drop-shadow(5px 7px 0 rgba(42,20,51,.35));z-index:4"><div style="width:100%;height:100%;background:${cor};clip-path:polygon(${pts.join(',')});display:flex;align-items:center;justify-content:center;text-align:center">${html}</div></div>`};
 
+const F='cenas/fotos/';
+const foto=(nome,x,y,w,r)=>`<img class="abs" src="${F}${nome}-rec.png" style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${r}deg);filter:drop-shadow(-10px 18px 14px rgba(42,20,51,.45));z-index:5">`;
+/* peça 3D pequena, apoiada (sombra de contato embaixo) */
+const peca=(nome,w,r=0,extra='')=>`<img src="${P}${nome}-rec.png" style="width:${w}px;transform:rotate(${r}deg);filter:drop-shadow(0 10px 8px rgba(42,20,51,.38));${extra}">`;
+/* prato desenhado, visto de cima em ângulo: aro, fundo e sombra */
+const prato=(x,y,w)=>`<div class="abs" style="left:${x+w*.04}px;top:${y+w*.2}px;width:${w*.92}px;height:${w*.2}px;border-radius:50%;background:rgba(30,8,60,.5);filter:blur(16px)"></div>
+  <div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*.34}px;border-radius:50%;background:radial-gradient(ellipse at 50% 42%,#fffdf0 0,#f4edcb 58%,#d8cda6 100%);box-shadow:inset 0 -8px 14px rgba(42,20,51,.16)"></div>
+  <div class="abs" style="left:${x+w*.13}px;top:${y+w*.055}px;width:${w*.74}px;height:${w*.2}px;border-radius:50%;background:radial-gradient(ellipse at 50% 40%,#f1e9c6 0,#fffbde 80%);box-shadow:inset 0 6px 10px rgba(42,20,51,.14)"></div>`;
+
 const L={
-/* 02 · a pergunta — cartaz de oferta de mercado colado com fita, com o adesivo de explosão respondendo (universo da feira; letra de cartaz em caixa-alta).
-   Tudo centrado. "um" desce junto com "logo?". Sem 3D. */
+/* 02 · a pergunta — cartaz de oferta de feira colado com fita; as uvas e as ameixas são a banca (a fruta só entra aqui, onde faz sentido).
+   O conteúdo do cartaz é uma coluna centrada, com a mesma folga em cima e embaixo, e cabe dentro da moldura. */
 2:()=>`<div class="abs" style="inset:0;background:var(--lavanda-2)"></div>
   <img class="abs" src="${estrelaReticula(900,css('lavanda'))}" style="left:470px;top:680px;width:900px;opacity:.55;transform:rotate(14deg)">
   <img class="abs" src="${estrelaReticula(460,css('lavanda'))}" style="left:-190px;top:-150px;width:460px;opacity:.4;transform:rotate(-12deg)">
   <div class="abs" style="inset:0;background-image:var(--tx-fibra);background-size:520px;mix-blend-mode:multiply;opacity:.26"></div>
   ${cab(css('tinta'))}
-  <div class="abs" data-bloco style="left:120px;top:200px;width:840px;height:740px;transform:rotate(-2.5deg);filter:drop-shadow(0 20px 24px rgba(42,20,51,.3))">
+  <div class="abs" data-bloco style="left:130px;top:210px;width:820px;height:720px;transform:rotate(-2.5deg);filter:drop-shadow(0 20px 24px rgba(42,20,51,.3))">
     <div class="abs" style="inset:0;background:var(--manteiga)"><div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.4"></div></div>
-    <div class="abs" style="inset:22px;border:5px solid var(--tinta)"></div>
-    <div class="abs" data-centro style="left:0;right:0;top:78px;text-align:center;font:600 22px/1 Poppins;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);white-space:nowrap">a pergunta que eu mais recebo</div>
-    <div class="abs serif" data-centro style="left:0;right:0;top:140px;text-align:center;font-size:160px;color:var(--tinta)"><em>quanto custa</em></div>
-    <div class="abs anton gasto" data-centro style="left:0;right:0;top:296px;text-align:center;font-size:214px;line-height:1;color:var(--violeta)">um logo?</div>
-    <div class="abs" data-centro style="left:0;right:0;top:560px;text-align:center;font:500 36px/1.22 Poppins;color:var(--tinta)">nenhuma marca leva<br>as mesmas coisas.</div>
+    <div class="abs" style="inset:24px;border:5px solid var(--tinta)"></div>
+    <div class="abs" data-miolo style="inset:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+      <div data-centro style="font:600 22px/1 Poppins;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);white-space:nowrap">a pergunta que eu mais recebo</div>
+      <div class="serif" data-centro style="font-size:150px;line-height:.9;color:var(--tinta);margin-top:22px"><em>quanto custa</em></div>
+      <div class="anton gasto" data-centro style="font-size:176px;line-height:1;color:var(--violeta);margin-top:6px">um logo?</div>
+      <div data-centro style="font:500 34px/1.22 Poppins;color:var(--tinta);margin-top:26px">nenhuma marca leva<br>as mesmas coisas.</div>
+    </div>
   </div>
-  ${fita(455,178,2)}
-  ${explosao(668,800,318,10,css('pink'),`<span style="font:400 58px/.92 Anton;text-transform:uppercase;color:var(--ivory)">depende<br>do prato</span>`)}
-  <img class="abs" src="cenas/fotos/uvas-rec.png" style="left:70px;top:760px;width:300px;transform:rotate(-14deg);filter:drop-shadow(-10px 18px 14px rgba(42,20,51,.45));z-index:5"><img class="abs" src="cenas/fotos/ameixas-rec.png" style="left:300px;top:960px;width:300px;transform:rotate(8deg);filter:drop-shadow(-10px 18px 14px rgba(42,20,51,.45));z-index:5">${estrela(600,1150,84,12)}`,
+  ${fita(455,188,2)}
+  ${explosao(676,806,300,10,css('pink'),`<span style="font:400 54px/.92 Anton;text-transform:uppercase;color:var(--ivory)">depende<br>do prato</span>`)}
+  ${foto('uvas',74,770,290,-14)}${foto('ameixas',300,972,290,8)}`,
 
-/* 03 · a lista — bloquinho de borda ondulada preso com clipe sobre toalha xadrez (refs @iasminrodriguesdesign e @carolrech).
-   Título centrado; a lista é alinhada à esquerda porque é lista. Único 3D: o cursor, deitado no papel, indo marcar o último item. */
-3:()=>{const itens=[['a letra','a fonte que fala do jeito da marca.'],['a cor','paleta com motivo,<br>não cor bonita solta.'],['o uso','site, rede social, embalagem:<br>onde ela vai viver.'],['o detalhe','o grafismo que faz<br>reconhecer sem o nome.']];
+/* 03 · a lista — bloquinho de borda ondulada com clipe sobre toalha xadrez. O papel fica no meio da lâmina e o miolo é uma coluna
+   centrada, com a mesma folga em cima e embaixo. Cada item traz a sua peça ao lado: a imagem é o próprio assunto. */
+3:()=>{const itens=[['a letra','a fonte que fala<br>do jeito da marca.',peca('A',92)+peca('a-min',70,0,'margin-left:-14px')],
+    ['a cor','paleta com motivo,<br>não cor bonita solta.',[1,2,3,4].map((k,i)=>peca('amostra'+k,38,-16+11*i,i?'margin-left:-6px':'')).join('')],
+    ['o uso','site, rede social, embalagem:<br>onde ela vai viver.',peca('cursor',104)],
+    ['o detalhe','o grafismo que faz<br>reconhecer sem o nome.',peca('estrela',98)]];
   return `<div class="abs" style="inset:0;background:var(--ameixa)"></div>
   <div class="abs" style="inset:0;background-image:linear-gradient(rgba(123,77,242,.16) 50%,transparent 50%),linear-gradient(90deg,rgba(123,77,242,.16) 50%,transparent 50%);background-size:150px 150px"></div>
   <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:420px;mix-blend-mode:soft-light;opacity:.7"></div>
   ${cab(css('lavanda-2'))}
-  <div class="abs" data-bloco style="left:150px;top:176px;width:780px;height:1040px;transform:rotate(-2deg);filter:drop-shadow(0 22px 26px rgba(20,6,26,.5))">
+  <div class="abs" data-bloco style="left:140px;top:168px;width:800px;height:1070px;transform:rotate(-1.5deg);filter:drop-shadow(0 22px 26px rgba(20,6,26,.5))">
     <div class="abs" style="inset:0;background:var(--ivory);-webkit-mask:radial-gradient(circle 20px at 20px 0,transparent 98%,#000) -20px 0/40px 100%;mask:radial-gradient(circle 20px at 20px 0,transparent 98%,#000) -20px 0/40px 100%">
       <div class="abs" style="inset:0;background-image:var(--tx-relevo);background-size:620px;mix-blend-mode:multiply;opacity:.34"></div></div>
-    <div class="abs" data-centro style="left:0;right:0;top:74px;text-align:center;font:500 21px/1 Poppins;letter-spacing:.2em;text-transform:uppercase;color:var(--wine)">lista da feira</div>
-    <div class="abs serif" data-centro style="left:0;right:0;top:110px;text-align:center;font-size:122px;color:var(--tinta)">o que entra<br>no <em style="color:var(--pink)">prato</em></div>
-    <div class="abs" style="left:84px;right:84px;top:350px">
-      ${itens.map(([n,t],i)=>`<div style="display:flex;gap:26px;align-items:flex-start;padding:18px 0 20px;border-top:3px dotted rgba(42,20,51,.45)">
-        <span style="flex:none;width:46px;height:46px;border:4px solid var(--tinta);border-radius:10px;margin-top:8px;position:relative">${i<3?`<svg style="position:absolute;left:-4px;top:-16px" width="64" height="60" viewBox="0 0 64 60"><path d="M8 30 L24 46 L58 6" fill="none" stroke="${css('pink')}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>`:''}</span>
-        <span><span class="serif" style="display:block;font-size:78px;line-height:.86;color:var(--tinta)">${n}</span><span style="display:block;font:400 27px/1.25 Poppins;color:var(--tinta);margin-top:8px">${t}</span></span></div>`).join('')}
+    <div class="abs" data-miolo style="inset:20px 0 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div data-centro style="font:500 21px/1 Poppins;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);text-align:center">lista da feira</div>
+      <div class="serif" data-centro style="font-size:118px;color:var(--tinta);text-align:center;margin-top:14px">o que entra<br>no <em style="color:var(--pink)">prato</em></div>
+      <div style="width:640px;margin-top:26px">
+        ${itens.map(([n,t,img],i)=>`<div style="display:flex;gap:24px;align-items:center;padding:16px 0 18px;border-top:3px dotted rgba(42,20,51,.45)">
+          <span style="flex:none;width:44px;height:44px;border:4px solid var(--tinta);border-radius:10px;position:relative;align-self:flex-start;margin-top:14px">${i<3?`<svg style="position:absolute;left:-4px;top:-16px" width="62" height="58" viewBox="0 0 64 60"><path d="M8 30 L24 46 L58 6" fill="none" stroke="${css('pink')}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>`:''}</span>
+          <span style="flex:1"><span class="serif" style="display:block;font-size:74px;line-height:.86;color:var(--tinta)">${n}</span><span style="display:block;font:400 26px/1.24 Poppins;color:var(--tinta);margin-top:8px">${t}</span></span>
+          <span style="flex:none;width:150px;display:flex;align-items:center;justify-content:center">${img}</span></div>`).join('')}
+        <div style="border-top:3px dotted rgba(42,20,51,.45)"></div>
+      </div>
     </div>
   </div>
-  ${clipe(520,126,4)}
-  <img class="abs" src="cenas/fotos/ameixas-rec.png" style="left:770px;top:110px;width:250px;transform:rotate(-12deg);filter:drop-shadow(-10px 18px 14px rgba(42,20,51,.45));z-index:5">
-  <img class="abs" src="${P}cursor-rec.png" style="left:716px;top:1036px;width:236px;transform:rotate(-6deg);filter:drop-shadow(-10px 16px 12px rgba(42,20,51,.42))">`},
+  ${clipe(520,120,4)}`},
 
-/* 04 · a virada — a letra gigante em serifa fica atrás; na frente, um prato de verdade transbordando (foto recortada sobre um prato desenhado);
-   adesivo de apoio colado no prato. Tudo centrado. */
+/* 04 · a virada — dois pratos lado a lado explicam o argumento: só o logo pesa pouco, a marca inteira pesa mais.
+   Pratos desenhados, peças 3D apoiadas neles (as mesmas da lista). Sem fruta. Título e etiquetas centrados. */
 4:()=>`<div class="abs" style="inset:0;background:radial-gradient(ellipse 90% 70% at 50% 34%,#7b4df2 0,#6225d8 52%,#4a1a9e 100%)"></div>
   <img class="abs" src="${estrelaReticula(820,css('violeta-2'))}" style="left:480px;top:-300px;width:820px;opacity:.55;transform:rotate(16deg)">
   <img class="abs" src="${estrelaReticula(620,css('violeta-2'))}" style="left:-260px;top:940px;width:620px;opacity:.45;transform:rotate(-16deg)">
   ${cab(css('ivory'))}
-  <div class="abs" data-centro style="left:0;right:0;top:172px;text-align:center;font:500 40px/1.16 Poppins;color:var(--ivory)">quanto mais coisa<br>vai no prato,</div>
-  <div class="abs serif gasto" data-centro style="left:0;right:0;top:258px;text-align:center;font-size:330px;line-height:.78;color:var(--ivory)">mais<br><em style="color:var(--manteiga)">pesa.</em></div>
-  <div class="abs" style="left:190px;top:1168px;width:700px;height:100px;border-radius:50%;background:rgba(30,8,60,.55);filter:blur(22px)"></div>
-  <div class="abs" style="left:205px;top:1082px;width:670px;height:176px;border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#fffdf0 0,#f1ead0 62%,#d9cfae 100%);box-shadow:inset 0 -10px 18px rgba(42,20,51,.18)"></div>
-  <img class="abs" src="cenas/fotos/prato-rec.png" style="left:232px;top:776px;width:616px;filter:drop-shadow(0 16px 14px rgba(30,8,60,.45))">
-  <div class="abs" data-bloco style="left:560px;top:1142px;width:430px;background:var(--ivory);color:var(--tinta);border-radius:22px;padding:20px 16px 22px;text-align:center;font:600 31px/1.16 Poppins;transform:rotate(-4deg);box-shadow:6px 7px 0 rgba(42,20,51,.55);z-index:6"><span data-centro>orçamento de marca<br>não é tabela.</span></div>`,
+  <div class="abs" data-centro style="left:0;right:0;top:176px;text-align:center;font:500 40px/1.16 Poppins;color:var(--ivory)">quanto mais coisa<br>vai no prato,</div>
+  <div class="abs serif gasto" data-centro style="left:0;right:0;top:272px;text-align:center;font-size:236px;line-height:.9;color:var(--ivory)">mais <em style="color:var(--manteiga)">pesa.</em></div>
+  ${prato(96,790,340)}
+  <div class="abs" style="left:96px;top:660px;width:340px;display:flex;justify-content:center;align-items:flex-end;height:200px">${peca('estrela',150)}</div>
+  ${prato(480,760,504)}
+  <div class="abs" style="left:480px;top:520px;width:504px;height:330px">
+    <div class="abs" style="left:150px;top:6px;display:flex;align-items:flex-end">${[1,2,3,4].map((k,i)=>peca('amostra'+k,62,-22+14*i,i?'margin-left:-8px':'')).join('')}</div>
+    <div class="abs" style="left:54px;top:92px">${peca('A',200)}</div>
+    <div class="abs" style="left:206px;top:148px">${peca('a-min',148)}</div>
+    <div class="abs" style="left:318px;top:196px">${peca('estrela',96)}</div>
+    <div class="abs" style="left:356px;top:150px">${peca('cursor',128)}</div>
+  </div>
+  <div class="abs" data-bloco style="left:96px;top:936px;width:340px;text-align:center;color:var(--ivory)"><span data-centro class="serif" style="display:block;font-size:66px;line-height:.9">só o logo</span><span data-centro style="display:block;font:500 28px/1.2 Poppins;color:var(--lavanda-2);margin-top:8px">pesa pouco.</span></div>
+  <div class="abs" data-bloco style="left:480px;top:936px;width:504px;text-align:center;color:var(--ivory)"><span data-centro class="serif" style="display:block;font-size:66px;line-height:.9">a marca <em style="color:var(--manteiga)">inteira</em></span><span data-centro style="display:block;font:500 28px/1.2 Poppins;color:var(--lavanda-2);margin-top:8px">pesa mais.</span></div>
+  <div class="abs" data-bloco style="left:215px;top:1128px;width:650px;background:var(--ivory);color:var(--tinta);border-radius:999px;padding:24px 20px 26px;text-align:center;font:600 32px/1 Poppins;transform:rotate(-2deg);box-shadow:6px 7px 0 rgba(42,20,51,.55)"><span data-centro>orçamento de marca não é tabela.</span></div>`,
 
-/* 05 · a chamada — pergunta gigante em serifa + senha de atendimento (cartão com borda de selo, colado com fita) chamando pra dm.
-   O objetivo é a pessoa pedir orçamento, não comentar. Único 3D: a estrela, apoiada na senha. */
+/* 05 · a chamada — pergunta gigante em serifa + senha de atendimento chamando pra dm (objetivo: pedido de orçamento, não comentário).
+   Único 3D: o cursor, clicando na senha. */
 5:()=>`<div class="abs" style="inset:0;background:var(--ivory)"></div>
   <img class="abs" src="${estrelaReticula(820,css('lavanda'))}" style="left:520px;top:-300px;width:820px;opacity:.5;transform:rotate(12deg)">
   <img class="abs" src="${estrelaReticula(520,css('lavanda'))}" style="left:-230px;top:960px;width:520px;opacity:.4;transform:rotate(-14deg)">
@@ -126,7 +151,7 @@ const L={
   <div class="abs serif gasto" data-centro style="left:0;right:0;top:172px;text-align:center;font-size:214px;line-height:.82;color:var(--tinta)">quer saber<br>quanto pesa<br>a <em style="color:var(--pink)">sua?</em></div>
   <div class="abs" data-bloco style="left:170px;top:770px;width:740px;transform:rotate(2deg);filter:drop-shadow(0 18px 22px rgba(42,20,51,.34))">
     <div style="position:relative;padding:22px;background:var(--violeta);-webkit-mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 10px,transparent 96%,#000) -15px -15px/30px 30px round;mask:linear-gradient(#000 0 0) content-box,radial-gradient(circle 10px,transparent 96%,#000) -15px -15px/30px 30px round">
-      <div style="background:var(--violeta);color:var(--ivory);padding:30px 30px 34px;text-align:center">
+      <div data-miolo style="background:var(--violeta);color:var(--ivory);padding:32px 30px 32px;text-align:center">
         <div data-centro style="font:500 20px/1 Poppins;letter-spacing:.2em;text-transform:uppercase;color:var(--manteiga)">senha de atendimento</div>
         <div style="border-top:3px dashed var(--ivory);opacity:.6;margin:20px 0 20px"></div>
         <div data-centro style="font:500 32px/1 Poppins">me chama na dm e escreve</div>
@@ -136,7 +161,7 @@ const L={
     <div class="abs" style="inset:0;background-image:var(--tx-fibras);background-size:420px;mix-blend-mode:multiply;opacity:.25;pointer-events:none"></div>
   </div>
   ${fita(455,748,-3)}
-  <img class="abs" src="cenas/fotos/pitaya-rec.png" style="left:28px;top:1074px;width:206px;transform:rotate(-18deg);filter:drop-shadow(-10px 18px 14px rgba(42,20,51,.45));z-index:5">`,
+  <img class="abs" src="${P}cursor-rec.png" style="left:812px;top:1136px;width:176px;transform:rotate(-4deg);filter:drop-shadow(-8px 14px 10px rgba(42,20,51,.42));z-index:6">`,
 };
 const n=new URLSearchParams(location.search).get('n')||'2';
 document.getElementById('c').innerHTML=L[n]()+acab;

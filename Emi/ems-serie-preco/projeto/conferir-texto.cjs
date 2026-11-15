@@ -30,6 +30,15 @@ const { chromium } = require('playwright'); const path = require('node:path');
         if (e.closest('[data-centro]') || e.hasAttribute('data-centro')) { const base = girado ? girado.getBoundingClientRect() : { left: 0, right: 1080 }; const meio = (base.left + base.right) / 2;
           linhas.forEach((l) => { const c = (Math.min(...l.p.map((x) => x.x0)) + Math.max(...l.p.map((x) => x.x1))) / 2; if (Math.abs(c - meio) > 14) out.push(`fora do centro em ${Math.round(c - meio)}px: «${l.p.map((x) => x.t).join(' ').slice(0, 40)}»`); }); }
       }
+      // 5) miolo de cartão: o conteúdo tem a mesma folga em cima e embaixo, e dos dois lados
+      for (const m of document.querySelectorAll('[data-miolo]')) { const base = m.getBoundingClientRect(); let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+        const w = document.createTreeWalker(m, NodeFilter.SHOW_TEXT); for (let n = w.nextNode(); n; n = w.nextNode()) { if (!n.data.trim()) continue; const r = document.createRange(); r.selectNodeContents(n); for (const q of r.getClientRects()) { x0 = Math.min(x0, q.left); x1 = Math.max(x1, q.right); y0 = Math.min(y0, q.top); y1 = Math.max(y1, q.bottom); } }
+        // conta também imagem, caixinha de marcar e linha pontilhada: tudo o que se vê dentro do cartão
+        m.querySelectorAll('*').forEach((i) => { const s = getComputedStyle(i); if (i.tagName !== 'IMG' && !(parseFloat(s.borderTopWidth) > 0 || parseFloat(s.borderLeftWidth) > 0)) return; const q = i.getBoundingClientRect(); if (!q.width) return; x0 = Math.min(x0, q.left); x1 = Math.max(x1, q.right); y0 = Math.min(y0, q.top); y1 = Math.max(y1, q.bottom); });
+        const cima = y0 - base.top, baixo = base.bottom - y1, esq = x0 - base.left, dir = base.right - x1;
+        if (Math.abs(cima - baixo) > 22) out.push(`cartão com folga desigual: ${Math.round(cima)}px em cima, ${Math.round(baixo)}px embaixo`);
+        if (Math.abs(esq - dir) > 22) out.push(`cartão com folga desigual: ${Math.round(esq)}px à esquerda, ${Math.round(dir)}px à direita`);
+        if (Math.min(cima, baixo, esq, dir) < 28) out.push(`conteúdo encostando na borda do cartão (menor folga ${Math.round(Math.min(cima, baixo, esq, dir))}px)`); }
       return out;
     });
     console.log(`\n${alvo}: ${achados.length ? achados.length + ' problema(s)' : 'ok'}`); achados.forEach((a) => console.log('  - ' + a)); total += achados.length; await p.close();
