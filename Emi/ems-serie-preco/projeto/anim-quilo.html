@@ -37,6 +37,7 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
     <img src="camadas/quilo/fundo.png" style="left:0;top:0">
     <div id="bal">
       <img id="corpo" src="camadas/quilo/bal-corpo.png">
+      <svg id="risquinhos" style="position:absolute;overflow:visible"></svg>
       <img id="pont" src="camadas/quilo/ponteiro.png">
       <div id="prato"></div>
     </div>
@@ -105,6 +106,11 @@ function render(t){
 }
 fetch('camadas/quilo/meta.json').then(r=>r.json()).then(async m=>{M=m;
   $('prato').innerHTML=ORDEM.map(k=>{const q=k.startsWith('bal-')?m[k]:casa(m[k],k);const so=COM_SOMBRA.includes(k)?`<div class="sp" id="s-${k}" style="left:${q.x+q.w*.08}px;top:${q.y+q.h-12}px;width:${q.w*.84}px"></div>`:'';return so+`<img id="l-${k}" src="camadas/quilo/${k}.png" style="left:${q.x}px;top:${q.y}px;width:${q.w}px">`}).join('');
+  // graduação do mostrador: um risquinho a cada 9°, um mais comprido e mais grosso a cada cinco, como em balança de verdade
+  {const [ex,ey]=m.balanca.eixo,R=118,g=$('risquinhos');g.style.left=(ex-140)+'px';g.style.top=(ey-140)+'px';g.setAttribute('width',280);g.setAttribute('height',280);g.setAttribute('viewBox','-140 -140 280 280');
+   let h='';for(let i=0;i<40;i++){const a=i*9*Math.PI/180,gr=i%5===0,r0=gr?R-22:R-12,c=Math.sin(a),d=-Math.cos(a);
+     h+=`<line x1="${(r0*c).toFixed(2)}" y1="${(r0*d).toFixed(2)}" x2="${(R*c).toFixed(2)}" y2="${(R*d).toFixed(2)}" stroke="#2a1433" stroke-width="${gr?4.2:2.4}" stroke-linecap="round" opacity="${gr?.8:.5}"/>`;}
+   g.innerHTML=h;}
   const co=$('corpo');co.style.left=m['bal-corpo'].x+'px';co.style.top=m['bal-corpo'].y+'px';
   const pt=$('pont'),po=m.ponteiro;pt.style.left=(m.balanca.eixo[0]-(po.px-po.x))+'px';pt.style.top=(m.balanca.eixo[1]-(po.py-po.y))+'px';pt.style.transformOrigin=`${po.px-po.x}px ${po.py-po.y}px`;
   await Promise.all([document.fonts.load('400 60px "Instrument Serif"'),document.fonts.load('italic 400 60px "Instrument Serif"'),document.fonts.load('600 40px Poppins'),document.fonts.load('500 40px Poppins'),...[...document.images].map(i=>i.decode().catch(()=>{}))]);
