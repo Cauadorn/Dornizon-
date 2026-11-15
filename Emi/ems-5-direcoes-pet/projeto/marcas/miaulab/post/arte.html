@@ -28,8 +28,10 @@ function padrao(x, y, w, h, cel, fundo, tipo = 'remedio') {
   for (let j = -1, l = 0; j * cel < h + cel; j++, l++) for (let i = -1; i * cel < w + cel; i++) {
     const cx = i * cel + cel / 2 + (l % 2 ? cel / 2 : 0), cy = j * cel + cel / 2;
     const olhoCor = fundo === C.rosa ? C.cobalto : C.rosa;
-    if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${r}" fill="${olhoCor}"/>`
-      + `<path d="M0 ${-r * .8} Q${r * .36} 0 0 ${r * .8} Q${-r * .36} 0 0 ${-r * .8} Z" fill="${C.nanquim}"/><circle cx="${r * .3}" cy="${-r * .36}" r="${r * .15}" fill="#F6EEDC"/></g>`;
+    // olho menor que o desenho do lado (a Emi: "os olhos são muito grandes"): ?olho= fração do raio, padrão .66
+    const ro = r * +(q.get('olho') || .66);
+    if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${ro}" fill="${olhoCor}"/>`
+      + `<path d="M0 ${-ro * .8} Q${ro * .36} 0 0 ${ro * .8} Q${-ro * .36} 0 0 ${-ro * .8} Z" fill="${C.nanquim}"/><circle cx="${ro * .3}" cy="${-ro * .36}" r="${ro * .15}" fill="#F6EEDC"/></g>`;
     else if (tipo === 'peixe') { const kp = r * 2.15 / PEIXE.w;   // peixinho gerado no Figma e vetorizado (peixe/vetoriza.py)
       s += `<g transform="translate(${cx} ${cy}) rotate(-22) scale(${kp}) translate(${-PEIXE.w / 2} ${-PEIXE.h / 2})">`
         + `<path d="${PEIXE.creme}" fill="#F6EEDC"/><path d="${PEIXE.rosa}" fill="${olhoCor}"/><path d="${PEIXE.preto}" fill="${C.nanquim}"/></g>`; }
