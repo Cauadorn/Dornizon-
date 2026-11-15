@@ -22,7 +22,7 @@ html, body { margin: 0; }
 .frase { position: absolute; left: 0; right: 0; text-align: center; font: 500 132px/1 IS; letter-spacing: -.035em; }
 .frase .s { font: 400 300px/.9 Mea; letter-spacing: 0; position: relative; display:inline-block; margin-top: -10px; }
 svg.risco { position: absolute; overflow: visible; }
-</style><script src="logo.js"></script></head><body>
+</style><script src="gato-v3/gato.js"></script><script src="logo.js"></script></head><body>
 <div class="p" id="p"></div>
 <script>
 const q = new URLSearchParams(location.search), parte = q.get('parte') || 'principal';
@@ -35,9 +35,11 @@ const riscos = (x, y, larg, cor) => { let s = `<svg class="risco" style="left:${
     const x0 = larg * a, x1 = larg * b, m = (x0 + x1) / 2;
     s += `<path d="M${x0} ${yy} Q${m} ${yy - 5 + w} ${x1} ${yy + 2} Q${m} ${yy - 5 + w + w * .9} ${x0} ${yy} Z" fill="${cor}"/>`; });
   return s + '</svg>'; };
+const V3 = q.get('v') !== '2';   // ?v=2 mostra o gato antigo, para comparar
 function logo(x, y, k, o) {
   const d = document.createElement('div'); d.className = 'logo'; d.style.cssText = `left:${x}px;top:${y}px;transform:scale(${k})`; p.appendChild(d);
-  miauLogo(d, o); return d;
+  const extra = {}; ['s3', 'sp3', 'olhoGiro', 'olhoDx', 'olhoDy', 'olhoK', 'giro3', 'fio3', 'corteUnha', 'patasDx'].forEach(c => { if (q.get(c)) extra[c] = +q.get(c); });
+  (V3 ? miauLogoV3 : miauLogo)(d, { ...o, ...extra }); return d;
 }
 // tudo junto (a Emi: "mania de deixar as coisas espaçadas… parece que tá tudo flutuando"): cada peça é UM bloco compacto,
 // com o texto pequeno encaixado no logo (como o "Freshly baked. Worth melting for." no copo da Melt) e a frase com as linhas
@@ -46,7 +48,7 @@ const cv = document.createElement('canvas').getContext('2d');
 const tinta = (txt, font, ls = 0) => { cv.font = font; cv.letterSpacing = ls + 'px'; const m = cv.measureText(txt);
   return { asc: m.actualBoundingBoxAscent, desc: m.actualBoundingBoxDescent, l: m.actualBoundingBoxLeft, r: m.actualBoundingBoxRight, w: m.width }; };
 const txt = (html, css) => p.insertAdjacentHTML('beforeend', `<div style="position:absolute;white-space:nowrap;${css}">${html}</div>`);
-document.fonts.ready.then(() => {
+Promise.all(['500 100px IS', '600 100px IS', '400 100px Mea', '900 100px Archivo', '700 64px Mono'].map(f => document.fonts.load(f))).then(() => {
 if (['principal', 'negativo', 'rosa'].includes(parte)) {
   const V = { principal: [C.creme, C.cobalto, C.nanquim, C.creme], negativo: [C.cobalto, C.creme, C.rosa, C.nanquim], rosa: [C.rosa, C.cobalto, C.nanquim, C.rosa] }[parte];
   const [bg, cor, labFundo, labCor] = V;
@@ -63,16 +65,18 @@ if (['principal', 'negativo', 'rosa'].includes(parte)) {
   p.style.background = C.rosa;
   const f1 = 168, F1 = `500 ${f1}px IS`, ls1 = -.04 * f1, l1 = 'Ciência que', m1 = tinta(l1, F1, ls1);
   const f2 = 330, F2 = `400 ${f2}px Mea`, l2 = 'ronrona.', m2 = tinta(l2, F2), mx = tinta('o', F2);
-  const vao = m1.asc * .1;                              // entre a base da linha 1 e o topo do x da script
-  const alt = m1.asc + vao + mx.asc + m2.desc, topo = H / 2 - alt / 2 - 40;
-  const b1 = topo + m1.asc, b2 = b1 + vao + mx.asc;     // linhas de base
-  // a palavra em script começa recuada sob o "n" de Ciência (como o "little" encaixado no "Your daily")
-  const larg = Math.max(m1.w, m2.r - m2.l), xA = (W - m1.w) / 2, xB = xA + m1.w * .2;
+  // folga medida tinta a tinta: do pé do ç/q da linha 1 ao ponto mais alto da script (as voltas do r sobem acima do x)
+  const vao = +(q.get('vao') || 16);
+  const alt = m1.asc + m1.desc + vao + m2.asc + m2.desc, topo = H / 2 - alt / 2 - 40;
+  const b1 = topo + m1.asc, b2 = b1 + m1.desc + vao + m2.asc;   // linhas de base
+  // centralizado pela TINTA de cada linha (antes o "ronrona" vinha recuado e o bloco pendia 70 px para a direita)
+  const xA = W / 2 - (m1.r - m1.l) / 2 + (+(q.get('ax') || 0)), xB = W / 2 - (m2.r - m2.l) / 2 + (+(q.get('bx') || 0));
   txt(l1, `left:${xA}px;top:${b1 - f1 * .5}px;font:${F1};line-height:${f1}px;height:0;letter-spacing:${ls1}px;color:${C.cobalto};display:flex;align-items:center`);
   txt(l2, `left:${xB}px;top:${b2 - f2 * .5}px;font:${F2};line-height:${f2}px;height:0;color:${C.cobalto};display:flex;align-items:center`);
   // corrige pela linha de base real (o centro da caixa de linha fica a (asc-desc)/2 da base)
   document.querySelectorAll('#p > div').forEach((el, i) => { const fs = i ? f2 : f1, F = i ? F2 : F1; cv.font = F; const m = cv.measureText('x');
     const base = i ? b2 : b1; el.style.top = (base - (m.fontBoundingBoxAscent - m.fontBoundingBoxDescent) / 2) + 'px'; });
+  if (q.get('so')) document.querySelectorAll('#p > div').forEach((el, i) => { if (i + 1 != q.get('so')) el.style.color = 'transparent'; });
   // selo pequeno logo abaixo, encostado no bloco
   txt('FEITO PRA GATOS', `left:50%;top:${b2 + m2.desc + 40}px;transform:translateX(-50%);border:2.5px solid ${C.cobalto};border-radius:99px;padding:15px 34px 14px;font:500 28px/1 IS;letter-spacing:.08em;color:${C.cobalto}`);
 } else if (parte === 'selo') {

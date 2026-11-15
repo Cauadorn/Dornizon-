@@ -62,3 +62,53 @@ function miauLogo(el, o = {}) {
   </svg>
   ${o.lab === false ? '' : `<div style="position:absolute;right:0;top:610px;background:${o.labFundo || '#141418'};color:${o.labCor || '#fff'};font:700 64px/1 Mono;padding:10px 20px 16px;letter-spacing:.02em">.lab</div>`}`;
 }
+
+// v3 (a Emi: "você refinou o logo? … tá refinadinho ou tá vetorizado?" e "mais parecido com o original… os olhos do gatinho"):
+// mesmo logo e mesma montagem da v2 (gato espiando de dentro do U, uma pata em cada haste, olhos de gato rosa com
+// pupila em fenda, arranhões descendo nas hastes), mas o desenho da cabeça e das patas sai de uma silhueta gerada e
+// vetorizada (gato-v3/gerado-b.png → gato-v3/extrai.py → gato-v3/gato.js): bochecha redonda com UM tufinho de cada lado,
+// orelhas com curva, patas com dedos e unhas em gancho, e um fio na cor do fundo separando a pata da cara.
+// Unhas e arranhões: os mesmos da v2 (unha off-white #F1ECE2 em gancho + arranhão fino), na ponta dos dedos novos. Precisa de gato-v3/gato.js carregado antes (const GATO3).
+function miauLogoV3(el, o = {}) {
+  const G = GATO3, fundo = o.fundo || '#2F55F2', cor = o.cor || '#FF9FD2', gato = o.gato || '#141418';
+  const olho = o.olho || '#FF9FD2', olho2 = o.olho2 || '#FFFFFF', id = o.id || 'l3';
+  const s = o.s3 || .3, sp = o.sp3 || s * 1.12, cx = o.cx || 798, parede = 260, dx = o.patasDx || 59.4;
+  const ko = .56, olhoGato = (x, r) => `<g transform="translate(${x} -80) rotate(${r})"><circle r="30" fill="${olho}"/>`
+    + `<path d="M0 -24 Q11 0 0 24 Q-11 0 0 -24 Z" fill="${gato}"/><circle cx="9" cy="-11" r="5" fill="${olho2}"/></g>`;
+  const cab = `<g transform="translate(${cx} ${parede}) scale(${s}) translate(${-G.cabeca.cx} ${-G.borda})"><path d="${G.cabeca.d}" fill="${gato}"/></g>`;
+  // olhos acompanham a inclinação da cabeça nova (a direita mais baixa); a v2 girava -5°, ao contrário: "o olho tá tudo torto"
+  const olhos = `<g transform="translate(${cx + (o.olhoDx || 0)} ${parede + (o.olhoDy || 0)}) scale(${ko * (o.olhoK || 1)}) rotate(${o.olhoGiro ?? 4} 0 -80)">${olhoGato(-54, 0)}${olhoGato(54, 0)}</g>`;
+  const pata = (P, x, lado) => {
+    const pc = (P.x0 + P.x1) / 2, t = `translate(${x} ${parede}) rotate(${lado * (o.giro3 ?? 4)}) scale(${sp}) translate(${-pc} ${-G.borda})`;
+    return { t, pc, svg: `<g transform="${t}">`
+      // fio na cor do fundo só contra a cara (acima da borda), como no desenho gerado
+      + `<path d="${P.d}" fill="none" stroke="${fundo}" stroke-width="${o.fio3 || 11}" stroke-linejoin="round" clip-path="url(#acimaB-${id})"/>`
+      + `<path d="${P.d}" fill="${gato}"/>`
+      + '</g>' };
+  };
+  const pE = pata(G.pataE, cx - dx, 1), pD = pata(G.pataD, cx + dx, -1);
+  // unhas e arranhões IGUAIS aos da v2 (mesmo desenho UNHA, mesma escala .56, mesmos tamanhos e desvios), só que
+  // na ponta de cada dedo da pata nova: unha off-white em gancho e, logo abaixo, o arranhão fino recortado na letra
+  const UNHA = 'M-2.8 -3 C-3 5 -1 11 2.6 14.5 C0.8 9 1.6 3 2.6 -3 Z', ku = .56, TAM = [[44, 60, 34], [38, 54, 28]];
+  const giro = o.giro3 ?? 4;
+  const dedo = (P, x, lado, [ux, uy]) => { const t = lado * giro * Math.PI / 180, px = (ux - (P.x0 + P.x1) / 2) * sp, py = (uy - G.borda) * sp;
+    return [x + px * Math.cos(t) - py * Math.sin(t), parede + px * Math.sin(t) + py * Math.cos(t)]; };
+  let unhasSvg = '', rastros = '';
+  [[G.pataE, cx - dx, 1], [G.pataD, cx + dx, -1]].forEach(([P, x, lado], i) => P.dedos.forEach((u, j) => {
+    const [tx, ty] = dedo(P, x, lado, u), r = lado * 7;
+    unhasSvg += `<g transform="translate(${tx} ${ty}) rotate(${r}) scale(${ku})"><path d="${UNHA}" transform="translate(0 ${-(o.encaixeUnha ?? 4)})" fill="${o.unha || '#F1ECE2'}"/></g>`;
+    const tr = r * Math.PI / 180, py = 13 - (o.encaixeUnha ?? 4) + 3;
+    const sx = tx - py * ku * Math.sin(tr), sy = ty + py * ku * Math.cos(tr), L = TAM[i][j], w = 1.25, d = (j - 1) * 1.6 + lado * -1.2;
+    rastros += `<path d="M${sx - w} ${sy} Q${sx - w * .6 + d * .4} ${sy + L * .55} ${sx + d} ${sy + L} Q${sx + w * .6 + d * .4} ${sy + L * .55} ${sx + w} ${sy} Z" fill="${fundo}"/>`;
+  }));
+  el.style.position = el.style.position || 'absolute';
+  el.innerHTML = `
+  <svg width="899" height="700" viewBox="0 0 899 700" style="position:absolute;left:0;top:0;overflow:visible">${cab}${olhos}</svg>
+  <div style="position:absolute;left:-19px;top:191px;font:900 470px/1 Archivo;font-stretch:62%;color:${cor};white-space:nowrap">MIAU</div>
+  <svg width="899" height="700" viewBox="0 0 899 700" style="position:absolute;left:0;top:0;overflow:visible">
+    <defs><clipPath id="acimaB-${id}" clipPathUnits="userSpaceOnUse"><rect x="-2000" y="-2000" width="5000" height="${2000 + G.borda}"/></clipPath>
+</defs>
+    ${o.unhas === false ? '' : rastros}${pE.svg}${pD.svg}${o.unhas === false ? '' : unhasSvg}
+  </svg>
+  ${o.lab === false ? '' : `<div style="position:absolute;right:0;top:610px;background:${o.labFundo || '#141418'};color:${o.labCor || '#fff'};font:700 64px/1 Mono;padding:10px 20px 16px;letter-spacing:.02em">.lab</div>`}`;
+}
