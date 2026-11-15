@@ -16,6 +16,8 @@ html,body{margin:0;background:#111}*{box-sizing:border-box}
 #prato,#bal{position:absolute;left:0;top:0;width:1024px;height:1280px}
 #bal{transform:translateY(-46px)}   /* a balança sobe um pouco: o mostrador fica livre acima da palavra */
 #bal img{position:absolute;display:block}
+/* prato mais raso: achatado na vertical a partir do fundo (onde encaixa no pescoço), a abertura fica menos funda */
+#l-bal-prato,#l-bal-prato-aro{transform-origin:50% 223px;transform:scaleY(.8)}
 .sp{position:absolute;height:18px;border-radius:50%;background:rgba(58,22,96,.6);filter:blur(5px)}
 #sombra{position:absolute;width:90px;height:18px;border-radius:50%;background:rgba(30,8,40,.55);filter:blur(6px)}
 #brilho{position:absolute;left:0;top:0;width:1024px;height:1280px;-webkit-mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mask:url(camadas/quilo/palavra-mask.png) 0 0/1024px 1280px no-repeat;mix-blend-mode:screen;overflow:hidden}
@@ -57,11 +59,11 @@ const pancada=(t,t0,freq=17,amort=5.5)=>t<t0?0:Math.exp(-amort*(t-t0))*Math.sin(
 const $=id=>document.getElementById(id);
 let M;
 // a pilha da arte, um pouco menor, assentada dentro do prato da balança nova
-const ESC=.93,CX=490,CY=392,DESCE=-8,DX=-12;   // as peças pousam no fundo do prato, dentro da abertura: nada passa por trás da parede, nada é cortado nem escurece
+const ESC=.93,CX=490,CY=392,DESCE=27,DX=-6;   // os pés chegam até a borda da frente: não sobra prato vazio   // as peças pousam no fundo do prato, dentro da abertura: nada passa por trás da parede, nada é cortado nem escurece
 const AJUSTE={cursor:[-46,-8],estrela:[-22,2]};   // o cursor e a estrela entram mais pra dentro do prato, pra não sumirem atrás da borda
 const casa=(m,k)=>{const a=AJUSTE[k]||[0,0];return{x:CX+(m.x-CX)*ESC+DX+a[0],y:CY+(m.y-CY)*ESC+DESCE+a[1],w:m.w*ESC,h:m.h*ESC}};
 // camadas do prato, de trás pra frente: tudo fica atrás da borda da frente, dentro da tigela
-const ORDEM=['bal-prato','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','cursor'];
+const ORDEM=['bal-prato','amostra1','amostra2','amostra3','amostra4','ar1','A','a','estrela','cursor','bal-prato-aro'];
 const COM_SOMBRA=['A','a','estrela','cursor'];   // sombra de contato no fundo do prato: a peça assenta, não flutua
 // o prato começa vazio. cada peça: quando pousa, quanto pesa (graus no ponteiro), de que giro vem
 const QUEDA=[   // cadência rápida: uma peça atrás da outra, o ponteiro sobe sem parar
@@ -69,11 +71,11 @@ const QUEDA=[   // cadência rápida: uma peça atrás da outra, o ponteiro sobe
  {id:'amostra1',pouso:1.12,peso:6,giro:-30}, {id:'amostra2',pouso:1.30,peso:6,giro:20},
  {id:'amostra3',pouso:1.48,peso:6,giro:-16}, {id:'amostra4',pouso:1.66,peso:6,giro:26},
  {id:'estrela',pouso:1.90,peso:6,giro:160}, {id:'cursor',pouso:2.16,peso:11,giro:-40},
- {id:'ar1',pouso:2.46,peso:7,giro:-150,alvo:[652,258],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato
+ {id:'ar1',pouso:2.46,peso:7,giro:-150,alvo:[652,292],fim:52},   // a amostra lilás que estava no ar: cai deitada dentro do prato
 ];
 const TQ=.30,TOTAL=QUEDA.reduce((s,q)=>s+q.peso,0);
 // a estrelinha: cai, bate no alto da pilha, quica e vai parar no chão, na frente da palavra
-const E2={sai:2.50,bate:2.82,topo:[585,50],chao:[928,1168],voo:.70};
+const E2={sai:2.50,bate:2.82,topo:[585,84],chao:[928,1168],voo:.70};
 
 function render(t){
   let dip=0;QUEDA.forEach(q=>{dip+=.6*q.peso*pancada(t,q.pouso,16,5.2)});dip+=3*pancada(t,E2.bate,18,6);

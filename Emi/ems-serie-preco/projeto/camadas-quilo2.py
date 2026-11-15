@@ -57,6 +57,7 @@ arco = cy + ry * np.sqrt(np.clip(1 - ((xs - cx) / rx) ** 2, 0, 1)); pesc = int(3
 corpo = bal.copy(); corpo[:pesc - 12, :, 3] = 0; salva('bal-corpo', corpo, bx, by)
 prato = bal.copy(); prato[pesc + 8:, :, 3] = 0; salva('bal-prato', prato[:pesc + 8], bx, by)
 frente = bal.copy(); frente[..., 3] = np.where((ys > arco) & (ys < pesc - 6), frente[..., 3], 0); salva('bal-prato-frente', frente[:pesc], bx, by)
+aro = bal.copy(); aro[..., 3] = np.where((ys > arco - 1) & (ys < arco + 9), aro[..., 3], 0); salva('bal-prato-aro', aro[:pesc + 8], bx, by)   # só o fio da borda da frente
 meta['balanca'] = {'eixo': [bx + 360 * E, by + 588 * E], 'pescoco': by + pesc, 'arco': [bx + cx, by + cy, rx, ry]}
 
 # estrelas inteiras, no tamanho e no lugar das da arte
