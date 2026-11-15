@@ -22,7 +22,7 @@ Promise.all(['500 100px IS', '400 100px Mea', '900 100px Archivo'].map(f => docu
 // padrão da marca (a partir do case RUTH da hola.carlydesign: embalagem 100% na cor, padrão gráfico grande, nome gigante
 // cortado e texto miúdo em mono — a Emi: "o saco vai ser bege? essas são as coisas que a gente escolheu?").
 // O padrão é nosso: olho de gato (o mesmo do logo: íris rosa, pupila em fenda, brilho) alternado com cápsula creme.
-function padrao(x, y, w, h, cel, fundo) {
+function padrao(x, y, w, h, cel, fundo, tipo = 'remedio') {
   let s = `<svg style="position:absolute;left:${x}px;top:${y}px" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="${w}" height="${h}" fill="${fundo}"/>`;
   const r = cel * .4;
   for (let j = -1, l = 0; j * cel < h + cel; j++, l++) for (let i = -1; i * cel < w + cel; i++) {
@@ -30,6 +30,22 @@ function padrao(x, y, w, h, cel, fundo) {
     const olhoCor = fundo === C.rosa ? C.cobalto : C.rosa;
     if ((i + l) % 2 === 0) s += `<g transform="translate(${cx} ${cy}) rotate(${(i * 7 + l * 13) % 2 ? 6 : -4})"><circle r="${r}" fill="${olhoCor}"/>`
       + `<path d="M0 ${-r * .8} Q${r * .36} 0 0 ${r * .8} Q${-r * .36} 0 0 ${-r * .8} Z" fill="${C.nanquim}"/><circle cx="${r * .3}" cy="${-r * .36}" r="${r * .15}" fill="#F6EEDC"/></g>`;
+    else if (tipo === 'olhos') continue;   // petisco: só o olho do logo (a Emi: "coisa vetorizada… feio demais" para pente/novelo/menta/peixe)
+    else if (tipo === 'pente') s += `<g transform="translate(${cx} ${cy}) rotate(-28)">`
+      // pentinho de gato (pelo & pele): costas arredondadas creme + dentes na cor do olho
+      + `<rect x="${-r * 1.05}" y="${-r * .5}" width="${r * 2.1}" height="${r * .42}" rx="${r * .21}" fill="#F6EEDC"/>`
+      + Array.from({ length: 9 }, (_, t) => `<rect x="${-r * .92 + t * r * .23}" y="${-r * .2}" width="${r * .11}" height="${r * .68}" rx="${r * .055}" fill="${olhoCor}"/>`).join('') + '</g>';
+    else if (tipo === 'novelo') s += `<g transform="translate(${cx} ${cy}) rotate(-15)">`
+      // novelo de lã (bola de pelo): bola creme com fios na cor do olho e uma pontinha de fio solta
+      + `<circle r="${r * .7}" fill="#F6EEDC"/>`
+      + [[-.5, .25], [-.15, .45], [.2, .5]].map(([o, k]) => `<path d="M${-r * .62} ${r * o} Q0 ${r * (o - k)} ${r * .62} ${r * (o + .1)}" fill="none" stroke="${olhoCor}" stroke-width="${r * .085}" stroke-linecap="round"/>`).join('')
+      + `<path d="M${-r * .25} ${-r * .62} Q${r * .2} ${-r * .05} ${-r * .05} ${r * .66}" fill="none" stroke="${olhoCor}" stroke-width="${r * .085}" stroke-linecap="round"/>`
+      + `<path d="M${r * .62} ${r * .3} Q${r * 1.0} ${r * .55} ${r * .9} ${r * .9} T${r * 1.15} ${r * 1.1}" fill="none" stroke="#F6EEDC" stroke-width="${r * .085}" stroke-linecap="round"/></g>`;
+    else if (tipo === 'menta') s += `<g transform="translate(${cx} ${cy}) rotate(-30)">`   // no manteiga a folha creme sumia: vira cobalto
+      // folhinha de menta (bafinho): duas folhas creme com nervura na cor do olho
+      + [[-1, -.2], [1, .25]].map(([lado, dy]) => `<g transform="translate(${lado * r * .32} ${r * dy}) rotate(${lado * 32})"><path d="M0 ${r * .62} C${-r * .55} ${r * .2} ${-r * .45} ${-r * .45} 0 ${-r * .72} C${r * .45} ${-r * .45} ${r * .55} ${r * .2} 0 ${r * .62} Z" fill="${fundo === '#F2DC8B' ? C.cobalto : '#F6EEDC'}"/>`
+        + `<path d="M0 ${r * .55} L0 ${-r * .55}" stroke="${fundo === '#F2DC8B' ? '#F6EEDC' : olhoCor}" stroke-width="${r * .07}" stroke-linecap="round"/>`
+        + `<path d="M0 ${r * .1} L${-r * .22} ${-r * .12} M0 ${-r * .15} L${r * .2} ${-r * .36}" stroke="${fundo === '#F2DC8B' ? '#F6EEDC' : olhoCor}" stroke-width="${r * .06}" stroke-linecap="round"/></g>`).join('') + '</g>';
     else s += `<g transform="translate(${cx} ${cy}) rotate(-35)"><rect x="${-r * 1.05}" y="${-r * .42}" width="${r * 2.1}" height="${r * .84}" rx="${r * .42}" fill="#F6EEDC"/>`
       + `<rect x="0" y="${-r * .42}" width="${r * 1.05}" height="${r * .84}" rx="${r * .42}" fill="${olhoCor}"/><rect x="0" y="${-r * .42}" width="${r * .45}" height="${r * .84}" fill="${olhoCor}"/></g>`;
   }
@@ -44,7 +60,7 @@ if (peca === 'pouch') {
   p.style.background = fundo;
   const m = W * .07, cel = W / 3.2;
   p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;right:0;top:${H * .135}px;text-align:center;font:700 ${W * .026}px/1 Mono;letter-spacing:.12em;color:${tinta}">MIAU.LAB · FÓRMULA Nº07 · FEITO PRA GATOS</div>`);
-  const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, fundo);
+  const pTop = H * .17, pH = H * .3; padrao(0, pTop, W, pH, cel, fundo, q.get('icone') || 'olhos');   // petisco nunca leva cápsula (cápsula é dos remédios)
   const fTop = pTop + pH, fH = H * .165;
   p.insertAdjacentHTML('beforeend', `<div style="position:absolute;left:0;top:${fTop}px;width:${W}px;height:${fH}px;background:${faixa};color:${corFaixaTexto};box-sizing:border-box;padding:${fH * .14}px ${m}px 0">
      <div style="font:900 ${W * .155}px/.86 Archivo;font-stretch:62%;letter-spacing:.005em">${nome}</div>
