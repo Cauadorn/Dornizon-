@@ -38,7 +38,7 @@ const riscos = (x, y, larg, cor) => { let s = `<svg class="risco" style="left:${
 const V3 = q.get('v') !== '2';   // ?v=2 mostra o gato antigo, para comparar
 function logo(x, y, k, o) {
   const d = document.createElement('div'); d.className = 'logo'; d.style.cssText = `left:${x}px;top:${y}px;transform:scale(${k})`; p.appendChild(d);
-  const extra = {}; ['s3', 'sp3', 'curva', 'rastroW', 'rastroK', 'olhoGiro', 'olhoDx', 'olhoDy', 'olhoK', 'giro3', 'fio3', 'corteUnha', 'patasDx'].forEach(c => { if (q.get(c)) extra[c] = +q.get(c); });
+  const extra = {}; ['s3', 'sp3', 'rasgo', 'rastroW', 'rastroK', 'olhoGiro', 'olhoDx', 'olhoDy', 'olhoK', 'giro3', 'fio3', 'corteUnha', 'patasDx'].forEach(c => { if (q.get(c)) extra[c] = +q.get(c); });
   if (q.get('forma')) extra.forma = q.get('forma');
   (V3 ? miauLogoV3 : miauLogo)(d, { ...o, ...extra }); return d;
 }

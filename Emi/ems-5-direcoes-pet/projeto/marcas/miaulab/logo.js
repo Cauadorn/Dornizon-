@@ -94,22 +94,30 @@ function miauLogoV3(el, o = {}) {
   const dedo = (P, x, lado, [ux, uy]) => { const t = lado * giro * Math.PI / 180, px = (ux - (P.x0 + P.x1) / 2) * sp, py = (uy - G.borda) * sp;
     return [x + px * Math.cos(t) - py * Math.sin(t), parede + px * Math.sin(t) + py * Math.cos(t)]; };
   let unhasSvg = '', rastros = '';
-  // arranhão curvo (a Emi: "os arranhões continuam retilíneos, retos"): o traço segue uma curva de Bézier que verga
-  // para fora (cada pata escorrega para o seu lado), afina até sumir e tem a largura levemente irregular, como um risco
-  // de unha de verdade. ?curva= controla quanto verga (fração do comprimento); ?forma=s faz um S suave.
-  function risco(sx, sy, L, lado, semente) {
-    const vg = (o.curva ?? .16) * L * -lado, S = o.forma === 's', w0 = o.rastroW || 1.35, N = 40;
-    const P = [[sx, sy], [sx + vg * (S ? -.5 : .15), sy + L * .33], [sx + vg * (S ? 1.3 : .75), sy + L * .7], [sx + vg * (S ? .7 : 1), sy + L]];
-    const pt = t => { const u = 1 - t; return [0, 1].map(k => u * u * u * P[0][k] + 3 * u * u * t * P[1][k] + 3 * u * t * t * P[2][k] + t * t * t * P[3][k]); };
-    const esq = [], dir = [];
+  // arranhão de verdade (a Emi: "os arranhões continuam retilíneos" e depois "não era pra ficar curvo, era pra ficar
+  // mais real"): reto como na v2 (mesma direção e desvio), mas com cara de risco de unha: borda rasgada e irregular
+  // (ruído fino diferente em cada lado), largura que crava logo abaixo da unha e some de forma desigual, um tremor leve
+  // no traço e, no do meio de cada pata, uma falha curta onde a unha "pulou".
+  const hash = (i, sd) => { const x = Math.sin(i * 127.1 + sd * 311.7) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; };
+  const ruido = (x, sd) => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return hash(i, sd) * (1 - u) + hash(i + 1, sd) * u; };
+  const fbm = (x, sd) => ruido(x, sd) * .6 + ruido(x * 2.3, sd + 7) * .28 + ruido(x * 5.1, sd + 13) * .12;
+  function risco(sx, sy, L, lado, sd) {
+    const j = sd % 3, d = (j - 1) * 1.6 + lado * -1.2, w0 = o.rastroW || 1.4, N = 160, R = o.rasgo ?? .45;
+    const falha = j === 1 ? [.5 + .06 * hash(sd, 3), .57 + .06 * hash(sd, 3)] : null;
+    const pecas = []; let esq = [], dir = [];
+    const fecha = () => { if (esq.length > 2) pecas.push(esq.concat(dir.reverse())); esq = []; dir = []; };
     for (let n = 0; n <= N; n++) {
-      const t = n / N, [x, y] = pt(t), [x2, y2] = pt(Math.min(1, t + .01)), [x1, y1] = pt(Math.max(0, t - .01));
-      let nx = -(y2 - y1), ny = x2 - x1; const m = Math.hypot(nx, ny) || 1; nx /= m; ny /= m;
-      // largura: sobe rápido logo abaixo da unha, afina devagar até a ponta, com um tremor discreto
-      const w = w0 * Math.min(1, t / .08 + .35) * Math.pow(1 - t, .85) * (1 + .18 * Math.sin(t * 17 + semente * 2.3) * Math.sin(t * 7 + semente));
-      esq.push([x + nx * w, y + ny * w]); dir.unshift([x - nx * w, y - ny * w]);
+      const t = n / N, x = sx + d * t + .45 * fbm(t * 3 + sd, sd + 1), y = sy + L * t;
+      // perfil: crava (sobe rápido), mantém um pouco e afina irregular até um fio
+      let w = w0 * Math.min(1, .45 + t / .05) * Math.pow(1 - t, .75) * (1 + .3 * fbm(t * 6, sd + 5));
+      if (falha && t > falha[0] && t < falha[1]) { fecha(); continue; }
+      if (falha && t >= falha[1]) w *= .7;
+      const rg = (k) => .55 * fbm(t * 13, sd + k) + .45 * fbm(t * 47, sd + k + 3);   // lascas grandes + farpas finas
+      const wl = Math.max(0, w * (1 + R * 1.15 * rg(11))), wr = Math.max(0, w * (1 + R * 1.15 * rg(23)));
+      esq.push([x - wl, y]); dir.push([x + wr, y]);
     }
-    return `<path d="M${esq.concat(dir).map(p => p[0].toFixed(2) + ' ' + p[1].toFixed(2)).join(' L')} Z" fill="${fundo}"/>`;
+    fecha();
+    return pecas.map(p => `<path d="M${p.map(q => q[0].toFixed(2) + ' ' + q[1].toFixed(2)).join(' L')} Z" fill="${fundo}"/>`).join('');
   }
   [[G.pataE, cx - dx, 1], [G.pataD, cx + dx, -1]].forEach(([P, x, lado], i) => P.dedos.forEach((u, j) => {
     const [tx, ty] = dedo(P, x, lado, u), r = lado * 7;
