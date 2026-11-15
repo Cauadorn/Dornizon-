@@ -12,3 +12,10 @@ ids = sorted([i for i in range(1, n) if st[i, 4] > 20000], key=lambda i: st[i, 0
 for nome, i in zip(['ameixas', 'uvas', 'pitaya'], ids):
     x, y, w, h = st[i, :4]; c = f[y:y + h, x:x + w].copy(); c[..., 3] = np.where(lab[y:y + h, x:x + w] == i, c[..., 3], 0)
     ys, xs = np.where(c[..., 3] > 20); Image.fromarray(c[ys.min():ys.max() + 1, xs.min():xs.max() + 1]).save(f'{d}/{nome}-rec.png'); print(nome, c.shape)
+
+# prato vazio, garfo e faca (foto de cima, fundo roxo escuro)
+m = rec('mesa'); n, lab, st, _ = cv2.connectedComponentsWithStats((m[..., 3] > 60).astype(np.uint8))
+ids = sorted([i for i in range(1, n) if st[i, 4] > 6000], key=lambda i: st[i, 0])
+for nome, i in zip(['garfo', 'prato-vazio', 'faca'], ids):
+    x, y, w, h = st[i, :4]; c = m[y:y + h, x:x + w].copy(); c[..., 3] = np.where(lab[y:y + h, x:x + w] == i, c[..., 3], 0)
+    Image.fromarray(c).save(f'{d}/{nome}-rec.png'); print(nome, c.shape)
