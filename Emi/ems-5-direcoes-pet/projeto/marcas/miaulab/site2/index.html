@@ -31,7 +31,7 @@ a { color: inherit; }
 #cur.grande { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: var(--cobalto); mix-blend-mode: normal; opacity: .9; }
 #cur span { position: absolute; inset: 0; display: grid; place-items: center; font: 400 26px/1 var(--acento); color: var(--creme); opacity: 0; }
 #cur.grande span { opacity: 1; }
-@media (hover: hover) and (pointer: fine) { #cur { display: block; } body { cursor: none; } a, button { cursor: none; } }
+
 
 /* topo */
 .topo { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); z-index: 50; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; pointer-events: none; }
@@ -48,7 +48,7 @@ a { color: inherit; }
 #hero .num { position: absolute; left: max(16px, env(safe-area-inset-left, 0px)); top: 96px; display: grid; gap: 10px; max-width: min(420px, 60vw); z-index: 3; }
 #hero h1 { margin: 0; font: 900 clamp(46px, 7.2vw, 108px)/.86 var(--display); font-stretch: 62%; text-transform: uppercase; color: var(--cobalto); }
 #hero p { margin: 0; max-width: 32ch; font-size: 16px; }
-#miauHero { position: absolute; left: 50%; bottom: 2svh; transform: translateX(-50%); width: min(94vw, 98svh); aspect-ratio: 899 / 560; z-index: 1; }
+#miauHero { position: absolute; left: 0; right: 0; margin: 0 auto; bottom: 2svh; width: min(94vw, 98svh); aspect-ratio: 899 / 560; z-index: 1; }
 #mao { position: absolute; left: 41vw; top: 7vh; width: min(27vw, 360px); z-index: 4; filter: drop-shadow(0 30px 30px #1c1a2440); will-change: transform; }
 #chuva { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 #dica { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 20px; z-index: 6; }
@@ -109,7 +109,6 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
 </style>
 
-<div id="cur"><span>miau</span></div>
 <header class="topo lado">
   <a class="marca" href="#hero" aria-label="MIAU.LAB, início">MIAU<small>.lab</small></a>
   <nav class="nav" aria-label="Seções"><a href="#gatoVem">O gato</a><a href="#linha">Fórmulas</a><a href="#manifesto">Ciência</a><a class="pil cheia" href="#linha">Ver fórmulas</a></nav>
@@ -120,7 +119,7 @@ a { color: inherit; }
     <div class="num"><span class="mono">01 — abre o pacote</span><h1>Petisco<br>com ciência.</h1><p>Fórmula veterinária, feita pra gatos. Pelo &amp; pele com ômega 3 e biotina.</p>
       <div><button class="pil cheia" id="sacode" type="button" data-hover>Sacudir o pacote</button></div></div>
     <div id="miauHero" role="img" aria-label="Logo MIAU.lab: um gato preto espiando por cima do U"></div>
-    <img id="mao" src="img/mao-pouch.webp" alt="Mão segurando o pouch Pelo & Pele da MIAU.LAB">
+    <div id="mao"><div id="maoMouse"><img id="maoImg" src="img/mao-pouch.webp" alt="Mão segurando o pouch Pelo & Pele da MIAU.LAB" style="width:100%;display:block"></div></div>
     <canvas id="chuva"></canvas>
     <span id="dica" class="mono">role ↓</span>
   </section>
@@ -179,9 +178,8 @@ a { color: inherit; }
   const C = { cobalto: '#2B3FD1', rosa: '#F4B9CD', manteiga: '#F2DC8B', creme: '#F6EEDC', nanquim: '#1C1A24' };
   const $ = id => document.getElementById(id), reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // ---------- cursor ----------
-  const cur = $('cur'); let mx = innerWidth / 2, my = innerHeight / 2;
-  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; cur.style.transform = `translate(${mx}px, ${my}px)`; }, { passive: true });
-  document.querySelectorAll('[data-hover], a, button').forEach(el => { el.addEventListener('pointerenter', () => cur.classList.add('grande')); el.addEventListener('pointerleave', () => cur.classList.remove('grande')); });
+  let mx = innerWidth / 2, my = innerHeight / 2;
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
   // ---------- logos com o gato (olhos seguem o cursor e piscam) ----------
   const logos = [];
   function poeLogo(caixa, o, ass = false) {
@@ -221,10 +219,10 @@ a { color: inherit; }
     requestAnimationFrame(chuva);
   }
   const som = id => { const a = $(id); try { a.currentTime = 0; a.play().catch(() => {}); } catch (e) {} };
-  $('sacode').addEventListener('click', () => { solta(26, 1.4); som('aMiau'); if (!reduz) gsap.fromTo('#mao', { rotate: -8 }, { rotate: 0, duration: .9, ease: 'elastic.out(1.2, .35)' }); });
+  $('sacode').addEventListener('click', () => { solta(26, 1.4); som('aMiau'); if (!reduz) gsap.fromTo('#maoImg', { rotate: -10 }, { rotate: 0, duration: .9, ease: 'elastic.out(1.2, .35)', overwrite: true }); });
   $('hero').addEventListener('click', e => { if (e.target.closest('button,a')) return; solta(10, 1.1); });
   // mão acompanha o mouse (leve) e flutua
-  addEventListener('pointermove', () => { if (reduz) return; const dx = (mx / innerWidth - .5), dy = (my / innerHeight - .5); gsap.to('#mao', { x: dx * 26, y: dy * 18, rotateZ: dx * 5, duration: .8, overwrite: 'auto' }); }, { passive: true });
+  addEventListener('pointermove', () => { if (reduz) return; const dx = (mx / innerWidth - .5), dy = (my / innerHeight - .5); gsap.to('#maoMouse', { x: dx * 26, y: dy * 18, rotation: dx * 5, duration: .8, overwrite: true }); }, { passive: true });
   // ---------- manifesto: letras ----------
   ['lA', 'lB'].forEach(id => { const el = $(id); el.innerHTML = [...el.textContent].map(c => `<span class="ch">${c === ' ' ? '&nbsp;' : c}</span>`).join(''); });
   // ---------- carinho: ronrona ----------
@@ -241,10 +239,11 @@ a { color: inherit; }
     poeLogo($('logoRod'), { cor: C.rosa, fundo: C.cobalto, labFundo: C.creme, labCor: C.nanquim });
     requestAnimationFrame(olhos); requestAnimationFrame(chuva); setTimeout(() => solta(14, 1), 500);
     if (reduz || !window.gsap) return;
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize: true });
+    Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => ScrollTrigger.refresh());
     // entrada
-    gsap.from('#miauHero', { yPercent: 40, opacity: 0, duration: 1.1, ease: 'power3.out' });
-    gsap.from('#mao', { y: -160, rotate: 12, opacity: 0, duration: 1.2, ease: 'back.out(1.6)', delay: .2 });
+    gsap.from('#miauHero', { opacity: 0, clipPath: 'inset(100% 0 0 0)', duration: 1.1, ease: 'power3.out', clearProps: 'clipPath' });
+    gsap.from('#maoImg', { y: -160, rotation: 12, opacity: 0, duration: 1.2, ease: 'back.out(1.6)', delay: .2 });
     gsap.from('#hero .num > *', { y: 30, opacity: 0, stagger: .08, duration: .8, ease: 'power3.out', delay: .3 });
     // 1 · o pacote vira e a marca sobe
     gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=120%', scrub: .6, pin: true } })
