@@ -5,7 +5,7 @@
 @font-face { font-family: Poppins; font-weight: 500; src: url(fonts/Poppins-Medium.ttf); }
 @font-face { font-family: Poppins; font-weight: 600; src: url(fonts/Poppins-SemiBold.ttf); }
 :root {
-  --ivory: #fffbde; --tinta: #2a1433; --ameixa: #3d1c46; --plum: #5b216c; --violeta: #6225d8; --violeta-2: #7b4df2;
+  --ivory: #fffbde; --lavanda-2: #e4d6e6; --tinta: #2a1433; --ameixa: #3d1c46; --plum: #5b216c; --violeta: #6225d8; --violeta-2: #7b4df2;
   --lavanda: #c0a5c4; --pink: #dd34a8; --manteiga: #f2cf7a;
   --serif: "Instrument Serif", Georgia, serif; --sans: Poppins, system-ui, sans-serif;
 }
@@ -31,8 +31,8 @@ em { font-style: italic; color: var(--destaque); padding-right: .04em; }
 .pilula { display: inline-block; font-size: 32px; font-weight: 600; line-height: 1; padding: 20px 34px 22px; border-radius: 999px; background: var(--manteiga); color: var(--tinta); border: 4px solid var(--tinta); box-shadow: 6px 6px 0 var(--tinta); }
 
 /* listas: marca num disco, texto do lado */
-ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-li { display: flex; align-items: center; gap: 18px; font-size: 30px; line-height: 1.2; font-weight: 500; text-align: left; }
+ul { font-size: 30px; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+li { display: flex; align-items: center; gap: 18px; font-size: inherit; line-height: 1.2; font-weight: 500; text-align: left; }
 li i { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--disco); position: relative; box-shadow: 3px 3px 0 var(--tinta); }
 li i::before, li i::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--marca); border-radius: 3px; }
 .nao li i::before { width: 24px; height: 5px; transform: translate(-50%, -50%) rotate(45deg); }
@@ -48,3 +48,12 @@ li i::before, li i::after { content: ""; position: absolute; left: 50%; top: 50%
 
 /* estrelas em retícula que atravessam os cortes: uma camada só, por cima da faixa inteira */
 #estrelas { position: absolute; left: 0; top: 0; width: 8640px; height: 1350px; pointer-events: none; mix-blend-mode: soft-light; }
+
+/* ---- colagem ---- */
+.fundo { inset: 0; background: var(--fundo); }
+.peca { display: block; }
+.adesivo { filter: drop-shadow(5px 0 0 var(--borda)) drop-shadow(-5px 0 0 var(--borda)) drop-shadow(0 5px 0 var(--borda)) drop-shadow(0 -5px 0 var(--borda)) drop-shadow(10px 12px 0 rgba(42, 20, 51, .55)); }
+.solto { filter: drop-shadow(5px 8px 0 rgba(42, 20, 51, .38)); }
+.tira { display: grid; place-items: center; background: center / 100% 100% no-repeat; font-weight: 600; letter-spacing: -.01em; line-height: 1; white-space: nowrap; filter: drop-shadow(4px 6px 0 rgba(42, 20, 51, .4)); }
+.cartao { background: center / 100% 100% no-repeat; filter: drop-shadow(6px 9px 0 rgba(42, 20, 51, .4)); display: flex; align-items: center; justify-content: center; }
+.titulo { font-family: var(--serif); font-weight: 400; line-height: .9; letter-spacing: -.02em; }

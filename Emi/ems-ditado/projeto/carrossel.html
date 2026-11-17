@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · quem vê cara não vê coração</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main id="faixa"></main>
+<svg id="estrelas" viewBox="0 0 8640 1350"></svg>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grao"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 -.1"/></filter>
+  <filter id="papel"><feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.45"/></filter>
+</svg>
+<script>
+const img = (src, x, y, w, extra = '', cls = 'solto') => `<img class="peca ${cls}" src="pecas/${src}.png" style="left:${x}px;top:${y}px;width:${w}px;${extra}">`;
+const tira = (src, x, y, w, h, txt, cor, tam, rot) => `<p class="tira" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background-image:url(pecas/${src}.png);color:var(--${cor});font-size:${tam}px;transform:rotate(${rot}deg)">${txt}</p>`;
+const L = [
+  // 1 capa: a Mona Lisa
+  { fundo: 'violeta', cor: 'ivory', destaque: 'manteiga', borda: 'ivory', html: `
+    ${tira('tira-a', 90, 150, 440, 84, 'quem vê cara', 'tinta', 42, -3)}
+    <h1 class="titulo" style="left:90px;top:232px;font-size:196px">não vê</h1>
+    <h1 class="titulo" style="left:0;width:1080px;text-align:center;top:372px;font-size:262px"><em>coração.</em></h1>
+    ${img('mona', 110, 585, 860, '', 'adesivo')}
+    ${img('estrela-1', 850, 190, 140)}${img('estrela-3', 96, 700, 80, 'transform:rotate(12deg)')}${img('estrela-4', 884, 720, 100, 'transform:rotate(-10deg)')}` },
+  // 2 a Moça com Brinco de Pérola
+  { fundo: 'ivory', cor: 'tinta', destaque: 'pink', borda: 'violeta', html: `
+    <h1 class="titulo" style="left:90px;top:160px;font-size:176px">o ditado<br>tá <em>certo.</em></h1>
+    ${img('moca', 330, 520, 640, 'transform:rotate(3deg)')}
+    ${tira('tira-plum', 90, 1130, 720, 100, 'e é exatamente esse o problema.', 'ivory', 38, -3)}
+    ${img('estrela-4', 140, 720, 120, 'transform:rotate(8deg)')}` },
+  // 3 Rembrandt
+  { fundo: 'ameixa', cor: 'ivory', destaque: 'manteiga', borda: 'ivory', html: `
+    <h1 class="titulo" style="left:90px;top:165px;font-size:122px">seu produto é bom.<br>seu atendimento,<br><em>melhor ainda.</em></h1>
+    ${img('rembrandt', 380, 580, 780, '', 'adesivo')}
+    ${tira('tira-manteiga', 90, 650, 400, 90, 'isso é coração.', 'tinta', 40, -4)}
+    ${tira('tira-b', 90, 765, 520, 88, 'e coração ninguém vê de fora.', 'tinta', 30, 2)}
+    ${img('estrela-2', 880, 470, 96)}` },
+  // 4 O Grito
+  { fundo: 'lavanda', cor: 'tinta', destaque: 'violeta', borda: 'ivory', html: `
+    <h1 class="titulo" style="left:90px;top:165px;font-size:116px">enquanto isso, a <em>cara</em><br>da sua marca:</h1>
+    ${img('grito', 520, 430, 460, 'transform:rotate(4deg)')}
+    <div class="cartao" style="left:90px;top:880px;width:720px;height:360px;background-image:url(pecas/cartao-ivory.png);transform:rotate(-2deg)">
+      <ul class="nao" style="--disco:var(--pink);--marca:var(--ivory);color:var(--tinta);max-width:580px;font-size:28px">
+        <li><i></i>logo de template que o concorrente também usa</li>
+        <li><i></i>cada post com uma cara</li>
+        <li><i></i>cor escolhida no “porque sim”</li></ul></div>
+    ${img('estrela-4', 150, 560, 120, 'transform:rotate(-8deg)')}` },
+  // 5 Van Gogh
+  { fundo: 'plum', cor: 'ivory', destaque: 'manteiga', borda: 'ivory', html: `
+    <h1 class="titulo" style="left:90px;top:165px;font-size:124px">ninguém precisa ler<br>a assinatura pra saber<br>de quem <em>é.</em></h1>
+    ${img('vangogh', 190, 560, 700, 'transform:rotate(-3deg)')}
+    ${tira('tira-a', 520, 1150, 470, 88, 'isso é ter cara.', 'tinta', 38, 3)}
+    ${img('estrela-1', 860, 470, 130, 'transform:rotate(10deg)')}` },
+  // 6 Vigée Le Brun, de paleta na mão
+  { fundo: 'ivory', cor: 'tinta', destaque: 'pink', borda: 'violeta', html: `
+    <h1 class="titulo" style="left:90px;top:160px;font-size:170px">marca com<br>cara <em>própria:</em></h1>
+    ${img('vigee', 400, 520, 760, '', 'adesivo')}
+    <div class="cartao" style="left:90px;top:830px;width:620px;height:400px;background-image:url(pecas/cartao-plum.png);transform:rotate(-3deg)">
+      <ul class="sim" style="--disco:var(--manteiga);--marca:var(--tinta);color:var(--ivory);max-width:520px">
+        <li><i></i>te reconhecem antes de ler o nome</li>
+        <li><i></i>o preço deixa de ser a primeira pergunta</li>
+        <li><i></i>quem chega já chega te querendo</li></ul></div>` },
+  // 7 a Vênus, de olhos vendados
+  { fundo: 'violeta-2', cor: 'ivory', destaque: 'manteiga', borda: 'ivory', html: `
+    ${tira('tira-a', 90, 150, 420, 84, 'agora me conta:', 'tinta', 40, -3)}
+    <h1 class="titulo" style="left:90px;top:245px;font-size:132px">se cobrir o nome,<br>a sua marca ainda<br>tem <em>cara?</em></h1>
+    ${img('venus', 150, 640, 820, '', 'adesivo')}
+    ${tira('venda', 400, 868, 370, 96, 'seu nome aqui', 'tinta', 34, 9)}
+    ${img('estrela-2', 900, 600, 100)}` },
+  // 8 o casal Arnolfini, de mãos dadas
+  { fundo: 'ameixa', cor: 'ivory', destaque: 'manteiga', borda: 'ivory', html: `
+    <h1 class="titulo" style="left:0;width:1080px;text-align:center;top:165px;font-size:126px">o coração é com você.<br>a <em>cara</em> é comigo.</h1>
+    ${img('arnolfini', 200, 560, 680, '', 'adesivo')}
+    ${tira('tira-pink', 100, 440, 400, 96, 'me chama na dm', 'ivory', 38, -4)}
+    ${img('estrela-1', 880, 470, 120)}
+    <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>` },
+];
+document.getElementById('faixa').innerHTML = L.map((l, k) => `
+<section class="lamina" style="--fundo:var(--${l.fundo});--cor:var(--${l.cor});--destaque:var(--${l.destaque});--borda:var(--${l.borda})">
+  <i class="fundo"></i><i class="papel" style="opacity:.5"></i>
+  <div class="cab"><span>${k === 7 ? '' : '@itsemsdesign'}</span><span>identidade visual</span></div>
+  ${l.html}
+  <i class="grao"></i>
+</section>`).join('');
+function estrela(cx, cy, R, passo, op) {
+  let s = '';
+  for (let y = -R; y <= R; y += passo) for (let x = -R; x <= R; x += passo) {
+    const d = Math.pow(Math.pow(Math.abs(x), .62) + Math.pow(Math.abs(y), .62), 1 / .62) / R;
+    if (d >= 1) continue;
+    s += `<circle cx="${cx + x}" cy="${cy + y}" r="${(passo * .5 * (1 - d * .72)).toFixed(1)}"/>`;
+  }
+  return `<g fill="#fff" opacity="${op}">${s}</g>`;
+}
+document.getElementById('estrelas').innerHTML = [[1080, 900, 330, 24, .5], [2160, 330, 260, 20, .45], [3240, 1000, 320, 24, .5], [4320, 380, 280, 22, .5], [5400, 980, 320, 24, .5], [6480, 330, 260, 20, .45], [7560, 960, 300, 22, .5]].map((e) => estrela(...e)).join('');
+</script>
+<script src="palavra-curta.js"></script>
+<script>
+Promise.all([document.fonts.ready, ...[...document.images].map((im) => im.complete ? 1 : new Promise((ok) => { im.onload = im.onerror = ok; }))])
+  .then(() => document.fonts.load('italic 100px "Instrument Serif"')).then(() => { window.READY = true; });
+</script>
+</body>
+</html>
