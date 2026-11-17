@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>EMS · ditado · capas</title><link rel="stylesheet" href="estilo.css">
+<style>body{width:2160px}</style></head>
+<body><main id="faixa">
+<section class="lamina" style="--cor:var(--ivory);--destaque:var(--manteiga)">
+  <img class="cena" src="fotos/capa-a-caixa.jpg"><i class="papel"></i>
+  <i class="ic brilho" style="position:absolute;left:150px;top:300px;width:60px;height:60px;color:var(--manteiga)"></i>
+  <i class="ic brilho" style="position:absolute;left:890px;top:610px;width:44px;height:44px;color:var(--ivory)"></i>
+  <div class="cab"><span>@itsemsdesign</span><span>identidade visual</span></div>
+  <div class="texto c" style="top:160px"><p class="lead">quem vê cara</p>
+    <h1 class="serif" style="font-size:170px;margin-top:6px">não vê</h1>
+    <h1 class="serif" style="font-size:262px;margin-top:-30px"><em>coração.</em></h1></div>
+  <i class="grao"></i>
+</section>
+<section class="lamina" style="--cor:var(--ivory);--destaque:var(--manteiga)">
+  <img class="cena" src="fotos/capa-b-lencol.jpg"><i class="papel"></i>
+  <i class="ic brilho" style="position:absolute;left:880px;top:250px;width:60px;height:60px;color:var(--manteiga)"></i>
+  <div class="cab"><span>@itsemsdesign</span><span>identidade visual</span></div>
+  <div class="texto e" style="top:170px"><p class="lead">quem não é visto</p>
+    <h1 class="serif" style="font-size:150px;margin-top:8px">não é</h1>
+    <h1 class="serif" style="font-size:236px;margin-top:-26px"><em>lembrado.</em></h1></div>
+  <i class="grao"></i>
+</section>
+</main>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grao"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 -.1"/></filter>
+  <filter id="papel"><feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.45"/></filter>
+</svg>
+<script src="palavra-curta.js"></script>
+<script>Promise.all([document.fonts.ready, ...[...document.images].map((im) => im.complete ? 1 : new Promise((ok) => { im.onload = im.onerror = ok; }))]).then(() => document.fonts.load('italic 100px "Instrument Serif"')).then(() => { window.READY = true; });</script>
+</body></html>
