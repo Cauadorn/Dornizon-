@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>EMS · caça com gato</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main id="faixa"></main>
+<svg id="estrelas" viewBox="0 0 8640 1350"></svg>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grao"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 -.1"/></filter>
+  <filter id="papel"><feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.45"/></filter>
+</svg>
+<script>
+// cor: texto · destaque: a palavra em itálico · brilhos: [x, y, tamanho, cor, giro]
+const L = [
+  { cor: 'ivory', destaque: 'manteiga', brilhos: [[150, 250, 64, 'manteiga', 0], [900, 470, 44, 'ivory', 12]],
+    html: `<div class="texto c" style="top:150px"><p class="lead">quem não tem cão</p>
+      <h1 class="serif" style="font-size:164px;margin-top:6px">caça com</h1>
+      <h1 class="serif" style="font-size:250px;margin-top:-34px"><em>gato.</em></h1></div>` },
+  { cor: 'tinta', destaque: 'violeta', brilhos: [[905, 470, 56, 'violeta', 0]],
+    html: `<div class="texto e" style="top:185px"><p class="lead">tradução pra quem tem negócio:</p>
+      <h1 class="serif" style="font-size:128px;margin-top:22px">quem não tem marca<br>caça com <em>template.</em></h1></div>` },
+  { cor: 'ivory', destaque: 'manteiga', brilhos: [[170, 200, 50, 'lavanda', 0]],
+    html: `<div class="texto c" style="top:150px"><h1 class="serif" style="font-size:214px"><span style="font-size:.5em">e</span> <em>funciona.</em></h1>
+      <p class="pilula" style="margin-top:14px;transform:rotate(-2deg)">até certo ponto</p></div>` },
+  { cor: 'ivory', destaque: 'manteiga', brilhos: [[150, 560, 50, 'manteiga', 0]],
+    html: `<div class="texto e" style="top:165px"><h1 class="serif" style="font-size:104px;white-space:nowrap">o improviso, na <em>prática:</em></h1>
+      <ul class="nao" style="margin-top:34px;gap:18px;--disco:var(--ivory);--marca:var(--pink)">
+        <li><i></i>logo de template que o concorrente também usa</li>
+        <li><i></i>cada post com uma cara</li>
+        <li><i></i>cor escolhida no “porque sim”</li></ul></div>` },
+  { cor: 'tinta', destaque: 'pink', brilhos: [[900, 560, 52, 'violeta', 0]],
+    html: `<div class="texto c" style="top:160px"><p class="lead">tudo que é emprestado</p>
+      <h1 class="serif" style="font-size:120px;margin-top:4px;white-space:nowrap">fica<em style="font-size:1.6em;margin-left:.12em">sobrando.</em></h1>
+      <p class="apoio" style="margin-top:18px">marca improvisada nunca é do seu tamanho.</p></div>` },
+  { cor: 'ivory', destaque: 'manteiga', brilhos: [[925, 520, 56, 'manteiga', 0], [140, 560, 40, 'ivory', 10]],
+    html: `<div class="texto c" style="top:160px"><h1 class="serif" style="font-size:112px">quando a marca<br>é feita pra <em>você:</em></h1>
+      <ul class="sim" style="margin-top:32px;--disco:var(--manteiga);--marca:var(--tinta)">
+        <li><i></i>te reconhecem antes de ler o nome</li>
+        <li><i></i>o preço deixa de ser a primeira pergunta</li>
+        <li><i></i>quem chega já chega te querendo</li></ul></div>` },
+  { cor: 'ivory', destaque: 'manteiga', brilhos: [[905, 210, 54, 'manteiga', 0]],
+    html: `<div class="texto e" style="top:165px"><p class="lead">agora me conta:</p>
+      <h1 class="serif" style="font-size:112px;margin-top:14px">a sua marca tá<br>caçando com<br><em>o quê?</em></h1></div>` },
+  { cor: 'tinta', destaque: 'violeta', brilhos: [[140, 520, 50, 'violeta', 0]],
+    html: `<div class="texto c" style="top:175px"><p class="lead">cansou de improvisar?</p>
+      <h1 class="serif" style="font-size:128px;margin-top:14px">eu faço uma marca<br>do seu <em>tamanho.</em></h1>
+      <p class="pilula" style="margin-top:34px;background:var(--violeta);color:var(--ivory);transform:rotate(-2deg)">me chama na dm</p></div>
+      <span class="arroba">@itsemsdesign<i class="ic cursor"></i></span>` },
+];
+
+document.getElementById('faixa').innerHTML = L.map((l, k) => `
+<section class="lamina" style="--cor:var(--${l.cor});--destaque:var(--${l.destaque})">
+  <img class="cena" src="fotos/cena-0${k + 1}.jpg">
+  <i class="papel"></i>
+  ${l.brilhos.map(([x, y, t, c, r]) => `<i class="ic brilho" style="left:${x}px;top:${y}px;width:${t}px;height:${t}px;color:var(--${c});transform:rotate(${r}deg)"></i>`).join('')}
+  <div class="cab"><span>${k === 7 ? '' : '@itsemsdesign'}</span><span>identidade visual</span></div>
+  ${l.html}
+  <i class="grao"></i>
+</section>`).join('');
+
+// estrela em retícula: pontos que somem do centro pra borda
+function estrela(cx, cy, R, passo, op) {
+  let s = '';
+  for (let y = -R; y <= R; y += passo) for (let x = -R; x <= R; x += passo) {
+    const d = Math.pow(Math.pow(Math.abs(x), .62) + Math.pow(Math.abs(y), .62), 1 / .62) / R;
+    if (d >= 1) continue;
+    s += `<circle cx="${cx + x}" cy="${cy + y}" r="${(passo * .5 * (1 - d * .72)).toFixed(1)}"/>`;
+  }
+  return `<g fill="#fff" opacity="${op}">${s}</g>`;
+}
+// uma estrela em cada corte, metade de cada lado, na parede; tamanho, altura e força variam
+document.getElementById('estrelas').innerHTML = [[1080, 560, 300, 22, .5], [2160, 250, 240, 20, .45], [3240, 600, 320, 24, .5], [4320, 300, 260, 20, .55], [5400, 620, 300, 22, .5], [6480, 240, 250, 20, .45], [7560, 580, 300, 22, .55]]
+  .map((e) => estrela(...e)).join('');
+</script>
+<script src="palavra-curta.js"></script>
+<script>
+Promise.all([document.fonts.ready, ...[...document.images].map((im) => im.complete ? 1 : new Promise((ok) => { im.onload = im.onerror = ok; }))])
+  .then(() => document.fonts.load('italic 100px "Instrument Serif"')).then(() => { window.READY = true; });
+</script>
+</body>
+</html>
